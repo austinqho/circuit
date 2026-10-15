@@ -31,6 +31,8 @@ const TEXT_ENTRY = new Set(['input', 'paste', 'cut', 'drop']);
 // How long a request without a status reads as pending before it reads as never answered.
 export const PENDING_MS = 30_000;
 const FIELD_TAGS = new Set(['input', 'textarea', 'select']);
+const HISTORY = new Set(['popstate', 'hashchange']);
+const CLICKS = new Set(['click', 'auxclick', 'dblclick']);
 
 // Engine ids (hex, uuid, numeric, prefix_…) plus opaque random ids such as
 // nanoid/cuid: 10+ URL-safe characters mixing letters and digits, or 16+ mixing cases.
@@ -111,12 +113,14 @@ function requestFacts(store, request, requestRows, closed, now, show) {
     if (id && type) entities.push({ type, id, from: 'response_body', created: true });
   }
   // What the bodies said: values sent with a write, values and ids returned for one entity, the size of a list.
-  const { type } = resourceOf(path, looksLikeId);
+  // `/me` is the signed-in user.
+  const resource = resourceOf(path, looksLikeId);
+  const type = resource.verb === 'me' ? 'user' : resource.type;
   const values = [];
   let list = null;
   if (bodies?.request?.json && method !== 'GET') values.push(...valuesOf(bodies.request.json, { from: 'request_body', type, show }));
   if (bodies?.response?.json) {
-    list = listOf(bodies.response.json, { type, truncated: bodies.response.truncated === true });
+    list = listOf(bodies.response.json, { type, truncated: bodies.response.truncated === true, show });
     if (!list) values.push(...valuesOf(bodies.response.json, { from: 'response_body', type, show }));
   }
   for (const from of ['request_body', 'response_body']) {
@@ -216,9 +220,10 @@ export function storyOf(store, { session, now = Date.now(), titleOf = null, valu
     const byPage = (pageStart.get(pageOf(x)) - pageStart.get(pageOf(y))) || (pageOf(x) < pageOf(y) ? -1 : pageOf(x) > pageOf(y) ? 1 : 0);
     return byPage || (x.sequence ?? 0) - (y.sequence ?? 0);
   });
+  const opens = new Map();
+  const firstTold = new Map();
+  const typed = new Set();
   const loadRequests = store.records.filter(row => row?.kind === 'network.request' && !row.action_id && row.request_occurrence_id && String(row.method || 'GET').toUpperCase() !== 'CONNECT');
-  const firstAction = new Map();
-  for (const row of actions) firstAction.set(pageOf(row), Math.min(firstAction.get(pageOf(row)) ?? Infinity, row.sequence ?? Infinity));
   const sessionOf = (page, row) => {
     if (!sessions.has(page)) sessions.set(page, { session: page, started_at: row.timestamp ?? null, actions: 0, first_page: row.page ?? null });
     return sessions.get(page);
@@ -229,27 +234,26 @@ export function storyOf(store, { session, now = Date.now(), titleOf = null, valu
       const page = pageOf(load);
       const path = load.url ? pathOnly(pathOf(load.url)) || '/' : null;
       sessionOf(page, { ...load, page: path });
-      const before = firstAction.get(page) ?? Infinity;
-      // Request occurrence ids repeat across page loads: read this load's rows, not the shared index.
-      const requests = loadRequests.filter(request => pageOf(request) === page && (request.sequence ?? 0) < before)
-        .map(request => requestFacts(store, request, new Map([[request.request_occurrence_id, request]]), closed, now, show));
-      lines.push({ schema: STORY_SCHEMA, id: `open:${page}`, kind: 'open', session: page, at: load.timestamp ?? null, page: path,
-        text: [`Opened ${path ?? 'the page'}`, requests.map(requestPhrase).join(', ')].filter(Boolean).join(' → '), requests, navigations: [], entities: requests.flatMap(request => request.entities),
-        ...lineValues(requests) });
+      // Its requests are filled in once the first told action of this load is known (a hover over the page is not one).
+      const line = { schema: STORY_SCHEMA, id: `open:${page}`, kind: 'open', session: page, at: load.timestamp ?? null, page: path, text: null, requests: [], navigations: [], entities: [] };
+      lines.push(line); opens.set(page, line);
+      if (path) lastPage.set(page, path);
       typing = null;
       continue;
     }
     if (range) {
       const page = pageOf(range);
-      const dy = range.scroll.last[1] - range.scroll.first[1];
+      // Only movement within a range counts: a jump between ranges (scrollIntoView, focus, the app resetting
+      // the page on a navigation) is a single event that moves without the person scrolling.
+      const moved = range.scroll.last[1] - range.scroll.first[1];
+      const travel = Math.abs(moved);
       const previous = lines.at(-1);
       if (previous?.kind === 'scroll' && previous.session === page && previous.target_ref === (range.target_ref ?? null)) {
-        previous.travel += Math.abs(dy); previous.net += dy; previous.at_end = range.last_timestamp ?? range.timestamp ?? null;
+        previous.travel += travel; previous.net += moved; if (!previous.first_move) previous.first_move = moved; previous.at_end = range.last_timestamp ?? range.timestamp ?? null;
         continue;
       }
       lines.push({ schema: STORY_SCHEMA, id: range.action_id || `scroll:${page}:${range.sequence}`, kind: 'scroll', session: page, at: range.first_timestamp ?? range.timestamp ?? null, at_end: range.last_timestamp ?? null,
-        page: lastPage.get(page) ?? null, target_ref: range.target_ref ?? null, viewport: range.scroll.viewport ?? null, whole_page: range.scroll.page ?? null, travel: Math.abs(dy), net: dy });
-      typing = null;
+        page: lastPage.get(page) ?? null, target_ref: range.target_ref ?? null, viewport: range.scroll.viewport ?? null, whole_page: range.scroll.page ?? null, travel, net: moved, first_move: moved });
       continue;
     }
     const page = pageOf(row);
@@ -259,6 +263,8 @@ export function storyOf(store, { session, now = Date.now(), titleOf = null, valu
     // Navigations of an action that is not told still happened: each gets its own line.
     const orphan = () => { for (const entry of owned) lines.push(navLine(entry, entry.timestamp ?? row.timestamp ?? null)); if (owned.length) typing = null; };
     if (!owned.length && typeof store.contextOnly === 'function' && store.contextOnly(row.action_id)) continue;
+    // Back/forward is told by its navigation ("Went back/forward to …"), not as an event on the window.
+    if (HISTORY.has(row.event)) { orphan(); continue; }
     let chain;
     try { chain = chainStops(store, row.action_id); } catch { orphan(); continue; }
     const requests = (chain.requests || []).map(request => requestFacts(store, request, requestRows, closed, now, show));
@@ -271,7 +277,7 @@ export function storyOf(store, { session, now = Date.now(), titleOf = null, valu
     if (quietUrl && typing && typing.key === key && typing.session === page) typing.line.navigations = owned.map(entry => ({ to: entry.to, from: entry.from ?? null, via: entry.via ?? null }));
     if (!effect && (QUIET.has(row.event) || HOVER.has(row.event) || FOCUS.has(row.event))) continue;
     // A change that ends typing in the same field says nothing new; a change on its own (a select, a checkbox) is a choice.
-    if (row.event === 'change' && !effect && key !== null && typing?.key === key && typing.session === page) continue;
+    if (row.event === 'change' && !effect && key !== null && typed.has(`${page}\u0000${key}`)) continue;
     // A click on a submit button that did nothing itself is told by its submit.
     if (row.event === 'click' && !caused && row.target?.attributes?.type === 'submit') continue;
     // Runtimes without page.navigate rows: a page change between two actions is its own line.
@@ -297,15 +303,32 @@ export function storyOf(store, { session, now = Date.now(), titleOf = null, valu
         element: { tag: row.target?.tag ?? null, label: row.target?.label ?? null, key: row.target?.element_key ?? null }, action_id: row.action_id, ...(urlNavs ? { navigations: urlNavs } : {}),
         form: row.form_ref ?? null, field: row.target?.attributes?.name ?? null, ...(secret ? { secret: true } : {}) };
       lines.push(line); info.actions += 1;
+      if (!firstTold.has(page)) firstTold.set(page, row.sequence ?? Infinity);
+      if (key !== null) typed.add(`${page}\u0000${key}`);
       typing = { key, session: page, line };
       continue;
     }
     typing = null;
     const handler = handlerOf(chain);
     const pageIds = owned.flatMap(entry => idsInUrl(entry.to, 'page_url'));
-    const entities = [...requests.flatMap(request => request.entities), ...pageIds];
+    const entities = [];
+    for (const entity of [...requests.flatMap(request => request.entities), ...pageIds]) if (!entities.some(seen => seen.type === entity.type && seen.id === entity.id && seen.from === entity.from)) entities.push(entity);
     // Leaving one element is entering another: a mouseout's hover is on its related target.
     const subject = (row.event === 'mouseout' || row.event === 'mouseleave') && row.related_target ? row.related_target : row.target;
+    // A hover that only prefetched for the control then clicked is part of that click.
+    let prefetched = null;
+    // Scrolls in between (bringing the control into view) don't separate them.
+    let at = lines.length - 1;
+    while (at >= 0 && lines[at].kind === 'scroll' && lines[at].session === page) at -= 1;
+    const last = lines[at];
+    // Same control by its key, or (when the hover's element had none) the same label naming the same entity the click opens.
+    const reaches = new Set([...owned.flatMap(entry => idsInUrl(entry.to, 'page_url')), ...requests.flatMap(request => request.entities)].map(entity => `${entity.type}:${entity.id}`));
+    const sameControl = last?.element?.key ? last.element.key === subject?.element_key
+      : last?.element?.label && last.element.label === subject?.label && last.element.tag === subject?.tag && (last.entities || []).some(entity => reaches.has(`${entity.type}:${entity.id}`));
+    if (CLICKS.has(row.event) && last?.kind === 'hover' && last.session === page && sameControl && !last.navigations.length) {
+      prefetched = lines.splice(at, 1)[0]; info.actions -= 1;
+      requests.unshift(...prefetched.requests);
+    }
     // What it caused, in the order it happened: consecutive requests read as one list.
     const effects = [...requests.map(request => ({ sequence: request.sequence, request })), ...owned.map(entry => ({ sequence: entry.sequence, to: entry.to }))]
       .map((entry, order) => ({ ...entry, order })).sort((a, b) => ((a.sequence ?? Infinity) - (b.sequence ?? Infinity)) || a.order - b.order);
@@ -318,8 +341,19 @@ export function storyOf(store, { session, now = Date.now(), titleOf = null, valu
       text: parts.map(part => Array.isArray(part) ? part.join(', ') : part).join(' → '), event: row.event,
       element: { tag: subject?.tag ?? null, label: subject?.label ?? null, key: subject?.element_key ?? null },
       handler, requests, navigations: owned.map(entry => ({ to: entry.to, from: entry.from ?? null, via: entry.via ?? null })), entities, detail: detailOf(chain, requests, owned), action_id: row.action_id,
-      form: row.form_ref ?? null, ...lineValues(requests) });
+      form: row.form_ref ?? null, ...lineValues(requests), ...(prefetched ? { prefetched_on_hover: prefetched.id } : {}) });
     info.actions += 1;
+    if (!firstTold.has(page)) firstTold.set(page, row.sequence ?? Infinity);
+  }
+  // Each page load's opening requests: what no action caused before the first action that is told.
+  for (const [page, line] of opens) {
+    const before = firstTold.get(page) ?? Infinity;
+    // Request occurrence ids repeat across page loads: read this load's rows, not the shared index.
+    line.requests = loadRequests.filter(request => pageOf(request) === page && (request.sequence ?? 0) < before)
+      .map(request => requestFacts(store, request, new Map([[request.request_occurrence_id, request]]), closed, now, show));
+    line.entities = line.requests.flatMap(request => request.entities);
+    line.text = [`Opened ${line.page ?? 'the page'}`, line.requests.map(requestPhrase).join(', ')].filter(Boolean).join(' → ');
+    Object.assign(line, lineValues(line.requests));
   }
   // Scrolls that moved less than a screen say nothing; the rest say how far.
   const told = lines.filter(line => {
@@ -327,9 +361,12 @@ export function storyOf(store, { session, now = Date.now(), titleOf = null, valu
     const screen = line.viewport || FALLBACK_SCREEN;
     if (line.travel < screen) return false;
     line.screens = Math.max(1, Math.round(line.travel / screen));
-    line.direction = line.net > 0 ? 'down' : line.net < 0 ? 'up' : null;
+    // Ending about where it started: down and back up (or the other way).
+    const returned = Math.abs(line.net) < screen / 2;
+    const way = move => (move > 0 ? 'down' : 'up');
+    line.direction = returned ? (line.first_move ? `${way(line.first_move)} and back ${way(-line.first_move)}` : null) : way(line.net);
     line.text = `Scrolled ${line.direction ? `${line.direction} ` : ''}${line.whole_page === false ? 'a section of the page' : 'the page'} (≈${line.screens} screen${line.screens === 1 ? '' : 's'})`;
-    delete line.travel; delete line.net; delete line.whole_page;
+    delete line.travel; delete line.net; delete line.whole_page; delete line.first_move;
     return true;
   });
   const segments = segmentsOf(told, { looksLikeId, titleOf, closedSessions: closed });

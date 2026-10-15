@@ -163,3 +163,15 @@ test('navigations of two page loads have distinct ids', () => {
   const { lines } = storyOf(createStore({ records: [load('s_a', '/one'), load('s_b', '/two')] }), { now: 2_000 });
   assert.equal(new Set(lines.map(line => line.id)).size, 2);
 });
+
+test('back/forward reads as its navigation, not as a popstate event', () => {
+  sequence = 0;
+  const rows = [
+    action('p1', 'popstate', { tag: 'window', attributes: {} }, { page: '/' }),
+    { kind: 'page.navigate', action_id: 'p1', via: 'popstate', from: '/auth/login', to: '/', ...at() },
+    action('p2', 'popstate', { tag: 'window', attributes: {} }, { page: '/auth/login' }),
+    { kind: 'page.navigate', action_id: null, via: 'popstate', from: '/', to: '/auth/login', ...at() },
+  ];
+  const { lines } = storyOf(createStore({ records: rows }));
+  assert.deepEqual(lines.map(line => line.text), ['Went back/forward to /', 'Went back/forward to /auth/login']);
+});

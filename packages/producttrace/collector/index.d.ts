@@ -34,7 +34,7 @@ export interface StoryEntity { type: string; id: string; from: 'request_url' | '
  */
 export interface StoryValue { key: string; owner: string | null; class: 'personal' | 'content' | 'long' | 'id'; from: 'request_body' | 'response_body'; value?: string; length?: number }
 /** A list a GET returned: `count` items read, `total` when the server said, `at_least` when the body was cut. */
-export interface StoryList { type: string | null; count: number; total?: number; at_least?: boolean }
+export interface StoryList { type: string | null; count: number; total?: number; at_least?: boolean; /** Item id → its short title, for the first 100 items (only when content values are shown). */ names?: Record<string, string> }
 export interface StoryNavigation { to: string; from: string | null; via: string | null }
 export interface StoryRequest {
   method: string;
@@ -86,7 +86,7 @@ export interface StoryNavigateLine extends StoryLineBase { kind: 'navigate'; ent
 /** A page load (`open:<session>`), with the requests the app made before the first action. */
 export interface StoryOpenLine extends StoryLineBase { kind: 'open'; requests: StoryRequest[]; navigations: StoryNavigation[]; entities: StoryEntity[]; values?: StoryValue[] }
 /** Scrolling that moved at least one screen (consecutive scrolls of one target are one line). */
-export interface StoryScrollLine extends StoryLineBase { kind: 'scroll'; at_end: number | null; target_ref: string | null; viewport: number | null; screens: number; direction: 'up' | 'down' | null }
+export interface StoryScrollLine extends StoryLineBase { kind: 'scroll'; at_end: number | null; target_ref: string | null; viewport: number | null; screens: number; /** 'down', 'up', or 'down and back up' / 'up and back down' when it ended about where it started. */ direction: string | null }
 export type StoryLine = StoryActLine | StoryTypeLine | StoryNavigateLine | StoryOpenLine | StoryScrollLine;
 /**
  * One goal: consecutive lines of a session joined by a shared form, entity id
