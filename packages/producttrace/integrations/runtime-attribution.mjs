@@ -812,6 +812,53 @@ const CHUNK_HELPERS = 'function __ptIdentity(v){return v}'
   + 'function __ptAwR(w,v){var r=globalThis.__productTraceRuntime;return r&&r.awaitResume?r.awaitResume(w,v):v}'
   + 'function __ptAwE(w){var r=globalThis.__productTraceRuntime;if(r&&r.awaitEnd)r.awaitEnd(w)}\n';
 
+/**
+ * Library code under `vite dev` (prebundled deps): carry the continuation
+ * across `await` the way the build's chunk pass does, and nothing else (no
+ * frames, ids or placements, and no source-map work). Opens are inserted
+ * outer-first and closes are single parens, so nested awaits need no ordering.
+ */
+export function rewriteLibraryAwaits(code, id) {
+  if (!code.includes('await')) return null;
+  const source = ts.createSourceFile(id, code, ts.ScriptTarget.Latest, true, ts.ScriptKind.JS);
+  const magic = new MagicString(code);
+  const stack = [];
+  let rewritten = 0;
+  const visit = node => {
+    const fn = functionLike(node) && node.body ? node : null;
+    if (fn) { stack.push({ fn, opened: false }); }
+    if (ts.isAwaitExpression(node)) {
+      const owner = stack[stack.length - 1];
+      if (owner && isPlainAsync(owner.fn)) {
+        if (!owner.opened) {
+          owner.opened = true;
+          const body = owner.fn.body;
+          if (ts.isBlock(body)) {
+            magic.appendLeft(body.getStart(source) + 1, 'var __ptAw=__ptAwB();try{');
+            magic.appendRight(body.getEnd() - 1, '}finally{__ptAwE(__ptAw);}');
+          } else {
+            magic.appendLeft(body.getStart(source), '{var __ptAw=__ptAwB();try{return ');
+            magic.appendRight(body.getEnd(), '}finally{__ptAwE(__ptAw);}}');
+          }
+        }
+        magic.appendLeft(node.getStart(source), ' __ptAwR(__ptAw=__ptAwS(__ptAw),');
+        magic.appendLeft(node.expression.getStart(source), ' __ptAwL(__ptAw,');
+        rewritten += 1;
+      }
+    }
+    ts.forEachChild(node, visit);
+    if (ts.isAwaitExpression(node) && stack.length && isPlainAsync(stack[stack.length - 1].fn)) {
+      magic.appendLeft(node.expression.getEnd(), ')');
+      magic.appendLeft(node.getEnd(), ')');
+    }
+    if (fn) stack.pop();
+  };
+  visit(source);
+  if (!rewritten) return null;
+  magic.prepend(CHUNK_HELPERS);
+  return { code: magic.toString(), map: magic.generateMap({ source: id, hires: false }) };
+}
+
 /** Output directory of a Rollup/Vite output, whatever the project's layout. */
 function outputDirectory(outputOptions, fallback) {
   if (outputOptions?.dir) return path.resolve(outputOptions.dir);
@@ -879,9 +926,11 @@ export function runtimeAttributionPlugin({ repository, manifestPath, firstParty 
   // not ask for maps, generate hidden ones for instrumentation and drop the
   // map assets again so the project's output layout is unchanged.
   let ownsSourcemaps = false;
+  let serving = false;
   return {
     name: 'producttrace-runtime-attribution',
     enforce: 'post',
+    configResolved(config) { serving = config.command === 'serve'; },
     config(userConfig) {
       if (userConfig?.build?.sourcemap) return null;
       ownsSourcemaps = true;
@@ -900,7 +949,12 @@ export function runtimeAttributionPlugin({ repository, manifestPath, firstParty 
         // non-first-party) may still map, through its own source map, to
         // first-party JSX. Take placements only (no functions, frames or
         // awaits); each placement is kept only if it maps to a first-party file.
-        if (reason === 'outside repository' || reason === 'not a JS/TS source' || stampsDisabled || !fs.existsSync(`${real}.map`)) return null;
+        // `vite dev` serves libraries unbundled (Vite's prebundled deps): the
+        // build's chunk pass would carry continuations through their awaits.
+        if (serving && !awaitsDisabled && real.split(path.sep).includes('node_modules') && /\.[cm]?js$/u.test(real)) return rewriteLibraryAwaits(code, real);
+        // Installed libraries (including Vite's prebundled deps under
+        // node_modules/.vite, which carry maps) are never first-party JSX.
+        if (reason === 'outside repository' || reason === 'not a JS/TS source' || stampsDisabled || real.split(path.sep).includes('node_modules') || !fs.existsSync(`${real}.map`)) return null;
         const placed = instrumentPostTransformedSource(code, real, { repository, map: generatedMapFromContext(this), indexForId: () => null,
           register: false, instrument: false, firstParty: firstPartyRule, indexForPlacement, placementFallback: 'Object',
           prefix: (functions, embedded, placements = []) => placements.length
@@ -915,10 +969,19 @@ export function runtimeAttributionPlugin({ repository, manifestPath, firstParty 
       // for a small fraction). The factory calls are the real React element
       // factories, so `Object` is a safe identity fallback. Registration is a
       // plain statement (no function syntax the chunk pass could resolve).
-      const prefix = (functions, embedded, placements = []) => placements.length
-        ? { index: 0, content: `${placementRegistration(placements.map(row => ({ ...placementRows.get(row.index), ...(row.bound ? { bound: row.bound } : {}) }))).replace(/\n/gu, '')}\n` } : null;
+      // Under `vite dev` there is no chunk pass: this module output is what
+      // runs, so it also registers its functions and carries await
+      // continuations itself (first-party async functions only: prebundled
+      // libraries are not transformed).
+      const prefix = (functions, embedded, placements = [], awaitCount = 0) => {
+        const content = (serving && functions.length ? `globalThis.__productTraceRuntime && globalThis.__productTraceRuntime.registerManifest && globalThis.__productTraceRuntime.registerManifest(${JSON.stringify(functions.map(row => ({ index: row.index, id: row.id })))});` : '')
+          + (placements.length ? placementRegistration(placements.map(row => ({ ...placementRows.get(row.index), ...(row.bound ? { bound: row.bound } : {}) }))) : '')
+          + (serving && awaitCount ? CHUNK_HELPERS : '');
+        return content ? { index: 0, content: `${content.replace(/\n/gu, '')}\n` } : null;
+      };
       const result = instrumentPostTransformedSource(code, real, { repository, map, indexForId, firstParty: firstPartyRule,
-        indexForPlacement: stampsDisabled ? null : indexForPlacement, placementFallback: 'Object', prefix, registerClasses: true });
+        indexForPlacement: stampsDisabled ? null : indexForPlacement, placementFallback: 'Object', prefix, registerClasses: true,
+        ...(serving && !awaitsDisabled ? { awaitContinuations: true } : {}) });
       if (result.classes?.length) classesByModule.set(real, result.classes);
       if (!result.manifest.length && !result.placements.length && !result.classes?.length) return null;
       for (const row of result.placements) if (row.bound && !placementRows.get(row.index).bound) placementRows.get(row.index).bound = row.bound;

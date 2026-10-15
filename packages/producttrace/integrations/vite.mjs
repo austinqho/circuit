@@ -256,6 +256,16 @@ export function productTraceVitePlugin(options = {}) {
         ...(loaderSource ? [{ tag: 'script', attrs: { src: `/producttrace-request-bridge.js?v=${loaderRevision}` }, injectTo: 'head-prepend' }] : []),
       ] };
     },
+    // `vite dev`: serve the same assets the build emits.
+    configureServer(server) {
+      server.middlewares.use((request, response, next) => {
+        const pathname = (request.url || '').split('?')[0];
+        const source = pathname === '/producttrace-runtime.js' ? runtimeSource : pathname === '/producttrace-request-bridge.js' ? loaderSource : null;
+        if (!source) return next();
+        response.setHeader('content-type', 'text/javascript');
+        response.end(source);
+      });
+    },
     generateBundle() {
       this.emitFile({ type: 'asset', fileName: 'producttrace-runtime.js', source: runtimeSource });
       if (loaderSource) this.emitFile({ type: 'asset', fileName: 'producttrace-request-bridge.js', source: loaderSource });
