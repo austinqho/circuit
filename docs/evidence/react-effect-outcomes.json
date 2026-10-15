@@ -1,0 +1,184 @@
+{
+  "schema": "producttrace.react-effect-outcomes.v1",
+  "react": "18.3.1",
+  "runtime": [
+    {
+      "react": "18.3.1",
+      "build": "development",
+      "strict": false,
+      "hydrate": false,
+      "apis": [
+        "useInsertionEffect",
+        "useLayoutEffect",
+        "useEffect"
+      ],
+      "baseline_matches": true,
+      "actual_callback_outcomes": 71,
+      "thrown_cleanup_outcomes": 3,
+      "thrown_setup_outcomes": 3,
+      "suspense_hide_reveal": true,
+      "abandoned_render_has_no_effect": true,
+      "hydration_reuses_server_node": false,
+      "unchanged_dependencies": true,
+      "exact_error_identity": true,
+      "every_original_invocation_has_joined_outcome": true,
+      "async_completion_claimed": false
+    },
+    {
+      "react": "18.3.1",
+      "build": "development",
+      "strict": false,
+      "hydrate": true,
+      "apis": [
+        "useInsertionEffect",
+        "useLayoutEffect",
+        "useEffect"
+      ],
+      "baseline_matches": true,
+      "actual_callback_outcomes": 71,
+      "thrown_cleanup_outcomes": 3,
+      "thrown_setup_outcomes": 3,
+      "suspense_hide_reveal": true,
+      "abandoned_render_has_no_effect": true,
+      "hydration_reuses_server_node": true,
+      "unchanged_dependencies": true,
+      "exact_error_identity": true,
+      "every_original_invocation_has_joined_outcome": true,
+      "async_completion_claimed": false
+    },
+    {
+      "react": "18.3.1",
+      "build": "development",
+      "strict": true,
+      "hydrate": false,
+      "apis": [
+        "useInsertionEffect",
+        "useLayoutEffect",
+        "useEffect"
+      ],
+      "baseline_matches": true,
+      "actual_callback_outcomes": 89,
+      "thrown_cleanup_outcomes": 5,
+      "thrown_setup_outcomes": 5,
+      "suspense_hide_reveal": true,
+      "abandoned_render_has_no_effect": true,
+      "hydration_reuses_server_node": false,
+      "unchanged_dependencies": true,
+      "exact_error_identity": true,
+      "every_original_invocation_has_joined_outcome": true,
+      "async_completion_claimed": false
+    },
+    {
+      "react": "18.3.1",
+      "build": "development",
+      "strict": true,
+      "hydrate": true,
+      "apis": [
+        "useInsertionEffect",
+        "useLayoutEffect",
+        "useEffect"
+      ],
+      "baseline_matches": true,
+      "actual_callback_outcomes": 89,
+      "thrown_cleanup_outcomes": 5,
+      "thrown_setup_outcomes": 5,
+      "suspense_hide_reveal": true,
+      "abandoned_render_has_no_effect": true,
+      "hydration_reuses_server_node": true,
+      "unchanged_dependencies": true,
+      "exact_error_identity": true,
+      "every_original_invocation_has_joined_outcome": true,
+      "async_completion_claimed": false
+    },
+    {
+      "react": "18.3.1",
+      "build": "production",
+      "strict": false,
+      "hydrate": false,
+      "apis": [
+        "useInsertionEffect",
+        "useLayoutEffect",
+        "useEffect"
+      ],
+      "baseline_matches": true,
+      "actual_callback_outcomes": 71,
+      "thrown_cleanup_outcomes": 3,
+      "thrown_setup_outcomes": 3,
+      "suspense_hide_reveal": true,
+      "abandoned_render_has_no_effect": true,
+      "hydration_reuses_server_node": false,
+      "unchanged_dependencies": true,
+      "exact_error_identity": true,
+      "every_original_invocation_has_joined_outcome": true,
+      "async_completion_claimed": false
+    },
+    {
+      "react": "18.3.1",
+      "build": "production",
+      "strict": false,
+      "hydrate": true,
+      "apis": [
+        "useInsertionEffect",
+        "useLayoutEffect",
+        "useEffect"
+      ],
+      "baseline_matches": true,
+      "actual_callback_outcomes": 71,
+      "thrown_cleanup_outcomes": 3,
+      "thrown_setup_outcomes": 3,
+      "suspense_hide_reveal": true,
+      "abandoned_render_has_no_effect": true,
+      "hydration_reuses_server_node": true,
+      "unchanged_dependencies": true,
+      "exact_error_identity": true,
+      "every_original_invocation_has_joined_outcome": true,
+      "async_completion_claimed": false
+    },
+    {
+      "react": "18.3.1",
+      "build": "production",
+      "strict": true,
+      "hydrate": false,
+      "apis": [
+        "useInsertionEffect",
+        "useLayoutEffect",
+        "useEffect"
+      ],
+      "baseline_matches": true,
+      "actual_callback_outcomes": 71,
+      "thrown_cleanup_outcomes": 3,
+      "thrown_setup_outcomes": 3,
+      "suspense_hide_reveal": true,
+      "abandoned_render_has_no_effect": true,
+      "hydration_reuses_server_node": false,
+      "unchanged_dependencies": true,
+      "exact_error_identity": true,
+      "every_original_invocation_has_joined_outcome": true,
+      "async_completion_claimed": false
+    },
+    {
+      "react": "18.3.1",
+      "build": "production",
+      "strict": true,
+      "hydrate": true,
+      "apis": [
+        "useInsertionEffect",
+        "useLayoutEffect",
+        "useEffect"
+      ],
+      "baseline_matches": true,
+      "actual_callback_outcomes": 71,
+      "thrown_cleanup_outcomes": 3,
+      "thrown_setup_outcomes": 3,
+      "suspense_hide_reveal": true,
+      "abandoned_render_has_no_effect": true,
+      "hydration_reuses_server_node": true,
+      "unchanged_dependencies": true,
+      "exact_error_identity": true,
+      "every_original_invocation_has_joined_outcome": true,
+      "async_completion_claimed": false
+    }
+  ],
+  "scope_complete": true,
+  "limit": "Synchronous callback outcomes do not prove asynchronous work or downstream product effects."
+}

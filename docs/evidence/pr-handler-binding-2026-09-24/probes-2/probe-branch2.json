@@ -1,0 +1,971 @@
+{
+ "errors": [],
+ "received": [
+  "POST /api/scheduled-click",
+  "POST /api/rhf?name=Bo",
+  "GET /api/pick?value=m",
+  "GET /api/fruit?value=banana",
+  "GET /api/fruit?value=cherry",
+  "POST /api/scheduled-click"
+ ],
+ "marks": [
+  {
+   "name": "a",
+   "seq": 1790294339004
+  },
+  {
+   "name": "b1",
+   "seq": 1790294339324
+  },
+  {
+   "name": "b2",
+   "seq": 1790294339798
+  },
+  {
+   "name": "c",
+   "seq": 1790294340219
+  },
+  {
+   "name": "d-click",
+   "seq": 1790294341039
+  },
+  {
+   "name": "d-enter",
+   "seq": 1790294341307
+  },
+  {
+   "name": "e",
+   "seq": 1790294341570
+  },
+  {
+   "name": "e2",
+   "seq": 1790294341844
+  },
+  {
+   "name": "e3",
+   "seq": 1790294342125
+  },
+  {
+   "name": "f-select",
+   "seq": 1790294342402
+  },
+  {
+   "name": "f-textarea",
+   "seq": 1790294342668
+  },
+  {
+   "name": "g-space",
+   "seq": 1790294342954
+  },
+  {
+   "name": "g-arrow",
+   "seq": 1790294343970
+  },
+  {
+   "name": "h",
+   "seq": 1790294344966
+  },
+  {
+   "name": "i",
+   "seq": 1790294345499
+  },
+  {
+   "name": "k",
+   "seq": 1790294346036
+  },
+  {
+   "name": "n",
+   "seq": 1790294346554
+  },
+  {
+   "name": "j",
+   "seq": 1790294346869
+  },
+  {
+   "name": "end",
+   "seq": 1790294347161
+  }
+ ],
+ "actions": [
+  {
+   "mark": "a",
+   "action_id": "action:mug70wz3:14",
+   "event": "click",
+   "target": "L12:<button type=\"button\" onClick={onClick}>Save card<",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "outer.js:export function saveCard() { globalThis.__sav",
+     "prop": "onClick",
+     "native": "click",
+     "holder": "host:button@0",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container",
+     "also": [
+      "onClick/Footer@2",
+      "onSave/Card@4"
+     ]
+    }
+   ],
+   "enters": [
+    "outer.js:export function saveCard() { globalThis.__sav",
+    "outer.js:export function saveCard() { globalThis.__sav"
+   ],
+   "reqs": [],
+   "credited": "outer.js:export function saveCard() { globalThis.__sav",
+   "stopped_at": "browser",
+   "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+   "text": "click action:mug70wz3:14 (mouse pointer 1, button 0, buttons 0; phase activation on <button type=\"button\">) → handler <unnamed> client/src/outer.js@85-215 [bound: onClick on click (React)] [outcome no_request; the handler ran and issued no request from instrumented code (2 functions entered, 1 DOM mutation, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)\nObserved bound to this dispatch: <unnamed> client/src/outer.js@85-215 as onClick on click (React)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/outer.js@85-215"
+  },
+  {
+   "mark": "b1",
+   "action_id": "action:mug70x76:31",
+   "event": "submit",
+   "target": "L23:<button type=\"submit\">RHF save</button>",
+   "rows": [],
+   "enters": [
+    "main.jsx:values => setSaved(values.name)"
+   ],
+   "reqs": [],
+   "credited": null,
+   "stopped_at": "entry_handler",
+   "because": "no element-bound handler of instrumented code ran; ran through library code on the element chain (not bound to an element prop Tracer can see): [function:4056ac0caccccf005730bb7f24fe50a74c46e5c916251a79bf70b39141609e13:926:957]; global listeners: []",
+   "text": "submit action:mug70x76:31 [outcome stopped at entry_handler]: reached dom_mutation / stopped at entry_handler / because no element-bound handler of instrumented code ran; ran through library code on the element chain (not bound to an element prop Tracer can see): [function:4056ac0caccccf005730bb7f24fe50a74c46e5c916251a79bf70b39141609e13:926:957]; global listeners: []\nRan through library code for this dispatch (not bound to an element prop Tracer can see): <unnamed> client/src/main.jsx@926-957\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@926-957"
+  },
+  {
+   "mark": "b2",
+   "action_id": "action:mug70xk4:48",
+   "event": "submit",
+   "target": "L33:<button type=\"submit\">RHF send</button>",
+   "rows": [],
+   "enters": [
+    "main.jsx:values => send(`/api/rhf?name=${values.name}`",
+    "main.jsx:(path, init) => fetch(path, init).catch(() =>"
+   ],
+   "reqs": [
+    "/api/rhf?name=Bo"
+   ],
+   "credited": "main.jsx:values => send(`/api/rhf?name=${values.name}`",
+   "stopped_at": "network",
+   "because": "backend not instrumented",
+   "text": "submit action:mug70xk4:48 → handler <unnamed> client/src/main.jsx@1321-1387 → 1 request: (1) <unnamed> client/src/main.jsx@344-393 → POST /api/rhf?name=Bo [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented\nRan through library code for this dispatch (not bound to an element prop Tracer can see): <unnamed> client/src/main.jsx@1321-1387\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@1321-1387\n  - <unnamed> client/src/main.jsx@344-393\n    - request (1) POST /api/rhf?name=Bo [stopped at network]"
+  },
+  {
+   "mark": "c",
+   "action_id": "action:mug70xvx:64",
+   "event": "click",
+   "target": "L42:<button type=\"button\" onClick={bump}>Bump {n}</but",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:() => setN(n + 1)",
+     "prop": "onClick",
+     "native": "click",
+     "holder": "host:button@0",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container"
+    }
+   ],
+   "enters": [
+    "main.jsx:() => setN(n + 1)"
+   ],
+   "reqs": [],
+   "credited": "main.jsx:() => setN(n + 1)",
+   "stopped_at": "browser",
+   "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+   "text": "click action:mug70xvx:64 (mouse pointer 1, button 0, buttons 0; phase activation on <button type=\"button\">) → handler <unnamed> client/src/main.jsx@1741-1758 [bound: onClick on click (React)] [outcome no_request; the handler ran and issued no request from instrumented code (1 function entered, 1 DOM mutation, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)\nObserved bound to this dispatch: <unnamed> client/src/main.jsx@1741-1758 as onClick on click (React)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@1741-1758"
+  },
+  {
+   "mark": "c",
+   "action_id": "action:mug70y3c:72",
+   "event": "click",
+   "target": "L42:<button type=\"button\" onClick={bump}>Bump {n}</but",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:() => setN(n + 1)",
+     "prop": "onClick",
+     "native": "click",
+     "holder": "host:button@0",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container"
+    }
+   ],
+   "enters": [
+    "main.jsx:() => setN(n + 1)"
+   ],
+   "reqs": [],
+   "credited": "main.jsx:() => setN(n + 1)",
+   "stopped_at": "browser",
+   "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+   "text": "click action:mug70y3c:72 (mouse pointer 1, button 0, buttons 0; phase activation on <button type=\"button\">) → handler <unnamed> client/src/main.jsx@1741-1758 [bound: onClick on click (React)] [outcome no_request; the handler ran and issued no request from instrumented code (1 function entered, 1 DOM mutation, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)\nObserved bound to this dispatch: <unnamed> client/src/main.jsx@1741-1758 as onClick on click (React)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@1741-1758"
+  },
+  {
+   "mark": "c",
+   "action_id": "action:mug70yb1:80",
+   "event": "click",
+   "target": "L42:<button type=\"button\" onClick={bump}>Bump {n}</but",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:() => setN(n + 1)",
+     "prop": "onClick",
+     "native": "click",
+     "holder": "host:button@0",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container"
+    }
+   ],
+   "enters": [
+    "main.jsx:() => setN(n + 1)"
+   ],
+   "reqs": [],
+   "credited": "main.jsx:() => setN(n + 1)",
+   "stopped_at": "browser",
+   "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+   "text": "click action:mug70yb1:80 (mouse pointer 1, button 0, buttons 0; phase activation on <button type=\"button\">) → handler <unnamed> client/src/main.jsx@1741-1758 [bound: onClick on click (React)] [outcome no_request; the handler ran and issued no request from instrumented code (1 function entered, 1 DOM mutation, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)\nObserved bound to this dispatch: <unnamed> client/src/main.jsx@1741-1758 as onClick on click (React)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@1741-1758"
+  },
+  {
+   "mark": "d-click",
+   "action_id": "action:mug70yim:96",
+   "event": "click",
+   "target": "L49:<button type=\"button\" onKeyDown={handleDual} onCli",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:() => setHits(h => h + 1)",
+     "prop": "onClick",
+     "native": "click",
+     "holder": "host:button@0",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container",
+     "also": [
+      "onKeyDown/button@0"
+     ]
+    }
+   ],
+   "enters": [
+    "main.jsx:() => setHits(h => h + 1)",
+    "main.jsx:h => h + 1"
+   ],
+   "reqs": [],
+   "credited": "main.jsx:() => setHits(h => h + 1)",
+   "stopped_at": "browser",
+   "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+   "text": "click action:mug70yim:96 (mouse pointer 1, button 0, buttons 0; phase activation on <button type=\"button\">) → handler <unnamed> client/src/main.jsx@1980-2005 [bound: onClick on click (React)] [outcome no_request; the handler ran and issued no request from instrumented code (2 functions entered, 1 DOM mutation, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)\nObserved bound to this dispatch: <unnamed> client/src/main.jsx@1980-2005 as onClick on click (React)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@1980-2005\n  - <unnamed> client/src/main.jsx@1994-2004"
+  },
+  {
+   "mark": "d-enter",
+   "action_id": "action:mug70ypv:97",
+   "event": "keydown",
+   "target": "L49:<button type=\"button\" onKeyDown={handleDual} onCli",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:() => setHits(h => h + 1)",
+     "prop": "onKeyDown",
+     "native": "keydown",
+     "holder": "host:button@0",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container",
+     "also": [
+      "onClick/button@0"
+     ]
+    }
+   ],
+   "enters": [
+    "main.jsx:() => setHits(h => h + 1)",
+    "main.jsx:event => { if (event.key === 'k') document.ti",
+    "main.jsx:event => { if (event.key === 'k') document.ti"
+   ],
+   "reqs": [],
+   "credited": "main.jsx:() => setHits(h => h + 1)",
+   "stopped_at": "browser",
+   "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+   "text": "keydown action:mug70ypv:97 (Enter in <button type=\"button\">) → handler <unnamed> client/src/main.jsx@1980-2005 [bound: onKeyDown on keydown (React)] [outcome no_request; the handler ran and issued no request from instrumented code (3 functions entered, 1 DOM mutation, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)\nObserved bound to this dispatch: <unnamed> client/src/main.jsx@1980-2005 as onKeyDown on keydown (React)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@1980-2005\n- <unnamed> client/src/main.jsx@5338-5402"
+  },
+  {
+   "mark": "d-enter",
+   "action_id": "action:mug70ypw:99",
+   "event": "click",
+   "target": "L49:<button type=\"button\" onKeyDown={handleDual} onCli",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:() => setHits(h => h + 1)",
+     "prop": "onClick",
+     "native": "click",
+     "holder": "host:button@0",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container",
+     "also": [
+      "onKeyDown/button@0"
+     ]
+    }
+   ],
+   "enters": [
+    "main.jsx:() => setHits(h => h + 1)"
+   ],
+   "reqs": [],
+   "credited": "main.jsx:() => setHits(h => h + 1)",
+   "stopped_at": "browser",
+   "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+   "text": "click action:mug70ypw:99 (pointer pointer -1, button 0, buttons 0; phase activation on <button type=\"button\">) → handler <unnamed> client/src/main.jsx@1980-2005 [bound: onClick on click (React)] [outcome no_request; the handler ran and issued no request from instrumented code (1 function entered, 1 DOM mutation, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)\nObserved bound to this dispatch: <unnamed> client/src/main.jsx@1980-2005 as onClick on click (React)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@1980-2005"
+  },
+  {
+   "mark": "e",
+   "action_id": "action:mug70yxg:116",
+   "event": "click",
+   "target": "L56:<button type=\"button\" onClick={handleNested}>Neste",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:() => setC(x => x + 1)",
+     "prop": "onClick",
+     "native": "click",
+     "holder": "host:button@0",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container",
+     "also": [
+      "onClick/div@1"
+     ]
+    },
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:() => setC(x => x + 1)",
+     "prop": "onClick",
+     "native": "click",
+     "holder": "host:div@1",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container",
+     "also": [
+      "onClick/button@0"
+     ]
+    }
+   ],
+   "enters": [
+    "main.jsx:() => setC(x => x + 1)",
+    "main.jsx:x => x + 1",
+    "main.jsx:() => setC(x => x + 1)"
+   ],
+   "reqs": [],
+   "credited": "main.jsx:() => setC(x => x + 1)",
+   "stopped_at": "browser",
+   "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+   "text": "click action:mug70yxg:116 (mouse pointer 1, button 0, buttons 0; phase activation on <button type=\"button\">) → handler <unnamed> client/src/main.jsx@2305-2327 [bound: onClick on click (React)] [outcome no_request; the handler ran and issued no request from instrumented code (3 functions entered, 1 DOM mutation, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)\nObserved bound to this dispatch: <unnamed> client/src/main.jsx@2305-2327 as onClick on click (React); <unnamed> client/src/main.jsx@2305-2327 as onClick on click (React)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@2305-23"
+  },
+  {
+   "mark": "e2",
+   "action_id": "action:mug70z59:125",
+   "event": "mousedown",
+   "target": "L61:<button type=\"button\" onMouseDown={handleOuter}>Ne",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:() => setC(x => x + 1)",
+     "prop": "onMouseDown",
+     "native": "mousedown",
+     "holder": "host:button@0",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container",
+     "also": [
+      "onClick/div@1"
+     ]
+    }
+   ],
+   "enters": [
+    "main.jsx:() => setC(x => x + 1)",
+    "main.jsx:x => x + 1"
+   ],
+   "reqs": [],
+   "credited": "main.jsx:() => setC(x => x + 1)",
+   "stopped_at": "browser",
+   "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+   "text": "mousedown action:mug70z59:125 (mouse button 0, buttons 1; phase press on <button type=\"button\">) → handler <unnamed> client/src/main.jsx@2542-2564 [bound: onMouseDown on mousedown (React)] [outcome no_request; the handler ran and issued no request from instrumented code (2 functions entered, 1 DOM mutation, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); this action is part of episode episode:action:mug70z5a:132; its evidence is attributed to the carrier action action:mug70z5a:132\nObserved bound to this dispatch: <unnamed> client/src/main.jsx@2542-2564 as onMouseDown on mousedown (React)\nWork (first-party frames this action's episode entered, first-seen order"
+  },
+  {
+   "mark": "e2",
+   "action_id": "action:mug70z5a:132",
+   "event": "click",
+   "target": "L61:<button type=\"button\" onMouseDown={handleOuter}>Ne",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:() => setC(x => x + 1)",
+     "prop": "onClick",
+     "native": "click",
+     "holder": "host:div@1",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container",
+     "also": [
+      "onMouseDown/button@0"
+     ]
+    }
+   ],
+   "enters": [
+    "main.jsx:() => setC(x => x + 1)"
+   ],
+   "reqs": [],
+   "credited": "main.jsx:() => setC(x => x + 1)",
+   "stopped_at": "browser",
+   "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+   "text": "click action:mug70z5a:132 (mouse pointer 1, button 0, buttons 0; phase activation on <button type=\"button\">) → handler <unnamed> client/src/main.jsx@2542-2564 [bound: onClick on click (React)] [outcome no_request; the handler ran and issued no request from instrumented code (3 functions entered, 2 DOM mutations, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)\nObserved bound to this dispatch: <unnamed> client/src/main.jsx@2542-2564 as onClick on click (React)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@2542-2564 ×2\n  - <unnamed> client/src/main.jsx@2553-2563"
+  },
+  {
+   "mark": "e3",
+   "action_id": "action:mug70zcy:147",
+   "event": "click",
+   "target": "L66:<div aria-label=\"Ancestor only\" onClick={handleAnc",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:() => setC(x => x + 1)",
+     "prop": "onClick",
+     "native": "click",
+     "holder": "host:div@1",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container"
+    }
+   ],
+   "enters": [
+    "main.jsx:() => setC(x => x + 1)",
+    "main.jsx:x => x + 1"
+   ],
+   "reqs": [],
+   "credited": "main.jsx:() => setC(x => x + 1)",
+   "stopped_at": "browser",
+   "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+   "text": "click action:mug70zcy:147 (mouse pointer 1, button 0, buttons 0; phase activation on <span>) → handler <unnamed> client/src/main.jsx@2791-2813 [bound: onClick on click (React)] [outcome no_request; the handler ran and issued no request from instrumented code (2 functions entered, 1 DOM mutation, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)\nObserved bound to this dispatch: <unnamed> client/src/main.jsx@2791-2813 as onClick on click (React)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@2791-2813\n  - <unnamed> client/src/main.jsx@2802-2812"
+  },
+  {
+   "mark": "f-select",
+   "action_id": "action:mug70zkb:151",
+   "event": "keydown",
+   "target": "Size",
+   "rows": [],
+   "enters": [
+    "main.jsx:event => { if (event.key === 'k') document.ti",
+    "main.jsx:event => { if (event.key === 'k') document.ti"
+   ],
+   "reqs": [],
+   "credited": null,
+   "stopped_at": "entry_handler",
+   "because": "no element-bound handler ran: no instrumented function held by the target's element chain (an on* prop, or a listener on the element) was invoked for this dispatch (uninstrumented and third-party handlers are not seen); global listeners: [function:4056ac0caccccf005730bb7f24fe50a74c46e5c916251a79bf70b39141609e13:5338:5402]",
+   "text": "keydown action:mug70zkb:151 (Printable in <select aria-label=\"Size\">) [outcome stopped at entry_handler]: reached dispatch / stopped at entry_handler / because no element-bound handler ran: no instrumented function held by the target's element chain (an on* prop, or a listener on the element) was invoked for this dispatch (uninstrumented and third-party handlers are not seen); global listeners: [function:4056ac0caccccf005730bb7f24fe50a74c46e5c916251a79bf70b39141609e13:5338:5402]\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@5338-5402"
+  },
+  {
+   "mark": "f-select",
+   "action_id": "action:mug70zkd:154",
+   "event": "change",
+   "target": "Size",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:event => send(`/api/pick?value=${event.target",
+     "prop": "onChange",
+     "native": "change",
+     "holder": "host:select@0",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container"
+    }
+   ],
+   "enters": [
+    "main.jsx:event => send(`/api/pick?value=${event.target",
+    "main.jsx:(path, init) => fetch(path, init).catch(() =>"
+   ],
+   "reqs": [
+    "/api/pick?value=m"
+   ],
+   "credited": "main.jsx:event => send(`/api/pick?value=${event.target",
+   "stopped_at": "network",
+   "because": "backend not instrumented",
+   "text": "change action:mug70zkd:154 → handler <unnamed> client/src/main.jsx@3031-3085 [bound: onChange on change (React)] → 1 request: (1) <unnamed> client/src/main.jsx@344-393 → GET /api/pick?value=m [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented\nObserved bound to this dispatch: <unnamed> client/src/main.jsx@3031-3085 as onChange on change (React)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@3031-3085\n  - <unnamed> client/src/main.jsx@344-393\n    - request (1) GET /api/pick?value=m [stopped at network]"
+  },
+  {
+   "mark": "f-textarea",
+   "action_id": "action:mug70zs6:173",
+   "event": "keydown",
+   "target": "Notes",
+   "rows": [],
+   "enters": [
+    "main.jsx:event => { if (event.key === 'k') document.ti",
+    "main.jsx:event => { if (event.key === 'k') document.ti"
+   ],
+   "reqs": [],
+   "credited": null,
+   "stopped_at": "entry_handler",
+   "because": "no element-bound handler ran: no instrumented function held by the target's element chain (an on* prop, or a listener on the element) was invoked for this dispatch (uninstrumented and third-party handlers are not seen); global listeners: [function:4056ac0caccccf005730bb7f24fe50a74c46e5c916251a79bf70b39141609e13:5338:5402]",
+   "text": "keydown action:mug70zs6:173 (Printable in <textarea aria-label=\"Notes\">) [outcome stopped at entry_handler]: reached dispatch / stopped at entry_handler / because no element-bound handler ran: no instrumented function held by the target's element chain (an on* prop, or a listener on the element) was invoked for this dispatch (uninstrumented and third-party handlers are not seen); global listeners: [function:4056ac0caccccf005730bb7f24fe50a74c46e5c916251a79bf70b39141609e13:5338:5402]\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@5338-5402"
+  },
+  {
+   "mark": "f-textarea",
+   "action_id": "action:mug70zs9:176",
+   "event": "input",
+   "target": "Notes",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:event => setT(event.target.value)",
+     "prop": "onChange",
+     "native": "input",
+     "holder": "host:textarea@0",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container"
+    }
+   ],
+   "enters": [
+    "main.jsx:event => setT(event.target.value)"
+   ],
+   "reqs": [],
+   "credited": "main.jsx:event => setT(event.target.value)",
+   "stopped_at": "browser",
+   "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+   "text": "input action:mug70zs9:176 (inputType insertText on <textarea aria-label=\"Notes\">) → handler <unnamed> client/src/main.jsx@3104-3137 [bound: onChange on input (React)] [outcome no_request; the handler ran and issued no request from instrumented code (1 function entered, 1 DOM mutation, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)\nObserved bound to this dispatch: <unnamed> client/src/main.jsx@3104-3137 as onChange on input (React)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@3104-3137"
+  },
+  {
+   "mark": "f-textarea",
+   "action_id": "action:mug70zsb:178",
+   "event": "keydown",
+   "target": "Notes",
+   "rows": [],
+   "enters": [
+    "main.jsx:event => { if (event.key === 'k') document.ti",
+    "main.jsx:event => { if (event.key === 'k') document.ti"
+   ],
+   "reqs": [],
+   "credited": null,
+   "stopped_at": "entry_handler",
+   "because": "no element-bound handler ran: no instrumented function held by the target's element chain (an on* prop, or a listener on the element) was invoked for this dispatch (uninstrumented and third-party handlers are not seen); global listeners: [function:4056ac0caccccf005730bb7f24fe50a74c46e5c916251a79bf70b39141609e13:5338:5402]",
+   "text": "keydown action:mug70zsb:178 (Printable in <textarea aria-label=\"Notes\">) [outcome stopped at entry_handler]: reached dispatch / stopped at entry_handler / because no element-bound handler ran: no instrumented function held by the target's element chain (an on* prop, or a listener on the element) was invoked for this dispatch (uninstrumented and third-party handlers are not seen); global listeners: [function:4056ac0caccccf005730bb7f24fe50a74c46e5c916251a79bf70b39141609e13:5338:5402]\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@5338-5402"
+  },
+  {
+   "mark": "f-textarea",
+   "action_id": "action:mug70zsc:181",
+   "event": "input",
+   "target": "Notes",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:event => setT(event.target.value)",
+     "prop": "onChange",
+     "native": "input",
+     "holder": "host:textarea@0",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container"
+    }
+   ],
+   "enters": [
+    "main.jsx:event => setT(event.target.value)"
+   ],
+   "reqs": [],
+   "credited": "main.jsx:event => setT(event.target.value)",
+   "stopped_at": "browser",
+   "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+   "text": "input action:mug70zsc:181 (inputType insertText on <textarea aria-label=\"Notes\">) → handler <unnamed> client/src/main.jsx@3104-3137 [bound: onChange on input (React)] [outcome no_request; the handler ran and issued no request from instrumented code (1 function entered, 1 DOM mutation, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)\nObserved bound to this dispatch: <unnamed> client/src/main.jsx@3104-3137 as onChange on input (React)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@3104-3137"
+  },
+  {
+   "mark": "g-space",
+   "action_id": "action:mug70zzk:189",
+   "event": "keydown",
+   "target": "Fruit",
+   "rows": [],
+   "enters": [
+    "main.jsx:event => { if (event.key === 'k') document.ti",
+    "main.jsx:event => { if (event.key === 'k') document.ti"
+   ],
+   "reqs": [],
+   "credited": null,
+   "stopped_at": "browser",
+   "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+   "text": "keydown action:mug70zzk:189 (Printable in <button role=\"combobox\" aria-label=\"Fruit\" type=\"button\">) [outcome no_request; the handler ran and issued no request from instrumented code (2 functions entered, 28 DOM mutations, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@5338-5402"
+  },
+  {
+   "mark": "g-space",
+   "action_id": "action:mug710b9:199",
+   "event": "keydown",
+   "target": "L90:<Select.Item key={f} value={f}><Select.ItemText>{f",
+   "rows": [],
+   "enters": [
+    "main.jsx:event => { if (event.key === 'k') document.ti",
+    "main.jsx:event => { if (event.key === 'k') document.ti"
+   ],
+   "reqs": [],
+   "credited": null,
+   "stopped_at": "entry_handler",
+   "because": "no element-bound handler ran: no instrumented function held by the target's element chain (an on* prop, or a listener on the element) was invoked for this dispatch (uninstrumented and third-party handlers are not seen); global listeners: [function:4056ac0caccccf005730bb7f24fe50a74c46e5c916251a79bf70b39141609e13:5338:5402]",
+   "text": "keydown action:mug710b9:199 (ArrowDown in <div role=\"option\">) [outcome stopped at entry_handler]: reached dispatch / stopped at entry_handler / because no element-bound handler ran: no instrumented function held by the target's element chain (an on* prop, or a listener on the element) was invoked for this dispatch (uninstrumented and third-party handlers are not seen); global listeners: [function:4056ac0caccccf005730bb7f24fe50a74c46e5c916251a79bf70b39141609e13:5338:5402]\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@5338-5402"
+  },
+  {
+   "mark": "g-space",
+   "action_id": "action:mug710fl:205",
+   "event": "keydown",
+   "target": "L90:<Select.Item key={f} value={f}><Select.ItemText>{f",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:next => { setValue(next); send(`/api/fruit?va",
+     "prop": "onValueChange",
+     "native": "keydown",
+     "holder": "component:SelectProvider@51",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container",
+     "also": [
+      "onValueChange/Select@52"
+     ]
+    }
+   ],
+   "enters": [
+    "main.jsx:next => { setValue(next); send(`/api/fruit?va",
+    "main.jsx:next => { setValue(next); send(`/api/fruit?va",
+    "main.jsx:(path, init) => fetch(path, init).catch(() =>",
+    "main.jsx:event => { if (event.key === 'k') document.ti",
+    "main.jsx:event => { if (event.key === 'k') document.ti"
+   ],
+   "reqs": [
+    "/api/fruit?value=banana"
+   ],
+   "credited": "main.jsx:next => { setValue(next); send(`/api/fruit?va",
+   "stopped_at": "network",
+   "because": "backend not instrumented",
+   "text": "keydown action:mug710fl:205 (Enter in <div role=\"option\">) → handler <unnamed> client/src/main.jsx@3539-3600 [bound: onValueChange on keydown (React)] → 1 request: (1) <unnamed> client/src/main.jsx@344-393 → GET /api/fruit?value=banana [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented\nObserved bound to this dispatch: <unnamed> client/src/main.jsx@3539-3600 as onValueChange on keydown (React)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@3539-3600\n  - <unnamed> client/src/main.jsx@344-393\n    - request (1) GET /api/fruit?value=banana [stopped at network]\n- <unnamed> client/src/main.jsx@5338-5402"
+  },
+  {
+   "mark": "g-arrow",
+   "action_id": "action:mug710rv:216",
+   "event": "keydown",
+   "target": "Fruit",
+   "rows": [],
+   "enters": [
+    "main.jsx:event => { if (event.key === 'k') document.ti",
+    "main.jsx:event => { if (event.key === 'k') document.ti"
+   ],
+   "reqs": [],
+   "credited": null,
+   "stopped_at": "browser",
+   "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+   "text": "keydown action:mug710rv:216 (ArrowDown in <button role=\"combobox\" aria-label=\"Fruit\" type=\"button\">) [outcome no_request; the handler ran and issued no request from instrumented code (2 functions entered, 30 DOM mutations, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@5338-5402"
+  },
+  {
+   "mark": "g-arrow",
+   "action_id": "action:mug7113e:226",
+   "event": "keydown",
+   "target": "L90:<Select.Item key={f} value={f}><Select.ItemText>{f",
+   "rows": [],
+   "enters": [
+    "main.jsx:event => { if (event.key === 'k') document.ti",
+    "main.jsx:event => { if (event.key === 'k') document.ti"
+   ],
+   "reqs": [],
+   "credited": null,
+   "stopped_at": "entry_handler",
+   "because": "no element-bound handler ran: no instrumented function held by the target's element chain (an on* prop, or a listener on the element) was invoked for this dispatch (uninstrumented and third-party handlers are not seen); global listeners: [function:4056ac0caccccf005730bb7f24fe50a74c46e5c916251a79bf70b39141609e13:5338:5402]",
+   "text": "keydown action:mug7113e:226 (ArrowDown in <div role=\"option\">) [outcome stopped at entry_handler]: reached dispatch / stopped at entry_handler / because no element-bound handler ran: no instrumented function held by the target's element chain (an on* prop, or a listener on the element) was invoked for this dispatch (uninstrumented and third-party handlers are not seen); global listeners: [function:4056ac0caccccf005730bb7f24fe50a74c46e5c916251a79bf70b39141609e13:5338:5402]\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@5338-5402"
+  },
+  {
+   "mark": "g-arrow",
+   "action_id": "action:mug7117r:232",
+   "event": "keydown",
+   "target": "L90:<Select.Item key={f} value={f}><Select.ItemText>{f",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:next => { setValue(next); send(`/api/fruit?va",
+     "prop": "onValueChange",
+     "native": "keydown",
+     "holder": "component:SelectProvider@51",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container",
+     "also": [
+      "onValueChange/Select@52"
+     ]
+    }
+   ],
+   "enters": [
+    "main.jsx:next => { setValue(next); send(`/api/fruit?va",
+    "main.jsx:next => { setValue(next); send(`/api/fruit?va",
+    "main.jsx:(path, init) => fetch(path, init).catch(() =>",
+    "main.jsx:event => { if (event.key === 'k') document.ti",
+    "main.jsx:event => { if (event.key === 'k') document.ti"
+   ],
+   "reqs": [
+    "/api/fruit?value=cherry"
+   ],
+   "credited": "main.jsx:next => { setValue(next); send(`/api/fruit?va",
+   "stopped_at": "network",
+   "because": "backend not instrumented",
+   "text": "keydown action:mug7117r:232 (Enter in <div role=\"option\">) → handler <unnamed> client/src/main.jsx@3539-3600 [bound: onValueChange on keydown (React)] → 1 request: (1) <unnamed> client/src/main.jsx@344-393 → GET /api/fruit?value=cherry [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented\nObserved bound to this dispatch: <unnamed> client/src/main.jsx@3539-3600 as onValueChange on keydown (React)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@3539-3600\n  - <unnamed> client/src/main.jsx@344-393\n    - request (1) GET /api/fruit?value=cherry [stopped at network]\n- <unnamed> client/src/main.jsx@5338-5402"
+  },
+  {
+   "mark": "h",
+   "action_id": "action:mug711k1:258",
+   "event": "click",
+   "target": "L102:<button type=\"button\" onClick={schedule}>Schedule<",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:() => { setTimeout(() => target.current.click",
+     "prop": "onClick",
+     "native": "click",
+     "holder": "host:button@0",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container"
+    },
+    {
+     "kind": "handler.invocation",
+     "fn": "main.jsx:() => send('/api/scheduled-click', { method: ",
+     "prop": "onClick",
+     "native": "click",
+     "holder": "host:button@0",
+     "via": "prop_value",
+     "ran": "during_untrusted_dispatch",
+     "invoked_by": "app_code",
+     "listener_on": "react_container",
+     "cause": "action:mug711k1:258"
+    }
+   ],
+   "enters": [
+    "main.jsx:() => { setTimeout(() => target.current.click",
+    "main.jsx:() => { setTimeout(() => target.current.click",
+    "main.jsx:() => target.current.click()",
+    "main.jsx:() => send('/api/scheduled-click', { method: ",
+    "main.jsx:(path, init) => fetch(path, init).catch(() =>"
+   ],
+   "reqs": [
+    "/api/scheduled-click"
+   ],
+   "credited": "main.jsx:() => { setTimeout(() => target.current.click",
+   "stopped_at": "network",
+   "because": "backend not instrumented",
+   "text": "click action:mug711k1:258 (mouse pointer 1, button 0, buttons 0; phase activation on <button type=\"button\">) → handler <unnamed> client/src/main.jsx@4315-4371 [bound: onClick on click (React)] → 1 request: (1) <unnamed> client/src/main.jsx@4334-4362 → <unnamed> client/src/main.jsx@4240-4294 → <unnamed> client/src/main.jsx@344-393 → POST /api/scheduled-click [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented\nObserved bound to this dispatch: <unnamed> client/src/main.jsx@4315-4371 as onClick on click (React)\nRan for a dispatch app code caused (not a user event): <unnamed> client/src/main.jsx@4240-4294 as onClick on click (untrusted: el.click() or dispatchEvent) (dispatched by react_event_system)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main"
+  },
+  {
+   "mark": "i",
+   "action_id": "action:mug711yj:274",
+   "event": "click",
+   "target": "Widget pick",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:value => setP(value)",
+     "prop": "onPick",
+     "native": "click",
+     "holder": "component:Widget@1",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container"
+    }
+   ],
+   "enters": [
+    "main.jsx:value => setP(value)"
+   ],
+   "reqs": [],
+   "credited": "main.jsx:value => setP(value)",
+   "stopped_at": "browser",
+   "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+   "text": "click action:mug711yj:274 (mouse pointer 1, button 0, buttons 0; phase activation on <button aria-label=\"Widget pick\" type=\"button\">) → handler <unnamed> client/src/main.jsx@4825-4845 [bound: onPick on click (React)] [outcome no_request; the handler ran and issued no request from instrumented code (1 function entered, 2 DOM mutations, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)\nObserved bound to this dispatch: <unnamed> client/src/main.jsx@4825-4845 as onPick on click (React)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@4825-4845"
+  },
+  {
+   "mark": "i",
+   "action_id": "action:mug7125y:290",
+   "event": "click",
+   "target": "Widget callback",
+   "rows": [],
+   "enters": [
+    "main.jsx:value => setP(value + 1)"
+   ],
+   "reqs": [],
+   "credited": null,
+   "stopped_at": "entry_handler",
+   "because": "no element-bound handler of instrumented code ran; ran through library code on the element chain (not bound to an element prop Tracer can see): [function:4056ac0caccccf005730bb7f24fe50a74c46e5c916251a79bf70b39141609e13:4869:4893]; global listeners: []",
+   "text": "click action:mug7125y:290 (mouse pointer 1, button 0, buttons 0; phase activation on <button aria-label=\"Widget callback\" type=\"button\">) [outcome stopped at entry_handler]: reached dom_mutation / stopped at entry_handler / because no element-bound handler of instrumented code ran; ran through library code on the element chain (not bound to an element prop Tracer can see): [function:4056ac0caccccf005730bb7f24fe50a74c46e5c916251a79bf70b39141609e13:4869:4893]; global listeners: []\nRan through library code for this dispatch (not bound to an element prop Tracer can see): <unnamed> client/src/main.jsx@4869-4893\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@4869-4893"
+  },
+  {
+   "mark": "k",
+   "action_id": "action:mug712d6:296",
+   "event": "keydown",
+   "target": "In scope",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:event => { if (event.key === 'k') document.ti",
+     "prop": "onShortcut",
+     "native": "keydown",
+     "holder": "component:ShortcutScope@2",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "native_listener",
+     "listener_on": "document"
+    }
+   ],
+   "enters": [
+    "main.jsx:event => { if (event.key === 'k') document.ti",
+    "main.jsx:event => { if (event.key === 'k') document.ti"
+   ],
+   "reqs": [],
+   "credited": "main.jsx:event => { if (event.key === 'k') document.ti",
+   "stopped_at": "browser",
+   "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+   "text": "keydown action:mug712d6:296 (Printable in <input aria-label=\"In scope\">) → handler <unnamed> client/src/main.jsx@5338-5402 [bound: onShortcut on keydown (listener on document)] [outcome no_request; the handler ran and issued no request from instrumented code (2 functions entered, 1 DOM mutation, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)\nObserved bound to this dispatch: <unnamed> client/src/main.jsx@5338-5402 as onShortcut on keydown (listener on document)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@5338-5402"
+  },
+  {
+   "mark": "k",
+   "action_id": "action:mug712kb:308",
+   "event": "keydown",
+   "target": "Out of scope",
+   "rows": [],
+   "enters": [
+    "main.jsx:event => { if (event.key === 'k') document.ti",
+    "main.jsx:event => { if (event.key === 'k') document.ti"
+   ],
+   "reqs": [],
+   "credited": null,
+   "stopped_at": "entry_handler",
+   "because": "no element-bound handler ran: no instrumented function held by the target's element chain (an on* prop, or a listener on the element) was invoked for this dispatch (uninstrumented and third-party handlers are not seen); global listeners: [function:4056ac0caccccf005730bb7f24fe50a74c46e5c916251a79bf70b39141609e13:5338:5402]",
+   "text": "keydown action:mug712kb:308 (Printable in <input aria-label=\"Out of scope\">) [outcome stopped at entry_handler]: reached dom_mutation / stopped at entry_handler / because no element-bound handler ran: no instrumented function held by the target's element chain (an on* prop, or a listener on the element) was invoked for this dispatch (uninstrumented and third-party handlers are not seen); global listeners: [function:4056ac0caccccf005730bb7f24fe50a74c46e5c916251a79bf70b39141609e13:5338:5402]\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@5338-5402"
+  },
+  {
+   "mark": "n",
+   "action_id": "action:mug712rq:330",
+   "event": "click",
+   "target": "L124:<button type=\"button\" onClick={onDebounced}>Deboun",
+   "rows": [],
+   "enters": [
+    "main.jsx:() => setD(x => x + 1)",
+    "main.jsx:x => x + 1"
+   ],
+   "reqs": [],
+   "credited": null,
+   "stopped_at": "browser",
+   "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+   "text": "click action:mug712rq:330 (mouse pointer 1, button 0, buttons 0; phase activation on <button type=\"button\">) [outcome no_request; the handler ran and issued no request from instrumented code (2 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)\nRan through library code for this dispatch (not bound to an element prop Tracer can see): <unnamed> client/src/main.jsx@5592-5614\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@5592-5614\n  - <unnamed> client/src/main.jsx@5603-5613"
+  },
+  {
+   "mark": "j",
+   "action_id": "action:mug7130u:346",
+   "event": "click",
+   "target": "Shadow button",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:() => setS(x => x + 1)",
+     "prop": "onClick",
+     "native": "click",
+     "holder": "host:button@0",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container"
+    }
+   ],
+   "enters": [
+    "main.jsx:() => setS(x => x + 1)",
+    "main.jsx:x => x + 1"
+   ],
+   "reqs": [],
+   "credited": "main.jsx:() => setS(x => x + 1)",
+   "stopped_at": "browser",
+   "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+   "text": "click action:mug7130u:346 (mouse pointer 1, button 0, buttons 0; phase activation on <button aria-label=\"Shadow button\" type=\"button\">) → handler <unnamed> client/src/main.jsx@6305-6327 [bound: onClick on click (React)] [outcome no_request; the handler ran and issued no request from instrumented code (2 functions entered, 0 DOM mutations, 0 state effects)]: reached entry_handler / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)\nObserved bound to this dispatch: <unnamed> client/src/main.jsx@6305-6327 as onClick on click (React)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@6305-6327\n  - <unnamed> client/src/main.jsx@631"
+  }
+ ],
+ "requests": [
+  {
+   "url": "/api/scheduled-click",
+   "action_id": null,
+   "action_event": null,
+   "action_target": null,
+   "owner": null,
+   "keys": [
+    "terminal_owner_continuation_id=null"
+   ]
+  },
+  {
+   "url": "/api/rhf?name=Bo",
+   "action_id": "action:mug70xk4:48",
+   "action_event": "submit",
+   "action_target": "L33:<button type=\"submit\">RHF send</button>",
+   "owner": "continuation:action:mug70xk4:48:function:93",
+   "keys": [
+    "terminal_owner_continuation_id=\"continuation:action:mug70xk4:48:function:93\""
+   ]
+  },
+  {
+   "url": "/api/pick?value=m",
+   "action_id": "action:mug70zkd:154",
+   "action_event": "change",
+   "action_target": "Size",
+   "owner": "continuation:action:mug70zkd:154:function:245",
+   "keys": [
+    "terminal_owner_continuation_id=\"continuation:action:mug70zkd:154:function:245\""
+   ]
+  },
+  {
+   "url": "/api/fruit?value=banana",
+   "action_id": "action:mug710fl:205",
+   "action_event": "keydown",
+   "action_target": "L90:<Select.Item key={f} value={f}><Select.ItemText>{f",
+   "owner": "continuation:action:mug710fl:205:function:324",
+   "keys": [
+    "terminal_owner_continuation_id=\"continuation:action:mug710fl:205:function:324\""
+   ]
+  },
+  {
+   "url": "/api/fruit?value=cherry",
+   "action_id": "action:mug7117r:232",
+   "action_event": "keydown",
+   "action_target": "L90:<Select.Item key={f} value={f}><Select.ItemText>{f",
+   "owner": "continuation:action:mug7117r:232:function:384",
+   "keys": [
+    "terminal_owner_continuation_id=\"continuation:action:mug7117r:232:function:384\""
+   ]
+  },
+  {
+   "url": "/api/scheduled-click",
+   "action_id": "action:mug711k1:258",
+   "action_event": "click",
+   "action_target": "L102:<button type=\"button\" onClick={schedule}>Schedule<",
+   "owner": "continuation:action:mug711k1:258:function:427",
+   "keys": [
+    "terminal_owner_continuation_id=\"continuation:action:mug711k1:258:function:427\""
+   ]
+  }
+ ],
+ "page_requests_text": "6 request(s): 5 attributed to a user action, 1 with no action\n- GET /api/fruit ×2 (2 action, 0 none; statuses stopped×2); interval median 1013 ms (min 1013, max 1013, 1 gaps, each within one page)\n- POST /api/scheduled-click ×2 (1 action, 1 none; statuses stopped×2); interval median 6602 ms (min 6602, max 6602, 1 gaps, each within one page)\n- GET /api/pick ×1 (1 action, 0 none; statuses stopped×1)\n- POST /api/rhf ×1 (1 action, 0 none; statuses stopped×1)\nRequests (all, oldest first):\n- 23:58:58.492 POST /api/scheduled-click [none: no user action; issued by <unnamed> client/src/main.jsx@344-393 (called from <unnamed> client/src/main.jsx@4414-4442) from a setTimeout timer armed at page load (before the first user action on this page), armed by <unnamed> client/src/main.jsx@4385-4481] [stopped at network]\n- 23:58:59.813 POST /api/rhf?name=Bo [action action:mug70xk4:48 (submit, request (1) of its chain)] [stopped at network]\n- 23:59:02.413 GET /api/pick?value=m [action action:mug70zkd:154 (change, request (1) of its chain)] [stopped at network]\n- 23:59:03.538 GET /api/fruit?value=banana [action action:mug710fl:205 (keydown, request (1) of its chain)] [stopped at network]\n- 23:59:04.551 GET /api/fruit?value=cherry [action action:mug7117r:232 (keydown, request (1) of its chain)] [stopped at network]\n- 23:59:05.094 POST /api/scheduled-click [action action:mug711k1:258 (click, request (1) of its chain)] [stopped at network]"
+}

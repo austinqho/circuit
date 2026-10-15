@@ -1,0 +1,20 @@
+{
+  "schema": "producttrace.shared-rule-freeze.v1",
+  "reason": "Fresh function/version on the already tested traversal domain; no bank answer or manual program is proposal context.",
+  "cases": [
+    {
+      "id": "react18-children-count",
+      "implementation_sha256": "7282c8762f63b878f943b99b6d55ef523422deea4abd3820b81fa488755c6ae2",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "specifier": "react18",
+      "exportName": "Children.count",
+      "scope": {
+        "callbackArguments": [],
+        "resultPaths": null,
+        "accessorObservation": "opaque_descriptors",
+        "description": "Input children may be null, undefined, booleans, strings, numbers (including NaN and signed zero), bigint, symbols, functions, finite acyclic arrays (including holes), or ordinary React element/fragment/portal data with scalar keys. Observe count or the complete forEach callback argument/index/receiver sequence, return identity and throws. Iterator/thenable/lazy protocols, library-read getters, nonprimitive key coercion, symbol keys, owner Fiber graphs, aliased callback arguments and input mutations require separate evidence. Unaccessed element warning descriptors remain opaque."
+      }
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "schema": "producttrace.react-lazy-acceptance.v1",
+  "react": "18.3.1",
+  "format_and_behavior": {
+    "api": "react/lazy/18.3.1",
+    "format_pass": true,
+    "behavior_pass": true,
+    "builds": [
+      {
+        "build": "development",
+        "incorrect_programs_rejected": 6,
+        "pending_reuses_loader": true,
+        "first_settlement_wins": true,
+        "synchronous_loader_error_retries": true,
+        "registration_error_keeps_settlement": true,
+        "rejection_cached": true,
+        "unsettled_registration_error_retries": true,
+        "module_getters_not_replayed_by_planner": true
+      },
+      {
+        "build": "production",
+        "incorrect_programs_rejected": 6,
+        "pending_reuses_loader": true,
+        "first_settlement_wins": true,
+        "synchronous_loader_error_retries": true,
+        "registration_error_keeps_settlement": true,
+        "rejection_cached": true,
+        "unsettled_registration_error_retries": true,
+        "module_getters_not_replayed_by_planner": true
+      }
+    ]
+  },
+  "runtime": [
+    {
+      "api": "react/lazy/18.3.1",
+      "build": "development",
+      "installed_source_attested": true,
+      "lazy_observations": 3,
+      "real_renderer_invokes_loader": true,
+      "pending_and_resolved_cache_reused": true,
+      "allocation_and_source_required": true,
+      "independent_mutants_rejected": 11,
+      "stop_preserves_behavior": true,
+      "thenable_settlement_observed": true,
+      "module_selection_through_verified_rule": true,
+      "fallback_reveal_retry_commit": true,
+      "direct_module_read_by_tracer": false
+    },
+    {
+      "api": "react/lazy/18.3.1",
+      "build": "production",
+      "installed_source_attested": true,
+      "lazy_observations": 3,
+      "real_renderer_invokes_loader": true,
+      "pending_and_resolved_cache_reused": true,
+      "allocation_and_source_required": true,
+      "independent_mutants_rejected": 11,
+      "stop_preserves_behavior": true,
+      "thenable_settlement_observed": true,
+      "module_selection_through_verified_rule": true,
+      "fallback_reveal_retry_commit": true,
+      "direct_module_read_by_tracer": false
+    }
+  ],
+  "complete": false
+}

@@ -1,0 +1,610 @@
+{
+  "headless": true,
+  "viewer_url": "http://127.0.0.1:8123/fiber-demo?productPort=3081",
+  "workflow_count": 3,
+  "send_history": [
+    "Waiting for effect",
+    "Request sent: POST /api/agents/chat/openAI",
+    "Effect: findAndModify conversations"
+  ],
+  "history": [
+    {
+      "at": 2465.699999809265,
+      "workflow_id": "causal:episode:form:mudi1typ-m04wshm5xro:object%3A1",
+      "label": "Waiting for effect"
+    },
+    {
+      "at": 2497.7999999523163,
+      "workflow_id": "causal:episode:form:mudi1typ-m04wshm5xro:object%3A1",
+      "label": "Request sent: POST /api/agents/chat/openAI"
+    },
+    {
+      "at": 2498,
+      "workflow_id": "causal:episode:form:mudi1typ-m04wshm5xro:object%3A1",
+      "label": "Effect: findAndModify conversations"
+    },
+    {
+      "at": 3674.7999999523163,
+      "workflow_id": "causal:episode:action:mudi1wif:9",
+      "label": "Waiting for effect"
+    },
+    {
+      "at": 3865.0999999046326,
+      "workflow_id": "causal:episode:action:mudi1wp6:12",
+      "label": "Waiting for effect"
+    },
+    {
+      "at": 4005.699999809265,
+      "workflow_id": "causal:episode:action:mudi1wp6:12",
+      "label": "Request sent: PUT /api/messages/9ad282b4-eee1-5a3e-8b31-1944668267c8/574febbc-13bb-4e73-8b42-aa7f120ac546/feedback"
+    },
+    {
+      "at": 4005.899999856949,
+      "workflow_id": "causal:episode:action:mudi1wp6:12",
+      "label": "Effect: findAndModify messages"
+    },
+    {
+      "at": 4258.5,
+      "workflow_id": "causal:episode:action:mudi1wtj:14",
+      "label": "Waiting for effect"
+    },
+    {
+      "at": 4398,
+      "workflow_id": "causal:episode:action:mudi1wtj:14",
+      "label": "Request sent: GET /api/agents/categories"
+    },
+    {
+      "at": 4398.199999809265,
+      "workflow_id": "causal:episode:action:mudi1wtj:14",
+      "label": "Effect: aggregate $cmd"
+    },
+    {
+      "at": 4517.799999952316,
+      "workflow_id": "causal:episode:action:mudi1wtj:14",
+      "label": "Request sent: GET /api/skills"
+    },
+    {
+      "at": 4517.899999856949,
+      "workflow_id": "causal:episode:action:mudi1wtj:14",
+      "label": "Effect: find skills"
+    },
+    {
+      "at": 4604.099999904633,
+      "workflow_id": "causal:episode:action:mudi1wtj:14",
+      "label": "Request sent: GET /api/admin/roles"
+    },
+    {
+      "at": 4604.399999856949,
+      "workflow_id": "causal:episode:action:mudi1wtj:14",
+      "label": "Effect: find roles"
+    },
+    {
+      "at": 4728.699999809265,
+      "workflow_id": "causal:episode:action:mudi1wtj:14",
+      "label": "Request sent: GET /api/models"
+    },
+    {
+      "at": 4729,
+      "workflow_id": "causal:episode:action:mudi1wtj:14",
+      "label": "Effect: find users"
+    },
+    {
+      "at": 4812.799999952316,
+      "workflow_id": "causal:episode:action:mudi1wtj:14",
+      "label": "Request sent: GET /api/agents/tools"
+    },
+    {
+      "at": 4813,
+      "workflow_id": "causal:episode:action:mudi1wtj:14",
+      "label": "Backend: route:e8bfc7492e8604f7 / handler:4ad623d71e95e69d"
+    },
+    {
+      "at": 4897.699999809265,
+      "workflow_id": "causal:episode:form:mudi1typ-m04wshm5xro:object%3A27",
+      "label": "Waiting for effect"
+    },
+    {
+      "at": 4969.099999904633,
+      "workflow_id": "causal:episode:form:mudi1typ-m04wshm5xro:object%3A27",
+      "label": "Backend: route:e8bfc7492e8604f7 / handler:4ad623d71e95e69d"
+    },
+    {
+      "at": 9138.5,
+      "workflow_id": "causal:episode:form:mudi1typ-m04wshm5xro:object%3A27",
+      "label": "Submit rejected by the app"
+    },
+    {
+      "at": 11079.699999809265,
+      "workflow_id": "causal:episode:form:mudi1typ-m04wshm5xro:object%3A27",
+      "label": "Request sent: POST /api/agents"
+    },
+    {
+      "at": 11080,
+      "workflow_id": "causal:episode:form:mudi1typ-m04wshm5xro:object%3A27",
+      "label": "Effect: findAndModify aclentries"
+    }
+  ],
+  "requests": [
+    {
+      "at": 1790131457173,
+      "method": "GET",
+      "path": "/api/demo/stream"
+    },
+    {
+      "at": 1790131457502,
+      "method": "GET",
+      "path": "/api/config"
+    },
+    {
+      "at": 1790131457502,
+      "method": "POST",
+      "path": "/api/auth/refresh"
+    },
+    {
+      "at": 1790131457517,
+      "method": "GET",
+      "path": "/api/banner"
+    },
+    {
+      "at": 1790131457518,
+      "method": "GET",
+      "path": "/api/config"
+    },
+    {
+      "at": 1790131457727,
+      "method": "POST",
+      "path": "/api/auth/login"
+    },
+    {
+      "at": 1790131457727,
+      "method": "POST",
+      "path": "/api/demo/bridge"
+    },
+    {
+      "at": 1790131457876,
+      "method": "GET",
+      "path": "/api/banner"
+    },
+    {
+      "at": 1790131457876,
+      "method": "GET",
+      "path": "/api/config"
+    },
+    {
+      "at": 1790131457883,
+      "method": "GET",
+      "path": "/api/roles/USER"
+    },
+    {
+      "at": 1790131457883,
+      "method": "GET",
+      "path": "/api/roles/ADMIN"
+    },
+    {
+      "at": 1790131457883,
+      "method": "GET",
+      "path": "/api/user"
+    },
+    {
+      "at": 1790131457973,
+      "method": "GET",
+      "path": "/api/endpoints"
+    },
+    {
+      "at": 1790131457973,
+      "method": "GET",
+      "path": "/api/user/settings/favorites"
+    },
+    {
+      "at": 1790131457973,
+      "method": "GET",
+      "path": "/api/projects"
+    },
+    {
+      "at": 1790131457973,
+      "method": "GET",
+      "path": "/api/agents/chat/active"
+    },
+    {
+      "at": 1790131457973,
+      "method": "GET",
+      "path": "/api/convos"
+    },
+    {
+      "at": 1790131457973,
+      "method": "GET",
+      "path": "/api/mcp/servers"
+    },
+    {
+      "at": 1790131457973,
+      "method": "GET",
+      "path": "/api/permissions/mcpServer/effective/all"
+    },
+    {
+      "at": 1790131457973,
+      "method": "GET",
+      "path": "/api/files/speech/config/get"
+    },
+    {
+      "at": 1790131457973,
+      "method": "GET",
+      "path": "/api/models"
+    },
+    {
+      "at": 1790131457973,
+      "method": "GET",
+      "path": "/api/prompts/groups"
+    },
+    {
+      "at": 1790131457973,
+      "method": "GET",
+      "path": "/api/prompts/all"
+    },
+    {
+      "at": 1790131457973,
+      "method": "GET",
+      "path": "/api/files"
+    },
+    {
+      "at": 1790131457973,
+      "method": "GET",
+      "path": "/api/search/enable"
+    },
+    {
+      "at": 1790131458031,
+      "method": "GET",
+      "path": "/api/tags"
+    },
+    {
+      "at": 1790131458149,
+      "method": "GET",
+      "path": "/api/keys"
+    },
+    {
+      "at": 1790131458149,
+      "method": "GET",
+      "path": "/api/agents"
+    },
+    {
+      "at": 1790131458149,
+      "method": "GET",
+      "path": "/api/presets"
+    },
+    {
+      "at": 1790131458149,
+      "method": "GET",
+      "path": "/api/files/config"
+    },
+    {
+      "at": 1790131458149,
+      "method": "GET",
+      "path": "/api/agents/tools/web_search/auth"
+    },
+    {
+      "at": 1790131458149,
+      "method": "GET",
+      "path": "/api/endpoints/token-config"
+    },
+    {
+      "at": 1790131458149,
+      "method": "GET",
+      "path": "/api/agents"
+    },
+    {
+      "at": 1790131459053,
+      "method": "GET",
+      "path": "/api/demo/stream"
+    },
+    {
+      "at": 1790131459234,
+      "method": "GET",
+      "path": "/api/config"
+    },
+    {
+      "at": 1790131459234,
+      "method": "POST",
+      "path": "/api/auth/refresh"
+    },
+    {
+      "at": 1790131459307,
+      "method": "GET",
+      "path": "/api/config"
+    },
+    {
+      "at": 1790131459335,
+      "method": "GET",
+      "path": "/api/banner"
+    },
+    {
+      "at": 1790131459336,
+      "method": "GET",
+      "path": "/api/endpoints"
+    },
+    {
+      "at": 1790131459336,
+      "method": "GET",
+      "path": "/api/user/settings/favorites"
+    },
+    {
+      "at": 1790131459336,
+      "method": "GET",
+      "path": "/api/projects"
+    },
+    {
+      "at": 1790131459336,
+      "method": "GET",
+      "path": "/api/agents/chat/active"
+    },
+    {
+      "at": 1790131459336,
+      "method": "GET",
+      "path": "/api/convos"
+    },
+    {
+      "at": 1790131459336,
+      "method": "GET",
+      "path": "/api/files"
+    },
+    {
+      "at": 1790131459336,
+      "method": "GET",
+      "path": "/api/search/enable"
+    },
+    {
+      "at": 1790131459336,
+      "method": "GET",
+      "path": "/api/roles/USER"
+    },
+    {
+      "at": 1790131459336,
+      "method": "GET",
+      "path": "/api/roles/ADMIN"
+    },
+    {
+      "at": 1790131459336,
+      "method": "GET",
+      "path": "/api/user"
+    },
+    {
+      "at": 1790131459364,
+      "method": "GET",
+      "path": "/api/files/speech/config/get"
+    },
+    {
+      "at": 1790131459364,
+      "method": "GET",
+      "path": "/api/models"
+    },
+    {
+      "at": 1790131459477,
+      "method": "GET",
+      "path": "/api/agents"
+    },
+    {
+      "at": 1790131459604,
+      "method": "GET",
+      "path": "/api/mcp/servers"
+    },
+    {
+      "at": 1790131459604,
+      "method": "GET",
+      "path": "/api/permissions/mcpServer/effective/all"
+    },
+    {
+      "at": 1790131459604,
+      "method": "GET",
+      "path": "/api/prompts/groups"
+    },
+    {
+      "at": 1790131459604,
+      "method": "GET",
+      "path": "/api/prompts/all"
+    },
+    {
+      "at": 1790131459604,
+      "method": "GET",
+      "path": "/api/keys"
+    },
+    {
+      "at": 1790131459604,
+      "method": "GET",
+      "path": "/api/agents"
+    },
+    {
+      "at": 1790131459604,
+      "method": "GET",
+      "path": "/api/presets"
+    },
+    {
+      "at": 1790131459604,
+      "method": "GET",
+      "path": "/api/tags"
+    },
+    {
+      "at": 1790131459604,
+      "method": "GET",
+      "path": "/api/files/config"
+    },
+    {
+      "at": 1790131459604,
+      "method": "GET",
+      "path": "/api/agents/tools/web_search/auth"
+    },
+    {
+      "at": 1790131459604,
+      "method": "GET",
+      "path": "/api/endpoints/token-config"
+    },
+    {
+      "at": 1790131460836,
+      "method": "POST",
+      "path": "/api/agents/chat/openAI"
+    },
+    {
+      "at": 1790131460836,
+      "method": "POST",
+      "path": "/api/demo/bridge"
+    },
+    {
+      "at": 1790131460955,
+      "method": "GET",
+      "path": "/api/agents/chat/stream/9ad282b4-eee1-5a3e-8b31-1944668267c8"
+    },
+    {
+      "at": 1790131461102,
+      "method": "GET",
+      "path": "/api/share/link/9ad282b4-eee1-5a3e-8b31-1944668267c8"
+    },
+    {
+      "at": 1790131461102,
+      "method": "GET",
+      "path": "/api/messages/9ad282b4-eee1-5a3e-8b31-1944668267c8"
+    },
+    {
+      "at": 1790131461102,
+      "method": "GET",
+      "path": "/api/agents/tools/calls"
+    },
+    {
+      "at": 1790131461158,
+      "method": "GET",
+      "path": "/api/convos/gen_title/9ad282b4-eee1-5a3e-8b31-1944668267c8"
+    },
+    {
+      "at": 1790131461730,
+      "method": "GET",
+      "path": "/api/agents/chat/status/9ad282b4-eee1-5a3e-8b31-1944668267c8"
+    },
+    {
+      "at": 1790131462093,
+      "method": "GET",
+      "path": "/api/messages/9ad282b4-eee1-5a3e-8b31-1944668267c8"
+    },
+    {
+      "at": 1790131462184,
+      "method": "GET",
+      "path": "/api/agents/chat/status/9ad282b4-eee1-5a3e-8b31-1944668267c8"
+    },
+    {
+      "at": 1790131462533,
+      "method": "POST",
+      "path": "/api/demo/bridge"
+    },
+    {
+      "at": 1790131462659,
+      "method": "PUT",
+      "path": "/api/messages/9ad282b4-eee1-5a3e-8b31-1944668267c8/574febbc-13bb-4e73-8b42-aa7f120ac546/feedback"
+    },
+    {
+      "at": 1790131462661,
+      "method": "POST",
+      "path": "/api/demo/bridge"
+    },
+    {
+      "at": 1790131462855,
+      "method": "GET",
+      "path": "/api/agents/categories"
+    },
+    {
+      "at": 1790131462856,
+      "method": "GET",
+      "path": "/api/skills"
+    },
+    {
+      "at": 1790131462856,
+      "method": "GET",
+      "path": "/api/admin/roles"
+    },
+    {
+      "at": 1790131462856,
+      "method": "GET",
+      "path": "/api/models"
+    },
+    {
+      "at": 1790131462856,
+      "method": "GET",
+      "path": "/api/agents/tools"
+    },
+    {
+      "at": 1790131462857,
+      "method": "POST",
+      "path": "/api/demo/bridge"
+    },
+    {
+      "at": 1790131465172,
+      "method": "POST",
+      "path": "/api/demo/bridge"
+    },
+    {
+      "at": 1790131468150,
+      "method": "POST",
+      "path": "/api/demo/bridge"
+    },
+    {
+      "at": 1790131468326,
+      "method": "POST",
+      "path": "/api/demo/bridge"
+    },
+    {
+      "at": 1790131468915,
+      "method": "POST",
+      "path": "/api/demo/bridge"
+    },
+    {
+      "at": 1790131469066,
+      "method": "POST",
+      "path": "/api/agents"
+    },
+    {
+      "at": 1790131469068,
+      "method": "POST",
+      "path": "/api/demo/bridge"
+    },
+    {
+      "at": 1790131469177,
+      "method": "GET",
+      "path": "/api/agents/agent_HLt49krJf2uAgNIUnPiuH"
+    },
+    {
+      "at": 1790131469177,
+      "method": "GET",
+      "path": "/api/agents/actions"
+    },
+    {
+      "at": 1790131469383,
+      "method": "GET",
+      "path": "/api/permissions/agent/6ab33d0da4daa72db15613fe/effective"
+    },
+    {
+      "at": 1790131469532,
+      "method": "GET",
+      "path": "/api/files/agent/agent_HLt49krJf2uAgNIUnPiuH"
+    },
+    {
+      "at": 1790131469532,
+      "method": "GET",
+      "path": "/api/permissions/agent/6ab33d0da4daa72db15613fe"
+    },
+    {
+      "at": 1790131469532,
+      "method": "GET",
+      "path": "/api/permissions/remoteAgent/6ab33d0da4daa72db15613fe/effective"
+    },
+    {
+      "at": 1790131469532,
+      "method": "GET",
+      "path": "/api/agents/agent_HLt49krJf2uAgNIUnPiuH/expanded"
+    },
+    {
+      "at": 1790131469666,
+      "method": "GET",
+      "path": "/api/permissions/remoteAgent/6ab33d0da4daa72db15613fe"
+    }
+  ],
+  "posts_after_rejected_submit": 0,
+  "cards": [
+    "completed.\nEffect: findAndModify conversations\nCompleted · 26 steps\nClicked Send message.\nDom.Action\nSpine: function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:17345:18011.\nCausal.Spine\nEffect-rooted entry handler: client/src/components/Chat/Input/ChatForm.tsx:17345:18011\nEntry.Handler\nPOST /api/agents/chat/openAI\nNetwork.Request\nroute:7a9a25cc324787fb\nRoute.Dispatch\nhandler:aca20ad547dae88d\nHandler.Enter\nfindAndModify conversations · db:e22933e288946563\nDb.Operation\nfind messages · db:54edeb8867db5f8c\nDb.Operation\nfindAndModify messages · db:a9aaaa023ac7d9b6\nDb.Operation\nfindAndModify messages · db:a4a8789c500d3be2\nDb.Operation\nfindAndModify conversations · db:374e006445fc04b1\nDb.Operation\nfind messages · db:68ac5bebae0abc10\nDb.Operation\nfind conversations · db:41613ec1a24624c5\nDb.Operation\nfindAndModify messages · db:5c2796843d4ec371\nDb.Operation\ninsert transactions · db:89abc619176ac237\nDb.Operation\ninsert transactions · db:d811f6865634fe39\nDb.Operation\nfind users · db:f0e3395c9c1f3129\nDb.Operation\nfind users · db:be5138995eae8a2f\nDb.Operation\ndistinct $cmd · db:92c493b095d2713e\nDb.Operation\ndistinct $cmd · db:eb6f19cfd4f45b03\nDb.Operation\nfind conversations · db:4482c71633c3ed87\nDb.Operation\nfind messages · db:085115d28e1f9a6f\nDb.Operation\nfindAndModify messages · db:887258d05dfe4612\nDb.Operation\nfind conversations · db:d68943fe748e3a28\nDb.Operation\nfind messages · db:76c5c250bb2ac68d\nDb.Operation\nfindAndModify conversations · db:471f9002019f88e9\nDb.Operation\nInspect evidence\nStatus\nCompleted\nBusiness result\nEffect: findAndModify conversations\nRuntime effects\neffect\nProven entity IDs\nNo validated entity identity\nCorrelation\nWorkflow causal:episode:form:mudi1typ-m04wshm5xro:object%3A1\nSession m1-live\nLearning use\nContext only — correlate with an agent outcome, edit, retry, or explicit feedback before training\nEvidence\n1. Clicked control\nSend message\nWhy: The action row supplied the observed control.\n\n2. Causal spine\nfunction:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:17345:18011\nWhy: The request spine is carried by continuation lineage.\n\n3. Effect-rooted entry handler\nfunction:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:17345:18011\nWhy: Its continuation subtree contains the terminal evidence.\nSource: client/src/components/Chat/Input/ChatForm.tsx\n\n4. Request\nPOST /api/agents/chat/openAI\nWhy: Transport wrapper admitted the outbound request.\nEvidence IDs: action:mudi1uu5:7:request:30\n\n5. Route\nroute:7a9a25cc324787fb\nWhy: same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span\nEvidence IDs: 7a9a25cc324787fb, 81d09a887d85aa4204582104ae84e814\n\n6. Handler\nhandler:aca20ad547dae88d\nWhy: handler span is an exact descendant of the admitted server span in the same trace\nEvidence IDs: aca20ad547dae88d, 81d09a887d85aa4204582104ae84e814\n\n7. MongoDB operation\nfindAndModify conversations · db:e22933e288946563\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: e22933e288946563, 81d09a887d85aa4204582104ae84e814\n\n8. MongoDB operation\nfind messages · db:54edeb8867db5f8c\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: 54edeb8867db5f8c, 81d09a887d85aa4204582104ae84e814\n\n9. MongoDB operation\nfindAndModify messages · db:a9aaaa023ac7d9b6\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: a9aaaa023ac7d9b6, 81d09a887d85aa4204582104ae84e814\n\n10. MongoDB operation\nfindAndModify messages · db:a4a8789c500d3be2\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: a4a8789c500d3be2, 81d09a887d85aa4204582104ae84e814\n\n11. MongoDB operation\nfindAndModify conversations · db:374e006445fc04b1\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: 374e006445fc04b1, 81d09a887d85aa4204582104ae84e814\n\n12. MongoDB operation\nfind messages · db:68ac5bebae0abc10\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: 68ac5bebae0abc10, 81d09a887d85aa4204582104ae84e814\n\n13. MongoDB operation\nfind conversations · db:41613ec1a24624c5\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: 41613ec1a24624c5, 81d09a887d85aa4204582104ae84e814\n\n14. MongoDB operation\nfindAndModify messages · db:5c2796843d4ec371\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: 5c2796843d4ec371, 81d09a887d85aa4204582104ae84e814\n\n15. MongoDB operation\ninsert transactions · db:89abc619176ac237\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: 89abc619176ac237, 81d09a887d85aa4204582104ae84e814\n\n16. MongoDB operation\ninsert transactions · db:d811f6865634fe39\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: d811f6865634fe39, 81d09a887d85aa4204582104ae84e814\n\n17. MongoDB operation\nfind users · db:f0e3395c9c1f3129\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: f0e3395c9c1f3129, 81d09a887d85aa4204582104ae84e814\n\n18. MongoDB operation\nfind users · db:be5138995eae8a2f\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: be5138995eae8a2f, 81d09a887d85aa4204582104ae84e814\n\n19. MongoDB operation\ndistinct $cmd · db:92c493b095d2713e\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: 92c493b095d2713e, 81d09a887d85aa4204582104ae84e814\n\n20. MongoDB operation\ndistinct $cmd · db:eb6f19cfd4f45b03\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: eb6f19cfd4f45b03, 81d09a887d85aa4204582104ae84e814\n\n21. MongoDB operation\nfind conversations · db:4482c71633c3ed87\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: 4482c71633c3ed87, 81d09a887d85aa4204582104ae84e814\n\n22. MongoDB operation\nfind messages · db:085115d28e1f9a6f\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: 085115d28e1f9a6f, 81d09a887d85aa4204582104ae84e814\n\n23. MongoDB operation\nfindAndModify messages · db:887258d05dfe4612\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: 887258d05dfe4612, 81d09a887d85aa4204582104ae84e814\n\n24. MongoDB operation\nfind conversations · db:d68943fe748e3a28\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: d68943fe748e3a28, 81d09a887d85aa4204582104ae84e814\n\n25. MongoDB operation\nfind messages · db:76c5c250bb2ac68d\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: 76c5c250bb2ac68d, 81d09a887d85aa4204582104ae84e814\n\n26. MongoDB operation\nfindAndModify conversations · db:471f9002019f88e9\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: 471f9002019f88e9, 81d09a887d85aa4204582104ae84e814\nUncertainty\nNone recorded",
+    "completed.\nEffect: findAndModify messages\nCompleted · 9 steps\nClicked Clear and Well-Written.\nDom.Action\nSpine: none.\nCausal.Spine\nPUT /api/messages/9ad282b4-eee1-5a3e-8b31-1944668267c8/574febbc-13bb-4e73-8b42-aa7f120ac546/feedback\nNetwork.Request\nroute:be8dd503d9075dfd\nRoute.Dispatch\nhandler:b36f16e55d5f62c2\nHandler.Enter\nhandler:b94c53269276aab2\nHandler.Enter\nhandler:5ea9aefbbf6cdbe6\nHandler.Enter\nfind conversations · db:14858ead6110a54c\nDb.Operation\nfindAndModify messages · db:61a453fd2a44b110\nDb.Operation\nInspect evidence\nStatus\nCompleted\nBusiness result\nEffect: findAndModify messages\nRuntime effects\neffect\nProven entity IDs\nNo validated entity identity\nCorrelation\nWorkflow causal:episode:action:mudi1wp6:12\nSession m1-live\nLearning use\nContext only — correlate with an agent outcome, edit, retry, or explicit feedback before training\nEvidence\n1. Clicked control\nClear and Well-Written\nWhy: The action row supplied the observed control.\n\n2. Causal spine\nNo first-party function entered\nWhy: The request spine is carried by continuation lineage.\n\n3. Request\nPUT /api/messages/9ad282b4-eee1-5a3e-8b31-1944668267c8/574febbc-13bb-4e73-8b42-aa7f120ac546/feedback\nWhy: Transport wrapper admitted the outbound request.\nEvidence IDs: action:mudi1wp6:12:request:39\n\n4. Route\nroute:be8dd503d9075dfd\nWhy: same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span\nEvidence IDs: be8dd503d9075dfd, c4af3713c7132445fdfebb7989f7d34a\n\n5. Handler\nhandler:b36f16e55d5f62c2\nWhy: handler span is an exact descendant of the admitted server span in the same trace\nEvidence IDs: b36f16e55d5f62c2, c4af3713c7132445fdfebb7989f7d34a\n\n6. Handler\nhandler:b94c53269276aab2\nWhy: handler span is an exact descendant of the admitted server span in the same trace\nEvidence IDs: b94c53269276aab2, c4af3713c7132445fdfebb7989f7d34a\n\n7. Handler\nhandler:5ea9aefbbf6cdbe6\nWhy: handler span is an exact descendant of the admitted server span in the same trace\nEvidence IDs: 5ea9aefbbf6cdbe6, c4af3713c7132445fdfebb7989f7d34a\n\n8. MongoDB operation\nfind conversations · db:14858ead6110a54c\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: 14858ead6110a54c, c4af3713c7132445fdfebb7989f7d34a\n\n9. MongoDB operation\nfindAndModify messages · db:61a453fd2a44b110\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: 61a453fd2a44b110, c4af3713c7132445fdfebb7989f7d34a\nUncertainty\nNone recorded",
+    "completed.\nEffect: findAndModify aclentries\nCompleted · 12 steps\nClicked Create.\nDom.Action\nSpine: none.\nCausal.Spine\nPOST /api/agents\nNetwork.Request\nroute:4c354ef1a18169a8\nRoute.Dispatch\nhandler:25d06591806f4b01\nHandler.Enter\nhandler:0527f4b46366803d\nHandler.Enter\ninsert agents · db:ad6643ddecf8e3b5\nDb.Operation\nfind accessroles · db:10554e8f63ce11c4\nDb.Operation\nfind accessroles · db:01854a73caa14e8b\nDb.Operation\nfindAndModify aclentries · db:7153ce4318d4cc16\nDb.Operation\nfindAndModify aclentries · db:2582d4fcab15f93d\nDb.Operation\nSubmit rejected by the app\nSubmit.Rejected\nInspect evidence\nStatus\nCompleted\nBusiness result\nEffect: findAndModify aclentries\nRuntime effects\neffect\nProven entity IDs\nNo validated entity identity\nCorrelation\nWorkflow causal:episode:form:mudi1typ-m04wshm5xro:object%3A27\nSession m1-live\nLearning use\nContext only — correlate with an agent outcome, edit, retry, or explicit feedback before training\nEvidence\n1. Clicked control\nCreate\nWhy: The action row supplied the observed control.\n\n2. Causal spine\nNo first-party function entered\nWhy: The request spine is carried by continuation lineage.\n\n3. Request\nPOST /api/agents\nWhy: Transport wrapper admitted the outbound request.\nEvidence IDs: action:mudi21me:229:request:45\n\n4. Route\nroute:4c354ef1a18169a8\nWhy: same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span\nEvidence IDs: 4c354ef1a18169a8, 52d0835bc33f3aa62a50cd3090e9b18c\n\n5. Handler\nhandler:25d06591806f4b01\nWhy: handler span is an exact descendant of the admitted server span in the same trace\nEvidence IDs: 25d06591806f4b01, 52d0835bc33f3aa62a50cd3090e9b18c\n\n6. Handler\nhandler:0527f4b46366803d\nWhy: handler span is an exact descendant of the admitted server span in the same trace\nEvidence IDs: 0527f4b46366803d, 52d0835bc33f3aa62a50cd3090e9b18c\n\n7. MongoDB operation\ninsert agents · db:ad6643ddecf8e3b5\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: ad6643ddecf8e3b5, 52d0835bc33f3aa62a50cd3090e9b18c\n\n8. MongoDB operation\nfind accessroles · db:10554e8f63ce11c4\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: 10554e8f63ce11c4, 52d0835bc33f3aa62a50cd3090e9b18c\n\n9. MongoDB operation\nfind accessroles · db:01854a73caa14e8b\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: 01854a73caa14e8b, 52d0835bc33f3aa62a50cd3090e9b18c\n\n10. MongoDB operation\nfindAndModify aclentries · db:7153ce4318d4cc16\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: 7153ce4318d4cc16, 52d0835bc33f3aa62a50cd3090e9b18c\n\n11. MongoDB operation\nfindAndModify aclentries · db:2582d4fcab15f93d\nWhy: database span is an exact descendant of an admitted handler span in the same trace\nEvidence IDs: 2582d4fcab15f93d, 52d0835bc33f3aa62a50cd3090e9b18c\n\n12. Rejected submit\nSubmit rejected by the app\nWhy: submit produced no request and was followed by a mutation receipt on the same observed form\nEvidence IDs: 48833, 51854\nUncertainty\nNone recorded"
+  ]
+}

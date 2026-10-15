@@ -1,0 +1,106 @@
+{
+  "schema": "producttrace.react-clone-acceptance.v1",
+  "react": "18.3.1",
+  "format_and_behavior": {
+    "api": "react/cloneElement/18.3.1",
+    "format_pass": true,
+    "behavior_pass": true,
+    "builds": [
+      {
+        "build": "development",
+        "cases": 14,
+        "incorrect_programs_rejected": 9,
+        "unchanged_props_preserved": true,
+        "supplied_undefined_defaults": true,
+        "positional_undefined_not_defaulted": true,
+        "ref_owner_replacement": true,
+        "symbol_props_copied": true,
+        "component_not_invoked": true,
+        "unknown_owner_and_accessors_abstained": true,
+        "throw_identity_preserved": true,
+        "clone_child_array_not_frozen": true
+      },
+      {
+        "build": "production",
+        "cases": 14,
+        "incorrect_programs_rejected": 9,
+        "unchanged_props_preserved": true,
+        "supplied_undefined_defaults": true,
+        "positional_undefined_not_defaulted": true,
+        "ref_owner_replacement": true,
+        "symbol_props_copied": true,
+        "component_not_invoked": true,
+        "unknown_owner_and_accessors_abstained": true,
+        "throw_identity_preserved": true,
+        "clone_child_array_not_frozen": true
+      }
+    ]
+  },
+  "runtime": [
+    {
+      "api": "react/cloneElement/18.3.1",
+      "build": "development",
+      "installed_source_attested": true,
+      "description_observations": 8,
+      "actual_clicks": 4,
+      "original_description_required": true,
+      "immutable_original_aliases": true,
+      "overridden_props_select_source_path": true,
+      "component_type_to_source_controls": true,
+      "native_type_alias_to_source_control": true,
+      "clone_config_stamped": true,
+      "explicit_props_reach_callback": true,
+      "independent_mutants_rejected": 8,
+      "stop_preserves_behavior": true,
+      "descriptor_props_to_committed_owner": true,
+      "commit_lineage_mutants_rejected": 7,
+      "owner_lineage_to_committed_fiber": true,
+      "production_owner_is_null": false,
+      "ref_input_to_committed_host": true,
+      "descriptor_to_exact_host_commit_proven": false,
+      "runtime_property_input_relations_proven": true
+    },
+    {
+      "api": "react/cloneElement/18.3.1",
+      "build": "production",
+      "installed_source_attested": true,
+      "description_observations": 8,
+      "actual_clicks": 4,
+      "original_description_required": true,
+      "immutable_original_aliases": true,
+      "overridden_props_select_source_path": true,
+      "component_type_to_source_controls": true,
+      "native_type_alias_to_source_control": true,
+      "clone_config_stamped": true,
+      "explicit_props_reach_callback": true,
+      "independent_mutants_rejected": 8,
+      "stop_preserves_behavior": true,
+      "descriptor_props_to_committed_owner": true,
+      "commit_lineage_mutants_rejected": 4,
+      "owner_lineage_to_committed_fiber": false,
+      "production_owner_is_null": true,
+      "ref_input_to_committed_host": true,
+      "descriptor_to_exact_host_commit_proven": false,
+      "runtime_property_input_relations_proven": true
+    }
+  ],
+  "full_api_admission": true,
+  "sources": [
+    {
+      "file": "node_modules/react/cjs/react.development.js",
+      "implementation_lines": [
+        [
+          877,
+          950
+        ]
+      ],
+      "sha256": "1ff3a1d9861a87984329584fa1172aea920855d79eb57dae0d1cebe54093d7e3"
+    }
+  ],
+  "unproven": [
+    "Mutable or runtime-only original-element aliases",
+    "Unrecorded original descriptions",
+    "Arbitrary configuration objects",
+    "Dynamic property inputs"
+  ]
+}

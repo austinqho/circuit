@@ -1,0 +1,196 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Producttrace observer parity</title>
+<script>
+const parityMode = new URLSearchParams(location.search).get('mode');
+if (parityMode) {
+  window.__parityOriginalCommit = function () {};
+  window.__REACT_DEVTOOLS_GLOBAL_HOOK__ = {
+    onCommitFiberRoot: window.__parityOriginalCommit,
+  };
+  if (parityMode === 'observed') {
+    document.write('<script src="/src/producttrace-runtime.js"><\/script>');
+  }
+}
+</script>
+</head>
+<body>
+<div id="root"></div>
+<pre id="result">RUNNING</pre>
+<script>
+function assert(condition, message, counter) {
+  if (!condition) throw new Error(message);
+  if (counter) counter.count++;
+}
+
+function primitiveTree(value, seen) {
+  if (value == null || typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean') {
+    return true;
+  }
+  if (typeof value !== 'object' || value instanceof Node) return false;
+  seen = seen || new Set();
+  if (seen.has(value)) return false;
+  seen.add(value);
+  const proto = Object.getPrototypeOf(value);
+  if (!Array.isArray(value) && proto !== Object.prototype && proto !== null) return false;
+  const ok = Object.keys(value).every((key) => primitiveTree(value[key], seen));
+  seen.delete(value);
+  return ok;
+}
+
+async function runScenario(observed) {
+  const root = document.getElementById('root');
+  root.innerHTML = `
+    <button id="safe" data-testid="safe">Safe action</button>
+    <button id="throwing" data-testid="throwing">Throwing binding action</button>
+    <form id="form"><input id="input"><button type="submit">Submit</button></form>
+  `;
+  const safe = document.getElementById('safe');
+  const throwing = document.getElementById('throwing');
+  const form = document.getElementById('form');
+  const input = document.getElementById('input');
+  const state = { safe_clicks: 0, throwing_clicks: 0, submits: 0, changes: 0, keydowns: 0 };
+  safe.addEventListener('click', () => { state.safe_clicks++; });
+  throwing.addEventListener('click', () => { state.throwing_clicks++; });
+  form.addEventListener('submit', (event) => { event.preventDefault(); state.submits++; });
+  input.addEventListener('change', () => { state.changes++; });
+  input.addEventListener('keydown', () => { state.keydowns++; });
+
+  let recorder = null;
+  let secondRecorder = null;
+  let originalPush = history.pushState;
+  let originalReplace = history.replaceState;
+  let escaped = false;
+  const counter = { count: 0 };
+
+  if (observed) {
+    const throwingBinding = { event: 'click', testid: 'throwing' };
+    Object.defineProperty(throwingBinding, 'action', {
+      enumerable: true,
+      get() { throw new Error('binding failure for parity'); },
+    });
+    window.fetch = () => new Promise(() => {});
+    recorder = ProductTrace.start({
+      name: 'parity',
+      identity: {},
+      actions: [
+        { event: 'click', testid: 'safe', action: 'safe.click' },
+        { event: 'submit', action: 'form.submit' },
+        throwingBinding,
+      ],
+    }, { endpoint: '/parity-never-resolves', outputMode: 'evidence' });
+    secondRecorder = ProductTrace.start({ name: 'ignored-second-start' });
+  }
+
+  safe.click();
+  input.dispatchEvent(new KeyboardEvent('keydown', {
+    key: '§', code: 'KeyS', bubbles: true,
+  }));
+  form.requestSubmit();
+  history.pushState(null, '', '/parity-route');
+  input.value = 'producttrace-private-value-sentinel';
+  for (let i = 0; i < 5005; i++) {
+    input.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+  for (let i = 0; i < 10; i++) {
+    try { throwing.click(); } catch (error) { escaped = true; }
+  }
+
+  if (observed) {
+    assert(recorder === secondRecorder, 'double start must return the same recorder', counter);
+    assert(state.safe_clicks === 1, 'observer must not double-fire the application button', counter);
+    assert(state.submits === 1, 'form must submit exactly once', counter);
+    assert(state.keydowns === 1, 'keydown must reach the host exactly once', counter);
+    assert(state.changes === 5005, 'queue stress events must all reach the host', counter);
+    assert(!ProductTrace.records.some((record) =>
+      JSON.stringify(record).includes('producttrace-private-value-sentinel')),
+    'change records must never retain the input value', counter);
+    const printable = ProductTrace.records.find((record) =>
+      record.kind === 'action' && record.event === 'keydown');
+    assert(printable && printable.key.key === 'Printable' && printable.key.code === null &&
+      !ProductTrace.records.some((record) => JSON.stringify(record).includes('§')),
+      'printable key material must be redacted', counter);
+    assert(ProductTrace.records.filter((record) =>
+      record.kind === 'action' && record.action === 'safe.click').length === 1,
+      'double start must not install duplicate listeners', counter);
+    assert(recorder.status().drops > 0, 'pending queue must drop oldest at its cap', counter);
+    assert(ProductTrace.records.filter((record) =>
+      record.kind === 'diagnostic' && record.event === 'records_dropped').length === 1,
+      'queue overflow must emit one coalesced diagnostic record', counter);
+    assert(escaped === false, 'a throwing binding must never escape to the host', counter);
+    assert(state.throwing_clicks === 10, 'all throwing-binding clicks must reach the host', counter);
+    const beforeStop = recorder.status();
+    assert(beforeStop.errors === 10, 'status must count observation errors', counter);
+    assert(beforeStop.disabled === true && beforeStop.reason === 'observer_error_budget',
+      'ten consecutive errors must disable the observer', counter);
+    assert(ProductTrace.records.filter((record) =>
+      record.kind === 'diagnostic' && record.event === 'disabled' &&
+      record.reason === 'observer_error_budget').length === 1,
+      'auto-disable must emit exactly one diagnostic', counter);
+    assert(ProductTrace.records.every((record) => primitiveTree(record)),
+      'records must contain serializable primitives and no host references', counter);
+    let jsonOkay = true;
+    try { JSON.stringify(ProductTrace.records); } catch (error) { jsonOkay = false; }
+    assert(jsonOkay, 'records must stringify', counter);
+    const beforeStoppedClick = ProductTrace.records.length;
+    recorder.stop();
+    safe.click();
+    assert(ProductTrace.records.length === beforeStoppedClick,
+      'stop must remove action listeners', counter);
+    assert(state.safe_clicks === 2, 'the host button must still fire once after stop', counter);
+    assert(history.pushState === originalPush && history.replaceState === originalReplace,
+      'stop must restore history methods when top-of-chain', counter);
+    assert(window.__REACT_DEVTOOLS_GLOBAL_HOOK__.onCommitFiberRoot === window.__parityOriginalCommit,
+      'stop must restore the React hook when top-of-chain', counter);
+    const stoppedStatus = recorder.status();
+    assert(stoppedStatus.observe_ms.p50 >= 0 && stoppedStatus.observe_ms.p95 >= 0 &&
+      stoppedStatus.observe_ms.max >= stoppedStatus.observe_ms.p95,
+      'status must expose observation latency metrics', counter);
+  } else {
+    safe.click();
+  }
+
+  return { state, assertions: counter.count };
+}
+
+if (parityMode) {
+  runScenario(parityMode === 'observed').then((result) => {
+    parent.postMessage({ type: 'producttrace-parity', mode: parityMode, result }, '*');
+  }).catch((error) => {
+    parent.postMessage({ type: 'producttrace-parity', mode: parityMode, error: error.message }, '*');
+  });
+} else {
+  const results = {};
+  window.addEventListener('message', (event) => {
+    if (!event.data || event.data.type !== 'producttrace-parity') return;
+    results[event.data.mode] = event.data;
+    if (!results.observed || !results.absent) return;
+    try {
+      assert(!results.observed.error, results.observed.error || 'observed scenario failed');
+      assert(!results.absent.error, results.absent.error || 'absent scenario failed');
+      assert(JSON.stringify(results.observed.result.state) === JSON.stringify(results.absent.result.state),
+        'application state must be identical with the observer installed or absent');
+      document.getElementById('result').textContent = JSON.stringify({
+        status: 'PASS',
+        assertions: results.observed.result.assertions + 1,
+        observed_state: results.observed.result.state,
+        absent_state: results.absent.result.state,
+      }, null, 2);
+    } catch (error) {
+      document.getElementById('result').textContent = JSON.stringify({
+        status: 'FAIL', error: error.message, results,
+      }, null, 2);
+    }
+  });
+  for (const mode of ['observed', 'absent']) {
+    const frame = document.createElement('iframe');
+    frame.src = `/test/browser/parity.html?mode=${mode}`;
+    frame.hidden = true;
+    document.body.appendChild(frame);
+  }
+}
+</script>
+</body>
+</html>

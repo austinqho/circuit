@@ -1,0 +1,222 @@
+{
+  "actions": 18,
+  "new_ops": 9,
+  "new_ops_by_issuer": {
+    "find users (middleware: authenticate)": 8,
+    "insert activity (middleware: recordActivity)": 1
+  },
+  "removed_ops": 0,
+  "actions_changed": 9,
+  "status_moves": {
+    "responded -> completed": 1
+  },
+  "changed_fields": {
+    "because": 9,
+    "reached": 1,
+    "stopped_at": 3,
+    "status": 1,
+    "label": 1
+  },
+  "ops": [
+    {
+      "action_id": "action:mug13mu8:4",
+      "request": "GET /api/projects/p1/tasks",
+      "request_occurrence_id": "action:mug13mu8:4:request:2",
+      "span_id": "93b0d08cd5f9433c",
+      "op": "find users",
+      "issued_by": "middleware: authenticate"
+    },
+    {
+      "action_id": "action:mug13n1x:6",
+      "request": "GET /api/projects/p1/tasks",
+      "request_occurrence_id": "action:mug13n1x:6:request:3",
+      "span_id": "4b2443a6e2a5efd8",
+      "op": "find users",
+      "issued_by": "middleware: authenticate"
+    },
+    {
+      "action_id": "action:mug13n9s:8",
+      "request": "PATCH /api/projects/p1/tasks/t1",
+      "request_occurrence_id": "action:mug13n9s:8:request:4",
+      "span_id": "7206bbcb87d55459",
+      "op": "find users",
+      "issued_by": "middleware: authenticate"
+    },
+    {
+      "action_id": "action:mug13nho:10",
+      "request": "POST /api/projects/p1/summary",
+      "request_occurrence_id": "action:mug13nho:10:request:5",
+      "span_id": "8d9187808ede5113",
+      "op": "find users",
+      "issued_by": "middleware: authenticate"
+    },
+    {
+      "action_id": "action:mug13nho:10",
+      "request": "POST /api/projects/p1/summary",
+      "request_occurrence_id": "action:mug13nho:10:request:5",
+      "span_id": "5b16108bfd3e30b6",
+      "op": "insert activity",
+      "issued_by": "middleware: recordActivity"
+    },
+    {
+      "action_id": "action:mug13nps:12",
+      "request": "POST /api/projects/p1/ping",
+      "request_occurrence_id": "action:mug13nps:12:request:6",
+      "span_id": "75541d2fcfe4d82d",
+      "op": "find users",
+      "issued_by": "middleware: authenticate"
+    },
+    {
+      "action_id": "action:mug13nxm:14",
+      "request": "POST /api/projects/p1/archive",
+      "request_occurrence_id": "action:mug13nxm:14:request:7",
+      "span_id": "4b406a8dd9f3112d",
+      "op": "find users",
+      "issued_by": "middleware: authenticate"
+    },
+    {
+      "action_id": "action:mug13o5i:16",
+      "request": "POST /api/projects/p1/explode",
+      "request_occurrence_id": "action:mug13o5i:16:request:8",
+      "span_id": "05e73da3848e97ab",
+      "op": "find users",
+      "issued_by": "middleware: authenticate"
+    },
+    {
+      "action_id": "action:mug13odd:18",
+      "request": "GET /api/projects/zz/tasks",
+      "request_occurrence_id": "action:mug13odd:18:request:9",
+      "span_id": "00fb5a03e532fe5d",
+      "op": "find users",
+      "issued_by": "middleware: authenticate"
+    }
+  ],
+  "changed": [
+    {
+      "action_id": "action:mug13mm8:2",
+      "fields": [
+        "because"
+      ],
+      "before": {
+        "because": "database read aggregate $cmd joined by exact span parentage; no write"
+      },
+      "after": {
+        "because": "database read aggregate $cmd (handler: countTasks) joined by exact span parentage; no write"
+      }
+    },
+    {
+      "action_id": "action:mug13mu8:4",
+      "fields": [
+        "reached",
+        "stopped_at",
+        "because"
+      ],
+      "before": {
+        "reached": "route",
+        "stopped_at": "route",
+        "because": "server responded 401; no registered handler span descends from the server span"
+      },
+      "after": {
+        "reached": "db",
+        "stopped_at": "middleware",
+        "because": "server responded 401 from middleware authenticate; no handler ran"
+      }
+    },
+    {
+      "action_id": "action:mug13n1x:6",
+      "fields": [
+        "because"
+      ],
+      "before": {
+        "because": "database read find tasks joined by exact span parentage; no write"
+      },
+      "after": {
+        "because": "database read find tasks (handler: listTasks) joined by exact span parentage; no write"
+      }
+    },
+    {
+      "action_id": "action:mug13n9s:8",
+      "fields": [
+        "because"
+      ],
+      "before": {
+        "because": "database write update tasks joined by exact span parentage"
+      },
+      "after": {
+        "because": "database write update tasks (handler: renameTask) joined by exact span parentage"
+      }
+    },
+    {
+      "action_id": "action:mug13nho:10",
+      "fields": [
+        "status",
+        "label",
+        "because"
+      ],
+      "before": {
+        "status": "responded",
+        "label": "Responded 200: no write observed",
+        "because": "database read aggregate $cmd joined by exact span parentage; no write"
+      },
+      "after": {
+        "status": "completed",
+        "label": "Completed 200: insert activity (middleware: recordActivity)",
+        "because": "database write insert activity (middleware: recordActivity) joined by exact span parentage"
+      }
+    },
+    {
+      "action_id": "action:mug13nps:12",
+      "fields": [
+        "because"
+      ],
+      "before": {
+        "because": "database read find projects joined by exact span parentage; no write"
+      },
+      "after": {
+        "because": "database read find projects (param: loadProject) joined by exact span parentage; no write"
+      }
+    },
+    {
+      "action_id": "action:mug13nxm:14",
+      "fields": [
+        "because"
+      ],
+      "before": {
+        "because": "database write insert audit joined by exact span parentage"
+      },
+      "after": {
+        "because": "database write insert audit (handler: archiveProject) joined by exact span parentage"
+      }
+    },
+    {
+      "action_id": "action:mug13o5i:16",
+      "fields": [
+        "stopped_at",
+        "because"
+      ],
+      "before": {
+        "stopped_at": null,
+        "because": "server responded 500; database read aggregate $cmd joined by exact span parentage; no write"
+      },
+      "after": {
+        "stopped_at": "middleware",
+        "because": "server responded 500 from error handler reportError; after handler explodeProject"
+      }
+    },
+    {
+      "action_id": "action:mug13odd:18",
+      "fields": [
+        "stopped_at",
+        "because"
+      ],
+      "before": {
+        "stopped_at": null,
+        "because": "server responded 404; database read find projects joined by exact span parentage; no write"
+      },
+      "after": {
+        "stopped_at": "middleware",
+        "because": "server responded 404 from param loadProject; no handler ran"
+      }
+    }
+  ]
+}

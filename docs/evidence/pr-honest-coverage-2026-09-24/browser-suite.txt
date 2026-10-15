@@ -1,0 +1,10 @@
+d12-stamp-neutrality exit=0   "pass": true,
+continuations-neutral exit=0   "status": "ok",
+outcome-labels exit=0 160/160 checks pass; store /var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/tracer-outcome-labels-store-aTGJyG
+mcp-gaps exit=0 35/35 checks pass; store /var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/tracer-mcp-gaps-store-yokvD4
+body-capture exit=0 51/51 checks pass; store /var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/tracer-body-store-bPzUn1
+unlinked-coverage-neutral exit=0 13/13 checks pass; store /var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/tracer-unlinked-store-PRYhRT
+worker-frontier exit=0   "ok": true,
+episode-focus exit=0   "status": "ok",
+episode-focus exit=0   "status": "ok",
+episode-focus exit=0   "status": "ok",

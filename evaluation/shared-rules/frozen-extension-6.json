@@ -1,0 +1,72 @@
+{
+  "schema": "producttrace.shared-rule-freeze.v1",
+  "reason": "Independently specified direct returned-object methods; frozen before model proposals. No bank answers or calibration programs in proposal context.",
+  "cases": [
+    {
+      "id": "table8old-createColumnHelper",
+      "implementation_sha256": "52dc5cda487fd46a536d64de467f620d9e8d475225e38a4e7a38b9370accca2f",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "specifier": "table8old",
+      "exportName": "createColumnHelper",
+      "scope": {
+        "callbackArguments": [],
+        "resultPaths": null,
+        "resultMethods": [
+          {
+            "path": [
+              "accessor"
+            ],
+            "callbackArguments": []
+          },
+          {
+            "path": [
+              "display"
+            ],
+            "callbackArguments": []
+          },
+          {
+            "path": [
+              "group"
+            ],
+            "callbackArguments": []
+          }
+        ],
+        "description": "A factory returning an ordinary object with directly invoked own methods accessor, display and group. Preserve the original object/method identities, accessor function identity without invoking it, fresh spread results and exact pass-through column identities. Accessor inputs are functions or ordinary primitive keys; column definitions are plain enumerable string-keyed own-data objects or nullish. Excludes getters, symbols, reserved prototype keys, extracted method calls and uninstrumented consumers."
+      }
+    },
+    {
+      "id": "table8new-createColumnHelper",
+      "implementation_sha256": "1d56964ea957497ad95ced38604b3d1ecbb8d9552ce4cc7a5cd3358e99217ef3",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "specifier": "table8new",
+      "exportName": "createColumnHelper",
+      "scope": {
+        "callbackArguments": [],
+        "resultPaths": null,
+        "resultMethods": [
+          {
+            "path": [
+              "accessor"
+            ],
+            "callbackArguments": []
+          },
+          {
+            "path": [
+              "display"
+            ],
+            "callbackArguments": []
+          },
+          {
+            "path": [
+              "group"
+            ],
+            "callbackArguments": []
+          }
+        ],
+        "description": "A factory returning an ordinary object with directly invoked own methods accessor, display and group. Preserve the original object/method identities, accessor function identity without invoking it, fresh spread results and exact pass-through column identities. Accessor inputs are functions or ordinary primitive keys; column definitions are plain enumerable string-keyed own-data objects or nullish. Excludes getters, symbols, reserved prototype keys, extracted method calls and uninstrumented consumers."
+      }
+    }
+  ]
+}

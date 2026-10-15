@@ -1,0 +1,30 @@
+From 825280d8069dbd7d4d442f93b140ba844dd7e4a0 Mon Sep 17 00:00:00 2001
+From: g6 <g6@local>
+Date: Wed, 23 Sep 2026 06:06:08 -0700
+Subject: [PATCH] G6 seed: update handler rejects names containing whitespace
+ with 422 (seeded bug)
+
+---
+ server/endpoints/workspaces.js | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/server/endpoints/workspaces.js b/server/endpoints/workspaces.js
+index c020958..4cc171a 100644
+--- a/server/endpoints/workspaces.js
++++ b/server/endpoints/workspaces.js
+@@ -85,6 +85,12 @@ function workspaceEndpoints(app) {
+         const user = await userFromSession(request, response);
+         const { slug = null } = request.params;
+         const data = reqBody(request);
++        if (typeof data?.name === "string" && /\s/.test(data.name)) {
++          response
++            .status(422)
++            .json({ workspace: null, message: "Invalid workspace name." });
++          return;
++        }
+         const currWorkspace = multiUserMode(response)
+           ? await Workspace.getWithUser(user, { slug })
+           : await Workspace.get({ slug });
+-- 
+2.46.2
+

@@ -1,0 +1,400 @@
+{
+  "status": "ok",
+  "headless": true,
+  "runs": 3,
+  "stable": true,
+  "signature": {
+    "episodes": [
+      {
+        "events": [
+          "focusin",
+          "click"
+        ],
+        "caused": [
+          "focusin<-click:microtask"
+        ]
+      },
+      {
+        "events": [
+          "keydown:Enter"
+        ],
+        "caused": []
+      },
+      {
+        "events": [
+          "focusin",
+          "click"
+        ],
+        "caused": [
+          "focusin<-click:mount_effect"
+        ]
+      },
+      {
+        "events": [
+          "keydown:Enter"
+        ],
+        "caused": []
+      },
+      {
+        "events": [
+          "focusin",
+          "click"
+        ],
+        "caused": [
+          "focusin<-click:dispatch"
+        ]
+      },
+      {
+        "events": [
+          "keydown:Enter"
+        ],
+        "caused": []
+      },
+      {
+        "events": [
+          "focusin",
+          "keydown:Enter"
+        ],
+        "caused": []
+      },
+      {
+        "events": [
+          "focusin",
+          "click"
+        ],
+        "caused": []
+      },
+      {
+        "events": [
+          "keydown:Enter"
+        ],
+        "caused": []
+      },
+      {
+        "events": [
+          "focusin",
+          "click"
+        ],
+        "caused": []
+      },
+      {
+        "events": [
+          "focusin",
+          "keydown:Enter"
+        ],
+        "caused": []
+      },
+      {
+        "events": [
+          "focusin",
+          "click"
+        ],
+        "caused": []
+      },
+      {
+        "events": [
+          "focusin",
+          "keydown:Enter"
+        ],
+        "caused": []
+      },
+      {
+        "events": [
+          "keydown:Enter"
+        ],
+        "caused": []
+      },
+      {
+        "events": [
+          "focusin",
+          "click"
+        ],
+        "caused": []
+      },
+      {
+        "events": [
+          "keydown:Enter"
+        ],
+        "caused": []
+      },
+      {
+        "events": [
+          "focusin",
+          "click"
+        ],
+        "caused": []
+      },
+      {
+        "events": [
+          "keydown:Enter"
+        ],
+        "caused": []
+      }
+    ],
+    "marked": [
+      "focusin<-click:microtask",
+      "focusin<-click:mount_effect",
+      "focusin<-click:dispatch",
+      "focusin<-abstained:scheduler_lineage",
+      "focusin<-abstained:no_action_on_frame",
+      "focusin<-abstained:stale_frame",
+      "focusin<-abstained:stale_frame"
+    ],
+    "requests": [
+      "DELETE /api/items/auto <- keydown:Enter",
+      "DELETE /api/items/effect <- keydown:Enter",
+      "POST /api/notes <- keydown:Enter",
+      "POST /api/search <- keydown:Enter",
+      "GET /api/items/later/check <- click:",
+      "DELETE /api/items/later <- keydown:Enter",
+      "GET /api/stream/a <- click:",
+      "POST /api/stream/a/search <- keydown:Enter",
+      "GET /api/stream/b <- click:",
+      "POST /api/stream/b/search <- keydown:Enter",
+      "POST /api/poll/search <- keydown:Enter",
+      "GET /api/stream/i <- click:",
+      "POST /api/poll/search <- keydown:Enter",
+      "GET /api/stream/j <- click:",
+      "POST /api/after/search <- keydown:Enter"
+    ]
+  },
+  "reports": [
+    {
+      "run": 1,
+      "cases": {
+        "a_autofocus": {
+          "caused_via": "microtask",
+          "focus_to_press_ms": 531,
+          "window_actions": [
+            "click",
+            "focusin"
+          ],
+          "click": "click action:mufv4tmo:2 → handler <unnamed> client/src/main.jsx@1166-1185 [outcome no_request; the handler ran and issued no request from instrumented code (1 function entered, 2 DOM mutations, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+          "focus": "focusin action:mufv4tmq:3 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); this focus was caused by action action:mufv4tmo:2's work (microtask), not by a user gesture; it is listed under episode episode:action:mufv4tmo:2",
+          "press": "keydown action:mufv4u1h:4 (Enter in <button type=\"button\">) → handler <unnamed> client/src/main.jsx@629-769 → 1 request: (1) <unnamed> client/src/main.jsx@1396-1453 → DELETE /api/items/auto [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented"
+        },
+        "b_effect_focus": {
+          "caused_via": "mount_effect",
+          "focus_to_press_ms": 507,
+          "window_actions": [
+            "click",
+            "focusin"
+          ],
+          "click": "click action:mufv4ud6:6 → handler <unnamed> client/src/main.jsx@2240-2259 [outcome no_request; the handler ran and issued no request from instrumented code (3 functions entered, 2 DOM mutations, 2 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+          "focus": "focusin action:mufv4ud8:7 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); this focus was caused by action action:mufv4ud6:6's work (mount_effect), not by a user gesture; it is listed under episode episode:action:mufv4ud6:6",
+          "press": "keydown action:mufv4urb:8 (Enter in <div role=\"dialog\" aria-label=\"effect\">) → handler <unnamed> client/src/main.jsx@1738-1878 → 1 request: (1) <unnamed> client/src/main.jsx@2476-2535 → DELETE /api/items/effect [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented"
+        },
+        "c_handler_focus": {
+          "caused_via": "dispatch",
+          "focus_to_press_ms": 606,
+          "window_actions": [
+            "click",
+            "focusin"
+          ],
+          "click": "click action:mufv4v34:10 → handler <unnamed> client/src/main.jsx@2998-3033 [outcome no_request; the handler ran and issued no request from instrumented code (2 functions entered, 0 DOM mutations, 0 state effects)]: reached entry_handler / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+          "focus": "focusin action:mufv4v38:11 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); this focus was caused by action action:mufv4v34:10's work (dispatch), not by a user gesture; it is listed under episode episode:action:mufv4v34:10",
+          "press": "keydown action:mufv4vk3:12 (Enter in <input aria-label=\"Note\">) → handler <unnamed> client/src/main.jsx@2787-2934 → 1 request: (1) POST /api/notes [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented"
+        },
+        "f_scheduler_autofocus": {
+          "cause_abstained": "scheduler_lineage",
+          "focus_to_press_ms": 518,
+          "focus": "focusin action:mufv4wr9:19 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); focus caused by app code committed from React's scheduler; causing action not attributable",
+          "press": "keydown action:mufv4x5n:20 (Enter in <button type=\"button\">) → handler <unnamed> client/src/main.jsx@629-769 → 1 request: (1) <unnamed> client/src/main.jsx@4743-4801 → DELETE /api/items/later [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented"
+        },
+        "stream_a": {
+          "focus_to_enter_ms": 305,
+          "focus": "focusin action:mufv4yht:25 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); this action is part of episode episode:action:mufv4yq9:26; its request is attributed to the carrier action action:mufv4yq9:26"
+        },
+        "stream_b": {
+          "focus_to_enter_ms": 306,
+          "focus": "focusin action:mufv51xi:31 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); this action is part of episode episode:action:mufv5260:32; its request is attributed to the carrier action action:mufv5260:32"
+        },
+        "i_control": {
+          "cause_abstained": "no_action_on_frame",
+          "focus_to_press_ms": 496,
+          "focus": "focusin action:mufv54hp:33 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); focus caused by app code running outside any action (cause abstained: no_action_on_frame); causing action not attributable"
+        },
+        "i_stream_poll": {
+          "cause_abstained": "stale_frame",
+          "focus_to_press_ms": 495,
+          "focus": "focusin action:mufv55u1:37 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); focus caused by app code running on a frame that suspended code left behind (cause abstained: stale_frame); the causing action could not be proven"
+        },
+        "j_after_stream": {
+          "cause_abstained": "stale_frame",
+          "focus_to_press_ms": 400,
+          "focus": "focusin action:mufv59he:41 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); focus caused by app code running on a frame that suspended code left behind (cause abstained: stale_frame); the causing action could not be proven"
+        },
+        "d_tab_control": {
+          "focus_to_enter_ms": 305,
+          "member": "focusin action:mufv4w1c:15 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); this action is part of episode episode:action:mufv4w9t:16; its request is attributed to the carrier action action:mufv4w9t:16",
+          "carrier": "keydown action:mufv4w9t:16 (Enter in <input aria-label=\"Search\">) → handler <unnamed> client/src/main.jsx@3614-3762 → 1 request: (1) POST /api/search [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented",
+          "attempt": {
+            "carrier": true,
+            "events": [
+              "keydown",
+              "focusin"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "run": 2,
+      "cases": {
+        "a_autofocus": {
+          "caused_via": "microtask",
+          "focus_to_press_ms": 505,
+          "window_actions": [
+            "click",
+            "focusin"
+          ],
+          "click": "click action:mufv5cfo:2 → handler <unnamed> client/src/main.jsx@1166-1185 [outcome no_request; the handler ran and issued no request from instrumented code (1 function entered, 2 DOM mutations, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+          "focus": "focusin action:mufv5cfp:3 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); this focus was caused by action action:mufv5cfo:2's work (microtask), not by a user gesture; it is listed under episode episode:action:mufv5cfo:2",
+          "press": "keydown action:mufv5ctq:4 (Enter in <button type=\"button\">) → handler <unnamed> client/src/main.jsx@629-769 → 1 request: (1) <unnamed> client/src/main.jsx@1396-1453 → DELETE /api/items/auto [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented"
+        },
+        "b_effect_focus": {
+          "caused_via": "mount_effect",
+          "focus_to_press_ms": 504,
+          "window_actions": [
+            "click",
+            "focusin"
+          ],
+          "click": "click action:mufv5d5b:6 → handler <unnamed> client/src/main.jsx@2240-2259 [outcome no_request; the handler ran and issued no request from instrumented code (3 functions entered, 2 DOM mutations, 2 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+          "focus": "focusin action:mufv5d5c:7 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); this focus was caused by action action:mufv5d5b:6's work (mount_effect), not by a user gesture; it is listed under episode episode:action:mufv5d5b:6",
+          "press": "keydown action:mufv5djb:8 (Enter in <div role=\"dialog\" aria-label=\"effect\">) → handler <unnamed> client/src/main.jsx@1738-1878 → 1 request: (1) <unnamed> client/src/main.jsx@2476-2535 → DELETE /api/items/effect [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented"
+        },
+        "c_handler_focus": {
+          "caused_via": "dispatch",
+          "focus_to_press_ms": 604,
+          "window_actions": [
+            "click",
+            "focusin"
+          ],
+          "click": "click action:mufv5dv2:10 → handler <unnamed> client/src/main.jsx@2998-3033 [outcome no_request; the handler ran and issued no request from instrumented code (2 functions entered, 0 DOM mutations, 0 state effects)]: reached entry_handler / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+          "focus": "focusin action:mufv5dv3:11 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); this focus was caused by action action:mufv5dv2:10's work (dispatch), not by a user gesture; it is listed under episode episode:action:mufv5dv2:10",
+          "press": "keydown action:mufv5ebv:12 (Enter in <input aria-label=\"Note\">) → handler <unnamed> client/src/main.jsx@2787-2934 → 1 request: (1) POST /api/notes [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented"
+        },
+        "f_scheduler_autofocus": {
+          "cause_abstained": "scheduler_lineage",
+          "focus_to_press_ms": 526,
+          "focus": "focusin action:mufv5fiy:19 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); focus caused by app code committed from React's scheduler; causing action not attributable",
+          "press": "keydown action:mufv5fxk:20 (Enter in <button type=\"button\">) → handler <unnamed> client/src/main.jsx@629-769 → 1 request: (1) <unnamed> client/src/main.jsx@4743-4801 → DELETE /api/items/later [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented"
+        },
+        "stream_a": {
+          "focus_to_enter_ms": 304,
+          "focus": "focusin action:mufv5h9u:25 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); this action is part of episode episode:action:mufv5hia:26; its request is attributed to the carrier action action:mufv5hia:26"
+        },
+        "stream_b": {
+          "focus_to_enter_ms": 304,
+          "focus": "focusin action:mufv5kpa:31 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); this action is part of episode episode:action:mufv5kxq:32; its request is attributed to the carrier action action:mufv5kxq:32"
+        },
+        "i_control": {
+          "cause_abstained": "no_action_on_frame",
+          "focus_to_press_ms": 501,
+          "focus": "focusin action:mufv5n98:33 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); focus caused by app code running outside any action (cause abstained: no_action_on_frame); causing action not attributable"
+        },
+        "i_stream_poll": {
+          "cause_abstained": "stale_frame",
+          "focus_to_press_ms": 492,
+          "focus": "focusin action:mufv5old:37 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); focus caused by app code running on a frame that suspended code left behind (cause abstained: stale_frame); the causing action could not be proven"
+        },
+        "j_after_stream": {
+          "cause_abstained": "stale_frame",
+          "focus_to_press_ms": 400,
+          "focus": "focusin action:mufv5s8r:41 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); focus caused by app code running on a frame that suspended code left behind (cause abstained: stale_frame); the causing action could not be proven"
+        },
+        "d_tab_control": {
+          "focus_to_enter_ms": 305,
+          "member": "focusin action:mufv5esw:15 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); this action is part of episode episode:action:mufv5f1d:16; its request is attributed to the carrier action action:mufv5f1d:16",
+          "carrier": "keydown action:mufv5f1d:16 (Enter in <input aria-label=\"Search\">) → handler <unnamed> client/src/main.jsx@3614-3762 → 1 request: (1) POST /api/search [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented",
+          "attempt": {
+            "carrier": true,
+            "events": [
+              "keydown",
+              "focusin"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "run": 3,
+      "cases": {
+        "a_autofocus": {
+          "caused_via": "microtask",
+          "focus_to_press_ms": 503,
+          "window_actions": [
+            "click",
+            "focusin"
+          ],
+          "click": "click action:mufv5v8v:2 → handler <unnamed> client/src/main.jsx@1166-1185 [outcome no_request; the handler ran and issued no request from instrumented code (1 function entered, 2 DOM mutations, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+          "focus": "focusin action:mufv5v8w:3 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); this focus was caused by action action:mufv5v8v:2's work (microtask), not by a user gesture; it is listed under episode episode:action:mufv5v8v:2",
+          "press": "keydown action:mufv5vmv:4 (Enter in <button type=\"button\">) → handler <unnamed> client/src/main.jsx@629-769 → 1 request: (1) <unnamed> client/src/main.jsx@1396-1453 → DELETE /api/items/auto [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented"
+        },
+        "b_effect_focus": {
+          "caused_via": "mount_effect",
+          "focus_to_press_ms": 505,
+          "window_actions": [
+            "click",
+            "focusin"
+          ],
+          "click": "click action:mufv5vyj:6 → handler <unnamed> client/src/main.jsx@2240-2259 [outcome no_request; the handler ran and issued no request from instrumented code (3 functions entered, 2 DOM mutations, 2 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+          "focus": "focusin action:mufv5vyk:7 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); this focus was caused by action action:mufv5vyj:6's work (mount_effect), not by a user gesture; it is listed under episode episode:action:mufv5vyj:6",
+          "press": "keydown action:mufv5wck:8 (Enter in <div role=\"dialog\" aria-label=\"effect\">) → handler <unnamed> client/src/main.jsx@1738-1878 → 1 request: (1) <unnamed> client/src/main.jsx@2476-2535 → DELETE /api/items/effect [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented"
+        },
+        "c_handler_focus": {
+          "caused_via": "dispatch",
+          "focus_to_press_ms": 603,
+          "window_actions": [
+            "click",
+            "focusin"
+          ],
+          "click": "click action:mufv5wo7:10 → handler <unnamed> client/src/main.jsx@2998-3033 [outcome no_request; the handler ran and issued no request from instrumented code (2 functions entered, 0 DOM mutations, 0 state effects)]: reached entry_handler / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+          "focus": "focusin action:mufv5wo7:11 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); this focus was caused by action action:mufv5wo7:10's work (dispatch), not by a user gesture; it is listed under episode episode:action:mufv5wo7:10",
+          "press": "keydown action:mufv5x4x:12 (Enter in <input aria-label=\"Note\">) → handler <unnamed> client/src/main.jsx@2787-2934 → 1 request: (1) POST /api/notes [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented"
+        },
+        "f_scheduler_autofocus": {
+          "cause_abstained": "scheduler_lineage",
+          "focus_to_press_ms": 519,
+          "focus": "focusin action:mufv5ybo:19 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); focus caused by app code committed from React's scheduler; causing action not attributable",
+          "press": "keydown action:mufv5yq3:20 (Enter in <button type=\"button\">) → handler <unnamed> client/src/main.jsx@629-769 → 1 request: (1) <unnamed> client/src/main.jsx@4743-4801 → DELETE /api/items/later [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented"
+        },
+        "stream_a": {
+          "focus_to_enter_ms": 306,
+          "focus": "focusin action:mufv6023:25 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); this action is part of episode episode:action:mufv60al:26; its request is attributed to the carrier action action:mufv60al:26"
+        },
+        "stream_b": {
+          "focus_to_enter_ms": 302,
+          "focus": "focusin action:mufv63hh:31 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); this action is part of episode episode:action:mufv63pv:32; its request is attributed to the carrier action action:mufv63pv:32"
+        },
+        "i_control": {
+          "cause_abstained": "no_action_on_frame",
+          "focus_to_press_ms": 498,
+          "focus": "focusin action:mufv661f:33 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); focus caused by app code running outside any action (cause abstained: no_action_on_frame); causing action not attributable"
+        },
+        "i_stream_poll": {
+          "cause_abstained": "stale_frame",
+          "focus_to_press_ms": 490,
+          "focus": "focusin action:mufv67dg:37 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); focus caused by app code running on a frame that suspended code left behind (cause abstained: stale_frame); the causing action could not be proven"
+        },
+        "j_after_stream": {
+          "cause_abstained": "stale_frame",
+          "focus_to_press_ms": 399,
+          "focus": "focusin action:mufv6b0w:41 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); focus caused by app code running on a frame that suspended code left behind (cause abstained: stale_frame); the causing action could not be proven"
+        },
+        "d_tab_control": {
+          "focus_to_enter_ms": 302,
+          "member": "focusin action:mufv5xlw:15 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked); this action is part of episode episode:action:mufv5xua:16; its request is attributed to the carrier action action:mufv5xua:16",
+          "carrier": "keydown action:mufv5xua:16 (Enter in <input aria-label=\"Search\">) → handler <unnamed> client/src/main.jsx@3614-3762 → 1 request: (1) POST /api/search [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented",
+          "attempt": {
+            "carrier": true,
+            "events": [
+              "keydown",
+              "focusin"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

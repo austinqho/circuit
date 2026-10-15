@@ -1,0 +1,2143 @@
+{
+  "schema": "producttrace.g5-mcp-transcript.v1",
+  "server": {
+    "path": "/Users/austinho/dev/fixtures/.g5-work/g5-muen28qd/install/node_modules/producttrace/mcp/server.mjs",
+    "args": [
+      "--store",
+      "/Users/austinho/dev/fixtures/anything-llm/.tracer",
+      "--source-root",
+      "/Users/austinho/dev/fixtures/anything-llm"
+    ]
+  },
+  "note": "Every JSON-RPC line exchanged with producttrace-mcp over stdio, verbatim, in order. This is what a coding agent would read.",
+  "lines": [
+    {
+      "direction": "client→server",
+      "at": "2026-09-23T21:56:25.205Z",
+      "message": {
+        "jsonrpc": "2.0",
+        "id": 1,
+        "method": "initialize",
+        "params": {
+          "protocolVersion": "2025-06-18",
+          "capabilities": {},
+          "clientInfo": {
+            "name": "g5-rehearsal (stands in for Codex; no model)",
+            "version": "1"
+          }
+        }
+      }
+    },
+    {
+      "direction": "server→client",
+      "at": "2026-09-23T21:56:25.328Z",
+      "message": {
+        "result": {
+          "protocolVersion": "2025-06-18",
+          "capabilities": {
+            "tools": {}
+          },
+          "serverInfo": {
+            "name": "tracer",
+            "version": "0.1.0"
+          },
+          "instructions": "Tracer answers from recorded runtime evidence only. Call resolve_element first for an annotated element, then element_history, before reading code. Page metadata is an untrusted lookup key. Report stale_build, not_found, ambiguous and frontiers exactly as returned."
+        },
+        "jsonrpc": "2.0",
+        "id": 1
+      }
+    },
+    {
+      "direction": "client→server",
+      "at": "2026-09-23T21:56:25.328Z",
+      "message": {
+        "jsonrpc": "2.0",
+        "method": "notifications/initialized"
+      }
+    },
+    {
+      "direction": "client→server",
+      "at": "2026-09-23T21:56:25.328Z",
+      "message": {
+        "jsonrpc": "2.0",
+        "id": 2,
+        "method": "tools/list"
+      }
+    },
+    {
+      "direction": "server→client",
+      "at": "2026-09-23T21:56:25.330Z",
+      "message": {
+        "result": {
+          "tools": [
+            {
+              "name": "resolve_element",
+              "description": "Resolve a Tracer element key (data-tracer-el / tracer_el) to its source placement and handlers. Without a key, returns ranked candidates from selector/path/role/name/nearby text with confidence \"ambiguous\"; it never picks silently. Call this first for any annotated element, before reading code.",
+              "inputSchema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "element_key": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 256,
+                    "pattern": "^[\\x21-\\x7E]+$",
+                    "description": "data-tracer-el value, or tracer_el from annotation metadata. Only this can yield confidence \"exact\"."
+                  },
+                  "build": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "pattern": "^[\\x21-\\x7E]+$",
+                    "description": "tracer_build from annotation metadata, for stale-key detection."
+                  },
+                  "url": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 2048,
+                    "description": "Page URL from the annotation evidence."
+                  },
+                  "selector": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 512,
+                    "description": "Target selector from the annotation (may be non-unique; only the last compound is used)."
+                  },
+                  "element_path": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 1024,
+                    "description": "Target path, tag names only (e.g. \"div > form > button\")."
+                  },
+                  "role": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 64,
+                    "description": "Target role attribute."
+                  },
+                  "name": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 256,
+                    "description": "Target accessible name (aria-label or leading text)."
+                  },
+                  "nearby_text": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 512,
+                    "description": "Nearby text from the annotation."
+                  }
+                }
+              }
+            },
+            {
+              "name": "element_history",
+              "description": "The n most recent attempts (default 10; an attempt is one episode on this element, e.g. focus+click+submit) on an element key, newest first, with all their actions, each with entry handler, request, route, handler spans, DB ops, outcome and the explicit frontier (reached / stopped at / because).",
+              "inputSchema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "element_key"
+                ],
+                "properties": {
+                  "element_key": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 256,
+                    "pattern": "^[\\x21-\\x7E]+$",
+                    "description": "A key returned by resolve_element."
+                  },
+                  "session": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "pattern": "^[\\x21-\\x7E]+$",
+                    "description": "capture_page_id to restrict to one page load."
+                  },
+                  "n": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 100,
+                    "default": 10,
+                    "description": "Number of attempts (episodes on this element, newest first) to return, with all their actions. Not a count of raw actions."
+                  }
+                }
+              }
+            },
+            {
+              "name": "action_chain",
+              "description": "The full observed causal chain for one action: dispatch, entry handler (file:line), request, route, backend handler, DB operations, outcome, and where the evidence stops and why.",
+              "inputSchema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "action_id"
+                ],
+                "properties": {
+                  "action_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 256,
+                    "pattern": "^[\\x21-\\x7E]+$",
+                    "description": "An action_id from element_history or recent_actions."
+                  }
+                }
+              }
+            },
+            {
+              "name": "recent_actions",
+              "description": "What just happened: the most recent user actions on any element, newest first, with a one-line frontier each.",
+              "inputSchema": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "session": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 128,
+                    "pattern": "^[\\x21-\\x7E]+$",
+                    "description": "capture_page_id to restrict to one page load."
+                  },
+                  "n": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 100,
+                    "default": 20
+                  }
+                }
+              }
+            },
+            {
+              "name": "compare_chains",
+              "description": "Compare the observed chains of two actions (e.g. before and after a fix): per stop same/changed/added/removed, an outcome delta, and whether the runtime path changed.",
+              "inputSchema": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "before_action_id",
+                  "after_action_id"
+                ],
+                "properties": {
+                  "before_action_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 256,
+                    "pattern": "^[\\x21-\\x7E]+$"
+                  },
+                  "after_action_id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "maxLength": 256,
+                    "pattern": "^[\\x21-\\x7E]+$"
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "jsonrpc": "2.0",
+        "id": 2
+      }
+    },
+    {
+      "direction": "client→server",
+      "at": "2026-09-23T21:56:25.330Z",
+      "message": {
+        "jsonrpc": "2.0",
+        "id": 3,
+        "method": "tools/call",
+        "params": {
+          "name": "resolve_element",
+          "arguments": {
+            "element_key": "p_f067e70e6029:117-485#n1"
+          }
+        }
+      }
+    },
+    {
+      "direction": "server→client",
+      "at": "2026-09-23T21:56:25.364Z",
+      "message": {
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "element CTAButton at frontend/src/components/lib/CTAButton/index.jsx:8 (exact; 9 actions). Last: submit action:muen79uv:146 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span"
+            },
+            {
+              "type": "text",
+              "text": "{\"status\":\"ok\",\"tool\":\"resolve_element\",\"store\":{\"records\":2644,\"actions\":151,\"sessions\":1,\"episodes\":9,\"spans\":465,\"backend_instrumented\":true,\"stamps\":true,\"builds\":[\"e061322a6809\"],\"manifest_functions\":5101,\"source_root\":\"/Users/austinho/dev/fixtures/anything-llm\",\"manifest_builds\":[\"e061322a6809\"],\"runs\":1,\"malformed_records\":0,\"dropped_in_page\":0,\"malformed_spans\":0},\"element_key\":\"p_f067e70e6029:117-485#n1\",\"key_kind\":\"element_stamp\",\"component\":\"CTAButton\",\"source\":{\"file\":\"frontend/src/components/lib/CTAButton/index.jsx\",\"start\":117,\"end\":485,\"line\":8,\"line_status\":\"ok\"},\"placement_id\":\"placement:f067e70e602936c4f8e9c326a164ca171480ddde3f990590f3c0db1b03c5e60b:117:485\",\"handlers\":[{\"event\":\"click\",\"function_id\":\"function:f067e70e602936c4f8e9c326a164ca171480ddde3f990590f3c0db1b03c5e60b:166:183\",\"source\":{\"file\":\"frontend/src/components/lib/CTAButton/index.jsx\",\"start\":166,\"end\":183,\"line\":10,\"line_status\":\"ok\"}}],\"build\":\"e061322a6809\",\"sessions\":[\"s_8b4e57f5\"],\"actions_observed\":9,\"confidence\":\"exact\",\"ignored\":[],\"summary\":\"element CTAButton at frontend/src/components/lib/CTAButton/index.jsx:8 (exact; 9 actions). Last: submit action:muen79uv:146 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span\"}"
+            }
+          ],
+          "structuredContent": {
+            "status": "ok",
+            "tool": "resolve_element",
+            "store": {
+              "records": 2644,
+              "actions": 151,
+              "sessions": 1,
+              "episodes": 9,
+              "spans": 465,
+              "backend_instrumented": true,
+              "stamps": true,
+              "builds": [
+                "e061322a6809"
+              ],
+              "manifest_functions": 5101,
+              "source_root": "/Users/austinho/dev/fixtures/anything-llm",
+              "manifest_builds": [
+                "e061322a6809"
+              ],
+              "runs": 1,
+              "malformed_records": 0,
+              "dropped_in_page": 0,
+              "malformed_spans": 0
+            },
+            "element_key": "p_f067e70e6029:117-485#n1",
+            "key_kind": "element_stamp",
+            "component": "CTAButton",
+            "source": {
+              "file": "frontend/src/components/lib/CTAButton/index.jsx",
+              "start": 117,
+              "end": 485,
+              "line": 8,
+              "line_status": "ok"
+            },
+            "placement_id": "placement:f067e70e602936c4f8e9c326a164ca171480ddde3f990590f3c0db1b03c5e60b:117:485",
+            "handlers": [
+              {
+                "event": "click",
+                "function_id": "function:f067e70e602936c4f8e9c326a164ca171480ddde3f990590f3c0db1b03c5e60b:166:183",
+                "source": {
+                  "file": "frontend/src/components/lib/CTAButton/index.jsx",
+                  "start": 166,
+                  "end": 183,
+                  "line": 10,
+                  "line_status": "ok"
+                }
+              }
+            ],
+            "build": "e061322a6809",
+            "sessions": [
+              "s_8b4e57f5"
+            ],
+            "actions_observed": 9,
+            "confidence": "exact",
+            "ignored": [],
+            "summary": "element CTAButton at frontend/src/components/lib/CTAButton/index.jsx:8 (exact; 9 actions). Last: submit action:muen79uv:146 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span"
+          },
+          "isError": false
+        },
+        "jsonrpc": "2.0",
+        "id": 3
+      }
+    },
+    {
+      "direction": "client→server",
+      "at": "2026-09-23T21:56:25.364Z",
+      "message": {
+        "jsonrpc": "2.0",
+        "id": 4,
+        "method": "tools/call",
+        "params": {
+          "name": "element_history",
+          "arguments": {
+            "element_key": "p_f067e70e6029:117-485#n1",
+            "n": 10
+          }
+        }
+      }
+    },
+    {
+      "direction": "server→client",
+      "at": "2026-09-23T21:56:25.367Z",
+      "message": {
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "9 action(s) in 3 attempt(s) on element frontend/src/components/lib/CTAButton/index.jsx:8; newest: submit action:muen79uv:146 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span"
+            },
+            {
+              "type": "text",
+              "text": "{\"status\":\"ok\",\"tool\":\"element_history\",\"store\":{\"records\":2644,\"actions\":151,\"sessions\":1,\"episodes\":9,\"spans\":465,\"backend_instrumented\":true,\"stamps\":true,\"builds\":[\"e061322a6809\"],\"manifest_functions\":5101,\"source_root\":\"/Users/austinho/dev/fixtures/anything-llm\",\"manifest_builds\":[\"e061322a6809\"],\"runs\":1,\"malformed_records\":0,\"dropped_in_page\":0,\"malformed_spans\":0},\"element_key\":\"p_f067e70e6029:117-485#n1\",\"key_kind\":\"element_stamp\",\"placement\":{\"element_key\":\"p_f067e70e6029:117-485#n1\",\"key_kind\":\"element_stamp\",\"component\":\"CTAButton\",\"source\":{\"file\":\"frontend/src/components/lib/CTAButton/index.jsx\",\"start\":117,\"end\":485,\"line\":8,\"line_status\":\"ok\"},\"placement_id\":\"placement:f067e70e602936c4f8e9c326a164ca171480ddde3f990590f3c0db1b03c5e60b:117:485\",\"handlers\":[{\"event\":\"click\",\"function_id\":\"function:f067e70e602936c4f8e9c326a164ca171480ddde3f990590f3c0db1b03c5e60b:166:183\",\"source\":{\"file\":\"frontend/src/components/lib/CTAButton/index.jsx\",\"start\":166,\"end\":183,\"line\":10,\"line_status\":\"ok\"}}],\"build\":\"e061322a6809\",\"sessions\":[\"s_8b4e57f5\"],\"actions_observed\":9},\"session\":null,\"actions\":[{\"action_id\":\"action:muen79uv:146\",\"session\":\"s_8b4e57f5\",\"sequence\":2440,\"event\":\"submit\",\"episode_id\":\"episode:form:s_8b4e57f5:object%3A41#3\",\"episode_carrier_action_id\":\"action:muen79uv:146\",\"entry_handler\":{\"stop\":\"entry_handler\",\"function_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488\",\"event\":\"submit\",\"unit_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit\",\"rooted\":true,\"source\":{\"file\":\"frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx\",\"start\":931,\"end\":1488,\"line\":26,\"line_status\":\"ok\"}},\"request\":{\"stop\":\"request\",\"method\":\"POST\",\"url\":\"/api/workspace/tracer-g5/update\",\"path\":\"/api/workspace/tracer-g5/update\",\"request_occurrence_id\":\"action:muen79uv:146:request:41\",\"trace_id\":\"ecda20d975049aed94fa317eaef68515\",\"action_id\":\"action:muen79uv:146\",\"route_template\":\"/api/workspace/:slug/update\"},\"other_requests\":[],\"other_requests_total\":0,\"route\":{\"stop\":\"route\",\"span_id\":\"f36821780afd4937\",\"method\":\"POST\",\"route\":\"/api/workspace/:slug/update\",\"status_code\":200,\"admission_reason\":\"same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span\"},\"handler_spans\":[{\"stop\":\"handler\",\"span_id\":\"106716a353aa0a17\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"validatedRequest\",\"index\":0},{\"stop\":\"handler\",\"span_id\":\"535e9f1ff754edef\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"<anonymous>\",\"index\":1},{\"stop\":\"handler\",\"span_id\":\"07a99f579e83b8e4\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"<anonymous>\",\"index\":2}],\"db_ops\":[],\"outcome\":{\"stage\":\"stopped\",\"status\":\"incomplete\",\"http_status\":200,\"writes\":[],\"reads\":[],\"stop_reason\":\"no_database_effect_before_idle\",\"stopped_at\":\"handler\"},\"reached\":\"handler\",\"stopped_at\":\"handler\",\"because\":\"no database span descends from the admitted handler span\",\"summary\":\"submit action:muen79uv:146 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span\"},{\"action_id\":\"action:muen79uv:145\",\"session\":\"s_8b4e57f5\",\"sequence\":2433,\"event\":\"click\",\"episode_id\":\"episode:form:s_8b4e57f5:object%3A41#3\",\"episode_carrier_action_id\":\"action:muen79uv:146\",\"entry_handler\":{\"stop\":\"entry_handler\",\"function_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488\",\"event\":\"submit\",\"unit_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit\",\"rooted\":true,\"source\":{\"file\":\"frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx\",\"start\":931,\"end\":1488,\"line\":26,\"line_status\":\"ok\"}},\"request\":{\"stop\":\"request\",\"method\":\"POST\",\"url\":\"/api/workspace/tracer-g5/update\",\"path\":\"/api/workspace/tracer-g5/update\",\"request_occurrence_id\":\"action:muen79uv:146:request:41\",\"trace_id\":\"ecda20d975049aed94fa317eaef68515\",\"action_id\":\"action:muen79uv:146\",\"route_template\":\"/api/workspace/:slug/update\"},\"other_requests\":[],\"other_requests_total\":0,\"route\":{\"stop\":\"route\",\"span_id\":\"f36821780afd4937\",\"method\":\"POST\",\"route\":\"/api/workspace/:slug/update\",\"status_code\":200,\"admission_reason\":\"same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span\"},\"handler_spans\":[{\"stop\":\"handler\",\"span_id\":\"106716a353aa0a17\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"validatedRequest\",\"index\":0},{\"stop\":\"handler\",\"span_id\":\"535e9f1ff754edef\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"<anonymous>\",\"index\":1},{\"stop\":\"handler\",\"span_id\":\"07a99f579e83b8e4\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"<anonymous>\",\"index\":2}],\"db_ops\":[],\"outcome\":{\"stage\":\"stopped\",\"status\":\"incomplete\",\"http_status\":200,\"writes\":[],\"reads\":[],\"stop_reason\":\"no_database_effect_before_idle\",\"stopped_at\":\"handler\"},\"reached\":\"handler\",\"stopped_at\":\"handler\",\"because\":\"no database span descends from the admitted handler span\",\"summary\":\"click action:muen79uv:145 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span\"},{\"action_id\":\"action:muen79uu:144\",\"session\":\"s_8b4e57f5\",\"sequence\":2432,\"event\":\"focusin\",\"episode_id\":\"episode:form:s_8b4e57f5:object%3A41#3\",\"episode_carrier_action_id\":\"action:muen79uv:146\",\"entry_handler\":{\"stop\":\"entry_handler\",\"function_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488\",\"event\":\"submit\",\"unit_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit\",\"rooted\":true,\"source\":{\"file\":\"frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx\",\"start\":931,\"end\":1488,\"line\":26,\"line_status\":\"ok\"}},\"request\":{\"stop\":\"request\",\"method\":\"POST\",\"url\":\"/api/workspace/tracer-g5/update\",\"path\":\"/api/workspace/tracer-g5/update\",\"request_occurrence_id\":\"action:muen79uv:146:request:41\",\"trace_id\":\"ecda20d975049aed94fa317eaef68515\",\"action_id\":\"action:muen79uv:146\",\"route_template\":\"/api/workspace/:slug/update\"},\"other_requests\":[],\"other_requests_total\":0,\"route\":{\"stop\":\"route\",\"span_id\":\"f36821780afd4937\",\"method\":\"POST\",\"route\":\"/api/workspace/:slug/update\",\"status_code\":200,\"admission_reason\":\"same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span\"},\"handler_spans\":[{\"stop\":\"handler\",\"span_id\":\"106716a353aa0a17\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"validatedRequest\",\"index\":0},{\"stop\":\"handler\",\"span_id\":\"535e9f1ff754edef\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"<anonymous>\",\"index\":1},{\"stop\":\"handler\",\"span_id\":\"07a99f579e83b8e4\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"<anonymous>\",\"index\":2}],\"db_ops\":[],\"outcome\":{\"stage\":\"stopped\",\"status\":\"incomplete\",\"http_status\":200,\"writes\":[],\"reads\":[],\"stop_reason\":\"no_database_effect_before_idle\",\"stopped_at\":\"handler\"},\"reached\":\"handler\",\"stopped_at\":\"handler\",\"because\":\"no database span descends from the admitted handler span\",\"summary\":\"focusin action:muen79uu:144 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span\"},{\"action_id\":\"action:muen787e:108\",\"session\":\"s_8b4e57f5\",\"sequence\":1971,\"event\":\"submit\",\"episode_id\":\"episode:form:s_8b4e57f5:object%3A41#2\",\"episode_carrier_action_id\":\"action:muen787e:108\",\"entry_handler\":{\"stop\":\"entry_handler\",\"function_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488\",\"event\":\"submit\",\"unit_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit\",\"rooted\":true,\"source\":{\"file\":\"frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx\",\"start\":931,\"end\":1488,\"line\":26,\"line_status\":\"ok\"}},\"request\":{\"stop\":\"request\",\"method\":\"POST\",\"url\":\"/api/workspace/tracer-g5/update\",\"path\":\"/api/workspace/tracer-g5/update\",\"request_occurrence_id\":\"action:muen787e:108:request:40\",\"trace_id\":\"d33d34b691c8f4fe846c0a3334dd105a\",\"action_id\":\"action:muen787e:108\",\"route_template\":\"/api/workspace/:slug/update\"},\"other_requests\":[],\"other_requests_total\":0,\"route\":{\"stop\":\"route\",\"span_id\":\"a6aec4250a0168cc\",\"method\":\"POST\",\"route\":\"/api/workspace/:slug/update\",\"status_code\":422,\"admission_reason\":\"same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span\"},\"handler_spans\":[{\"stop\":\"handler\",\"span_id\":\"8016372684b70aff\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"validatedRequest\",\"index\":0},{\"stop\":\"handler\",\"span_id\":\"1943f7e16c67b5ae\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"<anonymous>\",\"index\":1},{\"stop\":\"handler\",\"span_id\":\"ad14c4f35464bc68\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"<anonymous>\",\"index\":2}],\"db_ops\":[],\"outcome\":{\"stage\":\"stopped\",\"status\":\"incomplete\",\"http_status\":422,\"writes\":[],\"reads\":[],\"stop_reason\":\"no_database_effect_before_idle\",\"stopped_at\":\"handler\"},\"reached\":\"handler\",\"stopped_at\":\"handler\",\"because\":\"server responded 422; no database span descends from the admitted handler span\",\"summary\":\"submit action:muen787e:108 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 422 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because server responded 422; no database span descends from the admitted handler span\"},{\"action_id\":\"action:muen787d:107\",\"session\":\"s_8b4e57f5\",\"sequence\":1964,\"event\":\"click\",\"episode_id\":\"episode:form:s_8b4e57f5:object%3A41#2\",\"episode_carrier_action_id\":\"action:muen787e:108\",\"entry_handler\":{\"stop\":\"entry_handler\",\"function_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488\",\"event\":\"submit\",\"unit_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit\",\"rooted\":true,\"source\":{\"file\":\"frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx\",\"start\":931,\"end\":1488,\"line\":26,\"line_status\":\"ok\"}},\"request\":{\"stop\":\"request\",\"method\":\"POST\",\"url\":\"/api/workspace/tracer-g5/update\",\"path\":\"/api/workspace/tracer-g5/update\",\"request_occurrence_id\":\"action:muen787e:108:request:40\",\"trace_id\":\"d33d34b691c8f4fe846c0a3334dd105a\",\"action_id\":\"action:muen787e:108\",\"route_template\":\"/api/workspace/:slug/update\"},\"other_requests\":[],\"other_requests_total\":0,\"route\":{\"stop\":\"route\",\"span_id\":\"a6aec4250a0168cc\",\"method\":\"POST\",\"route\":\"/api/workspace/:slug/update\",\"status_code\":422,\"admission_reason\":\"same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span\"},\"handler_spans\":[{\"stop\":\"handler\",\"span_id\":\"8016372684b70aff\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"validatedRequest\",\"index\":0},{\"stop\":\"handler\",\"span_id\":\"1943f7e16c67b5ae\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"<anonymous>\",\"index\":1},{\"stop\":\"handler\",\"span_id\":\"ad14c4f35464bc68\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"<anonymous>\",\"index\":2}],\"db_ops\":[],\"outcome\":{\"stage\":\"stopped\",\"status\":\"incomplete\",\"http_status\":422,\"writes\":[],\"reads\":[],\"stop_reason\":\"no_database_effect_before_idle\",\"stopped_at\":\"handler\"},\"reached\":\"handler\",\"stopped_at\":\"handler\",\"because\":\"server responded 422; no database span descends from the admitted handler span\",\"summary\":\"click action:muen787d:107 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 422 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because server responded 422; no database span descends from the admitted handler span\"},{\"action_id\":\"action:muen787d:106\",\"session\":\"s_8b4e57f5\",\"sequence\":1963,\"event\":\"focusin\",\"episode_id\":\"episode:form:s_8b4e57f5:object%3A41#2\",\"episode_carrier_action_id\":\"action:muen787e:108\",\"entry_handler\":{\"stop\":\"entry_handler\",\"function_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488\",\"event\":\"submit\",\"unit_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit\",\"rooted\":true,\"source\":{\"file\":\"frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx\",\"start\":931,\"end\":1488,\"line\":26,\"line_status\":\"ok\"}},\"request\":{\"stop\":\"request\",\"method\":\"POST\",\"url\":\"/api/workspace/tracer-g5/update\",\"path\":\"/api/workspace/tracer-g5/update\",\"request_occurrence_id\":\"action:muen787e:108:request:40\",\"trace_id\":\"d33d34b691c8f4fe846c0a3334dd105a\",\"action_id\":\"action:muen787e:108\",\"route_template\":\"/api/workspace/:slug/update\"},\"other_requests\":[],\"other_requests_total\":0,\"route\":{\"stop\":\"route\",\"span_id\":\"a6aec4250a0168cc\",\"method\":\"POST\",\"route\":\"/api/workspace/:slug/update\",\"status_code\":422,\"admission_reason\":\"same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span\"},\"handler_spans\":[{\"stop\":\"handler\",\"span_id\":\"8016372684b70aff\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"validatedRequest\",\"index\":0},{\"stop\":\"handler\",\"span_id\":\"1943f7e16c67b5ae\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"<anonymous>\",\"index\":1},{\"stop\":\"handler\",\"span_id\":\"ad14c4f35464bc68\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"<anonymous>\",\"index\":2}],\"db_ops\":[],\"outcome\":{\"stage\":\"stopped\",\"status\":\"incomplete\",\"http_status\":422,\"writes\":[],\"reads\":[],\"stop_reason\":\"no_database_effect_before_idle\",\"stopped_at\":\"handler\"},\"reached\":\"handler\",\"stopped_at\":\"handler\",\"because\":\"server responded 422; no database span descends from the admitted handler span\",\"summary\":\"focusin action:muen787d:106 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 422 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because server responded 422; no database span descends from the admitted handler span\"},{\"action_id\":\"action:muen76jn:68\",\"session\":\"s_8b4e57f5\",\"sequence\":1477,\"event\":\"submit\",\"episode_id\":\"episode:form:s_8b4e57f5:object%3A41\",\"episode_carrier_action_id\":\"action:muen76jn:68\",\"entry_handler\":{\"stop\":\"entry_handler\",\"function_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488\",\"event\":\"submit\",\"unit_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit\",\"rooted\":true,\"source\":{\"file\":\"frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx\",\"start\":931,\"end\":1488,\"line\":26,\"line_status\":\"ok\"}},\"request\":{\"stop\":\"request\",\"method\":\"POST\",\"url\":\"/api/workspace/tracer-g5/update\",\"path\":\"/api/workspace/tracer-g5/update\",\"request_occurrence_id\":\"action:muen76jn:68:request:39\",\"trace_id\":\"e168ce4d79190846edeabb489f57cfbf\",\"action_id\":\"action:muen76jn:68\",\"route_template\":\"/api/workspace/:slug/update\"},\"other_requests\":[],\"other_requests_total\":0,\"route\":{\"stop\":\"route\",\"span_id\":\"b3f6aa3eae996b4b\",\"method\":\"POST\",\"route\":\"/api/workspace/:slug/update\",\"status_code\":200,\"admission_reason\":\"same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span\"},\"handler_spans\":[{\"stop\":\"handler\",\"span_id\":\"60a7027a703e5af5\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"validatedRequest\",\"index\":0},{\"stop\":\"handler\",\"span_id\":\"c11e715c83e98da5\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"<anonymous>\",\"index\":1},{\"stop\":\"handler\",\"span_id\":\"4eca32f8024ee670\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"<anonymous>\",\"index\":2}],\"db_ops\":[],\"outcome\":{\"stage\":\"stopped\",\"status\":\"incomplete\",\"http_status\":200,\"writes\":[],\"reads\":[],\"stop_reason\":\"no_database_effect_before_idle\",\"stopped_at\":\"handler\"},\"reached\":\"handler\",\"stopped_at\":\"handler\",\"because\":\"no database span descends from the admitted handler span\",\"summary\":\"submit action:muen76jn:68 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span\"},{\"action_id\":\"action:muen76jn:67\",\"session\":\"s_8b4e57f5\",\"sequence\":1470,\"event\":\"click\",\"episode_id\":\"episode:form:s_8b4e57f5:object%3A41\",\"episode_carrier_action_id\":\"action:muen76jn:68\",\"entry_handler\":{\"stop\":\"entry_handler\",\"function_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488\",\"event\":\"submit\",\"unit_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit\",\"rooted\":true,\"source\":{\"file\":\"frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx\",\"start\":931,\"end\":1488,\"line\":26,\"line_status\":\"ok\"}},\"request\":{\"stop\":\"request\",\"method\":\"POST\",\"url\":\"/api/workspace/tracer-g5/update\",\"path\":\"/api/workspace/tracer-g5/update\",\"request_occurrence_id\":\"action:muen76jn:68:request:39\",\"trace_id\":\"e168ce4d79190846edeabb489f57cfbf\",\"action_id\":\"action:muen76jn:68\",\"route_template\":\"/api/workspace/:slug/update\"},\"other_requests\":[],\"other_requests_total\":0,\"route\":{\"stop\":\"route\",\"span_id\":\"b3f6aa3eae996b4b\",\"method\":\"POST\",\"route\":\"/api/workspace/:slug/update\",\"status_code\":200,\"admission_reason\":\"same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span\"},\"handler_spans\":[{\"stop\":\"handler\",\"span_id\":\"60a7027a703e5af5\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"validatedRequest\",\"index\":0},{\"stop\":\"handler\",\"span_id\":\"c11e715c83e98da5\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"<anonymous>\",\"index\":1},{\"stop\":\"handler\",\"span_id\":\"4eca32f8024ee670\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"<anonymous>\",\"index\":2}],\"db_ops\":[],\"outcome\":{\"stage\":\"stopped\",\"status\":\"incomplete\",\"http_status\":200,\"writes\":[],\"reads\":[],\"stop_reason\":\"no_database_effect_before_idle\",\"stopped_at\":\"handler\"},\"reached\":\"handler\",\"stopped_at\":\"handler\",\"because\":\"no database span descends from the admitted handler span\",\"summary\":\"click action:muen76jn:67 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span\"},{\"action_id\":\"action:muen76jn:66\",\"session\":\"s_8b4e57f5\",\"sequence\":1469,\"event\":\"focusin\",\"episode_id\":\"episode:form:s_8b4e57f5:object%3A41\",\"episode_carrier_action_id\":\"action:muen76jn:68\",\"entry_handler\":{\"stop\":\"entry_handler\",\"function_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488\",\"event\":\"submit\",\"unit_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit\",\"rooted\":true,\"source\":{\"file\":\"frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx\",\"start\":931,\"end\":1488,\"line\":26,\"line_status\":\"ok\"}},\"request\":{\"stop\":\"request\",\"method\":\"POST\",\"url\":\"/api/workspace/tracer-g5/update\",\"path\":\"/api/workspace/tracer-g5/update\",\"request_occurrence_id\":\"action:muen76jn:68:request:39\",\"trace_id\":\"e168ce4d79190846edeabb489f57cfbf\",\"action_id\":\"action:muen76jn:68\",\"route_template\":\"/api/workspace/:slug/update\"},\"other_requests\":[],\"other_requests_total\":0,\"route\":{\"stop\":\"route\",\"span_id\":\"b3f6aa3eae996b4b\",\"method\":\"POST\",\"route\":\"/api/workspace/:slug/update\",\"status_code\":200,\"admission_reason\":\"same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span\"},\"handler_spans\":[{\"stop\":\"handler\",\"span_id\":\"60a7027a703e5af5\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"validatedRequest\",\"index\":0},{\"stop\":\"handler\",\"span_id\":\"c11e715c83e98da5\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"<anonymous>\",\"index\":1},{\"stop\":\"handler\",\"span_id\":\"4eca32f8024ee670\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"<anonymous>\",\"index\":2}],\"db_ops\":[],\"outcome\":{\"stage\":\"stopped\",\"status\":\"incomplete\",\"http_status\":200,\"writes\":[],\"reads\":[],\"stop_reason\":\"no_database_effect_before_idle\",\"stopped_at\":\"handler\"},\"reached\":\"handler\",\"stopped_at\":\"handler\",\"because\":\"no database span descends from the admitted handler span\",\"summary\":\"focusin action:muen76jn:66 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span\"}],\"actions_total\":9,\"summaries\":[\"submit action:muen79uv:146 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span\",\"click action:muen79uv:145 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span\",\"focusin action:muen79uu:144 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span\",\"submit action:muen787e:108 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 422 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because server responded 422; no database span descends from the admitted handler span\",\"click action:muen787d:107 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 422 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because server responded 422; no database span descends from the admitted handler span\",\"focusin action:muen787d:106 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 422 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because server responded 422; no database span descends from the admitted handler span\",\"submit action:muen76jn:68 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span\",\"click action:muen76jn:67 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span\",\"focusin action:muen76jn:66 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span\"],\"attempts\":[{\"episode_id\":\"episode:form:s_8b4e57f5:object%3A41#3\",\"carrier_action_id\":\"action:muen79uv:146\",\"action_ids\":[\"action:muen79uv:146\",\"action:muen79uv:145\",\"action:muen79uu:144\"],\"events\":[\"submit\",\"click\",\"focusin\"],\"entry_handler\":{\"stop\":\"entry_handler\",\"function_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488\",\"event\":\"submit\",\"unit_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit\",\"rooted\":true,\"source\":{\"file\":\"frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx\",\"start\":931,\"end\":1488,\"line\":26,\"line_status\":\"ok\"}},\"request\":{\"stop\":\"request\",\"method\":\"POST\",\"url\":\"/api/workspace/tracer-g5/update\",\"path\":\"/api/workspace/tracer-g5/update\",\"request_occurrence_id\":\"action:muen79uv:146:request:41\",\"trace_id\":\"ecda20d975049aed94fa317eaef68515\",\"action_id\":\"action:muen79uv:146\",\"route_template\":\"/api/workspace/:slug/update\"},\"route\":{\"stop\":\"route\",\"span_id\":\"f36821780afd4937\",\"method\":\"POST\",\"route\":\"/api/workspace/:slug/update\",\"status_code\":200,\"admission_reason\":\"same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span\"},\"outcome\":{\"stage\":\"stopped\",\"status\":\"incomplete\",\"http_status\":200,\"writes\":[],\"reads\":[],\"stop_reason\":\"no_database_effect_before_idle\",\"stopped_at\":\"handler\"},\"reached\":\"handler\",\"stopped_at\":\"handler\",\"because\":\"no database span descends from the admitted handler span\",\"summary\":\"submit action:muen79uv:146 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span\"},{\"episode_id\":\"episode:form:s_8b4e57f5:object%3A41#2\",\"carrier_action_id\":\"action:muen787e:108\",\"action_ids\":[\"action:muen787e:108\",\"action:muen787d:107\",\"action:muen787d:106\"],\"events\":[\"submit\",\"click\",\"focusin\"],\"entry_handler\":{\"stop\":\"entry_handler\",\"function_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488\",\"event\":\"submit\",\"unit_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit\",\"rooted\":true,\"source\":{\"file\":\"frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx\",\"start\":931,\"end\":1488,\"line\":26,\"line_status\":\"ok\"}},\"request\":{\"stop\":\"request\",\"method\":\"POST\",\"url\":\"/api/workspace/tracer-g5/update\",\"path\":\"/api/workspace/tracer-g5/update\",\"request_occurrence_id\":\"action:muen787e:108:request:40\",\"trace_id\":\"d33d34b691c8f4fe846c0a3334dd105a\",\"action_id\":\"action:muen787e:108\",\"route_template\":\"/api/workspace/:slug/update\"},\"route\":{\"stop\":\"route\",\"span_id\":\"a6aec4250a0168cc\",\"method\":\"POST\",\"route\":\"/api/workspace/:slug/update\",\"status_code\":422,\"admission_reason\":\"same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span\"},\"outcome\":{\"stage\":\"stopped\",\"status\":\"incomplete\",\"http_status\":422,\"writes\":[],\"reads\":[],\"stop_reason\":\"no_database_effect_before_idle\",\"stopped_at\":\"handler\"},\"reached\":\"handler\",\"stopped_at\":\"handler\",\"because\":\"server responded 422; no database span descends from the admitted handler span\",\"summary\":\"submit action:muen787e:108 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 422 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because server responded 422; no database span descends from the admitted handler span\"},{\"episode_id\":\"episode:form:s_8b4e57f5:object%3A41\",\"carrier_action_id\":\"action:muen76jn:68\",\"action_ids\":[\"action:muen76jn:68\",\"action:muen76jn:67\",\"action:muen76jn:66\"],\"events\":[\"submit\",\"click\",\"focusin\"],\"entry_handler\":{\"stop\":\"entry_handler\",\"function_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488\",\"event\":\"submit\",\"unit_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit\",\"rooted\":true,\"source\":{\"file\":\"frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx\",\"start\":931,\"end\":1488,\"line\":26,\"line_status\":\"ok\"}},\"request\":{\"stop\":\"request\",\"method\":\"POST\",\"url\":\"/api/workspace/tracer-g5/update\",\"path\":\"/api/workspace/tracer-g5/update\",\"request_occurrence_id\":\"action:muen76jn:68:request:39\",\"trace_id\":\"e168ce4d79190846edeabb489f57cfbf\",\"action_id\":\"action:muen76jn:68\",\"route_template\":\"/api/workspace/:slug/update\"},\"route\":{\"stop\":\"route\",\"span_id\":\"b3f6aa3eae996b4b\",\"method\":\"POST\",\"route\":\"/api/workspace/:slug/update\",\"status_code\":200,\"admission_reason\":\"same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span\"},\"outcome\":{\"stage\":\"stopped\",\"status\":\"incomplete\",\"http_status\":200,\"writes\":[],\"reads\":[],\"stop_reason\":\"no_database_effect_before_idle\",\"stopped_at\":\"handler\"},\"reached\":\"handler\",\"stopped_at\":\"handler\",\"because\":\"no database span descends from the admitted handler span\",\"summary\":\"submit action:muen76jn:68 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span\"}],\"summary\":\"9 action(s) in 3 attempt(s) on element frontend/src/components/lib/CTAButton/index.jsx:8; newest: submit action:muen79uv:146 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span\"}"
+            }
+          ],
+          "structuredContent": {
+            "status": "ok",
+            "tool": "element_history",
+            "store": {
+              "records": 2644,
+              "actions": 151,
+              "sessions": 1,
+              "episodes": 9,
+              "spans": 465,
+              "backend_instrumented": true,
+              "stamps": true,
+              "builds": [
+                "e061322a6809"
+              ],
+              "manifest_functions": 5101,
+              "source_root": "/Users/austinho/dev/fixtures/anything-llm",
+              "manifest_builds": [
+                "e061322a6809"
+              ],
+              "runs": 1,
+              "malformed_records": 0,
+              "dropped_in_page": 0,
+              "malformed_spans": 0
+            },
+            "element_key": "p_f067e70e6029:117-485#n1",
+            "key_kind": "element_stamp",
+            "placement": {
+              "element_key": "p_f067e70e6029:117-485#n1",
+              "key_kind": "element_stamp",
+              "component": "CTAButton",
+              "source": {
+                "file": "frontend/src/components/lib/CTAButton/index.jsx",
+                "start": 117,
+                "end": 485,
+                "line": 8,
+                "line_status": "ok"
+              },
+              "placement_id": "placement:f067e70e602936c4f8e9c326a164ca171480ddde3f990590f3c0db1b03c5e60b:117:485",
+              "handlers": [
+                {
+                  "event": "click",
+                  "function_id": "function:f067e70e602936c4f8e9c326a164ca171480ddde3f990590f3c0db1b03c5e60b:166:183",
+                  "source": {
+                    "file": "frontend/src/components/lib/CTAButton/index.jsx",
+                    "start": 166,
+                    "end": 183,
+                    "line": 10,
+                    "line_status": "ok"
+                  }
+                }
+              ],
+              "build": "e061322a6809",
+              "sessions": [
+                "s_8b4e57f5"
+              ],
+              "actions_observed": 9
+            },
+            "session": null,
+            "actions": [
+              {
+                "action_id": "action:muen79uv:146",
+                "session": "s_8b4e57f5",
+                "sequence": 2440,
+                "event": "submit",
+                "episode_id": "episode:form:s_8b4e57f5:object%3A41#3",
+                "episode_carrier_action_id": "action:muen79uv:146",
+                "entry_handler": {
+                  "stop": "entry_handler",
+                  "function_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488",
+                  "event": "submit",
+                  "unit_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit",
+                  "rooted": true,
+                  "source": {
+                    "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx",
+                    "start": 931,
+                    "end": 1488,
+                    "line": 26,
+                    "line_status": "ok"
+                  }
+                },
+                "request": {
+                  "stop": "request",
+                  "method": "POST",
+                  "url": "/api/workspace/tracer-g5/update",
+                  "path": "/api/workspace/tracer-g5/update",
+                  "request_occurrence_id": "action:muen79uv:146:request:41",
+                  "trace_id": "ecda20d975049aed94fa317eaef68515",
+                  "action_id": "action:muen79uv:146",
+                  "route_template": "/api/workspace/:slug/update"
+                },
+                "other_requests": [],
+                "other_requests_total": 0,
+                "route": {
+                  "stop": "route",
+                  "span_id": "f36821780afd4937",
+                  "method": "POST",
+                  "route": "/api/workspace/:slug/update",
+                  "status_code": 200,
+                  "admission_reason": "same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span"
+                },
+                "handler_spans": [
+                  {
+                    "stop": "handler",
+                    "span_id": "106716a353aa0a17",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "validatedRequest",
+                    "index": 0
+                  },
+                  {
+                    "stop": "handler",
+                    "span_id": "535e9f1ff754edef",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "<anonymous>",
+                    "index": 1
+                  },
+                  {
+                    "stop": "handler",
+                    "span_id": "07a99f579e83b8e4",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "<anonymous>",
+                    "index": 2
+                  }
+                ],
+                "db_ops": [],
+                "outcome": {
+                  "stage": "stopped",
+                  "status": "incomplete",
+                  "http_status": 200,
+                  "writes": [],
+                  "reads": [],
+                  "stop_reason": "no_database_effect_before_idle",
+                  "stopped_at": "handler"
+                },
+                "reached": "handler",
+                "stopped_at": "handler",
+                "because": "no database span descends from the admitted handler span",
+                "summary": "submit action:muen79uv:146 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span"
+              },
+              {
+                "action_id": "action:muen79uv:145",
+                "session": "s_8b4e57f5",
+                "sequence": 2433,
+                "event": "click",
+                "episode_id": "episode:form:s_8b4e57f5:object%3A41#3",
+                "episode_carrier_action_id": "action:muen79uv:146",
+                "entry_handler": {
+                  "stop": "entry_handler",
+                  "function_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488",
+                  "event": "submit",
+                  "unit_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit",
+                  "rooted": true,
+                  "source": {
+                    "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx",
+                    "start": 931,
+                    "end": 1488,
+                    "line": 26,
+                    "line_status": "ok"
+                  }
+                },
+                "request": {
+                  "stop": "request",
+                  "method": "POST",
+                  "url": "/api/workspace/tracer-g5/update",
+                  "path": "/api/workspace/tracer-g5/update",
+                  "request_occurrence_id": "action:muen79uv:146:request:41",
+                  "trace_id": "ecda20d975049aed94fa317eaef68515",
+                  "action_id": "action:muen79uv:146",
+                  "route_template": "/api/workspace/:slug/update"
+                },
+                "other_requests": [],
+                "other_requests_total": 0,
+                "route": {
+                  "stop": "route",
+                  "span_id": "f36821780afd4937",
+                  "method": "POST",
+                  "route": "/api/workspace/:slug/update",
+                  "status_code": 200,
+                  "admission_reason": "same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span"
+                },
+                "handler_spans": [
+                  {
+                    "stop": "handler",
+                    "span_id": "106716a353aa0a17",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "validatedRequest",
+                    "index": 0
+                  },
+                  {
+                    "stop": "handler",
+                    "span_id": "535e9f1ff754edef",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "<anonymous>",
+                    "index": 1
+                  },
+                  {
+                    "stop": "handler",
+                    "span_id": "07a99f579e83b8e4",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "<anonymous>",
+                    "index": 2
+                  }
+                ],
+                "db_ops": [],
+                "outcome": {
+                  "stage": "stopped",
+                  "status": "incomplete",
+                  "http_status": 200,
+                  "writes": [],
+                  "reads": [],
+                  "stop_reason": "no_database_effect_before_idle",
+                  "stopped_at": "handler"
+                },
+                "reached": "handler",
+                "stopped_at": "handler",
+                "because": "no database span descends from the admitted handler span",
+                "summary": "click action:muen79uv:145 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span"
+              },
+              {
+                "action_id": "action:muen79uu:144",
+                "session": "s_8b4e57f5",
+                "sequence": 2432,
+                "event": "focusin",
+                "episode_id": "episode:form:s_8b4e57f5:object%3A41#3",
+                "episode_carrier_action_id": "action:muen79uv:146",
+                "entry_handler": {
+                  "stop": "entry_handler",
+                  "function_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488",
+                  "event": "submit",
+                  "unit_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit",
+                  "rooted": true,
+                  "source": {
+                    "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx",
+                    "start": 931,
+                    "end": 1488,
+                    "line": 26,
+                    "line_status": "ok"
+                  }
+                },
+                "request": {
+                  "stop": "request",
+                  "method": "POST",
+                  "url": "/api/workspace/tracer-g5/update",
+                  "path": "/api/workspace/tracer-g5/update",
+                  "request_occurrence_id": "action:muen79uv:146:request:41",
+                  "trace_id": "ecda20d975049aed94fa317eaef68515",
+                  "action_id": "action:muen79uv:146",
+                  "route_template": "/api/workspace/:slug/update"
+                },
+                "other_requests": [],
+                "other_requests_total": 0,
+                "route": {
+                  "stop": "route",
+                  "span_id": "f36821780afd4937",
+                  "method": "POST",
+                  "route": "/api/workspace/:slug/update",
+                  "status_code": 200,
+                  "admission_reason": "same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span"
+                },
+                "handler_spans": [
+                  {
+                    "stop": "handler",
+                    "span_id": "106716a353aa0a17",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "validatedRequest",
+                    "index": 0
+                  },
+                  {
+                    "stop": "handler",
+                    "span_id": "535e9f1ff754edef",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "<anonymous>",
+                    "index": 1
+                  },
+                  {
+                    "stop": "handler",
+                    "span_id": "07a99f579e83b8e4",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "<anonymous>",
+                    "index": 2
+                  }
+                ],
+                "db_ops": [],
+                "outcome": {
+                  "stage": "stopped",
+                  "status": "incomplete",
+                  "http_status": 200,
+                  "writes": [],
+                  "reads": [],
+                  "stop_reason": "no_database_effect_before_idle",
+                  "stopped_at": "handler"
+                },
+                "reached": "handler",
+                "stopped_at": "handler",
+                "because": "no database span descends from the admitted handler span",
+                "summary": "focusin action:muen79uu:144 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span"
+              },
+              {
+                "action_id": "action:muen787e:108",
+                "session": "s_8b4e57f5",
+                "sequence": 1971,
+                "event": "submit",
+                "episode_id": "episode:form:s_8b4e57f5:object%3A41#2",
+                "episode_carrier_action_id": "action:muen787e:108",
+                "entry_handler": {
+                  "stop": "entry_handler",
+                  "function_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488",
+                  "event": "submit",
+                  "unit_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit",
+                  "rooted": true,
+                  "source": {
+                    "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx",
+                    "start": 931,
+                    "end": 1488,
+                    "line": 26,
+                    "line_status": "ok"
+                  }
+                },
+                "request": {
+                  "stop": "request",
+                  "method": "POST",
+                  "url": "/api/workspace/tracer-g5/update",
+                  "path": "/api/workspace/tracer-g5/update",
+                  "request_occurrence_id": "action:muen787e:108:request:40",
+                  "trace_id": "d33d34b691c8f4fe846c0a3334dd105a",
+                  "action_id": "action:muen787e:108",
+                  "route_template": "/api/workspace/:slug/update"
+                },
+                "other_requests": [],
+                "other_requests_total": 0,
+                "route": {
+                  "stop": "route",
+                  "span_id": "a6aec4250a0168cc",
+                  "method": "POST",
+                  "route": "/api/workspace/:slug/update",
+                  "status_code": 422,
+                  "admission_reason": "same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span"
+                },
+                "handler_spans": [
+                  {
+                    "stop": "handler",
+                    "span_id": "8016372684b70aff",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "validatedRequest",
+                    "index": 0
+                  },
+                  {
+                    "stop": "handler",
+                    "span_id": "1943f7e16c67b5ae",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "<anonymous>",
+                    "index": 1
+                  },
+                  {
+                    "stop": "handler",
+                    "span_id": "ad14c4f35464bc68",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "<anonymous>",
+                    "index": 2
+                  }
+                ],
+                "db_ops": [],
+                "outcome": {
+                  "stage": "stopped",
+                  "status": "incomplete",
+                  "http_status": 422,
+                  "writes": [],
+                  "reads": [],
+                  "stop_reason": "no_database_effect_before_idle",
+                  "stopped_at": "handler"
+                },
+                "reached": "handler",
+                "stopped_at": "handler",
+                "because": "server responded 422; no database span descends from the admitted handler span",
+                "summary": "submit action:muen787e:108 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 422 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because server responded 422; no database span descends from the admitted handler span"
+              },
+              {
+                "action_id": "action:muen787d:107",
+                "session": "s_8b4e57f5",
+                "sequence": 1964,
+                "event": "click",
+                "episode_id": "episode:form:s_8b4e57f5:object%3A41#2",
+                "episode_carrier_action_id": "action:muen787e:108",
+                "entry_handler": {
+                  "stop": "entry_handler",
+                  "function_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488",
+                  "event": "submit",
+                  "unit_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit",
+                  "rooted": true,
+                  "source": {
+                    "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx",
+                    "start": 931,
+                    "end": 1488,
+                    "line": 26,
+                    "line_status": "ok"
+                  }
+                },
+                "request": {
+                  "stop": "request",
+                  "method": "POST",
+                  "url": "/api/workspace/tracer-g5/update",
+                  "path": "/api/workspace/tracer-g5/update",
+                  "request_occurrence_id": "action:muen787e:108:request:40",
+                  "trace_id": "d33d34b691c8f4fe846c0a3334dd105a",
+                  "action_id": "action:muen787e:108",
+                  "route_template": "/api/workspace/:slug/update"
+                },
+                "other_requests": [],
+                "other_requests_total": 0,
+                "route": {
+                  "stop": "route",
+                  "span_id": "a6aec4250a0168cc",
+                  "method": "POST",
+                  "route": "/api/workspace/:slug/update",
+                  "status_code": 422,
+                  "admission_reason": "same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span"
+                },
+                "handler_spans": [
+                  {
+                    "stop": "handler",
+                    "span_id": "8016372684b70aff",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "validatedRequest",
+                    "index": 0
+                  },
+                  {
+                    "stop": "handler",
+                    "span_id": "1943f7e16c67b5ae",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "<anonymous>",
+                    "index": 1
+                  },
+                  {
+                    "stop": "handler",
+                    "span_id": "ad14c4f35464bc68",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "<anonymous>",
+                    "index": 2
+                  }
+                ],
+                "db_ops": [],
+                "outcome": {
+                  "stage": "stopped",
+                  "status": "incomplete",
+                  "http_status": 422,
+                  "writes": [],
+                  "reads": [],
+                  "stop_reason": "no_database_effect_before_idle",
+                  "stopped_at": "handler"
+                },
+                "reached": "handler",
+                "stopped_at": "handler",
+                "because": "server responded 422; no database span descends from the admitted handler span",
+                "summary": "click action:muen787d:107 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 422 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because server responded 422; no database span descends from the admitted handler span"
+              },
+              {
+                "action_id": "action:muen787d:106",
+                "session": "s_8b4e57f5",
+                "sequence": 1963,
+                "event": "focusin",
+                "episode_id": "episode:form:s_8b4e57f5:object%3A41#2",
+                "episode_carrier_action_id": "action:muen787e:108",
+                "entry_handler": {
+                  "stop": "entry_handler",
+                  "function_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488",
+                  "event": "submit",
+                  "unit_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit",
+                  "rooted": true,
+                  "source": {
+                    "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx",
+                    "start": 931,
+                    "end": 1488,
+                    "line": 26,
+                    "line_status": "ok"
+                  }
+                },
+                "request": {
+                  "stop": "request",
+                  "method": "POST",
+                  "url": "/api/workspace/tracer-g5/update",
+                  "path": "/api/workspace/tracer-g5/update",
+                  "request_occurrence_id": "action:muen787e:108:request:40",
+                  "trace_id": "d33d34b691c8f4fe846c0a3334dd105a",
+                  "action_id": "action:muen787e:108",
+                  "route_template": "/api/workspace/:slug/update"
+                },
+                "other_requests": [],
+                "other_requests_total": 0,
+                "route": {
+                  "stop": "route",
+                  "span_id": "a6aec4250a0168cc",
+                  "method": "POST",
+                  "route": "/api/workspace/:slug/update",
+                  "status_code": 422,
+                  "admission_reason": "same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span"
+                },
+                "handler_spans": [
+                  {
+                    "stop": "handler",
+                    "span_id": "8016372684b70aff",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "validatedRequest",
+                    "index": 0
+                  },
+                  {
+                    "stop": "handler",
+                    "span_id": "1943f7e16c67b5ae",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "<anonymous>",
+                    "index": 1
+                  },
+                  {
+                    "stop": "handler",
+                    "span_id": "ad14c4f35464bc68",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "<anonymous>",
+                    "index": 2
+                  }
+                ],
+                "db_ops": [],
+                "outcome": {
+                  "stage": "stopped",
+                  "status": "incomplete",
+                  "http_status": 422,
+                  "writes": [],
+                  "reads": [],
+                  "stop_reason": "no_database_effect_before_idle",
+                  "stopped_at": "handler"
+                },
+                "reached": "handler",
+                "stopped_at": "handler",
+                "because": "server responded 422; no database span descends from the admitted handler span",
+                "summary": "focusin action:muen787d:106 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 422 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because server responded 422; no database span descends from the admitted handler span"
+              },
+              {
+                "action_id": "action:muen76jn:68",
+                "session": "s_8b4e57f5",
+                "sequence": 1477,
+                "event": "submit",
+                "episode_id": "episode:form:s_8b4e57f5:object%3A41",
+                "episode_carrier_action_id": "action:muen76jn:68",
+                "entry_handler": {
+                  "stop": "entry_handler",
+                  "function_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488",
+                  "event": "submit",
+                  "unit_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit",
+                  "rooted": true,
+                  "source": {
+                    "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx",
+                    "start": 931,
+                    "end": 1488,
+                    "line": 26,
+                    "line_status": "ok"
+                  }
+                },
+                "request": {
+                  "stop": "request",
+                  "method": "POST",
+                  "url": "/api/workspace/tracer-g5/update",
+                  "path": "/api/workspace/tracer-g5/update",
+                  "request_occurrence_id": "action:muen76jn:68:request:39",
+                  "trace_id": "e168ce4d79190846edeabb489f57cfbf",
+                  "action_id": "action:muen76jn:68",
+                  "route_template": "/api/workspace/:slug/update"
+                },
+                "other_requests": [],
+                "other_requests_total": 0,
+                "route": {
+                  "stop": "route",
+                  "span_id": "b3f6aa3eae996b4b",
+                  "method": "POST",
+                  "route": "/api/workspace/:slug/update",
+                  "status_code": 200,
+                  "admission_reason": "same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span"
+                },
+                "handler_spans": [
+                  {
+                    "stop": "handler",
+                    "span_id": "60a7027a703e5af5",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "validatedRequest",
+                    "index": 0
+                  },
+                  {
+                    "stop": "handler",
+                    "span_id": "c11e715c83e98da5",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "<anonymous>",
+                    "index": 1
+                  },
+                  {
+                    "stop": "handler",
+                    "span_id": "4eca32f8024ee670",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "<anonymous>",
+                    "index": 2
+                  }
+                ],
+                "db_ops": [],
+                "outcome": {
+                  "stage": "stopped",
+                  "status": "incomplete",
+                  "http_status": 200,
+                  "writes": [],
+                  "reads": [],
+                  "stop_reason": "no_database_effect_before_idle",
+                  "stopped_at": "handler"
+                },
+                "reached": "handler",
+                "stopped_at": "handler",
+                "because": "no database span descends from the admitted handler span",
+                "summary": "submit action:muen76jn:68 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span"
+              },
+              {
+                "action_id": "action:muen76jn:67",
+                "session": "s_8b4e57f5",
+                "sequence": 1470,
+                "event": "click",
+                "episode_id": "episode:form:s_8b4e57f5:object%3A41",
+                "episode_carrier_action_id": "action:muen76jn:68",
+                "entry_handler": {
+                  "stop": "entry_handler",
+                  "function_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488",
+                  "event": "submit",
+                  "unit_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit",
+                  "rooted": true,
+                  "source": {
+                    "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx",
+                    "start": 931,
+                    "end": 1488,
+                    "line": 26,
+                    "line_status": "ok"
+                  }
+                },
+                "request": {
+                  "stop": "request",
+                  "method": "POST",
+                  "url": "/api/workspace/tracer-g5/update",
+                  "path": "/api/workspace/tracer-g5/update",
+                  "request_occurrence_id": "action:muen76jn:68:request:39",
+                  "trace_id": "e168ce4d79190846edeabb489f57cfbf",
+                  "action_id": "action:muen76jn:68",
+                  "route_template": "/api/workspace/:slug/update"
+                },
+                "other_requests": [],
+                "other_requests_total": 0,
+                "route": {
+                  "stop": "route",
+                  "span_id": "b3f6aa3eae996b4b",
+                  "method": "POST",
+                  "route": "/api/workspace/:slug/update",
+                  "status_code": 200,
+                  "admission_reason": "same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span"
+                },
+                "handler_spans": [
+                  {
+                    "stop": "handler",
+                    "span_id": "60a7027a703e5af5",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "validatedRequest",
+                    "index": 0
+                  },
+                  {
+                    "stop": "handler",
+                    "span_id": "c11e715c83e98da5",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "<anonymous>",
+                    "index": 1
+                  },
+                  {
+                    "stop": "handler",
+                    "span_id": "4eca32f8024ee670",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "<anonymous>",
+                    "index": 2
+                  }
+                ],
+                "db_ops": [],
+                "outcome": {
+                  "stage": "stopped",
+                  "status": "incomplete",
+                  "http_status": 200,
+                  "writes": [],
+                  "reads": [],
+                  "stop_reason": "no_database_effect_before_idle",
+                  "stopped_at": "handler"
+                },
+                "reached": "handler",
+                "stopped_at": "handler",
+                "because": "no database span descends from the admitted handler span",
+                "summary": "click action:muen76jn:67 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span"
+              },
+              {
+                "action_id": "action:muen76jn:66",
+                "session": "s_8b4e57f5",
+                "sequence": 1469,
+                "event": "focusin",
+                "episode_id": "episode:form:s_8b4e57f5:object%3A41",
+                "episode_carrier_action_id": "action:muen76jn:68",
+                "entry_handler": {
+                  "stop": "entry_handler",
+                  "function_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488",
+                  "event": "submit",
+                  "unit_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit",
+                  "rooted": true,
+                  "source": {
+                    "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx",
+                    "start": 931,
+                    "end": 1488,
+                    "line": 26,
+                    "line_status": "ok"
+                  }
+                },
+                "request": {
+                  "stop": "request",
+                  "method": "POST",
+                  "url": "/api/workspace/tracer-g5/update",
+                  "path": "/api/workspace/tracer-g5/update",
+                  "request_occurrence_id": "action:muen76jn:68:request:39",
+                  "trace_id": "e168ce4d79190846edeabb489f57cfbf",
+                  "action_id": "action:muen76jn:68",
+                  "route_template": "/api/workspace/:slug/update"
+                },
+                "other_requests": [],
+                "other_requests_total": 0,
+                "route": {
+                  "stop": "route",
+                  "span_id": "b3f6aa3eae996b4b",
+                  "method": "POST",
+                  "route": "/api/workspace/:slug/update",
+                  "status_code": 200,
+                  "admission_reason": "same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span"
+                },
+                "handler_spans": [
+                  {
+                    "stop": "handler",
+                    "span_id": "60a7027a703e5af5",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "validatedRequest",
+                    "index": 0
+                  },
+                  {
+                    "stop": "handler",
+                    "span_id": "c11e715c83e98da5",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "<anonymous>",
+                    "index": 1
+                  },
+                  {
+                    "stop": "handler",
+                    "span_id": "4eca32f8024ee670",
+                    "route": "/api/workspace/:slug/update",
+                    "name": "<anonymous>",
+                    "index": 2
+                  }
+                ],
+                "db_ops": [],
+                "outcome": {
+                  "stage": "stopped",
+                  "status": "incomplete",
+                  "http_status": 200,
+                  "writes": [],
+                  "reads": [],
+                  "stop_reason": "no_database_effect_before_idle",
+                  "stopped_at": "handler"
+                },
+                "reached": "handler",
+                "stopped_at": "handler",
+                "because": "no database span descends from the admitted handler span",
+                "summary": "focusin action:muen76jn:66 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span"
+              }
+            ],
+            "actions_total": 9,
+            "summaries": [
+              "submit action:muen79uv:146 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span",
+              "click action:muen79uv:145 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span",
+              "focusin action:muen79uu:144 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span",
+              "submit action:muen787e:108 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 422 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because server responded 422; no database span descends from the admitted handler span",
+              "click action:muen787d:107 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 422 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because server responded 422; no database span descends from the admitted handler span",
+              "focusin action:muen787d:106 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 422 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because server responded 422; no database span descends from the admitted handler span",
+              "submit action:muen76jn:68 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span",
+              "click action:muen76jn:67 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span",
+              "focusin action:muen76jn:66 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span"
+            ],
+            "attempts": [
+              {
+                "episode_id": "episode:form:s_8b4e57f5:object%3A41#3",
+                "carrier_action_id": "action:muen79uv:146",
+                "action_ids": [
+                  "action:muen79uv:146",
+                  "action:muen79uv:145",
+                  "action:muen79uu:144"
+                ],
+                "events": [
+                  "submit",
+                  "click",
+                  "focusin"
+                ],
+                "entry_handler": {
+                  "stop": "entry_handler",
+                  "function_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488",
+                  "event": "submit",
+                  "unit_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit",
+                  "rooted": true,
+                  "source": {
+                    "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx",
+                    "start": 931,
+                    "end": 1488,
+                    "line": 26,
+                    "line_status": "ok"
+                  }
+                },
+                "request": {
+                  "stop": "request",
+                  "method": "POST",
+                  "url": "/api/workspace/tracer-g5/update",
+                  "path": "/api/workspace/tracer-g5/update",
+                  "request_occurrence_id": "action:muen79uv:146:request:41",
+                  "trace_id": "ecda20d975049aed94fa317eaef68515",
+                  "action_id": "action:muen79uv:146",
+                  "route_template": "/api/workspace/:slug/update"
+                },
+                "route": {
+                  "stop": "route",
+                  "span_id": "f36821780afd4937",
+                  "method": "POST",
+                  "route": "/api/workspace/:slug/update",
+                  "status_code": 200,
+                  "admission_reason": "same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span"
+                },
+                "outcome": {
+                  "stage": "stopped",
+                  "status": "incomplete",
+                  "http_status": 200,
+                  "writes": [],
+                  "reads": [],
+                  "stop_reason": "no_database_effect_before_idle",
+                  "stopped_at": "handler"
+                },
+                "reached": "handler",
+                "stopped_at": "handler",
+                "because": "no database span descends from the admitted handler span",
+                "summary": "submit action:muen79uv:146 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span"
+              },
+              {
+                "episode_id": "episode:form:s_8b4e57f5:object%3A41#2",
+                "carrier_action_id": "action:muen787e:108",
+                "action_ids": [
+                  "action:muen787e:108",
+                  "action:muen787d:107",
+                  "action:muen787d:106"
+                ],
+                "events": [
+                  "submit",
+                  "click",
+                  "focusin"
+                ],
+                "entry_handler": {
+                  "stop": "entry_handler",
+                  "function_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488",
+                  "event": "submit",
+                  "unit_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit",
+                  "rooted": true,
+                  "source": {
+                    "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx",
+                    "start": 931,
+                    "end": 1488,
+                    "line": 26,
+                    "line_status": "ok"
+                  }
+                },
+                "request": {
+                  "stop": "request",
+                  "method": "POST",
+                  "url": "/api/workspace/tracer-g5/update",
+                  "path": "/api/workspace/tracer-g5/update",
+                  "request_occurrence_id": "action:muen787e:108:request:40",
+                  "trace_id": "d33d34b691c8f4fe846c0a3334dd105a",
+                  "action_id": "action:muen787e:108",
+                  "route_template": "/api/workspace/:slug/update"
+                },
+                "route": {
+                  "stop": "route",
+                  "span_id": "a6aec4250a0168cc",
+                  "method": "POST",
+                  "route": "/api/workspace/:slug/update",
+                  "status_code": 422,
+                  "admission_reason": "same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span"
+                },
+                "outcome": {
+                  "stage": "stopped",
+                  "status": "incomplete",
+                  "http_status": 422,
+                  "writes": [],
+                  "reads": [],
+                  "stop_reason": "no_database_effect_before_idle",
+                  "stopped_at": "handler"
+                },
+                "reached": "handler",
+                "stopped_at": "handler",
+                "because": "server responded 422; no database span descends from the admitted handler span",
+                "summary": "submit action:muen787e:108 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 422 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because server responded 422; no database span descends from the admitted handler span"
+              },
+              {
+                "episode_id": "episode:form:s_8b4e57f5:object%3A41",
+                "carrier_action_id": "action:muen76jn:68",
+                "action_ids": [
+                  "action:muen76jn:68",
+                  "action:muen76jn:67",
+                  "action:muen76jn:66"
+                ],
+                "events": [
+                  "submit",
+                  "click",
+                  "focusin"
+                ],
+                "entry_handler": {
+                  "stop": "entry_handler",
+                  "function_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488",
+                  "event": "submit",
+                  "unit_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit",
+                  "rooted": true,
+                  "source": {
+                    "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx",
+                    "start": 931,
+                    "end": 1488,
+                    "line": 26,
+                    "line_status": "ok"
+                  }
+                },
+                "request": {
+                  "stop": "request",
+                  "method": "POST",
+                  "url": "/api/workspace/tracer-g5/update",
+                  "path": "/api/workspace/tracer-g5/update",
+                  "request_occurrence_id": "action:muen76jn:68:request:39",
+                  "trace_id": "e168ce4d79190846edeabb489f57cfbf",
+                  "action_id": "action:muen76jn:68",
+                  "route_template": "/api/workspace/:slug/update"
+                },
+                "route": {
+                  "stop": "route",
+                  "span_id": "b3f6aa3eae996b4b",
+                  "method": "POST",
+                  "route": "/api/workspace/:slug/update",
+                  "status_code": 200,
+                  "admission_reason": "same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span"
+                },
+                "outcome": {
+                  "stage": "stopped",
+                  "status": "incomplete",
+                  "http_status": 200,
+                  "writes": [],
+                  "reads": [],
+                  "stop_reason": "no_database_effect_before_idle",
+                  "stopped_at": "handler"
+                },
+                "reached": "handler",
+                "stopped_at": "handler",
+                "because": "no database span descends from the admitted handler span",
+                "summary": "submit action:muen76jn:68 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span"
+              }
+            ],
+            "summary": "9 action(s) in 3 attempt(s) on element frontend/src/components/lib/CTAButton/index.jsx:8; newest: submit action:muen79uv:146 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span"
+          },
+          "isError": false
+        },
+        "jsonrpc": "2.0",
+        "id": 4
+      }
+    },
+    {
+      "direction": "client→server",
+      "at": "2026-09-23T21:56:25.367Z",
+      "message": {
+        "jsonrpc": "2.0",
+        "id": 5,
+        "method": "tools/call",
+        "params": {
+          "name": "action_chain",
+          "arguments": {
+            "action_id": "action:muen787e:108"
+          }
+        }
+      }
+    },
+    {
+      "direction": "server→client",
+      "at": "2026-09-23T21:56:25.368Z",
+      "message": {
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "submit action:muen787e:108 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 422 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because server responded 422; no database span descends from the admitted handler span"
+            },
+            {
+              "type": "text",
+              "text": "{\"status\":\"ok\",\"tool\":\"action_chain\",\"store\":{\"records\":2644,\"actions\":151,\"sessions\":1,\"episodes\":9,\"spans\":465,\"backend_instrumented\":true,\"stamps\":true,\"builds\":[\"e061322a6809\"],\"manifest_functions\":5101,\"source_root\":\"/Users/austinho/dev/fixtures/anything-llm\",\"manifest_builds\":[\"e061322a6809\"],\"runs\":1,\"malformed_records\":0,\"dropped_in_page\":0,\"malformed_spans\":0},\"action_id\":\"action:muen787e:108\",\"session\":\"s_8b4e57f5\",\"episode_id\":\"episode:form:s_8b4e57f5:object%3A41#2\",\"episode_carrier_action_id\":\"action:muen787e:108\",\"episode_action_ids\":[\"action:muen77z1:69\",\"action:muen77z1:70\",\"action:muen77z3:71\",\"action:muen77z3:72\",\"action:muen77z5:73\",\"action:muen77z6:74\",\"action:muen77zo:75\",\"action:muen77zo:76\",\"action:muen7805:77\",\"action:muen7805:78\",\"action:muen780m:79\",\"action:muen780n:80\",\"action:muen7815:81\",\"action:muen7815:82\",\"action:muen781m:83\",\"action:muen781n:84\",\"action:muen7822:85\",\"action:muen7823:86\",\"action:muen782k:87\",\"action:muen782l:88\",\"action:muen7832:89\",\"action:muen7833:90\",\"action:muen783j:91\",\"action:muen783k:92\",\"action:muen7841:93\",\"action:muen7842:94\",\"action:muen784k:95\",\"action:muen784k:96\",\"action:muen7850:97\",\"action:muen7851:98\",\"action:muen785h:99\",\"action:muen785h:100\",\"action:muen785y:101\",\"action:muen785z:102\",\"action:muen786f:103\",\"action:muen786f:104\",\"action:muen787d:105\",\"action:muen787d:106\",\"action:muen787d:107\",\"action:muen787e:108\"],\"standalone\":false,\"stops\":[{\"stop\":\"dispatch\",\"action_id\":\"action:muen787e:108\",\"session\":\"s_8b4e57f5\",\"sequence\":1971,\"event\":\"submit\",\"target\":{\"tag\":\"button\",\"attributes\":{},\"ref\":\"object:45\",\"element_key\":\"p_f067e70e6029:117-485#n1\"},\"element_key\":\"p_f067e70e6029:117-485#n1\"},{\"stop\":\"entry_handler\",\"function_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488\",\"event\":\"submit\",\"unit_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit\",\"rooted\":true,\"source\":{\"file\":\"frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx\",\"start\":931,\"end\":1488,\"line\":26,\"line_status\":\"ok\"}},{\"stop\":\"request\",\"method\":\"POST\",\"url\":\"/api/workspace/tracer-g5/update\",\"path\":\"/api/workspace/tracer-g5/update\",\"request_occurrence_id\":\"action:muen787e:108:request:40\",\"trace_id\":\"d33d34b691c8f4fe846c0a3334dd105a\",\"action_id\":\"action:muen787e:108\",\"route_template\":\"/api/workspace/:slug/update\"},{\"stop\":\"route\",\"span_id\":\"a6aec4250a0168cc\",\"method\":\"POST\",\"route\":\"/api/workspace/:slug/update\",\"status_code\":422,\"admission_reason\":\"same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span\"},{\"stop\":\"handler\",\"span_id\":\"8016372684b70aff\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"validatedRequest\",\"index\":0},{\"stop\":\"handler\",\"span_id\":\"1943f7e16c67b5ae\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"<anonymous>\",\"index\":1},{\"stop\":\"handler\",\"span_id\":\"ad14c4f35464bc68\",\"route\":\"/api/workspace/:slug/update\",\"name\":\"<anonymous>\",\"index\":2}],\"requests\":[{\"action_id\":\"action:muen787e:108\",\"method\":\"POST\",\"url\":\"/api/workspace/tracer-g5/update\",\"request_occurrence_id\":\"action:muen787e:108:request:40\"}],\"outcome\":{\"stage\":\"stopped\",\"status\":\"incomplete\",\"http_status\":422,\"writes\":[],\"reads\":[],\"stop_reason\":\"no_database_effect_before_idle\",\"stopped_at\":\"handler\"},\"reached\":\"handler\",\"stopped_at\":\"handler\",\"because\":\"server responded 422; no database span descends from the admitted handler span\",\"chain\":{\"schema\":\"producttrace.causal-chain.v1\",\"action_id\":\"action:muen787e:108\",\"episode_id\":\"episode:form:s_8b4e57f5:object%3A41#2\",\"episode_action_ids\":[\"action:muen77z1:69\",\"action:muen77z1:70\",\"action:muen77z3:71\",\"action:muen77z3:72\",\"action:muen77z5:73\",\"action:muen77z6:74\",\"action:muen77zo:75\",\"action:muen77zo:76\",\"action:muen7805:77\",\"action:muen7805:78\",\"action:muen780m:79\",\"action:muen780n:80\",\"action:muen7815:81\",\"action:muen7815:82\",\"action:muen781m:83\",\"action:muen781n:84\",\"action:muen7822:85\",\"action:muen7823:86\",\"action:muen782k:87\",\"action:muen782l:88\",\"action:muen7832:89\",\"action:muen7833:90\",\"action:muen783j:91\",\"action:muen783k:92\",\"action:muen7841:93\",\"action:muen7842:94\",\"action:muen784k:95\",\"action:muen784k:96\",\"action:muen7850:97\",\"action:muen7851:98\",\"action:muen785h:99\",\"action:muen785h:100\",\"action:muen785y:101\",\"action:muen785z:102\",\"action:muen786f:103\",\"action:muen786f:104\",\"action:muen787d:105\",\"action:muen787d:106\",\"action:muen787d:107\",\"action:muen787e:108\"],\"coalescing_rule\":\"same observed form, including the action that rendered it, through rejected submits up to and including the next submit that sent a request\",\"session_id\":\"s_8b4e57f5\",\"event\":\"submit\",\"control\":{\"tag\":\"button\",\"attributes\":{},\"label\":\"button\"},\"display\":{\"stage\":\"stopped\",\"status\":\"incomplete\",\"label\":\"Stopped: no database effect arrived before the episode became idle\"},\"entry_handler\":{\"unit_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit\",\"function_id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488\",\"source\":{\"file\":\"frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx\",\"start\":931,\"end\":1488},\"rooted\":true},\"spine\":{\"action_id\":\"action:muen787e:108\",\"function_ids\":[\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488\"]},\"chain\":[{\"kind\":\"function.enter\",\"id\":\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488\",\"source_ref\":{\"file\":\"frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx\",\"start\":931,\"end\":1488},\"evidence_ids\":[1972]},{\"schema\":\"producttrace.runtime-evidence.v1\",\"sequence\":1982,\"timestamp\":1790200575050,\"parent_continuation_id\":\"continuation:action:muen787e:108:function:3893\",\"kind\":\"network.request\",\"action_id\":\"action:muen787e:108\",\"action_occurrence_id\":\"action:muen787e:108\",\"request_occurrence_id\":\"action:muen787e:108:request:40\",\"method\":\"POST\",\"url\":\"/api/workspace/tracer-g5/update\",\"traceparent\":\"00-d33d34b691c8f4fe846c0a3334dd105a-60f06700f824597e-01\",\"trace_context\":{\"trace_id\":\"d33d34b691c8f4fe846c0a3334dd105a\",\"span_id\":\"60f06700f824597e\",\"trace_flags\":\"01\",\"traceparent\":\"00-d33d34b691c8f4fe846c0a3334dd105a-60f06700f824597e-01\"},\"transport\":\"fetch\",\"internal\":false,\"terminal_owner_continuation_id\":\"continuation:action:muen787e:108:function:3889\",\"linkage_kind\":\"direct\",\"spine\":{\"action_id\":\"action:muen787e:108\",\"function_ids\":[\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488\",\"function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488\",\"function:1867c691f7b1b823a5514d0df684192672a2bd24030a4f1524fc1588410b9e48:897:1300\",\"function:1867c691f7b1b823a5514d0df684192672a2bd24030a4f1524fc1588410b9e48:897:1300\"]},\"evidence_ids\":[\"action:muen787e:108:request:40\"],\"capture_page_id\":\"s_8b4e57f5\",\"tracer_run\":\"run-20260923t215607124z-00893f\",\"tracer_build\":\"e061322a6809\",\"id\":\"action:muen787e:108:request:40\"},{\"schema\":\"producttrace.runtime-evidence.v1\",\"sequence\":2001,\"timestamp\":1790200575050,\"kind\":\"route.dispatch\",\"action_id\":\"action:muen787e:108\",\"route_id\":\"route:a6aec4250a0168cc\",\"trace_id\":\"d33d34b691c8f4fe846c0a3334dd105a\",\"request_occurrence_id\":\"action:muen787e:108:request:40\",\"span_id\":\"a6aec4250a0168cc\",\"source\":\"opentelemetry\",\"admission_reason\":\"same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span\",\"evidence_ids\":[\"a6aec4250a0168cc\",\"d33d34b691c8f4fe846c0a3334dd105a\"],\"id\":\"route:a6aec4250a0168cc\"},{\"schema\":\"producttrace.runtime-evidence.v1\",\"sequence\":2002,\"timestamp\":1790200575050,\"kind\":\"handler.enter\",\"action_id\":\"action:muen787e:108\",\"request_occurrence_id\":\"action:muen787e:108:request:40\",\"handler_id\":\"handler:8016372684b70aff\",\"trace_id\":\"d33d34b691c8f4fe846c0a3334dd105a\",\"span_id\":\"8016372684b70aff\",\"admission_reason\":\"handler span is an exact descendant of the admitted server span in the same trace\",\"evidence_ids\":[\"8016372684b70aff\",\"d33d34b691c8f4fe846c0a3334dd105a\"],\"id\":\"handler:8016372684b70aff\"},{\"schema\":\"producttrace.runtime-evidence.v1\",\"sequence\":2003,\"timestamp\":1790200575050,\"kind\":\"handler.enter\",\"action_id\":\"action:muen787e:108\",\"request_occurrence_id\":\"action:muen787e:108:request:40\",\"handler_id\":\"handler:1943f7e16c67b5ae\",\"trace_id\":\"d33d34b691c8f4fe846c0a3334dd105a\",\"span_id\":\"1943f7e16c67b5ae\",\"admission_reason\":\"handler span is an exact descendant of the admitted server span in the same trace\",\"evidence_ids\":[\"1943f7e16c67b5ae\",\"d33d34b691c8f4fe846c0a3334dd105a\"],\"id\":\"handler:1943f7e16c67b5ae\"},{\"schema\":\"producttrace.runtime-evidence.v1\",\"sequence\":2004,\"timestamp\":1790200575050,\"kind\":\"handler.enter\",\"action_id\":\"action:muen787e:108\",\"request_occurrence_id\":\"action:muen787e:108:request:40\",\"handler_id\":\"handler:ad14c4f35464bc68\",\"trace_id\":\"d33d34b691c8f4fe846c0a3334dd105a\",\"span_id\":\"ad14c4f35464bc68\",\"admission_reason\":\"handler span is an exact descendant of the admitted server span in the same trace\",\"evidence_ids\":[\"ad14c4f35464bc68\",\"d33d34b691c8f4fe846c0a3334dd105a\"],\"id\":\"handler:ad14c4f35464bc68\"}],\"terminal\":{\"stop_reason\":\"no_database_effect_before_idle\",\"stopped_at\":\"handler\",\"because\":\"no db span under handler\",\"stage\":\"stopped\",\"label\":\"Stopped: no database effect arrived before the episode became idle\"},\"abstained\":[\"no_database_effect_before_idle\"],\"raw_evidence_ids\":[1507,1508,1509,1510,1511,1512,1513,1530,1557,1574,1575,1576,1577,1578,1579,1580,1581,1582,1587,1604,1605,1606,1607,1612,1629,1630,1631,1632,1637,1654,1655,1656,1657,1662,1679,1680,1681,1682,1687,1704,1705,1706,1707,1712,1729,1730,1731,1732,1737,1754,1755,1756,1757,1762,1779,1780,1781,1782,1787,1804,1805,1806,1807,1812,1829,1830,1831,1832,1837,1854,1855,1856,1857,1862,1879,1880,1881,1882,1887,1904,1905,1906,1907,1912,1929,1930,1931,1932,1937,1954,1955,1956,1957,1962,1963,1964,1965,1966,1967,1968,1969,1970,1971,1972,1973,1974,1975,1976,1977,1978,1979,1980,1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000]},\"summary\":\"submit action:muen787e:108 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 422 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because server responded 422; no database span descends from the admitted handler span\"}"
+            }
+          ],
+          "structuredContent": {
+            "status": "ok",
+            "tool": "action_chain",
+            "store": {
+              "records": 2644,
+              "actions": 151,
+              "sessions": 1,
+              "episodes": 9,
+              "spans": 465,
+              "backend_instrumented": true,
+              "stamps": true,
+              "builds": [
+                "e061322a6809"
+              ],
+              "manifest_functions": 5101,
+              "source_root": "/Users/austinho/dev/fixtures/anything-llm",
+              "manifest_builds": [
+                "e061322a6809"
+              ],
+              "runs": 1,
+              "malformed_records": 0,
+              "dropped_in_page": 0,
+              "malformed_spans": 0
+            },
+            "action_id": "action:muen787e:108",
+            "session": "s_8b4e57f5",
+            "episode_id": "episode:form:s_8b4e57f5:object%3A41#2",
+            "episode_carrier_action_id": "action:muen787e:108",
+            "episode_action_ids": [
+              "action:muen77z1:69",
+              "action:muen77z1:70",
+              "action:muen77z3:71",
+              "action:muen77z3:72",
+              "action:muen77z5:73",
+              "action:muen77z6:74",
+              "action:muen77zo:75",
+              "action:muen77zo:76",
+              "action:muen7805:77",
+              "action:muen7805:78",
+              "action:muen780m:79",
+              "action:muen780n:80",
+              "action:muen7815:81",
+              "action:muen7815:82",
+              "action:muen781m:83",
+              "action:muen781n:84",
+              "action:muen7822:85",
+              "action:muen7823:86",
+              "action:muen782k:87",
+              "action:muen782l:88",
+              "action:muen7832:89",
+              "action:muen7833:90",
+              "action:muen783j:91",
+              "action:muen783k:92",
+              "action:muen7841:93",
+              "action:muen7842:94",
+              "action:muen784k:95",
+              "action:muen784k:96",
+              "action:muen7850:97",
+              "action:muen7851:98",
+              "action:muen785h:99",
+              "action:muen785h:100",
+              "action:muen785y:101",
+              "action:muen785z:102",
+              "action:muen786f:103",
+              "action:muen786f:104",
+              "action:muen787d:105",
+              "action:muen787d:106",
+              "action:muen787d:107",
+              "action:muen787e:108"
+            ],
+            "standalone": false,
+            "stops": [
+              {
+                "stop": "dispatch",
+                "action_id": "action:muen787e:108",
+                "session": "s_8b4e57f5",
+                "sequence": 1971,
+                "event": "submit",
+                "target": {
+                  "tag": "button",
+                  "attributes": {},
+                  "ref": "object:45",
+                  "element_key": "p_f067e70e6029:117-485#n1"
+                },
+                "element_key": "p_f067e70e6029:117-485#n1"
+              },
+              {
+                "stop": "entry_handler",
+                "function_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488",
+                "event": "submit",
+                "unit_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit",
+                "rooted": true,
+                "source": {
+                  "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx",
+                  "start": 931,
+                  "end": 1488,
+                  "line": 26,
+                  "line_status": "ok"
+                }
+              },
+              {
+                "stop": "request",
+                "method": "POST",
+                "url": "/api/workspace/tracer-g5/update",
+                "path": "/api/workspace/tracer-g5/update",
+                "request_occurrence_id": "action:muen787e:108:request:40",
+                "trace_id": "d33d34b691c8f4fe846c0a3334dd105a",
+                "action_id": "action:muen787e:108",
+                "route_template": "/api/workspace/:slug/update"
+              },
+              {
+                "stop": "route",
+                "span_id": "a6aec4250a0168cc",
+                "method": "POST",
+                "route": "/api/workspace/:slug/update",
+                "status_code": 422,
+                "admission_reason": "same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span"
+              },
+              {
+                "stop": "handler",
+                "span_id": "8016372684b70aff",
+                "route": "/api/workspace/:slug/update",
+                "name": "validatedRequest",
+                "index": 0
+              },
+              {
+                "stop": "handler",
+                "span_id": "1943f7e16c67b5ae",
+                "route": "/api/workspace/:slug/update",
+                "name": "<anonymous>",
+                "index": 1
+              },
+              {
+                "stop": "handler",
+                "span_id": "ad14c4f35464bc68",
+                "route": "/api/workspace/:slug/update",
+                "name": "<anonymous>",
+                "index": 2
+              }
+            ],
+            "requests": [
+              {
+                "action_id": "action:muen787e:108",
+                "method": "POST",
+                "url": "/api/workspace/tracer-g5/update",
+                "request_occurrence_id": "action:muen787e:108:request:40"
+              }
+            ],
+            "outcome": {
+              "stage": "stopped",
+              "status": "incomplete",
+              "http_status": 422,
+              "writes": [],
+              "reads": [],
+              "stop_reason": "no_database_effect_before_idle",
+              "stopped_at": "handler"
+            },
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "server responded 422; no database span descends from the admitted handler span",
+            "chain": {
+              "schema": "producttrace.causal-chain.v1",
+              "action_id": "action:muen787e:108",
+              "episode_id": "episode:form:s_8b4e57f5:object%3A41#2",
+              "episode_action_ids": [
+                "action:muen77z1:69",
+                "action:muen77z1:70",
+                "action:muen77z3:71",
+                "action:muen77z3:72",
+                "action:muen77z5:73",
+                "action:muen77z6:74",
+                "action:muen77zo:75",
+                "action:muen77zo:76",
+                "action:muen7805:77",
+                "action:muen7805:78",
+                "action:muen780m:79",
+                "action:muen780n:80",
+                "action:muen7815:81",
+                "action:muen7815:82",
+                "action:muen781m:83",
+                "action:muen781n:84",
+                "action:muen7822:85",
+                "action:muen7823:86",
+                "action:muen782k:87",
+                "action:muen782l:88",
+                "action:muen7832:89",
+                "action:muen7833:90",
+                "action:muen783j:91",
+                "action:muen783k:92",
+                "action:muen7841:93",
+                "action:muen7842:94",
+                "action:muen784k:95",
+                "action:muen784k:96",
+                "action:muen7850:97",
+                "action:muen7851:98",
+                "action:muen785h:99",
+                "action:muen785h:100",
+                "action:muen785y:101",
+                "action:muen785z:102",
+                "action:muen786f:103",
+                "action:muen786f:104",
+                "action:muen787d:105",
+                "action:muen787d:106",
+                "action:muen787d:107",
+                "action:muen787e:108"
+              ],
+              "coalescing_rule": "same observed form, including the action that rendered it, through rejected submits up to and including the next submit that sent a request",
+              "session_id": "s_8b4e57f5",
+              "event": "submit",
+              "control": {
+                "tag": "button",
+                "attributes": {},
+                "label": "button"
+              },
+              "display": {
+                "stage": "stopped",
+                "status": "incomplete",
+                "label": "Stopped: no database effect arrived before the episode became idle"
+              },
+              "entry_handler": {
+                "unit_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit",
+                "function_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488",
+                "source": {
+                  "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx",
+                  "start": 931,
+                  "end": 1488
+                },
+                "rooted": true
+              },
+              "spine": {
+                "action_id": "action:muen787e:108",
+                "function_ids": [
+                  "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488"
+                ]
+              },
+              "chain": [
+                {
+                  "kind": "function.enter",
+                  "id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488",
+                  "source_ref": {
+                    "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx",
+                    "start": 931,
+                    "end": 1488
+                  },
+                  "evidence_ids": [
+                    1972
+                  ]
+                },
+                {
+                  "schema": "producttrace.runtime-evidence.v1",
+                  "sequence": 1982,
+                  "timestamp": 1790200575050,
+                  "parent_continuation_id": "continuation:action:muen787e:108:function:3893",
+                  "kind": "network.request",
+                  "action_id": "action:muen787e:108",
+                  "action_occurrence_id": "action:muen787e:108",
+                  "request_occurrence_id": "action:muen787e:108:request:40",
+                  "method": "POST",
+                  "url": "/api/workspace/tracer-g5/update",
+                  "traceparent": "00-d33d34b691c8f4fe846c0a3334dd105a-60f06700f824597e-01",
+                  "trace_context": {
+                    "trace_id": "d33d34b691c8f4fe846c0a3334dd105a",
+                    "span_id": "60f06700f824597e",
+                    "trace_flags": "01",
+                    "traceparent": "00-d33d34b691c8f4fe846c0a3334dd105a-60f06700f824597e-01"
+                  },
+                  "transport": "fetch",
+                  "internal": false,
+                  "terminal_owner_continuation_id": "continuation:action:muen787e:108:function:3889",
+                  "linkage_kind": "direct",
+                  "spine": {
+                    "action_id": "action:muen787e:108",
+                    "function_ids": [
+                      "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488",
+                      "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488",
+                      "function:1867c691f7b1b823a5514d0df684192672a2bd24030a4f1524fc1588410b9e48:897:1300",
+                      "function:1867c691f7b1b823a5514d0df684192672a2bd24030a4f1524fc1588410b9e48:897:1300"
+                    ]
+                  },
+                  "evidence_ids": [
+                    "action:muen787e:108:request:40"
+                  ],
+                  "capture_page_id": "s_8b4e57f5",
+                  "tracer_run": "run-20260923t215607124z-00893f",
+                  "tracer_build": "e061322a6809",
+                  "id": "action:muen787e:108:request:40"
+                },
+                {
+                  "schema": "producttrace.runtime-evidence.v1",
+                  "sequence": 2001,
+                  "timestamp": 1790200575050,
+                  "kind": "route.dispatch",
+                  "action_id": "action:muen787e:108",
+                  "route_id": "route:a6aec4250a0168cc",
+                  "trace_id": "d33d34b691c8f4fe846c0a3334dd105a",
+                  "request_occurrence_id": "action:muen787e:108:request:40",
+                  "span_id": "a6aec4250a0168cc",
+                  "source": "opentelemetry",
+                  "admission_reason": "same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span",
+                  "evidence_ids": [
+                    "a6aec4250a0168cc",
+                    "d33d34b691c8f4fe846c0a3334dd105a"
+                  ],
+                  "id": "route:a6aec4250a0168cc"
+                },
+                {
+                  "schema": "producttrace.runtime-evidence.v1",
+                  "sequence": 2002,
+                  "timestamp": 1790200575050,
+                  "kind": "handler.enter",
+                  "action_id": "action:muen787e:108",
+                  "request_occurrence_id": "action:muen787e:108:request:40",
+                  "handler_id": "handler:8016372684b70aff",
+                  "trace_id": "d33d34b691c8f4fe846c0a3334dd105a",
+                  "span_id": "8016372684b70aff",
+                  "admission_reason": "handler span is an exact descendant of the admitted server span in the same trace",
+                  "evidence_ids": [
+                    "8016372684b70aff",
+                    "d33d34b691c8f4fe846c0a3334dd105a"
+                  ],
+                  "id": "handler:8016372684b70aff"
+                },
+                {
+                  "schema": "producttrace.runtime-evidence.v1",
+                  "sequence": 2003,
+                  "timestamp": 1790200575050,
+                  "kind": "handler.enter",
+                  "action_id": "action:muen787e:108",
+                  "request_occurrence_id": "action:muen787e:108:request:40",
+                  "handler_id": "handler:1943f7e16c67b5ae",
+                  "trace_id": "d33d34b691c8f4fe846c0a3334dd105a",
+                  "span_id": "1943f7e16c67b5ae",
+                  "admission_reason": "handler span is an exact descendant of the admitted server span in the same trace",
+                  "evidence_ids": [
+                    "1943f7e16c67b5ae",
+                    "d33d34b691c8f4fe846c0a3334dd105a"
+                  ],
+                  "id": "handler:1943f7e16c67b5ae"
+                },
+                {
+                  "schema": "producttrace.runtime-evidence.v1",
+                  "sequence": 2004,
+                  "timestamp": 1790200575050,
+                  "kind": "handler.enter",
+                  "action_id": "action:muen787e:108",
+                  "request_occurrence_id": "action:muen787e:108:request:40",
+                  "handler_id": "handler:ad14c4f35464bc68",
+                  "trace_id": "d33d34b691c8f4fe846c0a3334dd105a",
+                  "span_id": "ad14c4f35464bc68",
+                  "admission_reason": "handler span is an exact descendant of the admitted server span in the same trace",
+                  "evidence_ids": [
+                    "ad14c4f35464bc68",
+                    "d33d34b691c8f4fe846c0a3334dd105a"
+                  ],
+                  "id": "handler:ad14c4f35464bc68"
+                }
+              ],
+              "terminal": {
+                "stop_reason": "no_database_effect_before_idle",
+                "stopped_at": "handler",
+                "because": "no db span under handler",
+                "stage": "stopped",
+                "label": "Stopped: no database effect arrived before the episode became idle"
+              },
+              "abstained": [
+                "no_database_effect_before_idle"
+              ],
+              "raw_evidence_ids": [
+                1507,
+                1508,
+                1509,
+                1510,
+                1511,
+                1512,
+                1513,
+                1530,
+                1557,
+                1574,
+                1575,
+                1576,
+                1577,
+                1578,
+                1579,
+                1580,
+                1581,
+                1582,
+                1587,
+                1604,
+                1605,
+                1606,
+                1607,
+                1612,
+                1629,
+                1630,
+                1631,
+                1632,
+                1637,
+                1654,
+                1655,
+                1656,
+                1657,
+                1662,
+                1679,
+                1680,
+                1681,
+                1682,
+                1687,
+                1704,
+                1705,
+                1706,
+                1707,
+                1712,
+                1729,
+                1730,
+                1731,
+                1732,
+                1737,
+                1754,
+                1755,
+                1756,
+                1757,
+                1762,
+                1779,
+                1780,
+                1781,
+                1782,
+                1787,
+                1804,
+                1805,
+                1806,
+                1807,
+                1812,
+                1829,
+                1830,
+                1831,
+                1832,
+                1837,
+                1854,
+                1855,
+                1856,
+                1857,
+                1862,
+                1879,
+                1880,
+                1881,
+                1882,
+                1887,
+                1904,
+                1905,
+                1906,
+                1907,
+                1912,
+                1929,
+                1930,
+                1931,
+                1932,
+                1937,
+                1954,
+                1955,
+                1956,
+                1957,
+                1962,
+                1963,
+                1964,
+                1965,
+                1966,
+                1967,
+                1968,
+                1969,
+                1970,
+                1971,
+                1972,
+                1973,
+                1974,
+                1975,
+                1976,
+                1977,
+                1978,
+                1979,
+                1980,
+                1981,
+                1982,
+                1983,
+                1984,
+                1985,
+                1986,
+                1987,
+                1988,
+                1989,
+                1990,
+                1991,
+                1992,
+                1993,
+                1994,
+                1995,
+                1996,
+                1997,
+                1998,
+                1999,
+                2000
+              ]
+            },
+            "summary": "submit action:muen787e:108 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 422 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because server responded 422; no database span descends from the admitted handler span"
+          },
+          "isError": false
+        },
+        "jsonrpc": "2.0",
+        "id": 5
+      }
+    },
+    {
+      "direction": "client→server",
+      "at": "2026-09-23T21:56:25.368Z",
+      "message": {
+        "jsonrpc": "2.0",
+        "id": 6,
+        "method": "tools/call",
+        "params": {
+          "name": "resolve_element",
+          "arguments": {
+            "url": "http://127.0.0.1:4100/workspace/tracer-g5/settings/general-appearance",
+            "selector": "form.flex.flex-col:nth-of-type(1) > div.absolute.top-0:nth-of-type(1) > button.border-none.text-xs:nth-of-type(1) > div.flex.items-center:nth-of-type(1)",
+            "element_path": "form > div > button > div",
+            "name": "Update Workspace",
+            "nearby_text": "Update Workspace"
+          }
+        }
+      }
+    },
+    {
+      "direction": "server→client",
+      "at": "2026-09-23T21:56:25.369Z",
+      "message": {
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "ambiguous: 4 observed target(s) match; best button (ancestor tag=button (the annotated element is inside a recorded <button> target)) with 9 actions. Not a pick: read data-tracer-el from the live element for an exact key."
+            },
+            {
+              "type": "text",
+              "text": "{\"status\":\"ambiguous\",\"tool\":\"resolve_element\",\"store\":{\"records\":2644,\"actions\":151,\"sessions\":1,\"episodes\":9,\"spans\":465,\"backend_instrumented\":true,\"stamps\":true,\"builds\":[\"e061322a6809\"],\"manifest_functions\":5101,\"source_root\":\"/Users/austinho/dev/fixtures/anything-llm\",\"manifest_builds\":[\"e061322a6809\"],\"runs\":1,\"malformed_records\":0,\"dropped_in_page\":0,\"malformed_spans\":0},\"element_key\":null,\"element_key_status\":null,\"confidence\":\"ambiguous\",\"candidates\":[{\"target\":{\"tag\":\"button\",\"attributes\":{}},\"score\":1,\"matched_on\":[\"ancestor tag=button (the annotated element is inside a recorded <button> target)\"],\"mismatched\":[],\"actions_observed\":9,\"sessions\":[\"s_8b4e57f5\"],\"recent_action_ids\":[\"action:muen79uv:146\",\"action:muen79uv:145\",\"action:muen79uu:144\",\"action:muen787e:108\",\"action:muen787d:107\"],\"keys\":[{\"element_key\":\"p_f067e70e6029:117-485#n1\",\"key_kind\":\"element_stamp\",\"source\":{\"file\":\"frontend/src/components/lib/CTAButton/index.jsx\",\"start\":117,\"end\":485,\"line\":8,\"line_status\":\"ok\"},\"handlers\":[{\"event\":\"click\",\"function_id\":\"function:f067e70e602936c4f8e9c326a164ca171480ddde3f990590f3c0db1b03c5e60b:166:183\",\"source\":{\"file\":\"frontend/src/components/lib/CTAButton/index.jsx\",\"start\":166,\"end\":183,\"line\":10,\"line_status\":\"ok\"}}]}]},{\"target\":{\"tag\":\"button\",\"attributes\":{\"type\":\"submit\"}},\"score\":1,\"matched_on\":[\"ancestor tag=button (the annotated element is inside a recorded <button> target)\"],\"mismatched\":[],\"actions_observed\":3,\"sessions\":[\"s_8b4e57f5\"],\"recent_action_ids\":[\"action:muen73s5:27\",\"action:muen73s4:26\",\"action:muen73s4:25\"],\"keys\":[{\"element_key\":\"p_ed834b44909a:10547-10746#n1\",\"key_kind\":\"element_stamp\",\"source\":{\"file\":\"frontend/src/components/lib/Modal/index.jsx\",\"start\":10547,\"end\":10746,\"line\":293,\"line_status\":\"ok\"},\"handlers\":[]}]},{\"target\":{\"tag\":\"button\",\"attributes\":{\"aria-label\":\"General appearance settings\"}},\"score\":1,\"matched_on\":[\"ancestor tag=button (the annotated element is inside a recorded <button> target)\"],\"mismatched\":[],\"actions_observed\":2,\"sessions\":[\"s_8b4e57f5\"],\"recent_action_ids\":[\"action:muen7529:30\",\"action:muen7528:29\"],\"keys\":[{\"element_key\":\"p_25b364a91be9:8497-10305#n1\",\"key_kind\":\"element_stamp\",\"source\":{\"file\":\"frontend/src/components/Sidebar/ActiveWorkspaces/index.jsx\",\"start\":8497,\"end\":10305,\"line\":186,\"line_status\":\"ok\"},\"handlers\":[{\"event\":\"click\",\"function_id\":\"function:25b364a91be9b63ef9cf011098cd09bd89b04c7d4fff042545bc1a7c3bbc117f:8548:9118\",\"source\":{\"file\":\"frontend/src/components/Sidebar/ActiveWorkspaces/index.jsx\",\"start\":8548,\"end\":9118,\"line\":187,\"line_status\":\"ok\"}}]}]},{\"target\":{\"tag\":\"button\",\"attributes\":{}},\"score\":1,\"matched_on\":[\"ancestor tag=button (the annotated element is inside a recorded <button> target)\"],\"mismatched\":[],\"actions_observed\":2,\"sessions\":[\"s_8b4e57f5\"],\"recent_action_ids\":[\"action:muen72vm:3\",\"action:muen72vl:2\"],\"keys\":[{\"element_key\":\"p_25511dc1202f:6108-6564#n1\",\"key_kind\":\"element_stamp\",\"source\":{\"file\":\"frontend/src/components/Sidebar/SearchBox/index.jsx\",\"start\":6108,\"end\":6564,\"line\":196,\"line_status\":\"ok\"},\"handlers\":[{\"event\":\"click\",\"function_id\":\"function:19c9007f75c3ed775a554998332b843d2fd939b441d3ccb957a09578b46e1b36:2399:2432\",\"source\":{\"file\":\"frontend/src/components/Modals/NewWorkspace.jsx\",\"start\":2399,\"end\":2432,\"line\":72,\"line_status\":\"ok\"}}]}]}],\"candidates_total\":4,\"ignored\":[{\"input\":\"selector\",\"part\":\"form.flex.flex-col:nth-of-type(1) > div.absolute.top-0:nth-of-type(1) > button.border-none.text-xs:nth-of-type(1)\",\"reason\":\"ancestor steps are not recorded on dom.action targets\"},{\"input\":\"selector\",\"part\":\":nth-of-type(1)\",\"reason\":\"pseudo-classes are not evaluated\"},{\"input\":\"selector\",\"part\":\".flex.items-center\",\"reason\":\"class names are not recorded on dom.action targets\"}],\"limits\":\"dom.action targets record the innermost event target and a fixed attribute subset; element text, classes and ancestry are not recorded, so selector/text lookup is weak. A data-tracer-el key is exact.\",\"summary\":\"ambiguous: 4 observed target(s) match; best button (ancestor tag=button (the annotated element is inside a recorded <button> target)) with 9 actions. Not a pick: read data-tracer-el from the live element for an exact key.\"}"
+            }
+          ],
+          "structuredContent": {
+            "status": "ambiguous",
+            "tool": "resolve_element",
+            "store": {
+              "records": 2644,
+              "actions": 151,
+              "sessions": 1,
+              "episodes": 9,
+              "spans": 465,
+              "backend_instrumented": true,
+              "stamps": true,
+              "builds": [
+                "e061322a6809"
+              ],
+              "manifest_functions": 5101,
+              "source_root": "/Users/austinho/dev/fixtures/anything-llm",
+              "manifest_builds": [
+                "e061322a6809"
+              ],
+              "runs": 1,
+              "malformed_records": 0,
+              "dropped_in_page": 0,
+              "malformed_spans": 0
+            },
+            "element_key": null,
+            "element_key_status": null,
+            "confidence": "ambiguous",
+            "candidates": [
+              {
+                "target": {
+                  "tag": "button",
+                  "attributes": {}
+                },
+                "score": 1,
+                "matched_on": [
+                  "ancestor tag=button (the annotated element is inside a recorded <button> target)"
+                ],
+                "mismatched": [],
+                "actions_observed": 9,
+                "sessions": [
+                  "s_8b4e57f5"
+                ],
+                "recent_action_ids": [
+                  "action:muen79uv:146",
+                  "action:muen79uv:145",
+                  "action:muen79uu:144",
+                  "action:muen787e:108",
+                  "action:muen787d:107"
+                ],
+                "keys": [
+                  {
+                    "element_key": "p_f067e70e6029:117-485#n1",
+                    "key_kind": "element_stamp",
+                    "source": {
+                      "file": "frontend/src/components/lib/CTAButton/index.jsx",
+                      "start": 117,
+                      "end": 485,
+                      "line": 8,
+                      "line_status": "ok"
+                    },
+                    "handlers": [
+                      {
+                        "event": "click",
+                        "function_id": "function:f067e70e602936c4f8e9c326a164ca171480ddde3f990590f3c0db1b03c5e60b:166:183",
+                        "source": {
+                          "file": "frontend/src/components/lib/CTAButton/index.jsx",
+                          "start": 166,
+                          "end": 183,
+                          "line": 10,
+                          "line_status": "ok"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "target": {
+                  "tag": "button",
+                  "attributes": {
+                    "type": "submit"
+                  }
+                },
+                "score": 1,
+                "matched_on": [
+                  "ancestor tag=button (the annotated element is inside a recorded <button> target)"
+                ],
+                "mismatched": [],
+                "actions_observed": 3,
+                "sessions": [
+                  "s_8b4e57f5"
+                ],
+                "recent_action_ids": [
+                  "action:muen73s5:27",
+                  "action:muen73s4:26",
+                  "action:muen73s4:25"
+                ],
+                "keys": [
+                  {
+                    "element_key": "p_ed834b44909a:10547-10746#n1",
+                    "key_kind": "element_stamp",
+                    "source": {
+                      "file": "frontend/src/components/lib/Modal/index.jsx",
+                      "start": 10547,
+                      "end": 10746,
+                      "line": 293,
+                      "line_status": "ok"
+                    },
+                    "handlers": []
+                  }
+                ]
+              },
+              {
+                "target": {
+                  "tag": "button",
+                  "attributes": {
+                    "aria-label": "General appearance settings"
+                  }
+                },
+                "score": 1,
+                "matched_on": [
+                  "ancestor tag=button (the annotated element is inside a recorded <button> target)"
+                ],
+                "mismatched": [],
+                "actions_observed": 2,
+                "sessions": [
+                  "s_8b4e57f5"
+                ],
+                "recent_action_ids": [
+                  "action:muen7529:30",
+                  "action:muen7528:29"
+                ],
+                "keys": [
+                  {
+                    "element_key": "p_25b364a91be9:8497-10305#n1",
+                    "key_kind": "element_stamp",
+                    "source": {
+                      "file": "frontend/src/components/Sidebar/ActiveWorkspaces/index.jsx",
+                      "start": 8497,
+                      "end": 10305,
+                      "line": 186,
+                      "line_status": "ok"
+                    },
+                    "handlers": [
+                      {
+                        "event": "click",
+                        "function_id": "function:25b364a91be9b63ef9cf011098cd09bd89b04c7d4fff042545bc1a7c3bbc117f:8548:9118",
+                        "source": {
+                          "file": "frontend/src/components/Sidebar/ActiveWorkspaces/index.jsx",
+                          "start": 8548,
+                          "end": 9118,
+                          "line": 187,
+                          "line_status": "ok"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "target": {
+                  "tag": "button",
+                  "attributes": {}
+                },
+                "score": 1,
+                "matched_on": [
+                  "ancestor tag=button (the annotated element is inside a recorded <button> target)"
+                ],
+                "mismatched": [],
+                "actions_observed": 2,
+                "sessions": [
+                  "s_8b4e57f5"
+                ],
+                "recent_action_ids": [
+                  "action:muen72vm:3",
+                  "action:muen72vl:2"
+                ],
+                "keys": [
+                  {
+                    "element_key": "p_25511dc1202f:6108-6564#n1",
+                    "key_kind": "element_stamp",
+                    "source": {
+                      "file": "frontend/src/components/Sidebar/SearchBox/index.jsx",
+                      "start": 6108,
+                      "end": 6564,
+                      "line": 196,
+                      "line_status": "ok"
+                    },
+                    "handlers": [
+                      {
+                        "event": "click",
+                        "function_id": "function:19c9007f75c3ed775a554998332b843d2fd939b441d3ccb957a09578b46e1b36:2399:2432",
+                        "source": {
+                          "file": "frontend/src/components/Modals/NewWorkspace.jsx",
+                          "start": 2399,
+                          "end": 2432,
+                          "line": 72,
+                          "line_status": "ok"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "candidates_total": 4,
+            "ignored": [
+              {
+                "input": "selector",
+                "part": "form.flex.flex-col:nth-of-type(1) > div.absolute.top-0:nth-of-type(1) > button.border-none.text-xs:nth-of-type(1)",
+                "reason": "ancestor steps are not recorded on dom.action targets"
+              },
+              {
+                "input": "selector",
+                "part": ":nth-of-type(1)",
+                "reason": "pseudo-classes are not evaluated"
+              },
+              {
+                "input": "selector",
+                "part": ".flex.items-center",
+                "reason": "class names are not recorded on dom.action targets"
+              }
+            ],
+            "limits": "dom.action targets record the innermost event target and a fixed attribute subset; element text, classes and ancestry are not recorded, so selector/text lookup is weak. A data-tracer-el key is exact.",
+            "summary": "ambiguous: 4 observed target(s) match; best button (ancestor tag=button (the annotated element is inside a recorded <button> target)) with 9 actions. Not a pick: read data-tracer-el from the live element for an exact key."
+          },
+          "isError": false
+        },
+        "jsonrpc": "2.0",
+        "id": 6
+      }
+    }
+  ]
+}

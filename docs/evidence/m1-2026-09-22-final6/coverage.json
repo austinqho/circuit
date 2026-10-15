@@ -1,0 +1,3449 @@
+{
+  "schema": "producttrace.m1-final6-coverage.v1",
+  "headless": true,
+  "unit_definition": "first depth-zero registered first-party entry handler per dispatched action plus DOM event type; deeper frames and later depth-zero React work are spine-only",
+  "build": {
+    "manifest_functions": 8952,
+    "config": {
+      "source_files": 2468,
+      "controls": 607,
+      "runtime_candidates": 258,
+      "request_actions": 2,
+      "source_requests": 2,
+      "backend_routes": 195,
+      "transformed_files": [
+        {
+          "file": "packages/data-provider/src/request.ts",
+          "applied": [
+            {
+              "file": "packages/data-provider/src/request.ts",
+              "generated_file": "/private/tmp/producttrace-librechat-m1-final/packages/data-provider/dist/data-service-R214jWAq.mjs",
+              "node_id": "call:44690e15312fec74a4c366a3",
+              "event": "request",
+              "control_id": null,
+              "transform": "compiled_request_bridge_request"
+            }
+          ]
+        }
+      ],
+      "request_source_nodes": 1,
+      "instrumented_request_source_nodes": 1,
+      "request_action_handlers": 2,
+      "instrumented_request_action_handlers": 0,
+      "runtime_attribution_manifest": "/tmp/producttrace-librechat-m1-final.json.attribution.json",
+      "runtime_attribution_functions": 8952,
+      "runtime_attribution_marker_count": 8952,
+      "runtime_smoke": {
+        "status": "ok",
+        "headless": true,
+        "function_id": "function:8707066c05657fed9db9430ccb57a662df8b1adf87efdc64710a84efd98a9daa:65:160",
+        "enters": 1,
+        "network_requests": 3,
+        "same_action": true,
+        "poll_unattributed": true,
+        "caused_attributed": true,
+        "stream_attributed": true
+      }
+    }
+  },
+  "identity": {
+    "static_handler_ids": 341,
+    "runtime_registry_ids": 8952,
+    "intersection": 280,
+    "static_only": 61,
+    "runtime_only": 8672,
+    "before": {
+      "manifest": "/tmp/producttrace-librechat-m1-final2.json.attribution.json",
+      "runtime_registry_ids": 8871,
+      "intersection": 168,
+      "static_only": 173,
+      "runtime_only": 8703
+    }
+  },
+  "coverage": {
+    "driven": 22,
+    "rendered": 65,
+    "total": 343,
+    "driven_over_rendered": 0.3384615384615385,
+    "driven_over_total": 0.0641399416909621,
+    "inventory_gap_count": 72
+  },
+  "gates": {
+    "live_entry": {
+      "id": "m1-entry-gate-mud5f6n8",
+      "function_id": "function:20cee0ec525c973a74095f553d3eb83969ddfb1294a1ab3c0fec0f617633deea:17445:17548",
+      "label": "Projects",
+      "action_id": "action:mud5f6pd:7",
+      "enters": 197,
+      "exits": 197,
+      "function_ids": [
+        "function:20cee0ec525c973a74095f553d3eb83969ddfb1294a1ab3c0fec0f617633deea:17445:17548",
+        "function:df4380525a973dc07b16d80702e7e0f384fd98642f1eb28730db0af4962f5728:964:1240",
+        "function:df4380525a973dc07b16d80702e7e0f384fd98642f1eb28730db0af4962f5728:561:738",
+        "function:14c37f3c41ff25f41cedb662bd20a53461e1b15ce7a3de388c0cae9ada165fd5:990:1167",
+        "function:8f2e218bd35f9c59208641238459c32996923fc7fb37e49a2441e454c13b99df:894:932",
+        "function:7461216d5c1f1e563770681bcd7b69cf96bc98afd90d852dc81cf2f47abafff0:341:414",
+        "function:11fc8f15ea2620a7c7413466ec4e40e2fac2ac9452910914a12e1e43960fbfdb:285:372",
+        "function:424533622d14e22d32eb712ef35b77138ee1a5fb7c44c7483b3f8587f61419fc:127:201",
+        "function:088ad4ecf982bdde80aa1f2c6d9b160fa9949afe11b354f6038fba284aa49c2e:425:515",
+        "function:11fd26a3609a3c0d79db7bd2b3843c8dd08803aa3fa7a96835f2911d323c4b80:631:964",
+        "function:38a9fb60499d2b0b451c955ee7c5771527ca401466f055bc29f479c6098bc450:422:495",
+        "function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927",
+        "function:5b8c8ec9694a321f43d377ea1af221756492eda9e7f4eebf4818ef0103c9eb6c:1238:1439",
+        "function:5b8c8ec9694a321f43d377ea1af221756492eda9e7f4eebf4818ef0103c9eb6c:839:930",
+        "function:f09318d8e0718d6657a3b4aa6d8224466a83a3757cf387ccc2cf55e198999fcf:1929:2078",
+        "function:749ab0abe8160a97c0232c6eb7310f84658c58ab2804915c9b6e07e742efe82d:521:554",
+        "function:e5d7e663f84a4deb6d17243c78c0d4617bd6f464ba27f0925e707411a7f1f752:71:1219",
+        "function:c3157a7c2c41cf7836df40621b7304393c56cbd1b99632f5f2577a7f2940253c:8939:9896",
+        "function:c3157a7c2c41cf7836df40621b7304393c56cbd1b99632f5f2577a7f2940253c:12071:14276",
+        "function:c3157a7c2c41cf7836df40621b7304393c56cbd1b99632f5f2577a7f2940253c:1980:2233",
+        "function:3edc244112cd2c1221d6e68ce0608c35266e7f1bc7f2fed63b570e0515c790be:1432:1722",
+        "function:3edc244112cd2c1221d6e68ce0608c35266e7f1bc7f2fed63b570e0515c790be:881:1430",
+        "function:3edc244112cd2c1221d6e68ce0608c35266e7f1bc7f2fed63b570e0515c790be:164:879",
+        "function:c3157a7c2c41cf7836df40621b7304393c56cbd1b99632f5f2577a7f2940253c:14671:14809",
+        "function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3921:4072",
+        "function:12784e34647e63416fe030b24716974105b96ab1d9b63f4e092cbcdc3c35baf0:413:464",
+        "function:e3d53985ef814592c727c93367885669824b43b4eec3d8bedb5b0388900702b4:1234:1417",
+        "function:0529711a20cfc7f7c65df7e7a2964a942facdac2da89ea2d41c3045d22b56e35:9554:9613"
+      ],
+      "passed": true
+    },
+    "exact_request_ownership": {
+      "passed": true,
+      "violations": 0
+    },
+    "write_only_db": {
+      "passed": true,
+      "predicate": "insert|update|delete|replace|bulkWrite|findAndModify"
+    },
+    "effect_witness": {
+      "passed": true,
+      "violations": 0
+    },
+    "unreachable_state": {
+      "passed": true,
+      "violations": 0
+    },
+    "zero_silent": {
+      "passed": true,
+      "count": 0
+    },
+    "capture_complete": {
+      "passed": true,
+      "emitted": 647573,
+      "raw_records": 647573,
+      "pages": 50,
+      "pagehide_pages": 50,
+      "dropped": 0,
+      "gaps": 0
+    },
+    "wrapper_equals_playwright": {
+      "passed": true,
+      "wrapper": 1110,
+      "playwright": 1110,
+      "reconciliation": 0
+    },
+    "required_states": {
+      "passed": true,
+      "stops": []
+    }
+  },
+  "execution": {
+    "function_enters": 323073,
+    "entry_handler_units": 94,
+    "entry_handler_entries": 195,
+    "inventory_gaps": 72
+  },
+  "capture": {
+    "mode": "runtime host channel with acknowledged batches and pagehide beacon flush",
+    "emitted": 647573,
+    "raw_records": 647573,
+    "pages": 50,
+    "dropped": 0,
+    "pagehide_pages": 50,
+    "gaps": [],
+    "page_results": [
+      {
+        "page_id": "mud5es5s-h4jbi94eu8i",
+        "emitted": 31423,
+        "received": 31423,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5esfg-4fw1gxxn2u",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5f734-oi2r0crl8tb",
+        "emitted": 27779,
+        "received": 27779,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5f76c-gu56hrafx2",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5fiqc-spkesi87exi",
+        "emitted": 227525,
+        "received": 227525,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5fitg-1b9t5wznzn1j",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5hpqw-iqen4if57ve",
+        "emitted": 42807,
+        "received": 42807,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5hpxc-tz4bnl5f2q7",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5i4cv-qsx0haga2om",
+        "emitted": 117407,
+        "received": 117407,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5i4fw-t1xzwuqcp9b",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5lsws-9v1gkbv4ybe",
+        "emitted": 42597,
+        "received": 42597,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5lt3u-9ud1vrt6cnk",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5m7gu-xxgypcf6nj7",
+        "emitted": 35241,
+        "received": 35241,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5m7ka-gh0qesoc5w6",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5mlum-y3ade5s4efk",
+        "emitted": 29190,
+        "received": 29190,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5mlzc-vnqtxeb1inp",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5p8rq-1bx7wz5aansh",
+        "emitted": 7090,
+        "received": 7090,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5p924-167b5kelefs",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5pexz-cfkrwild2rg",
+        "emitted": 11871,
+        "received": 11871,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5pf31-o1ll2045xna",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5prba-uppd4iqmodn",
+        "emitted": 11102,
+        "received": 11102,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5prgq-in4mdze00ip",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5pxsy-0d86wxev825k",
+        "emitted": 4658,
+        "received": 4658,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5pxwk-784ggz4jop5",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5q0ye-p2oosyhu3q",
+        "emitted": 4080,
+        "received": 4080,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5q11o-a6jpcv050rm",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5q3l9-wzx9d9h5pd",
+        "emitted": 5721,
+        "received": 5721,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5q3ok-1uzi2r0ahi7j",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5q72n-65ctj8mb4fp",
+        "emitted": 3990,
+        "received": 3990,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5q76i-7pcgxsd5zc6",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5qb0i-907rzzroszb",
+        "emitted": 3767,
+        "received": 3767,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5qb6e-il6zliaqxyr",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5qf0k-0pfnlqxx7tsn",
+        "emitted": 3975,
+        "received": 3975,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5qf3y-6xzq48xttmn",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5qhjb-w9doqly6vz",
+        "emitted": 4215,
+        "received": 4215,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5qhmv-f091siow0pc",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5qluv-y2gybftucpa",
+        "emitted": 2067,
+        "received": 2067,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5qlzp-1kus4aj4kbm",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5qnp1-lh7j1imiind",
+        "emitted": 197,
+        "received": 197,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5qnsn-99b1vhiysk",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5qoac-bo06mjzdpku",
+        "emitted": 4668,
+        "received": 4668,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5qoed-9nc7ja1v38o",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5qqja-z95mevgp18",
+        "emitted": 274,
+        "received": 274,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5qqmr-24th0rszbba",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5qr6k-jnipt8s0b9s",
+        "emitted": 4019,
+        "received": 4019,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5qrb6-i0p0nr8p42j",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5qt6g-8drftowjsn6",
+        "emitted": 108,
+        "received": 108,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5qta9-nh6ybbmr7g",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5qtql-0gm2jx08x63n",
+        "emitted": 21802,
+        "received": 21802,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      },
+      {
+        "page_id": "mud5qttk-gtf5e3qfwnw",
+        "emitted": 0,
+        "received": 0,
+        "dropped": 0,
+        "pagehide_flushes": 1
+      }
+    ],
+    "complete": true
+  },
+  "transports": {
+    "observed": 1110,
+    "runtime": 1110,
+    "reconciliation": []
+  },
+  "linkage": {
+    "joined_rows": 648431
+  },
+  "inventory": {
+    "controls": 607,
+    "units": 343,
+    "static_classified": 343,
+    "inventory_gaps": 72
+  },
+  "outcomes": {
+    "reached_db": 3,
+    "reached_backend": 2,
+    "reached_request": 0,
+    "correct_stop": 12,
+    "stop_with_reason": 5,
+    "not_encountered": 278,
+    "unreachable": 43
+  },
+  "inventory_gap_outcomes": {
+    "reached_db": 7,
+    "reached_backend": 9,
+    "reached_request": 1,
+    "correct_stop": 18,
+    "stop_with_reason": 37,
+    "not_encountered": 0,
+    "unreachable": 0
+  },
+  "classifications": {
+    "driven": 22,
+    "rendered_not_driven": 43,
+    "not_encountered": 278
+  },
+  "surface_before_after": [
+    {
+      "surface": "agent builder",
+      "total": 44,
+      "before": 44,
+      "after": 34
+    },
+    {
+      "surface": "authentication route",
+      "total": 17,
+      "before": 17,
+      "after": 17
+    },
+    {
+      "surface": "bookmarks panel",
+      "total": 12,
+      "before": 11,
+      "after": 6
+    },
+    {
+      "surface": "chat message surface",
+      "total": 67,
+      "before": 64,
+      "after": 55
+    },
+    {
+      "surface": "conversation list or menu",
+      "total": 23,
+      "before": 16,
+      "after": 11
+    },
+    {
+      "surface": "export or download dialog",
+      "total": 1,
+      "before": 1,
+      "after": 1
+    },
+    {
+      "surface": "files and previews",
+      "total": 63,
+      "before": 59,
+      "after": 53
+    },
+    {
+      "surface": "keyboard shortcuts dialog",
+      "total": 4,
+      "before": 4,
+      "after": 2
+    },
+    {
+      "surface": "marketplace details",
+      "total": 14,
+      "before": 14,
+      "after": 14
+    },
+    {
+      "surface": "other authenticated surface",
+      "total": 42,
+      "before": 41,
+      "after": 41
+    },
+    {
+      "surface": "projects surface",
+      "total": 5,
+      "before": 5,
+      "after": 5
+    },
+    {
+      "surface": "prompts editor",
+      "total": 16,
+      "before": 14,
+      "after": 12
+    },
+    {
+      "surface": "settings tabs",
+      "total": 24,
+      "before": 18,
+      "after": 17
+    },
+    {
+      "surface": "share dialog",
+      "total": 3,
+      "before": 2,
+      "after": 2
+    },
+    {
+      "surface": "skills panel",
+      "total": 8,
+      "before": 8,
+      "after": 8
+    }
+  ],
+  "states": [
+    {
+      "surface": "step-01",
+      "url": "/c/new",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "New chat"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 646,
+        "direct": 174,
+        "via_ancestor": 30,
+        "via_ancestor_any": 142,
+        "unregistered": 300,
+        "stamped": 36
+      },
+      "screenshot": "surface-01.png"
+    },
+    {
+      "surface": "step-02-new-chat",
+      "url": "/c/new",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "New chat"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 640,
+        "direct": 168,
+        "via_ancestor": 30,
+        "via_ancestor_any": 142,
+        "unregistered": 300,
+        "stamped": 35
+      },
+      "screenshot": "surface-02.png"
+    },
+    {
+      "surface": "step-02",
+      "url": "/c/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "Caffeine Connection, Bean There, and Daily Grind."
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 692,
+        "direct": 189,
+        "via_ancestor": 37,
+        "via_ancestor_any": 156,
+        "unregistered": 310,
+        "stamped": 36
+      },
+      "screenshot": "surface-03.png"
+    },
+    {
+      "surface": "step-03-message-hover",
+      "url": "/c/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "Caffeine Connection, Bean There, and Daily Grind."
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 698,
+        "direct": 182,
+        "via_ancestor": 38,
+        "via_ancestor_any": 159,
+        "unregistered": 319,
+        "stamped": 35
+      },
+      "screenshot": "surface-04.png"
+    },
+    {
+      "surface": "step-03",
+      "url": "/c/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "Caffeine Connection, Bean There, and Daily Grind."
+      },
+      "not_reached": true,
+      "stop": null,
+      "counts": {
+        "host_event_props": 698,
+        "direct": 182,
+        "via_ancestor": 38,
+        "via_ancestor_any": 159,
+        "unregistered": 319,
+        "stamped": 35
+      },
+      "screenshot": "surface-05.png"
+    },
+    {
+      "surface": "step-04-feedback-menu",
+      "url": "/c/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f",
+      "signature": {
+        "tag": "DIV",
+        "testid": null,
+        "aria": null,
+        "role": "dialog",
+        "text": "Didn't match my requestInaccurate or incorrect answerPoor style or toneExpected "
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 716,
+        "direct": 189,
+        "via_ancestor": 38,
+        "via_ancestor_any": 159,
+        "unregistered": 330,
+        "stamped": 35
+      },
+      "screenshot": "surface-06.png"
+    },
+    {
+      "surface": "step-04",
+      "url": "/c/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "Caffeine Connection, Bean There, and Daily Grind."
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 697,
+        "direct": 181,
+        "via_ancestor": 38,
+        "via_ancestor_any": 159,
+        "unregistered": 319,
+        "stamped": 35
+      },
+      "screenshot": "surface-07.png"
+    },
+    {
+      "surface": "step-05-regenerate",
+      "url": "/c/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "Caffeine Connection, Bean There, and Daily Grind."
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 678,
+        "direct": 174,
+        "via_ancestor": 34,
+        "via_ancestor_any": 153,
+        "unregistered": 317,
+        "stamped": 35
+      },
+      "screenshot": "surface-08.png"
+    },
+    {
+      "surface": "step-05",
+      "url": "/c/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "Caffeine Connection, Bean There, and Daily Grind."
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 700,
+        "direct": 184,
+        "via_ancestor": 38,
+        "via_ancestor_any": 159,
+        "unregistered": 319,
+        "stamped": 35
+      },
+      "screenshot": "surface-09.png"
+    },
+    {
+      "surface": "step-06-edit-hover",
+      "url": "/c/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "Caffeine Connection, Bean There, and Daily Grind."
+      },
+      "not_reached": true,
+      "stop": null,
+      "counts": {
+        "host_event_props": 700,
+        "direct": 184,
+        "via_ancestor": 38,
+        "via_ancestor_any": 159,
+        "unregistered": 319,
+        "stamped": 35
+      },
+      "screenshot": "surface-10.png"
+    },
+    {
+      "surface": "step-06-edit-dialog",
+      "url": "/c/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "Caffeine Connection, Bean There, and Daily Grind."
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 736,
+        "direct": 188,
+        "via_ancestor": 38,
+        "via_ancestor_any": 165,
+        "unregistered": 345,
+        "stamped": 35
+      },
+      "screenshot": "surface-11.png"
+    },
+    {
+      "surface": "step-06",
+      "url": "/c/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "Caffeine Connection, Bean There, and Daily Grind."
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 700,
+        "direct": 184,
+        "via_ancestor": 38,
+        "via_ancestor_any": 159,
+        "unregistered": 319,
+        "stamped": 35
+      },
+      "screenshot": "surface-12.png"
+    },
+    {
+      "surface": "step-07-conversation-menu",
+      "url": "/c/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f",
+      "signature": {
+        "tag": "DIV",
+        "testid": null,
+        "aria": null,
+        "role": "menu",
+        "text": "SharePinRenameDuplicateChange projectArchiveDelete"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 813,
+        "direct": 184,
+        "via_ancestor": 80,
+        "via_ancestor_any": 206,
+        "unregistered": 343,
+        "stamped": 35
+      },
+      "screenshot": "surface-13.png"
+    },
+    {
+      "surface": "step-07-rename-dialog",
+      "url": "/c/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "Caffeine Connection, Bean There, and Daily Grind."
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 691,
+        "direct": 187,
+        "via_ancestor": 34,
+        "via_ancestor_any": 153,
+        "unregistered": 317,
+        "stamped": 38
+      },
+      "screenshot": "surface-14.png"
+    },
+    {
+      "surface": "step-07",
+      "url": "/c/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "Caffeine Connection, Bean There, and Daily Grind."
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 700,
+        "direct": 184,
+        "via_ancestor": 38,
+        "via_ancestor_any": 159,
+        "unregistered": 319,
+        "stamped": 35
+      },
+      "screenshot": "surface-15.png"
+    },
+    {
+      "surface": "overlap-bookmarks",
+      "url": "/c/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "Tracer M1"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 425,
+        "direct": 51,
+        "via_ancestor": 17,
+        "via_ancestor_any": 98,
+        "unregistered": 259,
+        "stamped": 3
+      },
+      "screenshot": "surface-16.png"
+    },
+    {
+      "surface": "step-overlap",
+      "url": "/c/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "Tracer M1"
+      },
+      "not_reached": true,
+      "stop": null,
+      "counts": {
+        "host_event_props": 425,
+        "direct": 51,
+        "via_ancestor": 17,
+        "via_ancestor_any": 98,
+        "unregistered": 259,
+        "stamped": 3
+      },
+      "screenshot": "surface-17.png"
+    },
+    {
+      "surface": "step-08-agent-builder",
+      "url": "/c/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "Tracer M1"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 548,
+        "direct": 60,
+        "via_ancestor": 17,
+        "via_ancestor_any": 98,
+        "unregistered": 373,
+        "stamped": 6
+      },
+      "screenshot": "surface-18.png"
+    },
+    {
+      "surface": "step-08-model-panel",
+      "url": "/c/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "Tracer M1"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 524,
+        "direct": 51,
+        "via_ancestor": 17,
+        "via_ancestor_any": 96,
+        "unregistered": 360,
+        "stamped": 4
+      },
+      "screenshot": "surface-19.png"
+    },
+    {
+      "surface": "step-08-provider-panel",
+      "url": "/c/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f",
+      "signature": {
+        "tag": "DIV",
+        "testid": null,
+        "aria": null,
+        "role": "dialog",
+        "text": "OpenAI"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 542,
+        "direct": 51,
+        "via_ancestor": 17,
+        "via_ancestor_any": 96,
+        "unregistered": 378,
+        "stamped": 4
+      },
+      "screenshot": "surface-20.png"
+    },
+    {
+      "surface": "step-08",
+      "url": "/c/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "Tracer M1"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 556,
+        "direct": 64,
+        "via_ancestor": 17,
+        "via_ancestor_any": 98,
+        "unregistered": 377,
+        "stamped": 8
+      },
+      "screenshot": "surface-21.png"
+    },
+    {
+      "surface": "step-09-agent-selected",
+      "url": "/c/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "Tracer M1"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 532,
+        "direct": 63,
+        "via_ancestor": 15,
+        "via_ancestor_any": 89,
+        "unregistered": 365,
+        "stamped": 8
+      },
+      "screenshot": "surface-22.png"
+    },
+    {
+      "surface": "step-09",
+      "url": "/c/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "Tracer M1"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 568,
+        "direct": 95,
+        "via_ancestor": 15,
+        "via_ancestor_any": 89,
+        "unregistered": 369,
+        "stamped": 16
+      },
+      "screenshot": "surface-23.png"
+    },
+    {
+      "surface": "step-10-delete-menu",
+      "url": "/c/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f",
+      "signature": {
+        "tag": "DIV",
+        "testid": null,
+        "aria": null,
+        "role": "menu",
+        "text": "SharePinRenameDuplicateChange projectArchiveDelete"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 827,
+        "direct": 217,
+        "via_ancestor": 78,
+        "via_ancestor_any": 197,
+        "unregistered": 335,
+        "stamped": 43
+      },
+      "screenshot": "surface-24.png"
+    },
+    {
+      "surface": "step-10-delete-confirm",
+      "url": "/c/new",
+      "signature": {
+        "tag": "DIV",
+        "testid": null,
+        "aria": null,
+        "role": "dialog",
+        "text": "Delete chat?This will delete Tracer M1Cancel"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 762,
+        "direct": 168,
+        "via_ancestor": 78,
+        "via_ancestor_any": 194,
+        "unregistered": 322,
+        "stamped": 36
+      },
+      "screenshot": "surface-25.png"
+    },
+    {
+      "surface": "step-10",
+      "url": "/c/new",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "New chat"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 628,
+        "direct": 167,
+        "via_ancestor": 30,
+        "via_ancestor_any": 140,
+        "unregistered": 291,
+        "stamped": 35
+      },
+      "screenshot": "surface-26.png"
+    },
+    {
+      "surface": "seed-export-dialog",
+      "url": "/c/50d61530-aecd-56bd-8ebf-1653b1ee8499",
+      "signature": {
+        "tag": "DIV",
+        "testid": null,
+        "aria": null,
+        "role": "dialog",
+        "text": "Export conversationFilenameTypescreenshot (.png)screenshot (.png)text (.txt)mark"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 827,
+        "direct": 184,
+        "via_ancestor": 47,
+        "via_ancestor_any": 187,
+        "unregistered": 409,
+        "stamped": 35
+      },
+      "screenshot": "surface-27.png"
+    },
+    {
+      "surface": "reveal-depth-1-seed-export-dialog",
+      "url": "/c/50d61530-aecd-56bd-8ebf-1653b1ee8499",
+      "signature": {
+        "tag": "DIV",
+        "testid": null,
+        "aria": null,
+        "role": "dialog",
+        "text": "Export conversationFilenameTypescreenshot (.png)screenshot (.png)text (.txt)mark"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 785,
+        "direct": 142,
+        "via_ancestor": 47,
+        "via_ancestor_any": 187,
+        "unregistered": 409,
+        "stamped": 29
+      },
+      "screenshot": "surface-28.png"
+    },
+    {
+      "surface": "reveal-depth-2-reveal-depth-1-seed-export-dialog",
+      "url": "/c/50d61530-aecd-56bd-8ebf-1653b1ee8499",
+      "signature": {
+        "tag": "DIV",
+        "testid": null,
+        "aria": null,
+        "role": "dialog",
+        "text": "Export conversationFilenameTypescreenshot (.png)screenshot (.png)text (.txt)mark"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 827,
+        "direct": 184,
+        "via_ancestor": 47,
+        "via_ancestor_any": 187,
+        "unregistered": 409,
+        "stamped": 35
+      },
+      "screenshot": "surface-29.png"
+    },
+    {
+      "surface": "reveal-depth-2-reveal-depth-1-seed-export-dialog-post-drive",
+      "url": "/c/50d61530-aecd-56bd-8ebf-1653b1ee8499",
+      "signature": {
+        "tag": "DIV",
+        "testid": null,
+        "aria": null,
+        "role": "dialog",
+        "text": "Export conversationFilenameTypescreenshot (.png)screenshot (.png)text (.txt)mark"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 829,
+        "direct": 198,
+        "via_ancestor": 43,
+        "via_ancestor_any": 181,
+        "unregistered": 407,
+        "stamped": 37
+      },
+      "screenshot": "surface-30.png"
+    },
+    {
+      "surface": "reveal-depth-1-seed-export-dialog-post-drive",
+      "url": "/c/50d61530-aecd-56bd-8ebf-1653b1ee8499",
+      "signature": {
+        "tag": "DIV",
+        "testid": null,
+        "aria": null,
+        "role": "dialog",
+        "text": "Export conversationFilenameTypescreenshot (.png)screenshot (.png)text (.txt)mark"
+      },
+      "not_reached": true,
+      "stop": null,
+      "counts": {
+        "host_event_props": 829,
+        "direct": 198,
+        "via_ancestor": 43,
+        "via_ancestor_any": 181,
+        "unregistered": 407,
+        "stamped": 37
+      },
+      "screenshot": "surface-31.png"
+    },
+    {
+      "surface": "seed-export-dialog-post-drive",
+      "url": "/c/50d61530-aecd-56bd-8ebf-1653b1ee8499",
+      "signature": {
+        "tag": "DIV",
+        "testid": null,
+        "aria": null,
+        "role": "dialog",
+        "text": "Export conversationFilenameTypescreenshot (.png)screenshot (.png)text (.txt)mark"
+      },
+      "not_reached": true,
+      "stop": null,
+      "counts": {
+        "host_event_props": 829,
+        "direct": 198,
+        "via_ancestor": 43,
+        "via_ancestor_any": 181,
+        "unregistered": 407,
+        "stamped": 37
+      },
+      "screenshot": "surface-32.png"
+    },
+    {
+      "surface": "seed-share-dialog",
+      "url": "/c/8ffd5639-d39d-547e-9945-fd7ea965f6c7",
+      "signature": {
+        "tag": "DIV",
+        "testid": null,
+        "aria": null,
+        "role": "dialog",
+        "text": "Share link to chatYour name and any messages you add after sharing stay private."
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 730,
+        "direct": 183,
+        "via_ancestor": 40,
+        "via_ancestor_any": 160,
+        "unregistered": 347,
+        "stamped": 36
+      },
+      "screenshot": "surface-33.png"
+    },
+    {
+      "surface": "seed-share-dialog-post-drive",
+      "url": "/c/8ffd5639-d39d-547e-9945-fd7ea965f6c7",
+      "signature": {
+        "tag": "DIV",
+        "testid": null,
+        "aria": null,
+        "role": "dialog",
+        "text": "Share link to chatYour name and any messages you add after sharing stay private."
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 732,
+        "direct": 148,
+        "via_ancestor": 41,
+        "via_ancestor_any": 184,
+        "unregistered": 359,
+        "stamped": 29
+      },
+      "screenshot": "surface-34.png"
+    },
+    {
+      "surface": "seed-settings-general",
+      "url": "/c/new",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "New chat"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 1437,
+        "direct": 178,
+        "via_ancestor": 29,
+        "via_ancestor_any": 140,
+        "unregistered": 1090,
+        "stamped": 37
+      },
+      "screenshot": "surface-35.png"
+    },
+    {
+      "surface": "seed-settings-general-post-drive",
+      "url": "/c/new",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "New chat"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 511,
+        "direct": 62,
+        "via_ancestor": 28,
+        "via_ancestor_any": 133,
+        "unregistered": 288,
+        "stamped": 21
+      },
+      "screenshot": "surface-36.png"
+    },
+    {
+      "surface": "seed-settings-chat",
+      "url": "/c/new",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "New chat"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 627,
+        "direct": 72,
+        "via_ancestor": 50,
+        "via_ancestor_any": 140,
+        "unregistered": 365,
+        "stamped": 22
+      },
+      "screenshot": "surface-37.png"
+    },
+    {
+      "surface": "seed-settings-chat-post-drive",
+      "url": "/c/new",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "New chat"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 550,
+        "direct": 72,
+        "via_ancestor": 28,
+        "via_ancestor_any": 140,
+        "unregistered": 310,
+        "stamped": 22
+      },
+      "screenshot": "surface-38.png"
+    },
+    {
+      "surface": "seed-settings-speech",
+      "url": "/c/new",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "New chat"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 4349,
+        "direct": 73,
+        "via_ancestor": 30,
+        "via_ancestor_any": 146,
+        "unregistered": 4100,
+        "stamped": 21
+      },
+      "screenshot": "surface-39.png"
+    },
+    {
+      "surface": "seed-settings-speech-post-drive",
+      "url": "/c/new",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "New chat"
+      },
+      "not_reached": true,
+      "stop": null,
+      "counts": {
+        "host_event_props": 4349,
+        "direct": 73,
+        "via_ancestor": 30,
+        "via_ancestor_any": 146,
+        "unregistered": 4100,
+        "stamped": 21
+      },
+      "screenshot": "surface-40.png"
+    },
+    {
+      "surface": "seed-settings-data-privacy",
+      "url": "/c/new",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "New chat"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 564,
+        "direct": 74,
+        "via_ancestor": 29,
+        "via_ancestor_any": 140,
+        "unregistered": 321,
+        "stamped": 23
+      },
+      "screenshot": "surface-41.png"
+    },
+    {
+      "surface": "seed-settings-data-privacy-post-drive",
+      "url": "/c/new",
+      "signature": {
+        "tag": "DIV",
+        "testid": null,
+        "aria": null,
+        "role": "dialog",
+        "text": "Shared linksNameDateActionsCaffeine Connection, Bean There, and Daily Grind.22 S"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 897,
+        "direct": 102,
+        "via_ancestor": 29,
+        "via_ancestor_any": 196,
+        "unregistered": 570,
+        "stamped": 23
+      },
+      "screenshot": "surface-42.png"
+    },
+    {
+      "surface": "seed-settings-account",
+      "url": "/c/new",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "New chat"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 554,
+        "direct": 72,
+        "via_ancestor": 28,
+        "via_ancestor_any": 140,
+        "unregistered": 314,
+        "stamped": 21
+      },
+      "screenshot": "surface-43.png"
+    },
+    {
+      "surface": "seed-settings-account-post-drive",
+      "url": "/c/new",
+      "signature": {
+        "tag": "DIV",
+        "testid": null,
+        "aria": null,
+        "role": "dialog",
+        "text": "Setup 2FATwo-factor authentication adds an extra layer of security to your accou"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 563,
+        "direct": 73,
+        "via_ancestor": 28,
+        "via_ancestor_any": 140,
+        "unregistered": 322,
+        "stamped": 21
+      },
+      "screenshot": "surface-44.png"
+    },
+    {
+      "surface": "seed-settings-about",
+      "url": "/c/new",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "New chat"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 550,
+        "direct": 72,
+        "via_ancestor": 28,
+        "via_ancestor_any": 140,
+        "unregistered": 310,
+        "stamped": 21
+      },
+      "screenshot": "surface-45.png"
+    },
+    {
+      "surface": "seed-settings-about-post-drive",
+      "url": "/c/new",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "New chat"
+      },
+      "not_reached": true,
+      "stop": null,
+      "counts": {
+        "host_event_props": 550,
+        "direct": 72,
+        "via_ancestor": 28,
+        "via_ancestor_any": 140,
+        "unregistered": 310,
+        "stamped": 21
+      },
+      "screenshot": "surface-46.png"
+    },
+    {
+      "surface": "seed-keyboard-shortcuts",
+      "url": "/c/new",
+      "signature": {
+        "tag": "DIV",
+        "testid": null,
+        "aria": null,
+        "role": "dialog",
+        "text": "Keyboard ShortcutsCloseGeneralShow keyboard shortcuts⌘⇧/New chat⌘⇧OFocus chat in"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 549,
+        "direct": 92,
+        "via_ancestor": 28,
+        "via_ancestor_any": 133,
+        "unregistered": 296,
+        "stamped": 51
+      },
+      "screenshot": "surface-47.png"
+    },
+    {
+      "surface": "seed-keyboard-shortcuts-post-drive",
+      "url": "/c/new",
+      "signature": {
+        "tag": "DIV",
+        "testid": null,
+        "aria": null,
+        "role": "dialog",
+        "text": "Keyboard ShortcutsCloseGeneralShow keyboard shortcuts⌘⇧/New chat⌘⇧OFocus chat in"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 551,
+        "direct": 94,
+        "via_ancestor": 28,
+        "via_ancestor_any": 133,
+        "unregistered": 296,
+        "stamped": 50
+      },
+      "screenshot": "surface-48.png"
+    },
+    {
+      "surface": "seed-files-panel",
+      "url": "/c/new",
+      "signature": {
+        "tag": "DIV",
+        "testid": null,
+        "aria": null,
+        "role": "dialog",
+        "text": "My FilesDeleteFilter files...✓Name✓Date✓Storage✓Context✓SizeNameDateStorageAscDe"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 1050,
+        "direct": 73,
+        "via_ancestor": 60,
+        "via_ancestor_any": 263,
+        "unregistered": 654,
+        "stamped": 24
+      },
+      "screenshot": "surface-49.png"
+    },
+    {
+      "surface": "seed-files-panel-post-drive",
+      "url": "/c/new",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "New chat"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 508,
+        "direct": 59,
+        "via_ancestor": 28,
+        "via_ancestor_any": 133,
+        "unregistered": 288,
+        "stamped": 20
+      },
+      "screenshot": "surface-50.png"
+    },
+    {
+      "surface": "seed-file-preview",
+      "url": "/c/new",
+      "signature": {
+        "tag": "DIV",
+        "testid": null,
+        "aria": null,
+        "role": "dialog",
+        "text": "My FilesDeleteFilter files...✓Name✓Date✓Storage✓Context✓SizeNameDateStorageAscDe"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 1061,
+        "direct": 77,
+        "via_ancestor": 60,
+        "via_ancestor_any": 264,
+        "unregistered": 660,
+        "stamped": 24
+      },
+      "screenshot": "surface-51.png"
+    },
+    {
+      "surface": "seed-file-preview-post-drive",
+      "url": "/c/new",
+      "signature": {
+        "tag": "DIV",
+        "testid": null,
+        "aria": null,
+        "role": "dialog",
+        "text": "My FilesDeleteFilter files...✓Name✓Date✓Storage✓Context✓SizeNameDateStorageAscDe"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 1050,
+        "direct": 73,
+        "via_ancestor": 60,
+        "via_ancestor_any": 263,
+        "unregistered": 654,
+        "stamped": 24
+      },
+      "screenshot": "surface-52.png"
+    },
+    {
+      "surface": "seed-prompts-panel",
+      "url": "/c/new",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "New chat"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 546,
+        "direct": 35,
+        "via_ancestor": 12,
+        "via_ancestor_any": 78,
+        "unregistered": 421,
+        "stamped": 4
+      },
+      "screenshot": "surface-53.png"
+    },
+    {
+      "surface": "seed-prompts-panel-post-drive",
+      "url": "/c/new",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "New chat"
+      },
+      "not_reached": true,
+      "stop": null,
+      "counts": {
+        "host_event_props": 546,
+        "direct": 35,
+        "via_ancestor": 12,
+        "via_ancestor_any": 78,
+        "unregistered": 421,
+        "stamped": 4
+      },
+      "screenshot": "surface-54.png"
+    },
+    {
+      "surface": "seed-prompts-editor",
+      "url": "/prompts/new",
+      "signature": {
+        "tag": "INPUT",
+        "testid": null,
+        "aria": "Filter prompts by name",
+        "role": null,
+        "text": ""
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 622,
+        "direct": 22,
+        "via_ancestor": 17,
+        "via_ancestor_any": 85,
+        "unregistered": 498,
+        "stamped": 5
+      },
+      "screenshot": "surface-55.png"
+    },
+    {
+      "surface": "seed-prompts-editor-post-drive",
+      "url": "/prompts/new",
+      "signature": {
+        "tag": "INPUT",
+        "testid": null,
+        "aria": "Filter prompts by name",
+        "role": null,
+        "text": ""
+      },
+      "not_reached": true,
+      "stop": null,
+      "counts": {
+        "host_event_props": 622,
+        "direct": 22,
+        "via_ancestor": 17,
+        "via_ancestor_any": 85,
+        "unregistered": 498,
+        "stamped": 5
+      },
+      "screenshot": "surface-56.png"
+    },
+    {
+      "surface": "seed-bookmarks-panel",
+      "url": "/c/new",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "New chat"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 351,
+        "direct": 32,
+        "via_ancestor": 11,
+        "via_ancestor_any": 78,
+        "unregistered": 230,
+        "stamped": 3
+      },
+      "screenshot": "surface-57.png"
+    },
+    {
+      "surface": "seed-bookmarks-panel-post-drive",
+      "url": "/c/new",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "New chat"
+      },
+      "not_reached": true,
+      "stop": null,
+      "counts": {
+        "host_event_props": 351,
+        "direct": 32,
+        "via_ancestor": 11,
+        "via_ancestor_any": 78,
+        "unregistered": 230,
+        "stamped": 3
+      },
+      "screenshot": "surface-58.png"
+    },
+    {
+      "surface": "seed-marketplace",
+      "url": "/agents/all",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "Agent Marketplace"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 294,
+        "direct": 39,
+        "via_ancestor": 6,
+        "via_ancestor_any": 46,
+        "unregistered": 203,
+        "stamped": 3
+      },
+      "screenshot": "surface-59.png"
+    },
+    {
+      "surface": "seed-marketplace-post-drive",
+      "url": "/agents/general",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "Agent Marketplace"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 277,
+        "direct": 34,
+        "via_ancestor": 6,
+        "via_ancestor_any": 46,
+        "unregistered": 191,
+        "stamped": 4
+      },
+      "screenshot": "surface-60.png"
+    },
+    {
+      "surface": "seed-marketplace-search",
+      "url": "/agents/all",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "Agent Marketplace"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 313,
+        "direct": 46,
+        "via_ancestor": 6,
+        "via_ancestor_any": 46,
+        "unregistered": 215,
+        "stamped": 4
+      },
+      "screenshot": "surface-61.png"
+    },
+    {
+      "surface": "seed-marketplace-search-post-drive",
+      "url": "/agents/all",
+      "signature": {
+        "tag": "DIV",
+        "testid": null,
+        "aria": null,
+        "role": "dialog",
+        "text": "Barista 1790110302328Contact:Tracer M1Start ChatClose"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 305,
+        "direct": 42,
+        "via_ancestor": 6,
+        "via_ancestor_any": 46,
+        "unregistered": 211,
+        "stamped": 6
+      },
+      "screenshot": "surface-62.png"
+    },
+    {
+      "surface": "seed-marketplace-details",
+      "url": "/agents/all",
+      "signature": {
+        "tag": "DIV",
+        "testid": null,
+        "aria": null,
+        "role": "dialog",
+        "text": "Barista 1790110302328Contact:Tracer M1Start ChatClose"
+      },
+      "not_reached": true,
+      "stop": null,
+      "counts": {
+        "host_event_props": 305,
+        "direct": 42,
+        "via_ancestor": 6,
+        "via_ancestor_any": 46,
+        "unregistered": 211,
+        "stamped": 6
+      },
+      "screenshot": "surface-63.png"
+    },
+    {
+      "surface": "seed-marketplace-details-post-drive",
+      "url": "/c/new",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "New chat"
+      },
+      "not_reached": false,
+      "stop": null,
+      "counts": {
+        "host_event_props": 360,
+        "direct": 32,
+        "via_ancestor": 11,
+        "via_ancestor_any": 78,
+        "unregistered": 239,
+        "stamped": 3
+      },
+      "screenshot": "surface-64.png"
+    },
+    {
+      "surface": "post-flow-message-hover",
+      "url": "/c/new",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "New chat"
+      },
+      "not_reached": true,
+      "stop": null,
+      "counts": {
+        "host_event_props": 360,
+        "direct": 32,
+        "via_ancestor": 11,
+        "via_ancestor_any": 78,
+        "unregistered": 239,
+        "stamped": 3
+      },
+      "screenshot": "surface-65.png"
+    },
+    {
+      "surface": "post-flow-message-hover-post-drive",
+      "url": "/c/new",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "New chat"
+      },
+      "not_reached": true,
+      "stop": null,
+      "counts": {
+        "host_event_props": 360,
+        "direct": 32,
+        "via_ancestor": 11,
+        "via_ancestor_any": 78,
+        "unregistered": 239,
+        "stamped": 3
+      },
+      "screenshot": "surface-66.png"
+    },
+    {
+      "surface": "post-flow-menu",
+      "url": "/c/new",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "New chat"
+      },
+      "not_reached": true,
+      "stop": null,
+      "counts": {
+        "host_event_props": 360,
+        "direct": 32,
+        "via_ancestor": 11,
+        "via_ancestor_any": 78,
+        "unregistered": 239,
+        "stamped": 3
+      },
+      "screenshot": "surface-67.png"
+    },
+    {
+      "surface": "post-flow-menu-post-drive",
+      "url": "/c/new",
+      "signature": {
+        "tag": "H1",
+        "testid": null,
+        "aria": null,
+        "role": null,
+        "text": "New chat"
+      },
+      "not_reached": true,
+      "stop": null,
+      "counts": {
+        "host_event_props": 360,
+        "direct": 32,
+        "via_ancestor": 11,
+        "via_ancestor_any": 78,
+        "unregistered": 239,
+        "stamped": 3
+      },
+      "screenshot": "surface-68.png"
+    }
+  ],
+  "consistency_gate": {
+    "send": {
+      "action_ids": [
+        "action:mud5f8gs:1",
+        "action:mud5f8so:2",
+        "action:mud5f95p:3",
+        "action:mud5f985:4",
+        "action:mud5f9f0:5",
+        "action:mud5f9to:6",
+        "action:mud5f9xd:7",
+        "action:mud5f9yk:8",
+        "action:mud5f9zr:9"
+      ],
+      "reached_db": true,
+      "write_action_ids": [
+        "action:mud5f9zr:9"
+      ],
+      "write_operations": [
+        {
+          "operation": "findAndModify",
+          "collection": "conversations",
+          "span_id": "e4ccd3f022f69a92"
+        },
+        {
+          "operation": "findAndModify",
+          "collection": "messages",
+          "span_id": "b6b1f0d5496d8ac8"
+        },
+        {
+          "operation": "findAndModify",
+          "collection": "messages",
+          "span_id": "512ccef7d1845468"
+        },
+        {
+          "operation": "findAndModify",
+          "collection": "conversations",
+          "span_id": "06a593a86bcea620"
+        },
+        {
+          "operation": "findAndModify",
+          "collection": "messages",
+          "span_id": "108848d42cd382c8"
+        },
+        {
+          "operation": "insert",
+          "collection": "transactions",
+          "span_id": "b1a2543b58404802"
+        },
+        {
+          "operation": "insert",
+          "collection": "transactions",
+          "span_id": "c7e79377579c9b78"
+        },
+        {
+          "operation": "findAndModify",
+          "collection": "conversations",
+          "span_id": "a814336333febd1c"
+        },
+        {
+          "operation": "insert",
+          "collection": "transactions",
+          "span_id": "161f7c4c57a175cd"
+        },
+        {
+          "operation": "findAndModify",
+          "collection": "messages",
+          "span_id": "18134e940422b169"
+        }
+      ],
+      "required_request": null,
+      "request_action_ids": [
+        "action:mud5f8gs:1",
+        "action:mud5f8so:2",
+        "action:mud5f95p:3",
+        "action:mud5f985:4",
+        "action:mud5f9f0:5",
+        "action:mud5f9to:6",
+        "action:mud5f9xd:7",
+        "action:mud5f9yk:8",
+        "action:mud5f9zr:9"
+      ],
+      "jointly_proven_action_ids": [
+        "action:mud5f9zr:9"
+      ],
+      "entry_handler_units": [
+        "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:17345:18011|submit"
+      ],
+      "entry_handlers_proven": true,
+      "request_evidence": [
+        {
+          "action_id": "action:mud5f9zr:9",
+          "method": "POST",
+          "url": "/api/agents/chat/openAI"
+        },
+        {
+          "action_id": "action:mud5f9zr:9",
+          "method": "GET",
+          "url": "/api/agents/chat/stream/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f"
+        },
+        {
+          "action_id": "action:mud5f9zr:9",
+          "method": "GET",
+          "url": "/api/agents/chat/status/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f"
+        },
+        {
+          "action_id": "action:mud5f9zr:9",
+          "method": "GET",
+          "url": "/api/convos/gen_title/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f"
+        },
+        {
+          "action_id": "action:mud5f9zr:9",
+          "method": "GET",
+          "url": "/api/convos"
+        }
+      ],
+      "db_evidence": [
+        {
+          "action_id": "action:mud5f8gs:1",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5f8so:2",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5f95p:3",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5f985:4",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5f9f0:5",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5f9to:6",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5f9xd:7",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5f9yk:8",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5f9zr:9",
+          "route": 5,
+          "handler": 5,
+          "db": 22,
+          "db_write": 10,
+          "write_operations": [
+            {
+              "operation": "findAndModify",
+              "collection": "conversations",
+              "span_id": "e4ccd3f022f69a92"
+            },
+            {
+              "operation": "findAndModify",
+              "collection": "messages",
+              "span_id": "b6b1f0d5496d8ac8"
+            },
+            {
+              "operation": "findAndModify",
+              "collection": "messages",
+              "span_id": "512ccef7d1845468"
+            },
+            {
+              "operation": "findAndModify",
+              "collection": "conversations",
+              "span_id": "06a593a86bcea620"
+            },
+            {
+              "operation": "findAndModify",
+              "collection": "messages",
+              "span_id": "108848d42cd382c8"
+            },
+            {
+              "operation": "insert",
+              "collection": "transactions",
+              "span_id": "b1a2543b58404802"
+            },
+            {
+              "operation": "insert",
+              "collection": "transactions",
+              "span_id": "c7e79377579c9b78"
+            },
+            {
+              "operation": "findAndModify",
+              "collection": "conversations",
+              "span_id": "a814336333febd1c"
+            },
+            {
+              "operation": "insert",
+              "collection": "transactions",
+              "span_id": "161f7c4c57a175cd"
+            },
+            {
+              "operation": "findAndModify",
+              "collection": "messages",
+              "span_id": "18134e940422b169"
+            }
+          ]
+        }
+      ]
+    },
+    "feedback": {
+      "action_ids": [
+        "action:mud5fku5:2",
+        "action:mud5fl8w:3"
+      ],
+      "reached_db": true,
+      "write_action_ids": [
+        "action:mud5fl8w:3"
+      ],
+      "write_operations": [
+        {
+          "operation": "findAndModify",
+          "collection": "messages",
+          "span_id": "3fe235566e028962"
+        }
+      ],
+      "required_request": null,
+      "request_action_ids": [
+        "action:mud5fku5:2",
+        "action:mud5fl8w:3"
+      ],
+      "jointly_proven_action_ids": [
+        "action:mud5fl8w:3"
+      ],
+      "entry_handler_units": [
+        "function:b6e145fc35bd0ba6db55e49be03b3feca87fa96f6806ac5b0544ae8b6145c59c:3347:3559|click"
+      ],
+      "entry_handlers_proven": true,
+      "request_evidence": [
+        {
+          "action_id": "action:mud5fl8w:3",
+          "method": "PUT",
+          "url": "/api/messages/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f/5f95a9ec-3ae3-48dc-be04-1b3cc5ffc6f2/feedback"
+        }
+      ],
+      "db_evidence": [
+        {
+          "action_id": "action:mud5fku5:2",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5fl8w:3",
+          "route": 1,
+          "handler": 3,
+          "db": 2,
+          "db_write": 1,
+          "write_operations": [
+            {
+              "operation": "findAndModify",
+              "collection": "messages",
+              "span_id": "3fe235566e028962"
+            }
+          ]
+        }
+      ]
+    },
+    "regenerate": {
+      "action_ids": [
+        "action:mud5fmhv:4"
+      ],
+      "reached_db": true,
+      "write_action_ids": [
+        "action:mud5fmhv:4"
+      ],
+      "write_operations": [
+        {
+          "operation": "findAndModify",
+          "collection": "messages",
+          "span_id": "6d0425217c92fb1d"
+        },
+        {
+          "operation": "findAndModify",
+          "collection": "messages",
+          "span_id": "f30ffe671d5a35b8"
+        },
+        {
+          "operation": "findAndModify",
+          "collection": "conversations",
+          "span_id": "c40e6132fb89533c"
+        },
+        {
+          "operation": "findAndModify",
+          "collection": "messages",
+          "span_id": "8116a14674612986"
+        },
+        {
+          "operation": "insert",
+          "collection": "transactions",
+          "span_id": "a57791d949d3a5e5"
+        },
+        {
+          "operation": "insert",
+          "collection": "transactions",
+          "span_id": "c000b9454db95ee0"
+        },
+        {
+          "operation": "findAndModify",
+          "collection": "conversations",
+          "span_id": "99ab5172c8e418db"
+        },
+        {
+          "operation": "findAndModify",
+          "collection": "messages",
+          "span_id": "f28fcc13dc25d5fb"
+        }
+      ],
+      "required_request": null,
+      "request_action_ids": [
+        "action:mud5fmhv:4"
+      ],
+      "jointly_proven_action_ids": [
+        "action:mud5fmhv:4"
+      ],
+      "entry_handler_units": [
+        "function:c057074eb90d959be20f9e8d7801624cfaa20e2e8d36fad2558178c65501d329:3465:3490|click"
+      ],
+      "entry_handlers_proven": true,
+      "request_evidence": [
+        {
+          "action_id": "action:mud5fmhv:4",
+          "method": "POST",
+          "url": "/api/agents/chat/openAI"
+        },
+        {
+          "action_id": "action:mud5fmhv:4",
+          "method": "GET",
+          "url": "/api/agents/chat/stream/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f"
+        },
+        {
+          "action_id": "action:mud5fmhv:4",
+          "method": "GET",
+          "url": "/api/agents/chat/status/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f"
+        }
+      ],
+      "db_evidence": [
+        {
+          "action_id": "action:mud5fmhv:4",
+          "route": 3,
+          "handler": 3,
+          "db": 17,
+          "db_write": 8,
+          "write_operations": [
+            {
+              "operation": "findAndModify",
+              "collection": "messages",
+              "span_id": "6d0425217c92fb1d"
+            },
+            {
+              "operation": "findAndModify",
+              "collection": "messages",
+              "span_id": "f30ffe671d5a35b8"
+            },
+            {
+              "operation": "findAndModify",
+              "collection": "conversations",
+              "span_id": "c40e6132fb89533c"
+            },
+            {
+              "operation": "findAndModify",
+              "collection": "messages",
+              "span_id": "8116a14674612986"
+            },
+            {
+              "operation": "insert",
+              "collection": "transactions",
+              "span_id": "a57791d949d3a5e5"
+            },
+            {
+              "operation": "insert",
+              "collection": "transactions",
+              "span_id": "c000b9454db95ee0"
+            },
+            {
+              "operation": "findAndModify",
+              "collection": "conversations",
+              "span_id": "99ab5172c8e418db"
+            },
+            {
+              "operation": "findAndModify",
+              "collection": "messages",
+              "span_id": "f28fcc13dc25d5fb"
+            }
+          ]
+        }
+      ]
+    },
+    "edit-resubmit": {
+      "action_ids": [
+        "action:mud5ft2i:5",
+        "action:mud5ft8k:6",
+        "action:mud5ft8n:7",
+        "action:mud5ft8o:8",
+        "action:mud5ft8s:9",
+        "action:mud5ft8w:10",
+        "action:mud5ftaa:11"
+      ],
+      "reached_db": true,
+      "write_action_ids": [
+        "action:mud5ftaa:11"
+      ],
+      "write_operations": [
+        {
+          "operation": "findAndModify",
+          "collection": "messages",
+          "span_id": "58472fcf1985f23c"
+        },
+        {
+          "operation": "findAndModify",
+          "collection": "messages",
+          "span_id": "de578a805f08feeb"
+        },
+        {
+          "operation": "findAndModify",
+          "collection": "conversations",
+          "span_id": "e70b0c9b0527fd96"
+        },
+        {
+          "operation": "findAndModify",
+          "collection": "messages",
+          "span_id": "01813f51fd9db80a"
+        },
+        {
+          "operation": "insert",
+          "collection": "transactions",
+          "span_id": "591fd1a401b8dafe"
+        },
+        {
+          "operation": "insert",
+          "collection": "transactions",
+          "span_id": "4ca2d3dad7fdd202"
+        },
+        {
+          "operation": "findAndModify",
+          "collection": "conversations",
+          "span_id": "0bc45e06ffed6ab7"
+        },
+        {
+          "operation": "findAndModify",
+          "collection": "messages",
+          "span_id": "935b8309aac2e293"
+        }
+      ],
+      "required_request": null,
+      "request_action_ids": [
+        "action:mud5ft2i:5",
+        "action:mud5ft8k:6",
+        "action:mud5ft8n:7",
+        "action:mud5ft8o:8",
+        "action:mud5ft8s:9",
+        "action:mud5ft8w:10",
+        "action:mud5ftaa:11"
+      ],
+      "jointly_proven_action_ids": [
+        "action:mud5ftaa:11"
+      ],
+      "entry_handler_units": [
+        "function:331fd4345137cbf1b7c01850c3999c382577bbec382335994fe42dd9a8b4616b:308:413|click"
+      ],
+      "entry_handlers_proven": true,
+      "request_evidence": [
+        {
+          "action_id": "action:mud5ftaa:11",
+          "method": "POST",
+          "url": "/api/agents/chat/openAI"
+        },
+        {
+          "action_id": "action:mud5ftaa:11",
+          "method": "GET",
+          "url": "/api/agents/chat/stream/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f"
+        },
+        {
+          "action_id": "action:mud5ftaa:11",
+          "method": "GET",
+          "url": "/api/agents/chat/status/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f"
+        }
+      ],
+      "db_evidence": [
+        {
+          "action_id": "action:mud5ft2i:5",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5ft8k:6",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5ft8n:7",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5ft8o:8",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5ft8s:9",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5ft8w:10",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5ftaa:11",
+          "route": 3,
+          "handler": 3,
+          "db": 17,
+          "db_write": 8,
+          "write_operations": [
+            {
+              "operation": "findAndModify",
+              "collection": "messages",
+              "span_id": "58472fcf1985f23c"
+            },
+            {
+              "operation": "findAndModify",
+              "collection": "messages",
+              "span_id": "de578a805f08feeb"
+            },
+            {
+              "operation": "findAndModify",
+              "collection": "conversations",
+              "span_id": "e70b0c9b0527fd96"
+            },
+            {
+              "operation": "findAndModify",
+              "collection": "messages",
+              "span_id": "01813f51fd9db80a"
+            },
+            {
+              "operation": "insert",
+              "collection": "transactions",
+              "span_id": "591fd1a401b8dafe"
+            },
+            {
+              "operation": "insert",
+              "collection": "transactions",
+              "span_id": "4ca2d3dad7fdd202"
+            },
+            {
+              "operation": "findAndModify",
+              "collection": "conversations",
+              "span_id": "0bc45e06ffed6ab7"
+            },
+            {
+              "operation": "findAndModify",
+              "collection": "messages",
+              "span_id": "935b8309aac2e293"
+            }
+          ]
+        }
+      ]
+    },
+    "rename": {
+      "action_ids": [
+        "action:mud5g0r7:12",
+        "action:mud5g1cs:13",
+        "action:mud5g1hb:14",
+        "action:mud5g1jh:15",
+        "action:mud5g1ji:16"
+      ],
+      "reached_db": true,
+      "write_action_ids": [
+        "action:mud5g1ji:16"
+      ],
+      "write_operations": [
+        {
+          "operation": "findAndModify",
+          "collection": "conversations",
+          "span_id": "4aa1ae7b46dc25c0"
+        }
+      ],
+      "required_request": null,
+      "request_action_ids": [
+        "action:mud5g0r7:12",
+        "action:mud5g1cs:13",
+        "action:mud5g1hb:14",
+        "action:mud5g1jh:15",
+        "action:mud5g1ji:16"
+      ],
+      "jointly_proven_action_ids": [
+        "action:mud5g1ji:16"
+      ],
+      "entry_handler_units": [
+        "function:348389e6924deb31f91c5d32cce54049ff9abb71061655c299e6cfc4957e1491:1876:1902|click"
+      ],
+      "entry_handlers_proven": true,
+      "request_evidence": [
+        {
+          "action_id": "action:mud5g1ji:16",
+          "method": "POST",
+          "url": "/api/convos/update"
+        }
+      ],
+      "db_evidence": [
+        {
+          "action_id": "action:mud5g0r7:12",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5g1cs:13",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5g1hb:14",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5g1jh:15",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5g1ji:16",
+          "route": 1,
+          "handler": 2,
+          "db": 2,
+          "db_write": 1,
+          "write_operations": [
+            {
+              "operation": "findAndModify",
+              "collection": "conversations",
+              "span_id": "4aa1ae7b46dc25c0"
+            }
+          ]
+        }
+      ]
+    },
+    "agent-create": {
+      "action_ids": [
+        "action:mud5gbgw:19",
+        "action:mud5gcbi:20",
+        "action:mud5gchy:21",
+        "action:mud5gcsb:22",
+        "action:mud5gd7e:23",
+        "action:mud5gdbu:24",
+        "action:mud5gde9:25",
+        "action:mud5gdea:26",
+        "action:mud5gdh4:27",
+        "action:mud5gdh4:28",
+        "action:mud5gdh4:29"
+      ],
+      "reached_db": true,
+      "write_action_ids": [
+        "action:mud5gdh4:29"
+      ],
+      "write_operations": [
+        {
+          "operation": "findAndModify",
+          "collection": "aclentries",
+          "span_id": "be0c41a671b9713c"
+        },
+        {
+          "operation": "findAndModify",
+          "collection": "aclentries",
+          "span_id": "3f0be8eb29b4e0d7"
+        },
+        {
+          "operation": "insert",
+          "collection": "agents",
+          "span_id": "a8fbd94b5e8393d6"
+        }
+      ],
+      "required_request": {
+        "method": "POST",
+        "path": "/api/agents"
+      },
+      "request_action_ids": [
+        "action:mud5gdh4:29"
+      ],
+      "jointly_proven_action_ids": [
+        "action:mud5gdh4:29"
+      ],
+      "entry_handler_units": [
+        "function:03e1cb3bc038e969913a678f7dba70299865e9d83f2601d7e4a8a558aec974db:8299:8402|submit"
+      ],
+      "entry_handlers_proven": true,
+      "request_evidence": [
+        {
+          "action_id": "action:mud5gbgw:19",
+          "method": "GET",
+          "url": "/api/agents/categories"
+        },
+        {
+          "action_id": "action:mud5gbgw:19",
+          "method": "GET",
+          "url": "/api/skills"
+        },
+        {
+          "action_id": "action:mud5gbgw:19",
+          "method": "GET",
+          "url": "/api/admin/roles"
+        },
+        {
+          "action_id": "action:mud5gbgw:19",
+          "method": "GET",
+          "url": "/api/models"
+        },
+        {
+          "action_id": "action:mud5gbgw:19",
+          "method": "GET",
+          "url": "/api/mcp/servers"
+        },
+        {
+          "action_id": "action:mud5gbgw:19",
+          "method": "GET",
+          "url": "/api/permissions/mcpServer/effective/all"
+        },
+        {
+          "action_id": "action:mud5gbgw:19",
+          "method": "GET",
+          "url": "/api/agents/tools"
+        },
+        {
+          "action_id": "action:mud5gdh4:29",
+          "method": "POST",
+          "url": "/api/agents"
+        },
+        {
+          "action_id": "action:mud5gdh4:29",
+          "method": "GET",
+          "url": "/api/agents/agent_hdRK5fMv9D6c1FPj7LAcQ"
+        },
+        {
+          "action_id": "action:mud5gdh4:29",
+          "method": "GET",
+          "url": "/api/agents/actions"
+        },
+        {
+          "action_id": "action:mud5gdh4:29",
+          "method": "GET",
+          "url": "/api/permissions/agent/6ab2ea5e5add77f4960a35e2/effective"
+        },
+        {
+          "action_id": "action:mud5gdh4:29",
+          "method": "GET",
+          "url": "/api/files/agent/agent_hdRK5fMv9D6c1FPj7LAcQ"
+        },
+        {
+          "action_id": "action:mud5gdh4:29",
+          "method": "GET",
+          "url": "/api/permissions/agent/6ab2ea5e5add77f4960a35e2"
+        },
+        {
+          "action_id": "action:mud5gdh4:29",
+          "method": "GET",
+          "url": "/api/permissions/remoteAgent/6ab2ea5e5add77f4960a35e2/effective"
+        },
+        {
+          "action_id": "action:mud5gdh4:29",
+          "method": "GET",
+          "url": "/api/agents/agent_hdRK5fMv9D6c1FPj7LAcQ/expanded"
+        },
+        {
+          "action_id": "action:mud5gdh4:29",
+          "method": "GET",
+          "url": "/api/permissions/remoteAgent/6ab2ea5e5add77f4960a35e2"
+        }
+      ],
+      "db_evidence": [
+        {
+          "action_id": "action:mud5gbgw:19",
+          "route": 7,
+          "handler": 12,
+          "db": 19,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5gcbi:20",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5gchy:21",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5gcsb:22",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5gd7e:23",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5gdbu:24",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5gde9:25",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5gdea:26",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5gdh4:27",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5gdh4:28",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5gdh4:29",
+          "route": 9,
+          "handler": 16,
+          "db": 29,
+          "db_write": 3,
+          "write_operations": [
+            {
+              "operation": "findAndModify",
+              "collection": "aclentries",
+              "span_id": "be0c41a671b9713c"
+            },
+            {
+              "operation": "findAndModify",
+              "collection": "aclentries",
+              "span_id": "3f0be8eb29b4e0d7"
+            },
+            {
+              "operation": "insert",
+              "collection": "agents",
+              "span_id": "a8fbd94b5e8393d6"
+            }
+          ]
+        }
+      ]
+    },
+    "agent-chat": {
+      "action_ids": [
+        "action:mud5gu46:30",
+        "action:mud5guvl:31",
+        "action:mud5gux2:32",
+        "action:mud5guxp:33",
+        "action:mud5guyc:34"
+      ],
+      "reached_db": true,
+      "write_action_ids": [
+        "action:mud5guyc:34"
+      ],
+      "write_operations": [
+        {
+          "operation": "findAndModify",
+          "collection": "messages",
+          "span_id": "bc9f3814208265d3"
+        },
+        {
+          "operation": "findAndModify",
+          "collection": "messages",
+          "span_id": "c0fa10ba83925186"
+        },
+        {
+          "operation": "findAndModify",
+          "collection": "conversations",
+          "span_id": "e87699cefc60c021"
+        },
+        {
+          "operation": "findAndModify",
+          "collection": "messages",
+          "span_id": "aaa5deea516401f2"
+        },
+        {
+          "operation": "insert",
+          "collection": "transactions",
+          "span_id": "1510c48c52589e7d"
+        },
+        {
+          "operation": "insert",
+          "collection": "transactions",
+          "span_id": "37c28ff403b85246"
+        },
+        {
+          "operation": "findAndModify",
+          "collection": "conversations",
+          "span_id": "f3109c3e4961285a"
+        },
+        {
+          "operation": "findAndModify",
+          "collection": "messages",
+          "span_id": "d0a77e530028f495"
+        }
+      ],
+      "required_request": {
+        "method": "POST",
+        "path": "/api/agents/chat/agents"
+      },
+      "request_action_ids": [
+        "action:mud5guyc:34"
+      ],
+      "jointly_proven_action_ids": [
+        "action:mud5guyc:34"
+      ],
+      "entry_handler_units": [
+        "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:17345:18011|submit"
+      ],
+      "entry_handlers_proven": true,
+      "request_evidence": [
+        {
+          "action_id": "action:mud5gu46:30",
+          "method": "GET",
+          "url": "/api/keys"
+        },
+        {
+          "action_id": "action:mud5gu46:30",
+          "method": "GET",
+          "url": "/api/agents/agent_hdRK5fMv9D6c1FPj7LAcQ"
+        },
+        {
+          "action_id": "action:mud5guyc:34",
+          "method": "POST",
+          "url": "/api/agents/chat/agents"
+        },
+        {
+          "action_id": "action:mud5guyc:34",
+          "method": "GET",
+          "url": "/api/agents/chat/stream/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f"
+        },
+        {
+          "action_id": "action:mud5guyc:34",
+          "method": "GET",
+          "url": "/api/agents/chat/status/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f"
+        }
+      ],
+      "db_evidence": [
+        {
+          "action_id": "action:mud5gu46:30",
+          "route": 2,
+          "handler": 5,
+          "db": 7,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5guvl:31",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5gux2:32",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5guxp:33",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5guyc:34",
+          "route": 3,
+          "handler": 3,
+          "db": 17,
+          "db_write": 8,
+          "write_operations": [
+            {
+              "operation": "findAndModify",
+              "collection": "messages",
+              "span_id": "bc9f3814208265d3"
+            },
+            {
+              "operation": "findAndModify",
+              "collection": "messages",
+              "span_id": "c0fa10ba83925186"
+            },
+            {
+              "operation": "findAndModify",
+              "collection": "conversations",
+              "span_id": "e87699cefc60c021"
+            },
+            {
+              "operation": "findAndModify",
+              "collection": "messages",
+              "span_id": "aaa5deea516401f2"
+            },
+            {
+              "operation": "insert",
+              "collection": "transactions",
+              "span_id": "1510c48c52589e7d"
+            },
+            {
+              "operation": "insert",
+              "collection": "transactions",
+              "span_id": "37c28ff403b85246"
+            },
+            {
+              "operation": "findAndModify",
+              "collection": "conversations",
+              "span_id": "f3109c3e4961285a"
+            },
+            {
+              "operation": "findAndModify",
+              "collection": "messages",
+              "span_id": "d0a77e530028f495"
+            }
+          ]
+        }
+      ]
+    },
+    "delete": {
+      "action_ids": [
+        "action:mud5h9f4:35",
+        "action:mud5ha6x:36",
+        "action:mud5haq2:37",
+        "action:mud5hb60:38"
+      ],
+      "reached_db": true,
+      "write_action_ids": [
+        "action:mud5hb60:38"
+      ],
+      "write_operations": [
+        {
+          "operation": "delete",
+          "collection": "sharedlinks",
+          "span_id": "2d7da477c63ad1a2"
+        },
+        {
+          "operation": "delete",
+          "collection": "toolcalls",
+          "span_id": "2680f9417df1d2ed"
+        },
+        {
+          "operation": "delete",
+          "collection": "agent_checkpoint_writes",
+          "span_id": "378f6099feac2094"
+        },
+        {
+          "operation": "delete",
+          "collection": "agent_checkpoints",
+          "span_id": "0b442d716e179938"
+        },
+        {
+          "operation": "delete",
+          "collection": "messages",
+          "span_id": "62a9de8af74343a6"
+        },
+        {
+          "operation": "delete",
+          "collection": "conversations",
+          "span_id": "69535ce199ba97c2"
+        }
+      ],
+      "required_request": null,
+      "request_action_ids": [
+        "action:mud5h9f4:35",
+        "action:mud5ha6x:36",
+        "action:mud5haq2:37",
+        "action:mud5hb60:38"
+      ],
+      "jointly_proven_action_ids": [
+        "action:mud5hb60:38"
+      ],
+      "entry_handler_units": [
+        "function:3dace8c0d4accdb10fae5d6fa1c4ebfae91dc12defb5c15125de63e5c908766f:2331:2656|click"
+      ],
+      "entry_handlers_proven": true,
+      "request_evidence": [
+        {
+          "action_id": "action:mud5h9f4:35",
+          "method": "GET",
+          "url": "/api/projects"
+        },
+        {
+          "action_id": "action:mud5h9f4:35",
+          "method": "GET",
+          "url": "/api/agents/chat/active"
+        },
+        {
+          "action_id": "action:mud5hb60:38",
+          "method": "DELETE",
+          "url": "/api/convos"
+        },
+        {
+          "action_id": "action:mud5hb60:38",
+          "method": "GET",
+          "url": "/api/convos"
+        },
+        {
+          "action_id": "action:mud5hb60:38",
+          "method": "GET",
+          "url": "/api/projects"
+        },
+        {
+          "action_id": "action:mud5hb60:38",
+          "method": "GET",
+          "url": "/api/tags"
+        },
+        {
+          "action_id": "action:mud5hb60:38",
+          "method": "GET",
+          "url": "/api/messages/627ee2a4-50eb-5f89-92f9-4e5b7408fe8f"
+        },
+        {
+          "action_id": "action:mud5hb60:38",
+          "method": "GET",
+          "url": "/api/agents/agent_hdRK5fMv9D6c1FPj7LAcQ"
+        }
+      ],
+      "db_evidence": [
+        {
+          "action_id": "action:mud5h9f4:35",
+          "route": 2,
+          "handler": 2,
+          "db": 1,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5ha6x:36",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5haq2:37",
+          "route": 0,
+          "handler": 0,
+          "db": 0,
+          "db_write": 0,
+          "write_operations": []
+        },
+        {
+          "action_id": "action:mud5hb60:38",
+          "route": 6,
+          "handler": 10,
+          "db": 18,
+          "db_write": 6,
+          "write_operations": [
+            {
+              "operation": "delete",
+              "collection": "sharedlinks",
+              "span_id": "2d7da477c63ad1a2"
+            },
+            {
+              "operation": "delete",
+              "collection": "toolcalls",
+              "span_id": "2680f9417df1d2ed"
+            },
+            {
+              "operation": "delete",
+              "collection": "agent_checkpoint_writes",
+              "span_id": "378f6099feac2094"
+            },
+            {
+              "operation": "delete",
+              "collection": "agent_checkpoints",
+              "span_id": "0b442d716e179938"
+            },
+            {
+              "operation": "delete",
+              "collection": "messages",
+              "span_id": "62a9de8af74343a6"
+            },
+            {
+              "operation": "delete",
+              "collection": "conversations",
+              "span_id": "69535ce199ba97c2"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "detached": {
+    "total": 0,
+    "by_state": {}
+  },
+  "origin_split": {
+    "first_party_but_unregistered": 0,
+    "library_internal": 31409,
+    "unknown": 0
+  }
+}

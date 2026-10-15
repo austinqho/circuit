@@ -1,0 +1,100 @@
+{
+  "schema": "producttrace.react-element-acceptance.v1",
+  "react": "18.3.1",
+  "format_and_behavior": {
+    "api": "react/createElement/18.3.1",
+    "format_pass": true,
+    "behavior_pass": true,
+    "builds": [
+      {
+        "build": "development",
+        "cases": 14,
+        "incorrect_programs_rejected": 8,
+        "component_and_callbacks_not_invoked": true,
+        "own_enumerable_and_reserved_props": true,
+        "children_precedence_and_defaults": true,
+        "inherited_key_and_ref": true,
+        "owner_policy_format_rejected": true,
+        "accessors_and_coercions_abstained": true,
+        "original_throw_preserved": true
+      },
+      {
+        "build": "production",
+        "cases": 14,
+        "incorrect_programs_rejected": 8,
+        "component_and_callbacks_not_invoked": true,
+        "own_enumerable_and_reserved_props": true,
+        "children_precedence_and_defaults": true,
+        "inherited_key_and_ref": true,
+        "owner_policy_format_rejected": true,
+        "accessors_and_coercions_abstained": true,
+        "original_throw_preserved": true
+      }
+    ]
+  },
+  "runtime": [
+    {
+      "api": "react/createElement/18.3.1",
+      "build": "development",
+      "installed_source_attested": true,
+      "description_observations": 4,
+      "actual_clicks": 6,
+      "component_type_to_source_controls": true,
+      "native_type_alias_to_source_control": true,
+      "create_element_config_stamped": true,
+      "explicit_props_reach_callback": true,
+      "independent_mutants_rejected": 8,
+      "stop_preserves_behavior": true,
+      "descriptor_props_to_committed_owner": true,
+      "owner_policy_verified": true,
+      "owner_lineage_to_committed_fiber": true,
+      "production_owner_is_null": false,
+      "ref_input_to_committed_host": true,
+      "unrendered_description_not_selected": true,
+      "commit_lineage_mutants_rejected": 7,
+      "descriptor_to_exact_host_commit_proven": false,
+      "runtime_property_input_relations_proven": true
+    },
+    {
+      "api": "react/createElement/18.3.1",
+      "build": "production",
+      "installed_source_attested": true,
+      "description_observations": 4,
+      "actual_clicks": 6,
+      "component_type_to_source_controls": true,
+      "native_type_alias_to_source_control": true,
+      "create_element_config_stamped": true,
+      "explicit_props_reach_callback": true,
+      "independent_mutants_rejected": 8,
+      "stop_preserves_behavior": true,
+      "descriptor_props_to_committed_owner": true,
+      "owner_policy_verified": true,
+      "owner_lineage_to_committed_fiber": false,
+      "production_owner_is_null": true,
+      "ref_input_to_committed_host": true,
+      "unrendered_description_not_selected": true,
+      "commit_lineage_mutants_rejected": 4,
+      "descriptor_to_exact_host_commit_proven": false,
+      "runtime_property_input_relations_proven": true
+    }
+  ],
+  "full_api_admission": true,
+  "sources": [
+    {
+      "file": "node_modules/react/cjs/react.development.js",
+      "implementation_lines": [
+        [
+          783,
+          872
+        ]
+      ],
+      "sha256": "1ff3a1d9861a87984329584fa1172aea920855d79eb57dae0d1cebe54093d7e3"
+    }
+  ],
+  "unproven": [
+    "Mutable or runtime-only types",
+    "Accessors and prototype writes",
+    "Arbitrary configuration objects",
+    "Unresolved source placements"
+  ]
+}

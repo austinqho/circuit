@@ -1,0 +1,3528 @@
+{
+  "passed": true,
+  "model_requests": 0,
+  "model_spend_usd": 0,
+  "origin": "manual_source_transcription",
+  "rows": [
+    {
+      "export_name": "createElement",
+      "version": "18.3.1",
+      "mode": "production",
+      "status": "admitted_scoped",
+      "behavior": {
+        "status": "passed",
+        "cases": 23,
+        "report": {
+          "status": "observed_agreement",
+          "scope": "observations_through_checkpoint",
+          "observation_mode": "references",
+          "error_observation": "standard_error_without_stack",
+          "accessor_observation": "reject",
+          "calls": 23,
+          "failures": [],
+          "evidence": [
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:4",
+              "callback": "argument:1:data:[\"onClick\"]",
+              "input_path": [
+                1,
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:5",
+              "callback": "argument:1:data:[\"onClick\"]",
+              "input_path": [
+                1,
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:10",
+              "callback": "argument:1:data:[\"onClick\"]",
+              "input_path": [
+                1,
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:10",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:11",
+              "callback": "argument:1:data:[\"onClick\"]",
+              "input_path": [
+                1,
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:11",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:12",
+              "callback": "argument:1:data:[\"onClick\"]",
+              "input_path": [
+                1,
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:12",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:13",
+              "callback": "argument:1:data:[\"onClick\"]",
+              "input_path": [
+                1,
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:13",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:14",
+              "callback": "argument:1:data:[\"onClick\"]",
+              "input_path": [
+                1,
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:14",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:15",
+              "callback": "argument:1:data:[\"onClick\"]",
+              "input_path": [
+                1,
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:15",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:16",
+              "callback": "argument:1:data:[\"onClick\"]",
+              "input_path": [
+                1,
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:16",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:17",
+              "callback": "argument:0:data:[]",
+              "input_path": [
+                0
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:18",
+              "callback": "argument:0:data:[]",
+              "input_path": [
+                0
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:19",
+              "callback": "argument:0:data:[]",
+              "input_path": [
+                0
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:19",
+              "callback": "argument:1:data:[\"onClick\"]",
+              "input_path": [
+                1,
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:20",
+              "callback": "argument:0:data:[]",
+              "input_path": [
+                0
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:21",
+              "callback": "argument:0:data:[]",
+              "input_path": [
+                0
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            }
+          ]
+        }
+      },
+      "integration": {
+        "status": "passed",
+        "clicks": [
+          "chat",
+          "scroll"
+        ],
+        "evidence": [
+          {
+            "binding": "8af70c5385c1f489c85b75b1df69db2fd4deb758bced05d533aceb1342c9c38b:call:135",
+            "rule": "library-program:b773ab1d9fcf93f6c8117a60ae1613df28badb6158dcd88524b97cc782c804b9",
+            "status": "observed_agreement",
+            "scope": "observations_through_checkpoint",
+            "observation_mode": "references",
+            "error_observation": "standard_error_without_stack",
+            "accessor_observation": "reject",
+            "calls": 2,
+            "failures": [],
+            "evidence": [
+              {
+                "schema": "producttrace.library-boundary-evidence.v1",
+                "kind": "callback_reference",
+                "occurrence": "8af70c5385c1f489c85b75b1df69db2fd4deb758bced05d533aceb1342c9c38b:call:135:1",
+                "callback": "8af70c5385c1f489c85b75b1df69db2fd4deb758bced05d533aceb1342c9c38b:call:135:argument:1:data:[\"onClick\"]",
+                "input_path": [
+                  1,
+                  "onClick"
+                ],
+                "result_path": [
+                  "props",
+                  "onClick"
+                ],
+                "status": "observed_agreement",
+                "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+              },
+              {
+                "schema": "producttrace.library-boundary-evidence.v1",
+                "kind": "callback_reference",
+                "occurrence": "8af70c5385c1f489c85b75b1df69db2fd4deb758bced05d533aceb1342c9c38b:call:135:2",
+                "callback": "8af70c5385c1f489c85b75b1df69db2fd4deb758bced05d533aceb1342c9c38b:call:135:argument:1:data:[\"onClick\"]",
+                "input_path": [
+                  1,
+                  "onClick"
+                ],
+                "result_path": [
+                  "props",
+                  "onClick"
+                ],
+                "status": "observed_agreement",
+                "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+              }
+            ]
+          }
+        ]
+      },
+      "wrong_rules_rejected": 5,
+      "accessor_frontier": true,
+      "source_sha256": "4077fe201c5e69e4b910aca9a730e8f92c8c97b7e2751026d2d468c96841fda9"
+    },
+    {
+      "export_name": "cloneElement",
+      "version": "18.3.1",
+      "mode": "production",
+      "status": "admitted_scoped",
+      "behavior": {
+        "status": "passed",
+        "cases": 20,
+        "report": {
+          "status": "observed_agreement",
+          "scope": "observations_through_checkpoint",
+          "observation_mode": "references",
+          "error_observation": "standard_error_without_stack",
+          "accessor_observation": "reject",
+          "calls": 20,
+          "failures": [],
+          "evidence": [
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:1",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:1",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:1",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:2",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:2",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:2",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:3",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:3",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:3",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:4",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:4",
+              "callback": "argument:1:data:[\"onClick\"]",
+              "input_path": [
+                1,
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:4",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:5",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:5",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:6",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:6",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:6",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:7",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:7",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:8",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:8",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:8",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:9",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:9",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:9",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:10",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:10",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:10",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:11",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:11",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:11",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:12",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:12",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:12",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:13",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:13",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:13",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:14",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:14",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:14",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:15",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:15",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:15",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:16",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:16",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:16",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:17",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:17",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:17",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:18",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:18",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:18",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            }
+          ]
+        }
+      },
+      "integration": {
+        "status": "passed",
+        "clicks": [
+          "chat",
+          "scroll"
+        ],
+        "evidence": [
+          {
+            "binding": "38e4e898b3854df48dea490f82debb0af2c4afc51940cc2fb7f946ebb4c33d93:call:134",
+            "rule": "library-program:4743ff47bd8dae7376cd1d31d86b002170638beaaac484d250c048cdf0fa0115",
+            "status": "observed_agreement",
+            "scope": "observations_through_checkpoint",
+            "observation_mode": "references",
+            "error_observation": "standard_error_without_stack",
+            "accessor_observation": "reject",
+            "calls": 2,
+            "failures": [],
+            "evidence": [
+              {
+                "schema": "producttrace.library-boundary-evidence.v1",
+                "kind": "callback_reference",
+                "occurrence": "38e4e898b3854df48dea490f82debb0af2c4afc51940cc2fb7f946ebb4c33d93:call:134:1",
+                "callback": "38e4e898b3854df48dea490f82debb0af2c4afc51940cc2fb7f946ebb4c33d93:call:134:argument:1:data:[\"onClick\"]",
+                "input_path": [
+                  1,
+                  "onClick"
+                ],
+                "result_path": [
+                  "props",
+                  "onClick"
+                ],
+                "status": "observed_agreement",
+                "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+              },
+              {
+                "schema": "producttrace.library-boundary-evidence.v1",
+                "kind": "callback_reference",
+                "occurrence": "38e4e898b3854df48dea490f82debb0af2c4afc51940cc2fb7f946ebb4c33d93:call:134:2",
+                "callback": "38e4e898b3854df48dea490f82debb0af2c4afc51940cc2fb7f946ebb4c33d93:call:134:argument:1:data:[\"onClick\"]",
+                "input_path": [
+                  1,
+                  "onClick"
+                ],
+                "result_path": [
+                  "props",
+                  "onClick"
+                ],
+                "status": "observed_agreement",
+                "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+              }
+            ]
+          }
+        ]
+      },
+      "wrong_rules_rejected": 5,
+      "accessor_frontier": true,
+      "source_sha256": "597edb6ce01b20f69f6c117409cb27909753463b42fd2fee67bf44583360d1de"
+    },
+    {
+      "export_name": "createElement",
+      "version": "19.1.1",
+      "mode": "production",
+      "status": "admitted_scoped",
+      "behavior": {
+        "status": "passed",
+        "cases": 23,
+        "report": {
+          "status": "observed_agreement",
+          "scope": "observations_through_checkpoint",
+          "observation_mode": "references",
+          "error_observation": "standard_error_without_stack",
+          "accessor_observation": "reject",
+          "calls": 23,
+          "failures": [],
+          "evidence": [
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:4",
+              "callback": "argument:1:data:[\"onClick\"]",
+              "input_path": [
+                1,
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:5",
+              "callback": "argument:1:data:[\"onClick\"]",
+              "input_path": [
+                1,
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:10",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:10",
+              "callback": "argument:1:data:[\"onClick\"]",
+              "input_path": [
+                1,
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:10",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:11",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:11",
+              "callback": "argument:1:data:[\"onClick\"]",
+              "input_path": [
+                1,
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:11",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:12",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:12",
+              "callback": "argument:1:data:[\"onClick\"]",
+              "input_path": [
+                1,
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:12",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:13",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:13",
+              "callback": "argument:1:data:[\"onClick\"]",
+              "input_path": [
+                1,
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:13",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:14",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:14",
+              "callback": "argument:1:data:[\"onClick\"]",
+              "input_path": [
+                1,
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:14",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:15",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:15",
+              "callback": "argument:1:data:[\"onClick\"]",
+              "input_path": [
+                1,
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:15",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:16",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:16",
+              "callback": "argument:1:data:[\"onClick\"]",
+              "input_path": [
+                1,
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:16",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:17",
+              "callback": "argument:0:data:[]",
+              "input_path": [
+                0
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:18",
+              "callback": "argument:0:data:[]",
+              "input_path": [
+                0
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:19",
+              "callback": "argument:0:data:[]",
+              "input_path": [
+                0
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:19",
+              "callback": "argument:1:data:[\"onClick\"]",
+              "input_path": [
+                1,
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:20",
+              "callback": "argument:0:data:[]",
+              "input_path": [
+                0
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:21",
+              "callback": "argument:0:data:[]",
+              "input_path": [
+                0
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            }
+          ]
+        }
+      },
+      "integration": {
+        "status": "passed",
+        "clicks": [
+          "chat",
+          "scroll"
+        ],
+        "evidence": [
+          {
+            "binding": "8af70c5385c1f489c85b75b1df69db2fd4deb758bced05d533aceb1342c9c38b:call:135",
+            "rule": "library-program:a2148c06a8103b56609f6a0cc758abeb565be4734e0eca952280503328adb46d",
+            "status": "observed_agreement",
+            "scope": "observations_through_checkpoint",
+            "observation_mode": "references",
+            "error_observation": "standard_error_without_stack",
+            "accessor_observation": "reject",
+            "calls": 2,
+            "failures": [],
+            "evidence": [
+              {
+                "schema": "producttrace.library-boundary-evidence.v1",
+                "kind": "callback_reference",
+                "occurrence": "8af70c5385c1f489c85b75b1df69db2fd4deb758bced05d533aceb1342c9c38b:call:135:1",
+                "callback": "8af70c5385c1f489c85b75b1df69db2fd4deb758bced05d533aceb1342c9c38b:call:135:argument:1:data:[\"onClick\"]",
+                "input_path": [
+                  1,
+                  "onClick"
+                ],
+                "result_path": [
+                  "props",
+                  "onClick"
+                ],
+                "status": "observed_agreement",
+                "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+              },
+              {
+                "schema": "producttrace.library-boundary-evidence.v1",
+                "kind": "callback_reference",
+                "occurrence": "8af70c5385c1f489c85b75b1df69db2fd4deb758bced05d533aceb1342c9c38b:call:135:2",
+                "callback": "8af70c5385c1f489c85b75b1df69db2fd4deb758bced05d533aceb1342c9c38b:call:135:argument:1:data:[\"onClick\"]",
+                "input_path": [
+                  1,
+                  "onClick"
+                ],
+                "result_path": [
+                  "props",
+                  "onClick"
+                ],
+                "status": "observed_agreement",
+                "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+              }
+            ]
+          }
+        ]
+      },
+      "wrong_rules_rejected": 5,
+      "accessor_frontier": true,
+      "source_sha256": "56317b0d225dc7acacf31658b7064318ea94a8885c863fbba0df706583410fa8"
+    },
+    {
+      "export_name": "cloneElement",
+      "version": "19.1.1",
+      "mode": "production",
+      "status": "admitted_scoped",
+      "behavior": {
+        "status": "passed",
+        "cases": 20,
+        "report": {
+          "status": "observed_agreement",
+          "scope": "observations_through_checkpoint",
+          "observation_mode": "references",
+          "error_observation": "standard_error_without_stack",
+          "accessor_observation": "reject",
+          "calls": 20,
+          "failures": [],
+          "evidence": [
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:1",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:1",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:1",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:1",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:1",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:1",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:2",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:2",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:2",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:2",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:2",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:2",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:3",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:3",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:3",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:3",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:3",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:3",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:4",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:4",
+              "callback": "argument:1:data:[\"onClick\"]",
+              "input_path": [
+                1,
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:4",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:4",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:4",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:4",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:5",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:5",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:5",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:5",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:5",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:6",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:6",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:6",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:6",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:6",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:6",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:7",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:7",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:8",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:8",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:8",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:8",
+              "callback": "argument:1:data:[\"ref\"]",
+              "input_path": [
+                1,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:9",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:9",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:9",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:9",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:9",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:9",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:10",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:10",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:10",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:10",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:10",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:10",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:11",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:11",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:11",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:11",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:11",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:11",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:12",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:12",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:12",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:12",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:12",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:12",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:13",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:13",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:13",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:13",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:13",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:13",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:14",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:14",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:14",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:14",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:14",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:14",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:15",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:15",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:15",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:15",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:15",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:15",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:16",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:16",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:16",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:16",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:16",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:16",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:17",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:17",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:17",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:17",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:17",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:17",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:18",
+              "callback": "argument:0:data:[\"type\"]",
+              "input_path": [
+                0,
+                "type"
+              ],
+              "result_path": [
+                "type"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:18",
+              "callback": "argument:0:data:[\"props\",\"onClick\"]",
+              "input_path": [
+                0,
+                "props",
+                "onClick"
+              ],
+              "result_path": [
+                "props",
+                "onClick"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:18",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:18",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "props",
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:18",
+              "callback": "argument:0:data:[\"ref\"]",
+              "input_path": [
+                0,
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_reference",
+              "occurrence": "library-call:18",
+              "callback": "argument:0:data:[\"props\",\"ref\"]",
+              "input_path": [
+                0,
+                "props",
+                "ref"
+              ],
+              "result_path": [
+                "ref"
+              ],
+              "status": "observed_agreement",
+              "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+            }
+          ]
+        }
+      },
+      "integration": {
+        "status": "passed",
+        "clicks": [
+          "chat",
+          "scroll"
+        ],
+        "evidence": [
+          {
+            "binding": "38e4e898b3854df48dea490f82debb0af2c4afc51940cc2fb7f946ebb4c33d93:call:134",
+            "rule": "library-program:d6fdc23be8a7654dc8a8025a0dea1e8cbc2bf7deb27b93a500b9c0620793bd1c",
+            "status": "observed_agreement",
+            "scope": "observations_through_checkpoint",
+            "observation_mode": "references",
+            "error_observation": "standard_error_without_stack",
+            "accessor_observation": "reject",
+            "calls": 2,
+            "failures": [],
+            "evidence": [
+              {
+                "schema": "producttrace.library-boundary-evidence.v1",
+                "kind": "callback_reference",
+                "occurrence": "38e4e898b3854df48dea490f82debb0af2c4afc51940cc2fb7f946ebb4c33d93:call:134:1",
+                "callback": "38e4e898b3854df48dea490f82debb0af2c4afc51940cc2fb7f946ebb4c33d93:call:134:argument:1:data:[\"onClick\"]",
+                "input_path": [
+                  1,
+                  "onClick"
+                ],
+                "result_path": [
+                  "props",
+                  "onClick"
+                ],
+                "status": "observed_agreement",
+                "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+              },
+              {
+                "schema": "producttrace.library-boundary-evidence.v1",
+                "kind": "callback_reference",
+                "occurrence": "38e4e898b3854df48dea490f82debb0af2c4afc51940cc2fb7f946ebb4c33d93:call:134:2",
+                "callback": "38e4e898b3854df48dea490f82debb0af2c4afc51940cc2fb7f946ebb4c33d93:call:134:argument:1:data:[\"onClick\"]",
+                "input_path": [
+                  1,
+                  "onClick"
+                ],
+                "result_path": [
+                  "props",
+                  "onClick"
+                ],
+                "status": "observed_agreement",
+                "reason": "The observed output retains this exact input callback at these data paths. Invocation and component ownership require separate runtime evidence."
+              }
+            ]
+          }
+        ]
+      },
+      "wrong_rules_rejected": 5,
+      "accessor_frontier": true,
+      "source_sha256": "dd78b07fe38a51b69d8953a52040f2e9e4ecdaf312bacfbeb66e240fa845a666"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+✖ different context objects never borrow a Provider value and exact Consumer callbacks receive their value (7.0355ms)
+✖ packed Node analysis API, CLI, and TypeScript declarations work in an isolated consumer (2636.15125ms)
+ℹ tests 700
+ℹ suites 0
+ℹ pass 698
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 27112.531334
+✖ failing tests:
+✖ different context objects never borrow a Provider value and exact Consumer callbacks receive their value (7.0355ms)
+✖ packed Node analysis API, CLI, and TypeScript declarations work in an isolated consumer (2636.15125ms)

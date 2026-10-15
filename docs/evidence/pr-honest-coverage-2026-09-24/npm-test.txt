@@ -1,0 +1,11 @@
+✖ different context objects never borrow a Provider value and exact Consumer callbacks receive their value (39.7515ms)
+ℹ tests 700
+ℹ suites 0
+ℹ pass 699
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 51702.136125
+✖ failing tests:
+✖ different context objects never borrow a Provider value and exact Consumer callbacks receive their value (39.7515ms)

@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "real_http_requests": 1,
+  "source_binding": "69ec228b8b657b6bbcd6e221977d573480ab3d87b6874917093c9a29aa3aa39e:call:84",
+  "callback_evidence": {
+    "schema": "producttrace.library-boundary-evidence.v1",
+    "kind": "callback_invocation",
+    "occurrence": "69ec228b8b657b6bbcd6e221977d573480ab3d87b6874917093c9a29aa3aa39e:call:84:1",
+    "execution_id": "library-execution:80410c60-42be-487c-b99c-fb6e20823fb8:2",
+    "callback": "69ec228b8b657b6bbcd6e221977d573480ab3d87b6874917093c9a29aa3aa39e:call:84:argument:0",
+    "ordinal": 0,
+    "parent_ordinal": null,
+    "parent_relation": null,
+    "timing": "synchronous",
+    "status": "observed_agreement",
+    "outcome": "return",
+    "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+  },
+  "scope": "Node source integration through an actual callback and HTTP request; no browser, database, or OTel ancestry claim."
+}

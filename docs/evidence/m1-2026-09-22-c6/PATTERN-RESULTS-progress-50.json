@@ -1,0 +1,902 @@
+[
+  {
+    "unit_id": "function:00cff9de86c1c3a2818083ae|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:03910fe440f7baeaefeaa5ed|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:03ab48e0903de6683ab379e4|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:03c46e7e7f368b3c439b4880|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:05021c779b70a9f69388d5e8|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:0506996bbf9c69f7efd6f9d9|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:0572d87ac0d172fe7b478e58|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:05a411eab5f2777234d9f945|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:05c9f9d05886a18d47585c8d|change",
+    "control": "input:change",
+    "event": "change",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:05d33a3cc3f8f32feb36d376|change",
+    "control": "input:change",
+    "event": "change",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:07cae32022113c6ea1dd748d|mousedown",
+    "control": "div:mousedown",
+    "event": "mousedown",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:0885c2004786188c80d59f2a|focus",
+    "control": "div:focus",
+    "event": "focus",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:098bf56eda3f5bd9924d067c|focus",
+    "control": "div:focus",
+    "event": "focus",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:0a752220f4b4777e41f9e946|submit",
+    "control": "form:submit",
+    "event": "submit",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:0b53aa1d8e7a63e11fca72df|change",
+    "control": "input:change",
+    "event": "change",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:0bc8393e3687dc365ae83393|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:0d3eb016d272d5b5ccdf1afa|focus",
+    "control": "div:focus",
+    "event": "focus",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:0d50b49b280ea4f21c51ebbe|change",
+    "control": "input:change",
+    "event": "change",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:0e08814660ea1a389140d798|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:0e7b34ee706c3955ba08796a|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:0f18443c61cefc8c45b0141e|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:0f4fee452208dbc682f3d0c9|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:104864cfbb394d0d72872715|focus",
+    "control": "id=oauth-callback-url",
+    "event": "focus",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:105de5c0b7d98a2c34e43ac9|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:10901de248a31288701e27a7|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:10fc1c7ed61f363a6e8301ca|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:11f4bdadf55d9044c67d2488|submit",
+    "control": "form:submit",
+    "event": "submit",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:137128de3a90d6889dce2ab9|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:145c28ecd0975af2d19d4d00|change",
+    "control": "input:change",
+    "event": "change",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:1538e20af3b52c234143c627|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:156acf8f228640a09c01ce58|click",
+    "control": "div:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:16ab89a7016e83784a8a8c15|keydown",
+    "control": "div:keydown",
+    "event": "keydown",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:16ef7c4234900ae034ccd035|submit",
+    "control": "form:submit",
+    "event": "submit",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:17060eff46a4f04a05e07941|focus",
+    "control": "div:focus",
+    "event": "focus",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:1740e4dc60fabdaca9234779|focus",
+    "control": "input:focus",
+    "event": "focus",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:17580610941e3914f9b87dd8|click",
+    "control": "div:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:1880c51c3bfa71f8d382ce52|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:197de5bb79fdf8cdcd54764c|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:1abc0ce9658544be1e8d2585|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:1c035206c7559533ada918c6|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:1c060b5ebe4e003fb4fac6c2|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:1c4c29651834faaf7f67d73c|keydown",
+    "control": "input:keydown",
+    "event": "keydown",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:1c5ec42f971aa4df5239b256|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:1e7dc3785cee73a97dc78a60|click",
+    "control": "div:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:1f6d351697a65496de587ade|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:22635c12bb07b5608afbc656|change",
+    "control": "input:change",
+    "event": "change",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:2361b6c4fec3f1b8cf3086b0|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:248a965900544fab7764e383|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:25c34fa8d522e7da64ffd715|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  },
+  {
+    "unit_id": "function:25d276089604effd66669dbe|click",
+    "control": "button:click",
+    "event": "click",
+    "requests": [],
+    "joined": {
+      "route": 0,
+      "handler": 0,
+      "db": 0
+    },
+    "terminal": "unreachable",
+    "witness": {
+      "dom": false,
+      "backend": false
+    },
+    "status": "unreachable",
+    "reason": "no stable selector in placement metadata"
+  }
+]

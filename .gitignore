@@ -1,0 +1,8 @@
+.DS_Store
+node_modules/
+*.log
+*.jsonl
+.m1-live/
+
+# Unredacted internal notes (OpenAI surface research); never publish
+docs/internal/

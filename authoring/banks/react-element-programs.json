@@ -1,0 +1,1721 @@
+{
+  "schema": "producttrace.library-program-catalog.v1",
+  "skeletons": [
+    {
+      "schema": "producttrace.library-program-skeleton.v1",
+      "package": "react",
+      "export_name": "createElement",
+      "program": {
+        "schema": "producttrace.library-program.v1",
+        "body": {
+          "op": "bind",
+          "name": "type",
+          "value": {
+            "op": "arg",
+            "index": 0
+          },
+          "body": {
+            "op": "bind",
+            "name": "props",
+            "value": {
+              "op": "object",
+              "entries": {}
+            },
+            "body": {
+              "op": "bind",
+              "name": "key",
+              "value": {
+                "op": "literal",
+                "value": null
+              },
+              "body": {
+                "op": "bind",
+                "name": "ref",
+                "value": {
+                  "op": "literal",
+                  "value": null
+                },
+                "body": {
+                  "op": "bind",
+                  "name": "defaults",
+                  "value": {
+                    "op": "if",
+                    "test": {
+                      "op": "local",
+                      "name": "type"
+                    },
+                    "then": {
+                      "op": "get",
+                      "value": {
+                        "op": "local",
+                        "name": "type"
+                      },
+                      "key": "defaultProps"
+                    },
+                    "else": {
+                      "op": "undefined"
+                    }
+                  },
+                  "body": {
+                    "op": "sequence",
+                    "steps": [
+                      {
+                        "op": "undefined"
+                      },
+                      {
+                        "op": "if",
+                        "test": {
+                          "op": "not",
+                          "value": {
+                            "op": "if",
+                            "test": {
+                              "op": "equal",
+                              "left": {
+                                "op": "arg",
+                                "index": 1
+                              },
+                              "right": {
+                                "op": "literal",
+                                "value": null
+                              }
+                            },
+                            "then": {
+                              "op": "literal",
+                              "value": true
+                            },
+                            "else": {
+                              "op": "equal",
+                              "left": {
+                                "op": "arg",
+                                "index": 1
+                              },
+                              "right": {
+                                "op": "undefined"
+                              }
+                            }
+                          }
+                        },
+                        "then": {
+                          "op": "sequence",
+                          "steps": [
+                            {
+                              "op": "if",
+                              "test": {
+                                "op": "not",
+                                "value": {
+                                  "op": "equal",
+                                  "left": {
+                                    "op": "get",
+                                    "value": {
+                                      "op": "arg",
+                                      "index": 1
+                                    },
+                                    "key": "key"
+                                  },
+                                  "right": {
+                                    "op": "undefined"
+                                  }
+                                }
+                              },
+                              "then": {
+                                "op": "set",
+                                "name": "key",
+                                "value": {
+                                  "op": "string",
+                                  "value": {
+                                    "op": "get",
+                                    "value": {
+                                      "op": "arg",
+                                      "index": 1
+                                    },
+                                    "key": "key"
+                                  }
+                                }
+                              },
+                              "else": {
+                                "op": "undefined"
+                              }
+                            },
+                            {
+                              "op": "if",
+                              "test": {
+                                "op": "not",
+                                "value": {
+                                  "op": "equal",
+                                  "left": {
+                                    "op": "get",
+                                    "value": {
+                                      "op": "arg",
+                                      "index": 1
+                                    },
+                                    "key": "ref"
+                                  },
+                                  "right": {
+                                    "op": "undefined"
+                                  }
+                                }
+                              },
+                              "then": {
+                                "op": "set",
+                                "name": "ref",
+                                "value": {
+                                  "op": "get",
+                                  "value": {
+                                    "op": "arg",
+                                    "index": 1
+                                  },
+                                  "key": "ref"
+                                }
+                              },
+                              "else": {
+                                "op": "undefined"
+                              }
+                            },
+                            {
+                              "op": "every",
+                              "items": {
+                                "op": "keys",
+                                "value": {
+                                  "op": "arg",
+                                  "index": 1
+                                }
+                              },
+                              "value_name": "property",
+                              "index_name": "index",
+                              "test": {
+                                "op": "sequence",
+                                "steps": [
+                                  {
+                                    "op": "if",
+                                    "test": {
+                                      "op": "if",
+                                      "test": {
+                                        "op": "equal",
+                                        "left": {
+                                          "op": "local",
+                                          "name": "property"
+                                        },
+                                        "right": {
+                                          "op": "literal",
+                                          "value": "key"
+                                        }
+                                      },
+                                      "then": {
+                                        "op": "literal",
+                                        "value": true
+                                      },
+                                      "else": {
+                                        "op": "if",
+                                        "test": {
+                                          "op": "equal",
+                                          "left": {
+                                            "op": "local",
+                                            "name": "property"
+                                          },
+                                          "right": {
+                                            "op": "literal",
+                                            "value": "ref"
+                                          }
+                                        },
+                                        "then": {
+                                          "op": "literal",
+                                          "value": true
+                                        },
+                                        "else": {
+                                          "op": "if",
+                                          "test": {
+                                            "op": "equal",
+                                            "left": {
+                                              "op": "local",
+                                              "name": "property"
+                                            },
+                                            "right": {
+                                              "op": "literal",
+                                              "value": "__self"
+                                            }
+                                          },
+                                          "then": {
+                                            "op": "literal",
+                                            "value": true
+                                          },
+                                          "else": {
+                                            "op": "if",
+                                            "test": {
+                                              "op": "equal",
+                                              "left": {
+                                                "op": "local",
+                                                "name": "property"
+                                              },
+                                              "right": {
+                                                "op": "literal",
+                                                "value": "__source"
+                                              }
+                                            },
+                                            "then": {
+                                              "op": "literal",
+                                              "value": true
+                                            },
+                                            "else": {
+                                              "op": "literal",
+                                              "value": false
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    "then": {
+                                      "op": "undefined"
+                                    },
+                                    "else": {
+                                      "op": "put",
+                                      "value": {
+                                        "op": "local",
+                                        "name": "props"
+                                      },
+                                      "key": {
+                                        "op": "local",
+                                        "name": "property"
+                                      },
+                                      "item": {
+                                        "op": "lookup",
+                                        "value": {
+                                          "op": "arg",
+                                          "index": 1
+                                        },
+                                        "key": {
+                                          "op": "local",
+                                          "name": "property"
+                                        }
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "op": "literal",
+                                    "value": true
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        },
+                        "else": {
+                          "op": "undefined"
+                        }
+                      },
+                      {
+                        "op": "bind",
+                        "name": "children",
+                        "value": {
+                          "op": "slice",
+                          "value": {
+                            "op": "args"
+                          },
+                          "start": 2
+                        },
+                        "body": {
+                          "op": "if",
+                          "test": {
+                            "op": "equal",
+                            "left": {
+                              "op": "get",
+                              "value": {
+                                "op": "local",
+                                "name": "children"
+                              },
+                              "key": "length"
+                            },
+                            "right": {
+                              "op": "literal",
+                              "value": 1
+                            }
+                          },
+                          "then": {
+                            "op": "put",
+                            "value": {
+                              "op": "local",
+                              "name": "props"
+                            },
+                            "key": {
+                              "op": "literal",
+                              "value": "children"
+                            },
+                            "item": {
+                              "op": "at",
+                              "value": {
+                                "op": "local",
+                                "name": "children"
+                              },
+                              "index": {
+                                "op": "literal",
+                                "value": 0
+                              }
+                            }
+                          },
+                          "else": {
+                            "op": "if",
+                            "test": {
+                              "op": "not",
+                              "value": {
+                                "op": "equal",
+                                "left": {
+                                  "op": "get",
+                                  "value": {
+                                    "op": "local",
+                                    "name": "children"
+                                  },
+                                  "key": "length"
+                                },
+                                "right": {
+                                  "op": "literal",
+                                  "value": 0
+                                }
+                              }
+                            },
+                            "then": {
+                              "op": "put",
+                              "value": {
+                                "op": "local",
+                                "name": "props"
+                              },
+                              "key": {
+                                "op": "literal",
+                                "value": "children"
+                              },
+                              "item": {
+                                "op": "local",
+                                "name": "children"
+                              }
+                            },
+                            "else": {
+                              "op": "undefined"
+                            }
+                          }
+                        }
+                      },
+                      {
+                        "op": "if",
+                        "test": {
+                          "op": "local",
+                          "name": "defaults"
+                        },
+                        "then": {
+                          "op": "every",
+                          "items": {
+                            "op": "keys",
+                            "value": {
+                              "op": "local",
+                              "name": "defaults"
+                            }
+                          },
+                          "value_name": "property",
+                          "index_name": "index",
+                          "test": {
+                            "op": "sequence",
+                            "steps": [
+                              {
+                                "op": "if",
+                                "test": {
+                                  "op": "equal",
+                                  "left": {
+                                    "op": "lookup",
+                                    "value": {
+                                      "op": "local",
+                                      "name": "props"
+                                    },
+                                    "key": {
+                                      "op": "local",
+                                      "name": "property"
+                                    }
+                                  },
+                                  "right": {
+                                    "op": "undefined"
+                                  }
+                                },
+                                "then": {
+                                  "op": "put",
+                                  "value": {
+                                    "op": "local",
+                                    "name": "props"
+                                  },
+                                  "key": {
+                                    "op": "local",
+                                    "name": "property"
+                                  },
+                                  "item": {
+                                    "op": "lookup",
+                                    "value": {
+                                      "op": "local",
+                                      "name": "defaults"
+                                    },
+                                    "key": {
+                                      "op": "local",
+                                      "name": "property"
+                                    }
+                                  }
+                                },
+                                "else": {
+                                  "op": "undefined"
+                                }
+                              },
+                              {
+                                "op": "literal",
+                                "value": true
+                              }
+                            ]
+                          }
+                        },
+                        "else": {
+                          "op": "undefined"
+                        }
+                      },
+                      {
+                        "op": "object",
+                        "entries": {
+                          "type": {
+                            "op": "local",
+                            "name": "type"
+                          },
+                          "key": {
+                            "op": "local",
+                            "name": "key"
+                          },
+                          "props": {
+                            "op": "local",
+                            "name": "props"
+                          },
+                          "ref": {
+                            "op": "local",
+                            "name": "ref"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "scope": {
+        "callbackArguments": [],
+        "observationMode": "references",
+        "nestedReferences": true,
+        "resultPaths": [
+          [
+            "type"
+          ],
+          [
+            "key"
+          ],
+          [
+            "props"
+          ],
+          [
+            "ref"
+          ]
+        ],
+        "errorObservation": "standard_error_without_stack",
+        "description": "Production React element data: exact type/key/ref, all props and nested callback identities, children precedence and own-data defaultProps. Excludes owner/commit effects and metadata outside these projections. Ordinary data inputs only; getter/proxy/coercion/inherited-default cases must remain frontiers."
+      },
+      "versions": [
+        {
+          "version": "18.3.1",
+          "base_sha256": "5810d7104a6aa43b528dc4d449c65b4ff4a607359ec52ec7bd72761cb09b76b5",
+          "overrides": [],
+          "program_sha256": "5810d7104a6aa43b528dc4d449c65b4ff4a607359ec52ec7bd72761cb09b76b5",
+          "implementation_sha256": "1350ad52c7c16e8b4a4fdf6e55e6c5ebf3dd86ea3c424b37f7c8f6556fab8cb7",
+          "implementation": {
+            "runtime": {
+              "host": "node",
+              "mode": "production",
+              "entry": {
+                "name": "react",
+                "version": "18.3.1",
+                "path": "index.js"
+              }
+            },
+            "export_name": "createElement",
+            "packages": [
+              {
+                "name": "react",
+                "version": "18.3.1",
+                "integrity": "sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==",
+                "manifest_sha256": "d4e68a5c96babb20cad1daafea8b78822eae45b341552cf5418d06a5304fa64c"
+              }
+            ],
+            "files": [
+              {
+                "name": "react",
+                "version": "18.3.1",
+                "path": "cjs/react.production.min.js",
+                "sha256": "4b35e378f469c4f492c7514bb106b5833746dbbae80496bd4aa9acc6e9ac4b42"
+              },
+              {
+                "name": "react",
+                "version": "18.3.1",
+                "path": "index.js",
+                "sha256": "a216c390bf956cbb906c66d29fdb2e2ad6999464a5ca83e476533a6f25ad0ef3"
+              }
+            ]
+          },
+          "verification": {
+            "origin": "manual_exact_installed_production_source",
+            "scope": "Production React element data: exact type/key/ref, all props and nested callback identities, children precedence and own-data defaultProps. Excludes owner/commit effects and metadata outside these projections. Ordinary data inputs only; getter/proxy/coercion/inherited-default cases must remain frontiers."
+          }
+        },
+        {
+          "version": "19.1.1",
+          "base_sha256": "5810d7104a6aa43b528dc4d449c65b4ff4a607359ec52ec7bd72761cb09b76b5",
+          "overrides": [
+            {
+              "path": [
+                "body",
+                "body",
+                "body",
+                "body",
+                "body",
+                "body",
+                "steps",
+                1,
+                "then",
+                "steps",
+                1
+              ],
+              "value": {
+                "op": "undefined"
+              }
+            },
+            {
+              "path": [
+                "body",
+                "body",
+                "body",
+                "body",
+                "body",
+                "body",
+                "steps",
+                1,
+                "then",
+                "steps",
+                2,
+                "test",
+                "steps",
+                0,
+                "test",
+                "else",
+                "test",
+                "right",
+                "value"
+              ],
+              "value": "__self"
+            },
+            {
+              "path": [
+                "body",
+                "body",
+                "body",
+                "body",
+                "body",
+                "body",
+                "steps",
+                1,
+                "then",
+                "steps",
+                2,
+                "test",
+                "steps",
+                0,
+                "test",
+                "else",
+                "else",
+                "test",
+                "right",
+                "value"
+              ],
+              "value": "__source"
+            },
+            {
+              "path": [
+                "body",
+                "body",
+                "body",
+                "body",
+                "body",
+                "body",
+                "steps",
+                1,
+                "then",
+                "steps",
+                2,
+                "test",
+                "steps",
+                0,
+                "test",
+                "else",
+                "else",
+                "else"
+              ],
+              "value": {
+                "op": "literal",
+                "value": false
+              }
+            },
+            {
+              "path": [
+                "body",
+                "body",
+                "body",
+                "body",
+                "body",
+                "body",
+                "steps",
+                4,
+                "entries",
+                "ref"
+              ],
+              "value": {
+                "op": "if",
+                "test": {
+                  "op": "equal",
+                  "left": {
+                    "op": "get",
+                    "value": {
+                      "op": "local",
+                      "name": "props"
+                    },
+                    "key": "ref"
+                  },
+                  "right": {
+                    "op": "undefined"
+                  }
+                },
+                "then": {
+                  "op": "literal",
+                  "value": null
+                },
+                "else": {
+                  "op": "get",
+                  "value": {
+                    "op": "local",
+                    "name": "props"
+                  },
+                  "key": "ref"
+                }
+              }
+            }
+          ],
+          "program_sha256": "a5159e0fb973775f86189367e32723fa291a27757088542531965eb6f14e13ee",
+          "implementation_sha256": "47ce183ae696fd9c06fca8433c04e2773296a75e147341c4cece7c6aba718cc9",
+          "implementation": {
+            "runtime": {
+              "host": "node",
+              "mode": "production",
+              "entry": {
+                "name": "react",
+                "version": "19.1.1",
+                "path": "index.js"
+              }
+            },
+            "export_name": "createElement",
+            "packages": [
+              {
+                "name": "react",
+                "version": "19.1.1",
+                "integrity": "sha512-w8nqGImo45dmMIfljjMwOGtbmC/mk4CMYhWIicdSflH91J9TyCyczcPFXJzrZ/ZXcgGRFeP6BU0BEJTw6tZdfQ==",
+                "manifest_sha256": "7e862b437058f8dde0fe1b538266b934d725f76fe5b981305d6e942714d49608"
+              }
+            ],
+            "files": [
+              {
+                "name": "react",
+                "version": "19.1.1",
+                "path": "cjs/react.production.js",
+                "sha256": "f1e2323f141be9d9379c612eeabd7f282f052e60116547395780b032a6f0770d"
+              },
+              {
+                "name": "react",
+                "version": "19.1.1",
+                "path": "index.js",
+                "sha256": "60caffdecbdc5db3bc4ec4e83df9488345ccb271d07533b9210bf5750918d97e"
+              }
+            ]
+          },
+          "verification": {
+            "origin": "manual_exact_installed_production_source",
+            "scope": "Production React element data: exact type/key/ref, all props and nested callback identities, children precedence and own-data defaultProps. Excludes owner/commit effects and metadata outside these projections. Ordinary data inputs only; getter/proxy/coercion/inherited-default cases must remain frontiers."
+          }
+        }
+      ]
+    },
+    {
+      "schema": "producttrace.library-program-skeleton.v1",
+      "package": "react",
+      "export_name": "cloneElement",
+      "program": {
+        "schema": "producttrace.library-program.v1",
+        "body": {
+          "op": "if",
+          "test": {
+            "op": "if",
+            "test": {
+              "op": "equal",
+              "left": {
+                "op": "arg",
+                "index": 0
+              },
+              "right": {
+                "op": "literal",
+                "value": null
+              }
+            },
+            "then": {
+              "op": "literal",
+              "value": true
+            },
+            "else": {
+              "op": "equal",
+              "left": {
+                "op": "arg",
+                "index": 0
+              },
+              "right": {
+                "op": "undefined"
+              }
+            }
+          },
+          "then": {
+            "op": "throw",
+            "value": {
+              "op": "make_error",
+              "name": "Error",
+              "message": {
+                "op": "if",
+                "test": {
+                  "op": "equal",
+                  "left": {
+                    "op": "arg",
+                    "index": 0
+                  },
+                  "right": {
+                    "op": "literal",
+                    "value": null
+                  }
+                },
+                "then": {
+                  "op": "literal",
+                  "value": "React.cloneElement(...): The argument must be a React element, but you passed null."
+                },
+                "else": {
+                  "op": "literal",
+                  "value": "React.cloneElement(...): The argument must be a React element, but you passed undefined."
+                }
+              }
+            }
+          },
+          "else": {
+            "op": "bind",
+            "name": "type",
+            "value": {
+              "op": "get",
+              "value": {
+                "op": "arg",
+                "index": 0
+              },
+              "key": "type"
+            },
+            "body": {
+              "op": "bind",
+              "name": "props",
+              "value": {
+                "op": "object",
+                "entries": {}
+              },
+              "body": {
+                "op": "bind",
+                "name": "key",
+                "value": {
+                  "op": "get",
+                  "value": {
+                    "op": "arg",
+                    "index": 0
+                  },
+                  "key": "key"
+                },
+                "body": {
+                  "op": "bind",
+                  "name": "ref",
+                  "value": {
+                    "op": "get",
+                    "value": {
+                      "op": "arg",
+                      "index": 0
+                    },
+                    "key": "ref"
+                  },
+                  "body": {
+                    "op": "bind",
+                    "name": "defaults",
+                    "value": {
+                      "op": "if",
+                      "test": {
+                        "op": "local",
+                        "name": "type"
+                      },
+                      "then": {
+                        "op": "get",
+                        "value": {
+                          "op": "local",
+                          "name": "type"
+                        },
+                        "key": "defaultProps"
+                      },
+                      "else": {
+                        "op": "undefined"
+                      }
+                    },
+                    "body": {
+                      "op": "sequence",
+                      "steps": [
+                        {
+                          "op": "every",
+                          "items": {
+                            "op": "keys",
+                            "value": {
+                              "op": "get",
+                              "value": {
+                                "op": "arg",
+                                "index": 0
+                              },
+                              "key": "props"
+                            }
+                          },
+                          "value_name": "property",
+                          "index_name": "index",
+                          "test": {
+                            "op": "sequence",
+                            "steps": [
+                              {
+                                "op": "put",
+                                "value": {
+                                  "op": "local",
+                                  "name": "props"
+                                },
+                                "key": {
+                                  "op": "local",
+                                  "name": "property"
+                                },
+                                "item": {
+                                  "op": "lookup",
+                                  "value": {
+                                    "op": "get",
+                                    "value": {
+                                      "op": "arg",
+                                      "index": 0
+                                    },
+                                    "key": "props"
+                                  },
+                                  "key": {
+                                    "op": "local",
+                                    "name": "property"
+                                  }
+                                }
+                              },
+                              {
+                                "op": "literal",
+                                "value": true
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "op": "if",
+                          "test": {
+                            "op": "not",
+                            "value": {
+                              "op": "if",
+                              "test": {
+                                "op": "equal",
+                                "left": {
+                                  "op": "arg",
+                                  "index": 1
+                                },
+                                "right": {
+                                  "op": "literal",
+                                  "value": null
+                                }
+                              },
+                              "then": {
+                                "op": "literal",
+                                "value": true
+                              },
+                              "else": {
+                                "op": "equal",
+                                "left": {
+                                  "op": "arg",
+                                  "index": 1
+                                },
+                                "right": {
+                                  "op": "undefined"
+                                }
+                              }
+                            }
+                          },
+                          "then": {
+                            "op": "sequence",
+                            "steps": [
+                              {
+                                "op": "if",
+                                "test": {
+                                  "op": "not",
+                                  "value": {
+                                    "op": "equal",
+                                    "left": {
+                                      "op": "get",
+                                      "value": {
+                                        "op": "arg",
+                                        "index": 1
+                                      },
+                                      "key": "key"
+                                    },
+                                    "right": {
+                                      "op": "undefined"
+                                    }
+                                  }
+                                },
+                                "then": {
+                                  "op": "set",
+                                  "name": "key",
+                                  "value": {
+                                    "op": "string",
+                                    "value": {
+                                      "op": "get",
+                                      "value": {
+                                        "op": "arg",
+                                        "index": 1
+                                      },
+                                      "key": "key"
+                                    }
+                                  }
+                                },
+                                "else": {
+                                  "op": "undefined"
+                                }
+                              },
+                              {
+                                "op": "if",
+                                "test": {
+                                  "op": "not",
+                                  "value": {
+                                    "op": "equal",
+                                    "left": {
+                                      "op": "get",
+                                      "value": {
+                                        "op": "arg",
+                                        "index": 1
+                                      },
+                                      "key": "ref"
+                                    },
+                                    "right": {
+                                      "op": "undefined"
+                                    }
+                                  }
+                                },
+                                "then": {
+                                  "op": "set",
+                                  "name": "ref",
+                                  "value": {
+                                    "op": "get",
+                                    "value": {
+                                      "op": "arg",
+                                      "index": 1
+                                    },
+                                    "key": "ref"
+                                  }
+                                },
+                                "else": {
+                                  "op": "undefined"
+                                }
+                              },
+                              {
+                                "op": "every",
+                                "items": {
+                                  "op": "keys",
+                                  "value": {
+                                    "op": "arg",
+                                    "index": 1
+                                  }
+                                },
+                                "value_name": "property",
+                                "index_name": "index",
+                                "test": {
+                                  "op": "sequence",
+                                  "steps": [
+                                    {
+                                      "op": "if",
+                                      "test": {
+                                        "op": "if",
+                                        "test": {
+                                          "op": "equal",
+                                          "left": {
+                                            "op": "local",
+                                            "name": "property"
+                                          },
+                                          "right": {
+                                            "op": "literal",
+                                            "value": "key"
+                                          }
+                                        },
+                                        "then": {
+                                          "op": "literal",
+                                          "value": true
+                                        },
+                                        "else": {
+                                          "op": "if",
+                                          "test": {
+                                            "op": "equal",
+                                            "left": {
+                                              "op": "local",
+                                              "name": "property"
+                                            },
+                                            "right": {
+                                              "op": "literal",
+                                              "value": "ref"
+                                            }
+                                          },
+                                          "then": {
+                                            "op": "literal",
+                                            "value": true
+                                          },
+                                          "else": {
+                                            "op": "if",
+                                            "test": {
+                                              "op": "equal",
+                                              "left": {
+                                                "op": "local",
+                                                "name": "property"
+                                              },
+                                              "right": {
+                                                "op": "literal",
+                                                "value": "__self"
+                                              }
+                                            },
+                                            "then": {
+                                              "op": "literal",
+                                              "value": true
+                                            },
+                                            "else": {
+                                              "op": "if",
+                                              "test": {
+                                                "op": "equal",
+                                                "left": {
+                                                  "op": "local",
+                                                  "name": "property"
+                                                },
+                                                "right": {
+                                                  "op": "literal",
+                                                  "value": "__source"
+                                                }
+                                              },
+                                              "then": {
+                                                "op": "literal",
+                                                "value": true
+                                              },
+                                              "else": {
+                                                "op": "literal",
+                                                "value": false
+                                              }
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "then": {
+                                        "op": "undefined"
+                                      },
+                                      "else": {
+                                        "op": "put",
+                                        "value": {
+                                          "op": "local",
+                                          "name": "props"
+                                        },
+                                        "key": {
+                                          "op": "local",
+                                          "name": "property"
+                                        },
+                                        "item": {
+                                          "op": "if",
+                                          "test": {
+                                            "op": "if",
+                                            "test": {
+                                              "op": "equal",
+                                              "left": {
+                                                "op": "lookup",
+                                                "value": {
+                                                  "op": "arg",
+                                                  "index": 1
+                                                },
+                                                "key": {
+                                                  "op": "local",
+                                                  "name": "property"
+                                                }
+                                              },
+                                              "right": {
+                                                "op": "undefined"
+                                              }
+                                            },
+                                            "then": {
+                                              "op": "not",
+                                              "value": {
+                                                "op": "equal",
+                                                "left": {
+                                                  "op": "local",
+                                                  "name": "defaults"
+                                                },
+                                                "right": {
+                                                  "op": "undefined"
+                                                }
+                                              }
+                                            },
+                                            "else": {
+                                              "op": "literal",
+                                              "value": false
+                                            }
+                                          },
+                                          "then": {
+                                            "op": "lookup",
+                                            "value": {
+                                              "op": "local",
+                                              "name": "defaults"
+                                            },
+                                            "key": {
+                                              "op": "local",
+                                              "name": "property"
+                                            }
+                                          },
+                                          "else": {
+                                            "op": "lookup",
+                                            "value": {
+                                              "op": "arg",
+                                              "index": 1
+                                            },
+                                            "key": {
+                                              "op": "local",
+                                              "name": "property"
+                                            }
+                                          }
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "op": "literal",
+                                      "value": true
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          },
+                          "else": {
+                            "op": "undefined"
+                          }
+                        },
+                        {
+                          "op": "bind",
+                          "name": "children",
+                          "value": {
+                            "op": "slice",
+                            "value": {
+                              "op": "args"
+                            },
+                            "start": 2
+                          },
+                          "body": {
+                            "op": "if",
+                            "test": {
+                              "op": "equal",
+                              "left": {
+                                "op": "get",
+                                "value": {
+                                  "op": "local",
+                                  "name": "children"
+                                },
+                                "key": "length"
+                              },
+                              "right": {
+                                "op": "literal",
+                                "value": 1
+                              }
+                            },
+                            "then": {
+                              "op": "put",
+                              "value": {
+                                "op": "local",
+                                "name": "props"
+                              },
+                              "key": {
+                                "op": "literal",
+                                "value": "children"
+                              },
+                              "item": {
+                                "op": "at",
+                                "value": {
+                                  "op": "local",
+                                  "name": "children"
+                                },
+                                "index": {
+                                  "op": "literal",
+                                  "value": 0
+                                }
+                              }
+                            },
+                            "else": {
+                              "op": "if",
+                              "test": {
+                                "op": "not",
+                                "value": {
+                                  "op": "equal",
+                                  "left": {
+                                    "op": "get",
+                                    "value": {
+                                      "op": "local",
+                                      "name": "children"
+                                    },
+                                    "key": "length"
+                                  },
+                                  "right": {
+                                    "op": "literal",
+                                    "value": 0
+                                  }
+                                }
+                              },
+                              "then": {
+                                "op": "put",
+                                "value": {
+                                  "op": "local",
+                                  "name": "props"
+                                },
+                                "key": {
+                                  "op": "literal",
+                                  "value": "children"
+                                },
+                                "item": {
+                                  "op": "local",
+                                  "name": "children"
+                                }
+                              },
+                              "else": {
+                                "op": "undefined"
+                              }
+                            }
+                          }
+                        },
+                        {
+                          "op": "undefined"
+                        },
+                        {
+                          "op": "object",
+                          "entries": {
+                            "type": {
+                              "op": "local",
+                              "name": "type"
+                            },
+                            "key": {
+                              "op": "local",
+                              "name": "key"
+                            },
+                            "props": {
+                              "op": "local",
+                              "name": "props"
+                            },
+                            "ref": {
+                              "op": "local",
+                              "name": "ref"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "scope": {
+        "callbackArguments": [],
+        "observationMode": "references",
+        "nestedReferences": true,
+        "resultPaths": [
+          [
+            "type"
+          ],
+          [
+            "key"
+          ],
+          [
+            "props"
+          ],
+          [
+            "ref"
+          ]
+        ],
+        "errorObservation": "standard_error_without_stack",
+        "description": "Production React element data: exact type/key/ref, all props and nested callback identities, children precedence and own-data defaultProps. Excludes owner/commit effects and metadata outside these projections. Ordinary data inputs only; getter/proxy/coercion/inherited-default cases must remain frontiers."
+      },
+      "versions": [
+        {
+          "version": "18.3.1",
+          "base_sha256": "77047934f98fce93205f88be8121265e60d46758a48641772a76e520eac2f355",
+          "overrides": [],
+          "program_sha256": "77047934f98fce93205f88be8121265e60d46758a48641772a76e520eac2f355",
+          "implementation_sha256": "c928af550fdfa14c87467a3ce7730ecaaa35635e2030069943b736de5bd209af",
+          "implementation": {
+            "runtime": {
+              "host": "node",
+              "mode": "production",
+              "entry": {
+                "name": "react",
+                "version": "18.3.1",
+                "path": "index.js"
+              }
+            },
+            "export_name": "cloneElement",
+            "packages": [
+              {
+                "name": "react",
+                "version": "18.3.1",
+                "integrity": "sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==",
+                "manifest_sha256": "d4e68a5c96babb20cad1daafea8b78822eae45b341552cf5418d06a5304fa64c"
+              }
+            ],
+            "files": [
+              {
+                "name": "react",
+                "version": "18.3.1",
+                "path": "cjs/react.production.min.js",
+                "sha256": "4b35e378f469c4f492c7514bb106b5833746dbbae80496bd4aa9acc6e9ac4b42"
+              },
+              {
+                "name": "react",
+                "version": "18.3.1",
+                "path": "index.js",
+                "sha256": "a216c390bf956cbb906c66d29fdb2e2ad6999464a5ca83e476533a6f25ad0ef3"
+              }
+            ]
+          },
+          "verification": {
+            "origin": "manual_exact_installed_production_source",
+            "scope": "Production React element data: exact type/key/ref, all props and nested callback identities, children precedence and own-data defaultProps. Excludes owner/commit effects and metadata outside these projections. Ordinary data inputs only; getter/proxy/coercion/inherited-default cases must remain frontiers."
+          }
+        },
+        {
+          "version": "19.1.1",
+          "base_sha256": "77047934f98fce93205f88be8121265e60d46758a48641772a76e520eac2f355",
+          "overrides": [
+            {
+              "path": [
+                "body",
+                "then",
+                "value",
+                "message",
+                "then",
+                "value"
+              ],
+              "value": "The argument must be a React element, but you passed null."
+            },
+            {
+              "path": [
+                "body",
+                "then",
+                "value",
+                "message",
+                "else",
+                "value"
+              ],
+              "value": "The argument must be a React element, but you passed undefined."
+            },
+            {
+              "path": [
+                "body",
+                "else",
+                "body",
+                "body",
+                "body",
+                "value"
+              ],
+              "value": {
+                "op": "literal",
+                "value": null
+              }
+            },
+            {
+              "path": [
+                "body",
+                "else",
+                "body",
+                "body",
+                "body",
+                "body",
+                "body",
+                "steps",
+                1,
+                "then",
+                "steps",
+                1
+              ],
+              "value": {
+                "op": "undefined"
+              }
+            },
+            {
+              "path": [
+                "body",
+                "else",
+                "body",
+                "body",
+                "body",
+                "body",
+                "body",
+                "steps",
+                1,
+                "then",
+                "steps",
+                2,
+                "test",
+                "steps",
+                0,
+                "test",
+                "else",
+                "test",
+                "right",
+                "value"
+              ],
+              "value": "__self"
+            },
+            {
+              "path": [
+                "body",
+                "else",
+                "body",
+                "body",
+                "body",
+                "body",
+                "body",
+                "steps",
+                1,
+                "then",
+                "steps",
+                2,
+                "test",
+                "steps",
+                0,
+                "test",
+                "else",
+                "else",
+                "test",
+                "right",
+                "value"
+              ],
+              "value": "__source"
+            },
+            {
+              "path": [
+                "body",
+                "else",
+                "body",
+                "body",
+                "body",
+                "body",
+                "body",
+                "steps",
+                1,
+                "then",
+                "steps",
+                2,
+                "test",
+                "steps",
+                0,
+                "test",
+                "else",
+                "else",
+                "else"
+              ],
+              "value": {
+                "op": "literal",
+                "value": false
+              }
+            },
+            {
+              "path": [
+                "body",
+                "else",
+                "body",
+                "body",
+                "body",
+                "body",
+                "body",
+                "steps",
+                1,
+                "then",
+                "steps",
+                2,
+                "test",
+                "steps",
+                0,
+                "else"
+              ],
+              "value": {
+                "op": "if",
+                "test": {
+                  "op": "if",
+                  "test": {
+                    "op": "equal",
+                    "left": {
+                      "op": "local",
+                      "name": "property"
+                    },
+                    "right": {
+                      "op": "literal",
+                      "value": "ref"
+                    }
+                  },
+                  "then": {
+                    "op": "equal",
+                    "left": {
+                      "op": "lookup",
+                      "value": {
+                        "op": "arg",
+                        "index": 1
+                      },
+                      "key": {
+                        "op": "local",
+                        "name": "property"
+                      }
+                    },
+                    "right": {
+                      "op": "undefined"
+                    }
+                  },
+                  "else": {
+                    "op": "literal",
+                    "value": false
+                  }
+                },
+                "then": {
+                  "op": "undefined"
+                },
+                "else": {
+                  "op": "put",
+                  "value": {
+                    "op": "local",
+                    "name": "props"
+                  },
+                  "key": {
+                    "op": "local",
+                    "name": "property"
+                  },
+                  "item": {
+                    "op": "lookup",
+                    "value": {
+                      "op": "arg",
+                      "index": 1
+                    },
+                    "key": {
+                      "op": "local",
+                      "name": "property"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "path": [
+                "body",
+                "else",
+                "body",
+                "body",
+                "body",
+                "body",
+                "body",
+                "steps",
+                4,
+                "entries",
+                "ref"
+              ],
+              "value": {
+                "op": "if",
+                "test": {
+                  "op": "equal",
+                  "left": {
+                    "op": "get",
+                    "value": {
+                      "op": "local",
+                      "name": "props"
+                    },
+                    "key": "ref"
+                  },
+                  "right": {
+                    "op": "undefined"
+                  }
+                },
+                "then": {
+                  "op": "literal",
+                  "value": null
+                },
+                "else": {
+                  "op": "get",
+                  "value": {
+                    "op": "local",
+                    "name": "props"
+                  },
+                  "key": "ref"
+                }
+              }
+            }
+          ],
+          "program_sha256": "2023614614370e1e00adf2365bceb4b4e4ec9142f54c06a8272ef1599a2a70b2",
+          "implementation_sha256": "db9801d741f0ebe5fb66296b93f8640947c024c88c9dc260ea7a3de1a35dbd43",
+          "implementation": {
+            "runtime": {
+              "host": "node",
+              "mode": "production",
+              "entry": {
+                "name": "react",
+                "version": "19.1.1",
+                "path": "index.js"
+              }
+            },
+            "export_name": "cloneElement",
+            "packages": [
+              {
+                "name": "react",
+                "version": "19.1.1",
+                "integrity": "sha512-w8nqGImo45dmMIfljjMwOGtbmC/mk4CMYhWIicdSflH91J9TyCyczcPFXJzrZ/ZXcgGRFeP6BU0BEJTw6tZdfQ==",
+                "manifest_sha256": "7e862b437058f8dde0fe1b538266b934d725f76fe5b981305d6e942714d49608"
+              }
+            ],
+            "files": [
+              {
+                "name": "react",
+                "version": "19.1.1",
+                "path": "cjs/react.production.js",
+                "sha256": "f1e2323f141be9d9379c612eeabd7f282f052e60116547395780b032a6f0770d"
+              },
+              {
+                "name": "react",
+                "version": "19.1.1",
+                "path": "index.js",
+                "sha256": "60caffdecbdc5db3bc4ec4e83df9488345ccb271d07533b9210bf5750918d97e"
+              }
+            ]
+          },
+          "verification": {
+            "origin": "manual_exact_installed_production_source",
+            "scope": "Production React element data: exact type/key/ref, all props and nested callback identities, children precedence and own-data defaultProps. Excludes owner/commit effects and metadata outside these projections. Ordinary data inputs only; getter/proxy/coercion/inherited-default cases must remain frontiers."
+          }
+        }
+      ]
+    }
+  ]
+}

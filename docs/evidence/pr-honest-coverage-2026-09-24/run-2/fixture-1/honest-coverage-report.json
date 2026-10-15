@@ -1,0 +1,1470 @@
+{
+  "store": "/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/tracer-honest-coverage-store-ajj690",
+  "session": "s_d5f1e614",
+  "observed": {
+    "page_errors": [],
+    "responses": {
+      "/api/notes": [
+        201
+      ],
+      "/api/sync": [
+        200
+      ],
+      "/api/export": [
+        200
+      ],
+      "/api/hover-note": [
+        201
+      ]
+    },
+    "probe": [
+      "pointerrawupdate",
+      "pointerover",
+      "pointerenter",
+      "mouseover",
+      "mouseenter",
+      "pointermove",
+      "mousemove",
+      "pointerout",
+      "mouseout"
+    ],
+    "chosen_kind": "mouseenter",
+    "in_page_on_kinds": [
+      "abort",
+      "afterprint",
+      "animationcancel",
+      "animationend",
+      "animationiteration",
+      "animationstart",
+      "appinstalled",
+      "auxclick",
+      "beforecopy",
+      "beforecut",
+      "beforeinput",
+      "beforeinstallprompt",
+      "beforematch",
+      "beforepaste",
+      "beforeprint",
+      "beforetoggle",
+      "beforeunload",
+      "beforexrselect",
+      "blur",
+      "cancel",
+      "canplay",
+      "canplaythrough",
+      "change",
+      "click",
+      "close",
+      "command",
+      "contentvisibilityautostatechange",
+      "contextlost",
+      "contextmenu",
+      "contextrestored",
+      "copy",
+      "cuechange",
+      "cut",
+      "dblclick",
+      "devicemotion",
+      "deviceorientation",
+      "deviceorientationabsolute",
+      "drag",
+      "dragend",
+      "dragenter",
+      "dragleave",
+      "dragover",
+      "dragstart",
+      "drop",
+      "durationchange",
+      "emptied",
+      "ended",
+      "error",
+      "focus",
+      "formdata",
+      "freeze",
+      "fullscreenchange",
+      "fullscreenerror",
+      "gamepadconnected",
+      "gamepaddisconnected",
+      "gotpointercapture",
+      "hashchange",
+      "input",
+      "invalid",
+      "keydown",
+      "keypress",
+      "keyup",
+      "languagechange",
+      "load",
+      "loadeddata",
+      "loadedmetadata",
+      "loadstart",
+      "lostpointercapture",
+      "message",
+      "messageerror",
+      "mousedown",
+      "mouseenter",
+      "mouseleave",
+      "mousemove",
+      "mouseout",
+      "mouseover",
+      "mouseup",
+      "mousewheel",
+      "offline",
+      "online",
+      "pagehide",
+      "pagereveal",
+      "pageshow",
+      "pageswap",
+      "paste",
+      "pause",
+      "play",
+      "playing",
+      "pointercancel",
+      "pointerdown",
+      "pointerenter",
+      "pointerleave",
+      "pointerlockchange",
+      "pointerlockerror",
+      "pointermove",
+      "pointerout",
+      "pointerover",
+      "pointerrawupdate",
+      "pointerup",
+      "popstate",
+      "prerenderingchange",
+      "progress",
+      "ratechange",
+      "readystatechange",
+      "rejectionhandled",
+      "reset",
+      "resize",
+      "resume",
+      "scroll",
+      "scrollend",
+      "scrollsnapchange",
+      "scrollsnapchanging",
+      "search",
+      "securitypolicyviolation",
+      "seeked",
+      "seeking",
+      "select",
+      "selectionchange",
+      "selectstart",
+      "slotchange",
+      "stalled",
+      "storage",
+      "submit",
+      "suspend",
+      "timeupdate",
+      "toggle",
+      "transitioncancel",
+      "transitionend",
+      "transitionrun",
+      "transitionstart",
+      "unhandledrejection",
+      "unload",
+      "visibilitychange",
+      "volumechange",
+      "waiting",
+      "webkitanimationend",
+      "webkitanimationiteration",
+      "webkitanimationstart",
+      "webkitfullscreenchange",
+      "webkitfullscreenerror",
+      "webkittransitionend",
+      "wheel"
+    ],
+    "frames_after_brief": 2,
+    "late_root": 201
+  },
+  "external_hits": [
+    "GET /frame.html traceparent=no",
+    "POST /hook traceparent=yes",
+    "GET /frame.html traceparent=no"
+  ],
+  "checks": [
+    {
+      "name": "R0 the page ran without errors; every /api response arrived",
+      "pass": true,
+      "detail": {
+        "page_errors": [],
+        "responses": {
+          "/api/notes": [
+            201
+          ],
+          "/api/sync": [
+            200
+          ],
+          "/api/export": [
+            200
+          ],
+          "/api/hover-note": [
+            201
+          ]
+        },
+        "probe": [
+          "pointerrawupdate",
+          "pointerover",
+          "pointerenter",
+          "mouseover",
+          "mouseenter",
+          "pointermove",
+          "mousemove",
+          "pointerout",
+          "mouseout"
+        ],
+        "chosen_kind": "mouseenter",
+        "in_page_on_kinds": [
+          "abort",
+          "afterprint",
+          "animationcancel",
+          "animationend",
+          "animationiteration",
+          "animationstart",
+          "appinstalled",
+          "auxclick",
+          "beforecopy",
+          "beforecut",
+          "beforeinput",
+          "beforeinstallprompt",
+          "beforematch",
+          "beforepaste",
+          "beforeprint",
+          "beforetoggle",
+          "beforeunload",
+          "beforexrselect",
+          "blur",
+          "cancel",
+          "canplay",
+          "canplaythrough",
+          "change",
+          "click",
+          "close",
+          "command",
+          "contentvisibilityautostatechange",
+          "contextlost",
+          "contextmenu",
+          "contextrestored",
+          "copy",
+          "cuechange",
+          "cut",
+          "dblclick",
+          "devicemotion",
+          "deviceorientation",
+          "deviceorientationabsolute",
+          "drag",
+          "dragend",
+          "dragenter",
+          "dragleave",
+          "dragover",
+          "dragstart",
+          "drop",
+          "durationchange",
+          "emptied",
+          "ended",
+          "error",
+          "focus",
+          "formdata",
+          "freeze",
+          "fullscreenchange",
+          "fullscreenerror",
+          "gamepadconnected",
+          "gamepaddisconnected",
+          "gotpointercapture",
+          "hashchange",
+          "input",
+          "invalid",
+          "keydown",
+          "keypress",
+          "keyup",
+          "languagechange",
+          "load",
+          "loadeddata",
+          "loadedmetadata",
+          "loadstart",
+          "lostpointercapture",
+          "message",
+          "messageerror",
+          "mousedown",
+          "mouseenter",
+          "mouseleave",
+          "mousemove",
+          "mouseout",
+          "mouseover",
+          "mouseup",
+          "mousewheel",
+          "offline",
+          "online",
+          "pagehide",
+          "pagereveal",
+          "pageshow",
+          "pageswap",
+          "paste",
+          "pause",
+          "play",
+          "playing",
+          "pointercancel",
+          "pointerdown",
+          "pointerenter",
+          "pointerleave",
+          "pointerlockchange",
+          "pointerlockerror",
+          "pointermove",
+          "pointerout",
+          "pointerover",
+          "pointerrawupdate",
+          "pointerup",
+          "popstate",
+          "prerenderingchange",
+          "progress",
+          "ratechange",
+          "readystatechange",
+          "rejectionhandled",
+          "reset",
+          "resize",
+          "resume",
+          "scroll",
+          "scrollend",
+          "scrollsnapchange",
+          "scrollsnapchanging",
+          "search",
+          "securitypolicyviolation",
+          "seeked",
+          "seeking",
+          "select",
+          "selectionchange",
+          "selectstart",
+          "slotchange",
+          "stalled",
+          "storage",
+          "submit",
+          "suspend",
+          "timeupdate",
+          "toggle",
+          "transitioncancel",
+          "transitionend",
+          "transitionrun",
+          "transitionstart",
+          "unhandledrejection",
+          "unload",
+          "visibilitychange",
+          "volumechange",
+          "waiting",
+          "webkitanimationend",
+          "webkitanimationiteration",
+          "webkitanimationstart",
+          "webkitfullscreenchange",
+          "webkitfullscreenerror",
+          "webkittransitionend",
+          "wheel"
+        ],
+        "frames_after_brief": 2,
+        "late_root": 201
+      }
+    },
+    {
+      "name": "O1 raw: capture.page.observes lists the recorded event kinds and every other on* kind the page exposes (independent in-page enumeration)",
+      "pass": true,
+      "detail": {
+        "recorded": [
+          "change",
+          "click",
+          "focusin",
+          "input",
+          "keydown",
+          "submit"
+        ],
+        "unobserved_total": 145,
+        "exposed_total": 151,
+        "in_page": 142
+      }
+    },
+    {
+      "name": "O2 raw: the kind chosen at run time is one the runtime does not listen to, and it started no action",
+      "pass": true,
+      "detail": {
+        "chosen": "mouseenter",
+        "probe": [
+          "pointerrawupdate",
+          "pointerover",
+          "pointerenter",
+          "mouseover",
+          "mouseenter",
+          "pointermove",
+          "mousemove",
+          "pointerout",
+          "mouseout"
+        ]
+      }
+    },
+    {
+      "name": "O3 raw: transports as installed: fetch/xhr/eventsource/websocket/worker/shared_worker wrapped; beacon and service_worker present and not wrapped",
+      "pass": true,
+      "detail": {
+        "fetch": "wrapped",
+        "xhr": "wrapped",
+        "eventsource": "wrapped",
+        "websocket": "wrapped",
+        "worker": "wrapped",
+        "shared_worker": "wrapped",
+        "beacon": "not_wrapped",
+        "service_worker": "not_wrapped"
+      }
+    },
+    {
+      "name": "O4 raw: one capture.limit per child frame (3: the static same-origin and other-port frames, and the brief other-origin frame recorded when inserted), content never read (url only when same-origin)",
+      "pass": true,
+      "detail": {
+        "limits": [
+          [
+            "realm:s_d5f1e614:1",
+            true,
+            "http://127.0.0.1:51734/frame.html"
+          ],
+          [
+            "realm:s_d5f1e614:2",
+            false,
+            null
+          ],
+          [
+            "realm:s_d5f1e614:3",
+            false,
+            null
+          ]
+        ],
+        "updates": []
+      }
+    },
+    {
+      "name": "O5 raw: one worker_fetch capture.limit per worker created (1: /worker.js)",
+      "pass": true,
+      "detail": [
+        {
+          "schema": "producttrace.runtime-evidence.v1",
+          "sequence": 4,
+          "timestamp": 1790286447195,
+          "parent_continuation_id": null,
+          "kind": "capture.limit",
+          "feature": "worker_fetch",
+          "reason": "worker code is not instrumented",
+          "worker_id": "worker:s_d5f1e614:1",
+          "worker_kind": "dedicated",
+          "script_url": "/worker.js",
+          "capture_page_id": "s_d5f1e614",
+          "tracer_run": "run-20260924t214718285z-2ab840",
+          "tracer_build": "unknown"
+        }
+      ]
+    },
+    {
+      "name": "O6 raw: the pagehide beacon reached the server with no browser request row (not wrapped) and no parent",
+      "pass": true,
+      "detail": [
+        [
+          "bbef6f69a69a03fb",
+          null
+        ]
+      ]
+    },
+    {
+      "name": "C1 coverage.unobserved: the event kinds entry names exactly the page's unobserved kinds (the chosen one included), with a reason",
+      "pass": true,
+      "detail": {
+        "count": 145,
+        "reason": "the runtime starts an action only for change, click, focusin, input, keydown, submit; a user action through any of these at least 145 event kind(s) the browser can dispatch is not recorded, and work its listeners do runs under no action (the list is a lower bound: on* handler properties plus known kinds with none)"
+      }
+    },
+    {
+      "name": "C2 coverage.unobserved: transports beacon and service_worker (present, not wrapped), nothing wrapped listed",
+      "pass": true,
+      "detail": [
+        {
+          "kind": "transport",
+          "name": "beacon",
+          "status": "not_wrapped",
+          "reason": "beacon is present on this page and not wrapped by the runtime: requests sent through it are not recorded"
+        },
+        {
+          "kind": "transport",
+          "name": "service_worker",
+          "status": "not_wrapped",
+          "reason": "service_worker is present on this page and not wrapped by the runtime: requests sent through it are not recorded"
+        },
+        {
+          "kind": "transport",
+          "name": "fetch",
+          "status": "replaced",
+          "reason": "fetch: the runtime's wrapper was replaced after install; requests through the replacement are recorded only if it still calls the runtime's wrapper"
+        }
+      ]
+    },
+    {
+      "name": "C3 coverage.unobserved: realms: 3 frames (1 same-origin, 2 cross-origin, the brief one included) and 1 worker (/worker.js), each with a reason",
+      "pass": true,
+      "detail": {
+        "frameEntry": {
+          "kind": "realm",
+          "name": "frame",
+          "count": 3,
+          "same_origin": 1,
+          "cross_origin": 2,
+          "realms": [
+            {
+              "realm_id": "realm:s_d5f1e614:1",
+              "same_origin": true,
+              "url": "http://127.0.0.1:51734/frame.html"
+            },
+            {
+              "realm_id": "realm:s_d5f1e614:2",
+              "same_origin": false,
+              "url": null
+            },
+            {
+              "realm_id": "realm:s_d5f1e614:3",
+              "same_origin": false,
+              "url": null
+            }
+          ],
+          "reason": "3 child browsing context(s) in this page (1 same-origin, 2 cross-origin; content not read): code in them runs outside this page's runtime, so their events and requests are not recorded"
+        },
+        "workerEntry": {
+          "kind": "realm",
+          "name": "worker",
+          "count": 1,
+          "workers": [
+            {
+              "worker_id": "worker:s_d5f1e614:1",
+              "worker_kind": "dedicated",
+              "script_url": "/worker.js"
+            }
+          ],
+          "reason": "1 worker(s) created on this page: worker code is not instrumented, so requests a worker makes are not recorded (posts into it are)"
+        }
+      }
+    },
+    {
+      "name": "C4 page coverage: complete false; reasons name the capture limits and each unobserved realm; delivery itself is contiguous",
+      "pass": true,
+      "detail": [
+        "capture.limit: 4 (realm, worker_fetch): part of the capture is off on this page",
+        "transport wrapper replaced after install: fetch (its requests may not be recorded)",
+        "unobserved realm present: 3 child browsing context(s) in this page (1 same-origin, 2 cross-origin; content not read): code in them runs outside this page's runtime, so their events and requests are not recorded",
+        "unobserved realm present: 1 worker(s) created on this page: worker code is not instrumented, so requests a worker makes are not recorded (posts into it are)"
+      ]
+    },
+    {
+      "name": "A0 raw: one click row per control, in the driver's order (the Radix confirm button is in a portal; the opener carries aria-haspopup)",
+      "pass": true,
+      "detail": [
+        [
+          "focusin",
+          {
+            "type": "button"
+          },
+          null
+        ],
+        [
+          "click",
+          {
+            "type": "button"
+          },
+          null
+        ],
+        [
+          "focusin",
+          {
+            "type": "button",
+            "aria-haspopup": "dialog",
+            "aria-expanded": "false",
+            "aria-controls": "radix-:r0:"
+          },
+          null
+        ],
+        [
+          "click",
+          {
+            "type": "button",
+            "aria-haspopup": "dialog",
+            "aria-expanded": "false",
+            "aria-controls": "radix-:r0:"
+          },
+          null
+        ],
+        [
+          "focusin",
+          {
+            "type": "button"
+          },
+          null
+        ],
+        [
+          "click",
+          {
+            "type": "button"
+          },
+          null
+        ],
+        [
+          "focusin",
+          {
+            "type": "button",
+            "aria-haspopup": "dialog",
+            "aria-expanded": "false",
+            "aria-controls": "radix-:r0:"
+          },
+          false
+        ],
+        [
+          "focusin",
+          {
+            "type": "button"
+          },
+          null
+        ],
+        [
+          "click",
+          {
+            "type": "button"
+          },
+          null
+        ],
+        [
+          "focusin",
+          {
+            "type": "button"
+          },
+          null
+        ],
+        [
+          "click",
+          {
+            "type": "button"
+          },
+          null
+        ],
+        [
+          "focusin",
+          {
+            "type": "button"
+          },
+          null
+        ],
+        [
+          "click",
+          {
+            "type": "button"
+          },
+          null
+        ],
+        [
+          "focusin",
+          {
+            "type": "button"
+          },
+          null
+        ],
+        [
+          "click",
+          {
+            "type": "button"
+          },
+          null
+        ]
+      ]
+    },
+    {
+      "name": "A1 raw: Save note → POST /api/notes joined exactly; its trace has no outbound client span; no root server span starts in its window",
+      "pass": true,
+      "detail": {
+        "saveReq": "/api/notes",
+        "outbound": 0
+      }
+    },
+    {
+      "name": "A2 raw: the sync handler's Node fetch started a new root trace (/api/notify: no parent) inside the sync server span; no client span recorded it",
+      "pass": true,
+      "detail": {
+        "notify": [
+          "735cf6286bca6670cf5c77b292734f26",
+          null
+        ],
+        "sync": [
+          "94b7e951aae920b5f3258a2a5f57b6ac",
+          1790286449887,
+          1790286449911.8599
+        ]
+      }
+    },
+    {
+      "name": "A3 raw: the export handler's node:http call is a client span under the joined server span (nested client spans are that same call), and no server span continues it",
+      "pass": true,
+      "detail": {
+        "exportOutbound": [
+          [
+            "POST",
+            "http://127.0.0.1:51646/hook"
+          ],
+          [
+            "POST",
+            "http://127.0.0.1:51646/hook"
+          ]
+        ],
+        "externalHits": [
+          "GET /frame.html traceparent=no",
+          "POST /hook traceparent=yes",
+          "GET /frame.html traceparent=no"
+        ]
+      }
+    },
+    {
+      "name": "A4 raw: the armed listener's request left the page with no action_id and no first-party frame (issuer unknown), after Open panel and before the next dispatch",
+      "pass": true,
+      "detail": {
+        "sequence": 70,
+        "issuer": {
+          "function_ids": [],
+          "task": null
+        }
+      }
+    },
+    {
+      "name": "A5 raw: Open panel itself sent nothing",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "F1 plain: Save note stops at none (terminal effect observed); no escape; its window adds no coverage reason",
+      "pass": true,
+      "detail": [
+        null,
+        "database write insert notes joined by exact span parentage",
+        null
+      ]
+    },
+    {
+      "name": "F2 escaped hop: Confirm sync reads reached db / stopped at server_hop with the escape sentence, never \"terminal effect observed\"",
+      "pass": true,
+      "detail": [
+        "db",
+        "server_hop",
+        "reached db (database write update syncs joined by exact span parentage); a further server-side hop may have escaped: 1 server-side request in this window has no browser parent (listed as unlinked)"
+      ]
+    },
+    {
+      "name": "F3 escaped hop: the root span is listed as unlinked under the sync action (the same span id as the raw /api/notify), with its DB op",
+      "pass": true,
+      "detail": [
+        [
+          "470d524ece923d2e",
+          "/api/notify"
+        ]
+      ]
+    },
+    {
+      "name": "F4 escaped hop: the outcome keeps \"completed 200\" for the response and says the hop may have escaped; coverage is not complete, with the window reason",
+      "pass": true,
+      "detail": {
+        "label": "Completed 200: update syncs; a further server-side hop may have escaped",
+        "window_reasons": [
+          "1 server span(s) in this action's window have no browser parent (a root trace: a server-side hop Tracer did not follow, or a caller it does not see)"
+        ]
+      }
+    },
+    {
+      "name": "F5 escaped hop: the request segment says the same (stopped_at server_hop, the escape in its summary bracket)",
+      "pass": true,
+      "detail": [
+        "server_hop",
+        "<unnamed> client/src/main.jsx@1812-2008 → POST /api/sync → route /api/sync 200 → server syncAll → db update syncs [completed 200; a further server-side hop may have escaped]"
+      ]
+    },
+    {
+      "name": "F6 unfollowed outbound call: Export stops at server_hop naming the outbound call (by identifier), not \"terminal effect observed\"",
+      "pass": true,
+      "detail": [
+        "server_hop",
+        "reached db (database write insert exports joined by exact span parentage); a further server-side hop may have escaped: 1 outbound call from the joined server span has no server span continuing it (POST http://127.0.0.1:51646/hook)",
+        [
+          "1 outbound call(s) from a joined server span have no matching incoming server span (POST http://127.0.0.1:51646/hook)"
+        ]
+      ]
+    },
+    {
+      "name": "F7 the escaped root span does not surface under a later unrelated action as its only mention: Export's window does not list it",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "H1 Open panel: stopped at browser; the headline names the request that left the page (method, path, issuer unknown)",
+      "pass": true,
+      "detail": [
+        "browser",
+        "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; transports and realms Tracer does not record are listed in coverage.unobserved); 1 recorded request left this page during this action's window that Tracer could not attribute (POST /api/hover-note, issuer unknown), listed below as unlinked"
+      ]
+    },
+    {
+      "name": "H2 Open panel: outcome no_request says so in its label, sentence and bracket",
+      "pass": true,
+      "detail": {
+        "stage": "stopped",
+        "status": "no_request",
+        "display_status": "no_request",
+        "http_status": null,
+        "writes": [],
+        "reads": [],
+        "stop_reason": "no_effect_after_dispatch",
+        "stopped_at": "browser",
+        "reached": "dom_mutation",
+        "label": "No request: the handler ran and issued no request from instrumented code; 1 recorded request left this page during this action's window that Tracer could not attribute (POST /api/hover-note, issuer unknown)",
+        "sentence": "the handler ran and issued no request from instrumented code (1 function entered, 2 DOM mutations, 0 state effects); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; transports and realms Tracer does not record are listed in coverage.unobserved); 1 recorded request left this page during this action's window that Tracer could not attribute (POST /api/hover-note, issuer unknown)",
+        "did": {
+          "functions_entered": 1,
+          "dom_mutations": 2,
+          "state_effects": 0
+        },
+        "clause": "the handler ran and issued no request from instrumented code (1 function entered, 2 DOM mutations, 0 state effects)",
+        "window_text": "1 recorded request left this page during this action's window that Tracer could not attribute (POST /api/hover-note, issuer unknown)",
+        "requests": 0,
+        "failed_requests": 0
+      }
+    },
+    {
+      "name": "H3 Open panel: coverage not complete: the unknown-issuer request and the beacon's root span in its window (page end)",
+      "pass": true,
+      "detail": [
+        "1 request(s) left this page in this action's window not attributed to any user action and with no known issuer (listed as unlinked)",
+        "1 server span(s) in this action's window have no browser parent (a root trace: a server-side hop Tracer did not follow, or a caller it does not see)"
+      ]
+    },
+    {
+      "name": "E1 event kinds with no on* property are included (focusout, composition*, touch*) and the list says it is a lower bound",
+      "pass": true,
+      "detail": {
+        "lower_bound": true,
+        "has_focusout": true
+      }
+    },
+    {
+      "name": "T1 the brief frame (inserted 50 ms after the click, removed 400 ms later) is a realm row in the click's window and a window reason",
+      "pass": true,
+      "detail": [
+        "1 child frame(s) appeared in this action's window (0 same-origin, 1 cross-origin): code in a frame is not recorded"
+      ]
+    },
+    {
+      "name": "W1 raw: the socket message is a network.send row (2 bytes, owned by the Ping click, never its content); the socket server's write is a root trace in its window",
+      "pass": true,
+      "detail": {
+        "sends": [
+          {
+            "schema": "producttrace.runtime-evidence.v1",
+            "sequence": 61,
+            "timestamp": 1790286453143,
+            "parent_continuation_id": "continuation:action:mug2bw5z:13:function:60",
+            "kind": "network.send",
+            "transport": "websocket",
+            "url": "ws://127.0.0.1:51734/ws",
+            "connection_occurrence_id": "unattributed:request:1",
+            "bytes": 2,
+            "action_id": "action:mug2bw5z:13",
+            "spine": {
+              "action_id": "action:mug2bw5z:13",
+              "function_ids": [
+                "function:7aab5ef45a79426834f09d6c5d86e9fa3c92b9dc05f373d55ba4233be1e02868:1766:1810",
+                "function:7aab5ef45a79426834f09d6c5d86e9fa3c92b9dc05f373d55ba4233be1e02868:1766:1810"
+              ]
+            },
+            "capture_page_id": "s_d5f1e614",
+            "tracer_run": "run-20260924t214718285z-2ab840",
+            "tracer_build": "unknown"
+          }
+        ],
+        "socketRoot": "/api/ws-write"
+      }
+    },
+    {
+      "name": "W2 the Ping action stops at the socket (never \"issued no request\" alone) and is not complete: the send and the root span are reasons",
+      "pass": true,
+      "detail": [
+        "websocket",
+        "sent 1 WebSocket message on ws://127.0.0.1:51734/ws (2 bytes); a message carries no trace context, so what it caused on a server cannot be attributed to this action (server spans seen in this window are listed below as unlinked)",
+        "Stopped at websocket: sent 1 WebSocket message on ws://127.0.0.1:51734/ws (2 bytes); its server-side effects cannot be traced",
+        [
+          "1 WebSocket message(s) sent in this action's window: a message carries no trace context, so what it caused on a server cannot be joined",
+          "1 server span(s) in this action's window have no browser parent (a root trace: a server-side hop Tracer did not follow, or a caller it does not see)"
+        ]
+      ]
+    },
+    {
+      "name": "X1 a transport wrapper replaced after install is reported at the summary and in coverage",
+      "pass": true,
+      "detail": [
+        "fetch"
+      ]
+    },
+    {
+      "name": "P2 page end: the last window ends at the last runtime row + 2 s (never collector close); a root span after that is in no window of the page",
+      "pass": true,
+      "detail": {
+        "lateRoot": 1790286460059,
+        "lastRuntime": 1790286455839,
+        "window": {
+          "page": "s_d5f1e614",
+          "from_action_id": "action:mug2bx6s:14",
+          "from_sequence": 64,
+          "from_timestamp": 1790286454468,
+          "until": "page_end",
+          "until_action_id": null,
+          "until_sequence": 71,
+          "until_timestamp": 1790286457839,
+          "page_end_grace_ms": 2000
+        }
+      }
+    },
+    {
+      "name": "H4 the dialog opener (no request, nothing left the page in its window) keeps the plain scoped sentence",
+      "pass": true,
+      "detail": [
+        "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+        null
+      ]
+    },
+    {
+      "name": "P1 page_requests: the unattributed request reads \"not attributed to any user action\" plus what the stack showed, never \"no user action\"",
+      "pass": true,
+      "detail": "not attributed to any user action; no first-party frame recorded for this request (issued outside any action); not inside a timer or frame callback armed outside an action (task origin not recorded)"
+    },
+    {
+      "name": "S1 save: exported chain, chain display and recent_actions carry the same stopped_at, because (escape clause / headline) and outcome label as action_chain",
+      "pass": true,
+      "detail": {
+        "exported": [
+          null,
+          null,
+          "Completed 201: insert notes"
+        ],
+        "mcp": [
+          null,
+          "database write insert notes joined by exact span parentage",
+          "Completed 201: insert notes"
+        ]
+      }
+    },
+    {
+      "name": "S1 sync: exported chain, chain display and recent_actions carry the same stopped_at, because (escape clause / headline) and outcome label as action_chain",
+      "pass": true,
+      "detail": {
+        "exported": [
+          "server_hop",
+          "reached db; a further server-side hop may have escaped: 1 server-side request in this window has no browser parent (listed as unlinked)",
+          "Completed 200: update syncs; a further server-side hop may have escaped"
+        ],
+        "mcp": [
+          "server_hop",
+          "reached db (database write update syncs joined by exact span parentage); a further server-side hop may have escaped: 1 server-side request in this window has no browser parent (listed as unlinked)",
+          "Completed 200: update syncs; a further server-side hop may have escaped"
+        ]
+      }
+    },
+    {
+      "name": "S1 export: exported chain, chain display and recent_actions carry the same stopped_at, because (escape clause / headline) and outcome label as action_chain",
+      "pass": true,
+      "detail": {
+        "exported": [
+          "server_hop",
+          "reached db; a further server-side hop may have escaped: 1 outbound call from the joined server span has no server span continuing it (POST http://127.0.0.1:51646/hook)",
+          "Completed 200: insert exports; a further server-side hop may have escaped"
+        ],
+        "mcp": [
+          "server_hop",
+          "reached db (database write insert exports joined by exact span parentage); a further server-side hop may have escaped: 1 outbound call from the joined server span has no server span continuing it (POST http://127.0.0.1:51646/hook)",
+          "Completed 200: insert exports; a further server-side hop may have escaped"
+        ]
+      }
+    },
+    {
+      "name": "S1 panel: exported chain, chain display and recent_actions carry the same stopped_at, because (escape clause / headline) and outcome label as action_chain",
+      "pass": true,
+      "detail": {
+        "exported": [
+          "browser",
+          "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; transports and realms Tracer does not record are listed in coverage.unobserved); 1 recorded request left this page during this action's window that Tracer could not attribute (POST /api/hover-note, issuer unknown), listed below as unlinked",
+          "No request: the handler ran and issued no request from instrumented code; 1 recorded request left this page during this action's window that Tracer could not attribute (POST /api/hover-note, issuer unknown)"
+        ],
+        "mcp": [
+          "browser",
+          "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; transports and realms Tracer does not record are listed in coverage.unobserved); 1 recorded request left this page during this action's window that Tracer could not attribute (POST /api/hover-note, issuer unknown), listed below as unlinked",
+          "No request: the handler ran and issued no request from instrumented code; 1 recorded request left this page during this action's window that Tracer could not attribute (POST /api/hover-note, issuer unknown)"
+        ]
+      }
+    },
+    {
+      "name": "S1 ping: exported chain, chain display and recent_actions carry the same stopped_at, because (escape clause / headline) and outcome label as action_chain",
+      "pass": true,
+      "detail": {
+        "exported": [
+          "websocket",
+          "sent 1 WebSocket message on ws://127.0.0.1:51734/ws (2 bytes); a message carries no trace context, so what it caused on a server cannot be attributed to this action (server spans seen in this window are listed below as unlinked)",
+          "Stopped at websocket: sent 1 WebSocket message on ws://127.0.0.1:51734/ws (2 bytes); its server-side effects cannot be traced"
+        ],
+        "mcp": [
+          "websocket",
+          "sent 1 WebSocket message on ws://127.0.0.1:51734/ws (2 bytes); a message carries no trace context, so what it caused on a server cannot be attributed to this action (server spans seen in this window are listed below as unlinked)",
+          "Stopped at websocket: sent 1 WebSocket message on ws://127.0.0.1:51734/ws (2 bytes); its server-side effects cannot be traced"
+        ]
+      }
+    },
+    {
+      "name": "M1 stdio: action_chain answers equal the in-process ones (frontier, outcome, coverage, unobserved)",
+      "pass": true,
+      "detail": [
+        "server_hop",
+        "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; transports and realms Tracer does not record are listed in coverage.unobserved); 1 recorded request left this page during this action's window that Tracer could not attribute (POST /api/hover-note, issuer unknown), listed below as unlinked"
+      ]
+    },
+    {
+      "name": "M2 stdio: the summary text carries the escape sentence, the headline and the \"Not observed\" line",
+      "pass": true,
+      "detail": [
+        "Coverage incomplete for page s_d5f1e614: capture.limit: 4 (realm, worker_fetch): part of the capture is off on this page; transport wrapper replaced after install: fetch (its requests may not be recorded); unobserved realm present: 3 child browsing context(s) in this page (1 same-origin, 2 cross-origin; content not read): code in them runs outside this page's runtime, so their events and requests are not recorded; unobserved realm present: 1 worker(s) created on this page: worker code is not instrumented, so requests a worker makes are not recorded (posts into it are)",
+        "Not observed on page s_d5f1e614 (from its rows; not exhaustive: navigations and <img>/<form>/<link> loads are never recorded): at least 145 event kind(s) that start no action; transport beacon not wrapped; transport service_worker not wrapped; transport fetch wrapper replaced; 3 frame realm(s) (1 same-origin, 2 cross-origin); 1 worker realm(s)"
+      ]
+    },
+    {
+      "name": "M3 stdio: page_requests wording",
+      "pass": true,
+      "detail": "5 request(s) on page s_d5f1e614: 3 attributed to a user action, 2 not attributed to any user action"
+    }
+  ],
+  "answers": {
+    "sync": "click action:mug2btng:6 → handler <unnamed> client/src/main.jsx@2089-2235 → 1 request: (1) <unnamed> client/src/main.jsx@1812-2008 → POST /api/sync → route /api/sync 200 → server syncAll → db update syncs [completed 200; a further server-side hop may have escaped] [outcome completed 200; a further server-side hop may have escaped]: reached db / stopped at server_hop / because reached db (database write update syncs joined by exact span parentage); a further server-side hop may have escaped: 1 server-side request in this window has no browser parent (listed as unlinked)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@2089-2235\n  - <unnamed> client/src/main.jsx@1812-2008\n    - request (1) POST /api/sync [completed 200; a further server-side hop may have escaped]\nObserved during this action's window, not linked to it (timestamps only order, not a join):\n- server span POST /api/notify 204 → server notify → db insert notifications (span 470d524ece923d2e, no request with its parent span id) [unlinked]; attribution: none (observed during this action's window; timestamps only order, not a join)\nCoverage incomplete for page s_d5f1e614: capture.limit: 4 (realm, worker_fetch): part of the capture is off on this page; transport wrapper replaced after install: fetch (its requests may not be recorded); unobserved realm present: 3 child browsing context(s) in this page (1 same-origin, 2 cross-origin; content not read): code in them runs outside this page's runtime, so their events and requests are not recorded; unobserved realm present: 1 worker(s) created on this page: worker code is not instrumented, so requests a worker makes are not recorded (posts into it are); 1 server span(s) in this action's window have no browser parent (a root trace: a server-side hop Tracer did not follow, or a caller it does not see)\nNot observed on page s_d5f1e614 (from its rows; not exhaustive: navigations and <img>/<form>/<link> loads are never recorded): at least 145 event kind(s) that start no action; transport beacon not wrapped; transport service_worker not wrapped; transport fetch wrapper replaced; 3 frame realm(s) (1 same-origin, 2 cross-origin); 1 worker realm(s)",
+    "panel": "click action:mug2bx6s:15 → handler <unnamed> client/src/main.jsx@3253-3310 [outcome no_request; the handler ran and issued no request from instrumented code (1 function entered, 2 DOM mutations, 0 state effects); 1 recorded request left this page during this action's window that Tracer could not attribute (POST /api/hover-note, issuer unknown)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; transports and realms Tracer does not record are listed in coverage.unobserved); 1 recorded request left this page during this action's window that Tracer could not attribute (POST /api/hover-note, issuer unknown), listed below as unlinked\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@3253-3310\nObserved during this action's window, not linked to it (timestamps only order, not a join):\n- request POST /api/hover-note (fetch, sequence 70, no action_id) → route /api/hover-note 201 → server hoverNote → db insert hover_notes [unlinked]; no first-party frame recorded for this request (issued outside any action); not inside a timer or frame callback armed outside an action (task origin not recorded); attribution: none (observed during this action's window; timestamps only order, not a join)\n- server span POST /api/bye 204 → server bye (span bbef6f69a69a03fb, no request with its parent span id) [unlinked]; attribution: none (observed during this action's window; timestamps only order, not a join)\nCoverage incomplete for page s_d5f1e614: capture.limit: 4 (realm, worker_fetch): part of the capture is off on this page; transport wrapper replaced after install: fetch (its requests may not be recorded); unobserved realm present: 3 child browsing context(s) in this page (1 same-origin, 2 cross-origin; content not read): code in them runs outside this page's runtime, so their events and requests are not recorded; unobserved realm present: 1 worker(s) created on this page: worker code is not instrumented, so requests a worker makes are not recorded (posts into it are); 1 request(s) left this page in this action's window not attributed to any user action and with no known issuer (listed as unlinked); 1 server span(s) in this action's window have no browser parent (a root trace: a server-side hop Tracer did not follow, or a caller it does not see)\nNot observed on page s_d5f1e614 (from its rows; not exhaustive: navigations and <img>/<form>/<link> loads are never recorded): at least 145 event kind(s) that start no action; transport beacon not wrapped; transport service_worker not wrapped; transport fetch wrapper replaced; 3 frame realm(s) (1 same-origin, 2 cross-origin); 1 worker realm(s)",
+    "save": "click action:mug2bsnp:2 → handler <unnamed> client/src/main.jsx@3053-3148 → 1 request: (1) <unnamed> client/src/main.jsx@1812-2008 → POST /api/notes → route /api/notes 201 → server saveNote → db insert notes [completed 201] [outcome completed 201]: reached db / stopped at none (terminal effect observed) / because database write insert notes joined by exact span parentage\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@3053-3148\n  - <unnamed> client/src/main.jsx@1812-2008\n    - request (1) POST /api/notes [completed 201]\nCoverage incomplete for page s_d5f1e614: capture.limit: 4 (realm, worker_fetch): part of the capture is off on this page; transport wrapper replaced after install: fetch (its requests may not be recorded); unobserved realm present: 3 child browsing context(s) in this page (1 same-origin, 2 cross-origin; content not read): code in them runs outside this page's runtime, so their events and requests are not recorded; unobserved realm present: 1 worker(s) created on this page: worker code is not instrumented, so requests a worker makes are not recorded (posts into it are)\nNot observed on page s_d5f1e614 (from its rows; not exhaustive: navigations and <img>/<form>/<link> loads are never recorded): at least 145 event kind(s) that start no action; transport beacon not wrapped; transport service_worker not wrapped; transport fetch wrapper replaced; 3 frame realm(s) (1 same-origin, 2 cross-origin); 1 worker realm(s)",
+    "export": "click action:mug2bul9:9 → handler <unnamed> client/src/main.jsx@3151-3250 → 1 request: (1) <unnamed> client/src/main.jsx@1812-2008 → POST /api/export → route /api/export 200 → server exportAll → db insert exports [completed 200; a further server-side hop may have escaped] [outcome completed 200; a further server-side hop may have escaped]: reached db / stopped at server_hop / because reached db (database write insert exports joined by exact span parentage); a further server-side hop may have escaped: 1 outbound call from the joined server span has no server span continuing it (POST http://127.0.0.1:51646/hook)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@3151-3250\n  - <unnamed> client/src/main.jsx@1812-2008\n    - request (1) POST /api/export [completed 200; a further server-side hop may have escaped]\nCoverage incomplete for page s_d5f1e614: capture.limit: 4 (realm, worker_fetch): part of the capture is off on this page; transport wrapper replaced after install: fetch (its requests may not be recorded); unobserved realm present: 3 child browsing context(s) in this page (1 same-origin, 2 cross-origin; content not read): code in them runs outside this page's runtime, so their events and requests are not recorded; unobserved realm present: 1 worker(s) created on this page: worker code is not instrumented, so requests a worker makes are not recorded (posts into it are); 1 outbound call(s) from a joined server span have no matching incoming server span (POST http://127.0.0.1:51646/hook)\nNot observed on page s_d5f1e614 (from its rows; not exhaustive: navigations and <img>/<form>/<link> loads are never recorded): at least 145 event kind(s) that start no action; transport beacon not wrapped; transport service_worker not wrapped; transport fetch wrapper replaced; 3 frame realm(s) (1 same-origin, 2 cross-origin); 1 worker realm(s)",
+    "page_requests": "5 request(s) on page s_d5f1e614: 3 attributed to a user action, 2 not attributed to any user action\n- CONNECT /ws ×1 (0 action, 1 not attributed; statuses stopped×1)\n- POST /api/export ×1 (1 action, 0 not attributed; statuses 200×1)\n- POST /api/hover-note ×1 (0 action, 1 not attributed; statuses 201×1)\n- POST /api/notes ×1 (1 action, 0 not attributed; statuses 201×1)\n- POST /api/sync ×1 (1 action, 0 not attributed; statuses 200×1)\nRequests (all, oldest first):\n- 21:47:27.196 CONNECT /ws [not attributed to any user action; no first-party frame recorded for this request (issued outside any action); not inside a timer or frame callback armed outside an action (task origin not recorded)] → no server span (no_exact_parent_server) [stopped at network]",
+    "coverage": {
+      "page": "s_d5f1e614",
+      "complete": false,
+      "reasons": [
+        "capture.limit: 4 (realm, worker_fetch): part of the capture is off on this page",
+        "transport wrapper replaced after install: fetch (its requests may not be recorded)",
+        "unobserved realm present: 3 child browsing context(s) in this page (1 same-origin, 2 cross-origin; content not read): code in them runs outside this page's runtime, so their events and requests are not recorded",
+        "unobserved realm present: 1 worker(s) created on this page: worker code is not instrumented, so requests a worker makes are not recorded (posts into it are)"
+      ],
+      "scope": "delivery of the rows this page's runtime emitted; `unobserved` lists what this page's rows show the runtime did not observe (event kinds, transports, realms), which is not an exhaustive list: navigations, <img>/<form>/<link> loads, WebRTC and similar paths are never recorded; not what uninstrumented scripts, workers or third-party code did",
+      "unobserved": [
+        {
+          "kind": "events",
+          "name": "event kinds",
+          "names": [
+            "abort",
+            "afterprint",
+            "animationcancel",
+            "animationend",
+            "animationiteration",
+            "animationstart",
+            "appinstalled",
+            "auxclick",
+            "beforecopy",
+            "beforecut",
+            "beforeinput",
+            "beforeinstallprompt",
+            "beforematch",
+            "beforepaste",
+            "beforeprint",
+            "beforetoggle",
+            "beforeunload",
+            "beforexrselect",
+            "blur",
+            "cancel",
+            "canplay",
+            "canplaythrough",
+            "close",
+            "command",
+            "compositionend",
+            "compositionstart",
+            "compositionupdate",
+            "contentvisibilityautostatechange",
+            "contextlost",
+            "contextmenu",
+            "contextrestored",
+            "copy",
+            "cuechange",
+            "cut",
+            "dblclick",
+            "devicemotion",
+            "deviceorientation",
+            "deviceorientationabsolute",
+            "drag",
+            "dragend",
+            "dragenter",
+            "dragleave",
+            "dragover",
+            "dragstart",
+            "drop",
+            "durationchange",
+            "emptied",
+            "ended",
+            "error",
+            "focus",
+            "focusout",
+            "formdata",
+            "freeze",
+            "fullscreenchange",
+            "fullscreenerror",
+            "gamepadconnected",
+            "gamepaddisconnected",
+            "gotpointercapture",
+            "hashchange",
+            "invalid",
+            "keypress",
+            "keyup",
+            "languagechange",
+            "load",
+            "loadeddata",
+            "loadedmetadata",
+            "loadstart",
+            "lostpointercapture",
+            "message",
+            "messageerror",
+            "mousedown",
+            "mouseenter",
+            "mouseleave",
+            "mousemove",
+            "mouseout",
+            "mouseover",
+            "mouseup",
+            "mousewheel",
+            "offline",
+            "online",
+            "pagehide",
+            "pagereveal",
+            "pageshow",
+            "pageswap",
+            "paste",
+            "pause",
+            "play",
+            "playing",
+            "pointercancel",
+            "pointerdown",
+            "pointerenter",
+            "pointerleave",
+            "pointerlockchange",
+            "pointerlockerror",
+            "pointermove",
+            "pointerout",
+            "pointerover",
+            "pointerrawupdate",
+            "pointerup",
+            "popstate",
+            "prerenderingchange",
+            "progress",
+            "ratechange",
+            "readystatechange",
+            "rejectionhandled",
+            "reset",
+            "resize",
+            "resume",
+            "scroll",
+            "scrollend",
+            "scrollsnapchange",
+            "scrollsnapchanging",
+            "search",
+            "securitypolicyviolation",
+            "seeked",
+            "seeking",
+            "select",
+            "selectionchange",
+            "selectstart",
+            "slotchange",
+            "stalled",
+            "storage",
+            "suspend",
+            "timeupdate",
+            "toggle",
+            "touchcancel",
+            "touchend",
+            "touchmove",
+            "touchstart",
+            "transitioncancel",
+            "transitionend",
+            "transitionrun",
+            "transitionstart",
+            "unhandledrejection",
+            "unload",
+            "visibilitychange",
+            "volumechange",
+            "waiting",
+            "webkitanimationend",
+            "webkitanimationiteration",
+            "webkitanimationstart",
+            "webkitfullscreenchange",
+            "webkitfullscreenerror",
+            "webkittransitionend",
+            "wheel"
+          ],
+          "count": 145,
+          "lower_bound": true,
+          "recorded": [
+            "change",
+            "click",
+            "focusin",
+            "input",
+            "keydown",
+            "submit"
+          ],
+          "reason": "the runtime starts an action only for change, click, focusin, input, keydown, submit; a user action through any of these at least 145 event kind(s) the browser can dispatch is not recorded, and work its listeners do runs under no action (the list is a lower bound: on* handler properties plus known kinds with none)"
+        },
+        {
+          "kind": "transport",
+          "name": "beacon",
+          "status": "not_wrapped",
+          "reason": "beacon is present on this page and not wrapped by the runtime: requests sent through it are not recorded"
+        },
+        {
+          "kind": "transport",
+          "name": "service_worker",
+          "status": "not_wrapped",
+          "reason": "service_worker is present on this page and not wrapped by the runtime: requests sent through it are not recorded"
+        },
+        {
+          "kind": "transport",
+          "name": "fetch",
+          "status": "replaced",
+          "reason": "fetch: the runtime's wrapper was replaced after install; requests through the replacement are recorded only if it still calls the runtime's wrapper"
+        },
+        {
+          "kind": "realm",
+          "name": "frame",
+          "count": 3,
+          "same_origin": 1,
+          "cross_origin": 2,
+          "realms": [
+            {
+              "realm_id": "realm:s_d5f1e614:1",
+              "same_origin": true,
+              "url": "http://127.0.0.1:51734/frame.html"
+            },
+            {
+              "realm_id": "realm:s_d5f1e614:2",
+              "same_origin": false,
+              "url": null
+            },
+            {
+              "realm_id": "realm:s_d5f1e614:3",
+              "same_origin": false,
+              "url": null
+            }
+          ],
+          "reason": "3 child browsing context(s) in this page (1 same-origin, 2 cross-origin; content not read): code in them runs outside this page's runtime, so their events and requests are not recorded"
+        },
+        {
+          "kind": "realm",
+          "name": "worker",
+          "count": 1,
+          "workers": [
+            {
+              "worker_id": "worker:s_d5f1e614:1",
+              "worker_kind": "dedicated",
+              "script_url": "/worker.js"
+            }
+          ],
+          "reason": "1 worker(s) created on this page: worker code is not instrumented, so requests a worker makes are not recorded (posts into it are)"
+        }
+      ],
+      "observes": {
+        "events": {
+          "recorded": [
+            "change",
+            "click",
+            "focusin",
+            "input",
+            "keydown",
+            "submit"
+          ],
+          "exposed_total": 151,
+          "unobserved": [
+            "abort",
+            "afterprint",
+            "animationcancel",
+            "animationend",
+            "animationiteration",
+            "animationstart",
+            "appinstalled",
+            "auxclick",
+            "beforecopy",
+            "beforecut",
+            "beforeinput",
+            "beforeinstallprompt",
+            "beforematch",
+            "beforepaste",
+            "beforeprint",
+            "beforetoggle",
+            "beforeunload",
+            "beforexrselect",
+            "blur",
+            "cancel",
+            "canplay",
+            "canplaythrough",
+            "close",
+            "command",
+            "compositionend",
+            "compositionstart",
+            "compositionupdate",
+            "contentvisibilityautostatechange",
+            "contextlost",
+            "contextmenu",
+            "contextrestored",
+            "copy",
+            "cuechange",
+            "cut",
+            "dblclick",
+            "devicemotion",
+            "deviceorientation",
+            "deviceorientationabsolute",
+            "drag",
+            "dragend",
+            "dragenter",
+            "dragleave",
+            "dragover",
+            "dragstart",
+            "drop",
+            "durationchange",
+            "emptied",
+            "ended",
+            "error",
+            "focus",
+            "focusout",
+            "formdata",
+            "freeze",
+            "fullscreenchange",
+            "fullscreenerror",
+            "gamepadconnected",
+            "gamepaddisconnected",
+            "gotpointercapture",
+            "hashchange",
+            "invalid",
+            "keypress",
+            "keyup",
+            "languagechange",
+            "load",
+            "loadeddata",
+            "loadedmetadata",
+            "loadstart",
+            "lostpointercapture",
+            "message",
+            "messageerror",
+            "mousedown",
+            "mouseenter",
+            "mouseleave",
+            "mousemove",
+            "mouseout",
+            "mouseover",
+            "mouseup",
+            "mousewheel",
+            "offline",
+            "online",
+            "pagehide",
+            "pagereveal",
+            "pageshow",
+            "pageswap",
+            "paste",
+            "pause",
+            "play",
+            "playing",
+            "pointercancel",
+            "pointerdown",
+            "pointerenter",
+            "pointerleave",
+            "pointerlockchange",
+            "pointerlockerror",
+            "pointermove",
+            "pointerout",
+            "pointerover",
+            "pointerrawupdate",
+            "pointerup",
+            "popstate",
+            "prerenderingchange",
+            "progress",
+            "ratechange",
+            "readystatechange",
+            "rejectionhandled",
+            "reset",
+            "resize",
+            "resume",
+            "scroll",
+            "scrollend",
+            "scrollsnapchange",
+            "scrollsnapchanging",
+            "search",
+            "securitypolicyviolation",
+            "seeked",
+            "seeking",
+            "select",
+            "selectionchange",
+            "selectstart",
+            "slotchange",
+            "stalled",
+            "storage",
+            "suspend",
+            "timeupdate",
+            "toggle",
+            "touchcancel",
+            "touchend",
+            "touchmove",
+            "touchstart",
+            "transitioncancel",
+            "transitionend",
+            "transitionrun",
+            "transitionstart",
+            "unhandledrejection",
+            "unload",
+            "visibilitychange",
+            "volumechange",
+            "waiting",
+            "webkitanimationend",
+            "webkitanimationiteration",
+            "webkitanimationstart",
+            "webkitfullscreenchange",
+            "webkitfullscreenerror",
+            "webkittransitionend",
+            "wheel"
+          ],
+          "lower_bound": true,
+          "basis": "on* handler properties of HTMLElement, Document and Window prototypes at install, plus kinds dispatched with no on* property (composition*, focusin/focusout, touch*); a lower bound"
+        },
+        "transports": {
+          "fetch": "wrapped",
+          "xhr": "wrapped",
+          "eventsource": "wrapped",
+          "websocket": "wrapped",
+          "worker": "wrapped",
+          "shared_worker": "wrapped",
+          "beacon": "not_wrapped",
+          "service_worker": "not_wrapped"
+        },
+        "realms_at_install": {
+          "frames": 0
+        }
+      },
+      "runtime_version": "0.1.0+coverage.2",
+      "build": "f54f690fd1ec",
+      "wrappers": {
+        "fetch": true,
+        "xhr": true,
+        "eventsource": true,
+        "websocket": true,
+        "worker": true,
+        "beacon": false
+      },
+      "bodies": "production_off",
+      "body_rows": {
+        "emitted": 0,
+        "truncated": 0,
+        "not_captured": 0,
+        "pending": 0
+      },
+      "emitted": 71,
+      "received": 71
+    }
+  }
+}

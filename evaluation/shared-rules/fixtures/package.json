@@ -1,0 +1,17 @@
+{
+  "name": "tracer-shared-rule-fixtures",
+  "private": true,
+  "dependencies": {
+    "async2": "npm:async@2.6.4",
+    "async3": "npm:async@3.2.6",
+    "lodash417": "npm:lodash@4.17.21",
+    "memoize-one": "5.2.1",
+    "once": "1.4.0",
+    "query5": "npm:@tanstack/query-core@^5.90.16",
+    "queue-microtask": "1.2.3",
+    "react18": "npm:react@18.3.1",
+    "react19": "npm:react@19.1.1",
+    "table8new": "npm:@tanstack/table-core@8.21.3",
+    "table8old": "npm:@tanstack/table-core@8.11.7"
+  }
+}

@@ -1,0 +1,5 @@
+96d8b463c5d47c521617fb1f668262455cc3aecd1564df0280fb69cbd4edd69b  joined-backend.jsonl
+3dfa01919e76e8f4cb115f8eebba13d781c6cdac948dd430a1e369cd5694e354  records.jsonl
+rows joined-backend.jsonl 5
+rows records.jsonl 2718
+gzip: gzip -k -9 -n <file>; verify with: gunzip -c <file>.gz | shasum -a 256

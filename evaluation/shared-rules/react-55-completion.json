@@ -1,0 +1,2543 @@
+{
+  "version": "18.3.1",
+  "scope": "The original 55 public React and React DOM entries. Candidate rules and prior baseline tests are not completion claims. Other libraries, new versions and automatic authoring are deferred.",
+  "rows": [
+    {
+      "id": "react/useCallback/18.3.1",
+      "surface": "react",
+      "export_name": "useCallback",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [
+        "authoring/banks/react-owned-programs.json"
+      ],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/useCallback/18.3.1",
+        "rule_sha256": "b5c3a453e1b3a5a9a35a464ae69bcbe6b621b4eaf46a1e94977d41d1c5b26c93",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "retention-and-captures",
+          "shared-module-callbacks",
+          "abandoned-callbacks",
+          "remount-strictmode"
+        ],
+        "verified_scopes": [
+          "retention-and-captures",
+          "shared-named-callbacks",
+          "shared-expression-callbacks",
+          "shared-imported-callbacks",
+          "shared-module-callbacks",
+          "namespace-export-callbacks",
+          "retained-store-callback-input",
+          "retained-context-binding-reads",
+          "remount-strictmode",
+          "abandoned-callbacks"
+        ],
+        "admitted": true,
+        "verified_scope": "Inline and local immutable callbacks: retention, replacement, invocation, original captures, and sibling ownership in development and production.",
+        "remaining": [
+          "Mutable exports, ordinary object properties and unavailable callback source shapes; repeated JSX placement identity; ownership outside a proved native event remains unresolved. Named, expression-based and namespace-imported shared callbacks now have exact selection-to-body evidence; expression arguments remain unobserved."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/useMemo/18.3.1",
+      "surface": "react",
+      "export_name": "useMemo",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [
+        "authoring/banks/react-memo-programs.json"
+      ],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/useMemo/18.3.1",
+        "rule_sha256": "1b71e62a5447e12cafc0fcf4e429630345ed26b4ddf8004b8333abb38ffca81f",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "calculator-value-lineage",
+          "interrupted-cache-retention",
+          "cached-callback-consumers",
+          "dynamic-calculators"
+        ],
+        "verified_scopes": [
+          "calculator-value-lineage",
+          "interrupted-cache-retention",
+          "context-binding-reads",
+          "dynamic-calculators",
+          "cached-callback-consumers",
+          "conditional-return-selection"
+        ],
+        "admitted": true,
+        "verified_scope": "Calculator return, cached value selection, committed cache retention after interruption, and actual cached-callback event consumption in both builds.",
+        "remaining": [
+          "Finite if/ternary return selection passes. Branch-local computations, loops, exceptions, and async calculator shapes remain source frontiers; shared callback production origins can remain ambiguous."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/useTransition/18.3.1",
+      "surface": "react",
+      "export_name": "useTransition",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/useTransition/18.3.1",
+        "rule_sha256": "c5058e85a21ec78ffcbf2d2bfaa5ef0e6c519989c1e62db356bed9a004fe460c",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "tuple-start-retention",
+          "returned-start-callback",
+          "initial-hydration",
+          "pending-value-consumers",
+          "update-priority-commit-attribution",
+          "interrupted-suspense-work",
+          "additional-callback-shapes"
+        ],
+        "verified_scopes": [
+          "tuple-start-retention",
+          "returned-start-callback",
+          "initial-hydration",
+          "pending-boolean-source-branches",
+          "named-conditional-callback-provenance"
+        ],
+        "admitted": false,
+        "verified_scope": "Observed hook tuple and exact retained start identity join direct returned-start calls to their actual inline, named or finite conditional callback. Observed pending booleans select exact source if/ternary branches. Both builds verify sibling ownership, replacement mounts, callback exceptions, post-unmount invocation, shutdown transparency and initial hydration.",
+        "remaining": [
+          "Pending is only an observed hook snapshot. Broader pending consumers, update-to-commit and priority attribution, interrupted/Suspense work, external/mutated/getter callback provenance, and broader returned-value access shapes remain open. Historical origin does not prove the owner is still mounted."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/useDeferredValue/18.3.1",
+      "surface": "react",
+      "export_name": "useDeferredValue",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/useDeferredValue/18.3.1",
+        "rule_sha256": "8f6aad22ed38d5a852f000e9f061865cdf7af03dff88c591e4e9a4dda51454eb",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "urgency-selection-oracle",
+          "selected-value-jsx-read",
+          "initial-hydration",
+          "runtime-priority-attribution",
+          "interrupted-suspense-work",
+          "callback-and-other-value-consumers"
+        ],
+        "verified_scopes": [
+          "urgency-selection-oracle",
+          "selected-value-jsx-read",
+          "initial-hydration"
+        ],
+        "admitted": false,
+        "verified_scope": "Installed renderer tests distinguish urgent retained values from nonurgent new values. Actual input/previous identities join selected hook results to direct immutable native JSX reads in both builds, with sibling, remount, root and initial-hydration checks.",
+        "remaining": [
+          "Runtime lane priority and update-to-commit attribution are unproven. Interrupted/Suspense work, returned callback consumers, aliases, mutable bindings, broader JSX consumers and missing/spread/await arguments remain open. Equal input and previous identities are reported as ambiguous, never a unique cause."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/useState/18.3.1",
+      "surface": "react",
+      "export_name": "useState",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [
+        "authoring/banks/react-state-programs.json"
+      ],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Queue priority/rebase membership and exact update-to-commit causality; browser-package integration. Matching equal values remains candidate evidence.",
+      "evidence": [
+        "evaluation/shared-rules/react-state-development-results.json",
+        "evaluation/shared-rules/react-state-production-results.json"
+      ],
+      "tested": [
+        "original initializer, updater and reducer calls",
+        "correct arguments and returned values without callback replay",
+        "stable native dispatcher and cross-file aliases",
+        "independent owner reads and layout commits",
+        "Strict Mode, batching, suspension and remount",
+        "function-valued state and function-valued reducer actions",
+        "wrong callback and equality rules rejected"
+      ],
+      "react_reader_audit": {
+        "api": "react/useState/18.3.1",
+        "rule_sha256": "bf0bcc449ed0f96d80932a6d4d06b84f36f6c783cb1555aadc519396c55ca968",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "requests-calculations",
+          "state-snapshots",
+          "dispatcher-identity",
+          "initialization-lineage",
+          "queue-priority-rebase",
+          "commit-attribution",
+          "remount-strictmode",
+          "errors-unmount",
+          "dynamic-callbacks"
+        ],
+        "verified_scopes": [
+          "requests-calculations",
+          "state-snapshots",
+          "dispatcher-identity",
+          "initializer-return-selection"
+        ],
+        "admitted": false,
+        "verified_scope": "Original dispatcher identity, request-to-application-calculation joins, input/output and captures, and separate observed state snapshots. No commit attribution is inferred.",
+        "remaining": [
+          "Initializer input provenance and error/interruption boundaries, priority/rebase-to-commit attribution, dynamic callbacks, and full remount/unmount behavior remain incomplete. Unique initializer returns now join their initial state snapshots."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/useReducer/18.3.1",
+      "surface": "react",
+      "export_name": "useReducer",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [
+        "authoring/banks/react-state-programs.json"
+      ],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Queue priority/rebase membership and exact update-to-commit causality; browser-package integration. Matching equal values remains candidate evidence.",
+      "evidence": [
+        "evaluation/shared-rules/react-state-development-results.json",
+        "evaluation/shared-rules/react-state-production-results.json"
+      ],
+      "tested": [
+        "original initializer, updater and reducer calls",
+        "correct arguments and returned values without callback replay",
+        "stable native dispatcher and cross-file aliases",
+        "independent owner reads and layout commits",
+        "Strict Mode, batching, suspension and remount",
+        "function-valued state and function-valued reducer actions",
+        "wrong callback and equality rules rejected"
+      ],
+      "react_reader_audit": {
+        "api": "react/useReducer/18.3.1",
+        "rule_sha256": "4f7aa12e7375472c09a758a80d7f71140f0717afac76eded760d2f27f34286a6",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "requests-calculations",
+          "state-snapshots",
+          "dispatcher-identity",
+          "initialization-lineage",
+          "queue-priority-rebase",
+          "commit-attribution",
+          "remount-strictmode",
+          "errors-unmount",
+          "dynamic-callbacks"
+        ],
+        "verified_scopes": [
+          "requests-calculations",
+          "state-snapshots",
+          "dispatcher-identity",
+          "initializer-return-selection"
+        ],
+        "admitted": false,
+        "verified_scope": "Original dispatcher identity, request-to-application-calculation joins, input/output and captures, and separate observed state snapshots. No commit attribution is inferred.",
+        "remaining": [
+          "Initializer input provenance and error/interruption boundaries, priority/rebase-to-commit attribution, dynamic callbacks, and full remount/unmount behavior remain incomplete. Unique initializer returns now join their initial state snapshots."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/createContext/18.3.1",
+      "surface": "react",
+      "export_name": "createContext",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [
+        "authoring/banks/react-context-programs.json"
+      ],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/createContext/18.3.1",
+        "rule_sha256": "938e93f9aef6343e6f28f093b38e5ad8b9859e293c6846f5e29faf0156ef0302",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "allocation-default-identity",
+          "provider-selection",
+          "consumer-invocation",
+          "consumer-production-owner",
+          "propagation-lifecycle"
+        ],
+        "verified_scopes": [
+          "consumer-development-source-path",
+          "allocation-default-identity"
+        ],
+        "admitted": false,
+        "verified_scope": "Independent allocation/default/provider/notification oracle, observed creation/input identities, and development Consumer source invocation. Production Consumer reports its missing render owner explicitly.",
+        "remaining": [
+          "Notification-to-render attribution and interruption/hydration/unmount coverage remain unfinished. Stored default/object identities now require exact observed creation provenance; unsupported await/yield/spread/direct-eval creation arguments retain an explicit origin frontier. Consumer source invocation is connected in development; production records an explicit consumer_render_owner_unobserved frontier. Direct immutable useContext bindings now join actual expression reads in retained callbacks, synchronous effect setup and cleanup, and memo calculators. Effect/memo uses also require the exact callback invocation; cleanup preserves its original setup render. Aliases, mutable bindings, other nested bodies, async continuations, and other consumers remain unproved."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/useContext/18.3.1",
+      "surface": "react",
+      "export_name": "useContext",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [
+        "authoring/banks/react-context-read-programs.json"
+      ],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/useContext/18.3.1",
+        "rule_sha256": "189ad56adfeebd40568f1db18c51f2b14c0904f29ac3544e9dc2b1bd5f72b5b4",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "provider-selection",
+          "default-object-provenance",
+          "notification-lineage",
+          "suspense-hydration-unmount",
+          "consumer-value-use"
+        ],
+        "verified_scopes": [
+          "provider-selection",
+          "primitive-value-check",
+          "incomplete-ancestry-rejection",
+          "default-object-provenance",
+          "retained-callback-binding-reads",
+          "effect-memo-binding-reads",
+          "cleanup-binding-reads"
+        ],
+        "admitted": false,
+        "verified_scope": "Both builds consume the context rule to select observed nearest-provider/default paths, check primitive provider values, and reject incomplete ancestry. Observed creation evidence now verifies stored defaults and opaque provider/default object identity. Notification causality remains unproven.",
+        "remaining": [
+          "Notification-to-render attribution and interruption/hydration/unmount coverage remain unfinished. Stored default/object identities now require exact observed creation provenance; unsupported await/yield/spread/direct-eval creation arguments retain an explicit origin frontier. Consumer source invocation is connected in development; production records an explicit consumer_render_owner_unobserved frontier. Direct immutable useContext bindings now join actual expression reads in retained callbacks, synchronous effect setup and cleanup, and memo calculators. Effect/memo uses also require the exact callback invocation; cleanup preserves its original setup render. Aliases, mutable bindings, other nested bodies, async continuations, and other consumers remain unproved."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/createRef/18.3.1",
+      "surface": "react",
+      "export_name": "createRef",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [
+        "authoring/banks/initial-library-programs.json"
+      ],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/createRef/18.3.1",
+        "rule_sha256": "143ea7170ed67b749ce688a85def7e79044a264b2f7c34763222e313c60cfb62",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "allocation-retention",
+          "cell-read-write",
+          "sibling-remount-identity",
+          "click-callback-cell",
+          "reference-call-and-binding-forms",
+          "host-attachment-and-write-provenance"
+        ],
+        "verified_scopes": [
+          "allocation-retention",
+          "cell-read-write",
+          "sibling-remount-identity",
+          "click-callback-cell",
+          "ordinary-ref-method-calls"
+        ],
+        "admitted": false,
+        "verified_scope": "Versioned allocation/retention programs, exact returned-cell identities, observed reads/writes and callback/action joins, sibling/remount separation, getter/setter transparency, and recorder shutdown in both builds.",
+        "remaining": [
+          "Ordinary current-method calls select actual known function objects with exact read provenance; captured values and callback-body execution are not inferred. Optional/compound/destructuring operations, caller-supplied and mutable ref bindings, host attachments, and write-to-read provenance remain incomplete. Hook initialization and commit/lifetime attribution remain explicit gaps; observed creation-render context is not proof of a commit."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/useRef/18.3.1",
+      "surface": "react",
+      "export_name": "useRef",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [
+        "authoring/banks/react-ref-cell-programs.json"
+      ],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/useRef/18.3.1",
+        "rule_sha256": "4602a31a1a8cc2c6f8f3277ff8ff4325d8e22bd30701f33c2322a64a2f079564",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "allocation-retention",
+          "cell-read-write",
+          "sibling-remount-identity",
+          "click-callback-cell",
+          "reference-call-and-binding-forms",
+          "host-attachment-and-write-provenance",
+          "initialization-lifecycle-boundaries"
+        ],
+        "verified_scopes": [
+          "allocation-retention",
+          "cell-read-write",
+          "sibling-remount-identity",
+          "click-callback-cell",
+          "ordinary-ref-method-calls"
+        ],
+        "admitted": false,
+        "verified_scope": "Versioned allocation/retention programs, exact returned-cell identities, observed reads/writes and callback/action joins, sibling/remount separation, getter/setter transparency, and recorder shutdown in both builds.",
+        "remaining": [
+          "Ordinary current-method calls select actual known function objects with exact read provenance; captured values and callback-body execution are not inferred. Optional/compound/destructuring operations, caller-supplied and mutable ref bindings, host attachments, and write-to-read provenance remain incomplete. Hook initialization and commit/lifetime attribution remain explicit gaps; observed creation-render context is not proof of a commit."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/forwardRef/18.3.1",
+      "surface": "react",
+      "export_name": "forwardRef",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [
+        "authoring/banks/initial-library-programs.json"
+      ],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/forwardRef/18.3.1",
+        "rule_sha256": "cff74117c196729b96b3b2d161d6b93bbad1d465427b669bb887371891140580",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "successful-construction-program",
+          "component-source-selection",
+          "observed-source-control-path",
+          "wrapper-to-callback-runtime-lineage",
+          "original-component-body-outcome",
+          "validation-and-accessor-errors",
+          "forwarded-ref-argument-lineage",
+          "forwarded-ref-runtime-lineage",
+          "interrupted-render-ref-lifetimes"
+        ],
+        "verified_scopes": [
+          "successful-construction-program",
+          "component-source-selection",
+          "observed-source-control-path",
+          "named-component-body-lineage",
+          "sibling-default-memo-strict-owners",
+          "original-component-body-outcome",
+          "forwarded-ref-argument-lineage"
+        ],
+        "admitted": false,
+        "verified_scope": "Successful wrapper construction is checked against installed React. The compiler consumes the encoded component argument through immutable/nested wrappers; actual browser controls and effects follow that source in both builds and hydration. Comparator-as-component and unverified-version paths reject.",
+        "remaining": [
+          "Module-level inline named component bodies now join to the exact created wrapper and function in an observed renderer context. The exact renderer ref input now joins argument 1, including null, callback and object replacements. Entry-time and committed-render snapshots are distinguished; diagnostic calls without normal arguments abstain. Original named component body outcomes join accepted invocations, preserving returned and thrown values. Renderer consumption of those results, direct renderer dispatch, comparator invocation and ref attachment are not proven. Anonymous/nested wrappers, interrupted production render records and other source shapes remain open. Constructor validation/accessor errors, comparator state/context semantics, ref attachment/cleanup and interrupted/Suspense lifetimes remain open."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/memo/18.3.1",
+      "surface": "react",
+      "export_name": "memo",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [
+        "authoring/banks/initial-library-programs.json"
+      ],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/memo/18.3.1",
+        "rule_sha256": "d4dd874ed87951fdb388a05d673fd4cee185ac963dca3fa8b3843d2f528142b2",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "successful-construction-program",
+          "component-source-selection",
+          "observed-source-control-path",
+          "wrapper-to-callback-runtime-lineage",
+          "original-component-body-outcome",
+          "validation-and-accessor-errors",
+          "default-custom-comparison",
+          "state-context-bailout",
+          "ref-replacement-suspense"
+        ],
+        "verified_scopes": [
+          "successful-construction-program",
+          "component-source-selection",
+          "observed-source-control-path",
+          "named-component-body-lineage",
+          "sibling-default-memo-strict-owners",
+          "original-component-body-outcome"
+        ],
+        "admitted": false,
+        "verified_scope": "Successful wrapper construction is checked against installed React. The compiler consumes the encoded component argument through immutable/nested wrappers; actual browser controls and effects follow that source in both builds and hydration. Comparator-as-component and unverified-version paths reject.",
+        "remaining": [
+          "Module-level inline named component bodies now join to the exact created wrapper and function in an observed renderer context. The exact renderer ref input now joins argument 1, including null, callback and object replacements. Entry-time and committed-render snapshots are distinguished; diagnostic calls without normal arguments abstain. Original named component body outcomes join accepted invocations, preserving returned and thrown values. Renderer consumption of those results, direct renderer dispatch, comparator invocation and ref attachment are not proven. Anonymous/nested wrappers, interrupted production render records and other source shapes remain open. Constructor validation/accessor errors, comparator state/context semantics, ref attachment/cleanup and interrupted/Suspense lifetimes remain open."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/Component/18.3.1",
+      "surface": "react",
+      "export_name": "Component",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/Component/18.3.1",
+        "member_rule_sha256s": {
+          "setState": "95d24a24a1c820467e8f0d37b1741164d193f64a619b96254de2b0a0bd29aece",
+          "forceUpdate": "1994129708459aed62110eb437da17b6abfe2c8c183cb042d9096ebc639e97f9"
+        },
+        "rule_sha256": "674651a9f0ff43785adabb14677c5d28f1102831a219f33987c5d8f4f71460a6",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "class-construction-and-update-policy-oracle",
+          "registered-render-body-and-input-reads",
+          "click-scope-sibling-remount-and-strict-identity",
+          "constructor-context-ref-and-update-request-lineage",
+          "update-method-and-callback-body-lineage",
+          "update-result-merge-lineage",
+          "lifecycle-cleanup-and-error-boundaries",
+          "render-bailout-commit-and-interruption-attribution",
+          "hydration-and-broader-class-source-shapes"
+        ],
+        "verified_scopes": [
+          "class-construction-and-update-policy-oracle",
+          "registered-render-body-and-input-reads",
+          "click-scope-sibling-remount-and-strict-identity",
+          "update-method-and-callback-body-lineage"
+        ],
+        "admitted": false,
+        "verified_scope": "Both installed builds check class construction and update policy. Original class render bodies join registered class type, exact renderer instance, original props/state reads and returned values; native click callback receipts retain dynamic extent. Sibling/remount and StrictMode behavior, including PureComponent bailouts, are preserved. Manual calls outside the renderer abstain. Original setState/forceUpdate methods and inline callback bodies now join exact instance, request and source-edge receipts; synchronous legacy callbacks and later concurrent callbacks retain their original identities and values.",
+        "remaining": [
+          "Constructor/context/ref and lifecycle origins, update-result selection and state merging, shallow-comparison causes, committed output and interrupted/hydrated/error work remain unproved. Non-inline update callbacks and unsupported body/argument shapes retain explicit source frontiers; recorded callback bodies do not prove renderer queue execution or commit. A class body inside a click callback proves dynamic extent, not that this click caused its update or that React committed it. Named-import, inherited, anonymous or mutable classes and unsupported render bodies retain source frontiers."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/PureComponent/18.3.1",
+      "surface": "react",
+      "export_name": "PureComponent",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/PureComponent/18.3.1",
+        "member_rule_sha256s": {
+          "setState": "95d24a24a1c820467e8f0d37b1741164d193f64a619b96254de2b0a0bd29aece",
+          "forceUpdate": "1994129708459aed62110eb437da17b6abfe2c8c183cb042d9096ebc639e97f9"
+        },
+        "rule_sha256": "792ac4d804b97cfc5dcedd2ef1ed11213862a2660b1ae0b4a632946efe7185ee",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "class-construction-and-update-policy-oracle",
+          "registered-render-body-and-input-reads",
+          "click-scope-sibling-remount-and-strict-identity",
+          "constructor-context-ref-and-update-request-lineage",
+          "update-method-and-callback-body-lineage",
+          "update-result-merge-lineage",
+          "lifecycle-cleanup-and-error-boundaries",
+          "render-bailout-commit-and-interruption-attribution",
+          "hydration-and-broader-class-source-shapes"
+        ],
+        "verified_scopes": [
+          "class-construction-and-update-policy-oracle",
+          "registered-render-body-and-input-reads",
+          "click-scope-sibling-remount-and-strict-identity",
+          "update-method-and-callback-body-lineage"
+        ],
+        "admitted": false,
+        "verified_scope": "Both installed builds check class construction and update policy. Original class render bodies join registered class type, exact renderer instance, original props/state reads and returned values; native click callback receipts retain dynamic extent. Sibling/remount and StrictMode behavior, including PureComponent bailouts, are preserved. Manual calls outside the renderer abstain. Original setState/forceUpdate methods and inline callback bodies now join exact instance, request and source-edge receipts; synchronous legacy callbacks and later concurrent callbacks retain their original identities and values.",
+        "remaining": [
+          "Constructor/context/ref and lifecycle origins, update-result selection and state merging, shallow-comparison causes, committed output and interrupted/hydrated/error work remain unproved. Non-inline update callbacks and unsupported body/argument shapes retain explicit source frontiers; recorded callback bodies do not prove renderer queue execution or commit. A class body inside a click callback proves dynamic extent, not that this click caused its update or that React committed it. Named-import, inherited, anonymous or mutable classes and unsupported render bodies retain source frontiers."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/startTransition/18.3.1",
+      "surface": "react",
+      "export_name": "startTransition",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [
+        "authoring/banks/react-transition-programs.json"
+      ],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/startTransition/18.3.1",
+        "rule_sha256": "feb6577f7b0ba50544d287a00d31f8ffac22021a16e3ecef1b6a6e3877ad32b3",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "callback-arguments-return",
+          "click-source-path",
+          "nested-call-identity",
+          "scheduling-and-flush-lineage",
+          "dynamic-callback-source",
+          "interrupted-hydrated-work"
+        ],
+        "verified_scopes": [
+          "callback-arguments-return",
+          "click-source-path",
+          "nested-call-identity",
+          "named-conditional-source-identity"
+        ],
+        "admitted": false,
+        "verified_scope": "Observed synchronous callback calls, forwarded identities, results/errors, nested call IDs, and matching click source paths. Scheduling remains a conditional obligation.",
+        "remaining": [
+          "Named/conditional candidates and retained old function objects pass source-identity joins. External, mutated, and getter-produced callbacks remain unresolved. Actual priority/flush work attribution and interrupted/hydrated work remain incomplete; await/yield and spread argument evaluation remain transform frontiers."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react-dom/flushSync/18.3.1",
+      "surface": "react-dom",
+      "export_name": "flushSync",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [
+        "authoring/banks/react-dom-scope-programs.json"
+      ],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Causal attribution of pending work outside the callback, scheduler priority, and browser integration.",
+      "evidence": [
+        "evaluation/shared-rules/react-dom-scope-development-results.json",
+        "evaluation/shared-rules/react-dom-scope-production-results.json"
+      ],
+      "tested": [
+        "exact callback arguments and return values",
+        "callback throws and no duplicated application execution",
+        "legacy and concurrent root update/commit ordering",
+        "source callback execution ancestry",
+        "incorrect rules rejected"
+      ],
+      "react_reader_audit": {
+        "api": "react-dom/flushSync/18.3.1",
+        "rule_sha256": "24bc474ef84029f951f969ac7b19d9a00a7cd5e42174d97d40eae9ae156fb1ff",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "callback-arguments-return",
+          "click-source-path",
+          "nested-call-identity",
+          "scheduling-and-flush-lineage",
+          "dynamic-callback-source",
+          "interrupted-hydrated-work"
+        ],
+        "verified_scopes": [
+          "callback-arguments-return",
+          "click-source-path",
+          "nested-call-identity",
+          "named-conditional-source-identity"
+        ],
+        "admitted": false,
+        "verified_scope": "Observed synchronous callback calls, forwarded identities, results/errors, nested call IDs, and matching click source paths. Scheduling remains a conditional obligation.",
+        "remaining": [
+          "Named/conditional candidates and retained old function objects pass source-identity joins. External, mutated, and getter-produced callbacks remain unresolved. Actual priority/flush work attribution and interrupted/hydrated work remain incomplete; await/yield and spread argument evaluation remain transform frontiers."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react-dom/unstable_batchedUpdates/18.3.1",
+      "surface": "react-dom",
+      "export_name": "unstable_batchedUpdates",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [
+        "authoring/banks/react-dom-scope-programs.json"
+      ],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Causal attribution of pending work outside the callback, scheduler priority, and browser integration.",
+      "evidence": [
+        "evaluation/shared-rules/react-dom-scope-development-results.json",
+        "evaluation/shared-rules/react-dom-scope-production-results.json"
+      ],
+      "tested": [
+        "exact callback arguments and return values",
+        "callback throws and no duplicated application execution",
+        "legacy and concurrent root update/commit ordering",
+        "source callback execution ancestry",
+        "incorrect rules rejected"
+      ],
+      "react_reader_audit": {
+        "api": "react-dom/unstable_batchedUpdates/18.3.1",
+        "rule_sha256": "76f30adfc20e202625a49a0c7b305c6eb7941bedf53ed19d8444a4a3e1b64725",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "callback-arguments-return",
+          "click-source-path",
+          "nested-call-identity",
+          "scheduling-and-flush-lineage",
+          "dynamic-callback-source",
+          "interrupted-hydrated-work"
+        ],
+        "verified_scopes": [
+          "callback-arguments-return",
+          "click-source-path",
+          "nested-call-identity",
+          "named-conditional-source-identity"
+        ],
+        "admitted": false,
+        "verified_scope": "Observed synchronous callback calls, forwarded identities, results/errors, nested call IDs, and matching click source paths. Scheduling remains a conditional obligation.",
+        "remaining": [
+          "Named/conditional candidates and retained old function objects pass source-identity joins. External, mutated, and getter-produced callbacks remain unresolved. Actual priority/flush work attribution and interrupted/hydrated work remain incomplete; await/yield and spread argument evaluation remain transform frontiers."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/useDebugValue/18.3.1",
+      "surface": "react",
+      "export_name": "useDebugValue",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [
+        "authoring/banks/react-production-scopes.json"
+      ],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/useDebugValue/18.3.1",
+        "rule_sha256": "6215999e30f533f1aaec9233bcd4e11ba2c05a62ffb1f32e2c46cddfda7482f8",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "normal-renderer-and-entrypoint-dispatch",
+          "conditional-return-integration",
+          "inspection-dispatcher-lineage",
+          "formatter-input-result-and-errors"
+        ],
+        "verified_scopes": [
+          "normal-renderer-and-entrypoint-dispatch",
+          "conditional-return-integration"
+        ],
+        "admitted": false,
+        "verified_scope": "Installed renderer and entrypoint oracle verify normal no-op behavior and development dispatcher forwarding, including returned values and thrown errors. Tracer preserves the formatter, keeps actual button callbacks mapped, and reports conditional semantics without inventing an inspection context.",
+        "remaining": [
+          "Official DevTools inspection, exact inspection dispatcher identity, formatter invocation/result/error attribution and callback source coverage remain unproven. A returned undefined does not identify the execution context."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/version/18.3.1",
+      "surface": "react",
+      "export_name": "version",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "fully_admitted",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/version/18.3.1",
+        "rule_sha256": "6bbd3a952c100982e0ee0721dd7a11db9930f6f6f384d375e7a7d4c24c7bcfe3",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "literal-read",
+          "build-variants",
+          "wrong-value-rejection"
+        ],
+        "verified_scopes": [
+          "literal-read",
+          "build-variants",
+          "wrong-value-rejection"
+        ],
+        "admitted": true,
+        "verified_scope": "Actual exported metadata reads in development/production, including the distinct ReactDOM production label and wrong/missing-value rejection.",
+        "remaining": []
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/Children/18.3.1",
+      "surface": "react",
+      "export_name": "Children",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/Children/18.3.1",
+        "rule_sha256": "7f0afe325b25ef0672961bde63cc7db8a2f9c3a81c4a94ecc42d86ed1fc5cfbe",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "array-and-element-traversal-oracle",
+          "observed-callback-source-action-path",
+          "runtime-input-traversal-lineage",
+          "mapped-flattening-key-rewriting",
+          "iterators-accessors-and-failures",
+          "broader-callback-consumers"
+        ],
+        "verified_scopes": [
+          "array-and-element-traversal-oracle",
+          "observed-callback-source-action-path"
+        ],
+        "admitted": false,
+        "verified_scope": "Installed React checks leaf normalization, order, callback receiver/index, opaque elements and only-child validation. Recorded map/forEach callbacks join source and click occurrences; all five methods record original returns/errors without retraversing live inputs.",
+        "remaining": [
+          "Runtime input-tree lineage, mapped result flattening and key rewriting, iterators/accessors, named callbacks, rendering consumers and exception-control-flow source paths remain unresolved. Recorded callbacks do not prove an opaque input traversal."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/Fragment/18.3.1",
+      "surface": "react",
+      "export_name": "Fragment",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/Fragment/18.3.1",
+        "rule_sha256": "17484c9fe332e3ce61cf8d335ffda8228f90ac48277f72629b425fd74afa71da",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "registered-type-and-element-description",
+          "guarded-render-input-controls",
+          "renderer-selection-lineage",
+          "keyed-reconciliation-identity",
+          "invalid-ref-and-props"
+        ],
+        "verified_scopes": [
+          "registered-type-and-element-description",
+          "guarded-render-input-controls",
+          "explicit-input-precedence",
+          "renderer-selection-lineage",
+          "keyed-reconciliation-identity",
+          "invalid-ref-and-props"
+        ],
+        "admitted": true,
+        "verified_scope": "Original boundary inputs join renderer selection and clicked source conditions in both builds and hydration. Keyed Fragment identity, StrictMode development replay and Profiler commit callbacks have additional runtime readers; a selected subtree does not prove all descendant callbacks executed.",
+        "remaining": [
+          "Listed Fragment behavior scopes pass for explicit JSX: keyed reuse/remounts, child selection, ignored props/ref and click-to-commit identity. Multiply-used or mutable JSX variables, primitive/elided Fragment ancestry, spread inputs and anonymous Fragment syntax remain source coverage frontiers; no universal JavaScript source coverage is claimed."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/Profiler/18.3.1",
+      "surface": "react",
+      "export_name": "Profiler",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/Profiler/18.3.1",
+        "rule_sha256": "e7531638166c46671733d46a57dde602fb970b9bfdda8790046c18ccd1b09731",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "registered-type-and-element-description",
+          "guarded-render-input-controls",
+          "renderer-selection-lineage",
+          "commit-callback-lineage",
+          "profiling-build-timing"
+        ],
+        "verified_scopes": [
+          "registered-type-and-element-description",
+          "guarded-render-input-controls",
+          "explicit-input-precedence",
+          "renderer-selection-lineage",
+          "commit-callback-lineage",
+          "profiling-build-timing"
+        ],
+        "admitted": true,
+        "verified_scope": "Original boundary inputs join renderer selection and clicked source conditions in both builds and hydration. Keyed Fragment identity, StrictMode development replay and Profiler commit callbacks have additional runtime readers; a selected subtree does not prove all descendant callbacks executed.",
+        "remaining": [
+          "Listed Profiler scopes pass in development and production profiling; ordinary production does not invoke onRender. Exact original callback bodies, arguments, committed input and renderer owner are required. Manual duplicate calls abstain. Inline synchronous simple-parameter callbacks are supported; named/shared inputs, defaults, destructuring, rest and async/generator shapes retain source frontiers. Nested-update is an observed phase, not proof of update priority or downstream effects."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/StrictMode/18.3.1",
+      "surface": "react",
+      "export_name": "StrictMode",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/StrictMode/18.3.1",
+        "rule_sha256": "a190607980a056416f95e5b71ce0fa1e3c0db709d9bbe878a0c11cad2acde0f2",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "registered-type-and-element-description",
+          "guarded-render-input-controls",
+          "renderer-selection-lineage",
+          "development-replay-attribution",
+          "nested-legacy-root-lifetimes"
+        ],
+        "verified_scopes": [
+          "registered-type-and-element-description",
+          "guarded-render-input-controls",
+          "explicit-input-precedence",
+          "renderer-selection-lineage",
+          "development-replay-attribution",
+          "nested-legacy-root-lifetimes"
+        ],
+        "admitted": true,
+        "verified_scope": "Original boundary inputs join renderer selection and clicked source conditions in both builds and hydration. Keyed Fragment identity, StrictMode development replay and Profiler commit callbacks have additional runtime readers; a selected subtree does not prove all descendant callbacks executed.",
+        "remaining": [
+          "Listed StrictMode scopes pass: actual renderer replay brackets join exact component render attempts under nested boundaries in development, including legacy roots; production and ordinary events are not labeled replayed. Effect cleanup/setup rehearsal uses separate effect rules and is never inferred from this render notification. Unsupported boundary source placements remain explicit frontiers."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/Suspense/18.3.1",
+      "surface": "react",
+      "export_name": "Suspense",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/Suspense/18.3.1",
+        "rule_sha256": "33969aa9d29aaacc8b489a56c51ade5c7e23a93d9fb41815eb005e2d4fdd136d",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "registered-type-and-element-description",
+          "guarded-render-input-controls",
+          "renderer-selection-lineage",
+          "suspension-resolution-interruption",
+          "streaming-hydration",
+          "hidden-layout-lifetimes"
+        ],
+        "verified_scopes": [
+          "registered-type-and-element-description",
+          "guarded-render-input-controls",
+          "explicit-input-precedence",
+          "renderer-selection-lineage"
+        ],
+        "admitted": false,
+        "verified_scope": "Original boundary inputs join renderer selection and clicked source conditions in both builds and hydration. Keyed Fragment identity, StrictMode development replay and Profiler commit callbacks have additional runtime readers; a selected subtree does not prove all descendant callbacks executed.",
+        "remaining": [
+          "Original boundary inputs now join committed fibers and discharge the exact clicked input condition. API-specific replay/profiling, Suspense lifetimes and streaming hydration remain open. Spread/aliased inputs require additional source coverage. A committed input does not prove descendant callback execution."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/act/18.3.1",
+      "surface": "react",
+      "export_name": "act",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/act/18.3.1",
+        "rule_sha256": "66bf562554cd892411824b4cca6f2c78437678e1cf97dd90c16e2835c38cf0c2",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "build-callback-result-oracle",
+          "observed-callback-source-action-path",
+          "nested-and-async-transparent-observation",
+          "await-queue-completion-lineage",
+          "build-attributed-production-failure",
+          "overlap-thenable-and-flush-errors"
+        ],
+        "verified_scopes": [
+          "build-callback-result-oracle",
+          "observed-callback-source-action-path",
+          "nested-and-async-transparent-observation"
+        ],
+        "admitted": false,
+        "verified_scope": "Both installed builds distinguish development callback execution from production rejection. Development browser callbacks join exact source and click paths, preserve nested/async results and thrown identity, and retain explicit uncertainty about awaiting and queue completion.",
+        "remaining": [
+          "Awaited result, queue drain, commit/effect attribution, overlapping scopes, arbitrary thenables and flush failures still need occurrence-specific integration. Production rejection preserves behavior but abstains without observed build identity; a missing callback record does not prove production execution."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/cloneElement/18.3.1",
+      "surface": "react",
+      "export_name": "cloneElement",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [
+        "authoring/banks/react-element-programs.json"
+      ],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/cloneElement/18.3.1",
+        "rule_sha256": "179a5254d10c347a822b6e332705c3d0c0254b47d71f893159a3e817c9356ed9",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "clone-precedence-oracle",
+          "original-description-type-lineage",
+          "nested-source-component-controls",
+          "runtime-property-input-lineage",
+          "runtime-ref-owner-lineage",
+          "descriptor-host-commit-lineage",
+          "broader-original-element-consumers"
+        ],
+        "verified_scopes": [
+          "clone-precedence-oracle",
+          "original-description-type-lineage",
+          "nested-source-component-controls",
+          "runtime-property-input-lineage",
+          "descriptor-host-commit-lineage"
+        ],
+        "admitted": false,
+        "verified_scope": "Installed cloning checks precedence, defaults, children, symbol props and ref-owner rules. Runtime clones require an accepted original description; exact override values join returned props and the resulting description joins its committed owner in both builds.",
+        "remaining": [
+          "Runtime ref/owner lineage, immutable aliases and broader original-element consumers remain unproved. Unrecorded original elements, arbitrary configuration objects and dynamic props keep explicit frontiers."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/createElement/18.3.1",
+      "surface": "react",
+      "export_name": "createElement",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [
+        "authoring/banks/react-element-programs.json"
+      ],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/createElement/18.3.1",
+        "rule_sha256": "15a4d28c8db8517346f58e84be4c3f69a19520a59a1b760cfa1255e0fc989f53",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "construction-precedence-oracle",
+          "component-type-source-controls",
+          "observed-description-type",
+          "runtime-property-input-lineage",
+          "descriptor-host-commit-lineage",
+          "native-and-dynamic-construction-consumers",
+          "owner-ref-validation-and-coercion"
+        ],
+        "verified_scopes": [
+          "construction-precedence-oracle",
+          "component-type-source-controls",
+          "observed-description-type",
+          "runtime-property-input-lineage",
+          "descriptor-host-commit-lineage"
+        ],
+        "admitted": false,
+        "verified_scope": "Installed construction checks type, key, ref, property selection, positional children and default props. Exact direct-object property values join returned props, and observed descriptions join committed owners. Component-type calls reach source controls and callbacks in both builds.",
+        "remaining": [
+          "Native createElement controls, dynamic props/type consumers, owner/ref validation and application coercion paths remain unfinished. Accessors, prototype writes, arbitrary configuration objects and unresolved placements remain frontiers."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/createFactory/18.3.1",
+      "surface": "react",
+      "export_name": "createFactory",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/createFactory/18.3.1",
+        "rule_sha256": "0ce781cad895d0ec7c87fd25858e20fb08c012fe9038d2e9f11d34faa0dd0b0b",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "bound-construction-oracle",
+          "factory-identity-to-element-type",
+          "immutable-alias-source-controls",
+          "runtime-property-input-lineage",
+          "runtime-owner-ref-lineage",
+          "descriptor-host-commit-lineage",
+          "native-and-dynamic-factory-consumers"
+        ],
+        "verified_scopes": [
+          "bound-construction-oracle",
+          "factory-identity-to-element-type",
+          "immutable-alias-source-controls",
+          "runtime-property-input-lineage",
+          "descriptor-host-commit-lineage"
+        ],
+        "admitted": false,
+        "verified_scope": "Allocated factories and later calls retain function and type identity without reading the deprecated type getter. Exact direct-object values join returned props, descriptions join committed owners, and component controls reach actual callbacks in both builds.",
+        "remaining": [
+          "Runtime owner/ref lineage, native factory controls, arbitrary configuration objects, dynamic arguments and other returned-function consumers remain unfinished."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/isValidElement/18.3.1",
+      "surface": "react",
+      "export_name": "isValidElement",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [
+        "authoring/banks/initial-library-programs.json"
+      ],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/isValidElement/18.3.1",
+        "rule_sha256": "910997e7b701ce358eeb753d1ea2f529c83c2ce0c9ed896a44f5bfee51fce8be",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "guard-marker-read",
+          "result-source-branch",
+          "throw-observation",
+          "result-provenance"
+        ],
+        "verified_scopes": [
+          "guard-marker-read",
+          "result-source-branch",
+          "local-immutable-aliases",
+          "throw-observation",
+          "result-provenance"
+        ],
+        "admitted": true,
+        "verified_scope": "Installed typeof/null/marker behavior, getter/proxy preservation, and actual boolean source-branch selection, including local immutable aliases and negation. Selected source paths are not downstream execution evidence.",
+        "remaining": [
+          "Returned and thrown call outcomes are observed without rereading application properties. Argument evaluation failures cannot prove library execution. Mutable/cross-function result provenance and unmapped consumers remain frontiers; await/yield/spread inputs retain ordinary result observations with an explicit error-observation frontier."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/lazy/18.3.1",
+      "surface": "react",
+      "export_name": "lazy",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/lazy/18.3.1",
+        "rule_sha256": "baecb2b5a199def03e4055f0fecb5519fedab3848abc96cc0ce98f94dcda04af",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "initializer-state-machine-oracle",
+          "allocated-loader-source-invocation",
+          "actual-renderer-cache-reuse",
+          "settlement-module-selection-lineage",
+          "resolved-component-path",
+          "rejection-retry-and-interruption-lineage",
+          "broader-loader-source-captures"
+        ],
+        "verified_scopes": [
+          "initializer-state-machine-oracle",
+          "allocated-loader-source-invocation",
+          "actual-renderer-cache-reuse"
+        ],
+        "admitted": false,
+        "verified_scope": "The installed initializer checks pending, first settlement, cached rejection, synchronous loader and registration errors, and module property reads. Actual browser renderer loader invocations require the allocated lazy descriptor and exact inline loader source.",
+        "remaining": [
+          "Thenable settlement, module.default selection, resolved component paths, rejection/retry/interruption attribution and broader loader sources/captures remain unproved. The recorder does not inspect or subscribe to the returned thenable."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/useEffect/18.3.1",
+      "surface": "react",
+      "export_name": "useEffect",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [
+        "authoring/banks/react-effect-programs.json"
+      ],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/useEffect/18.3.1",
+        "rule_sha256": "bddd43d59ce263c7c5faff7dda4b31930e2d2a1c7a3db3d9de9b476f4cff1004",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "dependency-setup-cleanup",
+          "strict-phase-order",
+          "suspense-hydration",
+          "errors-and-interruption"
+        ],
+        "verified_scopes": [
+          "dependency-setup-cleanup",
+          "strict-phase-order",
+          "suspense-hydration",
+          "errors-and-interruption",
+          "setup-and-cleanup-outcomes",
+          "context-binding-reads",
+          "cleanup-context-binding-reads"
+        ],
+        "admitted": true,
+        "verified_scope": "Executable setup/cleanup plans, phase order, StrictMode rehearsal, and exact source callback joins in both builds.",
+        "remaining": []
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/useId/18.3.1",
+      "surface": "react",
+      "export_name": "useId",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/useId/18.3.1",
+        "rule_sha256": "1c7cfacd78a59d66a4d85188a0cefee88be5f6444329b115f47150c4f19ed234",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "allocation-retention",
+          "hook-to-jsx-property",
+          "hydration-root-prefixes",
+          "host-commit-attribution",
+          "suspense-interruption-lifetimes",
+          "additional-id-consumers"
+        ],
+        "verified_scopes": [
+          "allocation-retention",
+          "hook-to-jsx-property",
+          "hydration-root-prefixes",
+          "host-commit-attribution",
+          "suspense-interruption-lifetimes",
+          "additional-id-consumers"
+        ],
+        "admitted": true,
+        "verified_scope": "Allocation and retention program checked against actual renderer IDs; observed hook strings join direct immutable native JSX id/htmlFor uses with exact source, root, mount, hook, and render identity. Both builds preserve hydration IDs and native label relationships.",
+        "remaining": [
+          "Exact JSX props and immutable same-render aliases now join their committed host fiber and accepted component owner, including single-ID accessibility references. Suspense interruption, hide/reveal and selective hydration are tested; production withholds uncommitted render records without a known owner. DOM write causality, composed strings, custom-component properties and captured uses remain source frontiers. ID strings are not entity identity or cross-root joins; renderer counters/tree position cannot be guessed."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/useImperativeHandle/18.3.1",
+      "surface": "react",
+      "export_name": "useImperativeHandle",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [
+        "authoring/banks/react-imperative-programs.json"
+      ],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Browser package integration; accessor/proxy refs and callback-error paths remain explicit frontiers. This is scoped verification, not complete API admission.",
+      "evidence": [
+        "evaluation/shared-rules/react-imperative-development-results.json",
+        "evaluation/shared-rules/react-imperative-production-results.json"
+      ],
+      "tested": [
+        "callback and plain object refs",
+        "creator return to exact ref write",
+        "dependency and ref identity changes",
+        "Strict Mode",
+        "suspend, reveal, remount and unmount",
+        "null and undefined refs",
+        "three incorrect rules rejected"
+      ],
+      "react_reader_audit": {
+        "api": "react/useImperativeHandle/18.3.1",
+        "rule_sha256": "168e586360dedc125d2b4235118bdbbeca4dbaeae8f3d62c21604e8f50d56e93",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "commit-factory-result",
+          "dependency-ref-lifecycle",
+          "callback-object-ref-write",
+          "cleanup-attribution",
+          "interrupted-hydrated-error-work"
+        ],
+        "verified_scopes": [
+          "commit-factory-result",
+          "dependency-ref-oracle",
+          "sibling-remount-factory",
+          "context-to-handle-factory",
+          "observed-ref-object-provenance"
+        ],
+        "admitted": false,
+        "verified_scope": "Executable successful-commit/ref/dependency plan checked against both installed React builds. Actual factory invocations and returned handles join exact source, component, render, and zero-argument call evidence; ref assignment and cleanup are not inferred.",
+        "remaining": [
+          "Runtime attribution of object/callback ref assignment and cleanup is still unproved. Interruption, hydration, factory/ref failures, and broader callback-source shapes remain open."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/useInsertionEffect/18.3.1",
+      "surface": "react",
+      "export_name": "useInsertionEffect",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [
+        "authoring/banks/react-effect-programs.json"
+      ],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/useInsertionEffect/18.3.1",
+        "rule_sha256": "a447f712d5cd95cd26bf25483393e84f838839c96571fff768d3de8b7d7d991b",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "dependency-setup-cleanup",
+          "strict-phase-order",
+          "suspense-hydration",
+          "errors-and-interruption"
+        ],
+        "verified_scopes": [
+          "dependency-setup-cleanup",
+          "strict-phase-order",
+          "suspense-hydration",
+          "errors-and-interruption",
+          "setup-and-cleanup-outcomes",
+          "context-binding-reads",
+          "cleanup-context-binding-reads"
+        ],
+        "admitted": true,
+        "verified_scope": "Executable setup/cleanup plans, phase order, StrictMode rehearsal, and exact source callback joins in both builds.",
+        "remaining": []
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/useLayoutEffect/18.3.1",
+      "surface": "react",
+      "export_name": "useLayoutEffect",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [
+        "authoring/banks/react-effect-programs.json"
+      ],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/useLayoutEffect/18.3.1",
+        "rule_sha256": "a78ef2589919f8d9236ddd38aecd62015128afdfc3ca6995d049198633cc9fdc",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "dependency-setup-cleanup",
+          "strict-phase-order",
+          "suspense-hydration",
+          "errors-and-interruption"
+        ],
+        "verified_scopes": [
+          "dependency-setup-cleanup",
+          "strict-phase-order",
+          "suspense-hydration",
+          "errors-and-interruption",
+          "setup-and-cleanup-outcomes",
+          "context-binding-reads",
+          "cleanup-context-binding-reads"
+        ],
+        "admitted": true,
+        "verified_scope": "Executable setup/cleanup plans, phase order, StrictMode rehearsal, and exact source callback joins in both builds.",
+        "remaining": []
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/useSyncExternalStore/18.3.1",
+      "surface": "react",
+      "export_name": "useSyncExternalStore",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/useSyncExternalStore/18.3.1",
+        "rule_sha256": "1be73a0ffa6270831ba4d9341c96f73976158e89d5363e1ddea1324223905f76",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "subscription-notification-snapshot",
+          "subscription-replacement-lifecycle",
+          "snapshot-selection-consumers",
+          "hydration-consistency-recovery",
+          "notification-commit-attribution"
+        ],
+        "verified_scopes": [
+          "subscription-notification-snapshot",
+          "native-click-callback-scope",
+          "stable-subscription-identity",
+          "server-notification-oracle",
+          "hydration-server-to-client-snapshot",
+          "subscription-replacement-lifecycle",
+          "retained-callback-input"
+        ],
+        "admitted": false,
+        "verified_scope": "Independent subscription, snapshot equality, retry, and server oracle. Actual source callbacks connect native click scope to subscription listener and snapshot outcome in both builds, with sibling/remount and shutdown checks.",
+        "remaining": [
+          "Direct immutable useCallback inputs now prove selection, replacement and cleanup lineage. Aliased or mutable inputs, snapshot-to-rendered-value consumers, concurrent consistency recovery, and notification-to-commit causality remain unfinished. Basic server-to-client hydration passes. An observed cleanup invocation is not proof that unsubscribe succeeded."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react/unstable_act/18.3.1",
+      "surface": "react",
+      "export_name": "unstable_act",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react/unstable_act/18.3.1",
+        "rule_sha256": "66bf562554cd892411824b4cca6f2c78437678e1cf97dd90c16e2835c38cf0c2",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "build-callback-result-oracle",
+          "observed-callback-source-action-path",
+          "nested-and-async-transparent-observation",
+          "await-queue-completion-lineage",
+          "build-attributed-production-failure",
+          "overlap-thenable-and-flush-errors"
+        ],
+        "verified_scopes": [
+          "build-callback-result-oracle",
+          "observed-callback-source-action-path",
+          "nested-and-async-transparent-observation"
+        ],
+        "admitted": false,
+        "verified_scope": "Both installed builds distinguish development callback execution from production rejection. Development browser callbacks join exact source and click paths, preserve nested/async results and thrown identity, and retain explicit uncertainty about awaiting and queue completion.",
+        "remaining": [
+          "Awaited result, queue drain, commit/effect attribution, overlapping scopes, arbitrary thenables and flush failures still need occurrence-specific integration. Production rejection preserves behavior but abstains without observed build identity; a missing callback record does not prove production execution."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react-dom/version/18.3.1",
+      "surface": "react-dom",
+      "export_name": "version",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "fully_admitted",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react-dom/version/18.3.1",
+        "rule_sha256": "5ea08f28f035b04276f3315a3d47facd7a161817945a8b336a6a609afac89420",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "literal-read",
+          "build-variants",
+          "wrong-value-rejection"
+        ],
+        "verified_scopes": [
+          "literal-read",
+          "build-variants",
+          "wrong-value-rejection"
+        ],
+        "admitted": true,
+        "verified_scope": "Actual exported metadata reads in development/production, including the distinct ReactDOM production label and wrong/missing-value rejection.",
+        "remaining": []
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react-dom/createPortal/18.3.1",
+      "surface": "react-dom",
+      "export_name": "createPortal",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react-dom/createPortal/18.3.1",
+        "rule_sha256": "baad3671b33f0649d7a6a3672268e4199cf060975023e8f1de9c93dbdcc9d198",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "descriptor-input-relations",
+          "guarded-child-source-path",
+          "descriptor-host-commit-lineage",
+          "react-parent-context-event-ancestry",
+          "interrupted-and-unmounted-lifetimes"
+        ],
+        "verified_scopes": [
+          "descriptor-input-relations",
+          "guarded-child-source-path"
+        ],
+        "admitted": false,
+        "verified_scope": "Actual portal descriptions preserve child and container identity, primitive key coercion and registered marker. Tracer follows the encoded child argument to a guarded source control, whose actual callback runs across container and key changes in both builds. Description observation does not prove renderer consumption.",
+        "remaining": [
+          "Descriptor-to-host-commit and exact click occurrence lineage, React parent context/event ancestry, interrupted lifetimes and broader aliased or nested portal consumers remain open. Object-key coercion and argument failures retain explicit uncertainty."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react-dom/findDOMNode/18.3.1",
+      "surface": "react-dom",
+      "export_name": "findDOMNode",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react-dom/findDOMNode/18.3.1",
+        "rule_sha256": "5cb716d29362aa86e2b1efbd2c45073fd9b0b28cd9cb842a902b195b4ec1ba52",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "host-selection-oracle",
+          "committed-class-to-returned-node",
+          "click-callback-lookup-occurrence",
+          "host-consumer-effect-lineage",
+          "interrupted-and-unmount-time-lookups",
+          "unknown-input-and-property-branch-provenance"
+        ],
+        "verified_scopes": [
+          "host-selection-oracle",
+          "committed-class-to-returned-node",
+          "click-callback-lookup-occurrence"
+        ],
+        "admitted": false,
+        "verified_scope": "Actual click and callback receipts join lookup input identity to the first host or text node in a bounded current class subtree, including portals, updates, empty output and native-node passthrough. Unknown getters and proxy exceptions are not replayed. Both builds reject eight corrupted observations.",
+        "remaining": [
+          "Host-consuming effects, interrupted/render-phase lookups, unmount-time behavior and thrown-result branch provenance remain open. Unknown objects, changing commits and bounded-tree exhaustion abstain. Class renderer snapshots prove the lookup relation, not a downstream DOM effect."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react-dom/hydrate/18.3.1",
+      "surface": "react-dom",
+      "export_name": "hydrate",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react-dom/hydrate/18.3.1",
+        "rule_sha256": "211f41c36b15c08040246de53799253d268846a6d38aaf5ca252d8880545dc1b",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "legacy-render-policy-oracle",
+          "click-input-element-commit-public-result",
+          "batched-and-nested-update-frontiers",
+          "callback-receiver-commit-lineage",
+          "deferred-update-and-component-body-lineage",
+          "initial-mode-hydration-and-parent-context-lineage",
+          "validation-and-comment-container-provenance"
+        ],
+        "verified_scopes": [
+          "legacy-render-policy-oracle",
+          "click-input-element-commit-public-result",
+          "batched-and-nested-update-frontiers"
+        ],
+        "admitted": false,
+        "verified_scope": "Original click callbacks join the exact supplied element and native container to a legacy renderer commit and the original public result. Class, native, function and empty roots pass both builds. Existing-root event/batch updates and nested replacement retain explicit commit frontiers; no callback or hydration completion is inferred.",
+        "remaining": [
+          "Commit callback arguments/receiver and completion lineage, deferred updates, component-body execution, initial-mode/hydration reuse, legacy parent-context propagation, comment containers and validation errors remain unproved at runtime."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react-dom/render/18.3.1",
+      "surface": "react-dom",
+      "export_name": "render",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react-dom/render/18.3.1",
+        "rule_sha256": "647b13f11f64d8511ac0c102f4e97d13e547e0abc169dc783ba4c222ad6ecad3",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "legacy-render-policy-oracle",
+          "click-input-element-commit-public-result",
+          "batched-and-nested-update-frontiers",
+          "callback-receiver-commit-lineage",
+          "deferred-update-and-component-body-lineage",
+          "initial-mode-hydration-and-parent-context-lineage",
+          "validation-and-comment-container-provenance"
+        ],
+        "verified_scopes": [
+          "legacy-render-policy-oracle",
+          "click-input-element-commit-public-result",
+          "batched-and-nested-update-frontiers"
+        ],
+        "admitted": false,
+        "verified_scope": "Original click callbacks join the exact supplied element and native container to a legacy renderer commit and the original public result. Class, native, function and empty roots pass both builds. Existing-root event/batch updates and nested replacement retain explicit commit frontiers; no callback or hydration completion is inferred.",
+        "remaining": [
+          "Commit callback arguments/receiver and completion lineage, deferred updates, component-body execution, initial-mode/hydration reuse, legacy parent-context propagation, comment containers and validation errors remain unproved at runtime."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react-dom/unmountComponentAtNode/18.3.1",
+      "surface": "react-dom",
+      "export_name": "unmountComponentAtNode",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react-dom/unmountComponentAtNode/18.3.1",
+        "rule_sha256": "7b416987efb1d6dee8bc21fb7dce596b362fe61f2154b0d8fd655fb5a037afba",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "legacy-unmount-oracle",
+          "click-callback-container-empty-commit",
+          "repeat-noop-and-in-render-frontier",
+          "cleanup-and-ref-detachment-lineage",
+          "deferred-request-commit-attribution",
+          "comment-container-and-validation-origin"
+        ],
+        "verified_scopes": [
+          "legacy-unmount-oracle",
+          "click-callback-container-empty-commit",
+          "repeat-noop-and-in-render-frontier"
+        ],
+        "admitted": false,
+        "verified_scope": "Original click callbacks join exact native container input to a renderer-observed legacy root and later empty-root commit within the call. Repeated calls prove a no-op. True returns during render retain an unconfirmed-commit frontier. Both builds reject nine wrong programs and eleven evidence mutations.",
+        "remaining": [
+          "Cleanup and ref-detachment callback lineage, deferred request-to-commit attribution, comment-container runtime provenance and validation error origin remain unproved. Fresh containers with no own root descriptor and accessor/proxy inputs abstain."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react-dom/unstable_renderSubtreeIntoContainer/18.3.1",
+      "surface": "react-dom",
+      "export_name": "unstable_renderSubtreeIntoContainer",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react-dom/unstable_renderSubtreeIntoContainer/18.3.1",
+        "rule_sha256": "d3983bbd99f1c88b1ac2a8d3dd6284e4a64b983cd69a1f9c4b72c56e87b26b55",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "legacy-render-policy-oracle",
+          "click-input-element-commit-public-result",
+          "batched-and-nested-update-frontiers",
+          "callback-receiver-commit-lineage",
+          "deferred-update-and-component-body-lineage",
+          "initial-mode-hydration-and-parent-context-lineage",
+          "validation-and-comment-container-provenance"
+        ],
+        "verified_scopes": [
+          "legacy-render-policy-oracle",
+          "click-input-element-commit-public-result",
+          "batched-and-nested-update-frontiers"
+        ],
+        "admitted": false,
+        "verified_scope": "Original click callbacks join the exact supplied element and native container to a legacy renderer commit and the original public result. Class, native, function and empty roots pass both builds. Existing-root event/batch updates and nested replacement retain explicit commit frontiers; no callback or hydration completion is inferred.",
+        "remaining": [
+          "Commit callback arguments/receiver and completion lineage, deferred updates, component-body execution, initial-mode/hydration reuse, legacy parent-context propagation, comment containers and validation errors remain unproved at runtime."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react-dom/createRoot/18.3.1",
+      "surface": "react-dom",
+      "export_name": "createRoot",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react-dom/createRoot/18.3.1",
+        "rule_sha256": "956872eb418000cfdb2954b77cbd5421372edf2d6dab7b217d39db4040513224",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "root-operation-oracle",
+          "original-handle-method-lifetime",
+          "renderer-root-identity",
+          "render-to-commit-lineage",
+          "cleanup-attribution",
+          "options-errors-and-hydration-recovery",
+          "aliased-and-dynamic-root-consumers"
+        ],
+        "verified_scopes": [
+          "root-operation-oracle",
+          "original-handle-method-lifetime",
+          "renderer-root-identity"
+        ],
+        "admitted": false,
+        "verified_scope": "Installed DOM and client entrypoints verify root creation, render, original unmount and post-unmount behavior. Actual browser root handles join original methods and renderer root identities shared by real source callbacks in both builds; matching hydration reuses server DOM.",
+        "remaining": [
+          "A method return does not prove a render commit or cleanup causality. Update-to-commit attribution, options and recovery callbacks, interrupted hydration, errors and broader aliased or dynamic root consumers remain unfinished."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react-dom/hydrateRoot/18.3.1",
+      "surface": "react-dom",
+      "export_name": "hydrateRoot",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react-dom/hydrateRoot/18.3.1",
+        "rule_sha256": "e53bf386d8808c3b95abc9c124dba0cfac8f05a9d6b59e10bb8ef6dd9d41d2cc",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "root-operation-oracle",
+          "original-handle-method-lifetime",
+          "renderer-root-identity",
+          "render-to-commit-lineage",
+          "cleanup-attribution",
+          "options-errors-and-hydration-recovery",
+          "aliased-and-dynamic-root-consumers"
+        ],
+        "verified_scopes": [
+          "root-operation-oracle",
+          "original-handle-method-lifetime",
+          "renderer-root-identity"
+        ],
+        "admitted": false,
+        "verified_scope": "Installed DOM and client entrypoints verify root creation, render, original unmount and post-unmount behavior. Actual browser root handles join original methods and renderer root identities shared by real source callbacks in both builds; matching hydration reuses server DOM.",
+        "remaining": [
+          "A method return does not prove a render commit or cleanup causality. Update-to-commit attribution, options and recovery callbacks, interrupted hydration, errors and broader aliased or dynamic root consumers remain unfinished."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react-dom/client/createRoot/18.3.1",
+      "surface": "react-dom/client",
+      "export_name": "createRoot",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react-dom/client/createRoot/18.3.1",
+        "rule_sha256": "956872eb418000cfdb2954b77cbd5421372edf2d6dab7b217d39db4040513224",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "root-operation-oracle",
+          "original-handle-method-lifetime",
+          "renderer-root-identity",
+          "render-to-commit-lineage",
+          "cleanup-attribution",
+          "options-errors-and-hydration-recovery",
+          "aliased-and-dynamic-root-consumers"
+        ],
+        "verified_scopes": [
+          "root-operation-oracle",
+          "original-handle-method-lifetime",
+          "renderer-root-identity"
+        ],
+        "admitted": false,
+        "verified_scope": "Installed DOM and client entrypoints verify root creation, render, original unmount and post-unmount behavior. Actual browser root handles join original methods and renderer root identities shared by real source callbacks in both builds; matching hydration reuses server DOM.",
+        "remaining": [
+          "A method return does not prove a render commit or cleanup causality. Update-to-commit attribution, options and recovery callbacks, interrupted hydration, errors and broader aliased or dynamic root consumers remain unfinished."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react-dom/client/hydrateRoot/18.3.1",
+      "surface": "react-dom/client",
+      "export_name": "hydrateRoot",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react-dom/client/hydrateRoot/18.3.1",
+        "rule_sha256": "e53bf386d8808c3b95abc9c124dba0cfac8f05a9d6b59e10bb8ef6dd9d41d2cc",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "root-operation-oracle",
+          "original-handle-method-lifetime",
+          "renderer-root-identity",
+          "render-to-commit-lineage",
+          "cleanup-attribution",
+          "options-errors-and-hydration-recovery",
+          "aliased-and-dynamic-root-consumers"
+        ],
+        "verified_scopes": [
+          "root-operation-oracle",
+          "original-handle-method-lifetime",
+          "renderer-root-identity"
+        ],
+        "admitted": false,
+        "verified_scope": "Installed DOM and client entrypoints verify root creation, render, original unmount and post-unmount behavior. Actual browser root handles join original methods and renderer root identities shared by real source callbacks in both builds; matching hydration reuses server DOM.",
+        "remaining": [
+          "A method return does not prove a render commit or cleanup causality. Update-to-commit attribution, options and recovery callbacks, interrupted hydration, errors and broader aliased or dynamic root consumers remain unfinished."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react-dom/server/version/18.3.1",
+      "surface": "react-dom/server",
+      "export_name": "version",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "fully_admitted",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react-dom/server/version/18.3.1",
+        "rule_sha256": "6bbd3a952c100982e0ee0721dd7a11db9930f6f6f384d375e7a7d4c24c7bcfe3",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "literal-read",
+          "build-variants",
+          "wrong-value-rejection"
+        ],
+        "verified_scopes": [
+          "literal-read",
+          "build-variants",
+          "wrong-value-rejection"
+        ],
+        "admitted": true,
+        "verified_scope": "Actual exported metadata reads in development/production, including the distinct ReactDOM production label and wrong/missing-value rejection.",
+        "remaining": []
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react-dom/server/renderToNodeStream/18.3.1",
+      "surface": "react-dom/server",
+      "export_name": "renderToNodeStream",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react-dom/server/renderToNodeStream/18.3.1",
+        "rule_sha256": "8ef14b0e665de7028b992a057b94e88f90b60e135e92d6cd78d1838e1e5dfe3f",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "legacy-stream-policy-oracle",
+          "initial-component-stream-return",
+          "nested-and-argument-cause-isolation",
+          "async-retry-component-lineage",
+          "stream-consumer-completion-and-errors",
+          "cancellation-lifetime-lineage",
+          "broader-components-context-and-requests"
+        ],
+        "verified_scopes": [
+          "legacy-stream-policy-oracle",
+          "initial-component-stream-return",
+          "nested-and-argument-cause-isolation"
+        ],
+        "admitted": false,
+        "verified_scope": "Both installed builds verify synchronous initial rendering, all-task output readiness, suspended retries, cancellation and browser rejection. The source/runtime bridge connects actual initial component inputs to the original returned stream, including a stream whose later consumption fails.",
+        "remaining": [
+          "Stream return is not successful completion. Async component retries, data/error/end and cancellation attribution, broader source inputs, request/context lineage and direct renderer dispatch remain unproved. Browser entrypoint rejection is behavior-tested but not yet joined to observed platform identity."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react-dom/server/renderToStaticMarkup/18.3.1",
+      "surface": "react-dom/server",
+      "export_name": "renderToStaticMarkup",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react-dom/server/renderToStaticMarkup/18.3.1",
+        "rule_sha256": "f401bf888c43b300815cf4c5bd1793afe4990707124f5ba063567474723538dd",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "server-render-policy-oracle",
+          "input-component-body-return",
+          "nested-and-argument-cause-isolation",
+          "suspense-and-error-path-lineage",
+          "rendered-markup-input-lineage",
+          "broader-components-context-and-requests"
+        ],
+        "verified_scopes": [
+          "server-render-policy-oracle",
+          "input-component-body-return",
+          "nested-and-argument-cause-isolation"
+        ],
+        "admitted": false,
+        "verified_scope": "Exact installed Node and browser implementations connect the root element type and props to original synchronous component body entries and a successful string return. Nested requests and argument-time calls stay separate; thirteen corrupted records reject. The oracle checks output mode, prefixes, escaping, fallback and error behavior without client effects.",
+        "remaining": [
+          "Direct renderer dispatch, returned markup content and browser hydration are not proven. Suspense/error paths, diagnostic replay, nested or wrapped component selection, context, mutable or dynamic inputs and request-to-render attribution remain open. Thrown renders retain an explicit unresolved outcome."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react-dom/server/renderToStaticNodeStream/18.3.1",
+      "surface": "react-dom/server",
+      "export_name": "renderToStaticNodeStream",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react-dom/server/renderToStaticNodeStream/18.3.1",
+        "rule_sha256": "8ef14b0e665de7028b992a057b94e88f90b60e135e92d6cd78d1838e1e5dfe3f",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "legacy-stream-policy-oracle",
+          "initial-component-stream-return",
+          "nested-and-argument-cause-isolation",
+          "async-retry-component-lineage",
+          "stream-consumer-completion-and-errors",
+          "cancellation-lifetime-lineage",
+          "broader-components-context-and-requests"
+        ],
+        "verified_scopes": [
+          "legacy-stream-policy-oracle",
+          "initial-component-stream-return",
+          "nested-and-argument-cause-isolation"
+        ],
+        "admitted": false,
+        "verified_scope": "Both installed builds verify synchronous initial rendering, all-task output readiness, suspended retries, cancellation and browser rejection. The source/runtime bridge connects actual initial component inputs to the original returned stream, including a stream whose later consumption fails.",
+        "remaining": [
+          "Stream return is not successful completion. Async component retries, data/error/end and cancellation attribution, broader source inputs, request/context lineage and direct renderer dispatch remain unproved. Browser entrypoint rejection is behavior-tested but not yet joined to observed platform identity."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react-dom/server/renderToString/18.3.1",
+      "surface": "react-dom/server",
+      "export_name": "renderToString",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react-dom/server/renderToString/18.3.1",
+        "rule_sha256": "149d0be3df6f2a8448d6f9dc692065bfbcace57c5c9f198a3fce267975e3a47e",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "server-render-policy-oracle",
+          "input-component-body-return",
+          "nested-and-argument-cause-isolation",
+          "suspense-and-error-path-lineage",
+          "rendered-markup-input-lineage",
+          "broader-components-context-and-requests"
+        ],
+        "verified_scopes": [
+          "server-render-policy-oracle",
+          "input-component-body-return",
+          "nested-and-argument-cause-isolation"
+        ],
+        "admitted": false,
+        "verified_scope": "Exact installed Node and browser implementations connect the root element type and props to original synchronous component body entries and a successful string return. Nested requests and argument-time calls stay separate; thirteen corrupted records reject. The oracle checks output mode, prefixes, escaping, fallback and error behavior without client effects.",
+        "remaining": [
+          "Direct renderer dispatch, returned markup content and browser hydration are not proven. Suspense/error paths, diagnostic replay, nested or wrapped component selection, context, mutable or dynamic inputs and request-to-render attribution remain open. Thrown renders retain an explicit unresolved outcome."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react-dom/server/renderToPipeableStream/18.3.1",
+      "surface": "react-dom/server",
+      "export_name": "renderToPipeableStream",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react-dom/server/renderToPipeableStream/18.3.1",
+        "rule_sha256": "bef4c2c59cd3810eaed5e7ebe4a82946e6bada1deb0faac28f33e900626b3b46",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "pipeable-stream-policy-oracle",
+          "handle-allocation-async-component-context",
+          "concurrent-nested-and-argument-isolation",
+          "shell-allready-and-error-callback-lineage",
+          "pipe-destination-backpressure-completion",
+          "abort-and-destination-lifetimes",
+          "broader-component-and-retry-lineage"
+        ],
+        "verified_scopes": [
+          "pipeable-stream-policy-oracle",
+          "handle-allocation-async-component-context",
+          "concurrent-nested-and-argument-isolation"
+        ],
+        "admitted": false,
+        "verified_scope": "Node async context joins the original handle allocation to the exact component source/type/props in later work. Concurrent and nested requests keep distinct allocation receipts; argument and outside calls cannot borrow the request. Wrong, missing and evicted receipts reject in both builds.",
+        "remaining": [
+          "Shell/allReady/error callback lineage, pipe destination and backpressure, stream completion, abort/destination lifetimes and broader component/retry paths remain unproved. Async ancestry does not prove direct renderer dispatch or a successful render."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    },
+    {
+      "id": "react-dom/server/renderToReadableStream/18.3.1",
+      "surface": "react-dom/server",
+      "export_name": "renderToReadableStream",
+      "versions": [
+        "18.3.1"
+      ],
+      "status": "react_scoped_integration_passed",
+      "candidate_rule_files": [],
+      "required_gates": [
+        "format",
+        "installed_react_behavior",
+        "tracer_consumption"
+      ],
+      "remaining": "Audit the complete observable behavior, then add missing rules and consumption checks.",
+      "react_reader_audit": {
+        "api": "react-dom/server/renderToReadableStream/18.3.1",
+        "rule_sha256": "e94cbcd33364983c506e8132127a170f774e22617f89b76e6d9ad09599ba062f",
+        "format": "pass",
+        "behavior": "scoped_pass",
+        "integration": "scoped_pass",
+        "required_scopes": [
+          "readable-stream-policy-oracle",
+          "initial-component-promise-return",
+          "nested-and-argument-cause-isolation",
+          "promise-fulfillment-shell-stream-lineage",
+          "async-retry-and-allready-lineage",
+          "stream-consumption-cancel-and-signal-lineage",
+          "broader-components-and-failure-origin"
+        ],
+        "verified_scopes": [
+          "readable-stream-policy-oracle",
+          "initial-component-promise-return",
+          "nested-and-argument-cause-isolation"
+        ],
+        "admitted": false,
+        "verified_scope": "Exact root component type/props join synchronous initial body entry to the original returned promise in Node and browser, both builds. Argument and nested-render causes stay separate. Rejected promises do not prove fulfillment; unmatched development body contexts abstain.",
+        "remaining": [
+          "Promise fulfillment to shell stream, async retries, allReady, stream reads and completion, signal/cancel lifetimes, broader component inputs and failure origins remain unproved. An unmatched development body invocation retains an explicit input-context frontier."
+        ]
+      },
+      "react_rule_file": "analysis/react-behavior.mjs",
+      "react_interpreter_file": "analysis/react-execution-rule.mjs"
+    }
+  ]
+}

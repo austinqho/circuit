@@ -1,0 +1,98 @@
+{
+  "schema": "producttrace.react-portal-acceptance.v1",
+  "react": "18.3.1",
+  "format_and_behavior": {
+    "api": "react-dom/createPortal/18.3.1",
+    "format_pass": true,
+    "behavior_pass": true,
+    "builds": [
+      {
+        "build": "development",
+        "primitive_key_cases": 8,
+        "incorrect_programs_rejected": 6,
+        "children_not_called": true,
+        "key_coercion_left_to_library": true,
+        "invalid_containers_rejected": true,
+        "server_portal_render_rejected": true
+      },
+      {
+        "build": "production",
+        "primitive_key_cases": 8,
+        "incorrect_programs_rejected": 6,
+        "children_not_called": true,
+        "key_coercion_left_to_library": true,
+        "invalid_containers_rejected": true,
+        "server_portal_render_rejected": true
+      }
+    ]
+  },
+  "runtime": [
+    {
+      "api": "react-dom/createPortal/18.3.1",
+      "build": "development",
+      "installed_source_attested": true,
+      "actual_clicks": 4,
+      "source_child_to_native_control": true,
+      "portal_description_observations": 5,
+      "portal_commit_observations": 4,
+      "portal_unmount_observations": 2,
+      "callback_body_entries": 3,
+      "container_change_and_key_update_preserve_callback": true,
+      "independent_description_mutants_rejected": 6,
+      "stop_preserves_behavior": true,
+      "source_guard_retained": true,
+      "host_commit_lineage_proven": true,
+      "portal_description_to_exact_click_occurrence_proven": true,
+      "react_parent_event_ancestry_proven": true,
+      "unmounted_lifetime_proven": true,
+      "uncommitted_description_withheld": true,
+      "interrupted_render_withheld": true,
+      "immutable_api_alias_proven": true
+    },
+    {
+      "api": "react-dom/createPortal/18.3.1",
+      "build": "production",
+      "installed_source_attested": true,
+      "actual_clicks": 4,
+      "source_child_to_native_control": true,
+      "portal_description_observations": 5,
+      "portal_commit_observations": 4,
+      "portal_unmount_observations": 2,
+      "callback_body_entries": 3,
+      "container_change_and_key_update_preserve_callback": true,
+      "independent_description_mutants_rejected": 6,
+      "stop_preserves_behavior": true,
+      "source_guard_retained": true,
+      "host_commit_lineage_proven": true,
+      "portal_description_to_exact_click_occurrence_proven": true,
+      "react_parent_event_ancestry_proven": true,
+      "unmounted_lifetime_proven": true,
+      "uncommitted_description_withheld": true,
+      "interrupted_render_withheld": true,
+      "immutable_api_alias_proven": true
+    }
+  ],
+  "full_api_admission": true,
+  "sources": [
+    {
+      "file": "node_modules/react-dom/cjs/react-dom.development.js",
+      "implementation_lines": [
+        [
+          28726,
+          28745
+        ],
+        [
+          29825,
+          29836
+        ]
+      ],
+      "sha256": "1459b808bc6991de5a1ec3a86d8beee32dbb6c14282cf13f84e00dfebfbdc025"
+    }
+  ],
+  "limits": [
+    "Mutable or runtime-only API aliases",
+    "Object-key coercion internals",
+    "Arguments that throw before React is entered",
+    "Portals with ambiguous identical origin references"
+  ]
+}

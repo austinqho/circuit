@@ -1,0 +1,1029 @@
+{
+  "inventory_rows": 55,
+  "inventory_sha256": "cfecebc0ace25dca24b1563a7b372a4a371f6260644e934f1d9f12e5c8379b1d",
+  "scope": "Node/CommonJS development export-source audit against exact React/ReactDOM 18.3.1. Loaded wrapper source is not renderer dispatch resolution, behavior verification or usable rule admission. Non-callable markers require export-value handling, not a fabricated callable implementation.",
+  "counts": {
+    "loaded_export_source_ready": 27,
+    "source_frontier": 20,
+    "non_callable_public_export": 8
+  },
+  "model_requests": 0,
+  "rows": [
+    {
+      "id": "react/useCallback/18.3.1",
+      "surface": "react",
+      "export_name": "useCallback",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "ec8949feea5670d4f5592b2801cedb208d8d9dfff48c38270df02201f92c245c",
+      "selected_declarations": 8,
+      "selected_bytes": 2532,
+      "runtime_implementation": "function useCallback(callback, deps) {\n  var dispatcher = resolveDispatcher();\n  return dispatcher.useCallback(callback, deps);\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/useMemo/18.3.1",
+      "surface": "react",
+      "export_name": "useMemo",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "9a80069d931050b1e3f269c35358f4004e795d4f1cf50552363f691bc71ea91a",
+      "selected_declarations": 8,
+      "selected_bytes": 2520,
+      "runtime_implementation": "function useMemo(create, deps) {\n  var dispatcher = resolveDispatcher();\n  return dispatcher.useMemo(create, deps);\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/useTransition/18.3.1",
+      "surface": "react",
+      "export_name": "useTransition",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "e9351313cbb6bcc12e6e6334767215975c3356ea4b92800f07e381c90f2cb2d3",
+      "selected_declarations": 8,
+      "selected_bytes": 2508,
+      "runtime_implementation": "function useTransition() {\n  var dispatcher = resolveDispatcher();\n  return dispatcher.useTransition();\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/useDeferredValue/18.3.1",
+      "surface": "react",
+      "export_name": "useDeferredValue",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "252a48c7cff24e8c83ff74c764841a1f727b97c6aa9a9b714cf7f2a3486d2a04",
+      "selected_declarations": 8,
+      "selected_bytes": 2524,
+      "runtime_implementation": "function useDeferredValue(value) {\n  var dispatcher = resolveDispatcher();\n  return dispatcher.useDeferredValue(value);\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/useState/18.3.1",
+      "surface": "react",
+      "export_name": "useState",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "d08af9fdf3d83fbb64ed462a9b92f02b5fd67181dd4c0a8a73f516016d0c4b93",
+      "selected_declarations": 8,
+      "selected_bytes": 2522,
+      "runtime_implementation": "function useState(initialState) {\n  var dispatcher = resolveDispatcher();\n  return dispatcher.useState(initialState);\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/useReducer/18.3.1",
+      "surface": "react",
+      "export_name": "useReducer",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "2df1ecead7424baaa4e27b005ea1bdd6fcf4781b8d9817ef0ec0b9aff4ce6486",
+      "selected_declarations": 8,
+      "selected_bytes": 2552,
+      "runtime_implementation": "function useReducer(reducer, initialArg, init) {\n  var dispatcher = resolveDispatcher();\n  return dispatcher.useReducer(reducer, initialArg, init);\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/createContext/18.3.1",
+      "surface": "react",
+      "export_name": "createContext",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "0f829a9c0fa1b0538b60490ea1472b7fd5e4fe7c074db21bae58a8e64a094377",
+      "selected_declarations": 10,
+      "selected_bytes": 5865,
+      "runtime_implementation": "function createContext(defaultValue) {\n  // TODO: Second argument used to be an optional `calculateChangedBits`\n  // function. Warn to reserve for future use?\n  var context = {\n    $$typeof: REACT_CONTEXT_TYPE,\n    // As a workaround to support multiple concurrent renderers, we categorize\n    // some renderers as primary and others as secondary. We only expect\n    // there to be two concurrent renderers at most: React Native (primary) and\n    // Fabric (secondary); React DOM (primary) and React ART (secondary).\n    // Secondary renderers store their context values on separate fields.\n    _currentValue: defaultValue,\n    _currentValue2: defaultValue,\n    // Used to track how many concurrent renderers this context currently\n    // supports within in a single renderer. Such as parallel server rendering.\n    _threadCount: 0,\n    // These are circular\n    Provider: null,\n    Consumer: null,\n    // Add these to use same hidden class in VM as ServerContext\n    _defaultValue: null,\n    _globalName: null\n  };\n  context.Provider = {\n    $$typeof: REACT_PROVIDER_TYPE,\n    _context: context\n  };\n  var hasWarnedAboutUsingNestedContextConsumers = false;\n  var hasWarnedAboutUsingConsumerProvider = false;\n  var hasWarnedAboutDisplayNameOnConsumer = false;\n\n  {\n    // A separate object, but proxies back to the original context object for\n    // backwards compatibility. It has a different $$typeof, so we can properly\n    // warn for the incorrect usage of Context as a Consumer.\n    var Consumer = {\n      $$typeof: REACT_CONTEXT_TYPE,\n      _context: context\n    }; // $FlowFixMe: Flow complains about not setting a value, which is intentional here\n\n    Object.defineProperties(Consumer, {\n      Provider: {\n        get: function () {\n          if (!hasWarnedAboutUsingConsumerProvider) {\n            hasWarnedAboutUsingConsumerProvider = true;\n\n            error('Rendering <Context.Consumer.Provider> is not supported and will be removed in ' + 'a future major release. Did you mean to render <Context.Provider> instead?');\n          }\n\n          return context.Provider;\n        },\n        set: function (_Provider) {\n          context.Provider = _Provider;\n        }\n      },\n      _currentValue: {\n        get: function () {\n          return context._currentValue;\n        },\n        set: function (_currentValue) {\n          context._currentValue = _currentValue;\n        }\n      },\n      _currentValue2: {\n        get: function () {\n          return context._currentValue2;\n        },\n        set: function (_currentValue2) {\n          context._currentValue2 = _currentValue2;\n        }\n      },\n      _threadCount: {\n        get: function () {\n          return context._threadCount;\n        },\n        set: function (_threadCount) {\n          context._threadCount = _threadCount;\n        }\n      },\n      Consumer: {\n        get: function () {\n          if (!hasWarnedAboutUsingNestedContextConsumers) {\n            hasWarnedAboutUsingNestedContextConsumers = true;\n\n            error('Rendering <Context.Consumer.Consumer> is not supported and will be removed in ' + 'a future major release. Did you mean to render <Context.Consumer> instead?');\n          }\n\n          return context.Consumer;\n        }\n      },\n      displayName: {\n        get: function () {\n          return context.displayName;\n        },\n        set: function (displayName) {\n          if (!hasWarnedAboutDisplayNameOnConsumer) {\n            warn('Setting `displayName` on Context.Consumer has no effect. ' + \"You should set it directly on the context with Context.displayName = '%s'.\", displayName);\n\n            hasWarnedAboutDisplayNameOnConsumer = true;\n          }\n        }\n      }\n    }); // $FlowFixMe: Flow complains about missing properties because it doesn't understand defineProperty\n\n    context.Consumer = Consumer;\n  }\n\n  {\n    context._currentRenderer = null;\n    context._currentRenderer2 = null;\n  }\n\n  return context;\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/useContext/18.3.1",
+      "surface": "react",
+      "export_name": "useContext",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "73b755dfdc423057316899cc00053c142b605d2b1fa68e02c204a1004ad7f837",
+      "selected_declarations": 8,
+      "selected_bytes": 3221,
+      "runtime_implementation": "function useContext(Context) {\n  var dispatcher = resolveDispatcher();\n\n  {\n    // TODO: add a more generic warning for invalid values.\n    if (Context._context !== undefined) {\n      var realContext = Context._context; // Don't deduplicate because this legitimately causes bugs\n      // and nobody should be using this in existing code.\n\n      if (realContext.Consumer === Context) {\n        error('Calling useContext(Context.Consumer) is not supported, may cause bugs, and will be ' + 'removed in a future major release. Did you mean to call useContext(Context) instead?');\n      } else if (realContext.Provider === Context) {\n        error('Calling useContext(Context.Provider) is not supported. ' + 'Did you mean to call useContext(Context) instead?');\n      }\n    }\n  }\n\n  return dispatcher.useContext(Context);\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/createRef/18.3.1",
+      "surface": "react",
+      "export_name": "createRef",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "ab78ef926923fedcee6ccd045316a583ca38c4b9244a6b75ce9381bbd518851f",
+      "selected_declarations": 1,
+      "selected_bytes": 125,
+      "runtime_implementation": "function createRef() {\n  var refObject = {\n    current: null\n  };\n\n  {\n    Object.seal(refObject);\n  }\n\n  return refObject;\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/useRef/18.3.1",
+      "surface": "react",
+      "export_name": "useRef",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "6184f56216d4149f98b6175467b65355f3f99f1f4a7d530a0700f1b26e8aa81a",
+      "selected_declarations": 8,
+      "selected_bytes": 2518,
+      "runtime_implementation": "function useRef(initialValue) {\n  var dispatcher = resolveDispatcher();\n  return dispatcher.useRef(initialValue);\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/forwardRef/18.3.1",
+      "surface": "react",
+      "export_name": "forwardRef",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "cbb03566886031d6a7d7a8bed1bdd6570beda254a577cfba0788d7b4a7333c77",
+      "selected_declarations": 9,
+      "selected_bytes": 3609,
+      "runtime_implementation": "function forwardRef(render) {\n  {\n    if (render != null && render.$$typeof === REACT_MEMO_TYPE) {\n      error('forwardRef requires a render function but received a `memo` ' + 'component. Instead of forwardRef(memo(...)), use ' + 'memo(forwardRef(...)).');\n    } else if (typeof render !== 'function') {\n      error('forwardRef requires a render function but was given %s.', render === null ? 'null' : typeof render);\n    } else {\n      if (render.length !== 0 && render.length !== 2) {\n        error('forwardRef render functions accept exactly two parameters: props and ref. %s', render.length === 1 ? 'Did you forget to use the ref parameter?' : 'Any additional parameter will be undefined.');\n      }\n    }\n\n    if (render != null) {\n      if (render.defaultProps != null || render.propTypes != null) {\n        error('forwardRef render functions do not support propTypes or defaultProps. ' + 'Did you accidentally pass a React component?');\n      }\n    }\n  }\n\n  var elementType = {\n    $$typeof: REACT_FORWARD_REF_TYPE,\n    render: render\n  };\n\n  {\n    var ownName;\n    Object.defineProperty(elementType, 'displayName', {\n      enumerable: false,\n      configurable: true,\n      get: function () {\n        return ownName;\n      },\n      set: function (name) {\n        ownName = name; // The inner component shouldn't inherit this display name in most cases,\n        // because the component may be used elsewhere.\n        // But it's nice for anonymous functions to inherit the name,\n        // so that our component-stack generation logic will display their frames.\n        // An anonymous function generally suggests a pattern like:\n        //   React.forwardRef((props, ref) => {...});\n        // This kind of inner function is not used elsewhere so the side effect is okay.\n\n        if (!render.name && !render.displayName) {\n          render.displayName = name;\n        }\n      }\n    });\n  }\n\n  return elementType;\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/memo/18.3.1",
+      "surface": "react",
+      "export_name": "memo",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "eaf8efc4073700430430b4f3682a9ca2cfa60c3a4ba7c0da416cdbcfbb473654",
+      "selected_declarations": 25,
+      "selected_bytes": 4639,
+      "runtime_implementation": "function memo(type, compare) {\n  {\n    if (!isValidElementType(type)) {\n      error('memo: The first argument must be a component. Instead ' + 'received: %s', type === null ? 'null' : typeof type);\n    }\n  }\n\n  var elementType = {\n    $$typeof: REACT_MEMO_TYPE,\n    type: type,\n    compare: compare === undefined ? null : compare\n  };\n\n  {\n    var ownName;\n    Object.defineProperty(elementType, 'displayName', {\n      enumerable: false,\n      configurable: true,\n      get: function () {\n        return ownName;\n      },\n      set: function (name) {\n        ownName = name; // The inner component shouldn't inherit this display name in most cases,\n        // because the component may be used elsewhere.\n        // But it's nice for anonymous functions to inherit the name,\n        // so that our component-stack generation logic will display their frames.\n        // An anonymous function generally suggests a pattern like:\n        //   React.memo((props) => {...});\n        // This kind of inner function is not used elsewhere so the side effect is okay.\n\n        if (!type.name && !type.displayName) {\n          type.displayName = name;\n        }\n      }\n    });\n  }\n\n  return elementType;\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/Component/18.3.1",
+      "surface": "react",
+      "export_name": "Component",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "53bf95d7afbab7ef80258e1bdb4d1cdb555c1269b3b40d401ed74e0dc9c91c04",
+      "selected_declarations": 11,
+      "selected_bytes": 5252,
+      "runtime_implementation": "function Component(props, context, updater) {\n  this.props = props;\n  this.context = context; // If a component has string refs, we will assign a different object later.\n\n  this.refs = emptyObject; // We initialize the default updater but the real one gets injected by the\n  // renderer.\n\n  this.updater = updater || ReactNoopUpdateQueue;\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/PureComponent/18.3.1",
+      "surface": "react",
+      "export_name": "PureComponent",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "8674e2255f07b512d226e6251a3a75ce0c76deb731f60b88c13c1cb8cc7a1a43",
+      "selected_declarations": 11,
+      "selected_bytes": 5165,
+      "runtime_implementation": "function PureComponent(props, context, updater) {\n  this.props = props;\n  this.context = context; // If a component has string refs, we will assign a different object later.\n\n  this.refs = emptyObject;\n  this.updater = updater || ReactNoopUpdateQueue;\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/startTransition/18.3.1",
+      "surface": "react",
+      "export_name": "startTransition",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "a705966e087cacc2a5d9b7f8b20cf80beb004aa478de111cd53a3aeb6bbc4c32",
+      "selected_declarations": 7,
+      "selected_bytes": 2449,
+      "runtime_implementation": "function startTransition(scope, options) {\n  var prevTransition = ReactCurrentBatchConfig.transition;\n  ReactCurrentBatchConfig.transition = {};\n  var currentTransition = ReactCurrentBatchConfig.transition;\n\n  {\n    ReactCurrentBatchConfig.transition._updatedFibers = new Set();\n  }\n\n  try {\n    scope();\n  } finally {\n    ReactCurrentBatchConfig.transition = prevTransition;\n\n    {\n      if (prevTransition === null && currentTransition._updatedFibers) {\n        var updatedFibersCount = currentTransition._updatedFibers.size;\n\n        if (updatedFibersCount > 10) {\n          warn('Detected a large number of updates inside startTransition. ' + 'If this is due to a subscription please re-write it to use React provided hooks. ' + 'Otherwise concurrent mode guarantees are off the table.');\n        }\n\n        currentTransition._updatedFibers.clear();\n      }\n    }\n  }\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react-dom/flushSync/18.3.1",
+      "surface": "react-dom",
+      "export_name": "flushSync",
+      "source_status": "frontier",
+      "source_reason": "dependency_requires_export_slice:./cjs/react.development.js;declaration_limit",
+      "installed_packages": [
+        {
+          "name": "react-dom",
+          "version": "18.3.1"
+        },
+        {
+          "name": "react",
+          "version": "18.3.1"
+        },
+        {
+          "name": "scheduler",
+          "version": "0.23.2"
+        }
+      ],
+      "implementation_sha256": "6df17deca6deda5eb37417145dc6fd8dd5c9697819724f7966b9463bf072844f",
+      "selected_declarations": 102,
+      "selected_bytes": 26756,
+      "runtime_implementation": "function flushSync$1(fn) {\n  {\n    if (isAlreadyRendering()) {\n      error('flushSync was called from inside a lifecycle method. React cannot ' + 'flush when React is already rendering. Consider moving this call to ' + 'a scheduler task or micro task.');\n    }\n  }\n\n  return flushSync(fn);\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react-dom/unstable_batchedUpdates/18.3.1",
+      "surface": "react-dom",
+      "export_name": "unstable_batchedUpdates",
+      "source_status": "frontier",
+      "source_reason": "dependency_requires_export_slice:./cjs/react.development.js;unresolved_binding:__REACT_DEVTOOLS_GLOBAL_HOOK__;unresolved_binding:performance;unresolved_binding:setImmediate;unresolved_binding:navigator;unresolved_binding:MessageChannel",
+      "installed_packages": [
+        {
+          "name": "react-dom",
+          "version": "18.3.1"
+        },
+        {
+          "name": "react",
+          "version": "18.3.1"
+        },
+        {
+          "name": "scheduler",
+          "version": "0.23.2"
+        }
+      ],
+      "implementation_sha256": "19039ed4fc7c7e2b8499acb6dd428e7dd7ee9cdbf865a38f7838984edd7dc957",
+      "selected_declarations": 28,
+      "selected_bytes": 20835,
+      "runtime_implementation": "function batchedUpdates$1(fn, a) {\n  var prevExecutionContext = executionContext;\n  executionContext |= BatchedContext;\n\n  try {\n    return fn(a);\n  } finally {\n    executionContext = prevExecutionContext; // If there were legacy sync updates, flush them at the end of the outer\n    // most batchedUpdates-like method.\n\n    if (executionContext === NoContext && // Treat `act` as if it's inside `batchedUpdates`, even in legacy mode.\n    !( ReactCurrentActQueue$1.isBatchingLegacy)) {\n      resetRenderTimer();\n      flushSyncCallbacksOnlyInLegacyMode();\n    }\n  }\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/useDebugValue/18.3.1",
+      "surface": "react",
+      "export_name": "useDebugValue",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "21764316fb5302b5dac7379e400baa3343768d995d5ff93a69f4bd3ada4d0907",
+      "selected_declarations": 8,
+      "selected_bytes": 2556,
+      "runtime_implementation": "function useDebugValue(value, formatterFn) {\n  {\n    var dispatcher = resolveDispatcher();\n    return dispatcher.useDebugValue(value, formatterFn);\n  }\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/version/18.3.1",
+      "surface": "react",
+      "export_name": "version",
+      "source_status": "frontier",
+      "source_reason": "export_not_callable",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/Children/18.3.1",
+      "surface": "react",
+      "export_name": "Children",
+      "source_status": "frontier",
+      "source_reason": "export_not_callable",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/Fragment/18.3.1",
+      "surface": "react",
+      "export_name": "Fragment",
+      "source_status": "frontier",
+      "source_reason": "export_not_callable",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/Profiler/18.3.1",
+      "surface": "react",
+      "export_name": "Profiler",
+      "source_status": "frontier",
+      "source_reason": "export_not_callable",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/StrictMode/18.3.1",
+      "surface": "react",
+      "export_name": "StrictMode",
+      "source_status": "frontier",
+      "source_reason": "export_not_callable",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/Suspense/18.3.1",
+      "surface": "react",
+      "export_name": "Suspense",
+      "source_status": "frontier",
+      "source_reason": "export_not_callable",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/act/18.3.1",
+      "surface": "react",
+      "export_name": "act",
+      "source_status": "frontier",
+      "source_reason": "unresolved_binding:MessageChannel",
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "5240068981c423a11c0be9ad948dcbb3a5b68aa27b38356698f37197a838f252",
+      "selected_declarations": 17,
+      "selected_bytes": 9462,
+      "runtime_implementation": "function act(callback) {\n  {\n    // `act` calls can be nested, so we track the depth. This represents the\n    // number of `act` scopes on the stack.\n    var prevActScopeDepth = actScopeDepth;\n    actScopeDepth++;\n\n    if (ReactCurrentActQueue.current === null) {\n      // This is the outermost `act` scope. Initialize the queue. The reconciler\n      // will detect the queue and use it instead of Scheduler.\n      ReactCurrentActQueue.current = [];\n    }\n\n    var prevIsBatchingLegacy = ReactCurrentActQueue.isBatchingLegacy;\n    var result;\n\n    try {\n      // Used to reproduce behavior of `batchedUpdates` in legacy mode. Only\n      // set to `true` while the given callback is executed, not for updates\n      // triggered during an async event, because this is how the legacy\n      // implementation of `act` behaved.\n      ReactCurrentActQueue.isBatchingLegacy = true;\n      result = callback(); // Replicate behavior of original `act` implementation in legacy mode,\n      // which flushed updates immediately after the scope function exits, even\n      // if it's an async function.\n\n      if (!prevIsBatchingLegacy && ReactCurrentActQueue.didScheduleLegacyUpdate) {\n        var queue = ReactCurrentActQueue.current;\n\n        if (queue !== null) {\n          ReactCurrentActQueue.didScheduleLegacyUpdate = false;\n          flushActQueue(queue);\n        }\n      }\n    } catch (error) {\n      popActScope(prevActScopeDepth);\n      throw error;\n    } finally {\n      ReactCurrentActQueue.isBatchingLegacy = prevIsBatchingLegacy;\n    }\n\n    if (result !== null && typeof result === 'object' && typeof result.then === 'function') {\n      var thenableResult = result; // The callback is an async function (i.e. returned a promise). Wait\n      // for it to resolve before exiting the current scope.\n\n      var wasAwaited = false;\n      var thenable = {\n        then: function (resolve, reject) {\n          wasAwaited = true;\n          thenableResult.then(function (returnValue) {\n            popActScope(prevActScopeDepth);\n\n            if (actScopeDepth === 0) {\n              // We've exited the outermost act scope. Recursively flush the\n              // queue until there's no remaining work.\n              recursivelyFlushAsyncActWork(returnValue, resolve, reject);\n            } else {\n              resolve(returnValue);\n            }\n          }, function (error) {\n            // The callback threw an error.\n            popActScope(prevActScopeDepth);\n            reject(error);\n          });\n        }\n      };\n\n      {\n        if (!didWarnNoAwaitAct && typeof Promise !== 'undefined') {\n          // eslint-disable-next-line no-undef\n          Promise.resolve().then(function () {}).then(function () {\n            if (!wasAwaited) {\n              didWarnNoAwaitAct = true;\n\n              error('You called act(async () => ...) without await. ' + 'This could lead to unexpected testing behaviour, ' + 'interleaving multiple act calls and mixing their ' + 'scopes. ' + 'You should - await act(async () => ...);');\n            }\n          });\n        }\n      }\n\n      return thenable;\n    } else {\n      var returnValue = result; // The callback is not an async function. Exit the current scope\n      // immediately, without awaiting.\n\n      popActScope(prevActScopeDepth);\n\n      if (actScopeDepth === 0) {\n        // Exiting the outermost act scope. Flush the queue.\n        var _queue = ReactCurrentActQueue.current;\n\n        if (_queue !== null) {\n          flushActQueue(_queue);\n          ReactCurrentActQueue.current = null;\n        } // Return a thenable. If the user awaits it, we'll flush again in\n        // case additional work was scheduled by a microtask.\n\n\n        var _thenable = {\n          then: function (resolve, reject) {\n            // Confirm we haven't re-entered another `act` scope, in case\n            // the user does something weird like await the thenable\n            // multiple times.\n            if (ReactCurrentActQueue.current === null) {\n              // Recursively flush the queue until there's no remaining work.\n              ReactCurrentActQueue.current = [];\n              recursivelyFlushAsyncActWork(returnValue, resolve, reject);\n            } else {\n              resolve(returnValue);\n            }\n          }\n        };\n        return _thenable;\n      } else {\n        // Since we're inside a nested `act` scope, the returned thenable\n        // immediately resolves. The outer scope will flush the queue.\n        var _thenable2 = {\n          then: function (resolve, reject) {\n            resolve(returnValue);\n          }\n        };\n        return _thenable2;\n      }\n    }\n  }\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/cloneElement/18.3.1",
+      "surface": "react",
+      "export_name": "cloneElement",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "0f74815bb7a9fddee2b651ce0544336a1f3787d79efb0558de692656b0f88088",
+      "selected_declarations": 73,
+      "selected_bytes": 29058,
+      "runtime_implementation": "function cloneElementWithValidation(element, props, children) {\n  var newElement = cloneElement.apply(this, arguments);\n\n  for (var i = 2; i < arguments.length; i++) {\n    validateChildKeys(arguments[i], newElement.type);\n  }\n\n  validatePropTypes(newElement);\n  return newElement;\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/createElement/18.3.1",
+      "surface": "react",
+      "export_name": "createElement",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "9365629092355fccafd4d55b497de6a1e2441e39f52d07bccac55b67755c7557",
+      "selected_declarations": 90,
+      "selected_bytes": 35575,
+      "runtime_implementation": "function createElementWithValidation(type, props, children) {\n  var validType = isValidElementType(type); // We warn in this case but don't throw. We expect the element creation to\n  // succeed and there will likely be errors in render.\n\n  if (!validType) {\n    var info = '';\n\n    if (type === undefined || typeof type === 'object' && type !== null && Object.keys(type).length === 0) {\n      info += ' You likely forgot to export your component from the file ' + \"it's defined in, or you might have mixed up default and named imports.\";\n    }\n\n    var sourceInfo = getSourceInfoErrorAddendumForProps(props);\n\n    if (sourceInfo) {\n      info += sourceInfo;\n    } else {\n      info += getDeclarationErrorAddendum();\n    }\n\n    var typeString;\n\n    if (type === null) {\n      typeString = 'null';\n    } else if (isArray(type)) {\n      typeString = 'array';\n    } else if (type !== undefined && type.$$typeof === REACT_ELEMENT_TYPE) {\n      typeString = \"<\" + (getComponentNameFromType(type.type) || 'Unknown') + \" />\";\n      info = ' Did you accidentally export a JSX literal instead of a component?';\n    } else {\n      typeString = typeof type;\n    }\n\n    {\n      error('React.createElement: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', typeString, info);\n    }\n  }\n\n  var element = createElement.apply(this, arguments); // The result can be nullish if a mock or a custom function is used.\n  // TODO: Drop this when these are no longer allowed as the type argument.\n\n  if (element == null) {\n    return element;\n  } // Skip key warning if the type isn't valid since our key validation logic\n  // doesn't expect a non-string/function type and can throw confusing errors.\n  // We don't want exception behavior to differ between dev and prod.\n  // (Rendering will throw with a helpful message and as soon as the type is\n  // fixed, the key warnings will appear.)\n\n\n  if (validType) {\n    for (var i = 2; i < arguments.length; i++) {\n      validateChildKeys(arguments[i], type);\n    }\n  }\n\n  if (type === REACT_FRAGMENT_TYPE) {\n    validateFragmentProps(element);\n  } else {\n    validatePropTypes(element);\n  }\n\n  return element;\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/createFactory/18.3.1",
+      "surface": "react",
+      "export_name": "createFactory",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "d9a1b87f26d9a39d5aefdc19e510fcd87283e22a686340c83f5d97716c587b3d",
+      "selected_declarations": 93,
+      "selected_bytes": 36699,
+      "runtime_implementation": "function createFactoryWithValidation(type) {\n  var validatedFactory = createElementWithValidation.bind(null, type);\n  validatedFactory.type = type;\n\n  {\n    if (!didWarnAboutDeprecatedCreateFactory) {\n      didWarnAboutDeprecatedCreateFactory = true;\n\n      warn('React.createFactory() is deprecated and will be removed in ' + 'a future major release. Consider using JSX ' + 'or use React.createElement() directly instead.');\n    } // Legacy hook: remove it\n\n\n    Object.defineProperty(validatedFactory, 'type', {\n      enumerable: false,\n      get: function () {\n        warn('Factory.type is deprecated. Access the class directly ' + 'before passing it to createFactory.');\n\n        Object.defineProperty(this, 'type', {\n          value: type\n        });\n        return type;\n      }\n    });\n  }\n\n  return validatedFactory;\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/isValidElement/18.3.1",
+      "surface": "react",
+      "export_name": "isValidElement",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "58cfeb860877107e77e6dc7386678dcb178b7015d73c95915194c5d2e1b8e914",
+      "selected_declarations": 2,
+      "selected_bytes": 181,
+      "runtime_implementation": "function isValidElement(object) {\n  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/lazy/18.3.1",
+      "surface": "react",
+      "export_name": "lazy",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "a3b651ab83e4aebbffea8031ec005bbf3387182a3d067756975e77219bbac4f9",
+      "selected_declarations": 13,
+      "selected_bytes": 5571,
+      "runtime_implementation": "function lazy(ctor) {\n  var payload = {\n    // We use these fields to store the result.\n    _status: Uninitialized,\n    _result: ctor\n  };\n  var lazyType = {\n    $$typeof: REACT_LAZY_TYPE,\n    _payload: payload,\n    _init: lazyInitializer\n  };\n\n  {\n    // In production, this would just set it on the object.\n    var defaultProps;\n    var propTypes; // $FlowFixMe\n\n    Object.defineProperties(lazyType, {\n      defaultProps: {\n        configurable: true,\n        get: function () {\n          return defaultProps;\n        },\n        set: function (newDefaultProps) {\n          error('React.lazy(...): It is not supported to assign `defaultProps` to ' + 'a lazy component import. Either specify them where the component ' + 'is defined, or create a wrapping component around it.');\n\n          defaultProps = newDefaultProps; // Match production behavior more closely:\n          // $FlowFixMe\n\n          Object.defineProperty(lazyType, 'defaultProps', {\n            enumerable: true\n          });\n        }\n      },\n      propTypes: {\n        configurable: true,\n        get: function () {\n          return propTypes;\n        },\n        set: function (newPropTypes) {\n          error('React.lazy(...): It is not supported to assign `propTypes` to ' + 'a lazy component import. Either specify them where the component ' + 'is defined, or create a wrapping component around it.');\n\n          propTypes = newPropTypes; // Match production behavior more closely:\n          // $FlowFixMe\n\n          Object.defineProperty(lazyType, 'propTypes', {\n            enumerable: true\n          });\n        }\n      }\n    });\n  }\n\n  return lazyType;\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/useEffect/18.3.1",
+      "surface": "react",
+      "export_name": "useEffect",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "735dd91efddc80cd53ae865a30c43f6eaa6543966de0f0b43d349cde5fb77de1",
+      "selected_declarations": 8,
+      "selected_bytes": 2524,
+      "runtime_implementation": "function useEffect(create, deps) {\n  var dispatcher = resolveDispatcher();\n  return dispatcher.useEffect(create, deps);\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/useId/18.3.1",
+      "surface": "react",
+      "export_name": "useId",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "67d0c7b7b1eb49558d5102829d49c2dffbe0c9c27bd4cda31739997c9e1df0f1",
+      "selected_declarations": 8,
+      "selected_bytes": 2492,
+      "runtime_implementation": "function useId() {\n  var dispatcher = resolveDispatcher();\n  return dispatcher.useId();\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/useImperativeHandle/18.3.1",
+      "surface": "react",
+      "export_name": "useImperativeHandle",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "cbfaf90d26c58c0518b8f76903ae29b018739d326363884032ed15db791e64de",
+      "selected_declarations": 8,
+      "selected_bytes": 2554,
+      "runtime_implementation": "function useImperativeHandle(ref, create, deps) {\n  var dispatcher = resolveDispatcher();\n  return dispatcher.useImperativeHandle(ref, create, deps);\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/useInsertionEffect/18.3.1",
+      "surface": "react",
+      "export_name": "useInsertionEffect",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "7b9e9d973e4e3118ca4d4673a774221ee7bfa21d272068eb23320a9ae2c6f6c4",
+      "selected_declarations": 8,
+      "selected_bytes": 2542,
+      "runtime_implementation": "function useInsertionEffect(create, deps) {\n  var dispatcher = resolveDispatcher();\n  return dispatcher.useInsertionEffect(create, deps);\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/useLayoutEffect/18.3.1",
+      "surface": "react",
+      "export_name": "useLayoutEffect",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "3ca18b6169746c4306ce8737d136c3219d08091adb140e6e1a91d9a4431e809e",
+      "selected_declarations": 8,
+      "selected_bytes": 2536,
+      "runtime_implementation": "function useLayoutEffect(create, deps) {\n  var dispatcher = resolveDispatcher();\n  return dispatcher.useLayoutEffect(create, deps);\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/useSyncExternalStore/18.3.1",
+      "surface": "react",
+      "export_name": "useSyncExternalStore",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "f16c13d4403259f052f38dbfff7d74b004dfa1a73ec1849db98e23044d1b95f3",
+      "selected_declarations": 8,
+      "selected_bytes": 2604,
+      "runtime_implementation": "function useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot) {\n  var dispatcher = resolveDispatcher();\n  return dispatcher.useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react/unstable_act/18.3.1",
+      "surface": "react",
+      "export_name": "unstable_act",
+      "source_status": "frontier",
+      "source_reason": "unresolved_binding:MessageChannel",
+      "installed_packages": [
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "aa4d7862d9b8f74c227d4006f0ac54a9e44db8207a42031453ed644f8c5d16c3",
+      "selected_declarations": 17,
+      "selected_bytes": 9462,
+      "runtime_implementation": "function act(callback) {\n  {\n    // `act` calls can be nested, so we track the depth. This represents the\n    // number of `act` scopes on the stack.\n    var prevActScopeDepth = actScopeDepth;\n    actScopeDepth++;\n\n    if (ReactCurrentActQueue.current === null) {\n      // This is the outermost `act` scope. Initialize the queue. The reconciler\n      // will detect the queue and use it instead of Scheduler.\n      ReactCurrentActQueue.current = [];\n    }\n\n    var prevIsBatchingLegacy = ReactCurrentActQueue.isBatchingLegacy;\n    var result;\n\n    try {\n      // Used to reproduce behavior of `batchedUpdates` in legacy mode. Only\n      // set to `true` while the given callback is executed, not for updates\n      // triggered during an async event, because this is how the legacy\n      // implementation of `act` behaved.\n      ReactCurrentActQueue.isBatchingLegacy = true;\n      result = callback(); // Replicate behavior of original `act` implementation in legacy mode,\n      // which flushed updates immediately after the scope function exits, even\n      // if it's an async function.\n\n      if (!prevIsBatchingLegacy && ReactCurrentActQueue.didScheduleLegacyUpdate) {\n        var queue = ReactCurrentActQueue.current;\n\n        if (queue !== null) {\n          ReactCurrentActQueue.didScheduleLegacyUpdate = false;\n          flushActQueue(queue);\n        }\n      }\n    } catch (error) {\n      popActScope(prevActScopeDepth);\n      throw error;\n    } finally {\n      ReactCurrentActQueue.isBatchingLegacy = prevIsBatchingLegacy;\n    }\n\n    if (result !== null && typeof result === 'object' && typeof result.then === 'function') {\n      var thenableResult = result; // The callback is an async function (i.e. returned a promise). Wait\n      // for it to resolve before exiting the current scope.\n\n      var wasAwaited = false;\n      var thenable = {\n        then: function (resolve, reject) {\n          wasAwaited = true;\n          thenableResult.then(function (returnValue) {\n            popActScope(prevActScopeDepth);\n\n            if (actScopeDepth === 0) {\n              // We've exited the outermost act scope. Recursively flush the\n              // queue until there's no remaining work.\n              recursivelyFlushAsyncActWork(returnValue, resolve, reject);\n            } else {\n              resolve(returnValue);\n            }\n          }, function (error) {\n            // The callback threw an error.\n            popActScope(prevActScopeDepth);\n            reject(error);\n          });\n        }\n      };\n\n      {\n        if (!didWarnNoAwaitAct && typeof Promise !== 'undefined') {\n          // eslint-disable-next-line no-undef\n          Promise.resolve().then(function () {}).then(function () {\n            if (!wasAwaited) {\n              didWarnNoAwaitAct = true;\n\n              error('You called act(async () => ...) without await. ' + 'This could lead to unexpected testing behaviour, ' + 'interleaving multiple act calls and mixing their ' + 'scopes. ' + 'You should - await act(async () => ...);');\n            }\n          });\n        }\n      }\n\n      return thenable;\n    } else {\n      var returnValue = result; // The callback is not an async function. Exit the current scope\n      // immediately, without awaiting.\n\n      popActScope(prevActScopeDepth);\n\n      if (actScopeDepth === 0) {\n        // Exiting the outermost act scope. Flush the queue.\n        var _queue = ReactCurrentActQueue.current;\n\n        if (_queue !== null) {\n          flushActQueue(_queue);\n          ReactCurrentActQueue.current = null;\n        } // Return a thenable. If the user awaits it, we'll flush again in\n        // case additional work was scheduled by a microtask.\n\n\n        var _thenable = {\n          then: function (resolve, reject) {\n            // Confirm we haven't re-entered another `act` scope, in case\n            // the user does something weird like await the thenable\n            // multiple times.\n            if (ReactCurrentActQueue.current === null) {\n              // Recursively flush the queue until there's no remaining work.\n              ReactCurrentActQueue.current = [];\n              recursivelyFlushAsyncActWork(returnValue, resolve, reject);\n            } else {\n              resolve(returnValue);\n            }\n          }\n        };\n        return _thenable;\n      } else {\n        // Since we're inside a nested `act` scope, the returned thenable\n        // immediately resolves. The outer scope will flush the queue.\n        var _thenable2 = {\n          then: function (resolve, reject) {\n            resolve(returnValue);\n          }\n        };\n        return _thenable2;\n      }\n    }\n  }\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react-dom/version/18.3.1",
+      "surface": "react-dom",
+      "export_name": "version",
+      "source_status": "frontier",
+      "source_reason": "export_not_callable",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react-dom/createPortal/18.3.1",
+      "surface": "react-dom",
+      "export_name": "createPortal",
+      "source_status": "frontier",
+      "source_reason": "dependency_requires_export_slice:./cjs/react.development.js",
+      "installed_packages": [
+        {
+          "name": "react-dom",
+          "version": "18.3.1"
+        },
+        {
+          "name": "react",
+          "version": "18.3.1"
+        },
+        {
+          "name": "scheduler",
+          "version": "0.23.2"
+        }
+      ],
+      "implementation_sha256": "39b34be5518e68bdfff55c8f08450c8fb473261b16c8060baefa5744ab4c8cd9",
+      "selected_declarations": 18,
+      "selected_bytes": 5122,
+      "runtime_implementation": "function createPortal$1(children, container) {\n  var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;\n\n  if (!isValidContainer(container)) {\n    throw new Error('Target container is not a DOM element.');\n  } // TODO: pass ReactDOM portal implementation as third argument\n  // $FlowFixMe The Flow type is opaque but there's no way to actually create it.\n\n\n  return createPortal(children, container, null, key);\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react-dom/findDOMNode/18.3.1",
+      "surface": "react-dom",
+      "export_name": "findDOMNode",
+      "source_status": "frontier",
+      "source_reason": "dependency_requires_export_slice:./cjs/react.development.js",
+      "installed_packages": [
+        {
+          "name": "react-dom",
+          "version": "18.3.1"
+        },
+        {
+          "name": "react",
+          "version": "18.3.1"
+        },
+        {
+          "name": "scheduler",
+          "version": "0.23.2"
+        }
+      ],
+      "implementation_sha256": "4fab8950c40a401b99e7d66d3ec1251d16585ec4785f76ccacc3a0acee3baf18",
+      "selected_declarations": 91,
+      "selected_bytes": 26882,
+      "runtime_implementation": "function findDOMNode(componentOrElement) {\n  {\n    if (!didWarnAboutFindDOMNode) {\n      didWarnAboutFindDOMNode = true;\n\n      error('findDOMNode is deprecated and will be removed in the next major ' + 'release. Instead, add a ref directly to the element you want ' + 'to reference. Learn more about using refs safely here: ' + 'https://reactjs.org/link/strict-mode-find-node');\n    }\n\n    var owner = ReactCurrentOwner$3.current;\n\n    if (owner !== null && owner.stateNode !== null) {\n      var warnedAboutRefsInRender = owner.stateNode._warnedAboutRefsInRender;\n\n      if (!warnedAboutRefsInRender) {\n        error('%s is accessing findDOMNode inside its render(). ' + 'render() should be a pure function of props and state. It should ' + 'never access something that requires stale data from the previous ' + 'render, such as refs. Move this logic to componentDidMount and ' + 'componentDidUpdate instead.', getComponentNameFromType(owner.type) || 'A component');\n      }\n\n      owner.stateNode._warnedAboutRefsInRender = true;\n    }\n  }\n\n  if (componentOrElement == null) {\n    return null;\n  }\n\n  if (componentOrElement.nodeType === ELEMENT_NODE) {\n    return componentOrElement;\n  }\n\n  {\n    return findHostInstanceWithWarning(componentOrElement, 'findDOMNode');\n  }\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react-dom/hydrate/18.3.1",
+      "surface": "react-dom",
+      "export_name": "hydrate",
+      "source_status": "frontier",
+      "source_reason": "declaration_limit",
+      "installed_packages": [
+        {
+          "name": "react-dom",
+          "version": "18.3.1"
+        },
+        {
+          "name": "react",
+          "version": "18.3.1"
+        },
+        {
+          "name": "scheduler",
+          "version": "0.23.2"
+        }
+      ],
+      "implementation_sha256": "cf37afbaeed8116355cee49d530b96e4cc9c3ebd264bb0f7f570b256792c99ed",
+      "selected_declarations": 111,
+      "selected_bytes": 36566,
+      "runtime_implementation": "function hydrate(element, container, callback) {\n  {\n    error('ReactDOM.hydrate is no longer supported in React 18. Use hydrateRoot ' + 'instead. Until you switch to the new API, your app will behave as ' + \"if it's running React 17. Learn \" + 'more: https://reactjs.org/link/switch-to-createroot');\n  }\n\n  if (!isValidContainerLegacy(container)) {\n    throw new Error('Target container is not a DOM element.');\n  }\n\n  {\n    var isModernRoot = isContainerMarkedAsRoot(container) && container._reactRootContainer === undefined;\n\n    if (isModernRoot) {\n      error('You are calling ReactDOM.hydrate() on a container that was previously ' + 'passed to ReactDOMClient.createRoot(). This is not supported. ' + 'Did you mean to call hydrateRoot(container, element)?');\n    }\n  } // TODO: throw or warn if we couldn't hydrate?\n\n\n  return legacyRenderSubtreeIntoContainer(null, element, container, true, callback);\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react-dom/render/18.3.1",
+      "surface": "react-dom",
+      "export_name": "render",
+      "source_status": "frontier",
+      "source_reason": "declaration_limit",
+      "installed_packages": [
+        {
+          "name": "react-dom",
+          "version": "18.3.1"
+        },
+        {
+          "name": "react",
+          "version": "18.3.1"
+        },
+        {
+          "name": "scheduler",
+          "version": "0.23.2"
+        }
+      ],
+      "implementation_sha256": "d1a42fd5f817f60d972324e57254cc711615072aeb21febfd7873faf08b0b5aa",
+      "selected_declarations": 111,
+      "selected_bytes": 36504,
+      "runtime_implementation": "function render(element, container, callback) {\n  {\n    error('ReactDOM.render is no longer supported in React 18. Use createRoot ' + 'instead. Until you switch to the new API, your app will behave as ' + \"if it's running React 17. Learn \" + 'more: https://reactjs.org/link/switch-to-createroot');\n  }\n\n  if (!isValidContainerLegacy(container)) {\n    throw new Error('Target container is not a DOM element.');\n  }\n\n  {\n    var isModernRoot = isContainerMarkedAsRoot(container) && container._reactRootContainer === undefined;\n\n    if (isModernRoot) {\n      error('You are calling ReactDOM.render() on a container that was previously ' + 'passed to ReactDOMClient.createRoot(). This is not supported. ' + 'Did you mean to call root.render(element)?');\n    }\n  }\n\n  return legacyRenderSubtreeIntoContainer(null, element, container, false, callback);\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react-dom/unmountComponentAtNode/18.3.1",
+      "surface": "react-dom",
+      "export_name": "unmountComponentAtNode",
+      "source_status": "frontier",
+      "source_reason": "declaration_limit",
+      "installed_packages": [
+        {
+          "name": "react-dom",
+          "version": "18.3.1"
+        },
+        {
+          "name": "react",
+          "version": "18.3.1"
+        },
+        {
+          "name": "scheduler",
+          "version": "0.23.2"
+        }
+      ],
+      "implementation_sha256": "2cb716bde84eff830eb41d8fc11e0b6e24a76bed9076e53c4604bca8a7bbd919",
+      "selected_declarations": 102,
+      "selected_bytes": 39741,
+      "runtime_implementation": "function unmountComponentAtNode(container) {\n  {\n    if (!didWarnAboutUnmountComponentAtNode) {\n      didWarnAboutUnmountComponentAtNode = true;\n\n      error('unmountComponentAtNode is deprecated and will be removed in the ' + 'next major release. Switch to the createRoot API. Learn ' + 'more: https://reactjs.org/link/switch-to-createroot');\n    }\n  }\n\n  if (!isValidContainerLegacy(container)) {\n    throw new Error('unmountComponentAtNode(...): Target container is not a DOM element.');\n  }\n\n  {\n    var isModernRoot = isContainerMarkedAsRoot(container) && container._reactRootContainer === undefined;\n\n    if (isModernRoot) {\n      error('You are calling ReactDOM.unmountComponentAtNode() on a container that was previously ' + 'passed to ReactDOMClient.createRoot(). This is not supported. Did you mean to call root.unmount()?');\n    }\n  }\n\n  if (container._reactRootContainer) {\n    {\n      var rootEl = getReactRootElementInContainer(container);\n      var renderedByDifferentReact = rootEl && !getInstanceFromNode(rootEl);\n\n      if (renderedByDifferentReact) {\n        error(\"unmountComponentAtNode(): The node you're attempting to unmount \" + 'was rendered by another copy of React.');\n      }\n    } // Unmount should not be batched.\n\n\n    flushSync(function () {\n      legacyRenderSubtreeIntoContainer(null, null, container, false, function () {\n        // $FlowFixMe This should probably use `delete container._reactRootContainer`\n        container._reactRootContainer = null;\n        unmarkContainerAsRoot(container);\n      });\n    }); // If you call unmountComponentAtNode twice in quick succession, you'll\n    // get `true` twice. That's probably fine?\n\n    return true;\n  } else {\n    {\n      var _rootEl = getReactRootElementInContainer(container);\n\n      var hasNonRootReactChild = !!(_rootEl && getInstanceFromNode(_rootEl)); // Check if the container itself is a React root node.\n\n      var isContainerReactRoot = container.nodeType === ELEMENT_NODE && isValidContainerLegacy(container.parentNode) && !!container.parentNode._reactRootContainer;\n\n      if (hasNonRootReactChild) {\n        error(\"unmountComponentAtNode(): The node you're attempting to unmount \" + 'was rendered by React and is not a top-level container. %s', isContainerReactRoot ? 'You may have accidentally passed in a React root node instead ' + 'of its container.' : 'Instead, have the parent component update its state and ' + 'rerender in order to remove this component.');\n      }\n    }\n\n    return false;\n  }\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react-dom/unstable_renderSubtreeIntoContainer/18.3.1",
+      "surface": "react-dom",
+      "export_name": "unstable_renderSubtreeIntoContainer",
+      "source_status": "frontier",
+      "source_reason": "declaration_limit",
+      "installed_packages": [
+        {
+          "name": "react-dom",
+          "version": "18.3.1"
+        },
+        {
+          "name": "react",
+          "version": "18.3.1"
+        },
+        {
+          "name": "scheduler",
+          "version": "0.23.2"
+        }
+      ],
+      "implementation_sha256": "e5da9b7e99f881fe99c14b1375cb6cf81b0b509177821d9a9c70b4151f43af83",
+      "selected_declarations": 111,
+      "selected_bytes": 36525,
+      "runtime_implementation": "function renderSubtreeIntoContainer(parentComponent, element, containerNode, callback) {\n  return unstable_renderSubtreeIntoContainer(parentComponent, element, containerNode, callback);\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react-dom/createRoot/18.3.1",
+      "surface": "react-dom",
+      "export_name": "createRoot",
+      "source_status": "frontier",
+      "source_reason": "unresolved_binding:reportError;dependency_requires_export_slice:./cjs/react.development.js;unresolved_binding:__REACT_DEVTOOLS_GLOBAL_HOOK__;declaration_limit",
+      "installed_packages": [
+        {
+          "name": "react-dom",
+          "version": "18.3.1"
+        },
+        {
+          "name": "react",
+          "version": "18.3.1"
+        },
+        {
+          "name": "scheduler",
+          "version": "0.23.2"
+        }
+      ],
+      "implementation_sha256": "b9313ee77613fe9512a2f60cac233df4075fd750b50f7bac1341331c2c6e28e2",
+      "selected_declarations": 103,
+      "selected_bytes": 28044,
+      "runtime_implementation": "function createRoot$1(container, options) {\n  {\n    if (!Internals.usingClientEntryPoint && !false) {\n      error('You are importing createRoot from \"react-dom\" which is not supported. ' + 'You should instead import it from \"react-dom/client\".');\n    }\n  }\n\n  return createRoot(container, options);\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react-dom/hydrateRoot/18.3.1",
+      "surface": "react-dom",
+      "export_name": "hydrateRoot",
+      "source_status": "frontier",
+      "source_reason": "unresolved_binding:reportError;declaration_limit",
+      "installed_packages": [
+        {
+          "name": "react-dom",
+          "version": "18.3.1"
+        },
+        {
+          "name": "react",
+          "version": "18.3.1"
+        },
+        {
+          "name": "scheduler",
+          "version": "0.23.2"
+        }
+      ],
+      "implementation_sha256": "331747391afac43e3e99d70b7f951b2cfac64d86bcfa3a4b50e519604831c12e",
+      "selected_declarations": 101,
+      "selected_bytes": 36871,
+      "runtime_implementation": "function hydrateRoot$1(container, initialChildren, options) {\n  {\n    if (!Internals.usingClientEntryPoint && !false) {\n      error('You are importing hydrateRoot from \"react-dom\" which is not supported. ' + 'You should instead import it from \"react-dom/client\".');\n    }\n  }\n\n  return hydrateRoot(container, initialChildren, options);\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react-dom/client/createRoot/18.3.1",
+      "surface": "react-dom/client",
+      "export_name": "createRoot",
+      "source_status": "frontier",
+      "source_reason": "unresolved_binding:__REACT_DEVTOOLS_GLOBAL_HOOK__;dependency_not_loaded:./cjs/react-dom.production.min.js;dependency_requires_export_slice:./cjs/react-dom.development.js",
+      "installed_packages": [
+        {
+          "name": "react-dom",
+          "version": "18.3.1"
+        },
+        {
+          "name": "react",
+          "version": "18.3.1"
+        },
+        {
+          "name": "scheduler",
+          "version": "0.23.2"
+        }
+      ],
+      "implementation_sha256": "d4ae39ae20c6b3b7c60ae5f9d431c37ff35ea2b7268717e2a9e58071f3f67c5d",
+      "selected_declarations": 4,
+      "selected_bytes": 1603,
+      "runtime_implementation": "function(c, o) {\n    i.usingClientEntryPoint = true;\n    try {\n      return m.createRoot(c, o);\n    } finally {\n      i.usingClientEntryPoint = false;\n    }\n  }",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react-dom/client/hydrateRoot/18.3.1",
+      "surface": "react-dom/client",
+      "export_name": "hydrateRoot",
+      "source_status": "frontier",
+      "source_reason": "unresolved_binding:__REACT_DEVTOOLS_GLOBAL_HOOK__;dependency_not_loaded:./cjs/react-dom.production.min.js;dependency_requires_export_slice:./cjs/react-dom.development.js",
+      "installed_packages": [
+        {
+          "name": "react-dom",
+          "version": "18.3.1"
+        },
+        {
+          "name": "react",
+          "version": "18.3.1"
+        },
+        {
+          "name": "scheduler",
+          "version": "0.23.2"
+        }
+      ],
+      "implementation_sha256": "aa2e186ca86fc007590d8ee149ca8cba94396a2022d975f5df65e0b5f5580216",
+      "selected_declarations": 4,
+      "selected_bytes": 1610,
+      "runtime_implementation": "function(c, h, o) {\n    i.usingClientEntryPoint = true;\n    try {\n      return m.hydrateRoot(c, h, o);\n    } finally {\n      i.usingClientEntryPoint = false;\n    }\n  }",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react-dom/server/version/18.3.1",
+      "surface": "react-dom/server",
+      "export_name": "version",
+      "source_status": "frontier",
+      "source_reason": "export_not_callable",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react-dom/server/renderToNodeStream/18.3.1",
+      "surface": "react-dom/server",
+      "export_name": "renderToNodeStream",
+      "source_status": "frontier",
+      "source_reason": "native_dependency_requires_contract:stream;declaration_limit",
+      "installed_packages": [
+        {
+          "name": "react-dom",
+          "version": "18.3.1"
+        },
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "2144be6c867a78906a0ae10a16d58062796daa8fdc2766da8ba54a001a9763ef",
+      "selected_declarations": 101,
+      "selected_bytes": 44778,
+      "runtime_implementation": "function renderToNodeStream(children, options) {\n  {\n    error('renderToNodeStream is deprecated. Use renderToPipeableStream instead.');\n  }\n\n  return renderToNodeStreamImpl(children, options);\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react-dom/server/renderToStaticMarkup/18.3.1",
+      "surface": "react-dom/server",
+      "export_name": "renderToStaticMarkup",
+      "source_status": "frontier",
+      "source_reason": "declaration_limit",
+      "installed_packages": [
+        {
+          "name": "react-dom",
+          "version": "18.3.1"
+        },
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "ff56bc7c551c78e5bb57fe026ba8cd3f0cdc2454f4e853d84fb3edd7e1c52fdc",
+      "selected_declarations": 103,
+      "selected_bytes": 47448,
+      "runtime_implementation": "function renderToStaticMarkup(children, options) {\n  return renderToStringImpl(children, options, true, 'The server used \"renderToStaticMarkup\" which does not support Suspense. If you intended to have the server wait for the suspended component please switch to \"renderToPipeableStream\" which supports Suspense on the server');\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react-dom/server/renderToStaticNodeStream/18.3.1",
+      "surface": "react-dom/server",
+      "export_name": "renderToStaticNodeStream",
+      "source_status": "frontier",
+      "source_reason": "native_dependency_requires_contract:stream;declaration_limit",
+      "installed_packages": [
+        {
+          "name": "react-dom",
+          "version": "18.3.1"
+        },
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "87d07754efbb6e213c4c1ebeab9a463e324f563df417684626d7508571b4ee18",
+      "selected_declarations": 101,
+      "selected_bytes": 44901,
+      "runtime_implementation": "function renderToStaticNodeStream(children, options) {\n  {\n    error('ReactDOMServer.renderToStaticNodeStream() is deprecated.' + ' Use ReactDOMServer.renderToPipeableStream() and wait to `pipe` until the `onAllReady`' + ' callback has been called instead.');\n  }\n\n  return renderToNodeStreamImpl(children, options);\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react-dom/server/renderToString/18.3.1",
+      "surface": "react-dom/server",
+      "export_name": "renderToString",
+      "source_status": "frontier",
+      "source_reason": "declaration_limit",
+      "installed_packages": [
+        {
+          "name": "react-dom",
+          "version": "18.3.1"
+        },
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "1b9202b00c2741ba31ae45455f6e775b5b741d1e7cbe7a5cbc68727472d17ce7",
+      "selected_declarations": 103,
+      "selected_bytes": 47592,
+      "runtime_implementation": "function renderToString(children, options) {\n  return renderToStringImpl(children, options, false, 'The server used \"renderToString\" which does not support Suspense. If you intended for this Suspense boundary to render the fallback content on the server consider throwing an Error somewhere within the Suspense boundary. If you intended to have the server wait for the suspended component please switch to \"renderToPipeableStream\" which supports Suspense on the server');\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react-dom/server/renderToPipeableStream/18.3.1",
+      "surface": "react-dom/server",
+      "export_name": "renderToPipeableStream",
+      "source_status": "frontier",
+      "source_reason": "unresolved_binding:setImmediate;unresolved_binding:Uint8Array;declaration_limit",
+      "installed_packages": [
+        {
+          "name": "react-dom",
+          "version": "18.3.1"
+        },
+        {
+          "name": "react",
+          "version": "18.3.1"
+        }
+      ],
+      "implementation_sha256": "0b1f669874f0a9983acfb3d98d4ec46ba2065193996f093d874e14b2ff4b6a5a",
+      "selected_declarations": 103,
+      "selected_bytes": 43865,
+      "runtime_implementation": "function renderToPipeableStream(children, options) {\n  var request = createRequestImpl(children, options);\n  var hasStartedFlowing = false;\n  startWork(request);\n  return {\n    pipe: function (destination) {\n      if (hasStartedFlowing) {\n        throw new Error('React currently only supports piping to one writable stream.');\n      }\n\n      hasStartedFlowing = true;\n      startFlowing(request, destination);\n      destination.on('drain', createDrainHandler(destination, request));\n      destination.on('error', createAbortHandler(request, // eslint-disable-next-line react-internal/prod-error-codes\n      new Error('The destination stream errored while writing data.')));\n      destination.on('close', createAbortHandler(request, // eslint-disable-next-line react-internal/prod-error-codes\n      new Error('The destination stream closed early.')));\n      return destination;\n    },\n    abort: function (reason) {\n      abort(request, reason);\n    }\n  };\n}",
+      "outcome": "source_audit_only_not_admitted"
+    },
+    {
+      "id": "react-dom/server/renderToReadableStream/18.3.1",
+      "surface": "react-dom/server",
+      "export_name": "renderToReadableStream",
+      "source_status": "frontier",
+      "source_reason": "export_requires_own_data_property",
+      "outcome": "source_audit_only_not_admitted"
+    }
+  ]
+}

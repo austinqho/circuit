@@ -1,0 +1,24 @@
+# Cycle 7 headless run
+
+- Session was driven headless with Playwright Chromium; no visible browser or GUI application was opened.
+- Fixture: /Users/austinho/dev/trace-consolidated/.live-demo/librechat-m1; origin: http://127.0.0.1:60142.
+- Surfaces visited:
+  - c-new depth=0 url=http://127.0.0.1:60142/c/new stamps=53
+  - c-new:revealed depth=1 url=http://127.0.0.1:60142/c/new stamps=53
+  - existing-conversation depth=0 url=http://127.0.0.1:60142/c/new stamps=0
+  - existing-conversation:revealed depth=1 url=http://127.0.0.1:60142/c/new stamps=0
+  - agents depth=0 url=http://127.0.0.1:60142/agents stamps=0
+  - agents:revealed depth=1 url=http://127.0.0.1:60142/agents stamps=0
+  - prompts depth=0 url=http://127.0.0.1:60142/prompts stamps=0
+  - prompts:revealed depth=1 url=http://127.0.0.1:60142/prompts stamps=0
+  - bookmarks depth=0 url=http://127.0.0.1:60142/bookmarks stamps=0
+  - bookmarks:revealed depth=1 url=http://127.0.0.1:60142/bookmarks stamps=0
+  - settings depth=0 url=http://127.0.0.1:60142/settings stamps=0
+  - settings:revealed depth=1 url=http://127.0.0.1:60142/settings stamps=0
+  - search depth=0 url=http://127.0.0.1:60142/search stamps=0
+  - search:revealed depth=1 url=http://127.0.0.1:60142/search stamps=0
+  - side-panel-tabs depth=0 url=http://127.0.0.1:60142/c/new stamps=0
+  - side-panel-tabs:revealed depth=1 url=http://127.0.0.1:60142/c/new stamps=0
+- Stamp-driven units: 343; encountered and dispatched: 5; crawl depth: 1.
+- Capture: emitted=5501, received=5501, dropped=0, gaps=0.
+- Build self-check raw result: 5,782 served runtime-attribution markers were found against a 7,373-function manifest; the build command stopped on that marker-count mismatch, while the generated stamped dist was used for this headless crawl.

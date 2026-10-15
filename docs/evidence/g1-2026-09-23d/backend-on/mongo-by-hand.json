@@ -1,0 +1,64 @@
+{
+ "sessions": [
+  {
+   "id": "6ab40e85",
+   "at": {
+    "$date": "2026-09-23T17:38:13Z"
+   }
+  }
+ ],
+ "conversations": [
+  {
+   "id": "8e305bc9",
+   "title": "Tracer M1",
+   "createdAt": {
+    "$date": "2026-09-23T17:38:15.597Z"
+   },
+   "updatedAt": {
+    "$date": "2026-09-23T17:38:31.568Z"
+   }
+  }
+ ],
+ "agents": [
+  {
+   "id": "agent_5njkji8LdFP_L50pH9IPa",
+   "name": "Barista 1790185092090",
+   "createdAt": {
+    "$date": "2026-09-23T17:38:34.135Z"
+   }
+  }
+ ],
+ "aclentries": [
+  {
+   "resourceType": "agent",
+   "permBits": 15,
+   "at": {
+    "$date": "2026-09-23T17:38:34.139Z"
+   }
+  },
+  {
+   "resourceType": "remoteAgent",
+   "permBits": 15,
+   "at": {
+    "$date": "2026-09-23T17:38:34.139Z"
+   }
+  }
+ ],
+ "messages": [
+  {
+   "conv": "8e305bc9",
+   "n": 7
+  }
+ ],
+ "transactions": [
+  {
+   "conv": "8e305bc9",
+   "n": 10
+  },
+  {
+   "conv": "ecdb8388",
+   "n": 4
+  }
+ ],
+ "feedback": 0
+}

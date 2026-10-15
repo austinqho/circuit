@@ -1,0 +1,276 @@
+[producttrace] first-party: 57 functions instrumented; excluded functions by rule: **/vendor/** 3, outside repository 1467; excluded modules by rule: **/vendor/** 1; include=[] exclude=["**/node_modules/**","**/vendor/**","**/dist/**","**/build/**","**/.git/**"]
+[33m[PLUGIN_TIMINGS] [0mYour build spent 99% of 5.0s inside plugin hooks (5.0s).
+Measured inside the callback, so queue time is excluded and time the callback itself awaited is not:
+  - producttrace-runtime-attribution generateBundle (97%, 4.9s, 1 call)
+See https://rolldown.rs/reference/InputOptions.checks#plugintimings for more details.
+
+PASS B0 the pages ran without errors
+PASS run 1 B1 the backend received every request the session makes (the store's rows are compared below)
+FAIL run 1 B2 capture.page states handler bindings are observed
+  undefined
+FAIL run 1 C1 checkbox (state only): both clicks (mouse, and the click Space causes) carry a binding of its onChange to "click", run by React, held by the <input> host fiber
+  [[],[]]
+PASS run 1 C2 the native change events on that checkbox ran no handler (no binding), and the keydown/keyup of Space none either
+FAIL run 1 C3 checkbox chain: credited handler = its onChange (not the audit listener that ran first); no abstention; bound phrase in the text
+  "click action:mug3zgmm:18 (mouse pointer 1, button 0, buttons 0; phase activation on <input aria-label=\"Notify\" type=\"checkbox\">) [outcome stopped at entry_handler]: reached dom_mutation / stopped at entry_handler / because no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1249:1318, function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1684:1720]"
+FAIL run 1 C4 checkbox and radio with requests: owned by their click, whose binding is onChange on click
+  ["click","click"]
+FAIL run 1 C5 text input: each keystroke's request is owned by its input event, bound onChange on input; its keydowns bind nothing
+  ["input","input"]
+FAIL run 1 C6 <select>: onChange bound on change; range: onChange bound on input, and the range's later change event ran nothing
+  {"color":"change","volume":"input","volumeChanges":1}
+FAIL run 1 C7 onDoubleClick is bound on dblclick and credited (no abstention)
+  "dblclick action:mug3zi28:132 (mouse button 0, buttons 0; phase activation on <div role=\"button\" aria-label=\"Project name\">) [outcome stopped at entry_handler]: reached dom_mutation / stopped at entry_handler / because no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:3819:3841]"
+FAIL run 1 C8 the two clicks of that double-click ran no element handler: each abstains "no element-bound handler ran" and names the audit listener
+  "no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1249:1318]"
+FAIL run 1 C9 Enter: onKeyDown bound on keydown; the implicit submit's onSubmit bound on submit and owns the request
+  {"enter":[],"search":"submit"}
+FAIL run 1 C10 Radix Select: onValueChange (a prop of the Select root component, reached through the portal) bound on pointerup for the mouse choice and on keydown for the keyboard choice, run by React
+  {"banana":[],"cherry":[]}
+FAIL run 1 C11 Radix Dialog: onOpenChange bound on click for both opens (React), on keydown for Escape and on pointerdown for the overlay (Radix's document listeners)
+  {"escape":[],"overlay":[]}
+FAIL run 1 C12 zustand: the store-writing onClick is bound on click and credited; the subscriber effect's request is owned (reported, not asserted)
+  undefined
+FAIL run 1 C13 onContextMenu is declared (in the click's declared list) but never observed: no binding, invocation or function.enter for it
+  {"ids":["function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:7210:7256"],"library":0}
+FAIL run 1 C14 .focus() in a click handler: onFocus is an invocation by app code (dispatched by React on the caused focusin), caused by that click; never a binding
+  undefined
+FAIL run 1 C15 .focus() from a mount timer: onFocus is an invocation by app code with the cause abstained (no action on the timer); never a binding
+  undefined
+PASS run 1 C16 a prop a component calls from a timer (onTick) is neither a binding nor an invocation
+FAIL run 1 C17 contenteditable: onInput bound on input for each typed character
+  ["input","input"]
+FAIL run 1 C18 Ping: the audit listener entered first at depth zero, yet the credit is Ping's onClick (the handler observed bound, which issued the request)
+  "click action:mug3zm0c:388 (mouse pointer 1, button 0, buttons 0; phase activation on <button type=\"button\">) → handler <unnamed> client/src/main.jsx@9389-9432 → 1 request: (1) <unnamed> client/src/main.jsx@1050-1099 → POST /api/ping [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented"
+FAIL run 1 C19 form library: the callback written inside onSubmit, called from a promise continuation the submit created, is bound to the submit (ran: dispatch_continuation, via written_in_prop) and credited
+  {"rows":[],"line":"submit action:mug3zmbw:405 [outcome no_request; the handler ran and issued no request from instrumented code (3 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"}
+FAIL run 1 R1 every binding is on a user's dispatch (not gesture:false) of the kind it names, for a function that entered at depth zero on that action; audit and onTick never bind
+  []
+FAIL run 1 R2 every invocation is on a caused dispatch (gesture:false)
+  0
+FAIL run 1 R3 prop/event pairs observed, none declared: onChange@click, onChange@input, onChange@change, onDoubleClick@dblclick, onKeyDown@keydown, onSubmit@submit, onValueChange@pointerup, onValueChange@keydown, onOpenChange@click, onOpenChange@keydown, onOpenChange@pointerdown, onInput@input, onClick@click
+  []
+PASS run 1 R4 one binding row per (action, function, prop, holder): no duplicates
+PASS run 1 R5 the store holds a row for every request the backend received (same paths)
+FAIL run 1 M1 resolve_element(Notify): observed bindings listed before the declared handlers; onChange on click ×0 (the raw store-wide count), handlers_basis declared; the summary says "observed:" first
+  "element NotifyToggle at client/src/main.jsx:36 (exact; 72 actions). Last: focusout action:mug3zvko:37 (related <input aria-label=\"Subscribe\" type=\"checkbox\"> on <input aria-label=\"Notify\" type=\"checkbox\">) [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+FAIL run 1 M2 resolve_element(Archive): observed only onClick; onContextMenu named "declared, never observed running"
+  "element ArchiveButton at client/src/main.jsx:153 (exact; 48 actions). Last: focusout action:mug40061:333 (related <button type=\"button\"> on <button type=\"button\">) [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+FAIL run 1 M3 element_history(Notify): the summary prints the observed binding before the newest chain
+  "11 action(s) in 10 attempt(s) on element client/src/main.jsx:36; newest: change action:mug3zvd6:26 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+FAIL run 1 M4 action_chain(Notify click): bound_handlers.observed lists onChange on click; declared list present; entry_handler stop carries the binding
+  undefined
+FAIL run 1 M5 action_chain(caused focusin): the handler is listed as run for a dispatch app code caused, not as a binding
+  undefined
+FAIL run 1 M6 action_chain(the second click of the double-click): stopped at entry_handler "no element-bound handler ran", no observed binding
+  "no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1249:1318]"
+PASS run 2 B1 the backend received every request the session makes (the store's rows are compared below)
+FAIL run 2 B2 capture.page states handler bindings are observed
+  undefined
+FAIL run 2 C1 checkbox (state only): both clicks (mouse, and the click Space causes) carry a binding of its onChange to "click", run by React, held by the <input> host fiber
+  [[],[]]
+PASS run 2 C2 the native change events on that checkbox ran no handler (no binding), and the keydown/keyup of Space none either
+FAIL run 2 C3 checkbox chain: credited handler = its onChange (not the audit listener that ran first); no abstention; bound phrase in the text
+  "click action:mug3znvy:18 (mouse pointer 1, button 0, buttons 0; phase activation on <input aria-label=\"Notify\" type=\"checkbox\">) [outcome stopped at entry_handler]: reached dom_mutation / stopped at entry_handler / because no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1249:1318, function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1684:1720]"
+FAIL run 2 C4 checkbox and radio with requests: owned by their click, whose binding is onChange on click
+  ["click","click"]
+FAIL run 2 C5 text input: each keystroke's request is owned by its input event, bound onChange on input; its keydowns bind nothing
+  ["input","input"]
+FAIL run 2 C6 <select>: onChange bound on change; range: onChange bound on input, and the range's later change event ran nothing
+  {"color":"change","volume":"input","volumeChanges":1}
+FAIL run 2 C7 onDoubleClick is bound on dblclick and credited (no abstention)
+  "dblclick action:mug3zpbi:132 (mouse button 0, buttons 0; phase activation on <div role=\"button\" aria-label=\"Project name\">) [outcome stopped at entry_handler]: reached dom_mutation / stopped at entry_handler / because no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:3819:3841]"
+FAIL run 2 C8 the two clicks of that double-click ran no element handler: each abstains "no element-bound handler ran" and names the audit listener
+  "no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1249:1318]"
+FAIL run 2 C9 Enter: onKeyDown bound on keydown; the implicit submit's onSubmit bound on submit and owns the request
+  {"enter":[],"search":"submit"}
+FAIL run 2 C10 Radix Select: onValueChange (a prop of the Select root component, reached through the portal) bound on pointerup for the mouse choice and on keydown for the keyboard choice, run by React
+  {"banana":[],"cherry":[]}
+FAIL run 2 C11 Radix Dialog: onOpenChange bound on click for both opens (React), on keydown for Escape and on pointerdown for the overlay (Radix's document listeners)
+  {"escape":[],"overlay":[]}
+FAIL run 2 C12 zustand: the store-writing onClick is bound on click and credited; the subscriber effect's request is owned (reported, not asserted)
+  undefined
+FAIL run 2 C13 onContextMenu is declared (in the click's declared list) but never observed: no binding, invocation or function.enter for it
+  {"ids":["function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:7210:7256"],"library":0}
+FAIL run 2 C14 .focus() in a click handler: onFocus is an invocation by app code (dispatched by React on the caused focusin), caused by that click; never a binding
+  undefined
+FAIL run 2 C15 .focus() from a mount timer: onFocus is an invocation by app code with the cause abstained (no action on the timer); never a binding
+  undefined
+PASS run 2 C16 a prop a component calls from a timer (onTick) is neither a binding nor an invocation
+FAIL run 2 C17 contenteditable: onInput bound on input for each typed character
+  ["input","input"]
+FAIL run 2 C18 Ping: the audit listener entered first at depth zero, yet the credit is Ping's onClick (the handler observed bound, which issued the request)
+  "click action:mug3ztak:390 (mouse pointer 1, button 0, buttons 0; phase activation on <button type=\"button\">) → handler <unnamed> client/src/main.jsx@9389-9432 → 1 request: (1) <unnamed> client/src/main.jsx@1050-1099 → POST /api/ping [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented"
+FAIL run 2 C19 form library: the callback written inside onSubmit, called from a promise continuation the submit created, is bound to the submit (ran: dispatch_continuation, via written_in_prop) and credited
+  {"rows":[],"line":"submit action:mug3ztma:407 [outcome no_request; the handler ran and issued no request from instrumented code (3 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"}
+FAIL run 2 R1 every binding is on a user's dispatch (not gesture:false) of the kind it names, for a function that entered at depth zero on that action; audit and onTick never bind
+  []
+FAIL run 2 R2 every invocation is on a caused dispatch (gesture:false)
+  0
+FAIL run 2 R3 prop/event pairs observed, none declared: onChange@click, onChange@input, onChange@change, onDoubleClick@dblclick, onKeyDown@keydown, onSubmit@submit, onValueChange@pointerup, onValueChange@keydown, onOpenChange@click, onOpenChange@keydown, onOpenChange@pointerdown, onInput@input, onClick@click
+  []
+PASS run 2 R4 one binding row per (action, function, prop, holder): no duplicates
+PASS run 2 R5 the store holds a row for every request the backend received (same paths)
+FAIL run 2 M1 resolve_element(Notify): observed bindings listed before the declared handlers; onChange on click ×0 (the raw store-wide count), handlers_basis declared; the summary says "observed:" first
+  "element NotifyToggle at client/src/main.jsx:36 (exact; 72 actions). Last: focusout action:mug3zvko:37 (related <input aria-label=\"Subscribe\" type=\"checkbox\"> on <input aria-label=\"Notify\" type=\"checkbox\">) [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+FAIL run 2 M2 resolve_element(Archive): observed only onClick; onContextMenu named "declared, never observed running"
+  "element ArchiveButton at client/src/main.jsx:153 (exact; 48 actions). Last: focusout action:mug40061:333 (related <button type=\"button\"> on <button type=\"button\">) [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+FAIL run 2 M3 element_history(Notify): the summary prints the observed binding before the newest chain
+  "11 action(s) in 10 attempt(s) on element client/src/main.jsx:36; newest: change action:mug3zvd6:26 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+FAIL run 2 M4 action_chain(Notify click): bound_handlers.observed lists onChange on click; declared list present; entry_handler stop carries the binding
+  undefined
+FAIL run 2 M5 action_chain(caused focusin): the handler is listed as run for a dispatch app code caused, not as a binding
+  undefined
+FAIL run 2 M6 action_chain(the second click of the double-click): stopped at entry_handler "no element-bound handler ran", no observed binding
+  "no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1249:1318]"
+PASS run 3 B1 the backend received every request the session makes (the store's rows are compared below)
+FAIL run 3 B2 capture.page states handler bindings are observed
+  undefined
+FAIL run 3 C1 checkbox (state only): both clicks (mouse, and the click Space causes) carry a binding of its onChange to "click", run by React, held by the <input> host fiber
+  [[],[]]
+PASS run 3 C2 the native change events on that checkbox ran no handler (no binding), and the keydown/keyup of Space none either
+FAIL run 3 C3 checkbox chain: credited handler = its onChange (not the audit listener that ran first); no abstention; bound phrase in the text
+  "click action:mug3zv5v:18 (mouse pointer 1, button 0, buttons 0; phase activation on <input aria-label=\"Notify\" type=\"checkbox\">) [outcome stopped at entry_handler]: reached dom_mutation / stopped at entry_handler / because no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1249:1318, function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1684:1720]"
+FAIL run 3 C4 checkbox and radio with requests: owned by their click, whose binding is onChange on click
+  ["click","click"]
+FAIL run 3 C5 text input: each keystroke's request is owned by its input event, bound onChange on input; its keydowns bind nothing
+  ["input","input"]
+FAIL run 3 C6 <select>: onChange bound on change; range: onChange bound on input, and the range's later change event ran nothing
+  {"color":"change","volume":"input","volumeChanges":1}
+FAIL run 3 C7 onDoubleClick is bound on dblclick and credited (no abstention)
+  "dblclick action:mug3zwme:131 (mouse button 0, buttons 0; phase activation on <div role=\"button\" aria-label=\"Project name\">) [outcome stopped at entry_handler]: reached dom_mutation / stopped at entry_handler / because no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:3819:3841]"
+FAIL run 3 C8 the two clicks of that double-click ran no element handler: each abstains "no element-bound handler ran" and names the audit listener
+  "no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1249:1318]"
+FAIL run 3 C9 Enter: onKeyDown bound on keydown; the implicit submit's onSubmit bound on submit and owns the request
+  {"enter":[],"search":"submit"}
+FAIL run 3 C10 Radix Select: onValueChange (a prop of the Select root component, reached through the portal) bound on pointerup for the mouse choice and on keydown for the keyboard choice, run by React
+  {"banana":[],"cherry":[]}
+FAIL run 3 C11 Radix Dialog: onOpenChange bound on click for both opens (React), on keydown for Escape and on pointerdown for the overlay (Radix's document listeners)
+  {"escape":[],"overlay":[]}
+FAIL run 3 C12 zustand: the store-writing onClick is bound on click and credited; the subscriber effect's request is owned (reported, not asserted)
+  undefined
+FAIL run 3 C13 onContextMenu is declared (in the click's declared list) but never observed: no binding, invocation or function.enter for it
+  {"ids":["function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:7210:7256"],"library":0}
+FAIL run 3 C14 .focus() in a click handler: onFocus is an invocation by app code (dispatched by React on the caused focusin), caused by that click; never a binding
+  undefined
+FAIL run 3 C15 .focus() from a mount timer: onFocus is an invocation by app code with the cause abstained (no action on the timer); never a binding
+  undefined
+PASS run 3 C16 a prop a component calls from a timer (onTick) is neither a binding nor an invocation
+FAIL run 3 C17 contenteditable: onInput bound on input for each typed character
+  ["input","input"]
+FAIL run 3 C18 Ping: the audit listener entered first at depth zero, yet the credit is Ping's onClick (the handler observed bound, which issued the request)
+  "click action:mug400l4:387 (mouse pointer 1, button 0, buttons 0; phase activation on <button type=\"button\">) → handler <unnamed> client/src/main.jsx@9389-9432 → 1 request: (1) <unnamed> client/src/main.jsx@1050-1099 → POST /api/ping [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented"
+FAIL run 3 C19 form library: the callback written inside onSubmit, called from a promise continuation the submit created, is bound to the submit (ran: dispatch_continuation, via written_in_prop) and credited
+  {"rows":[],"line":"submit action:mug400wo:404 [outcome no_request; the handler ran and issued no request from instrumented code (3 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"}
+FAIL run 3 R1 every binding is on a user's dispatch (not gesture:false) of the kind it names, for a function that entered at depth zero on that action; audit and onTick never bind
+  []
+FAIL run 3 R2 every invocation is on a caused dispatch (gesture:false)
+  0
+FAIL run 3 R3 prop/event pairs observed, none declared: onChange@click, onChange@input, onChange@change, onDoubleClick@dblclick, onKeyDown@keydown, onSubmit@submit, onValueChange@pointerup, onValueChange@keydown, onOpenChange@click, onOpenChange@keydown, onOpenChange@pointerdown, onInput@input, onClick@click
+  []
+PASS run 3 R4 one binding row per (action, function, prop, holder): no duplicates
+PASS run 3 R5 the store holds a row for every request the backend received (same paths)
+FAIL run 3 M1 resolve_element(Notify): observed bindings listed before the declared handlers; onChange on click ×0 (the raw store-wide count), handlers_basis declared; the summary says "observed:" first
+  "element NotifyToggle at client/src/main.jsx:36 (exact; 72 actions). Last: focusout action:mug3zvko:37 (related <input aria-label=\"Subscribe\" type=\"checkbox\"> on <input aria-label=\"Notify\" type=\"checkbox\">) [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+FAIL run 3 M2 resolve_element(Archive): observed only onClick; onContextMenu named "declared, never observed running"
+  "element ArchiveButton at client/src/main.jsx:153 (exact; 48 actions). Last: focusout action:mug40061:333 (related <button type=\"button\"> on <button type=\"button\">) [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+FAIL run 3 M3 element_history(Notify): the summary prints the observed binding before the newest chain
+  "11 action(s) in 10 attempt(s) on element client/src/main.jsx:36; newest: change action:mug3zvd6:26 [outcome no_request; no instrumented function ran for this action (0 functions entered, 0 DOM mutations, 0 state effects)]: reached dispatch / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+FAIL run 3 M4 action_chain(Notify click): bound_handlers.observed lists onChange on click; declared list present; entry_handler stop carries the binding
+  undefined
+FAIL run 3 M5 action_chain(caused focusin): the handler is listed as run for a dispatch app code caused, not as a binding
+  undefined
+FAIL run 3 M6 action_chain(the second click of the double-click): stopped at entry_handler "no element-bound handler ran", no observed binding
+  "no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1249:1318]"
+FACTS
+{"run":1,"case":"checkbox onChange (state only), mouse click","event":"click","credited":null,"stopped_at":"entry_handler","because":"no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1249:1318, function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1684:1720]","observed":[]}
+{"run":1,"case":"checkbox onChange (state only), Space key","event":"click","credited":null,"stopped_at":"entry_handler","because":"no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1249:1318, function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1684:1720]","observed":[]}
+{"run":1,"case":"checkbox onChange (request)","event":"click","credited":"audit","stopped_at":"network","observed":[]}
+{"run":1,"case":"radio onChange (request)","event":"click","credited":"audit","stopped_at":"network","observed":[]}
+{"run":1,"case":"text onChange","event":"input","credited":"onTitle","stopped_at":"network","observed":[]}
+{"run":1,"case":"select onChange","event":"change","credited":"onColor","stopped_at":"network","observed":[]}
+{"run":1,"case":"range onChange","event":"input","credited":"onVolume","stopped_at":"network","observed":[]}
+{"run":1,"case":"onDoubleClick (state only)","event":"dblclick","credited":null,"stopped_at":"entry_handler","because":"no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:3819:3841]","observed":[]}
+{"run":1,"case":"click before the double-click (no element handler)","event":"click","credited":null,"stopped_at":"entry_handler","because":"no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1249:1318]","observed":[]}
+{"run":1,"case":"onKeyDown Enter in a form","event":"keydown","credited":"onKeyDown","stopped_at":"browser","observed":[]}
+{"run":1,"case":"onSubmit","event":"submit","credited":"onSubmit","stopped_at":"network","observed":[]}
+{"run":1,"case":"Radix Select onValueChange (pointer)","event":"pointerup","credited":"onValueChange","stopped_at":"network","observed":[]}
+{"run":1,"case":"Radix Select onValueChange (keyboard)","event":"keydown","credited":"onValueChange","stopped_at":"network","observed":[]}
+{"run":1,"case":"Radix Dialog onOpenChange (Escape)","event":"keydown","credited":"onOpenChange","stopped_at":"network","observed":[]}
+{"run":1,"case":"Radix Dialog onOpenChange (overlay)","event":"pointerdown","credited":"onOpenChange","stopped_at":"network","observed":[]}
+{"run":1,"case":"zustand store write (onClick)","event":null,"credited":null,"stopped_at":null,"observed":[],"cart_sync_owner":"click"}
+{"run":1,"case":"Archive onClick (onContextMenu declared, never run)","event":"click","credited":"archiveClick","stopped_at":"network","observed":[]}
+{"run":1,"case":"onFocus from .focus() in a click handler","invocation":null,"request_owner":"focusin"}
+{"run":1,"case":"onFocus from .focus() in a mount timer","invocation":null,"request_owner":"focusin"}
+{"run":1,"case":"contenteditable onInput","event":"input","credited":"scratchInput","stopped_at":"network","observed":[]}
+{"run":1,"case":"Ping onClick (audit capture listener ran first)","event":"click","credited":"pingClick","stopped_at":"network","observed":[]}
+{"run":1,"case":"callback written inside onSubmit, called by a form library in a promise continuation","event":"submit","credited":null,"stopped_at":"browser","observed":[]}
+{"run":2,"case":"checkbox onChange (state only), mouse click","event":"click","credited":null,"stopped_at":"entry_handler","because":"no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1249:1318, function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1684:1720]","observed":[]}
+{"run":2,"case":"checkbox onChange (state only), Space key","event":"click","credited":null,"stopped_at":"entry_handler","because":"no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1249:1318, function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1684:1720]","observed":[]}
+{"run":2,"case":"checkbox onChange (request)","event":"click","credited":"audit","stopped_at":"network","observed":[]}
+{"run":2,"case":"radio onChange (request)","event":"click","credited":"audit","stopped_at":"network","observed":[]}
+{"run":2,"case":"text onChange","event":"input","credited":"onTitle","stopped_at":"network","observed":[]}
+{"run":2,"case":"select onChange","event":"change","credited":"onColor","stopped_at":"network","observed":[]}
+{"run":2,"case":"range onChange","event":"input","credited":"onVolume","stopped_at":"network","observed":[]}
+{"run":2,"case":"onDoubleClick (state only)","event":"dblclick","credited":null,"stopped_at":"entry_handler","because":"no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:3819:3841]","observed":[]}
+{"run":2,"case":"click before the double-click (no element handler)","event":"click","credited":null,"stopped_at":"entry_handler","because":"no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1249:1318]","observed":[]}
+{"run":2,"case":"onKeyDown Enter in a form","event":"keydown","credited":"onKeyDown","stopped_at":"browser","observed":[]}
+{"run":2,"case":"onSubmit","event":"submit","credited":"onSubmit","stopped_at":"network","observed":[]}
+{"run":2,"case":"Radix Select onValueChange (pointer)","event":"pointerup","credited":"onValueChange","stopped_at":"network","observed":[]}
+{"run":2,"case":"Radix Select onValueChange (keyboard)","event":"keydown","credited":"onValueChange","stopped_at":"network","observed":[]}
+{"run":2,"case":"Radix Dialog onOpenChange (Escape)","event":"keydown","credited":"onOpenChange","stopped_at":"network","observed":[]}
+{"run":2,"case":"Radix Dialog onOpenChange (overlay)","event":"pointerdown","credited":"onOpenChange","stopped_at":"network","observed":[]}
+{"run":2,"case":"zustand store write (onClick)","event":null,"credited":null,"stopped_at":null,"observed":[],"cart_sync_owner":"click"}
+{"run":2,"case":"Archive onClick (onContextMenu declared, never run)","event":"click","credited":"archiveClick","stopped_at":"network","observed":[]}
+{"run":2,"case":"onFocus from .focus() in a click handler","invocation":null,"request_owner":"focusin"}
+{"run":2,"case":"onFocus from .focus() in a mount timer","invocation":null,"request_owner":"focusin"}
+{"run":2,"case":"contenteditable onInput","event":"input","credited":"scratchInput","stopped_at":"network","observed":[]}
+{"run":2,"case":"Ping onClick (audit capture listener ran first)","event":"click","credited":"pingClick","stopped_at":"network","observed":[]}
+{"run":2,"case":"callback written inside onSubmit, called by a form library in a promise continuation","event":"submit","credited":null,"stopped_at":"browser","observed":[]}
+{"run":3,"case":"checkbox onChange (state only), mouse click","event":"click","credited":null,"stopped_at":"entry_handler","because":"no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1249:1318, function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1684:1720]","observed":[]}
+{"run":3,"case":"checkbox onChange (state only), Space key","event":"click","credited":null,"stopped_at":"entry_handler","because":"no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1249:1318, function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1684:1720]","observed":[]}
+{"run":3,"case":"checkbox onChange (request)","event":"click","credited":"audit","stopped_at":"network","observed":[]}
+{"run":3,"case":"radio onChange (request)","event":"click","credited":"audit","stopped_at":"network","observed":[]}
+{"run":3,"case":"text onChange","event":"input","credited":"onTitle","stopped_at":"network","observed":[]}
+{"run":3,"case":"select onChange","event":"change","credited":"onColor","stopped_at":"network","observed":[]}
+{"run":3,"case":"range onChange","event":"input","credited":"onVolume","stopped_at":"network","observed":[]}
+{"run":3,"case":"onDoubleClick (state only)","event":"dblclick","credited":null,"stopped_at":"entry_handler","because":"no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:3819:3841]","observed":[]}
+{"run":3,"case":"click before the double-click (no element handler)","event":"click","credited":null,"stopped_at":"entry_handler","because":"no element-bound handler observed in instrumented code (uninstrumented and third-party handlers are not seen); global listeners: [function:6835f0a3e6fe5c67dab48005989024b95a99d00752f6ced335c1804766f5eb0e:1249:1318]","observed":[]}
+{"run":3,"case":"onKeyDown Enter in a form","event":"keydown","credited":"onKeyDown","stopped_at":"browser","observed":[]}
+{"run":3,"case":"onSubmit","event":"submit","credited":"onSubmit","stopped_at":"network","observed":[]}
+{"run":3,"case":"Radix Select onValueChange (pointer)","event":"pointerup","credited":"onValueChange","stopped_at":"network","observed":[]}
+{"run":3,"case":"Radix Select onValueChange (keyboard)","event":"keydown","credited":"onValueChange","stopped_at":"network","observed":[]}
+{"run":3,"case":"Radix Dialog onOpenChange (Escape)","event":"keydown","credited":"onOpenChange","stopped_at":"network","observed":[]}
+{"run":3,"case":"Radix Dialog onOpenChange (overlay)","event":"pointerdown","credited":"onOpenChange","stopped_at":"network","observed":[]}
+{"run":3,"case":"zustand store write (onClick)","event":null,"credited":null,"stopped_at":null,"observed":[],"cart_sync_owner":"click"}
+{"run":3,"case":"Archive onClick (onContextMenu declared, never run)","event":"click","credited":"archiveClick","stopped_at":"network","observed":[]}
+{"run":3,"case":"onFocus from .focus() in a click handler","invocation":null,"request_owner":"focusin"}
+{"run":3,"case":"onFocus from .focus() in a mount timer","invocation":null,"request_owner":"focusin"}
+{"run":3,"case":"contenteditable onInput","event":"input","credited":"scratchInput","stopped_at":"network","observed":[]}
+{"run":3,"case":"Ping onClick (audit capture listener ran first)","event":"click","credited":"pingClick","stopped_at":"network","observed":[]}
+{"run":3,"case":"callback written inside onSubmit, called by a form library in a promise continuation","event":"submit","credited":null,"stopped_at":"browser","observed":[]}
+[
+  {
+    "session": "s_ee819944",
+    "actions": 405,
+    "bindings": 0,
+    "invocations": 0,
+    "pairs": []
+  },
+  {
+    "session": "s_548b6f08",
+    "actions": 407,
+    "bindings": 0,
+    "invocations": 0,
+    "pairs": []
+  },
+  {
+    "session": "s_a4c254f7",
+    "actions": 404,
+    "bindings": 0,
+    "invocations": 0,
+    "pairs": []
+  }
+]
+16/97 checks pass over 3 page loads; store /var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/tracer-handler-binding-store-DFmWKH
+kept store /var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/tracer-handler-binding-store-DFmWKH and fixture /private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-G4uVnc

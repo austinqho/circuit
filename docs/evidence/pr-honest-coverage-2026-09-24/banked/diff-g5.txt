@@ -1,0 +1,31 @@
+{
+ "compared": 113,
+ "missing_in_branch": [],
+ "only_in_branch": []
+}
+
+## recent_actions
+changed    100  $.actions[].coverage.scope  e.g. {"main":"delivery of the rows this page's runtime emitted; not what uninstrumented scripts, workers or third-party code did","branch":"delivery of the rows this page's runtime emitted, within what it observes (`unobserve
+
+## action_chain
+added        3  $.chain.server_hops  e.g. {"rule":"outbound: client spans (not database) under a joined server span, continued_by the server span whose parent is that client span (identifier); continuation candidates: server spans with no browser parent starting
+added       97  $.chain.unlinked.requests_issuer_unknown  e.g. 0
+added      100  $.chain.window_evidence  e.g. {"window":{"page":"s_8b4e57f5","from_action_id":"action:muen7ba9:147","from_sequence":2470,"from_timestamp":1790200579041,"until":"page_end","until_action_id":null,"until_sequence":2525,"until_timestamp":1790200579063},"
+changed    100  $.coverage.scope  e.g. {"main":"delivery of the rows this page's runtime emitted; not what uninstrumented scripts, workers or third-party code did","branch":"delivery of the rows this page's runtime emitted, within what it observes (`unobserve
+added       97  $.unlinked.requests_issuer_unknown  e.g. 0
+
+## element_history
+changed    121  $.actions[].coverage.scope  e.g. {"main":"delivery of the rows this page's runtime emitted; not what uninstrumented scripts, workers or third-party code did","branch":"delivery of the rows this page's runtime emitted, within what it observes (`unobserve
+
+## page_requests
+changed     36  $.requests[].attribution.text  e.g. {"main":"none: no user action; issuer not recorded (runtime before 2026-09-24)","branch":"not attributed to any user action; issuer not recorded (runtime before 2026-09-24)"}
+changed     36  $.requests[].summary  e.g. {"main":"21:56:07.364 GET /api/onboarding [none: no user action; issuer not recorded (runtime before 2026-09-24)] → route /api/onboarding 200 → server <anonymous> [responded 200; no effect evidence]","branch":"21:56:07.3
+changed      2  $.summary  e.g. {"main":"41 request(s): 23 attributed to a user action, 18 with no action\n- GET /api/setup-complete ×10 (4 action, 6 none; statuses 200×1, 304×9); interval median 16 ms (min 1, max 1992, 9 gaps, each within one page)\n-
+
+## text
+tools/list {"calls":1,"first_line_changed":0,"lines_added":0,"lines_removed":0,"examples":[]}
+recent_actions {"calls":1,"first_line_changed":0,"lines_added":0,"lines_removed":0,"examples":[]}
+action_chain {"calls":100,"first_line_changed":0,"lines_added":0,"lines_removed":0,"examples":[]}
+element_history {"calls":2,"first_line_changed":0,"lines_added":0,"lines_removed":0,"examples":[]}
+resolve_element {"calls":7,"first_line_changed":0,"lines_added":0,"lines_removed":0,"examples":[]}
+page_requests {"calls":2,"first_line_changed":2,"lines_added":45,"lines_removed":45,"examples":[{"main":"41 request(s): 23 attributed to a user action, 18 with no action","branch":"41 request(s): 23 attributed to a user action, 18 not attributed to any user action"},{"main":"18 request(s): 0 attributed to a user action, 18 with no action","branch":"18 request(s): 0 attributed to a user action, 18 not attributed to any user action"}]}

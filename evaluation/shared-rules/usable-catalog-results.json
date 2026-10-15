@@ -1,0 +1,183 @@
+{
+  "passed": true,
+  "model_requests": 0,
+  "model_spend_usd": 0,
+  "scope": "Saved model-produced candidates are independently re-admitted only after both behavior and source integration pass.",
+  "rows": [
+    {
+      "case_id": "lodash417-castArray",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "lodash417-identity",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "lodash417-constant",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "lodash417-negate",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "react18-children-count",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "react19-children-forEach",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "table8old-createColumnHelper",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "table8new-createColumnHelper",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "query5-shouldThrowError",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "react18-createRef",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "react18-isValidElement",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "react18-forwardRef",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "react18-memo",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "react19-createRef",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "react19-isValidElement",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "react19-forwardRef",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "react19-memo",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "table8old-functionalUpdate",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "table8new-functionalUpdate",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "async2-apply",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "async3-apply",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "once",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "queue-microtask",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "table8new-flattenBy",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    },
+    {
+      "case_id": "memoize-one",
+      "source_and_format": "passed",
+      "behavior": "passed",
+      "integration": "passed",
+      "admitted": true
+    }
+  ]
+}

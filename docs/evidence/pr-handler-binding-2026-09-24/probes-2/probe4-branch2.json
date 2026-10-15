@@ -1,0 +1,207 @@
+{
+ "errors": [],
+ "received": [
+  "POST /api/form-submit",
+  "POST /api/form-submit",
+  "POST /api/form-submit"
+ ],
+ "marks": [
+  {
+   "name": "p",
+   "seq": 1790294378770
+  },
+  {
+   "name": "r",
+   "seq": 1790294379262
+  },
+  {
+   "name": "end",
+   "seq": 1790294379686
+  }
+ ],
+ "actions": [
+  {
+   "mark": "pre",
+   "action_id": "action:mug71r8f:1",
+   "event": "submit",
+   "gesture": false,
+   "target": "F",
+   "rows": [
+    {
+     "kind": "handler.invocation",
+     "fn": "main.jsx:event => { event.preventDefault(); fetch('/ap",
+     "prop": "onSubmit",
+     "native": "submit",
+     "holder": "host:form@0",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "app_code",
+     "listener_on": "react_container",
+     "cause": "no_action_on_frame"
+    }
+   ],
+   "enters": [
+    "main.jsx:event => { event.preventDefault(); fetch('/ap",
+    "main.jsx:event => { event.preventDefault(); fetch('/ap"
+   ],
+   "reqs": [
+    "/api/form-submit"
+   ],
+   "credited": "main.jsx:event => { event.preventDefault(); fetch('/ap",
+   "stopped_at": "network",
+   "because": "backend not instrumented",
+   "text": "submit action:mug71r8f:1 → handler <unnamed> client/src/main.jsx@317-416 [bound: onSubmit on submit (app code)] → 1 request: (1) POST /api/form-submit [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented; submit event caused by app code running outside any action (cause abstained: no_action_on_frame); causing action not attributable\nRan for a dispatch app code caused (not a user event): <unnamed> client/src/main.jsx@317-416 as onSubmit on submit (dispatched by react_event_system)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@317-416\n  - request (1) POST /api/form-submit [stopped at network]"
+  },
+  {
+   "mark": "p",
+   "action_id": "action:mug71roh:13",
+   "event": "click",
+   "target": "L11:<button type=\"button\" onClick={() => form.current.",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:ck submit</button> </main> )",
+     "prop": "onClick",
+     "native": "click",
+     "holder": "host:button@0",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container"
+    }
+   ],
+   "enters": [
+    "main.jsx:ck submit</button> </main> )"
+   ],
+   "reqs": [],
+   "credited": "main.jsx:ck submit</button> </main> )",
+   "stopped_at": "browser",
+   "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+   "text": "click action:mug71roh:13 (mouse pointer 1, button 0, buttons 0; phase activation on <button type=\"button\">) → handler <unnamed> client/src/main.jsx@878-912 [bound: onClick on click (React)] [outcome no_request; the handler ran and issued no request from instrumented code (1 function entered, 0 DOM mutations, 0 state effects)]: reached entry_handler / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)\nObserved bound to this dispatch: <unnamed> client/src/main.jsx@878-912 as onClick on click (React)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@878-912"
+  },
+  {
+   "mark": "p",
+   "action_id": "action:mug71roh:14",
+   "event": "submit",
+   "gesture": false,
+   "target": "F",
+   "rows": [
+    {
+     "kind": "handler.invocation",
+     "fn": "main.jsx:event => { event.preventDefault(); fetch('/ap",
+     "prop": "onSubmit",
+     "native": "submit",
+     "holder": "host:form@0",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "app_code",
+     "listener_on": "react_container",
+     "cause": "action:mug71roh:13"
+    }
+   ],
+   "enters": [
+    "main.jsx:event => { event.preventDefault(); fetch('/ap",
+    "main.jsx:event => { event.preventDefault(); fetch('/ap"
+   ],
+   "reqs": [
+    "/api/form-submit"
+   ],
+   "credited": "main.jsx:event => { event.preventDefault(); fetch('/ap",
+   "stopped_at": "network",
+   "because": "backend not instrumented",
+   "text": "submit action:mug71roh:14 → handler <unnamed> client/src/main.jsx@317-416 [bound: onSubmit on submit (app code)] → 1 request: (1) POST /api/form-submit [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented; this submit event was caused by action action:mug71roh:13's work (dispatch), not by a user gesture; it is listed under episode episode:action:mug71roh:13\nRan for a dispatch app code caused (not a user event): <unnamed> client/src/main.jsx@317-416 as onSubmit on submit (dispatched by react_event_system)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@317-416\n  - request (1) POST /api/form-submit [stopped at network]"
+  },
+  {
+   "mark": "r",
+   "action_id": "action:mug71s0j:30",
+   "event": "click",
+   "target": "L12:<button type=\"button\" onClick={() => submitBtn.cur",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:",
+     "prop": "onClick",
+     "native": "click",
+     "holder": "host:button@0",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container"
+    }
+   ],
+   "enters": [
+    "main.jsx:"
+   ],
+   "reqs": [],
+   "credited": "main.jsx:",
+   "stopped_at": "entry_handler",
+   "because": "evidence still arriving (episode not idle)",
+   "text": "click action:mug71s0j:30 (mouse pointer 1, button 0, buttons 0; phase activation on <button type=\"button\">) → handler <unnamed> client/src/main.jsx@1107-1138 [bound: onClick on click (React)] [outcome pending]: reached entry_handler / stopped at entry_handler / because evidence still arriving (episode not idle)\nObserved bound to this dispatch: <unnamed> client/src/main.jsx@1107-1138 as onClick on click (React)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@1107-1138"
+  },
+  {
+   "mark": "r",
+   "action_id": "action:mug71s0j:31",
+   "event": "submit",
+   "gesture": false,
+   "target": "L10:<button ref={submitBtn} type=\"submit\">Go</button>",
+   "rows": [
+    {
+     "kind": "handler.invocation",
+     "fn": "main.jsx:event => { event.preventDefault(); fetch('/ap",
+     "prop": "onSubmit",
+     "native": "submit",
+     "holder": "host:form@0",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "app_code",
+     "listener_on": "react_container",
+     "cause": "action:mug71s0j:30"
+    }
+   ],
+   "enters": [
+    "main.jsx:event => { event.preventDefault(); fetch('/ap",
+    "main.jsx:event => { event.preventDefault(); fetch('/ap"
+   ],
+   "reqs": [
+    "/api/form-submit"
+   ],
+   "credited": "main.jsx:event => { event.preventDefault(); fetch('/ap",
+   "stopped_at": "request",
+   "because": "evidence still arriving (episode not idle)",
+   "text": "submit action:mug71s0j:31 → handler <unnamed> client/src/main.jsx@317-416 [bound: onSubmit on submit (app code)] → 1 request: (1) POST /api/form-submit [pending] [outcome pending]: reached request / stopped at request / because evidence still arriving (episode not idle); this submit event was caused by action action:mug71s0j:30's work (dispatch), not by a user gesture; it is listed under episode episode:action:mug71s0j:30\nRan for a dispatch app code caused (not a user event): <unnamed> client/src/main.jsx@317-416 as onSubmit on submit (dispatched by react_event_system)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@317-416\n  - request (1) POST /api/form-submit [pending]"
+  }
+ ],
+ "requests": [
+  {
+   "url": "/api/form-submit",
+   "action_id": "action:mug71r8f:1",
+   "action_event": "submit",
+   "action_target": "F",
+   "owner": "continuation:action:mug71r8f:1:function:6",
+   "keys": [
+    "terminal_owner_continuation_id=\"continuation:action:mug71r8f:1:function:6\""
+   ]
+  },
+  {
+   "url": "/api/form-submit",
+   "action_id": "action:mug71roh:14",
+   "action_event": "submit",
+   "action_target": "F",
+   "owner": "continuation:action:mug71roh:14:function:22",
+   "keys": [
+    "terminal_owner_continuation_id=\"continuation:action:mug71roh:14:function:22\""
+   ]
+  },
+  {
+   "url": "/api/form-submit",
+   "action_id": "action:mug71s0j:31",
+   "action_event": "submit",
+   "action_target": "L10:<button ref={submitBtn} type=\"submit\">Go</button>",
+   "owner": "continuation:action:mug71s0j:31:function:42",
+   "keys": [
+    "terminal_owner_continuation_id=\"continuation:action:mug71s0j:31:function:42\""
+   ]
+  }
+ ],
+ "page_requests_text": "3 request(s): 3 attributed to a user action, 0 with no action\n- POST /api/form-submit ×3 (3 action, 0 none; statuses stopped×2, pending×1); interval median 505 ms (min 433, max 577, 2 gaps, each within one page)\nRequests (all, oldest first):\n- 23:59:38.273 POST /api/form-submit [action action:mug71r8f:1 (submit, request (1) of its chain)] [stopped at network]\n- 23:59:38.850 POST /api/form-submit [action action:mug71roh:14 (submit, request (1) of its chain)] [stopped at network]\n- 23:59:39.283 POST /api/form-submit [action action:mug71s0j:31 (submit, request (1) of its chain)] [pending]"
+}

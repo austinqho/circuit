@@ -1,0 +1,24 @@
+// Drive one tracer checkout's MCP server over stdio against a banked store; write every call's output.
+import fs from 'node:fs'; import path from 'node:path'; import zlib from 'node:zlib';
+import { createRequire } from 'node:module';
+const [root, store, manifest, out] = process.argv.slice(2);
+const require = createRequire('/Users/austinho/dev/tracer-e-trusted-events/package.json');
+const { Client } = await import(require.resolve('@modelcontextprotocol/sdk/client/index.js'));
+const { StdioClientTransport } = await import(require.resolve('@modelcontextprotocol/sdk/client/stdio.js'));
+const read = f => fs.existsSync(f) ? fs.readFileSync(f, 'utf8') : zlib.gunzipSync(fs.readFileSync(`${f}.gz`)).toString();
+const records = read(path.join(store, 'records.jsonl')).split('\n').filter(Boolean).map(JSON.parse);
+const args = [path.join(root, 'mcp/server.mjs'), '--store', store, ...(manifest !== '-' ? ['--manifest', manifest] : [])];
+const client = new Client({ name: 'banked', version: '1' });
+await client.connect(new StdioClientTransport({ command: process.execPath, args, stderr: 'ignore' }));
+const lines = [];
+const call = async (name, a) => { const r = await client.callTool({ name, arguments: a }); const { store: _s, ...rest } = r.structuredContent || {}; lines.push(JSON.stringify({ name, args: a, structured: rest, text: r.content[0].text })); };
+const actions = records.filter(r => r.kind === 'dom.action' && r.action_id);
+const sessions = [...new Set(actions.map(r => r.capture_page_id || r.session_id || 'default'))];
+await call('recent_actions', { n: 100 });
+for (const s of sessions) await call('page_requests', { session: s, n: 500 });
+for (const a of actions) await call('action_chain', { action_id: a.action_id });
+const keys = [...new Set(actions.map(a => a.target?.element_key).filter(Boolean))];
+for (const k of keys) await call('element_history', { element_key: k });
+await client.close();
+fs.writeFileSync(out, lines.join('\n') + '\n');
+console.log(`${lines.length} calls (${actions.length} actions, ${keys.length} keys, ${sessions.length} sessions)`);

@@ -1,0 +1,29 @@
+{
+  "schema": "producttrace.react-predicate-consumption-acceptance.v1",
+  "react": "18.3.1",
+  "builds": [
+    {
+      "build": "development",
+      "actual_clicks": 8,
+      "consumed_condition_paths": 8,
+      "independent_consumption_mutants_rejected": 6,
+      "missing_call_receipts_rejected": true,
+      "separate_callback_frames": true
+    },
+    {
+      "build": "production",
+      "actual_clicks": 8,
+      "consumed_condition_paths": 8,
+      "independent_consumption_mutants_rejected": 6,
+      "missing_call_receipts_rejected": true,
+      "separate_callback_frames": true
+    }
+  ],
+  "scope": "Direct and immutable local boolean conditions retain the exact accepted isValidElement call occurrence.",
+  "unproved": [
+    "Target branch execution or completion",
+    "Mutable or cross-function aliases",
+    "Asynchronous containing bodies",
+    "Unsupported argument evaluation"
+  ]
+}

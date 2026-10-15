@@ -1,0 +1,6 @@
+✖ different context objects never borrow a Provider value and exact Consumer callbacks receive their value (30.6835ms)
+ℹ tests 731
+ℹ pass 730
+ℹ fail 1
+✖ failing tests:
+✖ different context objects never borrow a Provider value and exact Consumer callbacks receive their value (30.6835ms)

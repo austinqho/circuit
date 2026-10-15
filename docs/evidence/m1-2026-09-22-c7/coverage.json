@@ -1,0 +1,143 @@
+{
+  "schema": "producttrace.m1-cycle7-coverage.v1",
+  "build": {
+    "served_stamp_observations": 53,
+    "runtime_attribution_functions_manifest": 7373,
+    "runtime_attribution_function_markers_seen": 5782,
+    "self_check_stop": "marker_count_mismatch"
+  },
+  "capture": {
+    "emitted": 5501,
+    "received": 5501,
+    "dropped": 0,
+    "gaps": [],
+    "contiguous": true
+  },
+  "transports": {
+    "observed": 30,
+    "wrapper_recorded": 10,
+    "reconciliation": 20,
+    "reconciliation_reason": "20 Playwright-observed fetch/xhr rows had no matching runtime network.request row in this pattern crawl"
+  },
+  "linkage": {
+    "direct": 6,
+    "mount_effect": 0,
+    "unattributed": 4
+  },
+  "inventory": {
+    "controls": 607,
+    "drive_units": 343,
+    "passive_units": 188
+  },
+  "final_test": {
+    "total_units": 343,
+    "counts": {
+      "reached_db": 1,
+      "unreachable": 4,
+      "not_encountered": 338
+    }
+  },
+  "surfaces": [
+    {
+      "label": "c-new",
+      "depth": 0,
+      "url": "http://127.0.0.1:60142/c/new",
+      "stamped": 53
+    },
+    {
+      "label": "c-new:revealed",
+      "depth": 1,
+      "url": "http://127.0.0.1:60142/c/new",
+      "stamped": 53
+    },
+    {
+      "label": "existing-conversation",
+      "depth": 0,
+      "url": "http://127.0.0.1:60142/c/new",
+      "stamped": 0
+    },
+    {
+      "label": "existing-conversation:revealed",
+      "depth": 1,
+      "url": "http://127.0.0.1:60142/c/new",
+      "stamped": 0
+    },
+    {
+      "label": "agents",
+      "depth": 0,
+      "url": "http://127.0.0.1:60142/agents",
+      "stamped": 0
+    },
+    {
+      "label": "agents:revealed",
+      "depth": 1,
+      "url": "http://127.0.0.1:60142/agents",
+      "stamped": 0
+    },
+    {
+      "label": "prompts",
+      "depth": 0,
+      "url": "http://127.0.0.1:60142/prompts",
+      "stamped": 0
+    },
+    {
+      "label": "prompts:revealed",
+      "depth": 1,
+      "url": "http://127.0.0.1:60142/prompts",
+      "stamped": 0
+    },
+    {
+      "label": "bookmarks",
+      "depth": 0,
+      "url": "http://127.0.0.1:60142/bookmarks",
+      "stamped": 0
+    },
+    {
+      "label": "bookmarks:revealed",
+      "depth": 1,
+      "url": "http://127.0.0.1:60142/bookmarks",
+      "stamped": 0
+    },
+    {
+      "label": "settings",
+      "depth": 0,
+      "url": "http://127.0.0.1:60142/settings",
+      "stamped": 0
+    },
+    {
+      "label": "settings:revealed",
+      "depth": 1,
+      "url": "http://127.0.0.1:60142/settings",
+      "stamped": 0
+    },
+    {
+      "label": "search",
+      "depth": 0,
+      "url": "http://127.0.0.1:60142/search",
+      "stamped": 0
+    },
+    {
+      "label": "search:revealed",
+      "depth": 1,
+      "url": "http://127.0.0.1:60142/search",
+      "stamped": 0
+    },
+    {
+      "label": "side-panel-tabs",
+      "depth": 0,
+      "url": "http://127.0.0.1:60142/c/new",
+      "stamped": 0
+    },
+    {
+      "label": "side-panel-tabs:revealed",
+      "depth": 1,
+      "url": "http://127.0.0.1:60142/c/new",
+      "stamped": 0
+    }
+  ],
+  "crawl_depth": 1,
+  "stamps": {
+    "encountered_units": 5,
+    "rendered_stamp_observations": 5
+  }
+}

@@ -1,0 +1,1169 @@
+{
+  "schema": "producttrace.m1-cycle5-coverage.v1",
+  "headless": true,
+  "request_coverage": {
+    "observed": 82,
+    "tracer": 82,
+    "equal": true,
+    "reconciliation_count": 0,
+    "reconciliation": [],
+    "observed_requests": [
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/config",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "POST",
+        "url": "http://127.0.0.1:50827/api/auth/refresh",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/banner",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/config",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "POST",
+        "url": "http://127.0.0.1:50827/api/auth/login",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/banner",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/config",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/roles/USER",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/roles/ADMIN",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/user",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/endpoints",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/user/settings/favorites",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/projects",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents/chat/active",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/convos",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/mcp/servers",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/permissions/mcpServer/effective/all",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/files/speech/config/get",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/models",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/prompts/groups",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/prompts/all",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/files",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/search/enable",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/tags",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/keys",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/presets",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/files/config",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents/tools/web_search/auth",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/endpoints/token-config",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/health",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "POST",
+        "url": "http://127.0.0.1:50827/api/agents/chat/openAI",
+        "resource_type": "fetch"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents/chat/stream/eddc5f17-375a-55c9-8382-559b2080579f",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents/chat/status/eddc5f17-375a-55c9-8382-559b2080579f",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/convos/gen_title/eddc5f17-375a-55c9-8382-559b2080579f",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "PUT",
+        "url": "http://127.0.0.1:50827/api/messages/new/52e31ab7-65e0-4a2f-8013-3a718544d934_/feedback",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "POST",
+        "url": "http://127.0.0.1:50827/api/agents/chat/openAI",
+        "resource_type": "fetch"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents/chat/stream/eddc5f17-375a-55c9-8382-559b2080579f",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/share/link/eddc5f17-375a-55c9-8382-559b2080579f",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/messages/eddc5f17-375a-55c9-8382-559b2080579f",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents/tools/calls",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents/chat/status/eddc5f17-375a-55c9-8382-559b2080579f",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/messages/eddc5f17-375a-55c9-8382-559b2080579f",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "POST",
+        "url": "http://127.0.0.1:50827/api/agents/chat/openAI",
+        "resource_type": "fetch"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents/chat/stream/eddc5f17-375a-55c9-8382-559b2080579f",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents/chat/status/eddc5f17-375a-55c9-8382-559b2080579f",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "POST",
+        "url": "http://127.0.0.1:50827/api/convos/update",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "POST",
+        "url": "http://127.0.0.1:50827/api/agents/chat/openAI",
+        "resource_type": "fetch"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents/chat/stream/eddc5f17-375a-55c9-8382-559b2080579f",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents/categories",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/skills",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/admin/roles",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/models",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents/tools",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents/chat/status/eddc5f17-375a-55c9-8382-559b2080579f",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "POST",
+        "url": "http://127.0.0.1:50827/api/agents",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents/agent_nlIA-dvsRa1lCWb3qqgvu",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents/actions",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/permissions/agent/6ab3ce0f1b3b8aa99880ef8b/effective",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/permissions/agent/6ab3ce0f1b3b8aa99880ef8b",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/permissions/remoteAgent/6ab3ce0f1b3b8aa99880ef8b/effective",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents/agent_nlIA-dvsRa1lCWb3qqgvu/expanded",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/permissions/remoteAgent/6ab3ce0f1b3b8aa99880ef8b",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/keys",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents/agent_nlIA-dvsRa1lCWb3qqgvu",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/messages/eddc5f17-375a-55c9-8382-559b2080579f",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents/agent_nlIA-dvsRa1lCWb3qqgvu",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "POST",
+        "url": "http://127.0.0.1:50827/api/agents/chat/agents",
+        "resource_type": "fetch"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents/chat/stream/be68fe80-8a8b-5dbd-a8a0-e877317d0561",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/share/link/be68fe80-8a8b-5dbd-a8a0-e877317d0561",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/messages/be68fe80-8a8b-5dbd-a8a0-e877317d0561",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents/tools/calls",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents/chat/status/be68fe80-8a8b-5dbd-a8a0-e877317d0561",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/messages/be68fe80-8a8b-5dbd-a8a0-e877317d0561",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents/chat/status/be68fe80-8a8b-5dbd-a8a0-e877317d0561",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "DELETE",
+        "url": "http://127.0.0.1:50827/api/convos",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/convos",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/projects",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/tags",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/messages/be68fe80-8a8b-5dbd-a8a0-e877317d0561",
+        "resource_type": "xhr"
+      },
+      {
+        "method": "GET",
+        "url": "http://127.0.0.1:50827/api/agents/agent_nlIA-dvsRa1lCWb3qqgvu",
+        "resource_type": "xhr"
+      }
+    ],
+    "cdp_initiators": []
+  },
+  "linkage_counts": {
+    "unattributed": 57,
+    "direct": 21,
+    "state_effect": 4
+  },
+  "capture": {
+    "emitted": 221501,
+    "received": 221501,
+    "dropped": 0,
+    "gaps": [],
+    "capture_rows_received": 221028,
+    "capture_dropped_rows": 0,
+    "queued_at_snapshot": 0,
+    "pages": {
+      "mue4597c-cqvv311alig": {
+        "expected": 221029,
+        "received": 221028,
+        "dropped": 0,
+        "gaps": []
+      }
+    }
+  },
+  "stamp_capture": {
+    "mue4597c-cqvv311alig": {
+      "expected": 474,
+      "received": 473,
+      "gaps": []
+    }
+  },
+  "request_bridge_withheld": true,
+  "api_shapes": [
+    {
+      "url": "/api/config",
+      "status": 200,
+      "config_keys": [
+        "appTitle",
+        "appleLoginEnabled",
+        "buildInfo",
+        "discordLoginEnabled",
+        "emailEnabled",
+        "emailLoginEnabled",
+        "facebookLoginEnabled",
+        "githubLoginEnabled",
+        "googleLoginEnabled",
+        "ldap",
+        "openidAutoRedirect",
+        "openidImageUrl",
+        "openidLabel",
+        "openidLoginEnabled",
+        "passwordResetEnabled",
+        "registrationEnabled",
+        "samlImageUrl",
+        "samlLabel",
+        "samlLoginEnabled",
+        "serverDomain",
+        "socialLoginEnabled",
+        "socialLogins",
+        "turnstile"
+      ]
+    },
+    {
+      "url": "/api/config",
+      "status": 200,
+      "config_keys": [
+        "appTitle",
+        "appleLoginEnabled",
+        "buildInfo",
+        "discordLoginEnabled",
+        "emailEnabled",
+        "emailLoginEnabled",
+        "facebookLoginEnabled",
+        "githubLoginEnabled",
+        "googleLoginEnabled",
+        "ldap",
+        "openidAutoRedirect",
+        "openidImageUrl",
+        "openidLabel",
+        "openidLoginEnabled",
+        "passwordResetEnabled",
+        "registrationEnabled",
+        "samlImageUrl",
+        "samlLabel",
+        "samlLoginEnabled",
+        "serverDomain",
+        "socialLoginEnabled",
+        "socialLogins",
+        "turnstile"
+      ]
+    },
+    {
+      "url": "/api/config",
+      "status": 200,
+      "config_keys": [
+        "allowAccountDeletion",
+        "appTitle",
+        "appleLoginEnabled",
+        "balance",
+        "buildInfo",
+        "conversationImportMaxFileSize",
+        "discordLoginEnabled",
+        "emailEnabled",
+        "emailLoginEnabled",
+        "facebookLoginEnabled",
+        "fileUploadSseEnabled",
+        "githubLoginEnabled",
+        "googleLoginEnabled",
+        "helpAndFaqURL",
+        "interface",
+        "langfuseConnectionAccess",
+        "langfuseFanoutEnabled",
+        "ldap",
+        "openidAutoRedirect",
+        "openidImageUrl",
+        "openidLabel",
+        "openidLoginEnabled",
+        "openidReuseTokens",
+        "passwordResetEnabled",
+        "publicSharedLinksEnabled",
+        "registrationEnabled",
+        "samlImageUrl",
+        "samlLabel",
+        "samlLoginEnabled",
+        "serverDomain",
+        "sharePointFilePickerEnabled",
+        "sharedLinksEnabled",
+        "sharedLinksSnapshotFilesEnabled",
+        "showBirthdayIcon",
+        "socialLoginEnabled",
+        "socialLogins",
+        "titleGenerationTiming",
+        "turnstile"
+      ]
+    },
+    {
+      "url": "/api/endpoints",
+      "status": 200,
+      "endpoint_keys": [
+        "agents",
+        "anthropic",
+        "assistants",
+        "google",
+        "openAI"
+      ],
+      "agents": {
+        "allowedProviders": null,
+        "capabilities": [
+          "deferred_tools",
+          "execute_code",
+          "file_search",
+          "web_search",
+          "artifacts",
+          "subagents",
+          "actions",
+          "context",
+          "skills",
+          "ask_user_question",
+          "tools",
+          "chain",
+          "ocr"
+        ],
+        "disableBuilder": false,
+        "userProvide": false
+      }
+    },
+    {
+      "url": "/api/models",
+      "status": 200,
+      "model_counts": {
+        "openAI": 1,
+        "google": 11,
+        "anthropic": 24,
+        "azureOpenAI": 24,
+        "assistants": 1,
+        "azureAssistants": 1,
+        "bedrock": 28
+      },
+      "model_samples": {
+        "openAI": [
+          "gpt-3.5-turbo"
+        ],
+        "google": [
+          "gemini-3.6-flash",
+          "gemini-3.5-flash",
+          "gemini-3.5-flash-lite"
+        ],
+        "anthropic": [
+          "claude-fable-5",
+          "claude-opus-5",
+          "claude-opus-4-8"
+        ],
+        "azureOpenAI": [
+          "gpt-5.6",
+          "gpt-5.6-terra",
+          "gpt-5.6-luna"
+        ],
+        "assistants": [
+          "gpt-3.5-turbo"
+        ],
+        "azureAssistants": [
+          "gpt-3.5-turbo"
+        ],
+        "bedrock": [
+          "global.anthropic.claude-fable-5",
+          "global.anthropic.claude-opus-5",
+          "global.anthropic.claude-opus-4-8"
+        ]
+      }
+    },
+    {
+      "url": "/api/endpoints/token-config",
+      "status": 200,
+      "token_config": [
+        "anthropic",
+        "assistants",
+        "azureAssistants",
+        "azureOpenAI",
+        "bedrock",
+        "google",
+        "openAI"
+      ]
+    },
+    {
+      "url": "/api/models",
+      "status": 200,
+      "model_counts": {
+        "openAI": 1,
+        "google": 11,
+        "anthropic": 24,
+        "azureOpenAI": 24,
+        "assistants": 1,
+        "azureAssistants": 1,
+        "bedrock": 28
+      },
+      "model_samples": {
+        "openAI": [
+          "gpt-3.5-turbo"
+        ],
+        "google": [
+          "gemini-3.6-flash",
+          "gemini-3.5-flash",
+          "gemini-3.5-flash-lite"
+        ],
+        "anthropic": [
+          "claude-fable-5",
+          "claude-opus-5",
+          "claude-opus-4-8"
+        ],
+        "azureOpenAI": [
+          "gpt-5.6",
+          "gpt-5.6-terra",
+          "gpt-5.6-luna"
+        ],
+        "assistants": [
+          "gpt-3.5-turbo"
+        ],
+        "azureAssistants": [
+          "gpt-3.5-turbo"
+        ],
+        "bedrock": [
+          "global.anthropic.claude-fable-5",
+          "global.anthropic.claude-opus-5",
+          "global.anthropic.claude-opus-4-8"
+        ]
+      }
+    }
+  ],
+  "timeline_steps": [
+    {
+      "step": 1,
+      "at": "2026-09-23T13:02:52.907Z",
+      "control": "focused email/password inputs; clicked Continue",
+      "result": "login attempted",
+      "action_ids": [
+        "action:mue45a6q:1",
+        "action:mue45a6s:2",
+        "action:mue45a71:3",
+        "action:mue45a73:4",
+        "action:mue45a74:5",
+        "action:mue45a74:6",
+        "action:mue45a75:7",
+        "action:mue45a75:8",
+        "action:mue45a75:9",
+        "action:mue45a75:10",
+        "action:mue45a76:11",
+        "action:mue45a76:12",
+        "action:mue45a77:13",
+        "action:mue45a77:14",
+        "action:mue45a77:15",
+        "action:mue45a77:16",
+        "action:mue45a77:17",
+        "action:mue45a78:18",
+        "action:mue45a78:19",
+        "action:mue45a78:20",
+        "action:mue45a78:21",
+        "action:mue45a79:22",
+        "action:mue45a79:23",
+        "action:mue45a79:24",
+        "action:mue45a79:25",
+        "action:mue45a7a:26",
+        "action:mue45a7a:27",
+        "action:mue45a7a:28",
+        "action:mue45a7a:29",
+        "action:mue45a7b:30",
+        "action:mue45a7b:31",
+        "action:mue45a7b:32",
+        "action:mue45a7b:33",
+        "action:mue45a7c:34",
+        "action:mue45a7c:35",
+        "action:mue45a7c:36",
+        "action:mue45a7c:37",
+        "action:mue45a7d:38",
+        "action:mue45a7d:39",
+        "action:mue45a7d:40",
+        "action:mue45a7d:41",
+        "action:mue45a7e:42",
+        "action:mue45a7e:43",
+        "action:mue45a7e:44",
+        "action:mue45a7e:45",
+        "action:mue45a7f:46",
+        "action:mue45a85:47",
+        "action:mue45a85:48",
+        "action:mue45a86:49",
+        "action:mue45a87:50",
+        "action:mue45a89:51",
+        "action:mue45a89:52",
+        "action:mue45a89:53",
+        "action:mue45a8a:54",
+        "action:mue45a8a:55",
+        "action:mue45a8a:56",
+        "action:mue45a8a:57",
+        "action:mue45a8b:58",
+        "action:mue45a8b:59",
+        "action:mue45a8b:60",
+        "action:mue45a8b:61",
+        "action:mue45a8b:62",
+        "action:mue45a8c:63",
+        "action:mue45a8c:64",
+        "action:mue45a8c:65",
+        "action:mue45a8c:66",
+        "action:mue45a8c:67",
+        "action:mue45a8d:68",
+        "action:mue45a8e:69",
+        "action:mue45a8e:70",
+        "action:mue45a8e:71",
+        "action:mue45a8e:72",
+        "action:mue45a8e:73",
+        "action:mue45a8f:74",
+        "action:mue45a8f:75",
+        "action:mue45a8f:76",
+        "action:mue45a8f:77",
+        "action:mue45a8g:78",
+        "action:mue45a8g:79",
+        "action:mue45a9c:80",
+        "action:mue45a9d:81",
+        "action:mue45a9d:82",
+        "action:mue45a9d:83",
+        "action:mue45aia:84"
+      ]
+    },
+    {
+      "step": 2,
+      "at": "2026-09-23T13:02:56.554Z",
+      "control": "clicked New chat; entered coffee prompt; clicked send-button",
+      "result": "reply waited",
+      "action_ids": [
+        "action:mue45bak:85",
+        "action:mue45bal:86",
+        "action:mue45bbp:87",
+        "action:mue45bcq:88",
+        "action:mue45bcs:89",
+        "action:mue45bct:90",
+        "action:mue45bcy:91",
+        "action:mue45bcz:92",
+        "action:mue45bd2:93",
+        "action:mue45bd2:94",
+        "action:mue45bd6:95",
+        "action:mue45bd7:96",
+        "action:mue45bda:97",
+        "action:mue45bda:98",
+        "action:mue45bdd:99",
+        "action:mue45bde:100",
+        "action:mue45bdh:101",
+        "action:mue45bdh:102",
+        "action:mue45bdl:103",
+        "action:mue45bdm:104",
+        "action:mue45bdp:105",
+        "action:mue45bdq:106",
+        "action:mue45bds:107",
+        "action:mue45bdt:108",
+        "action:mue45bdw:109",
+        "action:mue45bdw:110",
+        "action:mue45bdz:111",
+        "action:mue45be0:112",
+        "action:mue45be4:113",
+        "action:mue45be5:114",
+        "action:mue45bea:115",
+        "action:mue45beb:116",
+        "action:mue45bee:117",
+        "action:mue45bef:118",
+        "action:mue45bei:119",
+        "action:mue45bej:120",
+        "action:mue45beo:121",
+        "action:mue45beo:122",
+        "action:mue45bes:123",
+        "action:mue45bet:124",
+        "action:mue45bew:125",
+        "action:mue45bex:126",
+        "action:mue45bf2:127",
+        "action:mue45bf3:128",
+        "action:mue45bf9:129",
+        "action:mue45bfa:130",
+        "action:mue45bfd:131",
+        "action:mue45bfe:132",
+        "action:mue45bfj:133",
+        "action:mue45bfk:134",
+        "action:mue45bfo:135",
+        "action:mue45bfp:136",
+        "action:mue45bfs:137",
+        "action:mue45bft:138",
+        "action:mue45bfw:139",
+        "action:mue45bfx:140",
+        "action:mue45bg2:141",
+        "action:mue45bg3:142",
+        "action:mue45bg6:143",
+        "action:mue45bg8:144",
+        "action:mue45bgd:145",
+        "action:mue45bge:146",
+        "action:mue45bgj:147",
+        "action:mue45bgk:148",
+        "action:mue45bgo:149",
+        "action:mue45bgp:150",
+        "action:mue45bgs:151",
+        "action:mue45bgt:152",
+        "action:mue45bgy:153",
+        "action:mue45bh0:154",
+        "action:mue45bh3:155",
+        "action:mue45bh4:156",
+        "action:mue45bhc:157",
+        "action:mue45bhd:158",
+        "action:mue45bhh:159",
+        "action:mue45bhi:160",
+        "action:mue45bhl:161",
+        "action:mue45bhn:162",
+        "action:mue45bhs:163",
+        "action:mue45bht:164",
+        "action:mue45bhx:165",
+        "action:mue45bhy:166",
+        "action:mue45bi1:167",
+        "action:mue45bi3:168",
+        "action:mue45bi6:169",
+        "action:mue45bi8:170",
+        "action:mue45bif:171",
+        "action:mue45big:172",
+        "action:mue45bik:173",
+        "action:mue45bim:174",
+        "action:mue45bis:175",
+        "action:mue45bit:176",
+        "action:mue45bix:177",
+        "action:mue45biz:178",
+        "action:mue45bj2:179",
+        "action:mue45bj4:180",
+        "action:mue45bjc:181",
+        "action:mue45bjd:182",
+        "action:mue45bji:183",
+        "action:mue45bjj:184",
+        "action:mue45bjp:185",
+        "action:mue45bjr:186",
+        "action:mue45bjv:187",
+        "action:mue45bjx:188",
+        "action:mue45bkm:189",
+        "action:mue45bkp:190",
+        "action:mue45bkp:191",
+        "action:mue45bkp:192",
+        "action:mue45bks:193"
+      ]
+    },
+    {
+      "step": 3,
+      "at": "2026-09-23T13:02:56.621Z",
+      "control": "clicked copy-response-button",
+      "result": "copy clicked",
+      "action_ids": [
+        "action:mue45e1z:194",
+        "action:mue45e20:195"
+      ]
+    },
+    {
+      "step": 4,
+      "at": "2026-09-23T13:03:01.738Z",
+      "control": "clicked Needs improvement; selected a reason",
+      "result": "feedback submitted",
+      "action_ids": [
+        "action:mue45hyo:196",
+        "action:mue45hyo:197",
+        "action:mue45hyz:198",
+        "action:mue45i04:199"
+      ]
+    },
+    {
+      "step": 5,
+      "at": "2026-09-23T13:03:04.346Z",
+      "control": "clicked regenerate-generation-button",
+      "result": "regeneration waited",
+      "action_ids": [
+        "action:mue45i1x:200",
+        "action:mue45i1x:201"
+      ]
+    },
+    {
+      "step": 6,
+      "at": "2026-09-23T13:03:07.119Z",
+      "control": "clicked Edit; typed into edit textarea {\"tag\":\"TEXTAREA\",\"aria_label\":\"Message input\",\"testid\":\"message-text-editor\",\"placeholder\":null}; clicked Save & Submit",
+      "result": "edited reply waited",
+      "edit_target": {
+        "tag": "TEXTAREA",
+        "aria_label": "Message input",
+        "testid": "message-text-editor",
+        "placeholder": null
+      },
+      "expected_text": "Give me three names for a tea shop in one line.",
+      "action_ids": [
+        "action:mue45k3z:202",
+        "action:mue45k3z:203",
+        "action:mue45k48:204",
+        "action:mue45k5g:205",
+        "action:mue45k5k:206",
+        "action:mue45k5m:207",
+        "action:mue45k5r:208",
+        "action:mue45k6q:209",
+        "action:mue45k6q:210",
+        "action:mue45k6r:211"
+      ]
+    },
+    {
+      "step": 7,
+      "at": "2026-09-23T13:03:08.931Z",
+      "control": "opened Conversation Menu Options; clicked Rename; clicked Save",
+      "result": "renamed Tracer M1",
+      "action_ids": [
+        "action:mue45n49:212",
+        "action:mue45n4e:213",
+        "action:mue45n4z:214",
+        "action:mue45n58:215",
+        "action:mue45n59:216",
+        "action:mue45n5c:217",
+        "action:mue45n5f:218",
+        "action:mue45n5h:219",
+        "action:mue45n5h:220",
+        "action:mue45n5k:221",
+        "action:mue45n5k:222",
+        "action:mue45n5m:223",
+        "action:mue45n5n:224",
+        "action:mue45n5o:225",
+        "action:mue45n5p:226",
+        "action:mue45n5q:227",
+        "action:mue45n5r:228",
+        "action:mue45n5s:229",
+        "action:mue45n5s:230",
+        "action:mue45n5t:231",
+        "action:mue45n5u:232",
+        "action:mue45n5v:233",
+        "action:mue45n5v:234",
+        "action:mue45n5w:235",
+        "action:mue45n5x:236",
+        "action:mue45n5y:237",
+        "action:mue45n5y:238",
+        "action:mue45n63:239",
+        "action:mue45n63:240",
+        "action:mue45n63:241"
+      ]
+    },
+    {
+      "step": 8,
+      "at": "2026-09-23T13:03:12.662Z",
+      "control": "selected openAI/gpt-3.5-turbo; created Barista 1790168570063 agent with coffee-only instructions",
+      "result": "create clicked",
+      "provider_options": 3,
+      "provider": "OpenAI",
+      "model": "gpt-3.5-turbo",
+      "action_ids": [
+        "action:mue45nl9:242",
+        "action:mue45nl9:243",
+        "action:mue45noh:244",
+        "action:mue45noh:245",
+        "action:mue45nql:246",
+        "action:mue45nql:247",
+        "action:mue45ob5:248",
+        "action:mue45ob6:249",
+        "action:mue45obr:250",
+        "action:mue45obs:251",
+        "action:mue45obs:252",
+        "action:mue45oc4:253",
+        "action:mue45oc4:254",
+        "action:mue45oc5:255",
+        "action:mue45olk:256",
+        "action:mue45olk:257",
+        "action:mue45olr:258",
+        "action:mue45ovc:259",
+        "action:mue45ovc:260",
+        "action:mue45ove:261",
+        "action:mue45ove:262",
+        "action:mue45ove:263",
+        "action:mue45ovu:264",
+        "action:mue45ppu:265",
+        "action:mue45ppu:266",
+        "action:mue45ppu:267"
+      ]
+    },
+    {
+      "step": 9,
+      "at": "2026-09-23T13:03:16.448Z",
+      "control": "opened New chat after committing Barista in the Agent Builder Select control; entered flat-white question; clicked send-button",
+      "result": "reply waited",
+      "selected_agent": "Barista 1790168570063",
+      "selection_commit": "Agent Builder Select",
+      "agent_chat_bodies": [
+        {
+          "keys": [
+            "clientRequestId",
+            "clientTimestamp",
+            "conversationId",
+            "endpoint",
+            "error",
+            "generationProtocolVersion",
+            "isContinued",
+            "isCreatedByUser",
+            "isRegenerate",
+            "isTemporary",
+            "key",
+            "maxContextTokens",
+            "messageId",
+            "model",
+            "parentMessageId",
+            "resendFiles",
+            "sender",
+            "text",
+            "timezone"
+          ],
+          "agent_id": null,
+          "endpoint": "openAI",
+          "model": "gpt-3.5-turbo"
+        },
+        {
+          "keys": [
+            "clientRequestId",
+            "clientTimestamp",
+            "conversationId",
+            "endpoint",
+            "error",
+            "generationProtocolVersion",
+            "isContinued",
+            "isCreatedByUser",
+            "isRegenerate",
+            "isTemporary",
+            "key",
+            "maxContextTokens",
+            "messageId",
+            "model",
+            "overrideParentMessageId",
+            "parentMessageId",
+            "resendFiles",
+            "responseMessageId",
+            "sender",
+            "text",
+            "timezone"
+          ],
+          "agent_id": null,
+          "endpoint": "openAI",
+          "model": "gpt-3.5-turbo"
+        }
+      ],
+      "action_ids": [
+        "action:mue45qh3:268",
+        "action:mue45qh4:269",
+        "action:mue45qj6:270",
+        "action:mue45qu4:271",
+        "action:mue45qu4:272",
+        "action:mue45qxm:273",
+        "action:mue45rav:274",
+        "action:mue45rax:275",
+        "action:mue45ray:276",
+        "action:mue45rb4:277",
+        "action:mue45rb4:278",
+        "action:mue45rba:279",
+        "action:mue45rbb:280",
+        "action:mue45rbe:281",
+        "action:mue45rbf:282",
+        "action:mue45rbi:283",
+        "action:mue45rbj:284",
+        "action:mue45rbn:285",
+        "action:mue45rbo:286",
+        "action:mue45rbr:287",
+        "action:mue45rbr:288",
+        "action:mue45rbu:289",
+        "action:mue45rbv:290",
+        "action:mue45rby:291",
+        "action:mue45rby:292",
+        "action:mue45rc1:293",
+        "action:mue45rc2:294",
+        "action:mue45rc6:295",
+        "action:mue45rc6:296",
+        "action:mue45rc9:297",
+        "action:mue45rca:298",
+        "action:mue45rcg:299",
+        "action:mue45rcg:300",
+        "action:mue45rcj:301",
+        "action:mue45rck:302",
+        "action:mue45rco:303",
+        "action:mue45rcp:304",
+        "action:mue45rcr:305",
+        "action:mue45rcs:306",
+        "action:mue45rcv:307",
+        "action:mue45rcw:308",
+        "action:mue45rcz:309",
+        "action:mue45rcz:310",
+        "action:mue45rd4:311",
+        "action:mue45rd5:312",
+        "action:mue45rdc:313",
+        "action:mue45rdd:314",
+        "action:mue45rdi:315",
+        "action:mue45rdj:316",
+        "action:mue45rdo:317",
+        "action:mue45rdr:318",
+        "action:mue45rdr:319",
+        "action:mue45rds:320",
+        "action:mue45rdu:321"
+      ]
+    },
+    {
+      "step": 10,
+      "at": "2026-09-23T13:03:16.857Z",
+      "control": "opened second conversation menu; clicked Delete and confirmation",
+      "result": "delete clicked",
+      "action_ids": [
+        "action:mue45te5:322",
+        "action:mue45te6:323",
+        "action:mue45tej:324",
+        "action:mue45tew:325",
+        "action:mue45tex:326",
+        "action:mue45tff:327",
+        "action:mue45to3:328",
+        "action:mue45to4:329"
+      ]
+    }
+  ]
+}

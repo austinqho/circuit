@@ -1,0 +1,30 @@
+diff -r grader-scratch/g6-main/compare/A-baseline__B-seeded-422.json grader-scratch/g6-branch/compare/A-baseline__B-seeded-422.json
+26c26
+<     "/Users/austinho/dev/tracer-e-trusted-events/grader-scratch/g6-store"
+---
+>     "<tracer>/grader-scratch/g6-store"
+diff -r grader-scratch/g6-main/compare/A-baseline__C-fix-r2.json grader-scratch/g6-branch/compare/A-baseline__C-fix-r2.json
+26c26
+<     "/Users/austinho/dev/tracer-e-trusted-events/grader-scratch/g6-store"
+---
+>     "<tracer>/grader-scratch/g6-store"
+diff -r grader-scratch/g6-main/compare/A-baseline__D-noop-refactor.json grader-scratch/g6-branch/compare/A-baseline__D-noop-refactor.json
+26c26
+<     "/Users/austinho/dev/tracer-e-trusted-events/grader-scratch/g6-store"
+---
+>     "<tracer>/grader-scratch/g6-store"
+diff -r grader-scratch/g6-main/compare/A-baseline__E-frontend-early-return.json grader-scratch/g6-branch/compare/A-baseline__E-frontend-early-return.json
+26c26
+<     "/Users/austinho/dev/tracer-e-trusted-events/grader-scratch/g6-store"
+---
+>     "<tracer>/grader-scratch/g6-store"
+diff -r grader-scratch/g6-main/compare/B-seeded-422__C-fix-r2.json grader-scratch/g6-branch/compare/B-seeded-422__C-fix-r2.json
+26c26
+<     "/Users/austinho/dev/tracer-e-trusted-events/grader-scratch/g6-store"
+---
+>     "<tracer>/grader-scratch/g6-store"
+diff -r grader-scratch/g6-main/compare/B-seeded-422__C-fix.json grader-scratch/g6-branch/compare/B-seeded-422__C-fix.json
+26c26
+<     "/Users/austinho/dev/tracer-e-trusted-events/grader-scratch/g6-store"
+---
+>     "<tracer>/grader-scratch/g6-store"

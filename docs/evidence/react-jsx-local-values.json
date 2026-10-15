@@ -1,0 +1,41 @@
+{
+  "schema": "producttrace.react-jsx-local-values.v1",
+  "runtime": [
+    {
+      "api": "react/Fragment/18.3.1",
+      "build": "development",
+      "local_jsx_value": true,
+      "keyed_reorder_retains_state_and_fiber": true,
+      "key_change_remounts": true,
+      "removed_key_reinsertion_remounts": true,
+      "sibling_identity_isolated": true,
+      "click_branch_proofs": 8,
+      "ignored_props_not_forwarded": true,
+      "ref_never_attached": true,
+      "development_only_validation": true,
+      "boundary_commits": 9,
+      "retained_identity_joins": 5,
+      "wrong_rules_rejected": 4,
+      "corrupted_lineage_rejected": 4
+    },
+    {
+      "api": "react/Fragment/18.3.1",
+      "build": "production",
+      "local_jsx_value": true,
+      "keyed_reorder_retains_state_and_fiber": true,
+      "key_change_remounts": true,
+      "removed_key_reinsertion_remounts": true,
+      "sibling_identity_isolated": true,
+      "click_branch_proofs": 8,
+      "ignored_props_not_forwarded": true,
+      "ref_never_attached": true,
+      "development_only_validation": true,
+      "boundary_commits": 9,
+      "retained_identity_joins": 5,
+      "wrong_rules_rejected": 4,
+      "corrupted_lineage_rejected": 4
+    }
+  ],
+  "scope": "One rendered use of a local const JSX value, including immutable alias chains, arrays and conditional initialization.",
+  "remaining": "Multiple uses, mutable bindings and source forms without a proved placement abstain."
+}

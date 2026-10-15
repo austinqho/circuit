@@ -1,0 +1,743 @@
+{
+  "schema": "producttrace.shared-rule-paid.v1",
+  "case_id": "query5-shouldThrowError",
+  "passed": true,
+  "frozen": {
+    "schema": "producttrace.shared-rule-freeze.v1",
+    "reason": "New TanStack Query package/version behind generated forwarding getters. Bank-blind model proposal must pass spread/value/throw checks and actual installed namespace integration.",
+    "files": {
+      "analysis/library-program.mjs": "9a91a0bcb849b1cdd28428b9c4aa63f0f264a3a8ed7fb7c1581b227eddfdba02",
+      "analysis/library-boundary.mjs": "6fa6fe50b6219ac22a6dc203ea88319a9f0cc20015c641b573455d44a348cf27",
+      "analysis/library-program-bank.mjs": "fca10afb3cddede485ae866647586a08421fd2f1656ae433ebcf3d93e7495bbe",
+      "analysis/library-program-integration.mjs": "6a352d22c30495e6b5411853a4a49cdd40387606600a09a40dc7fb514c6f366e",
+      "authoring/library-implementation.mjs": "702abf551475038b31f7c580ec76c294a45d49b2f13983e732d36fda9c65f1ec",
+      "authoring/library-export-getter.mjs": "0f98bd85ff1fb6c26918b3c2fdf76805260b9f81e7ce5843d594ed63e2eacab2",
+      "analysis/library-owned-reference.mjs": "4ed9ffba4ed3d10a95f0d0b9828cca9a7735816ecb58eb891693a26d3fe679de",
+      "analysis/library-owned-value.mjs": "dbb60a55e0991d1074a8924d80c2c31d9d2421cbbe0a9dd6764a50ceaf7d76f1",
+      "authoring/library-program-catalog.mjs": "f5e7c89c32bbcbde85fb7d870bf482bd5d6a3e5e4bf8b7c8b1696357b3ad032d",
+      "authoring/library-program-verifier.mjs": "bc379149d0f858a9b2e8fbe4163d5dae3941768098227bbabdd2ccb91144de03",
+      "authoring/library-program-resolver.mjs": "47bf720775b9dcf6e7255a2d0c6b49aca3427f278a847a85cc43d9ba0605f163",
+      "analysis/library-program-syntax.mjs": "ca5406e083c6cb8e65837f8f447c9c2eea2e98995e3cda1f11fa0fcdd25d22fb",
+      "authoring/library-program-author.mjs": "7bcf1869ff6d9665d6bc97b63c81a762fb7e7a7315f3652dacad0ba53d2831ec",
+      "authoring/library-program-format.mjs": "d184dab9225d4ab0f7e6820c8009293096a4d95673444633a6061608e2ba40c5",
+      "evaluation/shared-rules/cases.mjs": "d487757dd128644ee9dc1c71a23d5342672443d05acac1d4534139ce05fe02c8",
+      "evaluation/shared-rules/check-case.mjs": "865fea11dace6bbf0283f25f6bc8f140b09e1c97fc7750d9f0c1aa25095891c9",
+      "evaluation/shared-rules/run.mjs": "7dd48db9b1a7abc0c251af8e3b2b0deccbcea874d21a43f3072c0d09c1774569"
+    },
+    "cases": [
+      {
+        "id": "query5-shouldThrowError",
+        "implementation_sha256": "8c24887a19470532ffb96d15079488eaa5d2c1968a83243ae31b861da4bb5b55",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": null,
+          "description": "A truthy/falsy ordinary value or callback, followed by an array of plain callback parameters. Observe exact spread arguments, callback receiver/count, returned identity and original throws; non-callable values are coerced to boolean without invoking callbacks. No callback-producing results or arbitrary accessors/proxies."
+        },
+        "source_status": "ready_for_scoped_proposal"
+      }
+    ]
+  },
+  "active_engine": {
+    "analysis/library-program.mjs": "9a91a0bcb849b1cdd28428b9c4aa63f0f264a3a8ed7fb7c1581b227eddfdba02",
+    "analysis/library-boundary.mjs": "6fa6fe50b6219ac22a6dc203ea88319a9f0cc20015c641b573455d44a348cf27",
+    "analysis/library-program-bank.mjs": "fca10afb3cddede485ae866647586a08421fd2f1656ae433ebcf3d93e7495bbe",
+    "analysis/library-program-integration.mjs": "6a352d22c30495e6b5411853a4a49cdd40387606600a09a40dc7fb514c6f366e",
+    "authoring/library-implementation.mjs": "702abf551475038b31f7c580ec76c294a45d49b2f13983e732d36fda9c65f1ec",
+    "authoring/library-export-getter.mjs": "0f98bd85ff1fb6c26918b3c2fdf76805260b9f81e7ce5843d594ed63e2eacab2",
+    "analysis/library-owned-reference.mjs": "4ed9ffba4ed3d10a95f0d0b9828cca9a7735816ecb58eb891693a26d3fe679de",
+    "analysis/library-owned-value.mjs": "dbb60a55e0991d1074a8924d80c2c31d9d2421cbbe0a9dd6764a50ceaf7d76f1",
+    "authoring/library-program-catalog.mjs": "f5e7c89c32bbcbde85fb7d870bf482bd5d6a3e5e4bf8b7c8b1696357b3ad032d",
+    "authoring/library-program-verifier.mjs": "bc379149d0f858a9b2e8fbe4163d5dae3941768098227bbabdd2ccb91144de03",
+    "authoring/library-program-resolver.mjs": "47bf720775b9dcf6e7255a2d0c6b49aca3427f278a847a85cc43d9ba0605f163",
+    "analysis/library-program-syntax.mjs": "ca5406e083c6cb8e65837f8f447c9c2eea2e98995e3cda1f11fa0fcdd25d22fb",
+    "authoring/library-program-author.mjs": "7bcf1869ff6d9665d6bc97b63c81a762fb7e7a7315f3652dacad0ba53d2831ec",
+    "authoring/library-program-format.mjs": "d184dab9225d4ab0f7e6820c8009293096a4d95673444633a6061608e2ba40c5",
+    "evaluation/shared-rules/cases.mjs": "d487757dd128644ee9dc1c71a23d5342672443d05acac1d4534139ce05fe02c8",
+    "evaluation/shared-rules/check-case.mjs": "865fea11dace6bbf0283f25f6bc8f140b09e1c97fc7750d9f0c1aa25095891c9",
+    "evaluation/shared-rules/run.mjs": "7dd48db9b1a7abc0c251af8e3b2b0deccbcea874d21a43f3072c0d09c1774569"
+  },
+  "local_gate": {
+    "passed": true,
+    "source_sha256": "2b02a5de9adb6a8cc7faa620a03ba2efe9ea1050de5c5bc61bd8d629bd738417",
+    "checked_at": "2026-09-10T22:03:41.775Z",
+    "checks": [
+      {
+        "name": "regressions",
+        "exit_status": 0,
+        "output_sha256": "c2106064631e3b7e2f2352f9e763c5c708f49b7e9ca451ba81a98631ec6a745c"
+      },
+      {
+        "name": "real_libraries",
+        "exit_status": 0,
+        "output_sha256": "21f299a5c8d240573c33701be1fa460c79fa09aa5cebfcc9539baccdf79d0cd1"
+      },
+      {
+        "name": "actual_http",
+        "exit_status": 0,
+        "output_sha256": "5823bd4d65ce8052b0136c468f958cc657331375f0f7bbb372bc55c5e79f8a7b"
+      },
+      {
+        "name": "react182_owned_reference",
+        "exit_status": 0,
+        "output_sha256": "6cecd2fc0656c4a86747dc2584fbfa2990e2a333bc07e736296a6e3450b49258"
+      },
+      {
+        "name": "react18_owned_reference",
+        "exit_status": 0,
+        "output_sha256": "6cdd45bf63fb9f8594e4ef26dbfdc9acbcf4b39df03676bc06f93c05e2f73d42"
+      },
+      {
+        "name": "react19_owned_reference",
+        "exit_status": 0,
+        "output_sha256": "c8cea333bb0c5374d30043da78dfa7661f1404dcfa8858a7d061cd93b84faa0a"
+      },
+      {
+        "name": "react_production_catalog",
+        "exit_status": 0,
+        "output_sha256": "df27572354a0cda9a4565affe0bd0e785c3a3d21ae40995d1750ac9bbf8c4f4d"
+      },
+      {
+        "name": "react_transition",
+        "exit_status": 0,
+        "output_sha256": "87b6d7f306344089558c7c28215dae27a39055dd29767a1d22c453ad50112467"
+      },
+      {
+        "name": "react_memo_generations",
+        "exit_status": 0,
+        "output_sha256": "d240985e4f1b45b494a28c4a6702198c4764888bc520558ff3fd13bfdb2ea82f"
+      },
+      {
+        "name": "react_ref_cells",
+        "exit_status": 0,
+        "output_sha256": "b07e2c549dbfd928cb0d6beed1a6f587b82c0909391e32eb2378630a2947c0f5"
+      },
+      {
+        "name": "react_context_creation",
+        "exit_status": 0,
+        "output_sha256": "32a1fa1b4930f90bb67b834a4540ae189015637987b698bf10f8fd3cecb25b31"
+      },
+      {
+        "name": "react_children_only",
+        "exit_status": 0,
+        "output_sha256": "316e7a2f93244cc9b2e2609407b73c65da69310333723e165e948e79eeb5c10a"
+      },
+      {
+        "name": "react_element_data",
+        "exit_status": 0,
+        "output_sha256": "e2dcb498d1460b5a345b1c4849ff4d67df82ef08e20a8c85d27af1d0bf44a124"
+      },
+      {
+        "name": "react_simple_production",
+        "exit_status": 0,
+        "output_sha256": "f1446552b285e1db879496a47f8f0f65e6959acd58eb5290e853266d622167bd"
+      },
+      {
+        "name": "usable_catalog",
+        "exit_status": 0,
+        "output_sha256": "141882b695a7b6da6adcc479d940c1dfcd7e7f17bd0ca9faf94e01ddb6e7d6f5"
+      }
+    ]
+  },
+  "model": "gpt-5.4-mini",
+  "reasoning_effort": "low",
+  "resumed_from": null,
+  "implementation_sha256": "8c24887a19470532ffb96d15079488eaa5d2c1968a83243ae31b861da4bb5b55",
+  "implementation": {
+    "schema": "producttrace.library-implementation.v1",
+    "specifier": "query5",
+    "export_name": "shouldThrowError",
+    "runtime": {
+      "host": "node",
+      "mode": "development",
+      "entry": "node_modules/query5/build/modern/index.cjs"
+    },
+    "packages": [
+      {
+        "path": "node_modules/query5",
+        "name": "@tanstack/query-core",
+        "version": "5.90.16",
+        "integrity": "sha512-MvtWckSVufs/ja463/K4PyJeqT+HMlJWtw6PrCpywznd2NSgO3m4KwO9RqbFqGg6iDE8vVMFWMeQI4Io3eEYww==",
+        "manifest_sha256": "cb17cf54d332b1223a1408575b4fa45a1457d4bd5cc29d866c93eff1b17473cc"
+      }
+    ],
+    "files": [
+      {
+        "path": "node_modules/query5/build/modern/focusManager.cjs",
+        "sha256": "d2ea5ba3126b3c6273932fbd8898d2913aafbffb727b65fec9dab09ecda940e4"
+      },
+      {
+        "path": "node_modules/query5/build/modern/hydration.cjs",
+        "sha256": "2143e1194b63adb35417a28101ccd1c0baa466b16cc1561cf4fe551b71bc46db"
+      },
+      {
+        "path": "node_modules/query5/build/modern/index.cjs",
+        "sha256": "65336fe90d5b3adc49e0e2cdec431d17b93bddb500ce8d8733ac626508e9c5ae"
+      },
+      {
+        "path": "node_modules/query5/build/modern/infiniteQueryBehavior.cjs",
+        "sha256": "d3d75b9cd869517aaeae89de8ac98dd5a946337254bac583f2fdd1744c03c93b"
+      },
+      {
+        "path": "node_modules/query5/build/modern/infiniteQueryObserver.cjs",
+        "sha256": "aeb71a736ddac88353aa2d2be465936ee38666e1a6d03f49b07c8caa32e20057"
+      },
+      {
+        "path": "node_modules/query5/build/modern/mutation.cjs",
+        "sha256": "2d40ddccd222ef5af74a167c2a1a186c65221e4089c667b6558cb411bb4a5ac9"
+      },
+      {
+        "path": "node_modules/query5/build/modern/mutationCache.cjs",
+        "sha256": "77bea64d1c4d6b12223c37f8035ec1f30d84d73aa291328073cae5b347310dcb"
+      },
+      {
+        "path": "node_modules/query5/build/modern/mutationObserver.cjs",
+        "sha256": "bff9d3bf1220047997c6fbcd76d5e32299f9c932c1aa10f2ef0312faab5dc846"
+      },
+      {
+        "path": "node_modules/query5/build/modern/notifyManager.cjs",
+        "sha256": "03372f3dbc9233f66acea83a3edba9ee85a4e1aa48dea229ea466791c4d780e6"
+      },
+      {
+        "path": "node_modules/query5/build/modern/onlineManager.cjs",
+        "sha256": "a952c4158d3b6fb6d6095e9585bedce4ed531a2890a1513f25e85c94aaa883b4"
+      },
+      {
+        "path": "node_modules/query5/build/modern/queriesObserver.cjs",
+        "sha256": "cc218d5f621b2efd8425e4b87aa3405f84b8117d77120183082ab2916d0ad6f4"
+      },
+      {
+        "path": "node_modules/query5/build/modern/query.cjs",
+        "sha256": "6e80b58eaebfe133bc6ddbe2914d9a81deafce2df23e3faf16f8c9e8e63ed4b4"
+      },
+      {
+        "path": "node_modules/query5/build/modern/queryCache.cjs",
+        "sha256": "de9dd4a3efd0fc2aab3865ffa4385f9af027372b4a5c0374078581cd11fe9a7c"
+      },
+      {
+        "path": "node_modules/query5/build/modern/queryClient.cjs",
+        "sha256": "24038096747b4968409fade0ff39a53f443bdbe21c125934a5fd05a1780cdcb3"
+      },
+      {
+        "path": "node_modules/query5/build/modern/queryObserver.cjs",
+        "sha256": "c8934f04ce113e2dc01c4b6df3fce4d8495a1c3d73923ca54c26b92c84ac9b2f"
+      },
+      {
+        "path": "node_modules/query5/build/modern/removable.cjs",
+        "sha256": "a87781d109db40c2b4ed38966b2b414b8a0f2feca89d33241955fce2d306d39d"
+      },
+      {
+        "path": "node_modules/query5/build/modern/retryer.cjs",
+        "sha256": "7874339b7c66419034216dbbfcdfabc4a82dc2e44b1e5a3c9f5824568cf3bb7a"
+      },
+      {
+        "path": "node_modules/query5/build/modern/streamedQuery.cjs",
+        "sha256": "a6229f79de5dc723a2cd676b7f7d179827a91d3ea32895380671930c8a35e248"
+      },
+      {
+        "path": "node_modules/query5/build/modern/subscribable.cjs",
+        "sha256": "6f2eac2989b1a44b1418e22d6da8f4bdc2dfb59137526d00e73da06f053f5f7d"
+      },
+      {
+        "path": "node_modules/query5/build/modern/thenable.cjs",
+        "sha256": "6f762fe8f97f36e6051591877da2c8756ad66c8213435f8d906ae9dbabbfd304"
+      },
+      {
+        "path": "node_modules/query5/build/modern/timeoutManager.cjs",
+        "sha256": "4da5e4d4f3da59a567dfb035b27975b27bdd98a3b29fc1a709124d63f79993a4"
+      },
+      {
+        "path": "node_modules/query5/build/modern/types.cjs",
+        "sha256": "81dae1f9532e8a2d93235a1ec5a2514ad1be39fa4aac7ccd9b61b15d7a63e804"
+      },
+      {
+        "path": "node_modules/query5/build/modern/utils.cjs",
+        "sha256": "278862aa8547614dddc1214c1b31f6be7bad136d5ccdafc72a636ee67c1a6fc8"
+      }
+    ],
+    "source_status": "ready_for_scoped_proposal",
+    "source_reason": null,
+    "scope": "runtime_export_and_loaded_initialization_dependencies",
+    "implementation": "function shouldThrowError(throwOnError, params) {\n  if (typeof throwOnError === \"function\") {\n    return throwOnError(...params);\n  }\n  return !!throwOnError;\n}",
+    "slices": [
+      {
+        "file": "node_modules/query5/build/modern/utils.cjs",
+        "start": 8338,
+        "end": 8498,
+        "source": "function shouldThrowError(throwOnError, params) {\n  if (typeof throwOnError === \"function\") {\n    return throwOnError(...params);\n  }\n  return !!throwOnError;\n}"
+      }
+    ],
+    "export_resolution": {
+      "kind": "v8_pure_forwarding_getter",
+      "node_version": "26.7.0",
+      "getters": [
+        {
+          "file": "node_modules/query5/build/modern/index.cjs",
+          "start": 597,
+          "end": 612,
+          "source": "() => from[key]",
+          "sha256": "c7f2622d0ecbc9fbc3f41f3278c56633eb8f95e1b8192168abce801633947771"
+        },
+        {
+          "file": "node_modules/query5/build/modern/index.cjs",
+          "start": 2613,
+          "end": 2648,
+          "source": "() => import_utils.shouldThrowError",
+          "sha256": "f8ba29ea978ce7bf211f50eb8aaa6a1ea5e54493cd3935003c5fe3fc552c2cbd"
+        },
+        {
+          "file": "node_modules/query5/build/modern/utils.cjs",
+          "start": 597,
+          "end": 612,
+          "source": "() => from[key]",
+          "sha256": "c7f2622d0ecbc9fbc3f41f3278c56633eb8f95e1b8192168abce801633947771"
+        },
+        {
+          "file": "node_modules/query5/build/modern/utils.cjs",
+          "start": 1692,
+          "end": 1714,
+          "source": "() => shouldThrowError",
+          "sha256": "e15309c1e4f29281bbe1fdcdc6bb5ed7a07acc07982caa5715048cc79b0c599f"
+        }
+      ]
+    }
+  },
+  "result": {
+    "status": "admitted",
+    "program": {
+      "schema": "producttrace.library-program.v1",
+      "body": {
+        "op": "if",
+        "test": {
+          "op": "equal",
+          "left": {
+            "op": "type",
+            "value": {
+              "op": "arg",
+              "index": 0
+            }
+          },
+          "right": {
+            "op": "literal",
+            "value": "function"
+          }
+        },
+        "then": {
+          "op": "call",
+          "target": {
+            "op": "arg",
+            "index": 0
+          },
+          "receiver": {
+            "op": "undefined"
+          },
+          "args": {
+            "op": "arg",
+            "index": 1
+          }
+        },
+        "else": {
+          "op": "not",
+          "value": {
+            "op": "not",
+            "value": {
+              "op": "arg",
+              "index": 0
+            }
+          }
+        }
+      }
+    },
+    "admission": {
+      "status": "admitted",
+      "id": "library-program:c1339f692368d6e62d9b7af13ad3efd574328e1f599d44604cd23f082ec7af3e",
+      "program_sha256": "c9b67de44c490f8fbced2a595aa4ce29398e4112a54bb0d1653d3e0ba1029f54",
+      "implementation_sha256": "8c24887a19470532ffb96d15079488eaa5d2c1968a83243ae31b861da4bb5b55",
+      "scope": {
+        "callbackArguments": [
+          0
+        ],
+        "resultPaths": null,
+        "description": "A truthy/falsy ordinary value or callback, followed by an array of plain callback parameters. Observe exact spread arguments, callback receiver/count, returned identity and original throws; non-callable values are coerced to boolean without invoking callbacks. No callback-producing results or arbitrary accessors/proxies."
+      },
+      "report": {
+        "status": "passed",
+        "stage": "behavior_and_integration",
+        "behavior": {
+          "status": "passed",
+          "stage": "behavior_and_boundary_replay",
+          "reason": null,
+          "scope": "A truthy/falsy ordinary value or callback, followed by an array of plain callback parameters. Observe exact spread arguments, callback receiver/count, returned identity and original throws; non-callable values are coerced to boolean without invoking callbacks. No callback-producing results or arbitrary accessors/proxies.",
+          "calls": 18,
+          "actual_callbacks": 5,
+          "evidence": [
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_invocation",
+              "occurrence": "library-call:14",
+              "callback": "producer:argument:0",
+              "ordinal": 0,
+              "parent_ordinal": null,
+              "parent_relation": null,
+              "timing": "synchronous",
+              "status": "observed_agreement",
+              "outcome": "return",
+              "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_invocation",
+              "occurrence": "library-call:15",
+              "callback": "producer:argument:0",
+              "ordinal": 0,
+              "parent_ordinal": null,
+              "parent_relation": null,
+              "timing": "synchronous",
+              "status": "observed_agreement",
+              "outcome": "return",
+              "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_invocation",
+              "occurrence": "library-call:16",
+              "callback": "producer:argument:0",
+              "ordinal": 0,
+              "parent_ordinal": null,
+              "parent_relation": null,
+              "timing": "synchronous",
+              "status": "observed_agreement",
+              "outcome": "return",
+              "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_invocation",
+              "occurrence": "library-call:17",
+              "callback": "producer:argument:0",
+              "ordinal": 0,
+              "parent_ordinal": null,
+              "parent_relation": null,
+              "timing": "synchronous",
+              "status": "observed_agreement",
+              "outcome": "return",
+              "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+            },
+            {
+              "schema": "producttrace.library-boundary-evidence.v1",
+              "kind": "callback_invocation",
+              "occurrence": "library-call:18",
+              "callback": "producer:argument:0",
+              "ordinal": 0,
+              "parent_ordinal": null,
+              "parent_relation": null,
+              "timing": "synchronous",
+              "status": "observed_agreement",
+              "outcome": "throw",
+              "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+            }
+          ],
+          "failures": []
+        },
+        "integration": {
+          "passed": true,
+          "callbacks": 1,
+          "bindings": [
+            {
+              "id": "113670555e25f0cbe2d82d58fa89e9ab1bab74e047f7157aec8fe9d883c81e0d:call:87",
+              "file": "query5-shouldThrowError.ts",
+              "start": 87,
+              "end": 98,
+              "specifier": "query5",
+              "exportName": "shouldThrowError",
+              "rule": "library-program:c1339f692368d6e62d9b7af13ad3efd574328e1f599d44604cd23f082ec7af3e"
+            }
+          ],
+          "reports": [
+            {
+              "binding": "113670555e25f0cbe2d82d58fa89e9ab1bab74e047f7157aec8fe9d883c81e0d:call:87",
+              "rule": "library-program:c1339f692368d6e62d9b7af13ad3efd574328e1f599d44604cd23f082ec7af3e",
+              "status": "observed_agreement",
+              "scope": "observations_through_checkpoint",
+              "observation_mode": "invocations",
+              "error_observation": "identity",
+              "accessor_observation": "reject",
+              "calls": 2,
+              "failures": [],
+              "evidence": [
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "113670555e25f0cbe2d82d58fa89e9ab1bab74e047f7157aec8fe9d883c81e0d:call:87:1",
+                  "callback": "113670555e25f0cbe2d82d58fa89e9ab1bab74e047f7157aec8fe9d883c81e0d:call:87:argument:0",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                }
+              ]
+            }
+          ],
+          "failures": [],
+          "status": "passed",
+          "reason": null
+        }
+      }
+    },
+    "attempts": [
+      {
+        "number": 1,
+        "proposal": {
+          "schema": "producttrace.library-program-proposal.v2",
+          "status": "propose",
+          "program": {
+            "schema": "producttrace.library-program.v1",
+            "body": {
+              "op": "if",
+              "test": {
+                "op": "equal",
+                "left": {
+                  "op": "type",
+                  "value": {
+                    "op": "arg",
+                    "index": 0
+                  }
+                },
+                "right": {
+                  "op": "literal",
+                  "value": "function"
+                }
+              },
+              "then": {
+                "op": "call",
+                "target": {
+                  "op": "arg",
+                  "index": 0
+                },
+                "receiver": {
+                  "op": "undefined"
+                },
+                "args": {
+                  "op": "arg",
+                  "index": 1
+                }
+              },
+              "else": {
+                "op": "not",
+                "value": {
+                  "op": "not",
+                  "value": {
+                    "op": "arg",
+                    "index": 0
+                  }
+                }
+              }
+            }
+          },
+          "reason": "The installed implementation is a simple type split: callbacks are invoked with the provided parameter array spread as arguments, otherwise the input is coerced to a boolean. This program models that boundary exactly within the available operations."
+        },
+        "usage": {
+          "input_tokens": 4755,
+          "cached_input_tokens": 0,
+          "output_tokens": 481,
+          "reasoning_output_tokens": 298
+        },
+        "cost_usd": 0.00573075,
+        "latency_ms": 6374.526834,
+        "prompt_sha256": "1cceea305e86e4cc5c866aaa98f52499f8f5f3a812481dc0bab198f883033f30",
+        "check": {
+          "status": "admitted",
+          "id": "library-program:c1339f692368d6e62d9b7af13ad3efd574328e1f599d44604cd23f082ec7af3e",
+          "program_sha256": "c9b67de44c490f8fbced2a595aa4ce29398e4112a54bb0d1653d3e0ba1029f54",
+          "implementation_sha256": "8c24887a19470532ffb96d15079488eaa5d2c1968a83243ae31b861da4bb5b55",
+          "scope": {
+            "callbackArguments": [
+              0
+            ],
+            "resultPaths": null,
+            "description": "A truthy/falsy ordinary value or callback, followed by an array of plain callback parameters. Observe exact spread arguments, callback receiver/count, returned identity and original throws; non-callable values are coerced to boolean without invoking callbacks. No callback-producing results or arbitrary accessors/proxies."
+          },
+          "report": {
+            "status": "passed",
+            "stage": "behavior_and_integration",
+            "behavior": {
+              "status": "passed",
+              "stage": "behavior_and_boundary_replay",
+              "reason": null,
+              "scope": "A truthy/falsy ordinary value or callback, followed by an array of plain callback parameters. Observe exact spread arguments, callback receiver/count, returned identity and original throws; non-callable values are coerced to boolean without invoking callbacks. No callback-producing results or arbitrary accessors/proxies.",
+              "calls": 18,
+              "actual_callbacks": 5,
+              "evidence": [
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:14",
+                  "callback": "producer:argument:0",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:15",
+                  "callback": "producer:argument:0",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:16",
+                  "callback": "producer:argument:0",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:17",
+                  "callback": "producer:argument:0",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:18",
+                  "callback": "producer:argument:0",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "throw",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                }
+              ],
+              "failures": []
+            },
+            "integration": {
+              "passed": true,
+              "callbacks": 1,
+              "bindings": [
+                {
+                  "id": "113670555e25f0cbe2d82d58fa89e9ab1bab74e047f7157aec8fe9d883c81e0d:call:87",
+                  "file": "query5-shouldThrowError.ts",
+                  "start": 87,
+                  "end": 98,
+                  "specifier": "query5",
+                  "exportName": "shouldThrowError",
+                  "rule": "library-program:c1339f692368d6e62d9b7af13ad3efd574328e1f599d44604cd23f082ec7af3e"
+                }
+              ],
+              "reports": [
+                {
+                  "binding": "113670555e25f0cbe2d82d58fa89e9ab1bab74e047f7157aec8fe9d883c81e0d:call:87",
+                  "rule": "library-program:c1339f692368d6e62d9b7af13ad3efd574328e1f599d44604cd23f082ec7af3e",
+                  "status": "observed_agreement",
+                  "scope": "observations_through_checkpoint",
+                  "observation_mode": "invocations",
+                  "error_observation": "identity",
+                  "accessor_observation": "reject",
+                  "calls": 2,
+                  "failures": [],
+                  "evidence": [
+                    {
+                      "schema": "producttrace.library-boundary-evidence.v1",
+                      "kind": "callback_invocation",
+                      "occurrence": "113670555e25f0cbe2d82d58fa89e9ab1bab74e047f7157aec8fe9d883c81e0d:call:87:1",
+                      "callback": "113670555e25f0cbe2d82d58fa89e9ab1bab74e047f7157aec8fe9d883c81e0d:call:87:argument:0",
+                      "ordinal": 0,
+                      "parent_ordinal": null,
+                      "parent_relation": null,
+                      "timing": "synchronous",
+                      "status": "observed_agreement",
+                      "outcome": "return",
+                      "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                    }
+                  ]
+                }
+              ],
+              "failures": [],
+              "status": "passed",
+              "reason": null
+            }
+          }
+        }
+      }
+    ],
+    "origin": "authoring",
+    "bank_miss": "catalog_bypassed_for_unfamiliar_evaluation"
+  },
+  "integration": {
+    "passed": true,
+    "callbacks": 1,
+    "bindings": [
+      {
+        "id": "113670555e25f0cbe2d82d58fa89e9ab1bab74e047f7157aec8fe9d883c81e0d:call:87",
+        "file": "query5-shouldThrowError.ts",
+        "start": 87,
+        "end": 98,
+        "specifier": "query5",
+        "exportName": "shouldThrowError",
+        "rule": "library-program:c1339f692368d6e62d9b7af13ad3efd574328e1f599d44604cd23f082ec7af3e"
+      }
+    ],
+    "reports": [
+      {
+        "binding": "113670555e25f0cbe2d82d58fa89e9ab1bab74e047f7157aec8fe9d883c81e0d:call:87",
+        "rule": "library-program:c1339f692368d6e62d9b7af13ad3efd574328e1f599d44604cd23f082ec7af3e",
+        "status": "observed_agreement",
+        "scope": "observations_through_checkpoint",
+        "observation_mode": "invocations",
+        "error_observation": "identity",
+        "accessor_observation": "reject",
+        "calls": 2,
+        "failures": [],
+        "evidence": [
+          {
+            "schema": "producttrace.library-boundary-evidence.v1",
+            "kind": "callback_invocation",
+            "occurrence": "113670555e25f0cbe2d82d58fa89e9ab1bab74e047f7157aec8fe9d883c81e0d:call:87:1",
+            "callback": "113670555e25f0cbe2d82d58fa89e9ab1bab74e047f7157aec8fe9d883c81e0d:call:87:argument:0",
+            "ordinal": 0,
+            "parent_ordinal": null,
+            "parent_relation": null,
+            "timing": "synchronous",
+            "status": "observed_agreement",
+            "outcome": "return",
+            "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+          }
+        ]
+      }
+    ],
+    "failures": [],
+    "status": "passed",
+    "reason": null
+  },
+  "output": "paid-query5-shouldThrowError-1789077973704.json"
+}

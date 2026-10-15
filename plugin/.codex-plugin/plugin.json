@@ -1,0 +1,32 @@
+{
+  "name": "tracer",
+  "version": "0.1.0",
+  "description": "Resolve an annotated element to its source and its observed runtime history (handler, request, route, DB effect, frontier).",
+  "author": {
+    "name": "Tracer"
+  },
+  "homepage": "https://github.com/austinqho/tracer",
+  "repository": "https://github.com/austinqho/tracer",
+  "license": "MIT",
+  "keywords": [
+    "tracer",
+    "runtime",
+    "annotation",
+    "debugging",
+    "mcp"
+  ],
+  "mcpServers": "./.mcp.json",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Tracer",
+    "shortDescription": "What actually happened when the user clicked that element",
+    "longDescription": "Tracer records each user action in a Vite + React dev build and follows it by identifier through the entry handler, the request, the server route and handler, and the database operation. This plugin lets Codex resolve an annotated element to its source placement and the last actions on it, and compare an action's path before and after a fix.",
+    "developerName": "Tracer",
+    "category": "Coding",
+    "defaultPrompt": [
+      "What happened the last time I clicked this element?",
+      "Show the recent actions Tracer recorded",
+      "Did my fix change the runtime path of this action?"
+    ]
+  }
+}

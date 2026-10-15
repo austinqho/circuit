@@ -1,0 +1,46 @@
+{
+ "compared": 131,
+ "missing_in_branch": [],
+ "only_in_branch": [
+  "page_requests {}",
+  "page_requests {\"attribution\":\"none\",\"n\":500}"
+ ]
+}
+
+## tools/list
+added        1  $[]  e.g. "page_requests"
+
+## action_chain
+added      489  $.segments[].query  e.g. null
+added       65  $.stops[].query  e.g. null
+changed    100  $.summary  e.g. {"main":"focusin action:mue4q7aw:1 → handler <unnamed> frontend/src/components/WorkspaceChat/ChatContainer/PromptInput/index.jsx@11923-11945 [outcome incomplete]: reached dom_mutation / stopped at browser / because no re
+added      100  $.work  e.g. {"rule":"first-party frames entered by this episode's actions (function.enter rows), grouped by call path, first-seen order; requests hang off the frame that issued them","depth_limit":4,"frames_entered":35,"frames_total
+
+## element_history
+added      136  $.actions[].request.query  e.g. null
+added      376  $.actions[].segments[].query  e.g. null
+added      178  $.actions[].work_summary  e.g. "Work (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> frontend/src/components/WorkspaceChat/ChatContainer/PromptInput/index.jsx@11923-11945\n- <unnamed> frontend/
+added       61  $.attempts[].request.query  e.g. null
+added      301  $.attempts[].segments[].query  e.g. null
+added       88  $.attempts[].work_summary  e.g. "Work (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> frontend/src/components/WorkspaceChat/ChatContainer/PromptInput/index.jsx@11923-11945\n- <unnamed> frontend/
+
+## resolve_element
+added        7  $.best  e.g. null
+changed      1  $.candidates_total  e.g. {"main":0,"branch":5}
+added        5  $.candidates[]  e.g. {"target":{"tag":"button","attributes":{}},"score":2,"matched_on":["implicit role=button (<button>)"],"mismatched":[],"actions_observed":42,"sessions":["mue48ri8-i08v197j3fa","mue4cjgo-wpryroc8qv8","mue4g19h-0i203bl8mvw"
+added       24  $.candidates[].keys[].component  e.g. null
+changed      7  $.limits  e.g. {"main":"dom.action targets record the innermost event target and a fixed attribute subset; element text, classes and ancestry are not recorded, so selector/text lookup is weak. A data-tracer-el key is exact.","branch":"
+changed      1  $.status  e.g. {"main":"not_found","branch":"ambiguous"}
+changed      3  $.summary  e.g. {"main":"ambiguous: 5 observed target(s) match; best button (tag=button) with 42 actions. Not a pick: read data-tracer-el from the live element for an exact key.","branch":"ambiguous: 5 observed target(s) match; top butt
+
+## compare_chains
+added        5  $.after.segments[].query  e.g. null
+added        6  $.before.segments[].query  e.g. null
+
+## text
+tools/list {"calls":1,"first_line_changed":0,"lines_added":0,"lines_removed":0,"examples":[]}
+recent_actions {"calls":1,"first_line_changed":0,"lines_added":0,"lines_removed":0,"examples":[]}
+action_chain {"calls":100,"first_line_changed":0,"lines_added":1757,"lines_removed":0,"examples":[]}
+element_history {"calls":16,"first_line_changed":0,"lines_added":0,"lines_removed":0,"examples":[]}
+resolve_element {"calls":7,"first_line_changed":3,"lines_added":3,"lines_removed":3,"examples":[{"main":"ambiguous: 5 observed target(s) match; best button (tag=button) with 42 actions. Not a pick: read data-tracer-el from the live element for an exact key.","branch":"ambiguous: 5 observed target(s) match; top button (tag=button) with 42 actions, score 1. No unique best by role and name. Not a pick: read data-tracer-el from the live element for an exact key."},{"main":"not_found: no observed target matches the annotation evidence","branch":"ambiguous: 5 observed target(s) match; top button (implicit role=button (<button>)) with 42 actions, score 2. No unique best by role and name. Not a pick: read data-tracer-el from the live element for an exact key."}]}
+compare_chains {"calls":6,"first_line_changed":0,"lines_added":0,"lines_removed":0,"examples":[]}

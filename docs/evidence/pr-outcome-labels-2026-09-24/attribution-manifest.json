@@ -1,0 +1,530 @@
+{
+  "schema": "producttrace.runtime-attribution-manifest.v1",
+  "first_party": {
+    "include": [],
+    "exclude": [
+      "**/node_modules/**",
+      "**/vendor/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/.git/**"
+    ],
+    "excluded_functions": {
+      "outside repository": 571
+    },
+    "excluded_modules": {}
+  },
+  "build": "f215f3233ca6",
+  "functions": [
+    {
+      "id": "function:bc9356cf56a193735f7453c89325457017a8b4a3138e0cfeaf7f97dde84ff9fd:261:369",
+      "index": 0,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 261,
+        "end": 369
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-uXwyfU/client/dist/assets/index-BoLQ6T8O.js",
+        "start": 7600,
+        "end": 7976
+      }
+    },
+    {
+      "id": "function:bc9356cf56a193735f7453c89325457017a8b4a3138e0cfeaf7f97dde84ff9fd:371:5315",
+      "index": 1,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 371,
+        "end": 5315
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-uXwyfU/client/dist/assets/index-BoLQ6T8O.js",
+        "start": 8047,
+        "end": 20543
+      }
+    },
+    {
+      "id": "function:bc9356cf56a193735f7453c89325457017a8b4a3138e0cfeaf7f97dde84ff9fd:529:631",
+      "index": 2,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 529,
+        "end": 631
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-uXwyfU/client/dist/assets/index-BoLQ6T8O.js",
+        "start": 8394,
+        "end": 8846
+      }
+    },
+    {
+      "id": "function:bc9356cf56a193735f7453c89325457017a8b4a3138e0cfeaf7f97dde84ff9fd:566:630",
+      "index": 3,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 566,
+        "end": 630
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-uXwyfU/client/dist/assets/index-BoLQ6T8O.js",
+        "start": 8472,
+        "end": 8827
+      }
+    },
+    {
+      "id": "function:bc9356cf56a193735f7453c89325457017a8b4a3138e0cfeaf7f97dde84ff9fd:648:774",
+      "index": 4,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 648,
+        "end": 774
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-uXwyfU/client/dist/assets/index-BoLQ6T8O.js",
+        "start": 8923,
+        "end": 9060
+      }
+    },
+    {
+      "id": "function:bc9356cf56a193735f7453c89325457017a8b4a3138e0cfeaf7f97dde84ff9fd:798:847",
+      "index": 5,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 798,
+        "end": 847
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-uXwyfU/client/dist/assets/index-BoLQ6T8O.js",
+        "start": 9143,
+        "end": 9482
+      }
+    },
+    {
+      "id": "function:bc9356cf56a193735f7453c89325457017a8b4a3138e0cfeaf7f97dde84ff9fd:864:892",
+      "index": 6,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 864,
+        "end": 892
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-uXwyfU/client/dist/assets/index-BoLQ6T8O.js",
+        "start": 9559,
+        "end": 9877
+      }
+    },
+    {
+      "id": "function:bc9356cf56a193735f7453c89325457017a8b4a3138e0cfeaf7f97dde84ff9fd:914:951",
+      "index": 7,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 914,
+        "end": 951
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-uXwyfU/client/dist/assets/index-BoLQ6T8O.js",
+        "start": 9959,
+        "end": 10286
+      }
+    },
+    {
+      "id": "function:bc9356cf56a193735f7453c89325457017a8b4a3138e0cfeaf7f97dde84ff9fd:975:1010",
+      "index": 8,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 975,
+        "end": 1010
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-uXwyfU/client/dist/assets/index-BoLQ6T8O.js",
+        "start": 10370,
+        "end": 10695
+      }
+    },
+    {
+      "id": "function:bc9356cf56a193735f7453c89325457017a8b4a3138e0cfeaf7f97dde84ff9fd:1034:1065",
+      "index": 9,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1034,
+        "end": 1065
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-uXwyfU/client/dist/assets/index-BoLQ6T8O.js",
+        "start": 10779,
+        "end": 11100
+      }
+    },
+    {
+      "id": "function:bc9356cf56a193735f7453c89325457017a8b4a3138e0cfeaf7f97dde84ff9fd:1086:1118",
+      "index": 10,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1086,
+        "end": 1118
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-uXwyfU/client/dist/assets/index-BoLQ6T8O.js",
+        "start": 11181,
+        "end": 11504
+      }
+    },
+    {
+      "id": "function:bc9356cf56a193735f7453c89325457017a8b4a3138e0cfeaf7f97dde84ff9fd:1219:1470",
+      "index": 11,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1219,
+        "end": 1470
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-uXwyfU/client/dist/assets/index-BoLQ6T8O.js",
+        "start": 11586,
+        "end": 12138
+      }
+    },
+    {
+      "id": "function:bc9356cf56a193735f7453c89325457017a8b4a3138e0cfeaf7f97dde84ff9fd:1491:1564",
+      "index": 12,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1491,
+        "end": 1564
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-uXwyfU/client/dist/assets/index-BoLQ6T8O.js",
+        "start": 12220,
+        "end": 12558
+      }
+    },
+    {
+      "id": "function:bc9356cf56a193735f7453c89325457017a8b4a3138e0cfeaf7f97dde84ff9fd:1588:1678",
+      "index": 13,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1588,
+        "end": 1678
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-uXwyfU/client/dist/assets/index-BoLQ6T8O.js",
+        "start": 12643,
+        "end": 13021
+      }
+    },
+    {
+      "id": "function:bc9356cf56a193735f7453c89325457017a8b4a3138e0cfeaf7f97dde84ff9fd:1702:1782",
+      "index": 14,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1702,
+        "end": 1782
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-uXwyfU/client/dist/assets/index-BoLQ6T8O.js",
+        "start": 13106,
+        "end": 13492
+      }
+    },
+    {
+      "id": "function:bc9356cf56a193735f7453c89325457017a8b4a3138e0cfeaf7f97dde84ff9fd:1808:1948",
+      "index": 15,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1808,
+        "end": 1948
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-uXwyfU/client/dist/assets/index-BoLQ6T8O.js",
+        "start": 13579,
+        "end": 14023
+      }
+    },
+    {
+      "id": "function:bc9356cf56a193735f7453c89325457017a8b4a3138e0cfeaf7f97dde84ff9fd:1970:2047",
+      "index": 16,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1970,
+        "end": 2047
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-uXwyfU/client/dist/assets/index-BoLQ6T8O.js",
+        "start": 14106,
+        "end": 14483
+      }
+    },
+    {
+      "id": "function:bc9356cf56a193735f7453c89325457017a8b4a3138e0cfeaf7f97dde84ff9fd:4601:4637",
+      "index": 17,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 4601,
+        "end": 4637
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-uXwyfU/client/dist/assets/index-BoLQ6T8O.js",
+        "start": 18895,
+        "end": 18933
+      }
+    }
+  ],
+  "placements": [
+    {
+      "index": 0,
+      "id": "placement:16e61dea4aa2feebd0637f3b57b71c0cd96c0f74d97b914bf02c30dee1aa764a:2065:3589",
+      "key": "p_16e61dea4aa2:2065-3589",
+      "file": "client/src/main.jsx",
+      "line": 52,
+      "tag": "main",
+      "component": "App",
+      "start": 2065,
+      "end": 3589
+    },
+    {
+      "index": 1,
+      "id": "placement:16e61dea4aa2feebd0637f3b57b71c0cd96c0f74d97b914bf02c30dee1aa764a:2078:2162",
+      "key": "p_16e61dea4aa2:2078-2162",
+      "file": "client/src/main.jsx",
+      "line": 53,
+      "tag": "button",
+      "component": "App",
+      "start": 2078,
+      "end": 2162
+    },
+    {
+      "index": 2,
+      "id": "placement:16e61dea4aa2feebd0637f3b57b71c0cd96c0f74d97b914bf02c30dee1aa764a:2169:2238",
+      "key": "p_16e61dea4aa2:2169-2238",
+      "file": "client/src/main.jsx",
+      "line": 54,
+      "tag": "button",
+      "component": "App",
+      "start": 2169,
+      "end": 2238
+    },
+    {
+      "index": 3,
+      "id": "placement:16e61dea4aa2feebd0637f3b57b71c0cd96c0f74d97b914bf02c30dee1aa764a:2245:2328",
+      "key": "p_16e61dea4aa2:2245-2328",
+      "file": "client/src/main.jsx",
+      "line": 55,
+      "tag": "button",
+      "component": "App",
+      "start": 2245,
+      "end": 2328
+    },
+    {
+      "index": 4,
+      "id": "placement:16e61dea4aa2feebd0637f3b57b71c0cd96c0f74d97b914bf02c30dee1aa764a:2335:2422",
+      "key": "p_16e61dea4aa2:2335-2422",
+      "file": "client/src/main.jsx",
+      "line": 56,
+      "tag": "button",
+      "component": "App",
+      "start": 2335,
+      "end": 2422
+    },
+    {
+      "index": 5,
+      "id": "placement:16e61dea4aa2feebd0637f3b57b71c0cd96c0f74d97b914bf02c30dee1aa764a:2429:2515",
+      "key": "p_16e61dea4aa2:2429-2515",
+      "file": "client/src/main.jsx",
+      "line": 57,
+      "tag": "button",
+      "component": "App",
+      "start": 2429,
+      "end": 2515
+    },
+    {
+      "index": 6,
+      "id": "placement:16e61dea4aa2feebd0637f3b57b71c0cd96c0f74d97b914bf02c30dee1aa764a:2522:2603",
+      "key": "p_16e61dea4aa2:2522-2603",
+      "file": "client/src/main.jsx",
+      "line": 58,
+      "tag": "button",
+      "component": "App",
+      "start": 2522,
+      "end": 2603
+    },
+    {
+      "index": 7,
+      "id": "placement:16e61dea4aa2feebd0637f3b57b71c0cd96c0f74d97b914bf02c30dee1aa764a:2610:2756",
+      "key": "p_16e61dea4aa2:2610-2756",
+      "file": "client/src/main.jsx",
+      "line": 59,
+      "tag": "div",
+      "component": "App",
+      "start": 2610,
+      "end": 2756
+    },
+    {
+      "index": 8,
+      "id": "placement:16e61dea4aa2feebd0637f3b57b71c0cd96c0f74d97b914bf02c30dee1aa764a:2694:2743",
+      "key": "p_16e61dea4aa2:2694-2743",
+      "file": "client/src/main.jsx",
+      "line": 60,
+      "tag": "span",
+      "component": "App",
+      "start": 2694,
+      "end": 2743
+    },
+    {
+      "index": 9,
+      "id": "placement:16e61dea4aa2feebd0637f3b57b71c0cd96c0f74d97b914bf02c30dee1aa764a:2763:2838",
+      "key": "p_16e61dea4aa2:2763-2838",
+      "file": "client/src/main.jsx",
+      "line": 62,
+      "tag": "button",
+      "component": "App",
+      "start": 2763,
+      "end": 2838
+    },
+    {
+      "index": 10,
+      "id": "placement:16e61dea4aa2feebd0637f3b57b71c0cd96c0f74d97b914bf02c30dee1aa764a:2845:2925",
+      "key": "p_16e61dea4aa2:2845-2925",
+      "file": "client/src/main.jsx",
+      "line": 63,
+      "tag": "button",
+      "component": "App",
+      "start": 2845,
+      "end": 2925
+    },
+    {
+      "index": 11,
+      "id": "placement:16e61dea4aa2feebd0637f3b57b71c0cd96c0f74d97b914bf02c30dee1aa764a:2932:3012",
+      "key": "p_16e61dea4aa2:2932-3012",
+      "file": "client/src/main.jsx",
+      "line": 64,
+      "tag": "button",
+      "component": "App",
+      "start": 2932,
+      "end": 3012
+    },
+    {
+      "index": 12,
+      "id": "placement:16e61dea4aa2feebd0637f3b57b71c0cd96c0f74d97b914bf02c30dee1aa764a:3019:3338",
+      "key": "p_16e61dea4aa2:3019-3338",
+      "file": "client/src/main.jsx",
+      "line": 65,
+      "tag": "form",
+      "component": "App",
+      "start": 3019,
+      "end": 3338
+    },
+    {
+      "index": 13,
+      "id": "placement:16e61dea4aa2feebd0637f3b57b71c0cd96c0f74d97b914bf02c30dee1aa764a:3091:3188",
+      "key": "p_16e61dea4aa2:3091-3188",
+      "file": "client/src/main.jsx",
+      "line": 66,
+      "tag": "input",
+      "component": "App",
+      "start": 3091,
+      "end": 3188,
+      "bound": {
+        "onChange": [
+          17
+        ]
+      }
+    },
+    {
+      "index": 14,
+      "id": "placement:16e61dea4aa2feebd0637f3b57b71c0cd96c0f74d97b914bf02c30dee1aa764a:3197:3271",
+      "key": "p_16e61dea4aa2:3197-3271",
+      "file": "client/src/main.jsx",
+      "line": 67,
+      "tag": "button",
+      "component": "App",
+      "start": 3197,
+      "end": 3271
+    },
+    {
+      "index": 15,
+      "id": "placement:16e61dea4aa2feebd0637f3b57b71c0cd96c0f74d97b914bf02c30dee1aa764a:3289:3316",
+      "key": "p_16e61dea4aa2:3289-3316",
+      "file": "client/src/main.jsx",
+      "line": 68,
+      "tag": "p",
+      "component": "App",
+      "start": 3289,
+      "end": 3316
+    },
+    {
+      "index": 16,
+      "id": "placement:16e61dea4aa2feebd0637f3b57b71c0cd96c0f74d97b914bf02c30dee1aa764a:3345:3541",
+      "key": "p_16e61dea4aa2:3345-3541",
+      "file": "client/src/main.jsx",
+      "line": 70,
+      "tag": "form",
+      "component": "App",
+      "start": 3345,
+      "end": 3541
+    },
+    {
+      "index": 17,
+      "id": "placement:16e61dea4aa2feebd0637f3b57b71c0cd96c0f74d97b914bf02c30dee1aa764a:3404:3454",
+      "key": "p_16e61dea4aa2:3404-3454",
+      "file": "client/src/main.jsx",
+      "line": 71,
+      "tag": "input",
+      "component": "App",
+      "start": 3404,
+      "end": 3454
+    },
+    {
+      "index": 18,
+      "id": "placement:16e61dea4aa2feebd0637f3b57b71c0cd96c0f74d97b914bf02c30dee1aa764a:3463:3527",
+      "key": "p_16e61dea4aa2:3463-3527",
+      "file": "client/src/main.jsx",
+      "line": 72,
+      "tag": "button",
+      "component": "App",
+      "start": 3463,
+      "end": 3527
+    },
+    {
+      "index": 19,
+      "id": "placement:16e61dea4aa2feebd0637f3b57b71c0cd96c0f74d97b914bf02c30dee1aa764a:3548:3577",
+      "key": "p_16e61dea4aa2:3548-3577",
+      "file": "client/src/main.jsx",
+      "line": 74,
+      "tag": "p",
+      "component": "App",
+      "start": 3548,
+      "end": 3577
+    },
+    {
+      "index": 20,
+      "id": "placement:16e61dea4aa2feebd0637f3b57b71c0cd96c0f74d97b914bf02c30dee1aa764a:3649:3656",
+      "key": "p_16e61dea4aa2:3649-3656",
+      "file": "client/src/main.jsx",
+      "line": 79,
+      "tag": "App",
+      "component": "App",
+      "start": 3649,
+      "end": 3656
+    }
+  ],
+  "placement_short_key_collisions": 0,
+  "library_boundaries": []
+}

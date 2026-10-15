@@ -1,0 +1,118 @@
+- function:8535bff87ea3c3f5bdeedf1ed964e0c4b059dd66bd32012506fecb5c72760e29:4356:4713|keydown | correct_stop | keydown | DOM action witnessed; no first-party request by design
+- function:8535bff87ea3c3f5bdeedf1ed964e0c4b059dd66bd32012506fecb5c72760e29:4356:4713|keypresscapture | correct_stop | keypresscapture | DOM action witnessed; no first-party request by design
+- function:8535bff87ea3c3f5bdeedf1ed964e0c4b059dd66bd32012506fecb5c72760e29:4356:4713|keydowncapture | correct_stop | keydowncapture | DOM action witnessed; no first-party request by design
+- function:c6852f24793948207269078f2c90bebceab2e6306537158338c9ac47c2084902:1188:1225|load | reached_request | load | 
+- function:c6852f24793948207269078f2c90bebceab2e6306537158338c9ac47c2084902:1272:1335|error | reached_request | error | 
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:1968:2033|click | unreachable | click | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:1968:2033|clickcapture | unreachable | clickcapture | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:1968:2033|mousedowncapture | unreachable | mousedowncapture | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:1968:2033|mousemove | unreachable | mousemove | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:1968:2033|mouseleave | unreachable | mouseleave | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6351:6385|click | unreachable | click | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6351:6385|clickcapture | unreachable | clickcapture | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6351:6385|mousedowncapture | unreachable | mousedowncapture | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6351:6385|mousemove | unreachable | mousemove | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6351:6385|mouseleave | unreachable | mouseleave | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6430:6454|click | correct_stop | click | DOM action witnessed; no first-party request by design
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6430:6454|clickcapture | unreachable | clickcapture | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6430:6454|mousedowncapture | unreachable | mousedowncapture | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6430:6454|mousemove | unreachable | mousemove | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6430:6454|mouseleave | unreachable | mouseleave | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6649:6676|click | unreachable | click | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6649:6676|clickcapture | unreachable | clickcapture | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6649:6676|mousedowncapture | unreachable | mousedowncapture | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6649:6676|mousemove | unreachable | mousemove | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6649:6676|mouseleave | unreachable | mouseleave | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6886:6913|click | unreachable | click | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6886:6913|clickcapture | unreachable | clickcapture | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6886:6913|mousedowncapture | unreachable | mousedowncapture | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6886:6913|mousemove | unreachable | mousemove | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6886:6913|mouseleave | unreachable | mouseleave | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:7198:7212|click | unreachable | click | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:7198:7212|clickcapture | unreachable | clickcapture | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:7198:7212|mousedowncapture | unreachable | mousedowncapture | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:7198:7212|mousemove | unreachable | mousemove | zero-size at seed-export-dialog
+- function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:7198:7212|mouseleave | unreachable | mouseleave | zero-size at seed-export-dialog
+- function:8535bff87ea3c3f5bdeedf1ed964e0c4b059dd66bd32012506fecb5c72760e29:4356:4713|keyup | correct_stop | keyup | DOM action witnessed; no first-party request by design
+- function:20cee0ec525c973a74095f553d3eb83969ddfb1294a1ab3c0fec0f617633deea:17445:17548|click | unreachable | click | covered at seed-export-dialog
+- function:c3157a7c2c41cf7836df40621b7304393c56cbd1b99632f5f2577a7f2940253c:15076:15118|click | unreachable | click | covered at seed-export-dialog
+- function:5b55f6a2a632b9afc6d3bc3e813b83fb1556b6bc3227408982f251fdc0b467d7:3599:3672|mouseenter | unreachable | mouseenter | covered at seed-export-dialog
+- function:5b55f6a2a632b9afc6d3bc3e813b83fb1556b6bc3227408982f251fdc0b467d7:3732:3808|mouseleave | unreachable | mouseleave | not-present-in-current-state at seed-export-dialog
+- function:5b55f6a2a632b9afc6d3bc3e813b83fb1556b6bc3227408982f251fdc0b467d7:3599:3672|focus | unreachable | focus | covered at seed-export-dialog
+- function:5b55f6a2a632b9afc6d3bc3e813b83fb1556b6bc3227408982f251fdc0b467d7:3869:4156|blur | unreachable | blur | covered at seed-export-dialog
+- function:5b55f6a2a632b9afc6d3bc3e813b83fb1556b6bc3227408982f251fdc0b467d7:7805:7965|click | unreachable | click | covered at seed-export-dialog
+- function:5b55f6a2a632b9afc6d3bc3e813b83fb1556b6bc3227408982f251fdc0b467d7:7984:8249|keydown | unreachable | keydown | covered at seed-export-dialog
+- function:eb53ffe7363b72feb7abca6cb34aee6bf229ea761fc4297b35f8fcc036596ca5:944:1108|doubleclick | unreachable | doubleclick | covered at seed-export-dialog
+- function:3bba1791a3fdf183ba30c32c208c672d1070797fec38692102eb25c78f597bf8:13949:14037|click | unreachable | click | covered at seed-export-dialog
+- function:3bba1791a3fdf183ba30c32c208c672d1070797fec38692102eb25c78f597bf8:14062:14233|keydown | unreachable | keydown | covered at seed-export-dialog
+- function:3bba1791a3fdf183ba30c32c208c672d1070797fec38692102eb25c78f597bf8:13949:14037|mousemove | unreachable | mousemove | covered at seed-export-dialog
+- function:3bba1791a3fdf183ba30c32c208c672d1070797fec38692102eb25c78f597bf8:14062:14233|keypresscapture | unreachable | keypresscapture | covered at seed-export-dialog
+- function:3bba1791a3fdf183ba30c32c208c672d1070797fec38692102eb25c78f597bf8:13949:14037|clickcapture | unreachable | clickcapture | covered at seed-export-dialog
+- function:3bba1791a3fdf183ba30c32c208c672d1070797fec38692102eb25c78f597bf8:13949:14037|mousedowncapture | unreachable | mousedowncapture | covered at seed-export-dialog
+- function:3bba1791a3fdf183ba30c32c208c672d1070797fec38692102eb25c78f597bf8:14062:14233|keydowncapture | unreachable | keydowncapture | covered at seed-export-dialog
+- function:3bba1791a3fdf183ba30c32c208c672d1070797fec38692102eb25c78f597bf8:14062:14233|keyup | unreachable | keyup | covered at seed-export-dialog
+- function:37698d9b8cce400d0c26fcb80e77d4cf4c246b60fc1d663c2a9f25811631569d:2441:3490|mousedown | unreachable | mousedown | covered at seed-export-dialog
+- function:57305242ea18ed000a9de65dafbcfc1a91aafd91cb195177edf87776db62329c:1672:1866|keydown | unreachable | keydown | covered at seed-export-dialog
+- function:5a012ee28cab752976b744f05623cfa6e53a271f372c69dbdb8f7a92595db1d2:741:1062|click | correct_stop | click | DOM action witnessed; no first-party request by design
+- function:5a012ee28cab752976b744f05623cfa6e53a271f372c69dbdb8f7a92595db1d2:741:1062|mouseenter | reached_request | mouseenter | 
+- function:5a012ee28cab752976b744f05623cfa6e53a271f372c69dbdb8f7a92595db1d2:741:1062|mousemove | reached_request | mousemove | 
+- function:5a012ee28cab752976b744f05623cfa6e53a271f372c69dbdb8f7a92595db1d2:741:1062|clickcapture | reached_request | clickcapture | 
+- function:5a012ee28cab752976b744f05623cfa6e53a271f372c69dbdb8f7a92595db1d2:741:1062|mousedowncapture | reached_request | mousedowncapture | 
+- function:1ea515b6ccf6f7cdaa309ee977af745b491d84055bd0d553ee76f79c5e35eb91:4872:5157|click | unreachable | click | covered at seed-export-dialog
+- function:1ea515b6ccf6f7cdaa309ee977af745b491d84055bd0d553ee76f79c5e35eb91:4872:5157|clickcapture | unreachable | clickcapture | covered at seed-export-dialog
+- function:1ea515b6ccf6f7cdaa309ee977af745b491d84055bd0d553ee76f79c5e35eb91:4872:5157|mousedowncapture | unreachable | mousedowncapture | covered at seed-export-dialog
+- function:1ea515b6ccf6f7cdaa309ee977af745b491d84055bd0d553ee76f79c5e35eb91:4872:5157|mousemove | unreachable | mousemove | covered at seed-export-dialog
+- function:1ea515b6ccf6f7cdaa309ee977af745b491d84055bd0d553ee76f79c5e35eb91:4872:5157|mouseleave | unreachable | mouseleave | covered at seed-export-dialog
+- function:11fd26a3609a3c0d79db7bd2b3843c8dd08803aa3fa7a96835f2911d323c4b80:3549:3575|click | correct_stop | click | DOM action witnessed; no first-party request by design
+- function:11fd26a3609a3c0d79db7bd2b3843c8dd08803aa3fa7a96835f2911d323c4b80:3549:3575|pointerdowncapture | reached_request | pointerdowncapture | 
+- function:11fd26a3609a3c0d79db7bd2b3843c8dd08803aa3fa7a96835f2911d323c4b80:3549:3575|mousedown | reached_request | mousedown | 
+- function:4ac1a744b830c9e393d8fdef5075b1e86ece267b519511820c697196010ecdcc:3166:3206|change | correct_stop | change | DOM action witnessed; no first-party request by design
+- function:11fd26a3609a3c0d79db7bd2b3843c8dd08803aa3fa7a96835f2911d323c4b80:3549:3575|clickcapture | reached_request | clickcapture | 
+- function:11fd26a3609a3c0d79db7bd2b3843c8dd08803aa3fa7a96835f2911d323c4b80:3549:3575|mousedowncapture | reached_request | mousedowncapture | 
+- function:11fd26a3609a3c0d79db7bd2b3843c8dd08803aa3fa7a96835f2911d323c4b80:3549:3575|mousemove | reached_request | mousemove | 
+- function:11fd26a3609a3c0d79db7bd2b3843c8dd08803aa3fa7a96835f2911d323c4b80:3549:3575|mouseleave | reached_request | mouseleave | 
+- function:f3ca1ec21bed3d066e426b81b087cdc15f5a9f47561438dc58a35f2496710024:8611:8611|click | correct_stop | click | DOM action witnessed; no first-party request by design
+- function:dc38a923ef12eaf4ea45d3f0214840e9770867e144210c5a2b43c9235ef7c91d:1681:1741|scroll | reached_request | scroll | 
+- function:41480ba05a1f658cb10c13ae97924b44b377f20b5863e20c4b5b27623cabcd28:2607:2664|error | reached_request | error | 
+- function:1366f907344f9c25068523cfff37ce1e8d84765d79207519782d40d5fe4464f0:1579:1682|click | correct_stop | click | DOM action witnessed; no first-party request by design
+- function:1366f907344f9c25068523cfff37ce1e8d84765d79207519782d40d5fe4464f0:2515:2593|error | unreachable | error | hidden at reveal-depth-2-reveal-depth-1-seed-export-dialog
+- function:650d204cb86c5d8d205f4f14a39f9465dd47b1595658212cd3961bb38b951241:5746:5746|click | correct_stop | click | DOM action witnessed; no first-party request by design
+- function:650d204cb86c5d8d205f4f14a39f9465dd47b1595658212cd3961bb38b951241:6446:6446|click | correct_stop | click | DOM action witnessed; no first-party request by design
+- function:1551b2cee087e67c61a5c6d9337b70cfd969f6d53457a5b6f1a6814e3901fd55:11675:12131|click | correct_stop | click | DOM action witnessed; no first-party request by design
+- function:b6e145fc35bd0ba6db55e49be03b3feca87fa96f6806ac5b0544ae8b6145c59c:2428:2629|click | unreachable | click | covered at reveal-depth-2-reveal-depth-1-seed-export-dialog
+- function:b6e145fc35bd0ba6db55e49be03b3feca87fa96f6806ac5b0544ae8b6145c59c:3040:3236|click | unreachable | click | covered at reveal-depth-2-reveal-depth-1-seed-export-dialog
+- function:c057074eb90d959be20f9e8d7801624cfaa20e2e8d36fad2558178c65501d329:3465:3490|click | unreachable | click | covered at reveal-depth-2-reveal-depth-1-seed-export-dialog
+- function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:6016:6189|click | correct_stop | click | DOM action witnessed; no first-party request by design
+- function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:6504:6548|blur | reached_request | blur | 
+- function:150870815ca64d501e4a3ba6d6fcc3c76f3418c8cc8a2dc67456ffa10e5f68de:7918:9567|paste | reached_request | paste | 
+- function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:23024:23389|keydown | correct_stop | keydown | DOM action witnessed; no first-party request by design
+- function:826974348997390b18c8b5af02f4902251aafba8ef48a3c8039a2fbe1f29077a:5366:5945|keyup | correct_stop | keyup | DOM action witnessed; no first-party request by design
+- function:150870815ca64d501e4a3ba6d6fcc3c76f3418c8cc8a2dc67456ffa10e5f68de:9880:9880|compositionstart | unreachable | compositionstart | not-present-in-current-state at reveal-depth-2-reveal-depth-1-seed-export-dialog
+- function:150870815ca64d501e4a3ba6d6fcc3c76f3418c8cc8a2dc67456ffa10e5f68de:9854:9854|compositionend | unreachable | compositionend | not-present-in-current-state at reveal-depth-2-reveal-depth-1-seed-export-dialog
+- function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:6368:6437|focus | reached_request | focus | 
+- function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:6238:6307|click | correct_stop | click | DOM action witnessed; no first-party request by design
+- function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:6016:6189|mouseenter | reached_request | mouseenter | 
+- function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:6016:6189|mousemove | reached_request | mousemove | 
+- function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:6016:6189|clickcapture | reached_request | clickcapture | 
+- function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:6016:6189|mousedowncapture | reached_request | mousedowncapture | 
+- function:0839dcf42db27a1b4aa75cb2e4b4f84381aadae06ddfebc84c01c367f5b1f7da:10910:11031|change | unreachable | change | hidden at reveal-depth-2-reveal-depth-1-seed-export-dialog
+- function:643d7f9e86cb83a3752da43e2e79cadfaaf3ba808787b223fcd7293fa3d7f087:3187:3370|click | reached_request | click | 
+- function:0c3ef91a3513ec70f6f479eb289181d6c012977888d8f536d28b6bfde1f87be4:3936:3961|click | correct_stop | click | DOM action witnessed; no first-party request by design
+- function:7e6774488daa285c8b009f4e9e0ae5fa9cee14c107ed3180f6030ce06f0a42a8:1063:1099|change | correct_stop | change | DOM action witnessed; no first-party request by design
+- function:7e6774488daa285c8b009f4e9e0ae5fa9cee14c107ed3180f6030ce06f0a42a8:1122:1316|keydown | correct_stop | keydown | DOM action witnessed; no first-party request by design
+- function:7e6774488daa285c8b009f4e9e0ae5fa9cee14c107ed3180f6030ce06f0a42a8:2443:2468|click | correct_stop | click | DOM action witnessed; no first-party request by design
+- function:7e6774488daa285c8b009f4e9e0ae5fa9cee14c107ed3180f6030ce06f0a42a8:2443:2468|mousedown | reached_request | mousedown | 
+- function:cdceec2cca736410855c7a71531e112ed728aee4f5fd4720471b4ae708e290f1:774:795|focus | unreachable | focus | not-present-in-current-state at seed-settings-chat
+- function:cdceec2cca736410855c7a71531e112ed728aee4f5fd4720471b4ae708e290f1:813:835|blur | unreachable | blur | not-present-in-current-state at seed-settings-chat
+- function:652faab474a3820988f305a95d80423464bab7f7fe47b81da33ad2f60637d9ea:629:705|click | unreachable | click | not-present-in-current-state at seed-settings-chat
+- function:289ebfafc16db6ab1b7c43f3ad92ef1ef1bbc05f52d4aaad5105283f68e4ab40:4287:4704|keydown | correct_stop | keydown | DOM action witnessed; no first-party request by design
+- function:4526d708df117de5282ad63641370373c8651707bbf0bc91e0166bb4fc25141e:1305:1366|click | correct_stop | click | DOM action witnessed; no first-party request by design
+- function:2fca72adafb3de0256e3bc639237e7920ecbfe541a19a89e41a34bfb16c1cbda:2057:2082|click | correct_stop | click | DOM action witnessed; no first-party request by design
+- function:f9097a46770876dbdb048c0f9fb1cb5102fb327e120a48650bfae4c9f3dd1325:3085:3131|click | unreachable | click | not-present-in-current-state at seed-settings-data
+- function:f9097a46770876dbdb048c0f9fb1cb5102fb327e120a48650bfae4c9f3dd1325:3180:3363|keydown | unreachable | keydown | not-present-in-current-state at seed-settings-data
+- function:f9097a46770876dbdb048c0f9fb1cb5102fb327e120a48650bfae4c9f3dd1325:2795:3013|change | unreachable | change | not-present-in-current-state at seed-settings-data
+- function:c1151672c0e3174325c1a4fc2f57efabd89ca4974fde5ce82f0adc017b1fb766:10365:10386|click | unreachable | click | not-present-in-current-state at seed-settings-data
+- function:8546dc9df5eea844a6f43d1541b48f01d0e4b6cf8dccba2667b987fe72385bda:1287:1610|change | reached_request | change | 
+- function:493913766e56d0734523f1291a56cefbf56f279c542d15d58079ac7478c2a561:935:935|click | correct_stop | click | DOM action witnessed; no first-party request by design
+- function:aeaa664c02350056256c95a0c8902c7de3e72de3ffd118573dfd77e09756a54a:2893:3183|click | unreachable | click | disabled at seed-files-panel
+- function:aeaa664c02350056256c95a0c8902c7de3e72de3ffd118573dfd77e09756a54a:3879:3953|change | reached_request | change | 

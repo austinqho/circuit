@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tracer — Live product activity</title>
+    <link rel="stylesheet" href="/test/browser/fiber-demo.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="wordmark" href="/" aria-label="Tracer home"><span aria-hidden="true">🏎️</span> Tracer</a>
+      <a class="github-link" href="https://github.com/austinqho" target="_blank" rel="noreferrer" aria-label="Star Tracer on GitHub">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .7a11.5 11.5 0 0 0-3.64 22.41c.58.11.79-.25.79-.56v-2.24c-3.22.7-3.9-1.37-3.9-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.57-.29-5.27-1.29-5.27-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.16 1.18A10.96 10.96 0 0 1 12 6.11c.98 0 1.94.13 2.84.38 2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.4-2.71 5.38-5.29 5.67.42.36.79 1.06.79 2.14v3.29c0 .31.21.68.8.56A11.5 11.5 0 0 0 12 .7Z"/></svg>
+        <span>Star on GitHub</span>
+      </a>
+      <span class="sr-only" id="runtimeStatus" aria-live="polite">Connecting</span>
+    </header>
+
+    <main>
+      <section class="hero-copy">
+        <h1>Make Your Product Announce Itself</h1>
+        <p>Read-only. Installs in 10 minutes. Zero per-function telemetry setup. See everything your users are doing.</p>
+      </section>
+
+      <section class="preview-selector" aria-label="Repository preview selector">
+        <span class="preview-label">Now Previewing:</span>
+        <div class="repo-carousel" id="repoCarousel">
+          <div class="repo-pill-track" id="repoPillTrack">
+            <div class="repo-pill-page">
+              <a class="repo-pill" href="https://github.com/danny-avila/LibreChat" target="_blank" rel="noreferrer" aria-label="Open LibreChat on GitHub">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .7a11.5 11.5 0 0 0-3.64 22.41c.58.11.79-.25.79-.56v-2.24c-3.22.7-3.9-1.37-3.9-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.57-.29-5.27-1.29-5.27-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.16 1.18A10.96 10.96 0 0 1 12 6.11c.98 0 1.94.13 2.84.38 2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.4-2.71 5.38-5.29 5.67.42.36.79 1.06.79 2.14v3.29c0 .31.21.68.8.56A11.5 11.5 0 0 0 12 .7Z"/></svg>
+                <span>LibreChat</span>
+              </a>
+            </div>
+            <div class="repo-pill-page">
+              <a class="repo-pill" href="https://github.com/palmier-io/palmier-pro" target="_blank" rel="noreferrer" aria-label="Open Palmier Pro on GitHub">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .7a11.5 11.5 0 0 0-3.64 22.41c.58.11.79-.25.79-.56v-2.24c-3.22.7-3.9-1.37-3.9-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.57-.29-5.27-1.29-5.27-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.16 1.18A10.96 10.96 0 0 1 12 6.11c.98 0 1.94.13 2.84.38 2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.4-2.71 5.38-5.29 5.67.42.36.79 1.06.79 2.14v3.29c0 .31.21.68.8.56A11.5 11.5 0 0 0 12 .7Z"/></svg>
+                <span>Palmier Pro</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-dots" role="tablist" aria-label="Repository previews">
+          <button class="active" type="button" data-slide="0" role="tab" aria-selected="true" aria-label="Show LibreChat"></button>
+          <button type="button" data-slide="1" role="tab" aria-selected="false" aria-label="Show Palmier Pro"></button>
+        </div>
+      </section>
+
+      <section class="demo-canvas" id="demoCanvas" aria-label="Live Tracer demo">
+        <div class="demo-grid" id="libreChatSlide">
+          <section class="product-widget" aria-label="LibreChat application">
+            <div class="frame-shell">
+              <iframe id="productFrame" title="Real LibreChat application"></iframe>
+              <div class="loading" id="productLoading">Starting LibreChat…</div>
+            </div>
+          </section>
+
+          <aside class="activity-widget" aria-labelledby="activityHeading">
+            <header class="activity-head">
+              <div class="activity-title">
+                <img src="/test/browser/palmier-icons/waveform.png" alt="" aria-hidden="true">
+                <h2 id="activityHeading">Activity</h2>
+              </div>
+              <button class="legend-button" id="legendButton" type="button" aria-expanded="false" aria-controls="activityLegend">Legend</button>
+              <div class="activity-legend" id="activityLegend" role="dialog" aria-label="Activity status legend" hidden>
+                <div title="Completed workflow"><i class="legend-swatch completed"></i><span><strong>Complete</strong><small>workflow finished</small></span></div>
+                <div title="Workflow in progress"><i class="legend-swatch pending"></i><span><strong>Working</strong><small>workflow in progress</small></span></div>
+                <div title="Server answered 2xx/3xx without effect evidence, or the evidence stopped at a frontier, or the handler sent no request"><i class="legend-swatch incomplete"></i><span><strong>Responded / stopped / no request</strong><small>no terminal effect observed</small></span></div>
+                <div title="Server answered 4xx/5xx, or the app rejected the action with a recorded signal"><i class="legend-swatch failed"></i><span><strong>Failed / rejected</strong><small>HTTP status or reject signal</small></span></div>
+              </div>
+            </header>
+
+            <div class="activity-summary">
+              <span id="eventCount">0 workflows</span>
+              <button id="clearEvents" type="button">Clear</button>
+            </div>
+
+            <div class="event-stream" id="eventStream" aria-live="polite">
+              <div class="empty-state">
+                <img src="/test/browser/palmier-icons/cursorarrow.png" alt="" aria-hidden="true">
+                <strong>Use LibreChat</strong>
+                <p>Your actions and their evidence will appear here.</p>
+              </div>
+            </div>
+          </aside>
+        </div>
+        <iframe class="palmier-frame" id="palmierSlide" src="/test/browser/palmier-demo.html" title="Palmier Pro interactive preview" hidden></iframe>
+      </section>
+    </main>
+
+    <template id="eventTemplate">
+      <section class="activity-group">
+        <details class="event-card" open>
+          <summary>
+            <i class="journey-state" aria-hidden="true"></i>
+            <div class="journey-heading">
+              <span class="sr-only event-verdict"></span>
+              <strong class="caption"></strong>
+              <span class="event-subtitle"></span>
+            </div>
+            <img src="/test/browser/palmier-icons/chevron.down.png" alt="" aria-hidden="true">
+          </summary>
+          <div class="journey-body">
+            <ol class="journey-steps"></ol>
+            <details class="evidence-disclosure">
+              <summary>Inspect evidence</summary>
+              <dl class="evidence-grid"></dl>
+            </details>
+          </div>
+        </details>
+      </section>
+    </template>
+
+    <script src="/test/browser/fiber-demo.js"></script>
+  </body>
+</html>

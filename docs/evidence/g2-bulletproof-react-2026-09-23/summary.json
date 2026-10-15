@@ -1,0 +1,33 @@
+{
+  "steps": 10,
+  "steps_done": 10,
+  "dom_actions": 336,
+  "by_event": {
+    "focusin": 29,
+    "click": 24,
+    "keydown": 136,
+    "input": 136,
+    "change": 8,
+    "submit": 3
+  },
+  "credited": 15,
+  "credited_rooted": 15,
+  "distinct_credited_functions": 12,
+  "entry_frontiers": {
+    "no first-party function entered on this action": 321
+  },
+  "attributed_requests": 5,
+  "request_stops": {
+    "stopped at network: backend not instrumented (repository mock API server; frontend-only repository)": 5
+  },
+  "unattributed_requests": 7,
+  "unattributed_request_paths": [
+    "GET /api/auth/me",
+    "GET /api/discussions",
+    "GET /api/discussions",
+    "GET /api/discussions/LmTtmQwCb7FyeCrW2PqCH",
+    "GET /api/comments",
+    "GET /api/comments",
+    "GET /api/comments"
+  ]
+}

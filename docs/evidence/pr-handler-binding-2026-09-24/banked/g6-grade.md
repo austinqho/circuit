@@ -1,0 +1,119 @@
+# G6 grade (independent recomputation from the raw store)
+
+Store: `<scratch>/g6store` (6 runs, 40391 records, 6924 spans, 3 build manifests). Compare dir: `<scratch>/g6-branch`.
+
+## A-baseline__B-seeded-422: PASS
+
+| check | ok | detail |
+|---|---|---|
+| selected before action = MCP input | yes | action:mue48zaw:65 (run run-20260923t130550436z-c45798, build b-2dc9ecff4d63b25e, fixture ad97bc8d) |
+| selected after action = MCP input | yes | action:mue4cr85:65 (run run-20260923t130846609z-81efcd, build b-2dc9ecff4d63b25e, fixture 8bc8ae75) |
+| entry function (first depth-zero function.enter) = MCP entry | yes | function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488 / function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488 |
+| entry change kind (independent remap) = MCP | yes | grader same, MCP same |
+| request stop | yes | POST /api/workspace/tracer-g2/update → POST /api/workspace/tracer-g2/update |
+| route stop (route + status) | yes | /api/workspace/:slug/update 200 → /api/workspace/:slug/update 422 |
+| handler stops | yes | 3 → 3 |
+| db stops | yes | 0 → 0 |
+| outcome http_status | yes | 200 → 422 |
+| path_changed (grader) = MCP | yes | grader true, MCP true |
+| gate expectation: path_changed | yes | expected true |
+| gate expectation: statuses | yes | expected 200 → 422 |
+| gate expectation: entry | yes | expected same |
+
+## A-baseline__C-fix-r2: PASS
+
+| check | ok | detail |
+|---|---|---|
+| selected before action = MCP input | yes | action:mue48zaw:65 (run run-20260923t130550436z-c45798, build b-2dc9ecff4d63b25e, fixture ad97bc8d) |
+| selected after action = MCP input | yes | action:mue4jjss:65 (run run-20260923t131403619z-eb5304, build b-2dc9ecff4d63b25e, fixture 719f1768) |
+| entry function (first depth-zero function.enter) = MCP entry | yes | function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488 / function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488 |
+| entry change kind (independent remap) = MCP | yes | grader same, MCP same |
+| request stop | yes | POST /api/workspace/tracer-g2/update → POST /api/workspace/tracer-g2/update |
+| route stop (route + status) | yes | /api/workspace/:slug/update 200 → /api/workspace/:slug/update 200 |
+| handler stops | yes | 3 → 3 |
+| db stops | yes | 0 → 0 |
+| outcome http_status | yes | 200 → 200 |
+| path_changed (grader) = MCP | yes | grader false, MCP false |
+| gate expectation: path_changed | yes | expected false |
+| gate expectation: statuses | yes | expected 200 → 200 |
+| gate expectation: entry | yes | expected same |
+
+## A-baseline__D-noop-refactor: PASS
+
+| check | ok | detail |
+|---|---|---|
+| selected before action = MCP input | yes | action:mue48zaw:65 (run run-20260923t130550436z-c45798, build b-2dc9ecff4d63b25e, fixture ad97bc8d) |
+| selected after action = MCP input | yes | action:mue4mtmf:65 (run run-20260923t131636313z-2d7ae5, build b-a33d446fe91e8701, fixture 857ab360) |
+| entry function (first depth-zero function.enter) = MCP entry | yes | function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488 / function:18fe3d40b9ea6984cbbba7f83d88936d20e640c88fde32fc844b945081107024:931:1497 |
+| entry change kind (independent remap) = MCP | yes | grader source_revision, MCP source_revision (ordinal) |
+| request stop | yes | POST /api/workspace/tracer-g2/update → POST /api/workspace/tracer-g2/update |
+| route stop (route + status) | yes | /api/workspace/:slug/update 200 → /api/workspace/:slug/update 200 |
+| handler stops | yes | 3 → 3 |
+| db stops | yes | 0 → 0 |
+| outcome http_status | yes | 200 → 200 |
+| path_changed (grader) = MCP | yes | grader false, MCP false |
+| gate expectation: path_changed | yes | expected false |
+| gate expectation: statuses | yes | expected 200 → 200 |
+| gate expectation: entry | yes | expected source_revision via a manifest remap basis (MCP ordinal) |
+| remap basis (grader) = MCP | yes | grader ordinal, MCP ordinal |
+
+## A-baseline__E-frontend-early-return: PASS
+
+| check | ok | detail |
+|---|---|---|
+| selected before action = MCP input | yes | action:mue48zaw:65 (run run-20260923t130550436z-c45798, build b-2dc9ecff4d63b25e, fixture ad97bc8d) |
+| selected after action = MCP input | yes | action:mue4q5xu:65 (run run-20260923t131912210z-854780, build b-492209beb3a2e901, fixture 879685d1) |
+| entry function (first depth-zero function.enter) = MCP entry | yes | function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488 / function:7aef3dca1bd344bd5de62a8414dd535299acf351ceac6871111d144d76ca99a4:931:1540 |
+| entry change kind (independent remap) = MCP | yes | grader source_revision, MCP source_revision (ordinal) |
+| request stop | yes | POST /api/workspace/tracer-g2/update → null |
+| route stop (route + status) | yes | /api/workspace/:slug/update 200 → null null |
+| handler stops | yes | 3 → 0 |
+| db stops | yes | 0 → 0 |
+| outcome http_status | yes | 200 → null |
+| path_changed (grader) = MCP | yes | grader true, MCP true |
+| gate expectation: path_changed | yes | expected true |
+| gate expectation: statuses | yes | expected 200 →  |
+| gate expectation: entry | yes | expected source_revision via a manifest remap basis (MCP ordinal) |
+| gate expectation: request stop | yes | expected removed, MCP removed |
+| gate expectation: after stopped_at | yes | expected browser, MCP browser |
+| remap basis (grader) = MCP | yes | grader ordinal, MCP ordinal |
+
+## B-seeded-422__C-fix-r2: PASS
+
+| check | ok | detail |
+|---|---|---|
+| selected before action = MCP input | yes | action:mue4cr85:65 (run run-20260923t130846609z-81efcd, build b-2dc9ecff4d63b25e, fixture 8bc8ae75) |
+| selected after action = MCP input | yes | action:mue4jjss:65 (run run-20260923t131403619z-eb5304, build b-2dc9ecff4d63b25e, fixture 719f1768) |
+| entry function (first depth-zero function.enter) = MCP entry | yes | function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488 / function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488 |
+| entry change kind (independent remap) = MCP | yes | grader same, MCP same |
+| request stop | yes | POST /api/workspace/tracer-g2/update → POST /api/workspace/tracer-g2/update |
+| route stop (route + status) | yes | /api/workspace/:slug/update 422 → /api/workspace/:slug/update 200 |
+| handler stops | yes | 3 → 3 |
+| db stops | yes | 0 → 0 |
+| outcome http_status | yes | 422 → 200 |
+| path_changed (grader) = MCP | yes | grader true, MCP true |
+| gate expectation: path_changed | yes | expected true |
+| gate expectation: statuses | yes | expected 422 → 200 |
+| gate expectation: entry | yes | expected same |
+
+## B-seeded-422__C-fix: PASS
+
+| check | ok | detail |
+|---|---|---|
+| selected before action = MCP input | yes | action:mue4cr85:65 (run run-20260923t130846609z-81efcd, build b-2dc9ecff4d63b25e, fixture 8bc8ae75) |
+| selected after action = MCP input | yes | action:mue4g90c:65 (run run-20260923t131129601z-4c9b91, build b-2dc9ecff4d63b25e, fixture 8bc8ae75) |
+| entry function (first depth-zero function.enter) = MCP entry | yes | function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488 / function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488 |
+| entry change kind (independent remap) = MCP | yes | grader same, MCP same |
+| request stop | yes | POST /api/workspace/tracer-g2/update → POST /api/workspace/tracer-g2/update |
+| route stop (route + status) | yes | /api/workspace/:slug/update 422 → /api/workspace/:slug/update 422 |
+| handler stops | yes | 3 → 3 |
+| db stops | yes | 0 → 0 |
+| outcome http_status | yes | 422 → 422 |
+| path_changed (grader) = MCP | yes | grader false, MCP false |
+| gate expectation: path_changed | yes | expected false |
+| gate expectation: statuses | yes | expected 422 → 422 |
+| gate expectation: entry | yes | expected same |
+
+Overall: PASS (6/6 pairs).
+
+Independence caveat: written by the implementing agent; shares no code with analysis/, collector/ or mcp/. A separate agent should rerun it.

@@ -1,0 +1,14 @@
+{
+  "schema": "producttrace.g1-chain-summary.v1",
+  "backend_instrumented": false,
+  "records": 205815,
+  "spans": 0,
+  "actions": 336,
+  "actions_with_requests": 13,
+  "terminals": {
+    "browser | no request observed": 323,
+    "network | backend not instrumented": 13
+  },
+  "chains_with_backend_steps": 0,
+  "credited_entry_handlers": 320
+}

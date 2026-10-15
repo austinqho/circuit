@@ -1,0 +1,1997 @@
+{
+  "schema": "producttrace.shared-rule-paid.v1",
+  "case_id": "react19-children-forEach",
+  "passed": false,
+  "frozen": {
+    "schema": "producttrace.shared-rule-freeze.v1",
+    "reason": "Bank-blind model evaluation after manual actual-library calibration. Includes independent rejected-domain checks for hidden getters/coercion and exact namespace integration. No grading program or bank entry in proposal context.",
+    "cases": [
+      {
+        "id": "react19-children-forEach",
+        "implementation_sha256": "9793fff73bec0ec97e777c31efe5da31f9dca15d7254a1e2629769597621269a",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react19",
+        "exportName": "Children.forEach",
+        "scope": {
+          "callbackArguments": [
+            1
+          ],
+          "resultPaths": null,
+          "accessorObservation": "opaque_descriptors",
+          "description": "Finite acyclic arrays (including holes), primitives and ordinary React element/portal data with scalar keys. Elements and fragments are leaves; their children are not traversed. Empty top-level input skips traversal, nested empty nodes are normalized to null. Observe count or exact forEach callback argument/index/receiver, return identity and throws. Iterator/thenable/lazy protocols, library-read getters, nonprimitive key coercion, symbol keys, owner Fiber graphs and input mutations require separate evidence. Unaccessed element warning descriptors remain opaque."
+        }
+      }
+    ]
+  },
+  "active_engine": {
+    "analysis/library-program.mjs": "0f9e1c556d2aa180d33ada0502328767c38c81ace6c77505fd869d22bccb154e",
+    "analysis/library-boundary.mjs": "0c48567e45033ec0dd0f2b39ba2f786973055276b5b538c880719d0c6e20964d",
+    "analysis/library-program-bank.mjs": "cf7866a33271fe7f80e2bd9ab121c73ba94a3c23eb72eb2a61a586af567d44ab",
+    "analysis/library-program-integration.mjs": "256fec3e5b722b6cb203d1db00571af6b0ef445349a265d56443af7c73763a06",
+    "authoring/library-implementation.mjs": "702abf551475038b31f7c580ec76c294a45d49b2f13983e732d36fda9c65f1ec",
+    "authoring/library-export-getter.mjs": "0f98bd85ff1fb6c26918b3c2fdf76805260b9f81e7ce5843d594ed63e2eacab2",
+    "analysis/library-owned-reference.mjs": "4ed9ffba4ed3d10a95f0d0b9828cca9a7735816ecb58eb891693a26d3fe679de",
+    "analysis/library-owned-value.mjs": "3601aed34932780b8458d168efdc10188c4c4d3eb5d00ab151501451b7e55e78",
+    "authoring/library-program-catalog.mjs": "f5e7c89c32bbcbde85fb7d870bf482bd5d6a3e5e4bf8b7c8b1696357b3ad032d",
+    "authoring/library-program-verifier.mjs": "bc379149d0f858a9b2e8fbe4163d5dae3941768098227bbabdd2ccb91144de03",
+    "authoring/library-program-resolver.mjs": "47bf720775b9dcf6e7255a2d0c6b49aca3427f278a847a85cc43d9ba0605f163",
+    "analysis/library-program-syntax.mjs": "068964059467cabbab409f7152946faa147ed6586999e2301288b94d51c709d1",
+    "authoring/library-program-author.mjs": "2469b9943eb9ac202f92898da4fe9d91f4fae192a7c6d8a81f7cf3dbb134657e",
+    "authoring/library-program-format.mjs": "d184dab9225d4ab0f7e6820c8009293096a4d95673444633a6061608e2ba40c5",
+    "evaluation/shared-rules/cases.mjs": "9f7f27056a0b637cdc44ef90ddc6f133c6247ebbc6727e13fccf3d0961785b32",
+    "evaluation/shared-rules/check-case.mjs": "a275943cfa37dc7b9a6b92f83606c666c9776721e7ead9c05fcc9ad3375584c3",
+    "evaluation/shared-rules/run.mjs": "ce8642b002b601a94afec8efc498d7d2c3a7b2658bcaea231dc92460a48b4f41",
+    "evaluation/shared-rules/children-traversal-check.mjs": "b4b68a2b3ff6cce22050f1f025d1fc2ab41fba1a974a22d99124cee686ba7769",
+    "evaluation/shared-rules/children-traversal-scope.mjs": "664bd0c9e74d55b352505efe5b6264360b1c8220c8bc0ae7c746f805105a586b"
+  },
+  "local_gate": {
+    "passed": true,
+    "source_sha256": "0d80ef0312354dd49e9f027a05807c01eedcad3f109e591aea47874b08286ac1",
+    "checked_at": "2026-09-10T22:42:59.828Z",
+    "checks": [
+      {
+        "name": "regressions",
+        "exit_status": 0,
+        "output_sha256": "0ad40e5a6ecdc04d9d142f59017eabdb73f1abe35e298c8ebc1eaf5601abf9f5"
+      },
+      {
+        "name": "real_libraries",
+        "exit_status": 0,
+        "output_sha256": "3a5c4d7402577e2880ca88f99e8ef6f5dacc644e62f43914cfaaacd5c2432ba3"
+      },
+      {
+        "name": "actual_http",
+        "exit_status": 0,
+        "output_sha256": "5823bd4d65ce8052b0136c468f958cc657331375f0f7bbb372bc55c5e79f8a7b"
+      },
+      {
+        "name": "react182_owned_reference",
+        "exit_status": 0,
+        "output_sha256": "6cecd2fc0656c4a86747dc2584fbfa2990e2a333bc07e736296a6e3450b49258"
+      },
+      {
+        "name": "react18_owned_reference",
+        "exit_status": 0,
+        "output_sha256": "6cdd45bf63fb9f8594e4ef26dbfdc9acbcf4b39df03676bc06f93c05e2f73d42"
+      },
+      {
+        "name": "react19_owned_reference",
+        "exit_status": 0,
+        "output_sha256": "c8cea333bb0c5374d30043da78dfa7661f1404dcfa8858a7d061cd93b84faa0a"
+      },
+      {
+        "name": "react_production_catalog",
+        "exit_status": 0,
+        "output_sha256": "df27572354a0cda9a4565affe0bd0e785c3a3d21ae40995d1750ac9bbf8c4f4d"
+      },
+      {
+        "name": "react_transition",
+        "exit_status": 0,
+        "output_sha256": "87b6d7f306344089558c7c28215dae27a39055dd29767a1d22c453ad50112467"
+      },
+      {
+        "name": "react_memo_generations",
+        "exit_status": 0,
+        "output_sha256": "d240985e4f1b45b494a28c4a6702198c4764888bc520558ff3fd13bfdb2ea82f"
+      },
+      {
+        "name": "react_ref_cells",
+        "exit_status": 0,
+        "output_sha256": "b07e2c549dbfd928cb0d6beed1a6f587b82c0909391e32eb2378630a2947c0f5"
+      },
+      {
+        "name": "react_context_read_development",
+        "exit_status": 0,
+        "output_sha256": "5930bf07f44d8712c4250ca128e860916b3ca26f531d8bbb6dcacf49ca0352cc"
+      },
+      {
+        "name": "react_context_read",
+        "exit_status": 0,
+        "output_sha256": "5930bf07f44d8712c4250ca128e860916b3ca26f531d8bbb6dcacf49ca0352cc"
+      },
+      {
+        "name": "react_context_creation",
+        "exit_status": 0,
+        "output_sha256": "32a1fa1b4930f90bb67b834a4540ae189015637987b698bf10f8fd3cecb25b31"
+      },
+      {
+        "name": "react_children_traversal_development",
+        "exit_status": 0,
+        "output_sha256": "935f7e1016caaee2886e7ac12d6ba29857694732b97ac41f5cb74ed3312d09df"
+      },
+      {
+        "name": "react_children_traversal_production",
+        "exit_status": 0,
+        "output_sha256": "9ff62e8c66041e850e66d33a4cfdf1cd283d589668107926c4bb3750ca291b99"
+      },
+      {
+        "name": "react_children_only",
+        "exit_status": 0,
+        "output_sha256": "316e7a2f93244cc9b2e2609407b73c65da69310333723e165e948e79eeb5c10a"
+      },
+      {
+        "name": "react_element_data",
+        "exit_status": 0,
+        "output_sha256": "e2dcb498d1460b5a345b1c4849ff4d67df82ef08e20a8c85d27af1d0bf44a124"
+      },
+      {
+        "name": "react_simple_production",
+        "exit_status": 0,
+        "output_sha256": "f1446552b285e1db879496a47f8f0f65e6959acd58eb5290e853266d622167bd"
+      },
+      {
+        "name": "usable_catalog",
+        "exit_status": 0,
+        "output_sha256": "d321faf7e3cad400deafe0c8bcc241cf752342bf3ad11739e2ed93e53a987213"
+      }
+    ]
+  },
+  "model": "gpt-5.4-mini",
+  "reasoning_effort": "low",
+  "resumed_from": "paid-react19-children-forEach-1789080072269.json",
+  "implementation_sha256": "9793fff73bec0ec97e777c31efe5da31f9dca15d7254a1e2629769597621269a",
+  "implementation": {
+    "schema": "producttrace.library-implementation.v1",
+    "specifier": "react19",
+    "export_name": "Children.forEach",
+    "runtime": {
+      "host": "node",
+      "mode": "development",
+      "entry": "node_modules/react19/index.js"
+    },
+    "packages": [
+      {
+        "path": "node_modules/react19",
+        "name": "react",
+        "version": "19.1.1",
+        "integrity": "sha512-w8nqGImo45dmMIfljjMwOGtbmC/mk4CMYhWIicdSflH91J9TyCyczcPFXJzrZ/ZXcgGRFeP6BU0BEJTw6tZdfQ==",
+        "manifest_sha256": "7e862b437058f8dde0fe1b538266b934d725f76fe5b981305d6e942714d49608"
+      }
+    ],
+    "files": [
+      {
+        "path": "node_modules/react19/cjs/react.development.js",
+        "sha256": "c3140127dd572acd866efa06e63c5c27f79daa5879e4c39af5c91644f8574751"
+      },
+      {
+        "path": "node_modules/react19/index.js",
+        "sha256": "60caffdecbdc5db3bc4ec4e83df9488345ccb271d07533b9210bf5750918d97e"
+      }
+    ],
+    "source_status": "ready_for_scoped_proposal",
+    "source_reason": null,
+    "scope": "runtime_export_and_loaded_initialization_dependencies",
+    "implementation": "function (children, forEachFunc, forEachContext) {\n        mapChildren(\n          children,\n          function () {\n            forEachFunc.apply(this, arguments);\n          },\n          forEachContext\n        );\n      }",
+    "slices": [
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 26724,
+        "end": 26944,
+        "source": "function (children, forEachFunc, forEachContext) {\n        mapChildren(\n          children,\n          function () {\n            forEachFunc.apply(this, arguments);\n          },\n          forEachContext\n        );\n      }"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 15337,
+        "end": 15623,
+        "source": "function mapChildren(children, func, context) {\n      if (null == children) return children;\n      var result = [],\n        count = 0;\n      mapIntoArray(children, result, \"\", \"\", function (child) {\n        return func.call(context, child, count++);\n      });\n      return result;\n    }"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 10807,
+        "end": 15332,
+        "source": "function mapIntoArray(children, array, escapedPrefix, nameSoFar, callback) {\n      var type = typeof children;\n      if (\"undefined\" === type || \"boolean\" === type) children = null;\n      var invokeCallback = !1;\n      if (null === children) invokeCallback = !0;\n      else\n        switch (type) {\n          case \"bigint\":\n          case \"string\":\n          case \"number\":\n            invokeCallback = !0;\n            break;\n          case \"object\":\n            switch (children.$$typeof) {\n              case REACT_ELEMENT_TYPE:\n              case REACT_PORTAL_TYPE:\n                invokeCallback = !0;\n                break;\n              case REACT_LAZY_TYPE:\n                return (\n                  (invokeCallback = children._init),\n                  mapIntoArray(\n                    invokeCallback(children._payload),\n                    array,\n                    escapedPrefix,\n                    nameSoFar,\n                    callback\n                  )\n                );\n            }\n        }\n      if (invokeCallback) {\n        invokeCallback = children;\n        callback = callback(invokeCallback);\n        var childKey =\n          \"\" === nameSoFar ? \".\" + getElementKey(invokeCallback, 0) : nameSoFar;\n        isArrayImpl(callback)\n          ? ((escapedPrefix = \"\"),\n            null != childKey &&\n              (escapedPrefix =\n                childKey.replace(userProvidedKeyEscapeRegex, \"$&/\") + \"/\"),\n            mapIntoArray(callback, array, escapedPrefix, \"\", function (c) {\n              return c;\n            }))\n          : null != callback &&\n            (isValidElement(callback) &&\n              (null != callback.key &&\n                ((invokeCallback && invokeCallback.key === callback.key) ||\n                  checkKeyStringCoercion(callback.key)),\n              (escapedPrefix = cloneAndReplaceKey(\n                callback,\n                escapedPrefix +\n                  (null == callback.key ||\n                  (invokeCallback && invokeCallback.key === callback.key)\n                    ? \"\"\n                    : (\"\" + callback.key).replace(\n                        userProvidedKeyEscapeRegex,\n                        \"$&/\"\n                      ) + \"/\") +\n                  childKey\n              )),\n              \"\" !== nameSoFar &&\n                null != invokeCallback &&\n                isValidElement(invokeCallback) &&\n                null == invokeCallback.key &&\n                invokeCallback._store &&\n                !invokeCallback._store.validated &&\n                (escapedPrefix._store.validated = 2),\n              (callback = escapedPrefix)),\n            array.push(callback));\n        return 1;\n      }\n      invokeCallback = 0;\n      childKey = \"\" === nameSoFar ? \".\" : nameSoFar + \":\";\n      if (isArrayImpl(children))\n        for (var i = 0; i < children.length; i++)\n          (nameSoFar = children[i]),\n            (type = childKey + getElementKey(nameSoFar, i)),\n            (invokeCallback += mapIntoArray(\n              nameSoFar,\n              array,\n              escapedPrefix,\n              type,\n              callback\n            ));\n      else if (((i = getIteratorFn(children)), \"function\" === typeof i))\n        for (\n          i === children.entries &&\n            (didWarnAboutMaps ||\n              console.warn(\n                \"Using Maps as children is not supported. Use an array of keyed ReactElements instead.\"\n              ),\n            (didWarnAboutMaps = !0)),\n            children = i.call(children),\n            i = 0;\n          !(nameSoFar = children.next()).done;\n\n        )\n          (nameSoFar = nameSoFar.value),\n            (type = childKey + getElementKey(nameSoFar, i++)),\n            (invokeCallback += mapIntoArray(\n              nameSoFar,\n              array,\n              escapedPrefix,\n              type,\n              callback\n            ));\n      else if (\"object\" === type) {\n        if (\"function\" === typeof children.then)\n          return mapIntoArray(\n            resolveThenable(children),\n            array,\n            escapedPrefix,\n            nameSoFar,\n            callback\n          );\n        array = String(children);\n        throw Error(\n          \"Objects are not valid as a React child (found: \" +\n            (\"[object Object]\" === array\n              ? \"object with keys {\" + Object.keys(children).join(\", \") + \"}\"\n              : array) +\n            \"). If you meant to render a collection of children, use an array instead.\"\n        );\n      }\n      return invokeCallback;\n    }"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 21044,
+        "end": 21105,
+        "source": "REACT_ELEMENT_TYPE = Symbol.for(\"react.transitional.element\")"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 21113,
+        "end": 21159,
+        "source": "REACT_PORTAL_TYPE = Symbol.for(\"react.portal\")"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 21737,
+        "end": 21779,
+        "source": "REACT_LAZY_TYPE = Symbol.for(\"react.lazy\")"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 9433,
+        "end": 9683,
+        "source": "function getElementKey(element, index) {\n      return \"object\" === typeof element &&\n        null !== element &&\n        null != element.key\n        ? (checkKeyStringCoercion(element.key), escape(\"\" + element.key))\n        : index.toString(36);\n    }"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 23923,
+        "end": 23950,
+        "source": "isArrayImpl = Array.isArray"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 25018,
+        "end": 25053,
+        "source": "userProvidedKeyEscapeRegex = /\\/+/g"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 9032,
+        "end": 9207,
+        "source": "function isValidElement(object) {\n      return (\n        \"object\" === typeof object &&\n        null !== object &&\n        object.$$typeof === REACT_ELEMENT_TYPE\n      );\n    }"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 2248,
+        "end": 3119,
+        "source": "function checkKeyStringCoercion(value) {\n      try {\n        testStringCoercion(value);\n        var JSCompiler_inline_result = !1;\n      } catch (e) {\n        JSCompiler_inline_result = !0;\n      }\n      if (JSCompiler_inline_result) {\n        JSCompiler_inline_result = console;\n        var JSCompiler_temp_const = JSCompiler_inline_result.error;\n        var JSCompiler_inline_result$jscomp$0 =\n          (\"function\" === typeof Symbol &&\n            Symbol.toStringTag &&\n            value[Symbol.toStringTag]) ||\n          value.constructor.name ||\n          \"Object\";\n        JSCompiler_temp_const.call(\n          JSCompiler_inline_result,\n          \"The provided key is an unsupported type %s. This value must be coerced to a string before using it here.\",\n          JSCompiler_inline_result$jscomp$0\n        );\n        return testStringCoercion(value);\n      }\n    }"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 8633,
+        "end": 9027,
+        "source": "function cloneAndReplaceKey(oldElement, newKey) {\n      newKey = ReactElement(\n        oldElement.type,\n        newKey,\n        void 0,\n        void 0,\n        oldElement._owner,\n        oldElement.props,\n        oldElement._debugStack,\n        oldElement._debugTask\n      );\n      oldElement._store &&\n        (newKey._store.validated = oldElement._store.validated);\n      return newKey;\n    }"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 640,
+        "end": 984,
+        "source": "function getIteratorFn(maybeIterable) {\n      if (null === maybeIterable || \"object\" !== typeof maybeIterable)\n        return null;\n      maybeIterable =\n        (MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL]) ||\n        maybeIterable[\"@@iterator\"];\n      return \"function\" === typeof maybeIterable ? maybeIterable : null;\n    }"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 24989,
+        "end": 25010,
+        "source": "didWarnAboutMaps = !1"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 9713,
+        "end": 10802,
+        "source": "function resolveThenable(thenable) {\n      switch (thenable.status) {\n        case \"fulfilled\":\n          return thenable.value;\n        case \"rejected\":\n          throw thenable.reason;\n        default:\n          switch (\n            (\"string\" === typeof thenable.status\n              ? thenable.then(noop$1, noop$1)\n              : ((thenable.status = \"pending\"),\n                thenable.then(\n                  function (fulfilledValue) {\n                    \"pending\" === thenable.status &&\n                      ((thenable.status = \"fulfilled\"),\n                      (thenable.value = fulfilledValue));\n                  },\n                  function (error) {\n                    \"pending\" === thenable.status &&\n                      ((thenable.status = \"rejected\"),\n                      (thenable.reason = error));\n                  }\n                )),\n            thenable.status)\n          ) {\n            case \"fulfilled\":\n              return thenable.value;\n            case \"rejected\":\n              throw thenable.reason;\n          }\n      }\n      throw thenable;\n    }"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 9212,
+        "end": 9428,
+        "source": "function escape(key) {\n      var escaperLookup = { \"=\": \"=0\", \":\": \"=2\" };\n      return (\n        \"$\" +\n        key.replace(/[=:]/g, function (match) {\n          return escaperLookup[match];\n        })\n      );\n    }"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 2176,
+        "end": 2243,
+        "source": "function testStringCoercion(value) {\n      return \"\" + value;\n    }"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 7306,
+        "end": 8628,
+        "source": "function ReactElement(\n      type,\n      key,\n      self,\n      source,\n      owner,\n      props,\n      debugStack,\n      debugTask\n    ) {\n      self = props.ref;\n      type = {\n        $$typeof: REACT_ELEMENT_TYPE,\n        type: type,\n        key: key,\n        props: props,\n        _owner: owner\n      };\n      null !== (void 0 !== self ? self : null)\n        ? Object.defineProperty(type, \"ref\", {\n            enumerable: !1,\n            get: elementRefGetterWithDeprecationWarning\n          })\n        : Object.defineProperty(type, \"ref\", { enumerable: !1, value: null });\n      type._store = {};\n      Object.defineProperty(type._store, \"validated\", {\n        configurable: !1,\n        enumerable: !1,\n        writable: !0,\n        value: 0\n      });\n      Object.defineProperty(type, \"_debugInfo\", {\n        configurable: !1,\n        enumerable: !1,\n        writable: !0,\n        value: null\n      });\n      Object.defineProperty(type, \"_debugStack\", {\n        configurable: !1,\n        enumerable: !1,\n        writable: !0,\n        value: debugStack\n      });\n      Object.defineProperty(type, \"_debugTask\", {\n        configurable: !1,\n        enumerable: !1,\n        writable: !0,\n        value: debugTask\n      });\n      Object.freeze && (Object.freeze(type.props), Object.freeze(type));\n      return type;\n    }"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 21845,
+        "end": 21884,
+        "source": "MAYBE_ITERATOR_SYMBOL = Symbol.iterator"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 9688,
+        "end": 9708,
+        "source": "function noop$1() {}"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 6792,
+        "end": 7301,
+        "source": "function elementRefGetterWithDeprecationWarning() {\n      var componentName = getComponentNameFromType(this.type);\n      didWarnAboutElementRef[componentName] ||\n        ((didWarnAboutElementRef[componentName] = !0),\n        console.error(\n          \"Accessing element.ref was removed in React 19. ref is now a regular prop. It will be removed from the JSX Element type in a future release.\"\n        ));\n      componentName = this.props.ref;\n      return void 0 !== componentName ? componentName : null;\n    }"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 3124,
+        "end": 5222,
+        "source": "function getComponentNameFromType(type) {\n      if (null == type) return null;\n      if (\"function\" === typeof type)\n        return type.$$typeof === REACT_CLIENT_REFERENCE\n          ? null\n          : type.displayName || type.name || null;\n      if (\"string\" === typeof type) return type;\n      switch (type) {\n        case REACT_FRAGMENT_TYPE:\n          return \"Fragment\";\n        case REACT_PROFILER_TYPE:\n          return \"Profiler\";\n        case REACT_STRICT_MODE_TYPE:\n          return \"StrictMode\";\n        case REACT_SUSPENSE_TYPE:\n          return \"Suspense\";\n        case REACT_SUSPENSE_LIST_TYPE:\n          return \"SuspenseList\";\n        case REACT_ACTIVITY_TYPE:\n          return \"Activity\";\n      }\n      if (\"object\" === typeof type)\n        switch (\n          (\"number\" === typeof type.tag &&\n            console.error(\n              \"Received an unexpected object in getComponentNameFromType(). This is likely a bug in React. Please file an issue.\"\n            ),\n          type.$$typeof)\n        ) {\n          case REACT_PORTAL_TYPE:\n            return \"Portal\";\n          case REACT_CONTEXT_TYPE:\n            return (type.displayName || \"Context\") + \".Provider\";\n          case REACT_CONSUMER_TYPE:\n            return (type._context.displayName || \"Context\") + \".Consumer\";\n          case REACT_FORWARD_REF_TYPE:\n            var innerType = type.render;\n            type = type.displayName;\n            type ||\n              ((type = innerType.displayName || innerType.name || \"\"),\n              (type = \"\" !== type ? \"ForwardRef(\" + type + \")\" : \"ForwardRef\"));\n            return type;\n          case REACT_MEMO_TYPE:\n            return (\n              (innerType = type.displayName || null),\n              null !== innerType\n                ? innerType\n                : getComponentNameFromType(type.type) || \"Memo\"\n            );\n          case REACT_LAZY_TYPE:\n            innerType = type._payload;\n            type = type._init;\n            try {\n              return getComponentNameFromType(type(innerType));\n            } catch (x) {}\n        }\n      return null;\n    }"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 24752,
+        "end": 24779,
+        "source": "didWarnAboutElementRef = {}"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 23958,
+        "end": 24019,
+        "source": "REACT_CLIENT_REFERENCE = Symbol.for(\"react.client.reference\")"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 21167,
+        "end": 21217,
+        "source": "REACT_FRAGMENT_TYPE = Symbol.for(\"react.fragment\")"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 21289,
+        "end": 21339,
+        "source": "REACT_PROFILER_TYPE = Symbol.for(\"react.profiler\")"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 21225,
+        "end": 21281,
+        "source": "REACT_STRICT_MODE_TYPE = Symbol.for(\"react.strict_mode\")"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 21561,
+        "end": 21611,
+        "source": "REACT_SUSPENSE_TYPE = Symbol.for(\"react.suspense\")"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 21619,
+        "end": 21679,
+        "source": "REACT_SUSPENSE_LIST_TYPE = Symbol.for(\"react.suspense_list\")"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 21787,
+        "end": 21837,
+        "source": "REACT_ACTIVITY_TYPE = Symbol.for(\"react.activity\")"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 21441,
+        "end": 21489,
+        "source": "REACT_CONTEXT_TYPE = Symbol.for(\"react.context\")"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 21383,
+        "end": 21433,
+        "source": "REACT_CONSUMER_TYPE = Symbol.for(\"react.consumer\")"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 21497,
+        "end": 21553,
+        "source": "REACT_FORWARD_REF_TYPE = Symbol.for(\"react.forward_ref\")"
+      },
+      {
+        "file": "node_modules/react19/cjs/react.development.js",
+        "start": 21687,
+        "end": 21729,
+        "source": "REACT_MEMO_TYPE = Symbol.for(\"react.memo\")"
+      }
+    ]
+  },
+  "result": {
+    "status": "frontier",
+    "reason": "repair_attempts_exhausted",
+    "attempts": [
+      {
+        "number": 1,
+        "proposal": {
+          "schema": "producttrace.library-program-proposal.v2",
+          "status": "propose",
+          "program": {
+            "schema": "producttrace.library-program.v1",
+            "body": {
+              "op": "bind",
+              "name": "cb",
+              "value": {
+                "op": "arg",
+                "index": 1
+              },
+              "body": {
+                "op": "bind",
+                "name": "ctx",
+                "value": {
+                  "op": "arg",
+                  "index": 2
+                },
+                "body": {
+                  "op": "bind",
+                  "name": "count",
+                  "value": {
+                    "op": "literal",
+                    "value": 0
+                  },
+                  "body": {
+                    "op": "bind",
+                    "name": "visit",
+                    "value": {
+                      "op": "undefined"
+                    },
+                    "body": {
+                      "op": "sequence",
+                      "steps": [
+                        {
+                          "op": "set",
+                          "name": "visit",
+                          "value": {
+                            "op": "fn",
+                            "body": {
+                              "op": "if",
+                              "test": {
+                                "op": "same",
+                                "left": {
+                                  "op": "type",
+                                  "value": {
+                                    "op": "arg",
+                                    "index": 0
+                                  }
+                                },
+                                "right": {
+                                  "op": "literal",
+                                  "value": "object"
+                                }
+                              },
+                              "then": {
+                                "op": "if",
+                                "test": {
+                                  "op": "has_own",
+                                  "value": {
+                                    "op": "arg",
+                                    "index": 0
+                                  },
+                                  "key": {
+                                    "op": "literal",
+                                    "value": "length"
+                                  }
+                                },
+                                "then": {
+                                  "op": "every",
+                                  "items": {
+                                    "op": "arg",
+                                    "index": 0
+                                  },
+                                  "value_name": "item",
+                                  "index_name": "i",
+                                  "test": {
+                                    "op": "call",
+                                    "target": {
+                                      "op": "local",
+                                      "name": "visit"
+                                    },
+                                    "receiver": {
+                                      "op": "undefined"
+                                    },
+                                    "args": {
+                                      "op": "array",
+                                      "items": [
+                                        {
+                                          "op": "local",
+                                          "name": "item"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                },
+                                "else": {
+                                  "op": "sequence",
+                                  "steps": [
+                                    {
+                                      "op": "call",
+                                      "target": {
+                                        "op": "local",
+                                        "name": "cb"
+                                      },
+                                      "receiver": {
+                                        "op": "local",
+                                        "name": "ctx"
+                                      },
+                                      "args": {
+                                        "op": "array",
+                                        "items": [
+                                          {
+                                            "op": "arg",
+                                            "index": 0
+                                          },
+                                          {
+                                            "op": "local",
+                                            "name": "count"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "op": "set",
+                                      "name": "count",
+                                      "value": {
+                                        "op": "number_add",
+                                        "left": {
+                                          "op": "local",
+                                          "name": "count"
+                                        },
+                                        "right": {
+                                          "op": "literal",
+                                          "value": 1
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "op": "literal",
+                                      "value": true
+                                    }
+                                  ]
+                                }
+                              },
+                              "else": {
+                                "op": "sequence",
+                                "steps": [
+                                  {
+                                    "op": "call",
+                                    "target": {
+                                      "op": "local",
+                                      "name": "cb"
+                                    },
+                                    "receiver": {
+                                      "op": "local",
+                                      "name": "ctx"
+                                    },
+                                    "args": {
+                                      "op": "array",
+                                      "items": [
+                                        {
+                                          "op": "arg",
+                                          "index": 0
+                                        },
+                                        {
+                                          "op": "local",
+                                          "name": "count"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "op": "set",
+                                    "name": "count",
+                                    "value": {
+                                      "op": "number_add",
+                                      "left": {
+                                        "op": "local",
+                                        "name": "count"
+                                      },
+                                      "right": {
+                                        "op": "literal",
+                                        "value": 1
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "op": "literal",
+                                    "value": true
+                                  }
+                                ]
+                              }
+                            },
+                            "this_mode": "strict"
+                          }
+                        },
+                        {
+                          "op": "call",
+                          "target": {
+                            "op": "local",
+                            "name": "visit"
+                          },
+                          "receiver": {
+                            "op": "undefined"
+                          },
+                          "args": {
+                            "op": "array",
+                            "items": [
+                              {
+                                "op": "arg",
+                                "index": 0
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "op": "undefined"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "reason": "Implements Children.forEach as a traversal that invokes the supplied callback once per visited leaf with the provided receiver/context and a monotonically increasing index, while returning undefined from the exported function. The proposal stays within the declared finite array/primitive/React-element-or-portal leaf domain and leaves iterator/thenable/lazy and host-observation cases outside scope."
+        },
+        "usage": {
+          "input_tokens": 8602,
+          "cached_input_tokens": 0,
+          "output_tokens": 1752,
+          "reasoning_output_tokens": 1119
+        },
+        "cost_usd": 0.0143355,
+        "latency_ms": 10897.859125,
+        "prompt_sha256": "289c17182bda28ed01f8e35fae8a9e1e637d3b78cba9b09ca62d037c1e410a53",
+        "check": {
+          "status": "rejected",
+          "stage": "behavior",
+          "reason": "callback_order_or_count_mismatch",
+          "report": {
+            "status": "rejected",
+            "reason": "callback_order_or_count_mismatch",
+            "samples": 16,
+            "callbacks": 23,
+            "report": {
+              "status": "frontier",
+              "scope": "observations_through_checkpoint",
+              "observation_mode": "invocations",
+              "error_observation": "identity",
+              "accessor_observation": "opaque_descriptors",
+              "calls": 17,
+              "failures": [
+                {
+                  "reason": "callback_order_or_count_mismatch",
+                  "occurrence": "library-call:1",
+                  "detail": {
+                    "boundary": "producer",
+                    "observed_callback_count": 0,
+                    "predicted_callback_ordinal": 1,
+                    "predicted_callback": "producer:argument:1",
+                    "observed_callback": null
+                  }
+                },
+                {
+                  "reason": "property_on_nullish",
+                  "occurrence": "library-call:2",
+                  "detail": {}
+                },
+                {
+                  "reason": "callback_arguments_or_receiver_mismatch",
+                  "occurrence": "library-call:3",
+                  "detail": {
+                    "callback": "producer:argument:1",
+                    "arguments_match": false
+                  }
+                },
+                {
+                  "reason": "callback_arguments_or_receiver_mismatch",
+                  "occurrence": "library-call:4",
+                  "detail": {
+                    "callback": "producer:argument:1",
+                    "arguments_match": false
+                  }
+                },
+                {
+                  "reason": "callback_arguments_or_receiver_mismatch",
+                  "occurrence": "library-call:10",
+                  "detail": {
+                    "callback": "producer:argument:1",
+                    "arguments_match": false
+                  }
+                },
+                {
+                  "reason": "callback_arguments_or_receiver_mismatch",
+                  "occurrence": "library-call:11",
+                  "detail": {
+                    "callback": "producer:argument:1",
+                    "arguments_match": false
+                  }
+                },
+                {
+                  "reason": "callback_arguments_or_receiver_mismatch",
+                  "occurrence": "library-call:12",
+                  "detail": {
+                    "callback": "producer:argument:1",
+                    "arguments_match": false
+                  }
+                },
+                {
+                  "reason": "callback_arguments_or_receiver_mismatch",
+                  "occurrence": "library-call:14",
+                  "detail": {
+                    "callback": "producer:argument:1",
+                    "arguments_match": false
+                  }
+                },
+                {
+                  "reason": "unmodeled_callback_invocation",
+                  "occurrence": "library-call:10",
+                  "detail": {
+                    "observed_callback_count": 4,
+                    "predicted_callback_count": 1
+                  }
+                },
+                {
+                  "reason": "unmodeled_callback_invocation",
+                  "occurrence": "library-call:11",
+                  "detail": {
+                    "observed_callback_count": 3,
+                    "predicted_callback_count": 1
+                  }
+                }
+              ],
+              "evidence": [
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:3",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:4",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:5",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:6",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:7",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:8",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:10",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:10",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:10",
+                  "callback": "producer:argument:1",
+                  "ordinal": 2,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:10",
+                  "callback": "producer:argument:1",
+                  "ordinal": 3,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:11",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:11",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:11",
+                  "callback": "producer:argument:1",
+                  "ordinal": 2,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:12",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:12",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:12",
+                  "callback": "producer:argument:1",
+                  "ordinal": 2,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:13",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:13",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:13",
+                  "callback": "producer:argument:1",
+                  "ordinal": 2,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:14",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:15",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:16",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:16",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:17",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:17",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "frontier",
+                  "outcome": "throw",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                }
+              ]
+            },
+            "domainChecks": [
+              {
+                "kind": "key_getter",
+                "status": "observed_agreement"
+              },
+              {
+                "kind": "key_coercion",
+                "status": "observed_agreement"
+              },
+              {
+                "kind": "iterator",
+                "status": "frontier",
+                "reason": "hidden_input_state_requires_host_evidence"
+              }
+            ],
+            "failures": [
+              {
+                "reason": "callback_order_or_count_mismatch",
+                "occurrence": "library-call:1",
+                "detail": {
+                  "boundary": "producer",
+                  "observed_callback_count": 0,
+                  "predicted_callback_ordinal": 1,
+                  "predicted_callback": "producer:argument:1",
+                  "observed_callback": null
+                }
+              },
+              {
+                "reason": "property_on_nullish",
+                "occurrence": "library-call:2",
+                "detail": {}
+              },
+              {
+                "reason": "callback_arguments_or_receiver_mismatch",
+                "occurrence": "library-call:3",
+                "detail": {
+                  "callback": "producer:argument:1",
+                  "arguments_match": false
+                }
+              },
+              {
+                "reason": "callback_arguments_or_receiver_mismatch",
+                "occurrence": "library-call:4",
+                "detail": {
+                  "callback": "producer:argument:1",
+                  "arguments_match": false
+                }
+              },
+              {
+                "reason": "callback_arguments_or_receiver_mismatch",
+                "occurrence": "library-call:10",
+                "detail": {
+                  "callback": "producer:argument:1",
+                  "arguments_match": false
+                }
+              },
+              {
+                "reason": "callback_arguments_or_receiver_mismatch",
+                "occurrence": "library-call:11",
+                "detail": {
+                  "callback": "producer:argument:1",
+                  "arguments_match": false
+                }
+              },
+              {
+                "reason": "callback_arguments_or_receiver_mismatch",
+                "occurrence": "library-call:12",
+                "detail": {
+                  "callback": "producer:argument:1",
+                  "arguments_match": false
+                }
+              },
+              {
+                "reason": "callback_arguments_or_receiver_mismatch",
+                "occurrence": "library-call:14",
+                "detail": {
+                  "callback": "producer:argument:1",
+                  "arguments_match": false
+                }
+              },
+              {
+                "reason": "unmodeled_callback_invocation",
+                "occurrence": "library-call:10",
+                "detail": {
+                  "observed_callback_count": 4,
+                  "predicted_callback_count": 1
+                }
+              },
+              {
+                "reason": "unmodeled_callback_invocation",
+                "occurrence": "library-call:11",
+                "detail": {
+                  "observed_callback_count": 3,
+                  "predicted_callback_count": 1
+                }
+              }
+            ],
+            "stage": "behavior"
+          }
+        }
+      },
+      {
+        "number": 2,
+        "proposal": {
+          "schema": "producttrace.library-program-proposal.v2",
+          "status": "propose",
+          "program": {
+            "schema": "producttrace.library-program.v1",
+            "body": {
+              "op": "bind",
+              "name": "cb",
+              "value": {
+                "op": "arg",
+                "index": 1
+              },
+              "body": {
+                "op": "bind",
+                "name": "ctx",
+                "value": {
+                  "op": "arg",
+                  "index": 2
+                },
+                "body": {
+                  "op": "bind",
+                  "name": "index",
+                  "value": {
+                    "op": "literal",
+                    "value": 0
+                  },
+                  "body": {
+                    "op": "bind",
+                    "name": "walk",
+                    "value": {
+                      "op": "undefined"
+                    },
+                    "body": {
+                      "op": "sequence",
+                      "steps": [
+                        {
+                          "op": "set",
+                          "name": "walk",
+                          "value": {
+                            "op": "fn",
+                            "body": {
+                              "op": "if",
+                              "test": {
+                                "op": "same",
+                                "left": {
+                                  "op": "type",
+                                  "value": {
+                                    "op": "local",
+                                    "name": "node"
+                                  }
+                                },
+                                "right": {
+                                  "op": "literal",
+                                  "value": "object"
+                                }
+                              },
+                              "then": {
+                                "op": "if",
+                                "test": {
+                                  "op": "same",
+                                  "left": {
+                                    "op": "local",
+                                    "name": "node"
+                                  },
+                                  "right": {
+                                    "op": "literal",
+                                    "value": null
+                                  }
+                                },
+                                "then": {
+                                  "op": "sequence",
+                                  "steps": [
+                                    {
+                                      "op": "call",
+                                      "target": {
+                                        "op": "local",
+                                        "name": "cb"
+                                      },
+                                      "receiver": {
+                                        "op": "local",
+                                        "name": "ctx"
+                                      },
+                                      "args": {
+                                        "op": "array",
+                                        "items": [
+                                          {
+                                            "op": "literal",
+                                            "value": null
+                                          },
+                                          {
+                                            "op": "local",
+                                            "name": "index"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "op": "set",
+                                      "name": "index",
+                                      "value": {
+                                        "op": "number_add",
+                                        "left": {
+                                          "op": "local",
+                                          "name": "index"
+                                        },
+                                        "right": {
+                                          "op": "literal",
+                                          "value": 1
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "op": "literal",
+                                      "value": true
+                                    }
+                                  ]
+                                },
+                                "else": {
+                                  "op": "if",
+                                  "test": {
+                                    "op": "has_own",
+                                    "value": {
+                                      "op": "local",
+                                      "name": "node"
+                                    },
+                                    "key": {
+                                      "op": "literal",
+                                      "value": "$$typeof"
+                                    }
+                                  },
+                                  "then": {
+                                    "op": "sequence",
+                                    "steps": [
+                                      {
+                                        "op": "call",
+                                        "target": {
+                                          "op": "local",
+                                          "name": "cb"
+                                        },
+                                        "receiver": {
+                                          "op": "local",
+                                          "name": "ctx"
+                                        },
+                                        "args": {
+                                          "op": "array",
+                                          "items": [
+                                            {
+                                              "op": "local",
+                                              "name": "node"
+                                            },
+                                            {
+                                              "op": "local",
+                                              "name": "index"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      {
+                                        "op": "set",
+                                        "name": "index",
+                                        "value": {
+                                          "op": "number_add",
+                                          "left": {
+                                            "op": "local",
+                                            "name": "index"
+                                          },
+                                          "right": {
+                                            "op": "literal",
+                                            "value": 1
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "op": "literal",
+                                        "value": true
+                                      }
+                                    ]
+                                  },
+                                  "else": {
+                                    "op": "if",
+                                    "test": {
+                                      "op": "same",
+                                      "left": {
+                                        "op": "type",
+                                        "value": {
+                                          "op": "local",
+                                          "name": "node"
+                                        }
+                                      },
+                                      "right": {
+                                        "op": "literal",
+                                        "value": "object"
+                                      }
+                                    },
+                                    "then": {
+                                      "op": "frontier",
+                                      "reason": "unsupported_object_child"
+                                    },
+                                    "else": {
+                                      "op": "literal",
+                                      "value": true
+                                    }
+                                  }
+                                }
+                              },
+                              "else": {
+                                "op": "sequence",
+                                "steps": [
+                                  {
+                                    "op": "call",
+                                    "target": {
+                                      "op": "local",
+                                      "name": "cb"
+                                    },
+                                    "receiver": {
+                                      "op": "local",
+                                      "name": "ctx"
+                                    },
+                                    "args": {
+                                      "op": "array",
+                                      "items": [
+                                        {
+                                          "op": "local",
+                                          "name": "node"
+                                        },
+                                        {
+                                          "op": "local",
+                                          "name": "index"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "op": "set",
+                                    "name": "index",
+                                    "value": {
+                                      "op": "number_add",
+                                      "left": {
+                                        "op": "local",
+                                        "name": "index"
+                                      },
+                                      "right": {
+                                        "op": "literal",
+                                        "value": 1
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "op": "literal",
+                                    "value": true
+                                  }
+                                ]
+                              }
+                            },
+                            "this_mode": "strict"
+                          }
+                        },
+                        {
+                          "op": "if",
+                          "test": {
+                            "op": "same",
+                            "left": {
+                              "op": "type",
+                              "value": {
+                                "op": "arg",
+                                "index": 0
+                              }
+                            },
+                            "right": {
+                              "op": "literal",
+                              "value": "object"
+                            }
+                          },
+                          "then": {
+                            "op": "if",
+                            "test": {
+                              "op": "has_own",
+                              "value": {
+                                "op": "arg",
+                                "index": 0
+                              },
+                              "key": {
+                                "op": "literal",
+                                "value": "length"
+                              }
+                            },
+                            "then": {
+                              "op": "every",
+                              "items": {
+                                "op": "arg",
+                                "index": 0
+                              },
+                              "value_name": "node",
+                              "index_name": "i",
+                              "test": {
+                                "op": "call",
+                                "target": {
+                                  "op": "local",
+                                  "name": "walk"
+                                },
+                                "receiver": {
+                                  "op": "undefined"
+                                },
+                                "args": {
+                                  "op": "array",
+                                  "items": [
+                                    {
+                                      "op": "local",
+                                      "name": "node"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            "else": {
+                              "op": "call",
+                              "target": {
+                                "op": "local",
+                                "name": "walk"
+                              },
+                              "receiver": {
+                                "op": "undefined"
+                              },
+                              "args": {
+                                "op": "array",
+                                "items": [
+                                  {
+                                    "op": "arg",
+                                    "index": 0
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          "else": {
+                            "op": "call",
+                            "target": {
+                              "op": "local",
+                              "name": "walk"
+                            },
+                            "receiver": {
+                              "op": "undefined"
+                            },
+                            "args": {
+                              "op": "array",
+                              "items": [
+                                {
+                                  "op": "arg",
+                                  "index": 0
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "op": "undefined"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "reason": "Models Children.forEach as a leaf-level traversal over immediate children: arrays are iterated, nullish children still trigger the callback with null, React element/portal objects are treated as leaves, and other plain objects are outside the declared scope. The callback is invoked with the current receiver/context and a monotonically increasing index, and the library returns undefined."
+        },
+        "usage": {
+          "input_tokens": 8432,
+          "cached_input_tokens": 6912,
+          "output_tokens": 1996,
+          "reasoning_output_tokens": 1034
+        },
+        "cost_usd": 0.0106404,
+        "latency_ms": 10394.18475,
+        "prompt_sha256": "fda6cf5bb263480564f99f57e02ee9a026a50b667409067ffc665b4f9bf1ccbb",
+        "check": {
+          "status": "rejected",
+          "stage": "format",
+          "reason": "unbound_local"
+        }
+      },
+      {
+        "number": 3,
+        "proposal": {
+          "schema": "producttrace.library-program-proposal.v2",
+          "status": "propose",
+          "program": {
+            "schema": "producttrace.library-program.v1",
+            "body": {
+              "op": "bind",
+              "name": "cb",
+              "value": {
+                "op": "arg",
+                "index": 1
+              },
+              "body": {
+                "op": "bind",
+                "name": "ctx",
+                "value": {
+                  "op": "arg",
+                  "index": 2
+                },
+                "body": {
+                  "op": "bind",
+                  "name": "index",
+                  "value": {
+                    "op": "literal",
+                    "value": 0
+                  },
+                  "body": {
+                    "op": "bind",
+                    "name": "walk",
+                    "value": {
+                      "op": "undefined"
+                    },
+                    "body": {
+                      "op": "sequence",
+                      "steps": [
+                        {
+                          "op": "set",
+                          "name": "walk",
+                          "value": {
+                            "op": "fn",
+                            "body": {
+                              "op": "if",
+                              "test": {
+                                "op": "same",
+                                "left": {
+                                  "op": "type",
+                                  "value": {
+                                    "op": "local",
+                                    "name": "node"
+                                  }
+                                },
+                                "right": {
+                                  "op": "literal",
+                                  "value": "object"
+                                }
+                              },
+                              "then": {
+                                "op": "if",
+                                "test": {
+                                  "op": "same",
+                                  "left": {
+                                    "op": "local",
+                                    "name": "node"
+                                  },
+                                  "right": {
+                                    "op": "literal",
+                                    "value": null
+                                  }
+                                },
+                                "then": {
+                                  "op": "sequence",
+                                  "steps": [
+                                    {
+                                      "op": "call",
+                                      "target": {
+                                        "op": "local",
+                                        "name": "cb"
+                                      },
+                                      "receiver": {
+                                        "op": "local",
+                                        "name": "ctx"
+                                      },
+                                      "args": {
+                                        "op": "array",
+                                        "items": [
+                                          {
+                                            "op": "literal",
+                                            "value": null
+                                          },
+                                          {
+                                            "op": "local",
+                                            "name": "index"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    {
+                                      "op": "set",
+                                      "name": "index",
+                                      "value": {
+                                        "op": "number_add",
+                                        "left": {
+                                          "op": "local",
+                                          "name": "index"
+                                        },
+                                        "right": {
+                                          "op": "literal",
+                                          "value": 1
+                                        }
+                                      }
+                                    },
+                                    {
+                                      "op": "literal",
+                                      "value": true
+                                    }
+                                  ]
+                                },
+                                "else": {
+                                  "op": "if",
+                                  "test": {
+                                    "op": "has_own",
+                                    "value": {
+                                      "op": "local",
+                                      "name": "node"
+                                    },
+                                    "key": {
+                                      "op": "literal",
+                                      "value": "$$typeof"
+                                    }
+                                  },
+                                  "then": {
+                                    "op": "sequence",
+                                    "steps": [
+                                      {
+                                        "op": "call",
+                                        "target": {
+                                          "op": "local",
+                                          "name": "cb"
+                                        },
+                                        "receiver": {
+                                          "op": "local",
+                                          "name": "ctx"
+                                        },
+                                        "args": {
+                                          "op": "array",
+                                          "items": [
+                                            {
+                                              "op": "local",
+                                              "name": "node"
+                                            },
+                                            {
+                                              "op": "local",
+                                              "name": "index"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      {
+                                        "op": "set",
+                                        "name": "index",
+                                        "value": {
+                                          "op": "number_add",
+                                          "left": {
+                                            "op": "local",
+                                            "name": "index"
+                                          },
+                                          "right": {
+                                            "op": "literal",
+                                            "value": 1
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "op": "literal",
+                                        "value": true
+                                      }
+                                    ]
+                                  },
+                                  "else": {
+                                    "op": "if",
+                                    "test": {
+                                      "op": "same",
+                                      "left": {
+                                        "op": "get",
+                                        "value": {
+                                          "op": "local",
+                                          "name": "node"
+                                        },
+                                        "key": "length"
+                                      },
+                                      "right": {
+                                        "op": "get",
+                                        "value": {
+                                          "op": "local",
+                                          "name": "node"
+                                        },
+                                        "key": "length"
+                                      }
+                                    },
+                                    "then": {
+                                      "op": "every",
+                                      "items": {
+                                        "op": "local",
+                                        "name": "node"
+                                      },
+                                      "value_name": "child",
+                                      "index_name": "i",
+                                      "test": {
+                                        "op": "call",
+                                        "target": {
+                                          "op": "local",
+                                          "name": "walk"
+                                        },
+                                        "receiver": {
+                                          "op": "undefined"
+                                        },
+                                        "args": {
+                                          "op": "array",
+                                          "items": [
+                                            {
+                                              "op": "local",
+                                              "name": "child"
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    },
+                                    "else": {
+                                      "op": "frontier",
+                                      "reason": "unsupported_object_child"
+                                    }
+                                  }
+                                }
+                              },
+                              "else": {
+                                "op": "sequence",
+                                "steps": [
+                                  {
+                                    "op": "call",
+                                    "target": {
+                                      "op": "local",
+                                      "name": "cb"
+                                    },
+                                    "receiver": {
+                                      "op": "local",
+                                      "name": "ctx"
+                                    },
+                                    "args": {
+                                      "op": "array",
+                                      "items": [
+                                        {
+                                          "op": "local",
+                                          "name": "node"
+                                        },
+                                        {
+                                          "op": "local",
+                                          "name": "index"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  {
+                                    "op": "set",
+                                    "name": "index",
+                                    "value": {
+                                      "op": "number_add",
+                                      "left": {
+                                        "op": "local",
+                                        "name": "index"
+                                      },
+                                      "right": {
+                                        "op": "literal",
+                                        "value": 1
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "op": "literal",
+                                    "value": true
+                                  }
+                                ]
+                              }
+                            },
+                            "this_mode": "strict"
+                          }
+                        },
+                        {
+                          "op": "if",
+                          "test": {
+                            "op": "same",
+                            "left": {
+                              "op": "type",
+                              "value": {
+                                "op": "arg",
+                                "index": 0
+                              }
+                            },
+                            "right": {
+                              "op": "literal",
+                              "value": "object"
+                            }
+                          },
+                          "then": {
+                            "op": "if",
+                            "test": {
+                              "op": "same",
+                              "left": {
+                                "op": "arg",
+                                "index": 0
+                              },
+                              "right": {
+                                "op": "literal",
+                                "value": null
+                              }
+                            },
+                            "then": {
+                              "op": "call",
+                              "target": {
+                                "op": "local",
+                                "name": "walk"
+                              },
+                              "receiver": {
+                                "op": "undefined"
+                              },
+                              "args": {
+                                "op": "array",
+                                "items": [
+                                  {
+                                    "op": "literal",
+                                    "value": null
+                                  }
+                                ]
+                              }
+                            },
+                            "else": {
+                              "op": "if",
+                              "test": {
+                                "op": "same",
+                                "left": {
+                                  "op": "get",
+                                  "value": {
+                                    "op": "arg",
+                                    "index": 0
+                                  },
+                                  "key": "length"
+                                },
+                                "right": {
+                                  "op": "get",
+                                  "value": {
+                                    "op": "arg",
+                                    "index": 0
+                                  },
+                                  "key": "length"
+                                }
+                              },
+                              "then": {
+                                "op": "call",
+                                "target": {
+                                  "op": "local",
+                                  "name": "walk"
+                                },
+                                "receiver": {
+                                  "op": "undefined"
+                                },
+                                "args": {
+                                  "op": "array",
+                                  "items": [
+                                    {
+                                      "op": "arg",
+                                      "index": 0
+                                    }
+                                  ]
+                                }
+                              },
+                              "else": {
+                                "op": "call",
+                                "target": {
+                                  "op": "local",
+                                  "name": "walk"
+                                },
+                                "receiver": {
+                                  "op": "undefined"
+                                },
+                                "args": {
+                                  "op": "array",
+                                  "items": [
+                                    {
+                                      "op": "arg",
+                                      "index": 0
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          },
+                          "else": {
+                            "op": "call",
+                            "target": {
+                              "op": "local",
+                              "name": "walk"
+                            },
+                            "receiver": {
+                              "op": "undefined"
+                            },
+                            "args": {
+                              "op": "array",
+                              "items": [
+                                {
+                                  "op": "arg",
+                                  "index": 0
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "op": "undefined"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "reason": "Repaired the unbound helper by introducing the recursive walk cell explicitly, and kept the scope narrow to the installed Children.forEach behavior: immediate callback invocation for nullish/primitive/React element-or-portal leaves, recursive descent only through arrays, context-preserving callback receiver, monotonic callback index, and an explicit frontier for unsupported plain objects outside the declared domain."
+        },
+        "usage": {
+          "input_tokens": 8649,
+          "cached_input_tokens": 6912,
+          "output_tokens": 1619,
+          "reasoning_output_tokens": 510
+        },
+        "cost_usd": 0.00910665,
+        "latency_ms": 13812.895083000003,
+        "prompt_sha256": "f29b158620e6431aa5324ab829d080ab8214fa85e1b996bf6b0527ba139088fa",
+        "check": {
+          "status": "rejected",
+          "stage": "format",
+          "reason": "unbound_local"
+        }
+      }
+    ],
+    "origin": "authoring",
+    "bank_miss": "catalog_bypassed_for_unfamiliar_evaluation"
+  },
+  "integration": null,
+  "output": "paid-react19-children-forEach-1789080190278.json"
+}

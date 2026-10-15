@@ -1,0 +1,56 @@
+{
+  "schema": "producttrace.g5-annotation.v1",
+  "question": "why did this fail?",
+  "pointer": {
+    "x": 1319,
+    "y": 125
+  },
+  "anchor": {
+    "selector": "form.flex.flex-col:nth-of-type(1) > div.absolute.top-0:nth-of-type(1) > button.border-none.text-xs:nth-of-type(1) > div.flex.items-center:nth-of-type(1)",
+    "element_path": "form > div > button > div",
+    "target": "Update Workspace",
+    "role": null,
+    "name": "Update Workspace",
+    "nearby_text": "Update Workspace",
+    "picked_from": "div",
+    "picked": "div"
+  },
+  "page_url": "http://127.0.0.1:4100/workspace/tracer-g5/settings/general-appearance",
+  "under_pointer": {
+    "tag": "div",
+    "outer_html_head": "<div class=\"flex items-center justify-center gap-2\">Update Workspace</div>"
+  },
+  "ground_truth": {
+    "data_tracer_el": null,
+    "closest_data_tracer_el": "p_f067e70e6029:117-485#n1",
+    "oai_annotatable": null,
+    "oai_annotation_metadata": null,
+    "outer_html": "<div class=\"flex items-center justify-center gap-2\">Update Workspace</div>",
+    "stamped_outer_html": "<button class=\"border-none text-xs px-4 py-1 font-semibold light:text-[#ffffff] rounded-lg bg-primary-button hover:bg-secondary hover:text-white h-[34px] -mr-8 whitespace-nowrap w-fit \" data-producttrace-control-click=\"4902a010de29806e44cabb0c5062da48d0493e43e5894d2191165dc0e7e7f699:control:dbd956fbd65960cc8962d4b1\" data-tracer-el=\"p_f067e70e6029:117-485#n1\"><div class=\"flex items-center justify-center gap-2\">Update Workspace</div></button>",
+    "has_document_oai": false
+  },
+  "prompt_fields": {
+    "selector": "form.flex.flex-col:nth-of-type(1) > div.absolute.top-0:nth-of-type(1) > button.border-none.text-xs:nth-of-type(1) > div.flex.items-center:nth-of-type(1)",
+    "target": "Update Workspace",
+    "nearby_text": "Update Workspace"
+  },
+  "lookup": {
+    "status": "ok",
+    "element_key": "p_f067e70e6029:117-485#n1",
+    "via": "ancestor",
+    "matches": 1,
+    "chosen": 0,
+    "text_agrees": true,
+    "candidates": [
+      {
+        "index": 0,
+        "tag": "div",
+        "text": "Update Workspace",
+        "text_agrees": true,
+        "element_key": "p_f067e70e6029:117-485#n1",
+        "via": "ancestor"
+      }
+    ],
+    "query_selector_all_matches": 1
+  }
+}

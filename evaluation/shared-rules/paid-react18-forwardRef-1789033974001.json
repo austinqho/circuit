@@ -1,0 +1,489 @@
+{
+  "schema": "producttrace.shared-rule-paid.v1",
+  "case_id": "react18-forwardRef",
+  "passed": true,
+  "frozen": {
+    "schema": "producttrace.shared-rule-freeze.v1",
+    "files": {
+      "analysis/library-program.mjs": "d2e64adf30aafc485f8415833bb10f40e3efaa7df64319dc11808d1cc52ad2b8",
+      "analysis/library-boundary.mjs": "5568dd0abcd13e416151a2588c05c9bb024f72d477d768e67a94ec85c706274d",
+      "analysis/library-program-bank.mjs": "ad159ac8fd3a9be21166c33192ed07fcc94ed34508c8da0c556adee3fee3228b",
+      "analysis/library-program-integration.mjs": "9799be56a318c4056c32498775947a3ade8dfa7ec79ff66a543e7841c98c558f",
+      "authoring/library-implementation.mjs": "3567d985b86ad3a725f4894d99646611d03ee3b7b8e58624aba607b3a3d6a583",
+      "authoring/library-program-author.mjs": "7c5aab2735fe36659426461d8ad9f1f3b956666dd620b1b22a269e6f41462a83",
+      "evaluation/shared-rules/cases.mjs": "a86ec1dbafcf1b80c6d1f6116751b11cfd5abbafa2e33e5e210f3cf7c266e89b",
+      "evaluation/shared-rules/check-case.mjs": "3da1134bb563299700da8748557be099faedf0889301321682463f04b815137a",
+      "evaluation/shared-rules/run.mjs": "3b1fa6b2a9ae2f4fdb64d49e2eea418902b7e667f6037affded57b6efa286486"
+    },
+    "cases": [
+      {
+        "id": "react18-createRef",
+        "implementation_sha256": "54f589eae765267b80af66a06b6a34f764e4b5e056347c21bd65ccad71c84ffd",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react18",
+        "exportName": "createRef",
+        "scope": {
+          "callbackArguments": [],
+          "resultPaths": null,
+          "description": "No arguments; fresh reference object, own data property descriptors and extensibility. No later renderer assignment is claimed."
+        }
+      },
+      {
+        "id": "react18-isValidElement",
+        "implementation_sha256": "08668baba49448628eeeccc4d87f6e88b9dcad48911adc07675206b606a42435",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react18",
+        "exportName": "isValidElement",
+        "scope": {
+          "callbackArguments": [],
+          "resultPaths": null,
+          "description": "Finite primitive values and plain objects with own data properties, including symbol-tagged React elements. Excludes accessors, proxies and inherited properties."
+        }
+      },
+      {
+        "id": "react18-forwardRef",
+        "implementation_sha256": "5107b67c06d7096c388e40a1f66a3711809eb6af982467231cc5ecffc004cb04",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react18",
+        "exportName": "forwardRef",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": [
+            [
+              "$$typeof"
+            ],
+            [
+              "render"
+            ]
+          ],
+          "description": "Valid render functions with zero or two declared parameters. Check only the returned marker and stored render identity, and absence of callback execution during construction. Renderer execution and debug displayName behavior are outside this boundary."
+        }
+      },
+      {
+        "id": "react18-memo",
+        "implementation_sha256": "9f36a6e578b6f1860d424cd486b7097d5a4f0e14892940f4e4140e98c38089e5",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react18",
+        "exportName": "memo",
+        "scope": {
+          "callbackArguments": [
+            0,
+            1
+          ],
+          "resultPaths": [
+            [
+              "$$typeof"
+            ],
+            [
+              "type"
+            ],
+            [
+              "compare"
+            ]
+          ],
+          "description": "Valid function components, optional comparison callback. Check returned marker and exact stored type/compare identities and no construction callback. Does not claim later renderer bailout behavior or debug displayName setters."
+        }
+      },
+      {
+        "id": "react19-createRef",
+        "implementation_sha256": "ff81a3680066c565dd9723460dddf7a3ea34c1a6194e0c3c096730aedc290c4a",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react19",
+        "exportName": "createRef",
+        "scope": {
+          "callbackArguments": [],
+          "resultPaths": null,
+          "description": "No arguments; fresh reference object, own data property descriptors and extensibility. No later renderer assignment is claimed."
+        }
+      },
+      {
+        "id": "react19-isValidElement",
+        "implementation_sha256": "9acdd7a5629e1160639efbe99b922f03dd9dc919893b42ec0773e66ab0fdc4df",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react19",
+        "exportName": "isValidElement",
+        "scope": {
+          "callbackArguments": [],
+          "resultPaths": null,
+          "description": "Finite primitive values and plain objects with own data properties, including symbol-tagged React elements. Excludes accessors, proxies and inherited properties."
+        }
+      },
+      {
+        "id": "react19-forwardRef",
+        "implementation_sha256": "3398e50cbb99c848bad6cc7f89a3a4380cd5621aaaee852f302f857dd5cf0a18",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react19",
+        "exportName": "forwardRef",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": [
+            [
+              "$$typeof"
+            ],
+            [
+              "render"
+            ]
+          ],
+          "description": "Valid render functions with zero or two declared parameters. Check only the returned marker and stored render identity, and absence of callback execution during construction. Renderer execution and debug displayName behavior are outside this boundary."
+        }
+      },
+      {
+        "id": "react19-memo",
+        "implementation_sha256": "63018656760ec5ebe0d8e0c68323be1e8cce469be013ad282d8992f5f9a6d800",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react19",
+        "exportName": "memo",
+        "scope": {
+          "callbackArguments": [
+            0,
+            1
+          ],
+          "resultPaths": [
+            [
+              "$$typeof"
+            ],
+            [
+              "type"
+            ],
+            [
+              "compare"
+            ]
+          ],
+          "description": "Valid function components, optional comparison callback. Check returned marker and exact stored type/compare identities and no construction callback. Does not claim later renderer bailout behavior or debug displayName setters."
+        }
+      },
+      {
+        "id": "table8old-functionalUpdate",
+        "implementation_sha256": "b65b4aedd8231c1e9d147ce26b516191c65bd4cf30dda076827d076c41ef2286",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "table8old",
+        "exportName": "functionalUpdate",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": null,
+          "description": "Two arguments: a plain value or callback, and any finite primitive/plain data value. Include callback result identity, receiver, count, and throws."
+        }
+      },
+      {
+        "id": "table8new-functionalUpdate",
+        "implementation_sha256": "cc79df283039cef02d462f8f593988ce933bb5908d912368f3fa770fa0e7a33e",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "table8new",
+        "exportName": "functionalUpdate",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": null,
+          "description": "Two arguments: a plain value or callback, and any finite primitive/plain data value. Include callback result identity, receiver, count, and throws."
+        }
+      },
+      {
+        "id": "async2-apply",
+        "implementation_sha256": "dd4612ab26ffd914b10a5961d084ef0d0e256c2f7eca17d47ce3a9bdd6dc7c96",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "async2",
+        "exportName": "apply",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": null,
+          "description": "A callback and any finite list of preset plain values; invoke the returned function repeatedly with changed values and receivers. Include callback forwarding, results, throws, interleaved instances and no idle calls. Returned function custom properties are outside the boundary."
+        }
+      },
+      {
+        "id": "async3-apply",
+        "implementation_sha256": "a4037efa1508f84b3aa3236dfa7ea5740b19b1407d7e3daa733e193ad6a1b5c2",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "async3",
+        "exportName": "apply",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": null,
+          "description": "A callback and any finite list of preset plain values; invoke the returned function repeatedly with changed values and receivers. Include callback forwarding, results, throws, interleaved instances and no idle calls. Returned function custom properties are outside the boundary."
+        }
+      },
+      {
+        "id": "once",
+        "implementation_sha256": "ac5abf9604c0e4e455a2f7f75917d5a9ae887bc6c54870bb480883ad392c94bd",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "once",
+        "exportName": "default",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": null,
+          "description": "A callback with no custom properties. Repeated calls to the returned function, changed arguments and receivers, independent instances, callback returns and throws. Returned function custom properties are outside the boundary."
+        }
+      },
+      {
+        "id": "queue-microtask",
+        "implementation_sha256": "277c49c585d4077aa1a1722d204858cc550561a6ac1db1c995312c2e2dae1ab5",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "queue-microtask",
+        "exportName": "default",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": null,
+          "description": "One callback, normal return only. Observe immediate return, then callbacks through a host-controlled microtask checkpoint and a bounded idle window. No arbitrary future timing claim."
+        }
+      }
+    ]
+  },
+  "active_engine": {
+    "analysis/library-program.mjs": "d2e64adf30aafc485f8415833bb10f40e3efaa7df64319dc11808d1cc52ad2b8",
+    "analysis/library-boundary.mjs": "d1101bb7292506c0ae54a9d265d3b91015c0e1888957e15fc524ef2681096f70",
+    "analysis/library-program-bank.mjs": "ad159ac8fd3a9be21166c33192ed07fcc94ed34508c8da0c556adee3fee3228b",
+    "analysis/library-program-integration.mjs": "9799be56a318c4056c32498775947a3ade8dfa7ec79ff66a543e7841c98c558f",
+    "authoring/library-implementation.mjs": "3567d985b86ad3a725f4894d99646611d03ee3b7b8e58624aba607b3a3d6a583",
+    "authoring/library-program-author.mjs": "193d6702adbca62a842e964780d8d0f25c2cc25d1f6b94a4d0a0812aa2a6b18b",
+    "evaluation/shared-rules/cases.mjs": "a86ec1dbafcf1b80c6d1f6116751b11cfd5abbafa2e33e5e210f3cf7c266e89b",
+    "evaluation/shared-rules/check-case.mjs": "3da1134bb563299700da8748557be099faedf0889301321682463f04b815137a",
+    "evaluation/shared-rules/run.mjs": "3b1fa6b2a9ae2f4fdb64d49e2eea418902b7e667f6037affded57b6efa286486"
+  },
+  "model": "gpt-5.4",
+  "reasoning_effort": "low",
+  "resumed_from": null,
+  "implementation_sha256": "5107b67c06d7096c388e40a1f66a3711809eb6af982467231cc5ecffc004cb04",
+  "implementation": {
+    "schema": "producttrace.library-implementation.v1",
+    "specifier": "react18",
+    "export_name": "forwardRef",
+    "runtime": {
+      "host": "node",
+      "mode": "development",
+      "entry": "node_modules/react18/index.js"
+    },
+    "packages": [
+      {
+        "path": "node_modules/react18",
+        "name": "react",
+        "version": "18.3.1",
+        "integrity": "sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==",
+        "manifest_sha256": "d4e68a5c96babb20cad1daafea8b78822eae45b341552cf5418d06a5304fa64c"
+      }
+    ],
+    "files": [
+      {
+        "path": "node_modules/react18/cjs/react.development.js",
+        "sha256": "1ff3a1d9861a87984329584fa1172aea920855d79eb57dae0d1cebe54093d7e3"
+      },
+      {
+        "path": "node_modules/react18/index.js",
+        "sha256": "a216c390bf956cbb906c66d29fdb2e2ad6999464a5ca83e476533a6f25ad0ef3"
+      }
+    ],
+    "source_status": "ready_for_scoped_proposal",
+    "source_reason": null,
+    "scope": "runtime_export_and_loaded_initialization_dependencies",
+    "implementation": "function forwardRef(render) {\n  {\n    if (render != null && render.$$typeof === REACT_MEMO_TYPE) {\n      error('forwardRef requires a render function but received a `memo` ' + 'component. Instead of forwardRef(memo(...)), use ' + 'memo(forwardRef(...)).');\n    } else if (typeof render !== 'function') {\n      error('forwardRef requires a render function but was given %s.', render === null ? 'null' : typeof render);\n    } else {\n      if (render.length !== 0 && render.length !== 2) {\n        error('forwardRef render functions accept exactly two parameters: props and ref. %s', render.length === 1 ? 'Did you forget to use the ref parameter?' : 'Any additional parameter will be undefined.');\n      }\n    }\n\n    if (render != null) {\n      if (render.defaultProps != null || render.propTypes != null) {\n        error('forwardRef render functions do not support propTypes or defaultProps. ' + 'Did you accidentally pass a React component?');\n      }\n    }\n  }\n\n  var elementType = {\n    $$typeof: REACT_FORWARD_REF_TYPE,\n    render: render\n  };\n\n  {\n    var ownName;\n    Object.defineProperty(elementType, 'displayName', {\n      enumerable: false,\n      configurable: true,\n      get: function () {\n        return ownName;\n      },\n      set: function (name) {\n        ownName = name; // The inner component shouldn't inherit this display name in most cases,\n        // because the component may be used elsewhere.\n        // But it's nice for anonymous functions to inherit the name,\n        // so that our component-stack generation logic will display their frames.\n        // An anonymous function generally suggests a pattern like:\n        //   React.forwardRef((props, ref) => {...});\n        // This kind of inner function is not used elsewhere so the side effect is okay.\n\n        if (!render.name && !render.displayName) {\n          render.displayName = name;\n        }\n      }\n    });\n  }\n\n  return elementType;\n}",
+    "slices": [
+      {
+        "file": "node_modules/react18/cjs/react.development.js",
+        "start": 46047,
+        "end": 47971,
+        "source": "function forwardRef(render) {\n  {\n    if (render != null && render.$$typeof === REACT_MEMO_TYPE) {\n      error('forwardRef requires a render function but received a `memo` ' + 'component. Instead of forwardRef(memo(...)), use ' + 'memo(forwardRef(...)).');\n    } else if (typeof render !== 'function') {\n      error('forwardRef requires a render function but was given %s.', render === null ? 'null' : typeof render);\n    } else {\n      if (render.length !== 0 && render.length !== 2) {\n        error('forwardRef render functions accept exactly two parameters: props and ref. %s', render.length === 1 ? 'Did you forget to use the ref parameter?' : 'Any additional parameter will be undefined.');\n      }\n    }\n\n    if (render != null) {\n      if (render.defaultProps != null || render.propTypes != null) {\n        error('forwardRef render functions do not support propTypes or defaultProps. ' + 'Did you accidentally pass a React component?');\n      }\n    }\n  }\n\n  var elementType = {\n    $$typeof: REACT_FORWARD_REF_TYPE,\n    render: render\n  };\n\n  {\n    var ownName;\n    Object.defineProperty(elementType, 'displayName', {\n      enumerable: false,\n      configurable: true,\n      get: function () {\n        return ownName;\n      },\n      set: function (name) {\n        ownName = name; // The inner component shouldn't inherit this display name in most cases,\n        // because the component may be used elsewhere.\n        // But it's nice for anonymous functions to inherit the name,\n        // so that our component-stack generation logic will display their frames.\n        // An anonymous function generally suggests a pattern like:\n        //   React.forwardRef((props, ref) => {...});\n        // This kind of inner function is not used elsewhere so the side effect is okay.\n\n        if (!render.name && !render.displayName) {\n          render.displayName = name;\n        }\n      }\n    });\n  }\n\n  return elementType;\n}"
+      },
+      {
+        "file": "node_modules/react18/cjs/react.development.js",
+        "start": 1423,
+        "end": 1465,
+        "source": "REACT_MEMO_TYPE = Symbol.for('react.memo')"
+      },
+      {
+        "file": "node_modules/react18/cjs/react.development.js",
+        "start": 4850,
+        "end": 5115,
+        "source": "function error(format) {\n  {\n    {\n      for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {\n        args[_key2 - 1] = arguments[_key2];\n      }\n\n      printWarning('error', format, args);\n    }\n  }\n}"
+      },
+      {
+        "file": "node_modules/react18/cjs/react.development.js",
+        "start": 1239,
+        "end": 1295,
+        "source": "REACT_FORWARD_REF_TYPE = Symbol.for('react.forward_ref')"
+      },
+      {
+        "file": "node_modules/react18/cjs/react.development.js",
+        "start": 5117,
+        "end": 6031,
+        "source": "function printWarning(level, format, args) {\n  // When changing this logic, you might want to also\n  // update consoleWithStackDev.www.js as well.\n  {\n    var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;\n    var stack = ReactDebugCurrentFrame.getStackAddendum();\n\n    if (stack !== '') {\n      format += '%s';\n      args = args.concat([stack]);\n    } // eslint-disable-next-line react-internal/safe-string-coercion\n\n\n    var argsWithFormat = args.map(function (item) {\n      return String(item);\n    }); // Careful: RN currently depends on this prefix\n\n    argsWithFormat.unshift('Warning: ' + format); // We intentionally don't use spread (or .apply) directly because it\n    // breaks IE9: https://github.com/facebook/react/issues/13610\n    // eslint-disable-next-line react-internal/no-production-logging\n\n    Function.prototype.apply.call(console[level], console, argsWithFormat);\n  }\n}"
+      },
+      {
+        "file": "node_modules/react18/cjs/react.development.js",
+        "start": 4127,
+        "end": 4294,
+        "source": "ReactSharedInternals = {\n  ReactCurrentDispatcher: ReactCurrentDispatcher,\n  ReactCurrentBatchConfig: ReactCurrentBatchConfig,\n  ReactCurrentOwner: ReactCurrentOwner\n}"
+      },
+      {
+        "file": "node_modules/react18/cjs/react.development.js",
+        "start": 2063,
+        "end": 2162,
+        "source": "ReactCurrentDispatcher = {\n  /**\n   * @internal\n   * @type {ReactComponent}\n   */\n  current: null\n}"
+      },
+      {
+        "file": "node_modules/react18/cjs/react.development.js",
+        "start": 2294,
+        "end": 2342,
+        "source": "ReactCurrentBatchConfig = {\n  transition: null\n}"
+      },
+      {
+        "file": "node_modules/react18/cjs/react.development.js",
+        "start": 2684,
+        "end": 2778,
+        "source": "ReactCurrentOwner = {\n  /**\n   * @internal\n   * @type {ReactComponent}\n   */\n  current: null\n}"
+      }
+    ]
+  },
+  "result": {
+    "status": "admitted",
+    "program": {
+      "schema": "producttrace.library-program.v1",
+      "body": {
+        "op": "object",
+        "entries": {
+          "$$typeof": {
+            "op": "symbol",
+            "key": "react.forward_ref"
+          },
+          "render": {
+            "op": "arg",
+            "index": 0
+          }
+        }
+      }
+    },
+    "admission": {
+      "status": "admitted",
+      "id": "library-program:efa5ab1efa9fa06542748614aca40c3446c905fff6fba94ae5c899df8778742b",
+      "program_sha256": "2c9322ab68d91f7e8ec3f401324030c38bbc9581caeb4abc134b160ca23dcc92",
+      "implementation_sha256": "5107b67c06d7096c388e40a1f66a3711809eb6af982467231cc5ecffc004cb04",
+      "scope": {
+        "callbackArguments": [
+          0
+        ],
+        "resultPaths": [
+          [
+            "$$typeof"
+          ],
+          [
+            "render"
+          ]
+        ],
+        "description": "Valid render functions with zero or two declared parameters. Check only the returned marker and stored render identity, and absence of callback execution during construction. Renderer execution and debug displayName behavior are outside this boundary."
+      },
+      "report": {
+        "status": "passed",
+        "stage": "behavior_and_boundary_replay",
+        "reason": null,
+        "scope": "Valid render functions with zero or two declared parameters. Check only the returned marker and stored render identity, and absence of callback execution during construction. Renderer execution and debug displayName behavior are outside this boundary.",
+        "calls": 2,
+        "actual_callbacks": 0,
+        "evidence": [],
+        "failures": []
+      }
+    },
+    "attempts": [
+      {
+        "number": 1,
+        "proposal": {
+          "schema": "producttrace.library-program-proposal.v1",
+          "status": "propose",
+          "program_json": "{\"schema\":\"producttrace.library-program.v1\",\"body\":{\"op\":\"object\",\"entries\":{\"$$typeof\":{\"op\":\"symbol\",\"key\":\"react.forward_ref\"},\"render\":{\"op\":\"arg\",\"index\":0}}}}",
+          "reason": "Within the stated boundary for valid render functions of arity 0 or 2, the export constructs and returns an object whose marker is Symbol.for('react.forward_ref') and whose render property preserves the exact input function identity, without invoking that function during construction. Development warnings and displayName accessor behavior are excluded by the boundary."
+        },
+        "usage": {
+          "input_tokens": 2920,
+          "cached_input_tokens": 0,
+          "output_tokens": 305,
+          "reasoning_output_tokens": 160
+        },
+        "cost_usd": 0.011875,
+        "latency_ms": 3376.0385,
+        "prompt_sha256": "cc4a66a153cdc362986c622dd9a5070083509cf2e593d1e3c250f0bc4e4c9607",
+        "check": {
+          "status": "admitted",
+          "id": "library-program:efa5ab1efa9fa06542748614aca40c3446c905fff6fba94ae5c899df8778742b",
+          "program_sha256": "2c9322ab68d91f7e8ec3f401324030c38bbc9581caeb4abc134b160ca23dcc92",
+          "implementation_sha256": "5107b67c06d7096c388e40a1f66a3711809eb6af982467231cc5ecffc004cb04",
+          "scope": {
+            "callbackArguments": [
+              0
+            ],
+            "resultPaths": [
+              [
+                "$$typeof"
+              ],
+              [
+                "render"
+              ]
+            ],
+            "description": "Valid render functions with zero or two declared parameters. Check only the returned marker and stored render identity, and absence of callback execution during construction. Renderer execution and debug displayName behavior are outside this boundary."
+          },
+          "report": {
+            "status": "passed",
+            "stage": "behavior_and_boundary_replay",
+            "reason": null,
+            "scope": "Valid render functions with zero or two declared parameters. Check only the returned marker and stored render identity, and absence of callback execution during construction. Renderer execution and debug displayName behavior are outside this boundary.",
+            "calls": 2,
+            "actual_callbacks": 0,
+            "evidence": [],
+            "failures": []
+          }
+        }
+      }
+    ]
+  },
+  "integration": {
+    "passed": true,
+    "callbacks": 0,
+    "bindings": [
+      {
+        "id": "f9ece795ac3983a034f9179d66cb3be57f3964f392832dca8b25fdca6226fc7e:call:82",
+        "file": "react18-forwardRef.ts",
+        "start": 82,
+        "end": 91,
+        "specifier": "react18",
+        "exportName": "forwardRef",
+        "rule": "library-program:efa5ab1efa9fa06542748614aca40c3446c905fff6fba94ae5c899df8778742b"
+      }
+    ],
+    "reports": [
+      {
+        "binding": "f9ece795ac3983a034f9179d66cb3be57f3964f392832dca8b25fdca6226fc7e:call:82",
+        "rule": "library-program:efa5ab1efa9fa06542748614aca40c3446c905fff6fba94ae5c899df8778742b",
+        "status": "observed_agreement",
+        "scope": "observations_through_checkpoint",
+        "calls": 1,
+        "failures": [],
+        "evidence": []
+      }
+    ]
+  },
+  "output": "paid-react18-forwardRef-1789033974001.json"
+}

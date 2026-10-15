@@ -1,0 +1,118 @@
+{
+  "name": "producttrace",
+  "version": "0.1.0",
+  "description": "Ground user actions in the exact product entities they affected.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./index.js",
+  "module": "./index.js",
+  "browser": "./dist/producttrace-runtime.js",
+  "unpkg": "./dist/producttrace-runtime.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js"
+    },
+    "./iife": "./dist/producttrace-runtime.js",
+    "./dist/producttrace-runtime.js": "./dist/producttrace-runtime.js",
+    "./collector": {
+      "types": "./collector/index.d.ts",
+      "import": "./collector/index.js"
+    },
+    "./analysis": {
+      "types": "./analysis/index.d.ts",
+      "import": "./analysis/index.mjs"
+    },
+    "./authoring": {
+      "types": "./authoring/index.d.mts",
+      "import": "./authoring/index.mjs"
+    },
+    "./backend": {
+      "types": "./backend/index.d.ts",
+      "import": "./backend/index.js"
+    },
+    "./backend/register": {
+      "import": "./backend/register.js"
+    },
+    "./vite": {
+      "types": "./integrations/vite.d.mts",
+      "import": "./integrations/vite.mjs"
+    },
+    "./mcp": {
+      "import": "./mcp/server.mjs"
+    },
+    "./mcp/tools": {
+      "import": "./mcp/tools.mjs"
+    },
+    "./mcp/annotation-lookup": {
+      "import": "./mcp/annotation-lookup.mjs"
+    },
+    "./runtime-attribution": {
+      "types": "./integrations/runtime-attribution.d.mts",
+      "import": "./integrations/runtime-attribution.mjs"
+    }
+  },
+  "bin": {
+    "producttrace-collector": "./collector/cli.mjs",
+    "producttrace-analyze": "./analysis/cli.mjs",
+    "producttrace-mcp": "./mcp/server.mjs"
+  },
+  "files": [
+    "analysis",
+    "authoring",
+    "backend",
+    "collector",
+    "dist",
+    "integrations",
+    "mcp",
+    "index.d.ts",
+    "index.js",
+    "LICENSE",
+    "README.md",
+    "plugin",
+    ".agents"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "prepack": "npm run build",
+    "test": "node --test test/*.test.mjs",
+    "test:library-programs": "node evaluation/shared-rules/run.mjs offline",
+    "test:library-programs:http": "node test/acceptance/shared-library-http.mjs",
+    "test:browser": "node test/browser/server.mjs",
+    "demo:install": "node test/browser/install-real-app.mjs",
+    "demo:install:librechat-bridge": "node test/browser/install-librechat-request-bridge.mjs",
+    "demo:build:librechat-autonomous": "node test/browser/build-librechat-autonomous.mjs",
+    "test:acceptance:librechat:backend": "node test/acceptance/librechat-backend-runtime.mjs",
+    "test:acceptance:react:matrix": "node test/acceptance/react-api-integration-matrix.mjs",
+    "test:acceptance:react:rules": "node test/acceptance/react-rule-admission.mjs"
+  },
+  "engines": {
+    "node": "^18.19.0 || >=20.6.0"
+  },
+  "dependencies": {
+    "@jridgewell/sourcemap-codec": "1.6.0",
+    "@jridgewell/trace-mapping": "0.3.31",
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "@opentelemetry/api": "1.9.0",
+    "@opentelemetry/instrumentation": "0.207.0",
+    "@opentelemetry/instrumentation-express": "0.56.0",
+    "@opentelemetry/instrumentation-http": "0.207.0",
+    "@opentelemetry/instrumentation-mongodb": "0.60.0",
+    "@opentelemetry/instrumentation-mongoose": "0.54.0",
+    "@opentelemetry/instrumentation-undici": "0.19.0",
+    "@opentelemetry/sdk-trace-node": "2.10.0",
+    "magic-string": "0.30.17",
+    "typescript": "5.9.3"
+  },
+  "devDependencies": {
+    "@radix-ui/react-dialog": "^1.1.23",
+    "@radix-ui/react-select": "^2.3.7",
+    "@tanstack/react-query": "^5.103.2",
+    "express": "5.2.1",
+    "express4": "npm:express@^4.21.2",
+    "mongodb": "6.21.0",
+    "wouter": "^3.11.0",
+    "zustand": "^5.0.15"
+  }
+}

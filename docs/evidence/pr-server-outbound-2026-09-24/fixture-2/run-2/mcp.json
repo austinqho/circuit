@@ -1,0 +1,2520 @@
+{
+  "chains": {
+    "plain": {
+      "text": "click action:mug23ltb:4 → handler <unnamed> client/src/main.jsx@633-822 → 1 request: (1) GET /api/projects/p1 → route /api/projects/:id 200 → server getProject → db find projects [completed 200] [outcome completed 200]: reached db / stopped at none (terminal effect observed) / because database read find projects joined by exact span parentage; no write\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@633-822\n  - request (1) GET /api/projects/p1 [completed 200]",
+      "stops": [
+        {
+          "stop": "dispatch",
+          "action_id": "action:mug23ltb:4",
+          "session": "s_e230ebf3",
+          "sequence": 7,
+          "event": "click",
+          "target": {
+            "tag": "button",
+            "attributes": {
+              "type": "button",
+              "aria-label": "Load project"
+            },
+            "ref": "object:2",
+            "element_key": "p_7de790f3cf97:2146-2237#n1",
+            "key_kind": "ordinal",
+            "instances": 1,
+            "stamp_sequence": 4
+          },
+          "element_key": "p_7de790f3cf97:2146-2237#n1"
+        },
+        {
+          "stop": "entry_handler",
+          "function_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:633:822",
+          "event": "click",
+          "unit_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:633:822|click",
+          "rooted": true,
+          "source": {
+            "file": "client/src/main.jsx",
+            "start": 633,
+            "end": 822,
+            "line": null,
+            "line_status": "source_root_not_configured"
+          },
+          "name": null,
+          "name_status": "not_recorded",
+          "label": "<unnamed> client/src/main.jsx@633-822"
+        },
+        {
+          "stop": "request",
+          "method": "GET",
+          "url": "/api/projects/p1",
+          "path": "/api/projects/p1",
+          "query": null,
+          "request_occurrence_id": "action:mug23ltb:4:request:1",
+          "trace_id": "123a365f66b1bd801b424f10f1d7b6af",
+          "action_id": "action:mug23ltb:4",
+          "route_template": "/api/projects/:id"
+        },
+        {
+          "stop": "route",
+          "span_id": "a6f8d03e3b14dbbe",
+          "method": "GET",
+          "route": "/api/projects/:id",
+          "status_code": 200,
+          "admission_reason": "same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span"
+        },
+        {
+          "stop": "handler",
+          "span_id": "184fd8e9f628d4c8",
+          "route": "/api/projects/:id",
+          "name": "getProject",
+          "index": 0
+        },
+        {
+          "stop": "db",
+          "span_id": "22e6bd5cc0cf5227",
+          "operation": "find",
+          "collection": "projects",
+          "write": false
+        }
+      ],
+      "segments": [
+        {
+          "index": 1,
+          "action_id": "action:mug23ltb:4",
+          "request_occurrence_id": "action:mug23ltb:4:request:1",
+          "sequence": 10,
+          "method": "GET",
+          "url": "/api/projects/p1",
+          "path": "/api/projects/p1",
+          "query": null,
+          "trace_id": "123a365f66b1bd801b424f10f1d7b6af",
+          "third_party": false,
+          "first_party_frames": 2,
+          "lineage": [
+            {
+              "function_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:633:822",
+              "name": null,
+              "name_status": "not_recorded",
+              "source": {
+                "file": "client/src/main.jsx",
+                "start": 633,
+                "end": 822,
+                "line": null,
+                "line_status": "source_root_not_configured"
+              },
+              "label": "<unnamed> client/src/main.jsx@633-822"
+            }
+          ],
+          "route": {
+            "span_id": "a6f8d03e3b14dbbe",
+            "method": "GET",
+            "route": "/api/projects/:id",
+            "status_code": 200
+          },
+          "http_status": 200,
+          "handler_spans": [
+            {
+              "span_id": "184fd8e9f628d4c8",
+              "route": "/api/projects/:id",
+              "name": "getProject",
+              "index": 0
+            }
+          ],
+          "db_ops": [
+            {
+              "span_id": "22e6bd5cc0cf5227",
+              "operation": "find",
+              "collection": "projects",
+              "write": false
+            }
+          ],
+          "hops": [],
+          "escaped_hops": [],
+          "hops_text": null,
+          "outcome": "completed",
+          "outcome_label": "Completed 200: find projects",
+          "outcome_text": "completed 200",
+          "deferred": null,
+          "join_diagnostic": null,
+          "body": null,
+          "response_body": null,
+          "reached": "db",
+          "stopped_at": null,
+          "because": "database read find projects joined by exact span parentage; no write",
+          "summary": "GET /api/projects/p1 → route /api/projects/:id 200 → server getProject → db find projects [completed 200]"
+        }
+      ],
+      "outcome": {
+        "stage": "effect",
+        "status": "completed",
+        "display_status": "completed",
+        "http_status": 200,
+        "writes": [],
+        "reads": [
+          "find projects"
+        ],
+        "stop_reason": null,
+        "stopped_at": null,
+        "reached": "db",
+        "label": "Completed 200: find projects",
+        "sentence": "server responded 200 to GET /api/projects/p1; database read find projects joined under the request",
+        "requests": 1,
+        "failed_requests": 0
+      },
+      "reached": "db",
+      "stopped_at": null,
+      "because": "database read find projects joined by exact span parentage; no write",
+      "additional_stops": null
+    },
+    "fetch_self": {
+      "text": "click action:mug23mao:6 → handler <unnamed> client/src/main.jsx@825-1034 → 1 request: (1) POST /api/projects/p1/archive → route /api/projects/:id/archive 200 → server archiveProject → db update projects → outbound POST /internal/notify (from handler archiveProject) → server /internal/notify 201 → handler notify → db insert notifications [completed 200] [outcome completed 200]: reached db / stopped at none (terminal effect observed) / because database write update projects joined by exact span parentage\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@825-1034\n  - request (1) POST /api/projects/p1/archive [completed 200]",
+      "stops": [
+        {
+          "stop": "dispatch",
+          "action_id": "action:mug23mao:6",
+          "session": "s_e230ebf3",
+          "sequence": 14,
+          "event": "click",
+          "target": {
+            "tag": "button",
+            "attributes": {
+              "type": "button",
+              "aria-label": "Archive project"
+            },
+            "ref": "object:3",
+            "element_key": "p_7de790f3cf97:2244-2344#n1",
+            "key_kind": "ordinal",
+            "instances": 1,
+            "stamp_sequence": 5
+          },
+          "element_key": "p_7de790f3cf97:2244-2344#n1"
+        },
+        {
+          "stop": "entry_handler",
+          "function_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:825:1034",
+          "event": "click",
+          "unit_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:825:1034|click",
+          "rooted": true,
+          "source": {
+            "file": "client/src/main.jsx",
+            "start": 825,
+            "end": 1034,
+            "line": null,
+            "line_status": "source_root_not_configured"
+          },
+          "name": null,
+          "name_status": "not_recorded",
+          "label": "<unnamed> client/src/main.jsx@825-1034"
+        },
+        {
+          "stop": "request",
+          "method": "POST",
+          "url": "/api/projects/p1/archive",
+          "path": "/api/projects/p1/archive",
+          "query": null,
+          "request_occurrence_id": "action:mug23mao:6:request:2",
+          "trace_id": "6ff30f49c4820233be849c2212386068",
+          "action_id": "action:mug23mao:6",
+          "route_template": "/api/projects/:id/archive"
+        },
+        {
+          "stop": "route",
+          "span_id": "9653b80e574b1d03",
+          "method": "POST",
+          "route": "/api/projects/:id/archive",
+          "status_code": 200,
+          "admission_reason": "same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span"
+        },
+        {
+          "stop": "handler",
+          "span_id": "959fdb7ffc3a7894",
+          "route": "/api/projects/:id/archive",
+          "name": "archiveProject",
+          "index": 0
+        },
+        {
+          "stop": "db",
+          "span_id": "90e73858eb8f838d",
+          "operation": "update",
+          "collection": "projects",
+          "write": true
+        },
+        {
+          "stop": "db",
+          "span_id": "6f1a3d9ce2bf6a50",
+          "operation": "insert",
+          "collection": "notifications",
+          "write": true,
+          "hop": "1"
+        },
+        {
+          "stop": "outbound",
+          "hop": "1",
+          "span_id": "979ce45675275c8d",
+          "method": "POST",
+          "url": "http://127.0.0.1:50115/internal/notify",
+          "issued_by": "archiveProject",
+          "join": "exact_parent",
+          "server": {
+            "span_id": "4ca708dd5653c302",
+            "service_name": "outbound-main",
+            "route": "/internal/notify",
+            "status_code": 201
+          },
+          "summary": "outbound POST /internal/notify (from handler archiveProject) → server /internal/notify 201 → handler notify → db insert notifications"
+        }
+      ],
+      "segments": [
+        {
+          "index": 1,
+          "action_id": "action:mug23mao:6",
+          "request_occurrence_id": "action:mug23mao:6:request:2",
+          "sequence": 17,
+          "method": "POST",
+          "url": "/api/projects/p1/archive",
+          "path": "/api/projects/p1/archive",
+          "query": null,
+          "trace_id": "6ff30f49c4820233be849c2212386068",
+          "third_party": false,
+          "first_party_frames": 2,
+          "lineage": [
+            {
+              "function_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:825:1034",
+              "name": null,
+              "name_status": "not_recorded",
+              "source": {
+                "file": "client/src/main.jsx",
+                "start": 825,
+                "end": 1034,
+                "line": null,
+                "line_status": "source_root_not_configured"
+              },
+              "label": "<unnamed> client/src/main.jsx@825-1034"
+            }
+          ],
+          "route": {
+            "span_id": "9653b80e574b1d03",
+            "method": "POST",
+            "route": "/api/projects/:id/archive",
+            "status_code": 200
+          },
+          "http_status": 200,
+          "handler_spans": [
+            {
+              "span_id": "959fdb7ffc3a7894",
+              "route": "/api/projects/:id/archive",
+              "name": "archiveProject",
+              "index": 0
+            }
+          ],
+          "db_ops": [
+            {
+              "span_id": "90e73858eb8f838d",
+              "operation": "update",
+              "collection": "projects",
+              "write": true
+            }
+          ],
+          "hops": [
+            {
+              "action_id": "action:mug23mao:6",
+              "request_occurrence_id": "action:mug23mao:6:request:2",
+              "hop_id": "hop:979ce45675275c8d",
+              "hop_order": 0,
+              "hop": "1",
+              "depth": 1,
+              "parent_hop": null,
+              "trace_id": "6ff30f49c4820233be849c2212386068",
+              "span_id": "979ce45675275c8d",
+              "parent_server_span_id": "9653b80e574b1d03",
+              "parent_service_name": "outbound-main",
+              "service_name": "outbound-main",
+              "issued_by": {
+                "span_id": "959fdb7ffc3a7894",
+                "name": "archiveProject"
+              },
+              "method": "POST",
+              "url": "http://127.0.0.1:50115/internal/notify",
+              "instrumentation": "@opentelemetry/instrumentation-undici",
+              "client_status_code": 201,
+              "client_error": null,
+              "start_ms": 1790286067114,
+              "join": "exact_parent",
+              "server": {
+                "span_id": "4ca708dd5653c302",
+                "trace_id": "6ff30f49c4820233be849c2212386068",
+                "service_name": "outbound-main",
+                "method": "POST",
+                "route": "/internal/notify",
+                "status_code": 201,
+                "handler_spans": [
+                  {
+                    "span_id": "773a086d13aeb7f3",
+                    "name": "notify",
+                    "index": 0,
+                    "start_ms": 1790286067130
+                  }
+                ],
+                "db_ops": [
+                  {
+                    "span_id": "6f1a3d9ce2bf6a50",
+                    "collection": "notifications",
+                    "operation": "insert",
+                    "start_ms": 1790286067131,
+                    "write": true
+                  }
+                ]
+              },
+              "summary": "outbound POST /internal/notify (from handler archiveProject) → server /internal/notify 201 → handler notify → db insert notifications"
+            }
+          ],
+          "escaped_hops": [],
+          "hops_text": "outbound POST /internal/notify (from handler archiveProject) → server /internal/notify 201 → handler notify → db insert notifications",
+          "outcome": "completed",
+          "outcome_label": "Completed 200: update projects",
+          "outcome_text": "completed 200",
+          "deferred": null,
+          "join_diagnostic": null,
+          "body": null,
+          "response_body": null,
+          "reached": "db",
+          "stopped_at": null,
+          "because": "database write update projects joined by exact span parentage",
+          "summary": "POST /api/projects/p1/archive → route /api/projects/:id/archive 200 → server archiveProject → db update projects → outbound POST /internal/notify (from handler archiveProject) → server /internal/notify 201 → handler notify → db insert notifications [completed 200]"
+        }
+      ],
+      "outcome": {
+        "stage": "effect",
+        "status": "completed",
+        "display_status": "completed",
+        "http_status": 200,
+        "writes": [
+          "insert notifications",
+          "update projects"
+        ],
+        "reads": [],
+        "stop_reason": null,
+        "stopped_at": null,
+        "reached": "db",
+        "label": "Completed 200: update projects",
+        "sentence": "server responded 200 to POST /api/projects/p1/archive; database write update projects joined under the request",
+        "requests": 1,
+        "failed_requests": 0
+      },
+      "reached": "db",
+      "stopped_at": null,
+      "because": "database write update projects joined by exact span parentage",
+      "additional_stops": null
+    },
+    "http_peer_nested": {
+      "text": "click action:mug23n4r:10 → handler <unnamed> client/src/main.jsx@1037-1195 → 1 request: (1) POST /api/projects/p1/sync → route /api/projects/:id/sync 200 → server syncProject → hop 1: outbound POST /peer/relay (from handler syncProject) → server outbound-peer /peer/relay 200 → handler relay; hop 1.1: outbound GET /internal/ping/p1 (from handler relay) → server outbound-main /internal/ping/:id 200 → handler ping → db find projects [responded 200; no write observed] [outcome responded 200; no write observed]: reached db / stopped at none (terminal effect observed) / because database read find projects (hop 1.1: GET /internal/ping/p1) joined by exact span parentage; no write\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@1037-1195\n  - request (1) POST /api/projects/p1/sync [responded 200; no write observed]",
+      "stops": [
+        {
+          "stop": "dispatch",
+          "action_id": "action:mug23n4r:10",
+          "session": "s_e230ebf3",
+          "sequence": 25,
+          "event": "click",
+          "target": {
+            "tag": "button",
+            "attributes": {
+              "type": "button",
+              "aria-label": "Sync with peer"
+            },
+            "ref": "object:14",
+            "element_key": "p_7de790f3cf97:2351-2446#n1",
+            "key_kind": "ordinal",
+            "instances": 1,
+            "stamp_sequence": 6
+          },
+          "element_key": "p_7de790f3cf97:2351-2446#n1"
+        },
+        {
+          "stop": "entry_handler",
+          "function_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:1037:1195",
+          "event": "click",
+          "unit_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:1037:1195|click",
+          "rooted": true,
+          "source": {
+            "file": "client/src/main.jsx",
+            "start": 1037,
+            "end": 1195,
+            "line": null,
+            "line_status": "source_root_not_configured"
+          },
+          "name": null,
+          "name_status": "not_recorded",
+          "label": "<unnamed> client/src/main.jsx@1037-1195"
+        },
+        {
+          "stop": "request",
+          "method": "POST",
+          "url": "/api/projects/p1/sync",
+          "path": "/api/projects/p1/sync",
+          "query": null,
+          "request_occurrence_id": "action:mug23n4r:10:request:3",
+          "trace_id": "7f2d2a5669fc0923f4efac2b20776984",
+          "action_id": "action:mug23n4r:10",
+          "route_template": "/api/projects/:id/sync"
+        },
+        {
+          "stop": "route",
+          "span_id": "c3381ce077ba6122",
+          "method": "POST",
+          "route": "/api/projects/:id/sync",
+          "status_code": 200,
+          "admission_reason": "same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span"
+        },
+        {
+          "stop": "handler",
+          "span_id": "192e7db3b643590e",
+          "route": "/api/projects/:id/sync",
+          "name": "syncProject",
+          "index": 0
+        },
+        {
+          "stop": "db",
+          "span_id": "01c1752cbbdd1c5e",
+          "operation": "find",
+          "collection": "projects",
+          "write": false,
+          "hop": "1.1"
+        },
+        {
+          "stop": "outbound",
+          "hop": "1",
+          "span_id": "050d9550fbc3c0a9",
+          "method": "POST",
+          "url": "http://127.0.0.1:50112/peer/relay",
+          "issued_by": "syncProject",
+          "join": "exact_parent",
+          "server": {
+            "span_id": "d5e05d08620ccf16",
+            "service_name": "outbound-peer",
+            "route": "/peer/relay",
+            "status_code": 200
+          },
+          "summary": "outbound POST /peer/relay (from handler syncProject) → server outbound-peer /peer/relay 200 → handler relay"
+        },
+        {
+          "stop": "outbound",
+          "hop": "1.1",
+          "span_id": "caa23d33409ed073",
+          "method": "GET",
+          "url": "http://127.0.0.1:50115/internal/ping/p1",
+          "issued_by": "relay",
+          "join": "exact_parent",
+          "server": {
+            "span_id": "1f8ac1af4c66c312",
+            "service_name": "outbound-main",
+            "route": "/internal/ping/:id",
+            "status_code": 200
+          },
+          "summary": "outbound GET /internal/ping/p1 (from handler relay) → server outbound-main /internal/ping/:id 200 → handler ping → db find projects"
+        }
+      ],
+      "segments": [
+        {
+          "index": 1,
+          "action_id": "action:mug23n4r:10",
+          "request_occurrence_id": "action:mug23n4r:10:request:3",
+          "sequence": 28,
+          "method": "POST",
+          "url": "/api/projects/p1/sync",
+          "path": "/api/projects/p1/sync",
+          "query": null,
+          "trace_id": "7f2d2a5669fc0923f4efac2b20776984",
+          "third_party": false,
+          "first_party_frames": 2,
+          "lineage": [
+            {
+              "function_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:1037:1195",
+              "name": null,
+              "name_status": "not_recorded",
+              "source": {
+                "file": "client/src/main.jsx",
+                "start": 1037,
+                "end": 1195,
+                "line": null,
+                "line_status": "source_root_not_configured"
+              },
+              "label": "<unnamed> client/src/main.jsx@1037-1195"
+            }
+          ],
+          "route": {
+            "span_id": "c3381ce077ba6122",
+            "method": "POST",
+            "route": "/api/projects/:id/sync",
+            "status_code": 200
+          },
+          "http_status": 200,
+          "handler_spans": [
+            {
+              "span_id": "192e7db3b643590e",
+              "route": "/api/projects/:id/sync",
+              "name": "syncProject",
+              "index": 0
+            }
+          ],
+          "db_ops": [],
+          "hops": [
+            {
+              "action_id": "action:mug23n4r:10",
+              "request_occurrence_id": "action:mug23n4r:10:request:3",
+              "hop_id": "hop:050d9550fbc3c0a9",
+              "hop_order": 0,
+              "hop": "1",
+              "depth": 1,
+              "parent_hop": null,
+              "trace_id": "7f2d2a5669fc0923f4efac2b20776984",
+              "span_id": "050d9550fbc3c0a9",
+              "parent_server_span_id": "c3381ce077ba6122",
+              "parent_service_name": "outbound-main",
+              "service_name": "outbound-main",
+              "issued_by": {
+                "span_id": "192e7db3b643590e",
+                "name": "syncProject"
+              },
+              "method": "POST",
+              "url": "http://127.0.0.1:50112/peer/relay",
+              "instrumentation": "@opentelemetry/instrumentation-http",
+              "client_status_code": 200,
+              "client_error": null,
+              "start_ms": 1790286068189,
+              "join": "exact_parent",
+              "server": {
+                "span_id": "d5e05d08620ccf16",
+                "trace_id": "7f2d2a5669fc0923f4efac2b20776984",
+                "service_name": "outbound-peer",
+                "method": "POST",
+                "route": "/peer/relay",
+                "status_code": 200,
+                "handler_spans": [
+                  {
+                    "span_id": "63c00af0d80b3a61",
+                    "name": "relay",
+                    "index": 0,
+                    "start_ms": 1790286068206
+                  }
+                ],
+                "db_ops": []
+              },
+              "summary": "outbound POST /peer/relay (from handler syncProject) → server outbound-peer /peer/relay 200 → handler relay"
+            },
+            {
+              "action_id": "action:mug23n4r:10",
+              "request_occurrence_id": "action:mug23n4r:10:request:3",
+              "hop_id": "hop:caa23d33409ed073",
+              "hop_order": 1,
+              "hop": "1.1",
+              "depth": 2,
+              "parent_hop": "1",
+              "trace_id": "7f2d2a5669fc0923f4efac2b20776984",
+              "span_id": "caa23d33409ed073",
+              "parent_server_span_id": "d5e05d08620ccf16",
+              "parent_service_name": "outbound-peer",
+              "service_name": "outbound-peer",
+              "issued_by": {
+                "span_id": "63c00af0d80b3a61",
+                "name": "relay"
+              },
+              "method": "GET",
+              "url": "http://127.0.0.1:50115/internal/ping/p1",
+              "instrumentation": "@opentelemetry/instrumentation-undici",
+              "client_status_code": 200,
+              "client_error": null,
+              "start_ms": 1790286068209,
+              "join": "exact_parent",
+              "server": {
+                "span_id": "1f8ac1af4c66c312",
+                "trace_id": "7f2d2a5669fc0923f4efac2b20776984",
+                "service_name": "outbound-main",
+                "method": "GET",
+                "route": "/internal/ping/:id",
+                "status_code": 200,
+                "handler_spans": [
+                  {
+                    "span_id": "4512ab60f4aa8485",
+                    "name": "ping",
+                    "index": 0,
+                    "start_ms": 1790286068214
+                  }
+                ],
+                "db_ops": [
+                  {
+                    "span_id": "01c1752cbbdd1c5e",
+                    "collection": "projects",
+                    "operation": "find",
+                    "start_ms": 1790286068215,
+                    "write": false
+                  }
+                ]
+              },
+              "summary": "outbound GET /internal/ping/p1 (from handler relay) → server outbound-main /internal/ping/:id 200 → handler ping → db find projects"
+            }
+          ],
+          "escaped_hops": [],
+          "hops_text": "hop 1: outbound POST /peer/relay (from handler syncProject) → server outbound-peer /peer/relay 200 → handler relay; hop 1.1: outbound GET /internal/ping/p1 (from handler relay) → server outbound-main /internal/ping/:id 200 → handler ping → db find projects",
+          "outcome": "responded",
+          "note": "no write observed",
+          "outcome_label": "Responded 200: no write observed",
+          "outcome_text": "responded 200; no write observed",
+          "deferred": null,
+          "join_diagnostic": null,
+          "body": null,
+          "response_body": null,
+          "reached": "db",
+          "stopped_at": null,
+          "because": "database read find projects (hop 1.1: GET /internal/ping/p1) joined by exact span parentage; no write",
+          "summary": "POST /api/projects/p1/sync → route /api/projects/:id/sync 200 → server syncProject → hop 1: outbound POST /peer/relay (from handler syncProject) → server outbound-peer /peer/relay 200 → handler relay; hop 1.1: outbound GET /internal/ping/p1 (from handler relay) → server outbound-main /internal/ping/:id 200 → handler ping → db find projects [responded 200; no write observed]"
+        }
+      ],
+      "outcome": {
+        "stage": "effect",
+        "status": "responded",
+        "display_status": "responded",
+        "http_status": 200,
+        "writes": [],
+        "reads": [
+          "find projects"
+        ],
+        "stop_reason": null,
+        "stopped_at": null,
+        "reached": "db",
+        "label": "Responded 200: no write observed",
+        "sentence": "server responded 200 to POST /api/projects/p1/sync; only database reads joined under the request (no write observed)",
+        "note": "no write observed",
+        "requests": 1,
+        "failed_requests": 0
+      },
+      "reached": "db",
+      "stopped_at": null,
+      "because": "database read find projects (hop 1.1: GET /internal/ping/p1) joined by exact span parentage; no write",
+      "additional_stops": null
+    },
+    "frontiers": {
+      "text": "click action:mug23nn1:12 → handler <unnamed> client/src/main.jsx@1198-1362 → 1 request: (1) POST /api/projects/p1/webhook → route /api/projects/:id/webhook 202 → server sendWebhook → db insert webhook_attempts → hop 1: outbound POST http://127.0.0.1:50110/hooks/project-archived 200 (from handler sendWebhook) → no incoming span for this traceparent (not instrumented, or not reached); hop 2: outbound POST http://127.0.0.1:50111/hooks/mirror (from handler sendWebhook) → no response (connect ECONNREFUSED 127.0.0.1:50111); no incoming span for this traceparent (not instrumented, or not reached) [completed 202; a further server-side hop may have escaped] [outcome completed 202; a further server-side hop may have escaped]: reached db / stopped at server_hop / because reached db (database write insert webhook_attempts joined by exact span parentage); a further server-side hop may have escaped: 2 outbound call(s) have no receiving span (POST http://127.0.0.1:50110/hooks/project-archived, POST http://127.0.0.1:50111/hooks/mirror); also stopped at network because outbound POST http://127.0.0.1:50110/hooks/project-archived 200 (from handler sendWebhook) → no incoming span for this traceparent (not instrumented, or not reached); also stopped at network because outbound POST http://127.0.0.1:50111/hooks/mirror (from handler sendWebhook) → no response (connect ECONNREFUSED 127.0.0.1:50111); no incoming span for this traceparent (not instrumented, or not reached)\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@1198-1362\n  - request (1) POST /api/projects/p1/webhook [completed 202; a further server-side hop may have escaped]",
+      "stops": [
+        {
+          "stop": "dispatch",
+          "action_id": "action:mug23nn1:12",
+          "session": "s_e230ebf3",
+          "sequence": 32,
+          "event": "click",
+          "target": {
+            "tag": "button",
+            "attributes": {
+              "type": "button",
+              "aria-label": "Send webhook"
+            },
+            "ref": "object:15",
+            "element_key": "p_7de790f3cf97:2453-2544#n1",
+            "key_kind": "ordinal",
+            "instances": 1,
+            "stamp_sequence": 7
+          },
+          "element_key": "p_7de790f3cf97:2453-2544#n1"
+        },
+        {
+          "stop": "entry_handler",
+          "function_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:1198:1362",
+          "event": "click",
+          "unit_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:1198:1362|click",
+          "rooted": true,
+          "source": {
+            "file": "client/src/main.jsx",
+            "start": 1198,
+            "end": 1362,
+            "line": null,
+            "line_status": "source_root_not_configured"
+          },
+          "name": null,
+          "name_status": "not_recorded",
+          "label": "<unnamed> client/src/main.jsx@1198-1362"
+        },
+        {
+          "stop": "request",
+          "method": "POST",
+          "url": "/api/projects/p1/webhook",
+          "path": "/api/projects/p1/webhook",
+          "query": null,
+          "request_occurrence_id": "action:mug23nn1:12:request:4",
+          "trace_id": "db6a8763507656a3a9892587967802af",
+          "action_id": "action:mug23nn1:12",
+          "route_template": "/api/projects/:id/webhook"
+        },
+        {
+          "stop": "route",
+          "span_id": "230ea91e27d13381",
+          "method": "POST",
+          "route": "/api/projects/:id/webhook",
+          "status_code": 202,
+          "admission_reason": "same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span"
+        },
+        {
+          "stop": "handler",
+          "span_id": "58682c4c976989fc",
+          "route": "/api/projects/:id/webhook",
+          "name": "sendWebhook",
+          "index": 0
+        },
+        {
+          "stop": "db",
+          "span_id": "6726b36e3b05fe94",
+          "operation": "insert",
+          "collection": "webhook_attempts",
+          "write": true
+        },
+        {
+          "stop": "outbound",
+          "hop": "1",
+          "span_id": "604b845d86858483",
+          "method": "POST",
+          "url": "http://127.0.0.1:50110/hooks/project-archived",
+          "issued_by": "sendWebhook",
+          "join": "no_incoming_span",
+          "server": null,
+          "because": "no incoming span for this traceparent (not instrumented, or not reached)",
+          "summary": "outbound POST http://127.0.0.1:50110/hooks/project-archived 200 (from handler sendWebhook) → no incoming span for this traceparent (not instrumented, or not reached)"
+        },
+        {
+          "stop": "outbound",
+          "hop": "2",
+          "span_id": "b380f705724b43a9",
+          "method": "POST",
+          "url": "http://127.0.0.1:50111/hooks/mirror",
+          "issued_by": "sendWebhook",
+          "join": "no_incoming_span",
+          "server": null,
+          "because": "no response (connect ECONNREFUSED 127.0.0.1:50111); no incoming span for this traceparent (not instrumented, or not reached)",
+          "summary": "outbound POST http://127.0.0.1:50111/hooks/mirror (from handler sendWebhook) → no response (connect ECONNREFUSED 127.0.0.1:50111); no incoming span for this traceparent (not instrumented, or not reached)"
+        }
+      ],
+      "segments": [
+        {
+          "index": 1,
+          "action_id": "action:mug23nn1:12",
+          "request_occurrence_id": "action:mug23nn1:12:request:4",
+          "sequence": 35,
+          "method": "POST",
+          "url": "/api/projects/p1/webhook",
+          "path": "/api/projects/p1/webhook",
+          "query": null,
+          "trace_id": "db6a8763507656a3a9892587967802af",
+          "third_party": false,
+          "first_party_frames": 2,
+          "lineage": [
+            {
+              "function_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:1198:1362",
+              "name": null,
+              "name_status": "not_recorded",
+              "source": {
+                "file": "client/src/main.jsx",
+                "start": 1198,
+                "end": 1362,
+                "line": null,
+                "line_status": "source_root_not_configured"
+              },
+              "label": "<unnamed> client/src/main.jsx@1198-1362"
+            }
+          ],
+          "route": {
+            "span_id": "230ea91e27d13381",
+            "method": "POST",
+            "route": "/api/projects/:id/webhook",
+            "status_code": 202
+          },
+          "http_status": 202,
+          "handler_spans": [
+            {
+              "span_id": "58682c4c976989fc",
+              "route": "/api/projects/:id/webhook",
+              "name": "sendWebhook",
+              "index": 0
+            }
+          ],
+          "db_ops": [
+            {
+              "span_id": "6726b36e3b05fe94",
+              "operation": "insert",
+              "collection": "webhook_attempts",
+              "write": true
+            }
+          ],
+          "hops": [
+            {
+              "action_id": "action:mug23nn1:12",
+              "request_occurrence_id": "action:mug23nn1:12:request:4",
+              "hop_id": "hop:604b845d86858483",
+              "hop_order": 0,
+              "hop": "1",
+              "depth": 1,
+              "parent_hop": null,
+              "trace_id": "db6a8763507656a3a9892587967802af",
+              "span_id": "604b845d86858483",
+              "parent_server_span_id": "230ea91e27d13381",
+              "parent_service_name": "outbound-main",
+              "service_name": "outbound-main",
+              "issued_by": {
+                "span_id": "58682c4c976989fc",
+                "name": "sendWebhook"
+              },
+              "method": "POST",
+              "url": "http://127.0.0.1:50110/hooks/project-archived",
+              "instrumentation": "@opentelemetry/instrumentation-undici",
+              "client_status_code": 200,
+              "client_error": null,
+              "start_ms": 1790286068848,
+              "join": "no_incoming_span",
+              "server": null,
+              "summary": "outbound POST http://127.0.0.1:50110/hooks/project-archived 200 (from handler sendWebhook) → no incoming span for this traceparent (not instrumented, or not reached)",
+              "because": "no incoming span for this traceparent (not instrumented, or not reached)"
+            },
+            {
+              "action_id": "action:mug23nn1:12",
+              "request_occurrence_id": "action:mug23nn1:12:request:4",
+              "hop_id": "hop:b380f705724b43a9",
+              "hop_order": 1,
+              "hop": "2",
+              "depth": 1,
+              "parent_hop": null,
+              "trace_id": "db6a8763507656a3a9892587967802af",
+              "span_id": "b380f705724b43a9",
+              "parent_server_span_id": "230ea91e27d13381",
+              "parent_service_name": "outbound-main",
+              "service_name": "outbound-main",
+              "issued_by": {
+                "span_id": "58682c4c976989fc",
+                "name": "sendWebhook"
+              },
+              "method": "POST",
+              "url": "http://127.0.0.1:50111/hooks/mirror",
+              "instrumentation": "@opentelemetry/instrumentation-http",
+              "client_status_code": null,
+              "client_error": "connect ECONNREFUSED 127.0.0.1:50111",
+              "start_ms": 1790286068850,
+              "join": "no_incoming_span",
+              "server": null,
+              "summary": "outbound POST http://127.0.0.1:50111/hooks/mirror (from handler sendWebhook) → no response (connect ECONNREFUSED 127.0.0.1:50111); no incoming span for this traceparent (not instrumented, or not reached)",
+              "because": "no response (connect ECONNREFUSED 127.0.0.1:50111); no incoming span for this traceparent (not instrumented, or not reached)"
+            }
+          ],
+          "escaped_hops": [
+            {
+              "hop": "1",
+              "span_id": "604b845d86858483",
+              "trace_id": "db6a8763507656a3a9892587967802af",
+              "method": "POST",
+              "url": "http://127.0.0.1:50110/hooks/project-archived",
+              "issued_by": {
+                "span_id": "58682c4c976989fc",
+                "name": "sendWebhook"
+              },
+              "client_status_code": 200,
+              "client_error": null,
+              "join": "no_incoming_span",
+              "because": "no incoming span for this traceparent (not instrumented, or not reached)",
+              "summary": "outbound POST http://127.0.0.1:50110/hooks/project-archived 200 (from handler sendWebhook) → no incoming span for this traceparent (not instrumented, or not reached)"
+            },
+            {
+              "hop": "2",
+              "span_id": "b380f705724b43a9",
+              "trace_id": "db6a8763507656a3a9892587967802af",
+              "method": "POST",
+              "url": "http://127.0.0.1:50111/hooks/mirror",
+              "issued_by": {
+                "span_id": "58682c4c976989fc",
+                "name": "sendWebhook"
+              },
+              "client_status_code": null,
+              "client_error": "connect ECONNREFUSED 127.0.0.1:50111",
+              "join": "no_incoming_span",
+              "because": "no response (connect ECONNREFUSED 127.0.0.1:50111); no incoming span for this traceparent (not instrumented, or not reached)",
+              "summary": "outbound POST http://127.0.0.1:50111/hooks/mirror (from handler sendWebhook) → no response (connect ECONNREFUSED 127.0.0.1:50111); no incoming span for this traceparent (not instrumented, or not reached)"
+            }
+          ],
+          "hops_text": "hop 1: outbound POST http://127.0.0.1:50110/hooks/project-archived 200 (from handler sendWebhook) → no incoming span for this traceparent (not instrumented, or not reached); hop 2: outbound POST http://127.0.0.1:50111/hooks/mirror (from handler sendWebhook) → no response (connect ECONNREFUSED 127.0.0.1:50111); no incoming span for this traceparent (not instrumented, or not reached)",
+          "outcome": "completed",
+          "outcome_label": "Completed 202: insert webhook_attempts; a further server-side hop may have escaped",
+          "outcome_text": "completed 202; a further server-side hop may have escaped",
+          "deferred": null,
+          "join_diagnostic": null,
+          "body": null,
+          "response_body": null,
+          "reached": "db",
+          "stopped_at": "server_hop",
+          "because": "reached db (database write insert webhook_attempts joined by exact span parentage); a further server-side hop may have escaped: 2 outbound call(s) have no receiving span (POST http://127.0.0.1:50110/hooks/project-archived, POST http://127.0.0.1:50111/hooks/mirror)",
+          "additional_stops": [
+            {
+              "reached": "outbound",
+              "stopped_at": "network",
+              "because": "outbound POST http://127.0.0.1:50110/hooks/project-archived 200 (from handler sendWebhook) → no incoming span for this traceparent (not instrumented, or not reached)",
+              "stop_reason": "outbound_no_incoming_span",
+              "hop": "1",
+              "span_id": "604b845d86858483",
+              "request_occurrence_id": "action:mug23nn1:12:request:4"
+            },
+            {
+              "reached": "outbound",
+              "stopped_at": "network",
+              "because": "outbound POST http://127.0.0.1:50111/hooks/mirror (from handler sendWebhook) → no response (connect ECONNREFUSED 127.0.0.1:50111); no incoming span for this traceparent (not instrumented, or not reached)",
+              "stop_reason": "outbound_no_incoming_span",
+              "hop": "2",
+              "span_id": "b380f705724b43a9",
+              "request_occurrence_id": "action:mug23nn1:12:request:4"
+            }
+          ],
+          "summary": "POST /api/projects/p1/webhook → route /api/projects/:id/webhook 202 → server sendWebhook → db insert webhook_attempts → hop 1: outbound POST http://127.0.0.1:50110/hooks/project-archived 200 (from handler sendWebhook) → no incoming span for this traceparent (not instrumented, or not reached); hop 2: outbound POST http://127.0.0.1:50111/hooks/mirror (from handler sendWebhook) → no response (connect ECONNREFUSED 127.0.0.1:50111); no incoming span for this traceparent (not instrumented, or not reached) [completed 202; a further server-side hop may have escaped]"
+        }
+      ],
+      "outcome": {
+        "stage": "effect",
+        "status": "completed",
+        "display_status": "completed",
+        "http_status": 202,
+        "writes": [
+          "insert webhook_attempts"
+        ],
+        "reads": [],
+        "stop_reason": "server_hop_unfollowed",
+        "stopped_at": "server_hop",
+        "reached": "db",
+        "label": "Completed 202: insert webhook_attempts; a further server-side hop may have escaped",
+        "sentence": "server responded 202 to POST /api/projects/p1/webhook; database write insert webhook_attempts joined under the request; a further server-side hop may have escaped: 2 outbound call(s) have no receiving span (POST http://127.0.0.1:50110/hooks/project-archived, POST http://127.0.0.1:50111/hooks/mirror)",
+        "escape_text": "a further server-side hop may have escaped: 2 outbound call(s) have no receiving span (POST http://127.0.0.1:50110/hooks/project-archived, POST http://127.0.0.1:50111/hooks/mirror)",
+        "requests": 1,
+        "failed_requests": 0
+      },
+      "reached": "db",
+      "stopped_at": "server_hop",
+      "because": "reached db (database write insert webhook_attempts joined by exact span parentage); a further server-side hop may have escaped: 2 outbound call(s) have no receiving span (POST http://127.0.0.1:50110/hooks/project-archived, POST http://127.0.0.1:50111/hooks/mirror)",
+      "additional_stops": [
+        {
+          "reached": "outbound",
+          "stopped_at": "network",
+          "because": "outbound POST http://127.0.0.1:50110/hooks/project-archived 200 (from handler sendWebhook) → no incoming span for this traceparent (not instrumented, or not reached)",
+          "stop_reason": "outbound_no_incoming_span",
+          "hop": "1",
+          "span_id": "604b845d86858483",
+          "request_occurrence_id": "action:mug23nn1:12:request:4"
+        },
+        {
+          "reached": "outbound",
+          "stopped_at": "network",
+          "because": "outbound POST http://127.0.0.1:50111/hooks/mirror (from handler sendWebhook) → no response (connect ECONNREFUSED 127.0.0.1:50111); no incoming span for this traceparent (not instrumented, or not reached)",
+          "stop_reason": "outbound_no_incoming_span",
+          "hop": "2",
+          "span_id": "b380f705724b43a9",
+          "request_occurrence_id": "action:mug23nn1:12:request:4"
+        }
+      ]
+    },
+    "fan_out": {
+      "text": "click action:mug23o4v:14 → handler <unnamed> client/src/main.jsx@1365-1573 → 1 request: (1) GET /api/projects/p1/overview → route /api/projects/:id/overview 200 → server overview → hop 1: outbound GET /internal/stats/p1 (from handler overview) → server /internal/stats/:id 200 → handler stats → db aggregate $cmd; hop 2: outbound GET /peer/stats/p1 (from handler overview) → server outbound-peer /peer/stats/:id 200 → handler peerStats [completed 200] [outcome completed 200]: reached db / stopped at none (terminal effect observed) / because database read aggregate $cmd (hop 1: GET /internal/stats/p1) joined by exact span parentage; no write\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@1365-1573\n  - request (1) GET /api/projects/p1/overview [completed 200]",
+      "stops": [
+        {
+          "stop": "dispatch",
+          "action_id": "action:mug23o4v:14",
+          "session": "s_e230ebf3",
+          "sequence": 39,
+          "event": "click",
+          "target": {
+            "tag": "button",
+            "attributes": {
+              "type": "button",
+              "aria-label": "Show overview"
+            },
+            "ref": "object:16",
+            "element_key": "p_7de790f3cf97:2551-2645#n1",
+            "key_kind": "ordinal",
+            "instances": 1,
+            "stamp_sequence": 8
+          },
+          "element_key": "p_7de790f3cf97:2551-2645#n1"
+        },
+        {
+          "stop": "entry_handler",
+          "function_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:1365:1573",
+          "event": "click",
+          "unit_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:1365:1573|click",
+          "rooted": true,
+          "source": {
+            "file": "client/src/main.jsx",
+            "start": 1365,
+            "end": 1573,
+            "line": null,
+            "line_status": "source_root_not_configured"
+          },
+          "name": null,
+          "name_status": "not_recorded",
+          "label": "<unnamed> client/src/main.jsx@1365-1573"
+        },
+        {
+          "stop": "request",
+          "method": "GET",
+          "url": "/api/projects/p1/overview",
+          "path": "/api/projects/p1/overview",
+          "query": null,
+          "request_occurrence_id": "action:mug23o4v:14:request:5",
+          "trace_id": "19cca9e624a9f38049844e69f753fdce",
+          "action_id": "action:mug23o4v:14",
+          "route_template": "/api/projects/:id/overview"
+        },
+        {
+          "stop": "route",
+          "span_id": "e9f1e3d462459c89",
+          "method": "GET",
+          "route": "/api/projects/:id/overview",
+          "status_code": 200,
+          "admission_reason": "same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span"
+        },
+        {
+          "stop": "handler",
+          "span_id": "c0013ec92ddc528c",
+          "route": "/api/projects/:id/overview",
+          "name": "overview",
+          "index": 0
+        },
+        {
+          "stop": "db",
+          "span_id": "aa764cdce1a3c7d8",
+          "operation": "aggregate",
+          "collection": "$cmd",
+          "write": false,
+          "hop": "1"
+        },
+        {
+          "stop": "outbound",
+          "hop": "1",
+          "span_id": "e65e2eeeb9e1a402",
+          "method": "GET",
+          "url": "http://127.0.0.1:50115/internal/stats/p1",
+          "issued_by": "overview",
+          "join": "exact_parent",
+          "server": {
+            "span_id": "ae46e18e8f2aba88",
+            "service_name": "outbound-main",
+            "route": "/internal/stats/:id",
+            "status_code": 200
+          },
+          "summary": "outbound GET /internal/stats/p1 (from handler overview) → server /internal/stats/:id 200 → handler stats → db aggregate $cmd"
+        },
+        {
+          "stop": "outbound",
+          "hop": "2",
+          "span_id": "6dd9c9f2b5cd509c",
+          "method": "GET",
+          "url": "http://127.0.0.1:50112/peer/stats/p1",
+          "issued_by": "overview",
+          "join": "exact_parent",
+          "server": {
+            "span_id": "827e71d9dbd7f6cb",
+            "service_name": "outbound-peer",
+            "route": "/peer/stats/:id",
+            "status_code": 200
+          },
+          "summary": "outbound GET /peer/stats/p1 (from handler overview) → server outbound-peer /peer/stats/:id 200 → handler peerStats"
+        }
+      ],
+      "segments": [
+        {
+          "index": 1,
+          "action_id": "action:mug23o4v:14",
+          "request_occurrence_id": "action:mug23o4v:14:request:5",
+          "sequence": 42,
+          "method": "GET",
+          "url": "/api/projects/p1/overview",
+          "path": "/api/projects/p1/overview",
+          "query": null,
+          "trace_id": "19cca9e624a9f38049844e69f753fdce",
+          "third_party": false,
+          "first_party_frames": 2,
+          "lineage": [
+            {
+              "function_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:1365:1573",
+              "name": null,
+              "name_status": "not_recorded",
+              "source": {
+                "file": "client/src/main.jsx",
+                "start": 1365,
+                "end": 1573,
+                "line": null,
+                "line_status": "source_root_not_configured"
+              },
+              "label": "<unnamed> client/src/main.jsx@1365-1573"
+            }
+          ],
+          "route": {
+            "span_id": "e9f1e3d462459c89",
+            "method": "GET",
+            "route": "/api/projects/:id/overview",
+            "status_code": 200
+          },
+          "http_status": 200,
+          "handler_spans": [
+            {
+              "span_id": "c0013ec92ddc528c",
+              "route": "/api/projects/:id/overview",
+              "name": "overview",
+              "index": 0
+            }
+          ],
+          "db_ops": [],
+          "hops": [
+            {
+              "action_id": "action:mug23o4v:14",
+              "request_occurrence_id": "action:mug23o4v:14:request:5",
+              "hop_id": "hop:e65e2eeeb9e1a402",
+              "hop_order": 0,
+              "hop": "1",
+              "depth": 1,
+              "parent_hop": null,
+              "trace_id": "19cca9e624a9f38049844e69f753fdce",
+              "span_id": "e65e2eeeb9e1a402",
+              "parent_server_span_id": "e9f1e3d462459c89",
+              "parent_service_name": "outbound-main",
+              "service_name": "outbound-main",
+              "issued_by": {
+                "span_id": "c0013ec92ddc528c",
+                "name": "overview"
+              },
+              "method": "GET",
+              "url": "http://127.0.0.1:50115/internal/stats/p1",
+              "instrumentation": "@opentelemetry/instrumentation-undici",
+              "client_status_code": 200,
+              "client_error": null,
+              "start_ms": 1790286069489,
+              "join": "exact_parent",
+              "server": {
+                "span_id": "ae46e18e8f2aba88",
+                "trace_id": "19cca9e624a9f38049844e69f753fdce",
+                "service_name": "outbound-main",
+                "method": "GET",
+                "route": "/internal/stats/:id",
+                "status_code": 200,
+                "handler_spans": [
+                  {
+                    "span_id": "347c33826c74e1f6",
+                    "name": "stats",
+                    "index": 0,
+                    "start_ms": 1790286069495
+                  }
+                ],
+                "db_ops": [
+                  {
+                    "span_id": "aa764cdce1a3c7d8",
+                    "collection": "$cmd",
+                    "operation": "aggregate",
+                    "start_ms": 1790286069496,
+                    "write": false
+                  }
+                ]
+              },
+              "summary": "outbound GET /internal/stats/p1 (from handler overview) → server /internal/stats/:id 200 → handler stats → db aggregate $cmd"
+            },
+            {
+              "action_id": "action:mug23o4v:14",
+              "request_occurrence_id": "action:mug23o4v:14:request:5",
+              "hop_id": "hop:6dd9c9f2b5cd509c",
+              "hop_order": 1,
+              "hop": "2",
+              "depth": 1,
+              "parent_hop": null,
+              "trace_id": "19cca9e624a9f38049844e69f753fdce",
+              "span_id": "6dd9c9f2b5cd509c",
+              "parent_server_span_id": "e9f1e3d462459c89",
+              "parent_service_name": "outbound-main",
+              "service_name": "outbound-main",
+              "issued_by": {
+                "span_id": "c0013ec92ddc528c",
+                "name": "overview"
+              },
+              "method": "GET",
+              "url": "http://127.0.0.1:50112/peer/stats/p1",
+              "instrumentation": "@opentelemetry/instrumentation-http",
+              "client_status_code": 200,
+              "client_error": null,
+              "start_ms": 1790286069493,
+              "join": "exact_parent",
+              "server": {
+                "span_id": "827e71d9dbd7f6cb",
+                "trace_id": "19cca9e624a9f38049844e69f753fdce",
+                "service_name": "outbound-peer",
+                "method": "GET",
+                "route": "/peer/stats/:id",
+                "status_code": 200,
+                "handler_spans": [
+                  {
+                    "span_id": "d642bb225d99fc4c",
+                    "name": "peerStats",
+                    "index": 0,
+                    "start_ms": 1790286069496
+                  }
+                ],
+                "db_ops": []
+              },
+              "summary": "outbound GET /peer/stats/p1 (from handler overview) → server outbound-peer /peer/stats/:id 200 → handler peerStats"
+            }
+          ],
+          "escaped_hops": [],
+          "hops_text": "hop 1: outbound GET /internal/stats/p1 (from handler overview) → server /internal/stats/:id 200 → handler stats → db aggregate $cmd; hop 2: outbound GET /peer/stats/p1 (from handler overview) → server outbound-peer /peer/stats/:id 200 → handler peerStats",
+          "outcome": "completed",
+          "outcome_label": "Completed 200: aggregate $cmd (hop 1: GET /internal/stats/p1)",
+          "outcome_text": "completed 200",
+          "deferred": null,
+          "join_diagnostic": null,
+          "body": null,
+          "response_body": null,
+          "reached": "db",
+          "stopped_at": null,
+          "because": "database read aggregate $cmd (hop 1: GET /internal/stats/p1) joined by exact span parentage; no write",
+          "summary": "GET /api/projects/p1/overview → route /api/projects/:id/overview 200 → server overview → hop 1: outbound GET /internal/stats/p1 (from handler overview) → server /internal/stats/:id 200 → handler stats → db aggregate $cmd; hop 2: outbound GET /peer/stats/p1 (from handler overview) → server outbound-peer /peer/stats/:id 200 → handler peerStats [completed 200]"
+        }
+      ],
+      "outcome": {
+        "stage": "effect",
+        "status": "completed",
+        "display_status": "completed",
+        "http_status": 200,
+        "writes": [],
+        "reads": [
+          "aggregate $cmd"
+        ],
+        "stop_reason": null,
+        "stopped_at": null,
+        "reached": "db",
+        "label": "Completed 200: aggregate $cmd (hop 1: GET /internal/stats/p1)",
+        "sentence": "server responded 200 to GET /api/projects/p1/overview; database read aggregate $cmd (hop 1: GET /internal/stats/p1) joined under the request",
+        "requests": 1,
+        "failed_requests": 0
+      },
+      "reached": "db",
+      "stopped_at": null,
+      "because": "database read aggregate $cmd (hop 1: GET /internal/stats/p1) joined by exact span parentage; no write",
+      "additional_stops": null
+    },
+    "chain_depth": {
+      "text": "click action:mug23omp:16 → handler <unnamed> client/src/main.jsx@1909-2053 → 1 request: (1) POST /api/chain/5 → route /api/chain/:depth 200 → server chainStep → hop 1: outbound POST /api/chain/4 (from handler chainStep) → server /api/chain/:depth 200 → handler chainStep; hop 1.1: outbound POST /api/chain/3 (from handler chainStep) → server /api/chain/:depth 200 → handler chainStep; hop 1.1.1: outbound POST /api/chain/2 (from handler chainStep) → server /api/chain/:depth 200 → handler chainStep; +2 more hops (2 deeper than 3) (see hops) [completed 200] [outcome completed 200]: reached db / stopped at none (terminal effect observed) / because database write insert chain_ends (hop 1.1.1.1.1: POST /api/chain/0) joined by exact span parentage\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@1909-2053\n  - request (1) POST /api/chain/5 [completed 200]",
+      "stops": [
+        {
+          "stop": "dispatch",
+          "action_id": "action:mug23omp:16",
+          "session": "s_e230ebf3",
+          "sequence": 46,
+          "event": "click",
+          "target": {
+            "tag": "button",
+            "attributes": {
+              "type": "button",
+              "aria-label": "Run chain"
+            },
+            "ref": "object:17",
+            "element_key": "p_7de790f3cf97:2652-2734#n1",
+            "key_kind": "ordinal",
+            "instances": 1,
+            "stamp_sequence": 9
+          },
+          "element_key": "p_7de790f3cf97:2652-2734#n1"
+        },
+        {
+          "stop": "entry_handler",
+          "function_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:1909:2053",
+          "event": "click",
+          "unit_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:1909:2053|click",
+          "rooted": true,
+          "source": {
+            "file": "client/src/main.jsx",
+            "start": 1909,
+            "end": 2053,
+            "line": null,
+            "line_status": "source_root_not_configured"
+          },
+          "name": null,
+          "name_status": "not_recorded",
+          "label": "<unnamed> client/src/main.jsx@1909-2053"
+        },
+        {
+          "stop": "request",
+          "method": "POST",
+          "url": "/api/chain/5",
+          "path": "/api/chain/5",
+          "query": null,
+          "request_occurrence_id": "action:mug23omp:16:request:6",
+          "trace_id": "d5a9f9375a117070b241ce7fd56f3cbb",
+          "action_id": "action:mug23omp:16",
+          "route_template": "/api/chain/:depth"
+        },
+        {
+          "stop": "route",
+          "span_id": "7ff995ef31df8ed9",
+          "method": "POST",
+          "route": "/api/chain/:depth",
+          "status_code": 200,
+          "admission_reason": "same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span"
+        },
+        {
+          "stop": "handler",
+          "span_id": "6ad0a8054ef70dd5",
+          "route": "/api/chain/:depth",
+          "name": "chainStep",
+          "index": 0
+        },
+        {
+          "stop": "db",
+          "span_id": "a0c1f0bae7b89995",
+          "operation": "insert",
+          "collection": "chain_ends",
+          "write": true,
+          "hop": "1.1.1.1.1"
+        },
+        {
+          "stop": "outbound",
+          "hop": "1",
+          "span_id": "1967f5598fee4993",
+          "method": "POST",
+          "url": "http://127.0.0.1:50115/api/chain/4",
+          "issued_by": "chainStep",
+          "join": "exact_parent",
+          "server": {
+            "span_id": "722852088d0b92cd",
+            "service_name": "outbound-main",
+            "route": "/api/chain/:depth",
+            "status_code": 200
+          },
+          "summary": "outbound POST /api/chain/4 (from handler chainStep) → server /api/chain/:depth 200 → handler chainStep"
+        },
+        {
+          "stop": "outbound",
+          "hop": "1.1",
+          "span_id": "cbede0b9344df685",
+          "method": "POST",
+          "url": "http://127.0.0.1:50115/api/chain/3",
+          "issued_by": "chainStep",
+          "join": "exact_parent",
+          "server": {
+            "span_id": "dc194f2785f643c3",
+            "service_name": "outbound-main",
+            "route": "/api/chain/:depth",
+            "status_code": 200
+          },
+          "summary": "outbound POST /api/chain/3 (from handler chainStep) → server /api/chain/:depth 200 → handler chainStep"
+        },
+        {
+          "stop": "outbound",
+          "hop": "1.1.1",
+          "span_id": "5bf7c57daeae8810",
+          "method": "POST",
+          "url": "http://127.0.0.1:50115/api/chain/2",
+          "issued_by": "chainStep",
+          "join": "exact_parent",
+          "server": {
+            "span_id": "fb2070f06d39f1c2",
+            "service_name": "outbound-main",
+            "route": "/api/chain/:depth",
+            "status_code": 200
+          },
+          "summary": "outbound POST /api/chain/2 (from handler chainStep) → server /api/chain/:depth 200 → handler chainStep"
+        },
+        {
+          "stop": "outbound",
+          "hop": "1.1.1.1",
+          "span_id": "7aed313767c6de1d",
+          "method": "POST",
+          "url": "http://127.0.0.1:50115/api/chain/1",
+          "issued_by": "chainStep",
+          "join": "exact_parent",
+          "server": {
+            "span_id": "3a2d59a6c35b71f5",
+            "service_name": "outbound-main",
+            "route": "/api/chain/:depth",
+            "status_code": 200
+          },
+          "summary": "outbound POST /api/chain/1 (from handler chainStep) → server /api/chain/:depth 200 → handler chainStep"
+        },
+        {
+          "stop": "outbound",
+          "hop": "1.1.1.1.1",
+          "span_id": "1362f6c3ba05b021",
+          "method": "POST",
+          "url": "http://127.0.0.1:50115/api/chain/0",
+          "issued_by": "chainStep",
+          "join": "exact_parent",
+          "server": {
+            "span_id": "22e2b7075f31249c",
+            "service_name": "outbound-main",
+            "route": "/api/chain/:depth",
+            "status_code": 200
+          },
+          "summary": "outbound POST /api/chain/0 (from handler chainStep) → server /api/chain/:depth 200 → handler chainStep → db insert chain_ends"
+        }
+      ],
+      "segments": [
+        {
+          "index": 1,
+          "action_id": "action:mug23omp:16",
+          "request_occurrence_id": "action:mug23omp:16:request:6",
+          "sequence": 49,
+          "method": "POST",
+          "url": "/api/chain/5",
+          "path": "/api/chain/5",
+          "query": null,
+          "trace_id": "d5a9f9375a117070b241ce7fd56f3cbb",
+          "third_party": false,
+          "first_party_frames": 2,
+          "lineage": [
+            {
+              "function_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:1909:2053",
+              "name": null,
+              "name_status": "not_recorded",
+              "source": {
+                "file": "client/src/main.jsx",
+                "start": 1909,
+                "end": 2053,
+                "line": null,
+                "line_status": "source_root_not_configured"
+              },
+              "label": "<unnamed> client/src/main.jsx@1909-2053"
+            }
+          ],
+          "route": {
+            "span_id": "7ff995ef31df8ed9",
+            "method": "POST",
+            "route": "/api/chain/:depth",
+            "status_code": 200
+          },
+          "http_status": 200,
+          "handler_spans": [
+            {
+              "span_id": "6ad0a8054ef70dd5",
+              "route": "/api/chain/:depth",
+              "name": "chainStep",
+              "index": 0
+            }
+          ],
+          "db_ops": [],
+          "hops": [
+            {
+              "action_id": "action:mug23omp:16",
+              "request_occurrence_id": "action:mug23omp:16:request:6",
+              "hop_id": "hop:1967f5598fee4993",
+              "hop_order": 0,
+              "hop": "1",
+              "depth": 1,
+              "parent_hop": null,
+              "trace_id": "d5a9f9375a117070b241ce7fd56f3cbb",
+              "span_id": "1967f5598fee4993",
+              "parent_server_span_id": "7ff995ef31df8ed9",
+              "parent_service_name": "outbound-main",
+              "service_name": "outbound-main",
+              "issued_by": {
+                "span_id": "6ad0a8054ef70dd5",
+                "name": "chainStep"
+              },
+              "method": "POST",
+              "url": "http://127.0.0.1:50115/api/chain/4",
+              "instrumentation": "@opentelemetry/instrumentation-undici",
+              "client_status_code": 200,
+              "client_error": null,
+              "start_ms": 1790286070131,
+              "join": "exact_parent",
+              "server": {
+                "span_id": "722852088d0b92cd",
+                "trace_id": "d5a9f9375a117070b241ce7fd56f3cbb",
+                "service_name": "outbound-main",
+                "method": "POST",
+                "route": "/api/chain/:depth",
+                "status_code": 200,
+                "handler_spans": [
+                  {
+                    "span_id": "e46ea44655032208",
+                    "name": "chainStep",
+                    "index": 0,
+                    "start_ms": 1790286070132
+                  }
+                ],
+                "db_ops": []
+              },
+              "summary": "outbound POST /api/chain/4 (from handler chainStep) → server /api/chain/:depth 200 → handler chainStep"
+            },
+            {
+              "action_id": "action:mug23omp:16",
+              "request_occurrence_id": "action:mug23omp:16:request:6",
+              "hop_id": "hop:cbede0b9344df685",
+              "hop_order": 1,
+              "hop": "1.1",
+              "depth": 2,
+              "parent_hop": "1",
+              "trace_id": "d5a9f9375a117070b241ce7fd56f3cbb",
+              "span_id": "cbede0b9344df685",
+              "parent_server_span_id": "722852088d0b92cd",
+              "parent_service_name": "outbound-main",
+              "service_name": "outbound-main",
+              "issued_by": {
+                "span_id": "e46ea44655032208",
+                "name": "chainStep"
+              },
+              "method": "POST",
+              "url": "http://127.0.0.1:50115/api/chain/3",
+              "instrumentation": "@opentelemetry/instrumentation-undici",
+              "client_status_code": 200,
+              "client_error": null,
+              "start_ms": 1790286070132,
+              "join": "exact_parent",
+              "server": {
+                "span_id": "dc194f2785f643c3",
+                "trace_id": "d5a9f9375a117070b241ce7fd56f3cbb",
+                "service_name": "outbound-main",
+                "method": "POST",
+                "route": "/api/chain/:depth",
+                "status_code": 200,
+                "handler_spans": [
+                  {
+                    "span_id": "87c9362ca5325160",
+                    "name": "chainStep",
+                    "index": 0,
+                    "start_ms": 1790286070133
+                  }
+                ],
+                "db_ops": []
+              },
+              "summary": "outbound POST /api/chain/3 (from handler chainStep) → server /api/chain/:depth 200 → handler chainStep"
+            },
+            {
+              "action_id": "action:mug23omp:16",
+              "request_occurrence_id": "action:mug23omp:16:request:6",
+              "hop_id": "hop:5bf7c57daeae8810",
+              "hop_order": 2,
+              "hop": "1.1.1",
+              "depth": 3,
+              "parent_hop": "1.1",
+              "trace_id": "d5a9f9375a117070b241ce7fd56f3cbb",
+              "span_id": "5bf7c57daeae8810",
+              "parent_server_span_id": "dc194f2785f643c3",
+              "parent_service_name": "outbound-main",
+              "service_name": "outbound-main",
+              "issued_by": {
+                "span_id": "87c9362ca5325160",
+                "name": "chainStep"
+              },
+              "method": "POST",
+              "url": "http://127.0.0.1:50115/api/chain/2",
+              "instrumentation": "@opentelemetry/instrumentation-undici",
+              "client_status_code": 200,
+              "client_error": null,
+              "start_ms": 1790286070133,
+              "join": "exact_parent",
+              "server": {
+                "span_id": "fb2070f06d39f1c2",
+                "trace_id": "d5a9f9375a117070b241ce7fd56f3cbb",
+                "service_name": "outbound-main",
+                "method": "POST",
+                "route": "/api/chain/:depth",
+                "status_code": 200,
+                "handler_spans": [
+                  {
+                    "span_id": "e6c8c1d60684a6e2",
+                    "name": "chainStep",
+                    "index": 0,
+                    "start_ms": 1790286070135
+                  }
+                ],
+                "db_ops": []
+              },
+              "summary": "outbound POST /api/chain/2 (from handler chainStep) → server /api/chain/:depth 200 → handler chainStep"
+            },
+            {
+              "action_id": "action:mug23omp:16",
+              "request_occurrence_id": "action:mug23omp:16:request:6",
+              "hop_id": "hop:7aed313767c6de1d",
+              "hop_order": 3,
+              "hop": "1.1.1.1",
+              "depth": 4,
+              "parent_hop": "1.1.1",
+              "trace_id": "d5a9f9375a117070b241ce7fd56f3cbb",
+              "span_id": "7aed313767c6de1d",
+              "parent_server_span_id": "fb2070f06d39f1c2",
+              "parent_service_name": "outbound-main",
+              "service_name": "outbound-main",
+              "issued_by": {
+                "span_id": "e6c8c1d60684a6e2",
+                "name": "chainStep"
+              },
+              "method": "POST",
+              "url": "http://127.0.0.1:50115/api/chain/1",
+              "instrumentation": "@opentelemetry/instrumentation-undici",
+              "client_status_code": 200,
+              "client_error": null,
+              "start_ms": 1790286070135,
+              "join": "exact_parent",
+              "server": {
+                "span_id": "3a2d59a6c35b71f5",
+                "trace_id": "d5a9f9375a117070b241ce7fd56f3cbb",
+                "service_name": "outbound-main",
+                "method": "POST",
+                "route": "/api/chain/:depth",
+                "status_code": 200,
+                "handler_spans": [
+                  {
+                    "span_id": "384e33f469ccdd7e",
+                    "name": "chainStep",
+                    "index": 0,
+                    "start_ms": 1790286070137
+                  }
+                ],
+                "db_ops": []
+              },
+              "summary": "outbound POST /api/chain/1 (from handler chainStep) → server /api/chain/:depth 200 → handler chainStep"
+            },
+            {
+              "action_id": "action:mug23omp:16",
+              "request_occurrence_id": "action:mug23omp:16:request:6",
+              "hop_id": "hop:1362f6c3ba05b021",
+              "hop_order": 4,
+              "hop": "1.1.1.1.1",
+              "depth": 5,
+              "parent_hop": "1.1.1.1",
+              "trace_id": "d5a9f9375a117070b241ce7fd56f3cbb",
+              "span_id": "1362f6c3ba05b021",
+              "parent_server_span_id": "3a2d59a6c35b71f5",
+              "parent_service_name": "outbound-main",
+              "service_name": "outbound-main",
+              "issued_by": {
+                "span_id": "384e33f469ccdd7e",
+                "name": "chainStep"
+              },
+              "method": "POST",
+              "url": "http://127.0.0.1:50115/api/chain/0",
+              "instrumentation": "@opentelemetry/instrumentation-undici",
+              "client_status_code": 200,
+              "client_error": null,
+              "start_ms": 1790286070137,
+              "join": "exact_parent",
+              "server": {
+                "span_id": "22e2b7075f31249c",
+                "trace_id": "d5a9f9375a117070b241ce7fd56f3cbb",
+                "service_name": "outbound-main",
+                "method": "POST",
+                "route": "/api/chain/:depth",
+                "status_code": 200,
+                "handler_spans": [
+                  {
+                    "span_id": "740c70402e0f60c4",
+                    "name": "chainStep",
+                    "index": 0,
+                    "start_ms": 1790286070138
+                  }
+                ],
+                "db_ops": [
+                  {
+                    "span_id": "a0c1f0bae7b89995",
+                    "collection": "chain_ends",
+                    "operation": "insert",
+                    "start_ms": 1790286070139,
+                    "write": true
+                  }
+                ]
+              },
+              "summary": "outbound POST /api/chain/0 (from handler chainStep) → server /api/chain/:depth 200 → handler chainStep → db insert chain_ends"
+            }
+          ],
+          "escaped_hops": [],
+          "hops_text": "hop 1: outbound POST /api/chain/4 (from handler chainStep) → server /api/chain/:depth 200 → handler chainStep; hop 1.1: outbound POST /api/chain/3 (from handler chainStep) → server /api/chain/:depth 200 → handler chainStep; hop 1.1.1: outbound POST /api/chain/2 (from handler chainStep) → server /api/chain/:depth 200 → handler chainStep; +2 more hops (2 deeper than 3) (see hops)",
+          "outcome": "completed",
+          "outcome_label": "Completed 200: insert chain_ends (hop 1.1.1.1.1: POST /api/chain/0)",
+          "outcome_text": "completed 200",
+          "deferred": null,
+          "join_diagnostic": null,
+          "body": null,
+          "response_body": null,
+          "reached": "db",
+          "stopped_at": null,
+          "because": "database write insert chain_ends (hop 1.1.1.1.1: POST /api/chain/0) joined by exact span parentage",
+          "summary": "POST /api/chain/5 → route /api/chain/:depth 200 → server chainStep → hop 1: outbound POST /api/chain/4 (from handler chainStep) → server /api/chain/:depth 200 → handler chainStep; hop 1.1: outbound POST /api/chain/3 (from handler chainStep) → server /api/chain/:depth 200 → handler chainStep; hop 1.1.1: outbound POST /api/chain/2 (from handler chainStep) → server /api/chain/:depth 200 → handler chainStep; +2 more hops (2 deeper than 3) (see hops) [completed 200]"
+        }
+      ],
+      "outcome": {
+        "stage": "effect",
+        "status": "completed",
+        "display_status": "completed",
+        "http_status": 200,
+        "writes": [
+          "insert chain_ends"
+        ],
+        "reads": [],
+        "stop_reason": null,
+        "stopped_at": null,
+        "reached": "db",
+        "label": "Completed 200: insert chain_ends (hop 1.1.1.1.1: POST /api/chain/0)",
+        "sentence": "server responded 200 to POST /api/chain/5; database write insert chain_ends (hop 1.1.1.1.1: POST /api/chain/0) joined under the request",
+        "requests": 1,
+        "failed_requests": 0
+      },
+      "reached": "db",
+      "stopped_at": null,
+      "because": "database write insert chain_ends (hop 1.1.1.1.1: POST /api/chain/0) joined by exact span parentage",
+      "additional_stops": null
+    },
+    "app_traceparent": {
+      "text": "click action:mug23p5d:18 → handler <unnamed> client/src/main.jsx@1576-1742 → 1 request: (1) POST /api/projects/p1/forward → route /api/projects/:id/forward 200 → server forwardTraced → hop 1: outbound POST /internal/notify (from handler forwardTraced; followed by the traceparent the app set) → server /internal/notify 201 → handler notify → db insert notifications; hop 2: outbound GET /peer/stats/p1 (from handler forwardTraced; followed by the traceparent the app set) → server outbound-peer /peer/stats/:id 200 → handler peerStats; hop 3: outbound POST http://127.0.0.1:50110/hooks/project-archived/traced 200 (from handler forwardTraced) → traceparent set by the app; receiving span not linked by Tracer; hop 4: outbound GET /internal/stats/p1 (from handler forwardTraced; followed by the traceparent the app set) → server /internal/stats/:id 200 → handler stats → db aggregate $cmd [completed 200; a further server-side hop may have escaped] [outcome completed 200; a further server-side hop may have escaped]: reached db / stopped at server_hop / because reached db (database write insert notifications (hop 1: POST /internal/notify) joined by exact span parentage); a further server-side hop may have escaped: 1 outbound call(s) have no receiving span (POST http://127.0.0.1:50110/hooks/project-archived/traced); also stopped at network because outbound POST http://127.0.0.1:50110/hooks/project-archived/traced 200 (from handler forwardTraced) → traceparent set by the app; receiving span not linked by Tracer\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@1576-1742\n  - request (1) POST /api/projects/p1/forward [completed 200; a further server-side hop may have escaped]",
+      "stops": [
+        {
+          "stop": "dispatch",
+          "action_id": "action:mug23p5d:18",
+          "session": "s_e230ebf3",
+          "sequence": 53,
+          "event": "click",
+          "target": {
+            "tag": "button",
+            "attributes": {
+              "type": "button",
+              "aria-label": "Forward traced"
+            },
+            "ref": "object:18",
+            "element_key": "p_7de790f3cf97:2741-2838#n1",
+            "key_kind": "ordinal",
+            "instances": 1,
+            "stamp_sequence": 10
+          },
+          "element_key": "p_7de790f3cf97:2741-2838#n1"
+        },
+        {
+          "stop": "entry_handler",
+          "function_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:1576:1742",
+          "event": "click",
+          "unit_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:1576:1742|click",
+          "rooted": true,
+          "source": {
+            "file": "client/src/main.jsx",
+            "start": 1576,
+            "end": 1742,
+            "line": null,
+            "line_status": "source_root_not_configured"
+          },
+          "name": null,
+          "name_status": "not_recorded",
+          "label": "<unnamed> client/src/main.jsx@1576-1742"
+        },
+        {
+          "stop": "request",
+          "method": "POST",
+          "url": "/api/projects/p1/forward",
+          "path": "/api/projects/p1/forward",
+          "query": null,
+          "request_occurrence_id": "action:mug23p5d:18:request:7",
+          "trace_id": "29185578c950174ae2af1ded2cfb4b2f",
+          "action_id": "action:mug23p5d:18",
+          "route_template": "/api/projects/:id/forward"
+        },
+        {
+          "stop": "route",
+          "span_id": "260df3bdf34362a5",
+          "method": "POST",
+          "route": "/api/projects/:id/forward",
+          "status_code": 200,
+          "admission_reason": "same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span"
+        },
+        {
+          "stop": "handler",
+          "span_id": "7cb1e701e1e52cba",
+          "route": "/api/projects/:id/forward",
+          "name": "forwardTraced",
+          "index": 0
+        },
+        {
+          "stop": "db",
+          "span_id": "ef9704e791367aab",
+          "operation": "insert",
+          "collection": "notifications",
+          "write": true,
+          "hop": "1"
+        },
+        {
+          "stop": "db",
+          "span_id": "bda7217d163bce33",
+          "operation": "aggregate",
+          "collection": "$cmd",
+          "write": false,
+          "hop": "4"
+        },
+        {
+          "stop": "outbound",
+          "hop": "1",
+          "span_id": "fff94f3222bb91f6",
+          "method": "POST",
+          "url": "http://127.0.0.1:50115/internal/notify",
+          "issued_by": "forwardTraced",
+          "join": "app_traceparent",
+          "server": {
+            "span_id": "7a642d4e4bfa91d8",
+            "service_name": "outbound-main",
+            "route": "/internal/notify",
+            "status_code": 201
+          },
+          "summary": "outbound POST /internal/notify (from handler forwardTraced; followed by the traceparent the app set) → server /internal/notify 201 → handler notify → db insert notifications"
+        },
+        {
+          "stop": "outbound",
+          "hop": "2",
+          "span_id": "c66f496a7cd81691",
+          "method": "GET",
+          "url": "http://127.0.0.1:50112/peer/stats/p1",
+          "issued_by": "forwardTraced",
+          "join": "app_traceparent",
+          "server": {
+            "span_id": "cbc03966602bb7db",
+            "service_name": "outbound-peer",
+            "route": "/peer/stats/:id",
+            "status_code": 200
+          },
+          "summary": "outbound GET /peer/stats/p1 (from handler forwardTraced; followed by the traceparent the app set) → server outbound-peer /peer/stats/:id 200 → handler peerStats"
+        },
+        {
+          "stop": "outbound",
+          "hop": "3",
+          "span_id": "dc93c9b43cbb0aba",
+          "method": "POST",
+          "url": "http://127.0.0.1:50110/hooks/project-archived/traced",
+          "issued_by": "forwardTraced",
+          "join": "app_traceparent_unlinked",
+          "server": null,
+          "because": "traceparent set by the app; receiving span not linked by Tracer",
+          "summary": "outbound POST http://127.0.0.1:50110/hooks/project-archived/traced 200 (from handler forwardTraced) → traceparent set by the app; receiving span not linked by Tracer"
+        },
+        {
+          "stop": "outbound",
+          "hop": "4",
+          "span_id": "36401943f0793bea",
+          "method": "GET",
+          "url": "http://127.0.0.1:50115/internal/stats/p1",
+          "issued_by": "forwardTraced",
+          "join": "app_traceparent",
+          "server": {
+            "span_id": "078008a7d6dd9880",
+            "service_name": "outbound-main",
+            "route": "/internal/stats/:id",
+            "status_code": 200
+          },
+          "summary": "outbound GET /internal/stats/p1 (from handler forwardTraced; followed by the traceparent the app set) → server /internal/stats/:id 200 → handler stats → db aggregate $cmd"
+        }
+      ],
+      "segments": [
+        {
+          "index": 1,
+          "action_id": "action:mug23p5d:18",
+          "request_occurrence_id": "action:mug23p5d:18:request:7",
+          "sequence": 56,
+          "method": "POST",
+          "url": "/api/projects/p1/forward",
+          "path": "/api/projects/p1/forward",
+          "query": null,
+          "trace_id": "29185578c950174ae2af1ded2cfb4b2f",
+          "third_party": false,
+          "first_party_frames": 2,
+          "lineage": [
+            {
+              "function_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:1576:1742",
+              "name": null,
+              "name_status": "not_recorded",
+              "source": {
+                "file": "client/src/main.jsx",
+                "start": 1576,
+                "end": 1742,
+                "line": null,
+                "line_status": "source_root_not_configured"
+              },
+              "label": "<unnamed> client/src/main.jsx@1576-1742"
+            }
+          ],
+          "route": {
+            "span_id": "260df3bdf34362a5",
+            "method": "POST",
+            "route": "/api/projects/:id/forward",
+            "status_code": 200
+          },
+          "http_status": 200,
+          "handler_spans": [
+            {
+              "span_id": "7cb1e701e1e52cba",
+              "route": "/api/projects/:id/forward",
+              "name": "forwardTraced",
+              "index": 0
+            }
+          ],
+          "db_ops": [],
+          "hops": [
+            {
+              "action_id": "action:mug23p5d:18",
+              "request_occurrence_id": "action:mug23p5d:18:request:7",
+              "hop_id": "hop:fff94f3222bb91f6",
+              "hop_order": 0,
+              "hop": "1",
+              "depth": 1,
+              "parent_hop": null,
+              "trace_id": "29185578c950174ae2af1ded2cfb4b2f",
+              "span_id": "fff94f3222bb91f6",
+              "parent_server_span_id": "260df3bdf34362a5",
+              "parent_service_name": "outbound-main",
+              "service_name": "outbound-main",
+              "issued_by": {
+                "span_id": "7cb1e701e1e52cba",
+                "name": "forwardTraced"
+              },
+              "method": "POST",
+              "url": "http://127.0.0.1:50115/internal/notify",
+              "instrumentation": "@opentelemetry/instrumentation-undici",
+              "client_status_code": 201,
+              "client_error": null,
+              "traceparent_set_by_app": true,
+              "app_traceparent": "00-0a5248554b4a515ae386124719a970e2-d4565e9afe2c5a9e-01",
+              "start_ms": 1790286070821,
+              "join": "app_traceparent",
+              "server": {
+                "span_id": "7a642d4e4bfa91d8",
+                "trace_id": "0a5248554b4a515ae386124719a970e2",
+                "service_name": "outbound-main",
+                "method": "POST",
+                "route": "/internal/notify",
+                "status_code": 201,
+                "handler_spans": [
+                  {
+                    "span_id": "74d18b23e89cd91f",
+                    "name": "notify",
+                    "index": 0,
+                    "start_ms": 1790286070823
+                  }
+                ],
+                "db_ops": [
+                  {
+                    "span_id": "ef9704e791367aab",
+                    "collection": "notifications",
+                    "operation": "insert",
+                    "start_ms": 1790286070836,
+                    "write": true
+                  }
+                ]
+              },
+              "summary": "outbound POST /internal/notify (from handler forwardTraced; followed by the traceparent the app set) → server /internal/notify 201 → handler notify → db insert notifications"
+            },
+            {
+              "action_id": "action:mug23p5d:18",
+              "request_occurrence_id": "action:mug23p5d:18:request:7",
+              "hop_id": "hop:c66f496a7cd81691",
+              "hop_order": 1,
+              "hop": "2",
+              "depth": 1,
+              "parent_hop": null,
+              "trace_id": "29185578c950174ae2af1ded2cfb4b2f",
+              "span_id": "c66f496a7cd81691",
+              "parent_server_span_id": "260df3bdf34362a5",
+              "parent_service_name": "outbound-main",
+              "service_name": "outbound-main",
+              "issued_by": {
+                "span_id": "7cb1e701e1e52cba",
+                "name": "forwardTraced"
+              },
+              "method": "GET",
+              "url": "http://127.0.0.1:50112/peer/stats/p1",
+              "instrumentation": "@opentelemetry/instrumentation-http",
+              "client_status_code": 200,
+              "client_error": null,
+              "traceparent_set_by_app": true,
+              "app_traceparent": "00-0a0bf02d05fa4ae384fe332c51ec6d7d-0f3362187b934fbf-01",
+              "start_ms": 1790286070850,
+              "join": "app_traceparent",
+              "server": {
+                "span_id": "cbc03966602bb7db",
+                "trace_id": "0a0bf02d05fa4ae384fe332c51ec6d7d",
+                "service_name": "outbound-peer",
+                "method": "GET",
+                "route": "/peer/stats/:id",
+                "status_code": 200,
+                "handler_spans": [
+                  {
+                    "span_id": "f16d63f1ef43cce5",
+                    "name": "peerStats",
+                    "index": 0,
+                    "start_ms": 1790286070855
+                  }
+                ],
+                "db_ops": []
+              },
+              "summary": "outbound GET /peer/stats/p1 (from handler forwardTraced; followed by the traceparent the app set) → server outbound-peer /peer/stats/:id 200 → handler peerStats"
+            },
+            {
+              "action_id": "action:mug23p5d:18",
+              "request_occurrence_id": "action:mug23p5d:18:request:7",
+              "hop_id": "hop:dc93c9b43cbb0aba",
+              "hop_order": 2,
+              "hop": "3",
+              "depth": 1,
+              "parent_hop": null,
+              "trace_id": "29185578c950174ae2af1ded2cfb4b2f",
+              "span_id": "dc93c9b43cbb0aba",
+              "parent_server_span_id": "260df3bdf34362a5",
+              "parent_service_name": "outbound-main",
+              "service_name": "outbound-main",
+              "issued_by": {
+                "span_id": "7cb1e701e1e52cba",
+                "name": "forwardTraced"
+              },
+              "method": "POST",
+              "url": "http://127.0.0.1:50110/hooks/project-archived/traced",
+              "instrumentation": "@opentelemetry/instrumentation-undici",
+              "client_status_code": 200,
+              "client_error": null,
+              "traceparent_set_by_app": true,
+              "app_traceparent": "00-5a9c878c7852acb1687f8bc88a06db27-a38b5441b714c271-01",
+              "start_ms": 1790286070861,
+              "join": "app_traceparent_unlinked",
+              "server": null,
+              "summary": "outbound POST http://127.0.0.1:50110/hooks/project-archived/traced 200 (from handler forwardTraced) → traceparent set by the app; receiving span not linked by Tracer",
+              "because": "traceparent set by the app; receiving span not linked by Tracer"
+            },
+            {
+              "action_id": "action:mug23p5d:18",
+              "request_occurrence_id": "action:mug23p5d:18:request:7",
+              "hop_id": "hop:36401943f0793bea",
+              "hop_order": 3,
+              "hop": "4",
+              "depth": 1,
+              "parent_hop": null,
+              "trace_id": "29185578c950174ae2af1ded2cfb4b2f",
+              "span_id": "36401943f0793bea",
+              "parent_server_span_id": "260df3bdf34362a5",
+              "parent_service_name": "outbound-main",
+              "service_name": "outbound-main",
+              "issued_by": {
+                "span_id": "7cb1e701e1e52cba",
+                "name": "forwardTraced"
+              },
+              "method": "GET",
+              "url": "http://127.0.0.1:50115/internal/stats/p1",
+              "instrumentation": "@opentelemetry/instrumentation-undici",
+              "client_status_code": 200,
+              "client_error": null,
+              "traceparent_set_by_app": true,
+              "app_traceparent": "00-29185578c950174ae2af1ded2cfb4b2f-7cb1e701e1e52cba-01",
+              "start_ms": 1790286070865,
+              "join": "app_traceparent",
+              "server": {
+                "span_id": "078008a7d6dd9880",
+                "trace_id": "29185578c950174ae2af1ded2cfb4b2f",
+                "service_name": "outbound-main",
+                "method": "GET",
+                "route": "/internal/stats/:id",
+                "status_code": 200,
+                "handler_spans": [
+                  {
+                    "span_id": "02e63a7580e8b1ed",
+                    "name": "stats",
+                    "index": 0,
+                    "start_ms": 1790286070866
+                  }
+                ],
+                "db_ops": [
+                  {
+                    "span_id": "bda7217d163bce33",
+                    "collection": "$cmd",
+                    "operation": "aggregate",
+                    "start_ms": 1790286070867,
+                    "write": false
+                  }
+                ]
+              },
+              "summary": "outbound GET /internal/stats/p1 (from handler forwardTraced; followed by the traceparent the app set) → server /internal/stats/:id 200 → handler stats → db aggregate $cmd"
+            }
+          ],
+          "escaped_hops": [
+            {
+              "hop": "3",
+              "span_id": "dc93c9b43cbb0aba",
+              "trace_id": "29185578c950174ae2af1ded2cfb4b2f",
+              "method": "POST",
+              "url": "http://127.0.0.1:50110/hooks/project-archived/traced",
+              "issued_by": {
+                "span_id": "7cb1e701e1e52cba",
+                "name": "forwardTraced"
+              },
+              "client_status_code": 200,
+              "client_error": null,
+              "join": "app_traceparent_unlinked",
+              "traceparent_set_by_app": true,
+              "because": "traceparent set by the app; receiving span not linked by Tracer",
+              "summary": "outbound POST http://127.0.0.1:50110/hooks/project-archived/traced 200 (from handler forwardTraced) → traceparent set by the app; receiving span not linked by Tracer"
+            }
+          ],
+          "hops_text": "hop 1: outbound POST /internal/notify (from handler forwardTraced; followed by the traceparent the app set) → server /internal/notify 201 → handler notify → db insert notifications; hop 2: outbound GET /peer/stats/p1 (from handler forwardTraced; followed by the traceparent the app set) → server outbound-peer /peer/stats/:id 200 → handler peerStats; hop 3: outbound POST http://127.0.0.1:50110/hooks/project-archived/traced 200 (from handler forwardTraced) → traceparent set by the app; receiving span not linked by Tracer; hop 4: outbound GET /internal/stats/p1 (from handler forwardTraced; followed by the traceparent the app set) → server /internal/stats/:id 200 → handler stats → db aggregate $cmd",
+          "outcome": "completed",
+          "outcome_label": "Completed 200: insert notifications (hop 1: POST /internal/notify); a further server-side hop may have escaped",
+          "outcome_text": "completed 200; a further server-side hop may have escaped",
+          "deferred": null,
+          "join_diagnostic": null,
+          "body": null,
+          "response_body": null,
+          "reached": "db",
+          "stopped_at": "server_hop",
+          "because": "reached db (database write insert notifications (hop 1: POST /internal/notify) joined by exact span parentage); a further server-side hop may have escaped: 1 outbound call(s) have no receiving span (POST http://127.0.0.1:50110/hooks/project-archived/traced)",
+          "additional_stops": [
+            {
+              "reached": "outbound",
+              "stopped_at": "network",
+              "because": "outbound POST http://127.0.0.1:50110/hooks/project-archived/traced 200 (from handler forwardTraced) → traceparent set by the app; receiving span not linked by Tracer",
+              "stop_reason": "outbound_app_traceparent_unlinked",
+              "hop": "3",
+              "span_id": "dc93c9b43cbb0aba",
+              "request_occurrence_id": "action:mug23p5d:18:request:7"
+            }
+          ],
+          "summary": "POST /api/projects/p1/forward → route /api/projects/:id/forward 200 → server forwardTraced → hop 1: outbound POST /internal/notify (from handler forwardTraced; followed by the traceparent the app set) → server /internal/notify 201 → handler notify → db insert notifications; hop 2: outbound GET /peer/stats/p1 (from handler forwardTraced; followed by the traceparent the app set) → server outbound-peer /peer/stats/:id 200 → handler peerStats; hop 3: outbound POST http://127.0.0.1:50110/hooks/project-archived/traced 200 (from handler forwardTraced) → traceparent set by the app; receiving span not linked by Tracer; hop 4: outbound GET /internal/stats/p1 (from handler forwardTraced; followed by the traceparent the app set) → server /internal/stats/:id 200 → handler stats → db aggregate $cmd [completed 200; a further server-side hop may have escaped]"
+        }
+      ],
+      "outcome": {
+        "stage": "effect",
+        "status": "completed",
+        "display_status": "completed",
+        "http_status": 200,
+        "writes": [
+          "insert notifications"
+        ],
+        "reads": [
+          "aggregate $cmd"
+        ],
+        "stop_reason": "server_hop_unfollowed",
+        "stopped_at": "server_hop",
+        "reached": "db",
+        "label": "Completed 200: insert notifications (hop 1: POST /internal/notify); a further server-side hop may have escaped",
+        "sentence": "server responded 200 to POST /api/projects/p1/forward; database write insert notifications (hop 1: POST /internal/notify) joined under the request; a further server-side hop may have escaped: 1 outbound call(s) have no receiving span (POST http://127.0.0.1:50110/hooks/project-archived/traced)",
+        "escape_text": "a further server-side hop may have escaped: 1 outbound call(s) have no receiving span (POST http://127.0.0.1:50110/hooks/project-archived/traced)",
+        "requests": 1,
+        "failed_requests": 0
+      },
+      "reached": "db",
+      "stopped_at": "server_hop",
+      "because": "reached db (database write insert notifications (hop 1: POST /internal/notify) joined by exact span parentage); a further server-side hop may have escaped: 1 outbound call(s) have no receiving span (POST http://127.0.0.1:50110/hooks/project-archived/traced)",
+      "additional_stops": [
+        {
+          "reached": "outbound",
+          "stopped_at": "network",
+          "because": "outbound POST http://127.0.0.1:50110/hooks/project-archived/traced 200 (from handler forwardTraced) → traceparent set by the app; receiving span not linked by Tracer",
+          "stop_reason": "outbound_app_traceparent_unlinked",
+          "hop": "3",
+          "span_id": "dc93c9b43cbb0aba",
+          "request_occurrence_id": "action:mug23p5d:18:request:7"
+        }
+      ]
+    },
+    "after_response": {
+      "text": "click action:mug23pow:20 → handler <unnamed> client/src/main.jsx@1745-1906 → 1 request: (1) POST /api/projects/p1/touch → route /api/projects/:id/touch 200 → server touchProject → outbound POST /internal/notify (from handler touchProject; sent 51.7 ms after the response) → server /internal/notify 201 → handler notify → db insert notifications [completed 200; server work continued 69.7 ms after the response] [outcome completed 200]: reached db / stopped at none (terminal effect observed) / because database write insert notifications (hop 1: POST /internal/notify) joined by exact span parentage\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@1745-1906\n  - request (1) POST /api/projects/p1/touch [completed 200]",
+      "stops": [
+        {
+          "stop": "dispatch",
+          "action_id": "action:mug23pow:20",
+          "session": "s_e230ebf3",
+          "sequence": 60,
+          "event": "click",
+          "target": {
+            "tag": "button",
+            "attributes": {
+              "type": "button",
+              "aria-label": "Touch project"
+            },
+            "ref": "object:19",
+            "element_key": "p_7de790f3cf97:2845-2939#n1",
+            "key_kind": "ordinal",
+            "instances": 1,
+            "stamp_sequence": 11
+          },
+          "element_key": "p_7de790f3cf97:2845-2939#n1"
+        },
+        {
+          "stop": "entry_handler",
+          "function_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:1745:1906",
+          "event": "click",
+          "unit_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:1745:1906|click",
+          "rooted": true,
+          "source": {
+            "file": "client/src/main.jsx",
+            "start": 1745,
+            "end": 1906,
+            "line": null,
+            "line_status": "source_root_not_configured"
+          },
+          "name": null,
+          "name_status": "not_recorded",
+          "label": "<unnamed> client/src/main.jsx@1745-1906"
+        },
+        {
+          "stop": "request",
+          "method": "POST",
+          "url": "/api/projects/p1/touch",
+          "path": "/api/projects/p1/touch",
+          "query": null,
+          "request_occurrence_id": "action:mug23pow:20:request:8",
+          "trace_id": "b47bfcdebe05f91b5d00df6717c82fbc",
+          "action_id": "action:mug23pow:20",
+          "route_template": "/api/projects/:id/touch"
+        },
+        {
+          "stop": "route",
+          "span_id": "61aebff63ef8d81a",
+          "method": "POST",
+          "route": "/api/projects/:id/touch",
+          "status_code": 200,
+          "admission_reason": "same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span"
+        },
+        {
+          "stop": "handler",
+          "span_id": "40ee558a3291a3f5",
+          "route": "/api/projects/:id/touch",
+          "name": "touchProject",
+          "index": 0
+        },
+        {
+          "stop": "db",
+          "span_id": "c5f1c7ccabc75586",
+          "operation": "insert",
+          "collection": "notifications",
+          "write": true,
+          "hop": "1"
+        },
+        {
+          "stop": "outbound",
+          "hop": "1",
+          "span_id": "b5f13348bd65ec73",
+          "method": "POST",
+          "url": "http://127.0.0.1:50115/internal/notify",
+          "issued_by": "touchProject",
+          "join": "exact_parent",
+          "server": {
+            "span_id": "bb714d87fc81fdfc",
+            "service_name": "outbound-main",
+            "route": "/internal/notify",
+            "status_code": 201
+          },
+          "summary": "outbound POST /internal/notify (from handler touchProject; sent 51.7 ms after the response) → server /internal/notify 201 → handler notify → db insert notifications"
+        }
+      ],
+      "segments": [
+        {
+          "index": 1,
+          "action_id": "action:mug23pow:20",
+          "request_occurrence_id": "action:mug23pow:20:request:8",
+          "sequence": 63,
+          "method": "POST",
+          "url": "/api/projects/p1/touch",
+          "path": "/api/projects/p1/touch",
+          "query": null,
+          "trace_id": "b47bfcdebe05f91b5d00df6717c82fbc",
+          "third_party": false,
+          "first_party_frames": 2,
+          "lineage": [
+            {
+              "function_id": "function:8e7562a3bb0650bde107b2d76c3c233299c07851223e46996347f86077bbe3f4:1745:1906",
+              "name": null,
+              "name_status": "not_recorded",
+              "source": {
+                "file": "client/src/main.jsx",
+                "start": 1745,
+                "end": 1906,
+                "line": null,
+                "line_status": "source_root_not_configured"
+              },
+              "label": "<unnamed> client/src/main.jsx@1745-1906"
+            }
+          ],
+          "route": {
+            "span_id": "61aebff63ef8d81a",
+            "method": "POST",
+            "route": "/api/projects/:id/touch",
+            "status_code": 200
+          },
+          "http_status": 200,
+          "handler_spans": [
+            {
+              "span_id": "40ee558a3291a3f5",
+              "route": "/api/projects/:id/touch",
+              "name": "touchProject",
+              "index": 0
+            }
+          ],
+          "db_ops": [],
+          "hops": [
+            {
+              "action_id": "action:mug23pow:20",
+              "request_occurrence_id": "action:mug23pow:20:request:8",
+              "hop_id": "hop:b5f13348bd65ec73",
+              "hop_order": 0,
+              "hop": "1",
+              "depth": 1,
+              "parent_hop": null,
+              "trace_id": "b47bfcdebe05f91b5d00df6717c82fbc",
+              "span_id": "b5f13348bd65ec73",
+              "parent_server_span_id": "61aebff63ef8d81a",
+              "parent_service_name": "outbound-main",
+              "service_name": "outbound-main",
+              "issued_by": {
+                "span_id": "40ee558a3291a3f5",
+                "name": "touchProject"
+              },
+              "method": "POST",
+              "url": "http://127.0.0.1:50115/internal/notify",
+              "instrumentation": "@opentelemetry/instrumentation-undici",
+              "client_status_code": 201,
+              "client_error": null,
+              "after_response_ms": 51.7,
+              "start_ms": 1790286071560,
+              "join": "exact_parent",
+              "server": {
+                "span_id": "bb714d87fc81fdfc",
+                "trace_id": "b47bfcdebe05f91b5d00df6717c82fbc",
+                "service_name": "outbound-main",
+                "method": "POST",
+                "route": "/internal/notify",
+                "status_code": 201,
+                "handler_spans": [
+                  {
+                    "span_id": "87329fad652b23af",
+                    "name": "notify",
+                    "index": 0,
+                    "start_ms": 1790286071577
+                  }
+                ],
+                "db_ops": [
+                  {
+                    "span_id": "c5f1c7ccabc75586",
+                    "collection": "notifications",
+                    "operation": "insert",
+                    "start_ms": 1790286071578,
+                    "write": true
+                  }
+                ]
+              },
+              "summary": "outbound POST /internal/notify (from handler touchProject; sent 51.7 ms after the response) → server /internal/notify 201 → handler notify → db insert notifications"
+            }
+          ],
+          "escaped_hops": [],
+          "hops_text": "outbound POST /internal/notify (from handler touchProject; sent 51.7 ms after the response) → server /internal/notify 201 → handler notify → db insert notifications",
+          "outcome": "completed",
+          "outcome_label": "Completed 200: insert notifications (hop 1: POST /internal/notify)",
+          "outcome_text": "completed 200",
+          "deferred": {
+            "after_response_ms": 69.7,
+            "last_after_response_ms": 69.7,
+            "spans": [
+              {
+                "kind": "db",
+                "span_id": "c5f1c7ccabc75586",
+                "after_response_ms": 69.7
+              }
+            ]
+          },
+          "join_diagnostic": null,
+          "body": null,
+          "response_body": null,
+          "reached": "db",
+          "stopped_at": null,
+          "because": "database write insert notifications (hop 1: POST /internal/notify) joined by exact span parentage",
+          "summary": "POST /api/projects/p1/touch → route /api/projects/:id/touch 200 → server touchProject → outbound POST /internal/notify (from handler touchProject; sent 51.7 ms after the response) → server /internal/notify 201 → handler notify → db insert notifications [completed 200; server work continued 69.7 ms after the response]"
+        }
+      ],
+      "outcome": {
+        "stage": "effect",
+        "status": "completed",
+        "display_status": "completed",
+        "http_status": 200,
+        "writes": [
+          "insert notifications"
+        ],
+        "reads": [],
+        "stop_reason": null,
+        "stopped_at": null,
+        "reached": "db",
+        "label": "Completed 200: insert notifications (hop 1: POST /internal/notify)",
+        "sentence": "server responded 200 to POST /api/projects/p1/touch; database write insert notifications (hop 1: POST /internal/notify) joined under the request",
+        "requests": 1,
+        "failed_requests": 0,
+        "deferred": {
+          "after_response_ms": 69.7,
+          "last_after_response_ms": 69.7,
+          "spans": [
+            {
+              "kind": "db",
+              "span_id": "c5f1c7ccabc75586",
+              "after_response_ms": 69.7
+            }
+          ]
+        }
+      },
+      "reached": "db",
+      "stopped_at": null,
+      "because": "database write insert notifications (hop 1: POST /internal/notify) joined by exact span parentage",
+      "additional_stops": null
+    }
+  },
+  "page_requests": {
+    "text": "8 request(s) on page s_e230ebf3: 8 attributed to a user action, 0 with no action\n- GET /api/projects/p1 ×1 (1 action, 0 none; statuses 200×1)\n- GET /api/projects/p1/overview ×1 (1 action, 0 none; statuses 200×1)\n- POST /api/chain/5 ×1 (1 action, 0 none; statuses 200×1)\n- POST /api/projects/p1/archive ×1 (1 action, 0 none; statuses 200×1)\n- POST /api/projects/p1/forward ×1 (1 action, 0 none; statuses 200×1)\n- POST /api/projects/p1/sync ×1 (1 action, 0 none; statuses 200×1)\n- POST /api/projects/p1/touch ×1 (1 action, 0 none; statuses 200×1)\n- POST /api/projects/p1/webhook ×1 (1 action, 0 none; statuses 202×1)\nRequests (all, oldest first):\n- 21:41:06.480 GET /api/projects/p1 [action action:mug23ltb:4 (click, request (1) of its chain)] → route /api/projects/:id 200 → server getProject → db find projects [completed 200]\n- 21:41:07.105 POST /api/projects/p1/archive [action action:mug23mao:6 (click, request (1) of its chain)] → route /api/projects/:id/archive 200 → server archiveProject → db update projects → outbound POST /internal/notify (from handler archiveProject) → server /internal/notify 201 → handler notify → db insert notifications [completed 200]\n- 21:41:08.187 POST /api/projects/p1/sync [action action:mug23n4r:10 (click, request (1) of its chain)] → route /api/projects/:id/sync 200 → server syncProject → hop 1: outbound POST /peer/relay (from handler syncProject) → server outbound-peer /peer/relay 200 → handler relay; hop 1.1: outbound GET /internal/ping/p1 (from handler relay) → server outbound-main /internal/ping/:id 200 → handler ping → db find projects [responded 200; no write observed]\n- 21:41:08.845 POST /api/projects/p1/webhook [action action:mug23nn1:12 (click, request (1) of its chain)] → route /api/projects/:id/webhook 202 → server sendWebhook → db insert webhook_attempts → hop 1: outbound POST http://127.0.0.1:50110/hooks/project-archived 200 (from handler sendWebhook) → no incoming span for this traceparent (not instrumented, or not reached); hop 2: outbound POST http://127.0.0.1:50111/hooks/mirror (from handler sendWebhook) → no response (connect ECONNREFUSED 127.0.0.1:50111); no incoming span for this traceparent (not instrumented, or not reached) [completed 202; a further server-side hop may have escaped]\n- 21:41:09.487 GET /api/projects/p1/overview [action action:mug23o4v:14 (click, request (1) of its chain)] → route /api/projects/:id/overview 200 → server overview → hop 1: outbound GET /internal/stats/p1 (from handler overview) → server /internal/stats/:id 200 → handler stats → db aggregate $cmd; hop 2: outbound GET /peer/stats/p1 (from handler overview) → server outbound-peer /peer/stats/:id 200 → handler peerStats [completed 200]\n- 21:41:10.129 POST /api/chain/5 [action action:mug23omp:16 (click, request (1) of its chain)] → route /api/chain/:depth 200 → server chainStep → hop 1: outbound POST /api/chain/4 (from handler chainStep) → server /api/chain/:depth 200 → handler chainStep; hop 1.1: outbound POST /api/chain/3 (from handler chainStep) → server /api/chain/:depth 200 → handler chainStep; hop 1.1.1: outbound POST /api/chain/2 (from handler chainStep) → server /api/chain/:depth 200 → handler chainStep; +2 more hops (2 deeper than 3) (see hops) [completed 200]\n- 21:41:10.801 POST /api/projects/p1/forward [action action:mug23p5d:18 (click, request (1) of its chain)] → route /api/projects/:id/forward 200 → server forwardTraced → hop 1: outbound POST /internal/notify (from handler forwardTraced; followed by the traceparent the app set) → server /internal/notify 201 → handler notify → db insert notifications; hop 2: outbound GET /peer/stats/p1 (from handler forwardTraced; followed by the traceparent the app set) → server outbound-peer /peer/stats/:id 200 → handler peerStats; hop 3: outbound POST http://127.0.0.1:50110/hooks/project-archived/traced 200 (from handler forwardTraced) → traceparent set by the app; receiving span not linked by Tracer; hop 4: outbound GET /internal/stats/p1 (from handler forwardTraced; followed by the traceparent the app set) → server /internal/stats/:id 200 → handler stats → db aggregate $cmd [completed 200; a further server-side hop may have escaped]\n- 21:41:11.504 POST /api/projects/p1/touch [action action:mug23pow:20 (click, request (1) of its chain)] → route /api/projects/:id/touch 200 → server touchProject → outbound POST /internal/notify (from handler touchProject; sent 51.7 ms after the response) → server /internal/notify 201 → handler notify → db insert notifications [completed 200]\nServer spans with no browser request (4; not a join):\n- GET route GET 200 (span 1e0d9c843f34a1de)\n- GET route GET 200 (span b5743afc3ce2195e)\n- GET route GET 200 (span 8cd8f4b9e38b2b48)\n- GET route GET 200 (span b1911f47d3f07682)",
+    "server_spans_without_request": {
+      "rule": "server spans starting inside the window (server clock) whose trace context matches no recorded browser request; listed, never joined; not page-scoped",
+      "spans": [
+        {
+          "span_id": "1e0d9c843f34a1de",
+          "trace_id": "432124b34fd6a558b9a6ab67b772f15b",
+          "parent_span_id": null,
+          "name": "GET",
+          "service_name": "outbound-main",
+          "method": "GET",
+          "route": null,
+          "status_code": 200,
+          "start_ms": 1790286065578,
+          "end_ms": 1790286065591.744,
+          "handler_spans": [],
+          "db_ops": [],
+          "attribution": "none (no browser request carries its parent span id)"
+        },
+        {
+          "span_id": "b5743afc3ce2195e",
+          "trace_id": "7e2ab011138c40637f379bdef5adf0ec",
+          "parent_span_id": null,
+          "name": "GET",
+          "service_name": "outbound-main",
+          "method": "GET",
+          "route": null,
+          "status_code": 200,
+          "start_ms": 1790286065580,
+          "end_ms": 1790286065582.8105,
+          "handler_spans": [],
+          "db_ops": [],
+          "attribution": "none (no browser request carries its parent span id)"
+        },
+        {
+          "span_id": "8cd8f4b9e38b2b48",
+          "trace_id": "e5a8275e73a5532364cfba8e9235a941",
+          "parent_span_id": null,
+          "name": "GET",
+          "service_name": "outbound-main",
+          "method": "GET",
+          "route": null,
+          "status_code": 200,
+          "start_ms": 1790286065581,
+          "end_ms": 1790286065587.622,
+          "handler_spans": [],
+          "db_ops": [],
+          "attribution": "none (no browser request carries its parent span id)"
+        },
+        {
+          "span_id": "b1911f47d3f07682",
+          "trace_id": "4843f813aafaee72d1a960de1837145f",
+          "parent_span_id": null,
+          "name": "GET",
+          "service_name": "outbound-main",
+          "method": "GET",
+          "route": null,
+          "status_code": 200,
+          "start_ms": 1790286065582,
+          "end_ms": 1790286065592.7915,
+          "handler_spans": [],
+          "db_ops": [],
+          "attribution": "none (no browser request carries its parent span id)"
+        }
+      ],
+      "total": 4
+    }
+  }
+}

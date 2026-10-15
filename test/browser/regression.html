@@ -1,0 +1,236 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Producttrace runtime regression</title>
+<script src="/src/producttrace-runtime.js"></script>
+<script src="/test/browser/react.js"></script>
+<script src="/test/browser/react-dom.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<pre id="result">RUNNING</pre>
+<script>
+const validEntity = (value) => typeof value === 'string' && /^(conv|msg)-/.test(value);
+const sinkWarnings = [];
+const originalWarn = console.warn;
+console.warn = (...parts) => {
+  const message = parts.join(' ');
+  if (message.includes('[ProductTrace]')) sinkWarnings.push(message);
+  else originalWarn(...parts);
+};
+
+ProductTrace.init({
+  name: 'regression',
+  identity: {
+    trajectoryKey: 'conversationId',
+    stepKey: 'messageId',
+    propRules: [
+      {
+        path: 'message.messageId', as: 'messageId',
+        scope: { component: 'MessageSurface' }, validate: validEntity,
+      },
+      {
+        path: 'message.conversationId', as: 'conversationId',
+        scope: { component: 'MessageSurface' }, validate: validEntity,
+      },
+      {
+        path: 'conversationId', as: 'conversationId',
+        scope: { component: 'ComposerSurface' }, validate: validEntity,
+      },
+    ],
+    routePatterns: [
+      { pattern: /\/c\/([^/]+)/, as: 'conversationId', validate: validEntity },
+    ],
+  },
+  actions: [
+    {
+      event: 'click', testid: 'read-aloud-button', title: 'Read aloud',
+      action: 'message.read_aloud',
+    },
+    {
+      event: 'click', testid: 'read-aloud-button', title: 'Stop',
+      action: 'message.read_aloud_stop',
+    },
+    {
+      event: 'copy', component: 'MessageSurface', selection: 'nonempty',
+      action: 'selection.copy',
+    },
+    { event: 'keydown', component: 'ComposerSurface', key: 'Enter', action: 'composer.enter' },
+  ],
+}, { outputMode: 'evidence' });
+
+const e = React.createElement;
+
+function MessageSurface({ message }) {
+  return e('section', { 'data-testid': 'message-surface' },
+    e('p', { id: 'selectable' }, 'select this evidence'),
+    e('button', { 'data-testid': 'read-aloud-button', title: 'Read aloud' }, 'play'),
+    e('button', { 'data-testid': 'read-aloud-button', title: 'Stop' }, 'stop'));
+}
+
+function ComposerSurface({ conversationId }) {
+  return e('div', null,
+    e('textarea', { 'data-testid': 'composer', 'aria-label': 'Message input' }),
+    e('input', { 'data-testid': 'printable-input', 'aria-label': 'Printable key test' }));
+}
+
+function UnrelatedSurface({ conversationId }) {
+  return e('button', { 'data-testid': 'unrelated' }, 'unrelated');
+}
+
+function App() {
+  return e('main', null,
+    e(MessageSurface, { message: { messageId: 'msg-1', conversationId: 'conv-1' } }),
+    e(ComposerSurface, { conversationId: 'new' }),
+    e(UnrelatedSurface, { conversationId: 'conv-wrong-surface' }));
+}
+
+history.replaceState(null, '', '/c/conv-route');
+ReactDOM.createRoot(document.getElementById('root')).render(e(App));
+
+function click(selector, index) {
+  const nodes = document.querySelectorAll(selector);
+  nodes[index || 0].dispatchEvent(new MouseEvent('click', { bubbles: true }));
+}
+
+function copy(selector) {
+  document.querySelector(selector).dispatchEvent(new Event('copy', { bubbles: true }));
+}
+
+let assertionCount = 0;
+function assert(condition, message) {
+  if (!condition) throw new Error(message);
+  assertionCount++;
+}
+
+async function isolatedSink(options, fakeFetch) {
+  const frame = document.createElement('iframe');
+  frame.hidden = true;
+  const loaded = new Promise((resolve, reject) => {
+    frame.onload = resolve;
+    setTimeout(() => reject(new Error('isolated sink frame timed out')), 2000);
+  });
+  frame.srcdoc = '<!doctype html><script src="/src/producttrace-runtime.js"><\/script>';
+  document.body.appendChild(frame);
+  await loaded;
+  const warnings = [];
+  frame.contentWindow.console.warn = (...parts) => warnings.push(parts.join(' '));
+  const batches = [];
+  if (fakeFetch) {
+    frame.contentWindow.fetch = (_endpoint, request) => {
+      batches.push(JSON.parse(request.body));
+      return Promise.resolve({ ok: true });
+    };
+  }
+  const recorder = frame.contentWindow.ProductTrace.start(
+    { name: 'sink-regression', identity: {}, actions: [] },
+    Object.assign({ outputMode: 'evidence' }, options));
+  frame.contentWindow.ProductTrace.flush();
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  return { frame, recorder, warnings, batches };
+}
+
+setTimeout(async () => {
+  try {
+    click('[data-testid="read-aloud-button"]', 0);
+    click('[data-testid="read-aloud-button"]', 1);
+
+    const focusedInput = document.querySelector('[data-testid="printable-input"]');
+    focusedInput.focus();
+    copy('[data-testid="printable-input"]');
+
+    const range = document.createRange();
+    range.selectNodeContents(document.querySelector('#selectable'));
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    copy('[data-testid="printable-input"]');
+    selection.removeAllRanges();
+
+    document.querySelector('[data-testid="composer"]').dispatchEvent(
+      new KeyboardEvent('keydown', { key: 'Enter', code: 'Enter', bubbles: true }),
+    );
+    document.querySelector('[data-testid="printable-input"]').dispatchEvent(
+      new KeyboardEvent('keydown', { key: '§', code: 'KeyS', bubbles: true }),
+    );
+    click('[data-testid="unrelated"]');
+
+    const detached = document.createElement('span');
+    document.body.appendChild(detached);
+    detached.dispatchEvent(new Event('copy', { bubbles: true }));
+
+    const actions = ProductTrace.records.filter((record) => record.kind === 'action');
+    const play = actions.find((record) => record.action === 'message.read_aloud');
+    const stop = actions.find((record) => record.action === 'message.read_aloud_stop');
+    const copies = actions.filter((record) => record.event === 'copy').slice(0, 2);
+    const enter = actions.find((record) => record.action === 'composer.enter');
+    const printable = actions.find((record) => record.event === 'keydown' && record.key.key === 'Printable');
+    const unrelated = actions.find((record) => record.target.testid === 'unrelated');
+    const detachedCopy = actions[actions.length - 1];
+
+    assert(play && play.step_id === 'msg-1', 'read-aloud start must attach to msg-1');
+    assert(stop && stop.step_id === 'msg-1', 'read-aloud stop must attach to msg-1');
+    assert(copies.length === 2, 'both copy inputs must remain capture-wide');
+    assert(copies[0].action === null && copies[0].selection.present === false,
+      'empty selection must remain raw and unlabeled');
+    assert(copies[1].action === 'selection.copy' && copies[1].selection.present === true &&
+      copies[1].selection.source === 'document_range' && copies[1].step_id === 'msg-1' &&
+      copies[1].target.testid === 'printable-input' &&
+      copies[1].evidence_target.id === 'selectable' && copies[1].component === 'MessageSurface',
+      'document selection must be labeled from its evidence surface while retaining the event target');
+    assert(enter && enter.key.key === 'Enter', 'keydown must be captured and bindable');
+    assert(printable && printable.key.code === null &&
+      !ProductTrace.records.some((record) => JSON.stringify(record).includes('§')),
+    'printable keydown must redact the character and physical key code from every record');
+    assert(enter.trajectory_id === 'conv-route' && enter.step_id === null,
+      'invalid composer sentinel must abstain and fall back to the validated route');
+    assert(unrelated && unrelated.ids.conversationId == null,
+      'an unrelated surface must not inherit a scoped prop identity');
+    assert(detachedCopy.component === null && detachedCopy.attachment_basis.source === 'route',
+      'a detached node must expose the route-only fiber boundary');
+    assert(play.attachment_basis.source === 'fiber_prop',
+      'grounded actions must report their attachment basis');
+    assert(actions.every((record) => record.identity_schema === 'scoped-v1'),
+      'all regression records must use scoped identity');
+
+    const noSinkStatus = ProductTrace.start().status();
+    assert(sinkWarnings.length === 1 &&
+      sinkWarnings[0].includes("Pass endpoint, onRecord, or sink:'buffer' to start()"),
+      'no-sink capture must warn exactly once and name every explicit fix');
+    assert(noSinkStatus.sink === 'none' &&
+      noSinkStatus.records_buffered === ProductTrace.records.length &&
+      noSinkStatus.records_delivered === 0,
+      'no-sink status must expose locally buffered, undelivered records');
+
+    const buffered = await isolatedSink({ sink: 'buffer' }, false);
+    const bufferedStatus = buffered.recorder.status();
+    assert(bufferedStatus.sink === 'buffer' && bufferedStatus.records_buffered === 2 &&
+      bufferedStatus.records_delivered === 0,
+      'explicit buffer mode must report its retained records');
+    assert(buffered.warnings.length === 0,
+      'explicit buffer mode must not emit the no-sink warning');
+
+    const endpoint = await isolatedSink({ endpoint: '/ingest-test' }, true);
+    const endpointStatus = endpoint.recorder.status();
+    assert(endpointStatus.sink === 'endpoint' && endpointStatus.records_delivered === 2 &&
+      endpointStatus.records_buffered === 0 && endpointStatus.records_dropped === 0,
+      'endpoint status must distinguish delivered, buffered, and dropped records');
+    assert(endpoint.batches.length === 1 && endpoint.batches[0].length === 2,
+      'endpoint sink must deliver the startup batch once');
+
+    document.getElementById('result').textContent = JSON.stringify({
+      status: 'PASS',
+      assertions: assertionCount,
+      actions: actions.length,
+    }, null, 2);
+  } catch (error) {
+    document.getElementById('result').textContent = JSON.stringify({
+      status: 'FAIL',
+      error: error.message,
+    }, null, 2);
+  }
+}, 100);
+</script>
+</body>
+</html>

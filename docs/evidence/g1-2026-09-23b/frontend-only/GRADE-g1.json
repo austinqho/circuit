@@ -1,0 +1,228 @@
+{
+  "schema": "producttrace.g1-grade.v1",
+  "backend_instrumented": false,
+  "grader": "independent recomputation from raw records.jsonl + spans.jsonl (no analysis package import)",
+  "actions": 346,
+  "chains": 346,
+  "extra_chains": 0,
+  "mismatches": 0,
+  "mismatch_examples": [],
+  "terminal_counts": {
+    "browser | no request observed": 156,
+    "handler | no element-bound handler ran; global listeners: [function:f607e3900a9d4f60b7811dba6cd08cc15e1c9973b71c9541599db447d14af3c3:789:951]": 37,
+    "handler | no element-bound handler ran; global listeners: [function:3c08149a2f85d32fe0470634de19a4c328e835489fd6a7779ce41a0560ce6e6f:352:456]": 37,
+    "network | backend not instrumented": 14,
+    "handler | no element-bound handler ran; global listeners: [function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428]": 19,
+    "handler | no element-bound handler ran; global listeners: [function:c3157a7c2c41cf7836df40621b7304393c56cbd1b99632f5f2577a7f2940253c:3442:3600, function:aa747ac5c293f96a642845dd67c24bb4e92f71c481f2d12070a92b31a9cc94e8:2291:2543, function:7790e3dcb38b7bc8b2285fc573fc824052b777161fdee32d96dd13d3e6598fac:1250:1517, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3921:4072]": 1,
+    "handler | no element-bound handler ran; global listeners: [function:33a9763db82db8f7c78e3a35d68af3766502e776ded837e64454a7f3f1254f61:4745:5213, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:15018:15139, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:22658:22879, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428, function:e3d53985ef814592c727c93367885669824b43b4eec3d8bedb5b0388900702b4:848:947, function:3c08149a2f85d32fe0470634de19a4c328e835489fd6a7779ce41a0560ce6e6f:352:456]": 57,
+    "handler | no element-bound handler ran; global listeners: [function:33a9763db82db8f7c78e3a35d68af3766502e776ded837e64454a7f3f1254f61:4745:5213, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:15018:15139, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:22658:22879, function:aa747ac5c293f96a642845dd67c24bb4e92f71c481f2d12070a92b31a9cc94e8:2291:2543, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428, function:e3d53985ef814592c727c93367885669824b43b4eec3d8bedb5b0388900702b4:848:947, function:3c08149a2f85d32fe0470634de19a4c328e835489fd6a7779ce41a0560ce6e6f:352:456]": 11,
+    "handler | no element-bound handler ran; global listeners: [function:33a9763db82db8f7c78e3a35d68af3766502e776ded837e64454a7f3f1254f61:4745:5213, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:15018:15139, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:22658:22879, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428, function:e3d53985ef814592c727c93367885669824b43b4eec3d8bedb5b0388900702b4:848:947, function:aa747ac5c293f96a642845dd67c24bb4e92f71c481f2d12070a92b31a9cc94e8:2291:2543, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3921:4072, function:850446cbcebe2346aa27cb6ad6eb4054393b6681a083e5507e82fa2c2895eaef:9218:12230]": 1,
+    "handler | no element-bound handler ran; global listeners: [function:dc38a923ef12eaf4ea45d3f0214840e9770867e144210c5a2b43c9235ef7c91d:3590:3653, function:b57bb8c6c0e41a4971af646bb9d1bc557bc94b46996cd0a8d493326cf472617b:38461:38654, function:e3d53985ef814592c727c93367885669824b43b4eec3d8bedb5b0388900702b4:487:821, function:efd4db58ab25eb920f086652b7f8e3575d8f120ef36e1c8a9b3889997d9b349d:4405:4550, function:7d7d3edbaa4cb1a0eb5df4463027e94da404cb4a5f38a27f9ce8475bdaafc43f:7558:8045, function:da3bcfbab834fa61e5dd6cc39365bfd3256757b226487308ddd8861fd6da274b:31929:33286, function:3c08149a2f85d32fe0470634de19a4c328e835489fd6a7779ce41a0560ce6e6f:352:456]": 1,
+    "handler | no element-bound handler ran; global listeners: [function:dc38a923ef12eaf4ea45d3f0214840e9770867e144210c5a2b43c9235ef7c91d:3590:3653, function:b57bb8c6c0e41a4971af646bb9d1bc557bc94b46996cd0a8d493326cf472617b:38461:38654, function:e3d53985ef814592c727c93367885669824b43b4eec3d8bedb5b0388900702b4:487:821, function:efd4db58ab25eb920f086652b7f8e3575d8f120ef36e1c8a9b3889997d9b349d:4405:4550, function:7d7d3edbaa4cb1a0eb5df4463027e94da404cb4a5f38a27f9ce8475bdaafc43f:7558:8045, function:da3bcfbab834fa61e5dd6cc39365bfd3256757b226487308ddd8861fd6da274b:31929:33286, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428, function:e3d53985ef814592c727c93367885669824b43b4eec3d8bedb5b0388900702b4:848:947]": 1,
+    "handler | no element-bound handler ran; global listeners: [function:289ebfafc16db6ab1b7c43f3ad92ef1ef1bbc05f52d4aaad5105283f68e4ab40:4818:4898, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3921:4072]": 1,
+    "handler | no element-bound handler ran; global listeners: [function:5b55f6a2a632b9afc6d3bc3e813b83fb1556b6bc3227408982f251fdc0b467d7:3869:4156]": 1,
+    "handler | no element-bound handler ran; global listeners: [function:55cdfa4e9b9cd76a31a8abb6ec207cca6b3a91d5252491d7cc409c80c6eb2272:2699:3019, function:b57bb8c6c0e41a4971af646bb9d1bc557bc94b46996cd0a8d493326cf472617b:31237:33332]": 1,
+    "handler | no element-bound handler ran; global listeners: [function:11fc8f15ea2620a7c7413466ec4e40e2fac2ac9452910914a12e1e43960fbfdb:285:372, function:7461216d5c1f1e563770681bcd7b69cf96bc98afd90d852dc81cf2f47abafff0:341:414, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3921:4072]": 1,
+    "handler | no element-bound handler ran; global listeners: [function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3921:4072]": 1,
+    "handler | no element-bound handler ran; global listeners: [function:32f0c87d989a4c84e694c5d4ad0ceb76b01e9ce94cfbc0c659234c2d334bb994:7438:7574, function:f667eada3513bb273c47fcc29058e9efcbec25e2c40ed6df05d6db11ca6e8826:595:762, function:966e47d78e67e6084e594153f231c59f273fbf0814308394c0f27a565f1179cc:1624:1786, function:966e47d78e67e6084e594153f231c59f273fbf0814308394c0f27a565f1179cc:2260:2298, function:11fc8f15ea2620a7c7413466ec4e40e2fac2ac9452910914a12e1e43960fbfdb:285:372, function:7461216d5c1f1e563770681bcd7b69cf96bc98afd90d852dc81cf2f47abafff0:341:414, function:d8ee6dbb40961e642b4f6935b488a480c8a336a7372a77e2b8c2def324a34a63:2100:2745, function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3921:4072]": 1,
+    "handler | no element-bound handler ran; global listeners: [function:91de705a9d09aa413eb1e56614762f75457313382f64c8b189e698e83c063e35:5377:6914, function:f667eada3513bb273c47fcc29058e9efcbec25e2c40ed6df05d6db11ca6e8826:595:762, function:966e47d78e67e6084e594153f231c59f273fbf0814308394c0f27a565f1179cc:1624:1786, function:966e47d78e67e6084e594153f231c59f273fbf0814308394c0f27a565f1179cc:2260:2298, function:91de705a9d09aa413eb1e56614762f75457313382f64c8b189e698e83c063e35:7510:8737, function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927]": 1,
+    "handler | no element-bound handler ran; global listeners: [function:33a9763db82db8f7c78e3a35d68af3766502e776ded837e64454a7f3f1254f61:4745:5213, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:15018:15139, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:22658:22879, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428, function:e3d53985ef814592c727c93367885669824b43b4eec3d8bedb5b0388900702b4:848:947, function:aa747ac5c293f96a642845dd67c24bb4e92f71c481f2d12070a92b31a9cc94e8:2291:2543, function:3c08149a2f85d32fe0470634de19a4c328e835489fd6a7779ce41a0560ce6e6f:352:456]": 1,
+    "handler | no element-bound handler ran; global listeners: [function:33a9763db82db8f7c78e3a35d68af3766502e776ded837e64454a7f3f1254f61:4745:5213, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:15018:15139, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:22658:22879, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428, function:e3d53985ef814592c727c93367885669824b43b4eec3d8bedb5b0388900702b4:848:947, function:8535bff87ea3c3f5bdeedf1ed964e0c4b059dd66bd32012506fecb5c72760e29:961:985, function:8535bff87ea3c3f5bdeedf1ed964e0c4b059dd66bd32012506fecb5c72760e29:1037:1063, function:3c08149a2f85d32fe0470634de19a4c328e835489fd6a7779ce41a0560ce6e6f:302:350]": 1,
+    "handler | no element-bound handler ran; global listeners: [function:8535bff87ea3c3f5bdeedf1ed964e0c4b059dd66bd32012506fecb5c72760e29:961:985, function:8535bff87ea3c3f5bdeedf1ed964e0c4b059dd66bd32012506fecb5c72760e29:1037:1063, function:7d7d3edbaa4cb1a0eb5df4463027e94da404cb4a5f38a27f9ce8475bdaafc43f:7558:8045, function:efd4db58ab25eb920f086652b7f8e3575d8f120ef36e1c8a9b3889997d9b349d:4405:4550, function:da3bcfbab834fa61e5dd6cc39365bfd3256757b226487308ddd8861fd6da274b:31929:33286, function:e3d53985ef814592c727c93367885669824b43b4eec3d8bedb5b0388900702b4:487:821, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428, function:e3d53985ef814592c727c93367885669824b43b4eec3d8bedb5b0388900702b4:848:947, function:3c08149a2f85d32fe0470634de19a4c328e835489fd6a7779ce41a0560ce6e6f:302:350]": 1,
+    "handler | no element-bound handler ran; global listeners: [function:55cdfa4e9b9cd76a31a8abb6ec207cca6b3a91d5252491d7cc409c80c6eb2272:2699:3019, function:aa747ac5c293f96a642845dd67c24bb4e92f71c481f2d12070a92b31a9cc94e8:2291:2543]": 1
+  },
+  "backend_rows_in_records": 0,
+  "chains_with_backend_steps": 0,
+  "spans": 0,
+  "flows": {
+    "login": {
+      "step": 1,
+      "result": "login attempted",
+      "actions": 84,
+      "expected_function_id": "function:c15c44aa0e87167c0174eb68367210b93204299c880fce28068d3117f8c0bf0e:3870:3894",
+      "handler_reproduced": true,
+      "credited_function_ids": [
+        "function:c15c44aa0e87167c0174eb68367210b93204299c880fce28068d3117f8c0bf0e:3870:3894",
+        "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:6368:6437"
+      ],
+      "frontiers": [
+        "browser | no request observed",
+        "handler | no element-bound handler ran; global listeners: [function:f607e3900a9d4f60b7811dba6cd08cc15e1c9973b71c9541599db447d14af3c3:789:951]",
+        "handler | no element-bound handler ran; global listeners: [function:3c08149a2f85d32fe0470634de19a4c328e835489fd6a7779ce41a0560ce6e6f:352:456]",
+        "network | backend not instrumented"
+      ],
+      "joined_writes": []
+    },
+    "send": {
+      "step": 2,
+      "result": "reply waited",
+      "actions": 109,
+      "expected_function_id": "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:17345:18011",
+      "handler_reproduced": true,
+      "credited_function_ids": [
+        "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:6368:6437",
+        "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:6238:6307",
+        "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:23024:23389",
+        "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:6504:6548",
+        "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:6016:6189",
+        "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:17345:18011"
+      ],
+      "frontiers": [
+        "handler | no element-bound handler ran; global listeners: [function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428]",
+        "handler | no element-bound handler ran; global listeners: [function:c3157a7c2c41cf7836df40621b7304393c56cbd1b99632f5f2577a7f2940253c:3442:3600, function:aa747ac5c293f96a642845dd67c24bb4e92f71c481f2d12070a92b31a9cc94e8:2291:2543, function:7790e3dcb38b7bc8b2285fc573fc824052b777161fdee32d96dd13d3e6598fac:1250:1517, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3921:4072]",
+        "browser | no request observed",
+        "handler | no element-bound handler ran; global listeners: [function:33a9763db82db8f7c78e3a35d68af3766502e776ded837e64454a7f3f1254f61:4745:5213, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:15018:15139, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:22658:22879, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428, function:e3d53985ef814592c727c93367885669824b43b4eec3d8bedb5b0388900702b4:848:947, function:3c08149a2f85d32fe0470634de19a4c328e835489fd6a7779ce41a0560ce6e6f:352:456]",
+        "handler | no element-bound handler ran; global listeners: [function:33a9763db82db8f7c78e3a35d68af3766502e776ded837e64454a7f3f1254f61:4745:5213, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:15018:15139, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:22658:22879, function:aa747ac5c293f96a642845dd67c24bb4e92f71c481f2d12070a92b31a9cc94e8:2291:2543, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428, function:e3d53985ef814592c727c93367885669824b43b4eec3d8bedb5b0388900702b4:848:947, function:3c08149a2f85d32fe0470634de19a4c328e835489fd6a7779ce41a0560ce6e6f:352:456]",
+        "handler | no element-bound handler ran; global listeners: [function:33a9763db82db8f7c78e3a35d68af3766502e776ded837e64454a7f3f1254f61:4745:5213, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:15018:15139, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:22658:22879, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428, function:e3d53985ef814592c727c93367885669824b43b4eec3d8bedb5b0388900702b4:848:947, function:aa747ac5c293f96a642845dd67c24bb4e92f71c481f2d12070a92b31a9cc94e8:2291:2543, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3921:4072, function:850446cbcebe2346aa27cb6ad6eb4054393b6681a083e5507e82fa2c2895eaef:9218:12230]",
+        "network | backend not instrumented"
+      ],
+      "joined_writes": []
+    },
+    "feedback": {
+      "step": 4,
+      "result": "feedback submitted",
+      "actions": 4,
+      "expected_function_id": "function:b6e145fc35bd0ba6db55e49be03b3feca87fa96f6806ac5b0544ae8b6145c59c:3324:3559",
+      "handler_reproduced": false,
+      "credited_function_ids": [
+        "function:b6e145fc35bd0ba6db55e49be03b3feca87fa96f6806ac5b0544ae8b6145c59c:3040:3236",
+        "function:b6e145fc35bd0ba6db55e49be03b3feca87fa96f6806ac5b0544ae8b6145c59c:3347:3559"
+      ],
+      "frontiers": [
+        "handler | no element-bound handler ran; global listeners: [function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428]",
+        "browser | no request observed",
+        "network | backend not instrumented"
+      ],
+      "joined_writes": []
+    },
+    "regenerate": {
+      "step": 5,
+      "result": "regeneration waited",
+      "actions": 2,
+      "expected_function_id": "function:c057074eb90d959be20f9e8d7801624cfaa20e2e8d36fad2558178c65501d329:3465:3490",
+      "handler_reproduced": true,
+      "credited_function_ids": [
+        "function:c057074eb90d959be20f9e8d7801624cfaa20e2e8d36fad2558178c65501d329:3465:3490"
+      ],
+      "frontiers": [
+        "handler | no element-bound handler ran; global listeners: [function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428]",
+        "network | backend not instrumented"
+      ],
+      "joined_writes": []
+    },
+    "edit-resubmit": {
+      "step": 6,
+      "result": "edited reply waited",
+      "actions": 10,
+      "expected_function_id": "function:289ebfafc16db6ab1b7c43f3ad92ef1ef1bbc05f52d4aaad5105283f68e4ab40:1759:3526",
+      "handler_reproduced": true,
+      "credited_function_ids": [
+        "function:650d204cb86c5d8d205f4f14a39f9465dd47b1595658212cd3961bb38b951241:4830:4915",
+        "function:289ebfafc16db6ab1b7c43f3ad92ef1ef1bbc05f52d4aaad5105283f68e4ab40:1759:3526"
+      ],
+      "frontiers": [
+        "handler | no element-bound handler ran; global listeners: [function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428]",
+        "browser | no request observed",
+        "handler | no element-bound handler ran; global listeners: [function:3c08149a2f85d32fe0470634de19a4c328e835489fd6a7779ce41a0560ce6e6f:352:456]",
+        "handler | no element-bound handler ran; global listeners: [function:dc38a923ef12eaf4ea45d3f0214840e9770867e144210c5a2b43c9235ef7c91d:3590:3653, function:b57bb8c6c0e41a4971af646bb9d1bc557bc94b46996cd0a8d493326cf472617b:38461:38654, function:e3d53985ef814592c727c93367885669824b43b4eec3d8bedb5b0388900702b4:487:821, function:efd4db58ab25eb920f086652b7f8e3575d8f120ef36e1c8a9b3889997d9b349d:4405:4550, function:7d7d3edbaa4cb1a0eb5df4463027e94da404cb4a5f38a27f9ce8475bdaafc43f:7558:8045, function:da3bcfbab834fa61e5dd6cc39365bfd3256757b226487308ddd8861fd6da274b:31929:33286, function:3c08149a2f85d32fe0470634de19a4c328e835489fd6a7779ce41a0560ce6e6f:352:456]",
+        "handler | no element-bound handler ran; global listeners: [function:dc38a923ef12eaf4ea45d3f0214840e9770867e144210c5a2b43c9235ef7c91d:3590:3653, function:b57bb8c6c0e41a4971af646bb9d1bc557bc94b46996cd0a8d493326cf472617b:38461:38654, function:e3d53985ef814592c727c93367885669824b43b4eec3d8bedb5b0388900702b4:487:821, function:efd4db58ab25eb920f086652b7f8e3575d8f120ef36e1c8a9b3889997d9b349d:4405:4550, function:7d7d3edbaa4cb1a0eb5df4463027e94da404cb4a5f38a27f9ce8475bdaafc43f:7558:8045, function:da3bcfbab834fa61e5dd6cc39365bfd3256757b226487308ddd8861fd6da274b:31929:33286, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428, function:e3d53985ef814592c727c93367885669824b43b4eec3d8bedb5b0388900702b4:848:947]",
+        "handler | no element-bound handler ran; global listeners: [function:289ebfafc16db6ab1b7c43f3ad92ef1ef1bbc05f52d4aaad5105283f68e4ab40:4818:4898, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3921:4072]",
+        "network | backend not instrumented"
+      ],
+      "joined_writes": []
+    },
+    "rename": {
+      "step": 7,
+      "result": "renamed Tracer M1",
+      "actions": 30,
+      "expected_function_id": "function:348389e6924deb31f91c5d32cce54049ff9abb71061655c299e6cfc4957e1491:1876:1902",
+      "handler_reproduced": true,
+      "credited_function_ids": [
+        "function:5b55f6a2a632b9afc6d3bc3e813b83fb1556b6bc3227408982f251fdc0b467d7:3599:3672",
+        "function:3bba1791a3fdf183ba30c32c208c672d1070797fec38692102eb25c78f597bf8:13949:14037",
+        "function:1ea515b6ccf6f7cdaa309ee977af745b491d84055bd0d553ee76f79c5e35eb91:4872:5157",
+        "function:5b55f6a2a632b9afc6d3bc3e813b83fb1556b6bc3227408982f251fdc0b467d7:7805:7965",
+        "function:5b55f6a2a632b9afc6d3bc3e813b83fb1556b6bc3227408982f251fdc0b467d7:7984:8249",
+        "function:348389e6924deb31f91c5d32cce54049ff9abb71061655c299e6cfc4957e1491:1312:1348",
+        "function:348389e6924deb31f91c5d32cce54049ff9abb71061655c299e6cfc4957e1491:1876:1902"
+      ],
+      "frontiers": [
+        "browser | no request observed",
+        "handler | no element-bound handler ran; global listeners: [function:5b55f6a2a632b9afc6d3bc3e813b83fb1556b6bc3227408982f251fdc0b467d7:3869:4156]",
+        "network | backend not instrumented"
+      ],
+      "joined_writes": []
+    },
+    "agent-create": {
+      "step": 8,
+      "result": "create clicked",
+      "actions": 26,
+      "expected_function_id": "function:8d743139e77d92b28cd8136781b34251ae924d248459cafcdbca5688fb1bab76:13140:14819",
+      "handler_reproduced": true,
+      "credited_function_ids": [
+        "function:c057074eb90d959be20f9e8d7801624cfaa20e2e8d36fad2558178c65501d329:3465:3490",
+        "function:55cdfa4e9b9cd76a31a8abb6ec207cca6b3a91d5252491d7cc409c80c6eb2272:2699:3019",
+        "function:03e1cb3bc038e969913a678f7dba70299865e9d83f2601d7e4a8a558aec974db:4516:4549",
+        "function:8d743139e77d92b28cd8136781b34251ae924d248459cafcdbca5688fb1bab76:13140:14819"
+      ],
+      "frontiers": [
+        "handler | no element-bound handler ran; global listeners: [function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428]",
+        "network | backend not instrumented",
+        "handler | no element-bound handler ran; global listeners: [function:55cdfa4e9b9cd76a31a8abb6ec207cca6b3a91d5252491d7cc409c80c6eb2272:2699:3019, function:b57bb8c6c0e41a4971af646bb9d1bc557bc94b46996cd0a8d493326cf472617b:31237:33332]",
+        "browser | no request observed",
+        "handler | no element-bound handler ran; global listeners: [function:11fc8f15ea2620a7c7413466ec4e40e2fac2ac9452910914a12e1e43960fbfdb:285:372, function:7461216d5c1f1e563770681bcd7b69cf96bc98afd90d852dc81cf2f47abafff0:341:414, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3921:4072]",
+        "handler | no element-bound handler ran; global listeners: [function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3921:4072]",
+        "handler | no element-bound handler ran; global listeners: [function:32f0c87d989a4c84e694c5d4ad0ceb76b01e9ce94cfbc0c659234c2d334bb994:7438:7574, function:f667eada3513bb273c47fcc29058e9efcbec25e2c40ed6df05d6db11ca6e8826:595:762, function:966e47d78e67e6084e594153f231c59f273fbf0814308394c0f27a565f1179cc:1624:1786, function:966e47d78e67e6084e594153f231c59f273fbf0814308394c0f27a565f1179cc:2260:2298, function:11fc8f15ea2620a7c7413466ec4e40e2fac2ac9452910914a12e1e43960fbfdb:285:372, function:7461216d5c1f1e563770681bcd7b69cf96bc98afd90d852dc81cf2f47abafff0:341:414, function:d8ee6dbb40961e642b4f6935b488a480c8a336a7372a77e2b8c2def324a34a63:2100:2745, function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3921:4072]",
+        "handler | no element-bound handler ran; global listeners: [function:91de705a9d09aa413eb1e56614762f75457313382f64c8b189e698e83c063e35:5377:6914, function:f667eada3513bb273c47fcc29058e9efcbec25e2c40ed6df05d6db11ca6e8826:595:762, function:966e47d78e67e6084e594153f231c59f273fbf0814308394c0f27a565f1179cc:1624:1786, function:966e47d78e67e6084e594153f231c59f273fbf0814308394c0f27a565f1179cc:2260:2298, function:91de705a9d09aa413eb1e56614762f75457313382f64c8b189e698e83c063e35:7510:8737, function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927]"
+      ],
+      "joined_writes": []
+    },
+    "agent-chat": {
+      "step": 9,
+      "result": "reply waited",
+      "actions": 54,
+      "expected_function_id": "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:17345:18011",
+      "handler_reproduced": true,
+      "credited_function_ids": [
+        "function:8d743139e77d92b28cd8136781b34251ae924d248459cafcdbca5688fb1bab76:16793:16902",
+        "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:6368:6437",
+        "function:55cdfa4e9b9cd76a31a8abb6ec207cca6b3a91d5252491d7cc409c80c6eb2272:1369:1734",
+        "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:6238:6307",
+        "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:23024:23389",
+        "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:6504:6548",
+        "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:6016:6189",
+        "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:17345:18011"
+      ],
+      "frontiers": [
+        "handler | no element-bound handler ran; global listeners: [function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428]",
+        "network | backend not instrumented",
+        "browser | no request observed",
+        "handler | no element-bound handler ran; global listeners: [function:33a9763db82db8f7c78e3a35d68af3766502e776ded837e64454a7f3f1254f61:4745:5213, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:15018:15139, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:22658:22879, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428, function:e3d53985ef814592c727c93367885669824b43b4eec3d8bedb5b0388900702b4:848:947, function:3c08149a2f85d32fe0470634de19a4c328e835489fd6a7779ce41a0560ce6e6f:352:456]",
+        "handler | no element-bound handler ran; global listeners: [function:33a9763db82db8f7c78e3a35d68af3766502e776ded837e64454a7f3f1254f61:4745:5213, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:15018:15139, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:22658:22879, function:aa747ac5c293f96a642845dd67c24bb4e92f71c481f2d12070a92b31a9cc94e8:2291:2543, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428, function:e3d53985ef814592c727c93367885669824b43b4eec3d8bedb5b0388900702b4:848:947, function:3c08149a2f85d32fe0470634de19a4c328e835489fd6a7779ce41a0560ce6e6f:352:456]",
+        "handler | no element-bound handler ran; global listeners: [function:33a9763db82db8f7c78e3a35d68af3766502e776ded837e64454a7f3f1254f61:4745:5213, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:15018:15139, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:22658:22879, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428, function:e3d53985ef814592c727c93367885669824b43b4eec3d8bedb5b0388900702b4:848:947, function:aa747ac5c293f96a642845dd67c24bb4e92f71c481f2d12070a92b31a9cc94e8:2291:2543, function:3c08149a2f85d32fe0470634de19a4c328e835489fd6a7779ce41a0560ce6e6f:352:456]",
+        "handler | no element-bound handler ran; global listeners: [function:33a9763db82db8f7c78e3a35d68af3766502e776ded837e64454a7f3f1254f61:4745:5213, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:15018:15139, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:22658:22879, function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428, function:e3d53985ef814592c727c93367885669824b43b4eec3d8bedb5b0388900702b4:848:947, function:8535bff87ea3c3f5bdeedf1ed964e0c4b059dd66bd32012506fecb5c72760e29:961:985, function:8535bff87ea3c3f5bdeedf1ed964e0c4b059dd66bd32012506fecb5c72760e29:1037:1063, function:3c08149a2f85d32fe0470634de19a4c328e835489fd6a7779ce41a0560ce6e6f:302:350]"
+      ],
+      "joined_writes": []
+    },
+    "delete": {
+      "step": 10,
+      "result": "delete clicked",
+      "actions": 8,
+      "expected_function_id": "function:3dace8c0d4accdb10fae5d6fa1c4ebfae91dc12defb5c15125de63e5c908766f:2331:2656",
+      "handler_reproduced": true,
+      "credited_function_ids": [
+        "function:5b55f6a2a632b9afc6d3bc3e813b83fb1556b6bc3227408982f251fdc0b467d7:3599:3672",
+        "function:3bba1791a3fdf183ba30c32c208c672d1070797fec38692102eb25c78f597bf8:13949:14037",
+        "function:1ea515b6ccf6f7cdaa309ee977af745b491d84055bd0d553ee76f79c5e35eb91:4872:5157",
+        "function:3dace8c0d4accdb10fae5d6fa1c4ebfae91dc12defb5c15125de63e5c908766f:2331:2656"
+      ],
+      "frontiers": [
+        "browser | no request observed",
+        "network | backend not instrumented"
+      ],
+      "joined_writes": []
+    }
+  },
+  "mongo": null,
+  "pass": true
+}

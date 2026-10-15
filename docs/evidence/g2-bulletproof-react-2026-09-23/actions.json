@@ -1,0 +1,5644 @@
+[
+  {
+    "step": 1,
+    "name": "get-started",
+    "description": "click \"Get started\" on the landing page",
+    "started": 1790164803622,
+    "ended": 1790164804483,
+    "status": "done",
+    "actions": [
+      {
+        "action_id": "action:mue1witn:1",
+        "event": "focusin",
+        "at": 1790164803659,
+        "target": {
+          "tag": "button",
+          "attributes": {}
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 4
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wito:2",
+        "event": "click",
+        "at": 1790164803660,
+        "target": {
+          "tag": "button",
+          "attributes": {}
+        },
+        "entry": {
+          "unit_id": "function:8c5d10e3d0fd77a2dcf87b3c564d39e85dbd1f2f47c5966a18b90b40633adc63:364:506|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:8c5d10e3d0fd77a2dcf87b3c564d39e85dbd1f2f47c5966a18b90b40633adc63:364:506",
+          "resolved": true,
+          "file": "apps/react-vite/src/app/routes/landing.tsx",
+          "start": 364,
+          "end": 506,
+          "line": 13,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => { if (user.data) { navigate(paths.app.dashboard.getHref()); } else { navigate(paths.auth.login.getHref()); } }"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 4
+        },
+        "requests": []
+      }
+    ]
+  },
+  {
+    "step": 2,
+    "name": "open-register",
+    "description": "click the \"Register\" link",
+    "started": 1790164804508,
+    "ended": 1790164805335,
+    "status": "done",
+    "actions": [
+      {
+        "action_id": "action:mue1wjhm:3",
+        "event": "focusin",
+        "at": 1790164804522,
+        "target": {
+          "tag": "a",
+          "attributes": {}
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wjhm:4",
+        "event": "click",
+        "at": 1790164804522,
+        "target": {
+          "tag": "a",
+          "attributes": {}
+        },
+        "entry": {
+          "unit_id": "function:bf63cee669390954c05d9c933a63310bf6d9a4ec27c7d7b3493d7d21f8745dfb:912:977|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:bf63cee669390954c05d9c933a63310bf6d9a4ec27c7d7b3493d7d21f8745dfb:912:977",
+          "resolved": true,
+          "file": "apps/react-vite/src/app/router.tsx",
+          "start": 912,
+          "end": 977,
+          "line": 32,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => import('./routes/auth/register').then(convert(queryClient))"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      }
+    ]
+  },
+  {
+    "step": 3,
+    "name": "register",
+    "description": "fill First/Last Name, Email, Password, Team Name and click Register",
+    "started": 1790164805357,
+    "ended": 1790164808555,
+    "status": "done",
+    "actions": [
+      {
+        "action_id": "action:mue1wk5b:5",
+        "event": "focusin",
+        "at": 1790164805375,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk5d:6",
+        "event": "click",
+        "at": 1790164805377,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk5j:7",
+        "event": "keydown",
+        "at": 1790164805383,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk5l:8",
+        "event": "input",
+        "at": 1790164805385,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk5y:9",
+        "event": "keydown",
+        "at": 1790164805398,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk5z:10",
+        "event": "input",
+        "at": 1790164805399,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk6b:11",
+        "event": "keydown",
+        "at": 1790164805411,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk6c:12",
+        "event": "input",
+        "at": 1790164805412,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk6o:13",
+        "event": "keydown",
+        "at": 1790164805424,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk6o:14",
+        "event": "input",
+        "at": 1790164805424,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk70:15",
+        "event": "keydown",
+        "at": 1790164805436,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk70:16",
+        "event": "input",
+        "at": 1790164805436,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk7d:17",
+        "event": "keydown",
+        "at": 1790164805449,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk7e:18",
+        "event": "input",
+        "at": 1790164805450,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk88:19",
+        "event": "change",
+        "at": 1790164805480,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk88:20",
+        "event": "focusin",
+        "at": 1790164805480,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "lastName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk88:21",
+        "event": "click",
+        "at": 1790164805480,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "lastName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk8b:22",
+        "event": "keydown",
+        "at": 1790164805483,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "lastName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk8b:23",
+        "event": "input",
+        "at": 1790164805483,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "lastName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk8n:24",
+        "event": "keydown",
+        "at": 1790164805495,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "lastName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk8n:25",
+        "event": "input",
+        "at": 1790164805495,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "lastName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk90:26",
+        "event": "keydown",
+        "at": 1790164805508,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "lastName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk90:27",
+        "event": "input",
+        "at": 1790164805508,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "lastName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk9d:28",
+        "event": "keydown",
+        "at": 1790164805521,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "lastName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wk9d:29",
+        "event": "input",
+        "at": 1790164805521,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "lastName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkad:30",
+        "event": "change",
+        "at": 1790164805557,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "lastName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkad:31",
+        "event": "focusin",
+        "at": 1790164805557,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkae:32",
+        "event": "click",
+        "at": 1790164805558,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkah:33",
+        "event": "keydown",
+        "at": 1790164805561,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkah:34",
+        "event": "input",
+        "at": 1790164805561,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkas:35",
+        "event": "keydown",
+        "at": 1790164805572,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkat:36",
+        "event": "input",
+        "at": 1790164805573,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkb5:37",
+        "event": "keydown",
+        "at": 1790164805585,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkb6:38",
+        "event": "input",
+        "at": 1790164805586,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkbj:39",
+        "event": "keydown",
+        "at": 1790164805599,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkbj:40",
+        "event": "input",
+        "at": 1790164805599,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkbw:41",
+        "event": "keydown",
+        "at": 1790164805612,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkbw:42",
+        "event": "input",
+        "at": 1790164805612,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkc6:43",
+        "event": "keydown",
+        "at": 1790164805622,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkc6:44",
+        "event": "input",
+        "at": 1790164805622,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkci:45",
+        "event": "keydown",
+        "at": 1790164805634,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkci:46",
+        "event": "input",
+        "at": 1790164805634,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkcw:47",
+        "event": "keydown",
+        "at": 1790164805648,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkcx:48",
+        "event": "input",
+        "at": 1790164805649,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkda:49",
+        "event": "keydown",
+        "at": 1790164805662,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkdb:50",
+        "event": "input",
+        "at": 1790164805663,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkdo:51",
+        "event": "keydown",
+        "at": 1790164805676,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkdp:52",
+        "event": "input",
+        "at": 1790164805677,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wke3:53",
+        "event": "keydown",
+        "at": 1790164805691,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wke4:54",
+        "event": "input",
+        "at": 1790164805692,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkef:55",
+        "event": "keydown",
+        "at": 1790164805703,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkeg:56",
+        "event": "input",
+        "at": 1790164805704,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkeu:57",
+        "event": "keydown",
+        "at": 1790164805718,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkeu:58",
+        "event": "input",
+        "at": 1790164805718,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkf7:59",
+        "event": "keydown",
+        "at": 1790164805731,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkf8:60",
+        "event": "input",
+        "at": 1790164805732,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkfl:61",
+        "event": "keydown",
+        "at": 1790164805745,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkfl:62",
+        "event": "input",
+        "at": 1790164805745,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkg0:63",
+        "event": "keydown",
+        "at": 1790164805760,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkg1:64",
+        "event": "input",
+        "at": 1790164805761,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkge:65",
+        "event": "keydown",
+        "at": 1790164805774,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkgf:66",
+        "event": "input",
+        "at": 1790164805775,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkgt:67",
+        "event": "keydown",
+        "at": 1790164805789,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkgu:68",
+        "event": "input",
+        "at": 1790164805790,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkh6:69",
+        "event": "keydown",
+        "at": 1790164805802,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkh6:70",
+        "event": "input",
+        "at": 1790164805802,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkhj:71",
+        "event": "keydown",
+        "at": 1790164805815,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkhj:72",
+        "event": "input",
+        "at": 1790164805815,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkhx:73",
+        "event": "keydown",
+        "at": 1790164805829,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkhy:74",
+        "event": "input",
+        "at": 1790164805830,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkib:75",
+        "event": "keydown",
+        "at": 1790164805843,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkib:76",
+        "event": "input",
+        "at": 1790164805844,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkiy:77",
+        "event": "change",
+        "at": 1790164805866,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkiy:78",
+        "event": "focusin",
+        "at": 1790164805866,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkiy:79",
+        "event": "click",
+        "at": 1790164805866,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkj5:80",
+        "event": "keydown",
+        "at": 1790164805873,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkj6:81",
+        "event": "input",
+        "at": 1790164805874,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkji:82",
+        "event": "keydown",
+        "at": 1790164805886,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkji:83",
+        "event": "input",
+        "at": 1790164805886,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkjv:84",
+        "event": "keydown",
+        "at": 1790164805899,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkjv:85",
+        "event": "input",
+        "at": 1790164805899,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkk8:86",
+        "event": "keydown",
+        "at": 1790164805912,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkk9:87",
+        "event": "input",
+        "at": 1790164805913,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkkl:88",
+        "event": "keydown",
+        "at": 1790164805925,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkkm:89",
+        "event": "input",
+        "at": 1790164805926,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkky:90",
+        "event": "keydown",
+        "at": 1790164805938,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkkz:91",
+        "event": "input",
+        "at": 1790164805939,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wklc:92",
+        "event": "keydown",
+        "at": 1790164805952,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkld:93",
+        "event": "input",
+        "at": 1790164805953,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wklq:94",
+        "event": "keydown",
+        "at": 1790164805966,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wklr:95",
+        "event": "input",
+        "at": 1790164805967,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkm2:96",
+        "event": "keydown",
+        "at": 1790164805978,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkm3:97",
+        "event": "input",
+        "at": 1790164805979,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkme:98",
+        "event": "keydown",
+        "at": 1790164805990,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkmf:99",
+        "event": "input",
+        "at": 1790164805991,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkmr:100",
+        "event": "keydown",
+        "at": 1790164806003,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkmr:101",
+        "event": "input",
+        "at": 1790164806003,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkn5:102",
+        "event": "keydown",
+        "at": 1790164806017,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkn5:103",
+        "event": "input",
+        "at": 1790164806017,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkni:104",
+        "event": "keydown",
+        "at": 1790164806030,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wknj:105",
+        "event": "input",
+        "at": 1790164806031,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wknu:106",
+        "event": "keydown",
+        "at": 1790164806042,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wknv:107",
+        "event": "input",
+        "at": 1790164806043,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkog:108",
+        "event": "change",
+        "at": 1790164806064,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkog:109",
+        "event": "focusin",
+        "at": 1790164806064,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkog:110",
+        "event": "click",
+        "at": 1790164806064,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkol:111",
+        "event": "keydown",
+        "at": 1790164806069,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkol:112",
+        "event": "input",
+        "at": 1790164806069,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkox:113",
+        "event": "keydown",
+        "at": 1790164806081,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkoy:114",
+        "event": "input",
+        "at": 1790164806082,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkpb:115",
+        "event": "keydown",
+        "at": 1790164806095,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkpb:116",
+        "event": "input",
+        "at": 1790164806095,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkpm:117",
+        "event": "keydown",
+        "at": 1790164806106,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkpm:118",
+        "event": "input",
+        "at": 1790164806106,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkpy:119",
+        "event": "keydown",
+        "at": 1790164806118,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkpz:120",
+        "event": "input",
+        "at": 1790164806119,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkqd:121",
+        "event": "keydown",
+        "at": 1790164806133,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkqe:122",
+        "event": "input",
+        "at": 1790164806134,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkqr:123",
+        "event": "keydown",
+        "at": 1790164806147,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkqs:124",
+        "event": "input",
+        "at": 1790164806148,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkr5:125",
+        "event": "keydown",
+        "at": 1790164806161,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkr5:126",
+        "event": "input",
+        "at": 1790164806161,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkri:127",
+        "event": "keydown",
+        "at": 1790164806174,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkri:128",
+        "event": "input",
+        "at": 1790164806174,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkrv:129",
+        "event": "keydown",
+        "at": 1790164806188,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wkrw:130",
+        "event": "input",
+        "at": 1790164806188,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wks7:131",
+        "event": "keydown",
+        "at": 1790164806199,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wks7:132",
+        "event": "input",
+        "at": 1790164806199,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wksu:133",
+        "event": "change",
+        "at": 1790164806222,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wksv:134",
+        "event": "focusin",
+        "at": 1790164806223,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "submit"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wksv:135",
+        "event": "click",
+        "at": 1790164806223,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "submit"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wksw:136",
+        "event": "submit",
+        "at": 1790164806224,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "submit"
+          }
+        },
+        "entry": {
+          "unit_id": "function:2e2904429abb8ce0f0d6ad89cdc9ac824ec2ea9364cedb8da73a630d07e73f1f:787:848|submit",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:2e2904429abb8ce0f0d6ad89cdc9ac824ec2ea9364cedb8da73a630d07e73f1f:787:848",
+          "resolved": true,
+          "file": "apps/react-vite/src/features/auth/components/register-form.tsx",
+          "start": 787,
+          "end": 848,
+          "line": 30,
+          "content_hash_matches_fixture": true,
+          "snippet": "(values) => { registering.mutate(values); }"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 2
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/api/auth/register",
+            "transport": "xhr",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue1wksw:136:request:2",
+            "route": null,
+            "handlers": [],
+            "terminal_handler": null,
+            "db": [],
+            "reached": "network",
+            "stopped_at": "network",
+            "because": "backend not instrumented (repository mock API server; frontend-only repository)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "step": 4,
+    "name": "open-discussions",
+    "description": "click the \"Discussions\" navigation link",
+    "started": 1790164808594,
+    "ended": 1790164810364,
+    "status": "done",
+    "actions": [
+      {
+        "action_id": "action:mue1wmn0:137",
+        "event": "focusin",
+        "at": 1790164808604,
+        "target": {
+          "tag": "a",
+          "attributes": {}
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 4
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wmn1:138",
+        "event": "click",
+        "at": 1790164808605,
+        "target": {
+          "tag": "a",
+          "attributes": {}
+        },
+        "entry": {
+          "unit_id": "function:bf63cee669390954c05d9c933a63310bf6d9a4ec27c7d7b3493d7d21f8745dfb:1379:1499|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:bf63cee669390954c05d9c933a63310bf6d9a4ec27c7d7b3493d7d21f8745dfb:1379:1499",
+          "resolved": true,
+          "file": "apps/react-vite/src/app/router.tsx",
+          "start": 1379,
+          "end": 1499,
+          "line": 49,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => import('./routes/app/discussions/discussions').then( convert(queryClient), )"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 4
+        },
+        "requests": []
+      }
+    ]
+  },
+  {
+    "step": 5,
+    "name": "create-discussion",
+    "description": "click \"Create Discussion\", type Title and Body, click Submit",
+    "started": 1790164810393,
+    "ended": 1790164813809,
+    "status": "done",
+    "actions": [
+      {
+        "action_id": "action:mue1wo10:139",
+        "event": "focusin",
+        "at": 1790164810404,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "aria-haspopup": "dialog",
+            "aria-expanded": "false",
+            "aria-controls": "radix-:r5:"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 19
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wo11:140",
+        "event": "click",
+        "at": 1790164810405,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "aria-haspopup": "dialog",
+            "aria-expanded": "false",
+            "aria-controls": "radix-:r5:"
+          }
+        },
+        "entry": {
+          "unit_id": "function:2d7c02d89c04a611649cfec20c4bedfc292a0fa6ed416f27733d82d55d539fd0:751:859|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:2d7c02d89c04a611649cfec20c4bedfc292a0fa6ed416f27733d82d55d539fd0:751:859",
+          "resolved": true,
+          "file": "apps/react-vite/src/components/ui/form/form-drawer.tsx",
+          "start": 751,
+          "end": 859,
+          "line": 42,
+          "content_hash_matches_fixture": true,
+          "snippet": "(isOpen) => { if (!isOpen) { close(); } else { open(); } }"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 19
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wo1h:141",
+        "event": "focusin",
+        "at": 1790164810421,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woov:142",
+        "event": "click",
+        "at": 1790164811263,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wop4:143",
+        "event": "keydown",
+        "at": 1790164811272,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wop5:144",
+        "event": "input",
+        "at": 1790164811273,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wopj:145",
+        "event": "keydown",
+        "at": 1790164811287,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wopk:146",
+        "event": "input",
+        "at": 1790164811288,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wopv:147",
+        "event": "keydown",
+        "at": 1790164811299,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wopv:148",
+        "event": "input",
+        "at": 1790164811299,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woq7:149",
+        "event": "keydown",
+        "at": 1790164811311,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woq7:150",
+        "event": "input",
+        "at": 1790164811311,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woqi:151",
+        "event": "keydown",
+        "at": 1790164811322,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woqj:152",
+        "event": "input",
+        "at": 1790164811323,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woqw:153",
+        "event": "keydown",
+        "at": 1790164811336,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woqx:154",
+        "event": "input",
+        "at": 1790164811337,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wora:155",
+        "event": "keydown",
+        "at": 1790164811350,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wora:156",
+        "event": "input",
+        "at": 1790164811350,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woro:157",
+        "event": "keydown",
+        "at": 1790164811364,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woro:158",
+        "event": "input",
+        "at": 1790164811364,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wos0:159",
+        "event": "keydown",
+        "at": 1790164811376,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wos0:160",
+        "event": "input",
+        "at": 1790164811376,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wosc:161",
+        "event": "keydown",
+        "at": 1790164811388,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wosd:162",
+        "event": "input",
+        "at": 1790164811389,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wosp:163",
+        "event": "keydown",
+        "at": 1790164811401,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wosq:164",
+        "event": "input",
+        "at": 1790164811402,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wot2:165",
+        "event": "keydown",
+        "at": 1790164811414,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wot2:166",
+        "event": "input",
+        "at": 1790164811415,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wote:167",
+        "event": "keydown",
+        "at": 1790164811426,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wotf:168",
+        "event": "input",
+        "at": 1790164811427,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wotr:169",
+        "event": "keydown",
+        "at": 1790164811439,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wots:170",
+        "event": "input",
+        "at": 1790164811440,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wou4:171",
+        "event": "keydown",
+        "at": 1790164811452,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wou5:172",
+        "event": "input",
+        "at": 1790164811453,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woui:173",
+        "event": "keydown",
+        "at": 1790164811466,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wouj:174",
+        "event": "input",
+        "at": 1790164811467,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wouu:175",
+        "event": "keydown",
+        "at": 1790164811478,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wouv:176",
+        "event": "input",
+        "at": 1790164811479,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wov6:177",
+        "event": "keydown",
+        "at": 1790164811490,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wov7:178",
+        "event": "input",
+        "at": 1790164811491,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wovj:179",
+        "event": "keydown",
+        "at": 1790164811503,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wovk:180",
+        "event": "input",
+        "at": 1790164811504,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wovw:181",
+        "event": "keydown",
+        "at": 1790164811516,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wovx:182",
+        "event": "input",
+        "at": 1790164811517,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wowr:183",
+        "event": "change",
+        "at": 1790164811547,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wows:184",
+        "event": "focusin",
+        "at": 1790164811548,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wowu:185",
+        "event": "click",
+        "at": 1790164811550,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woww:186",
+        "event": "keydown",
+        "at": 1790164811552,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woww:187",
+        "event": "input",
+        "at": 1790164811552,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wox2:188",
+        "event": "keydown",
+        "at": 1790164811558,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wox2:189",
+        "event": "input",
+        "at": 1790164811558,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wox9:190",
+        "event": "keydown",
+        "at": 1790164811565,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wox9:191",
+        "event": "input",
+        "at": 1790164811565,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woxe:192",
+        "event": "keydown",
+        "at": 1790164811570,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woxf:193",
+        "event": "input",
+        "at": 1790164811571,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woxm:194",
+        "event": "keydown",
+        "at": 1790164811578,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woxm:195",
+        "event": "input",
+        "at": 1790164811578,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woxs:196",
+        "event": "keydown",
+        "at": 1790164811584,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woxt:197",
+        "event": "input",
+        "at": 1790164811585,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woxz:198",
+        "event": "keydown",
+        "at": 1790164811591,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woy0:199",
+        "event": "input",
+        "at": 1790164811592,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woy6:200",
+        "event": "keydown",
+        "at": 1790164811598,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woy7:201",
+        "event": "input",
+        "at": 1790164811599,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woyc:202",
+        "event": "keydown",
+        "at": 1790164811604,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woyc:203",
+        "event": "input",
+        "at": 1790164811604,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woyj:204",
+        "event": "keydown",
+        "at": 1790164811611,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woyk:205",
+        "event": "input",
+        "at": 1790164811612,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woyq:206",
+        "event": "keydown",
+        "at": 1790164811618,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woyq:207",
+        "event": "input",
+        "at": 1790164811618,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woyx:208",
+        "event": "keydown",
+        "at": 1790164811625,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woyx:209",
+        "event": "input",
+        "at": 1790164811625,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woz5:210",
+        "event": "keydown",
+        "at": 1790164811633,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1woz5:211",
+        "event": "input",
+        "at": 1790164811633,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wozb:212",
+        "event": "keydown",
+        "at": 1790164811639,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wozb:213",
+        "event": "input",
+        "at": 1790164811639,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wozj:214",
+        "event": "keydown",
+        "at": 1790164811647,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wozj:215",
+        "event": "input",
+        "at": 1790164811647,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wozr:216",
+        "event": "keydown",
+        "at": 1790164811655,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wozr:217",
+        "event": "input",
+        "at": 1790164811655,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wozy:218",
+        "event": "keydown",
+        "at": 1790164811662,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wozy:219",
+        "event": "input",
+        "at": 1790164811662,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp06:220",
+        "event": "keydown",
+        "at": 1790164811670,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp06:221",
+        "event": "input",
+        "at": 1790164811670,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp0e:222",
+        "event": "keydown",
+        "at": 1790164811678,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp0f:223",
+        "event": "input",
+        "at": 1790164811679,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp0m:224",
+        "event": "keydown",
+        "at": 1790164811686,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp0n:225",
+        "event": "input",
+        "at": 1790164811687,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp0u:226",
+        "event": "keydown",
+        "at": 1790164811694,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp0u:227",
+        "event": "input",
+        "at": 1790164811694,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp10:228",
+        "event": "keydown",
+        "at": 1790164811700,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp10:229",
+        "event": "input",
+        "at": 1790164811700,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp15:230",
+        "event": "keydown",
+        "at": 1790164811705,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp16:231",
+        "event": "input",
+        "at": 1790164811706,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp1d:232",
+        "event": "keydown",
+        "at": 1790164811713,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp1e:233",
+        "event": "input",
+        "at": 1790164811714,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp1m:234",
+        "event": "keydown",
+        "at": 1790164811722,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp1m:235",
+        "event": "input",
+        "at": 1790164811722,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp1s:236",
+        "event": "keydown",
+        "at": 1790164811728,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp1t:237",
+        "event": "input",
+        "at": 1790164811729,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp20:238",
+        "event": "keydown",
+        "at": 1790164811736,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp20:239",
+        "event": "input",
+        "at": 1790164811736,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp27:240",
+        "event": "keydown",
+        "at": 1790164811743,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp28:241",
+        "event": "input",
+        "at": 1790164811744,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp2e:242",
+        "event": "keydown",
+        "at": 1790164811751,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp2f:243",
+        "event": "input",
+        "at": 1790164811751,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp2l:244",
+        "event": "keydown",
+        "at": 1790164811757,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp2m:245",
+        "event": "input",
+        "at": 1790164811758,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp2r:246",
+        "event": "keydown",
+        "at": 1790164811763,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp2r:247",
+        "event": "input",
+        "at": 1790164811763,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp2y:248",
+        "event": "keydown",
+        "at": 1790164811770,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp2y:249",
+        "event": "input",
+        "at": 1790164811770,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp36:250",
+        "event": "keydown",
+        "at": 1790164811778,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp37:251",
+        "event": "input",
+        "at": 1790164811779,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp3y:252",
+        "event": "change",
+        "at": 1790164811806,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp3y:253",
+        "event": "focusin",
+        "at": 1790164811806,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "submit"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp3z:254",
+        "event": "click",
+        "at": 1790164811807,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "submit"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wp3z:255",
+        "event": "submit",
+        "at": 1790164811807,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "submit"
+          }
+        },
+        "entry": {
+          "unit_id": "function:375a31626199c3642b9e9a8ab2f361ca4e2d97a0302b62284f5db92f12374c7f:1341:1429|submit",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:375a31626199c3642b9e9a8ab2f361ca4e2d97a0302b62284f5db92f12374c7f:1341:1429",
+          "resolved": true,
+          "file": "apps/react-vite/src/features/discussions/components/create-discussion.tsx",
+          "start": 1341,
+          "end": 1429,
+          "line": 49,
+          "content_hash_matches_fixture": true,
+          "snippet": "(values) => { createDiscussionMutation.mutate({ data: values }); }"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 12
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/api/discussions",
+            "transport": "xhr",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue1wp3z:255:request:4",
+            "route": null,
+            "handlers": [],
+            "terminal_handler": null,
+            "db": [],
+            "reached": "network",
+            "stopped_at": "network",
+            "because": "backend not instrumented (repository mock API server; frontend-only repository)"
+          }
+        ]
+      },
+      {
+        "action_id": "action:mue1wpt8:256",
+        "event": "focusin",
+        "at": 1790164812716,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "aria-haspopup": "dialog",
+            "aria-expanded": "false",
+            "aria-controls": "radix-:r5:"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      }
+    ]
+  },
+  {
+    "step": 6,
+    "name": "view-discussion",
+    "description": "click the discussion's \"View\" link",
+    "started": 1790164813827,
+    "ended": 1790164815829,
+    "status": "done",
+    "actions": [
+      {
+        "action_id": "action:mue1wqoe:257",
+        "event": "focusin",
+        "at": 1790164813838,
+        "target": {
+          "tag": "a",
+          "attributes": {}
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 2
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wqof:258",
+        "event": "click",
+        "at": 1790164813839,
+        "target": {
+          "tag": "a",
+          "attributes": {}
+        },
+        "entry": {
+          "unit_id": "function:bf63cee669390954c05d9c933a63310bf6d9a4ec27c7d7b3493d7d21f8745dfb:1581:1700|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:bf63cee669390954c05d9c933a63310bf6d9a4ec27c7d7b3493d7d21f8745dfb:1581:1700",
+          "resolved": true,
+          "file": "apps/react-vite/src/app/router.tsx",
+          "start": 1581,
+          "end": 1700,
+          "line": 56,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => import('./routes/app/discussions/discussion').then( convert(queryClient), )"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 2
+        },
+        "requests": []
+      }
+    ]
+  },
+  {
+    "step": 7,
+    "name": "create-comment",
+    "description": "click \"Create Comment\", type Body, click Submit",
+    "started": 1790164815847,
+    "ended": 1790164819929,
+    "status": "done",
+    "actions": [
+      {
+        "action_id": "action:mue1ws8n:259",
+        "event": "focusin",
+        "at": 1790164815863,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "aria-haspopup": "dialog",
+            "aria-expanded": "false",
+            "aria-controls": "radix-:rh:"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 19
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1ws8n:260",
+        "event": "click",
+        "at": 1790164815863,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "aria-haspopup": "dialog",
+            "aria-expanded": "false",
+            "aria-controls": "radix-:rh:"
+          }
+        },
+        "entry": {
+          "unit_id": "function:2d7c02d89c04a611649cfec20c4bedfc292a0fa6ed416f27733d82d55d539fd0:751:859|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:2d7c02d89c04a611649cfec20c4bedfc292a0fa6ed416f27733d82d55d539fd0:751:859",
+          "resolved": true,
+          "file": "apps/react-vite/src/components/ui/form/form-drawer.tsx",
+          "start": 751,
+          "end": 859,
+          "line": 42,
+          "content_hash_matches_fixture": true,
+          "snippet": "(isOpen) => { if (!isOpen) { close(); } else { open(); } }"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 19
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1ws90:261",
+        "event": "focusin",
+        "at": 1790164815876,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsw2:262",
+        "event": "click",
+        "at": 1790164816706,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsw8:263",
+        "event": "keydown",
+        "at": 1790164816712,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsw8:264",
+        "event": "input",
+        "at": 1790164816712,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wswe:265",
+        "event": "keydown",
+        "at": 1790164816718,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wswf:266",
+        "event": "input",
+        "at": 1790164816719,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wswm:267",
+        "event": "keydown",
+        "at": 1790164816726,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wswn:268",
+        "event": "input",
+        "at": 1790164816727,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wswt:269",
+        "event": "keydown",
+        "at": 1790164816733,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wswu:270",
+        "event": "input",
+        "at": 1790164816734,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsx0:271",
+        "event": "keydown",
+        "at": 1790164816740,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsx0:272",
+        "event": "input",
+        "at": 1790164816740,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsx7:273",
+        "event": "keydown",
+        "at": 1790164816747,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsx8:274",
+        "event": "input",
+        "at": 1790164816748,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsxd:275",
+        "event": "keydown",
+        "at": 1790164816753,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsxd:276",
+        "event": "input",
+        "at": 1790164816753,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsxl:277",
+        "event": "keydown",
+        "at": 1790164816761,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsxm:278",
+        "event": "input",
+        "at": 1790164816762,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsxt:279",
+        "event": "keydown",
+        "at": 1790164816769,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsxt:280",
+        "event": "input",
+        "at": 1790164816769,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsy0:281",
+        "event": "keydown",
+        "at": 1790164816776,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsy0:282",
+        "event": "input",
+        "at": 1790164816776,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsy6:283",
+        "event": "keydown",
+        "at": 1790164816782,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsy6:284",
+        "event": "input",
+        "at": 1790164816782,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsyb:285",
+        "event": "keydown",
+        "at": 1790164816787,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsyc:286",
+        "event": "input",
+        "at": 1790164816788,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsyk:287",
+        "event": "keydown",
+        "at": 1790164816796,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsyk:288",
+        "event": "input",
+        "at": 1790164816796,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsys:289",
+        "event": "keydown",
+        "at": 1790164816804,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsyt:290",
+        "event": "input",
+        "at": 1790164816805,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsz1:291",
+        "event": "keydown",
+        "at": 1790164816813,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsz1:292",
+        "event": "input",
+        "at": 1790164816813,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsz8:293",
+        "event": "keydown",
+        "at": 1790164816820,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wsz8:294",
+        "event": "input",
+        "at": 1790164816820,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wszf:295",
+        "event": "keydown",
+        "at": 1790164816827,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wszg:296",
+        "event": "input",
+        "at": 1790164816828,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wszn:297",
+        "event": "keydown",
+        "at": 1790164816835,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wszo:298",
+        "event": "input",
+        "at": 1790164816836,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wszu:299",
+        "event": "keydown",
+        "at": 1790164816842,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wszu:300",
+        "event": "input",
+        "at": 1790164816842,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wt00:301",
+        "event": "keydown",
+        "at": 1790164816848,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wt01:302",
+        "event": "input",
+        "at": 1790164816849,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wt08:303",
+        "event": "keydown",
+        "at": 1790164816856,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wt08:304",
+        "event": "input",
+        "at": 1790164816856,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wt0e:305",
+        "event": "keydown",
+        "at": 1790164816862,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wt0e:306",
+        "event": "input",
+        "at": 1790164816862,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wt0m:307",
+        "event": "keydown",
+        "at": 1790164816870,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wt0m:308",
+        "event": "input",
+        "at": 1790164816870,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wt0t:309",
+        "event": "keydown",
+        "at": 1790164816877,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wt0u:310",
+        "event": "input",
+        "at": 1790164816878,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wt11:311",
+        "event": "keydown",
+        "at": 1790164816885,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wt11:312",
+        "event": "input",
+        "at": 1790164816885,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wt19:313",
+        "event": "keydown",
+        "at": 1790164816893,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wt19:314",
+        "event": "input",
+        "at": 1790164816893,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wt1t:315",
+        "event": "change",
+        "at": 1790164816913,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wt1t:316",
+        "event": "focusin",
+        "at": 1790164816913,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "submit"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wt1t:317",
+        "event": "click",
+        "at": 1790164816913,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "submit"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wt1t:318",
+        "event": "submit",
+        "at": 1790164816913,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "submit"
+          }
+        },
+        "entry": {
+          "unit_id": "function:e34e373b7bb4b1fe003eab7045be4e5298353fb2e626fa48e506cc653e71384e:1305:1409|submit",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:e34e373b7bb4b1fe003eab7045be4e5298353fb2e626fa48e506cc653e71384e:1305:1409",
+          "resolved": true,
+          "file": "apps/react-vite/src/features/comments/components/create-comment.tsx",
+          "start": 1305,
+          "end": 1409,
+          "line": 53,
+          "content_hash_matches_fixture": true,
+          "snippet": "(values) => { createCommentMutation.mutate({ data: values, }); }"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 14
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/api/comments",
+            "transport": "xhr",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue1wt1t:318:request:8",
+            "route": null,
+            "handlers": [],
+            "terminal_handler": null,
+            "db": [],
+            "reached": "network",
+            "stopped_at": "network",
+            "because": "backend not instrumented (repository mock API server; frontend-only repository)"
+          }
+        ]
+      },
+      {
+        "action_id": "action:mue1wtei:319",
+        "event": "focusin",
+        "at": 1790164817370,
+        "target": {
+          "tag": "div",
+          "attributes": {
+            "role": "dialog",
+            "id": "radix-:rh:",
+            "aria-describedby": "radix-:rj:",
+            "aria-labelledby": "radix-:ri:"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 4
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wtnl:320",
+        "event": "focusin",
+        "at": 1790164817697,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "aria-haspopup": "dialog",
+            "aria-expanded": "false",
+            "aria-controls": "radix-:rh:"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      }
+    ]
+  },
+  {
+    "step": 8,
+    "name": "delete-comment",
+    "description": "click \"Delete Comment\", then confirm \"Delete Comment\"",
+    "started": 1790164819950,
+    "ended": 1790164822667,
+    "status": "done",
+    "actions": [
+      {
+        "action_id": "action:mue1wvej:321",
+        "event": "focusin",
+        "at": 1790164819963,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "aria-haspopup": "dialog",
+            "aria-expanded": "false",
+            "aria-controls": "radix-:rk:"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 19
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wvej:322",
+        "event": "click",
+        "at": 1790164819963,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "aria-haspopup": "dialog",
+            "aria-expanded": "false",
+            "aria-controls": "radix-:rk:"
+          }
+        },
+        "entry": {
+          "unit_id": "function:9f7f59228a8a9158c5dd599d8c83b33f1bc9a95d7a6d6fc6727d0a0a0a29035a:1012:1120|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:9f7f59228a8a9158c5dd599d8c83b33f1bc9a95d7a6d6fc6727d0a0a0a29035a:1012:1120",
+          "resolved": true,
+          "file": "apps/react-vite/src/components/ui/dialog/confirmation-dialog/confirmation-dialog.tsx",
+          "start": 1012,
+          "end": 1120,
+          "line": 48,
+          "content_hash_matches_fixture": true,
+          "snippet": "(isOpen) => { if (!isOpen) { close(); } else { open(); } }"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 19
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wvex:323",
+        "event": "focusin",
+        "at": 1790164819977,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wvkb:324",
+        "event": "click",
+        "at": 1790164820171,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button"
+          }
+        },
+        "entry": {
+          "unit_id": "function:9c106ec7c68b33b46d55a0941eb9c29190eb0421efc324f13667e06b329545bc:1266:1319|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:9c106ec7c68b33b46d55a0941eb9c29190eb0421efc324f13667e06b329545bc:1266:1319",
+          "resolved": true,
+          "file": "apps/react-vite/src/features/comments/components/delete-comment.tsx",
+          "start": 1266,
+          "end": 1319,
+          "line": 48,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => deleteCommentMutation.mutate({ commentId: id })"
+        },
+        "entry_frontier": null,
+        "mutation": null,
+        "requests": [
+          {
+            "method": "DELETE",
+            "path": "/api/comments/-eCGgzMnBkum1jBAvcYQG",
+            "transport": "xhr",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue1wvkb:324:request:10",
+            "route": null,
+            "handlers": [],
+            "terminal_handler": null,
+            "db": [],
+            "reached": "network",
+            "stopped_at": "network",
+            "because": "backend not instrumented (repository mock API server; frontend-only repository)"
+          }
+        ]
+      },
+      {
+        "action_id": "action:mue1wwf6:325",
+        "event": "focusin",
+        "at": 1790164821282,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "aria-haspopup": "dialog",
+            "aria-expanded": "false",
+            "aria-controls": "radix-:rk:"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      }
+    ]
+  },
+  {
+    "step": 9,
+    "name": "dismiss-notifications",
+    "description": "click Close on each visible notification toast",
+    "started": 1790164822690,
+    "ended": 1790164823570,
+    "status": "done",
+    "actions": [
+      {
+        "action_id": "action:mue1wxix:326",
+        "event": "focusin",
+        "at": 1790164822713,
+        "target": {
+          "tag": "button",
+          "attributes": {}
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wxiy:327",
+        "event": "click",
+        "at": 1790164822714,
+        "target": {
+          "tag": "button",
+          "attributes": {}
+        },
+        "entry": {
+          "unit_id": "function:28e9a3012afa3d41067d6e279a0154b6daf9b92a41e18c361dabfb35bb1de430:1570:1628|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:28e9a3012afa3d41067d6e279a0154b6daf9b92a41e18c361dabfb35bb1de430:1570:1628",
+          "resolved": true,
+          "file": "apps/react-vite/src/components/ui/notifications/notification.tsx",
+          "start": 1570,
+          "end": 1628,
+          "line": 39,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => { onDismiss(id); }"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wxjl:328",
+        "event": "focusin",
+        "at": 1790164822737,
+        "target": {
+          "tag": "button",
+          "attributes": {}
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wxjm:329",
+        "event": "click",
+        "at": 1790164822738,
+        "target": {
+          "tag": "button",
+          "attributes": {}
+        },
+        "entry": {
+          "unit_id": "function:28e9a3012afa3d41067d6e279a0154b6daf9b92a41e18c361dabfb35bb1de430:1570:1628|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:28e9a3012afa3d41067d6e279a0154b6daf9b92a41e18c361dabfb35bb1de430:1570:1628",
+          "resolved": true,
+          "file": "apps/react-vite/src/components/ui/notifications/notification.tsx",
+          "start": 1570,
+          "end": 1628,
+          "line": 39,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => { onDismiss(id); }"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wxka:330",
+        "event": "focusin",
+        "at": 1790164822762,
+        "target": {
+          "tag": "button",
+          "attributes": {}
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wxkb:331",
+        "event": "click",
+        "at": 1790164822763,
+        "target": {
+          "tag": "button",
+          "attributes": {}
+        },
+        "entry": {
+          "unit_id": "function:28e9a3012afa3d41067d6e279a0154b6daf9b92a41e18c361dabfb35bb1de430:1570:1628|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:28e9a3012afa3d41067d6e279a0154b6daf9b92a41e18c361dabfb35bb1de430:1570:1628",
+          "resolved": true,
+          "file": "apps/react-vite/src/components/ui/notifications/notification.tsx",
+          "start": 1570,
+          "end": 1628,
+          "line": 39,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => { onDismiss(id); }"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      }
+    ]
+  },
+  {
+    "step": 10,
+    "name": "sign-out",
+    "description": "open the user menu and click \"Sign Out\"",
+    "started": 1790164823588,
+    "ended": 1790164826258,
+    "status": "done",
+    "actions": [
+      {
+        "action_id": "action:mue1wy81:332",
+        "event": "focusin",
+        "at": 1790164823617,
+        "target": {
+          "tag": "div",
+          "attributes": {
+            "role": "menu",
+            "aria-orientation": "vertical",
+            "id": "radix-:r4:",
+            "aria-labelledby": "radix-:r3:"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 9
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wy8f:333",
+        "event": "click",
+        "at": 1790164823631,
+        "target": {
+          "tag": "html",
+          "attributes": {}
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wydg:334",
+        "event": "focusin",
+        "at": 1790164823813,
+        "target": {
+          "tag": "div",
+          "attributes": {
+            "role": "menuitem"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 7
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue1wydn:335",
+        "event": "click",
+        "at": 1790164823819,
+        "target": {
+          "tag": "div",
+          "attributes": {
+            "role": "menuitem"
+          }
+        },
+        "entry": {
+          "unit_id": "function:0f58eb5dc4e3834134eead251678c03de9dbbb8bb5a1a7ad39cf939dd95262f8:6526:6549|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:0f58eb5dc4e3834134eead251678c03de9dbbb8bb5a1a7ad39cf939dd95262f8:6526:6549",
+          "resolved": true,
+          "file": "apps/react-vite/src/components/layouts/dashboard-layout.tsx",
+          "start": 6526,
+          "end": 6549,
+          "line": 192,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => logout.mutate({})"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 5
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/api/auth/logout",
+            "transport": "xhr",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue1wydn:335:request:12",
+            "route": null,
+            "handlers": [],
+            "terminal_handler": null,
+            "db": [],
+            "reached": "network",
+            "stopped_at": "network",
+            "because": "backend not instrumented (repository mock API server; frontend-only repository)"
+          }
+        ]
+      },
+      {
+        "action_id": "action:mue1wyij:336",
+        "event": "focusin",
+        "at": 1790164823995,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "id": "radix-:r3:",
+            "aria-haspopup": "menu",
+            "aria-expanded": "false"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      }
+    ]
+  }
+]

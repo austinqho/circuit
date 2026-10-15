@@ -1,0 +1,6 @@
+{
+ "feedback": {
+  "function_id": "function:b6e145fc35bd0ba6db55e49be03b3feca87fa96f6806ac5b0544ae8b6145c59c:3347:3559",
+  "reason": "docs/gates/G1-frontend-only.md: final7's Feedback.tsx:3324:3559 (handleDownOption) runs during render and returns the click handler 3347:3559, which is what runs on the click"
+ }
+}

@@ -1,0 +1,201 @@
+## final7
+{
+  "calls": 58,
+  "identical_text": 58,
+  "identical_structured": 58,
+  "differences": {}
+}
+## g6
+{
+  "calls": 421,
+  "identical_text": 421,
+  "identical_structured": 421,
+  "differences": {}
+}
+## g3e
+{
+  "calls": 57,
+  "identical_text": 57,
+  "identical_structured": 57,
+  "differences": {}
+}
+## trusted-events-store
+{
+  "calls": 888,
+  "identical_text": 884,
+  "identical_structured": 826,
+  "differences": {
+    "recent_actions.actions.[].summary": {
+      "n": 2,
+      "example": "recent_actions.actions.[].summary: \"keydown action:mug1n7pt:75 (Escape in <button type=\\\"button -> \"keydown action:mug1n7pt:75 (Escape in <button type=\\\"button"
+    },
+    "recent_actions.summaries.[]": {
+      "n": 2,
+      "example": "recent_actions.summaries.[]: \"keydown action:mug1n7pt:75 (Escape in <button type=\\\"button -> \"keydown action:mug1n7pt:75 (Escape in <button type=\\\"button"
+    },
+    "action_chain.chain.handler_abstention.basis": {
+      "n": 57,
+      "example": "action_chain.chain.handler_abstention.basis: undefined -> \"declared\""
+    },
+    "action_chain.spine.[].function_id": {
+      "n": 3,
+      "example": "action_chain.spine.[].function_id: \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea -> \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea"
+    },
+    "action_chain.spine.[].source.start": {
+      "n": 3,
+      "example": "action_chain.spine.[].source.start: 4067 -> 1786"
+    },
+    "action_chain.spine.[].source.end": {
+      "n": 3,
+      "example": "action_chain.spine.[].source.end: 4279 -> 1854"
+    },
+    "action_chain.spine.[].label": {
+      "n": 3,
+      "example": "action_chain.spine.[].label: \"<not in manifest> function:1c1d0e26b55d7b136b99714d004f561d -> \"<not in manifest> function:1c1d0e26b55d7b136b99714d004f561d"
+    },
+    "action_chain.stops.[].function_id": {
+      "n": 3,
+      "example": "action_chain.stops.[].function_id: \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea -> \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea"
+    },
+    "action_chain.stops.[].unit_id": {
+      "n": 3,
+      "example": "action_chain.stops.[].unit_id: \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea -> \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea"
+    },
+    "action_chain.stops.[].source.start": {
+      "n": 3,
+      "example": "action_chain.stops.[].source.start: 4067 -> 1786"
+    },
+    "action_chain.stops.[].source.end": {
+      "n": 3,
+      "example": "action_chain.stops.[].source.end: 4279 -> 1854"
+    },
+    "action_chain.stops.[].label": {
+      "n": 3,
+      "example": "action_chain.stops.[].label: \"<not in manifest> function:1c1d0e26b55d7b136b99714d004f561d -> \"<not in manifest> function:1c1d0e26b55d7b136b99714d004f561d"
+    },
+    "action_chain.segments.[].summary": {
+      "n": 3,
+      "example": "action_chain.segments.[].summary: \"<not in manifest> function:1c1d0e26b55d7b136b99714d004f561d -> \"<not in manifest> function:1c1d0e26b55d7b136b99714d004f561d"
+    },
+    "action_chain.chain.entry_handler.unit_id": {
+      "n": 3,
+      "example": "action_chain.chain.entry_handler.unit_id: \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea -> \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea"
+    },
+    "action_chain.chain.entry_handler.function_id": {
+      "n": 3,
+      "example": "action_chain.chain.entry_handler.function_id: \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea -> \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea"
+    },
+    "action_chain.chain.spine.function_ids.[]": {
+      "n": 3,
+      "example": "action_chain.chain.spine.function_ids.[]: \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea -> \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea"
+    },
+    "action_chain.chain.chain.[].id": {
+      "n": 3,
+      "example": "action_chain.chain.chain.[].id: \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea -> \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea"
+    },
+    "action_chain.chain.chain.[].evidence_ids.[]": {
+      "n": 3,
+      "example": "action_chain.chain.chain.[].evidence_ids.[]: 152 -> 154"
+    },
+    "action_chain.summary": {
+      "n": 3,
+      "example": "action_chain.summary: \"keydown action:mug1mwdh:75 (Escape in <button type=\\\"button -> \"keydown action:mug1mwdh:75 (Escape in <button type=\\\"button"
+    },
+    "element_history.actions.[].entry_handler.function_id": {
+      "n": 1,
+      "example": "element_history.actions.[].entry_handler.function_id: \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea -> \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea"
+    },
+    "element_history.actions.[].entry_handler.unit_id": {
+      "n": 1,
+      "example": "element_history.actions.[].entry_handler.unit_id: \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea -> \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea"
+    },
+    "element_history.actions.[].entry_handler.source.start": {
+      "n": 1,
+      "example": "element_history.actions.[].entry_handler.source.start: 4067 -> 1786"
+    },
+    "element_history.actions.[].entry_handler.source.end": {
+      "n": 1,
+      "example": "element_history.actions.[].entry_handler.source.end: 4279 -> 1854"
+    },
+    "element_history.actions.[].entry_handler.label": {
+      "n": 1,
+      "example": "element_history.actions.[].entry_handler.label: \"<not in manifest> function:1c1d0e26b55d7b136b99714d004f561d -> \"<not in manifest> function:1c1d0e26b55d7b136b99714d004f561d"
+    },
+    "element_history.actions.[].spine.[].function_id": {
+      "n": 1,
+      "example": "element_history.actions.[].spine.[].function_id: \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea -> \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea"
+    },
+    "element_history.actions.[].spine.[].source.start": {
+      "n": 1,
+      "example": "element_history.actions.[].spine.[].source.start: 4067 -> 1786"
+    },
+    "element_history.actions.[].spine.[].source.end": {
+      "n": 1,
+      "example": "element_history.actions.[].spine.[].source.end: 4279 -> 1854"
+    },
+    "element_history.actions.[].spine.[].label": {
+      "n": 1,
+      "example": "element_history.actions.[].spine.[].label: \"<not in manifest> function:1c1d0e26b55d7b136b99714d004f561d -> \"<not in manifest> function:1c1d0e26b55d7b136b99714d004f561d"
+    },
+    "element_history.actions.[].segments.[].summary": {
+      "n": 1,
+      "example": "element_history.actions.[].segments.[].summary: \"<not in manifest> function:1c1d0e26b55d7b136b99714d004f561d -> \"<not in manifest> function:1c1d0e26b55d7b136b99714d004f561d"
+    },
+    "element_history.actions.[].summary": {
+      "n": 3,
+      "example": "element_history.actions.[].summary: \"keydown action:mug1n7pt:75 (Escape in <button type=\\\"button -> \"keydown action:mug1n7pt:75 (Escape in <button type=\\\"button"
+    },
+    "element_history.summaries.[]": {
+      "n": 3,
+      "example": "element_history.summaries.[]: \"keydown action:mug1n7pt:75 (Escape in <button type=\\\"button -> \"keydown action:mug1n7pt:75 (Escape in <button type=\\\"button"
+    },
+    "element_history.attempts.[].entry_handler.function_id": {
+      "n": 1,
+      "example": "element_history.attempts.[].entry_handler.function_id: \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea -> \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea"
+    },
+    "element_history.attempts.[].entry_handler.unit_id": {
+      "n": 1,
+      "example": "element_history.attempts.[].entry_handler.unit_id: \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea -> \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea"
+    },
+    "element_history.attempts.[].entry_handler.source.start": {
+      "n": 1,
+      "example": "element_history.attempts.[].entry_handler.source.start: 4067 -> 1786"
+    },
+    "element_history.attempts.[].entry_handler.source.end": {
+      "n": 1,
+      "example": "element_history.attempts.[].entry_handler.source.end: 4279 -> 1854"
+    },
+    "element_history.attempts.[].entry_handler.label": {
+      "n": 1,
+      "example": "element_history.attempts.[].entry_handler.label: \"<not in manifest> function:1c1d0e26b55d7b136b99714d004f561d -> \"<not in manifest> function:1c1d0e26b55d7b136b99714d004f561d"
+    },
+    "element_history.attempts.[].spine.[].function_id": {
+      "n": 1,
+      "example": "element_history.attempts.[].spine.[].function_id: \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea -> \"function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea"
+    },
+    "element_history.attempts.[].spine.[].source.start": {
+      "n": 1,
+      "example": "element_history.attempts.[].spine.[].source.start: 4067 -> 1786"
+    },
+    "element_history.attempts.[].spine.[].source.end": {
+      "n": 1,
+      "example": "element_history.attempts.[].spine.[].source.end: 4279 -> 1854"
+    },
+    "element_history.attempts.[].spine.[].label": {
+      "n": 1,
+      "example": "element_history.attempts.[].spine.[].label: \"<not in manifest> function:1c1d0e26b55d7b136b99714d004f561d -> \"<not in manifest> function:1c1d0e26b55d7b136b99714d004f561d"
+    },
+    "element_history.attempts.[].segments.[].summary": {
+      "n": 1,
+      "example": "element_history.attempts.[].segments.[].summary: \"<not in manifest> function:1c1d0e26b55d7b136b99714d004f561d -> \"<not in manifest> function:1c1d0e26b55d7b136b99714d004f561d"
+    },
+    "element_history.attempts.[].summary": {
+      "n": 3,
+      "example": "element_history.attempts.[].summary: \"keydown action:mug1n7pt:75 (Escape in <button type=\\\"button -> \"keydown action:mug1n7pt:75 (Escape in <button type=\\\"button"
+    },
+    "element_history.summary": {
+      "n": 1,
+      "example": "element_history.summary: \"8 action(s) in 6 attempt(s); 2 caused focus(es) (not user g -> \"8 action(s) in 6 attempt(s); 2 caused focus(es) (not user g"
+    }
+  }
+}

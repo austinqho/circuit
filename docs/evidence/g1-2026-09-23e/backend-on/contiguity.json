@@ -1,0 +1,33 @@
+{
+ "pages": 1,
+ "sequence_contiguous": true,
+ "N": 134126,
+ "stamps_contiguous": true,
+ "S": 791,
+ "kinds": [
+  [
+   "function.enter",
+   66684
+  ],
+  [
+   "function.exit",
+   66684
+  ],
+  [
+   "element.stamp",
+   791
+  ],
+  [
+   "dom.action",
+   346
+  ],
+  [
+   "dom.mutation",
+   329
+  ],
+  [
+   "network.request",
+   83
+  ]
+ ]
+}

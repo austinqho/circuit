@@ -1,0 +1,82 @@
+1 GET /api/config -> -  
+2 POST /api/auth/refresh -> -  
+3 GET /api/banner -> -  
+4 GET /api/config -> -  
+327 POST /api/auth/login -> action:muemdkvj:83 direct submit button {"type": "submit", "aria-label": "Continue", "data-testid": "login-button"}
+446 GET /api/banner -> action:muemdkvj:83 direct submit button {"type": "submit", "aria-label": "Continue", "data-testid": "login-button"}
+447 GET /api/config -> action:muemdkvj:83 direct submit button {"type": "submit", "aria-label": "Continue", "data-testid": "login-button"}
+448 GET /api/roles/USER -> -  
+449 GET /api/roles/ADMIN -> -  
+450 GET /api/user -> -  
+593 GET /api/endpoints -> -  
+594 GET /api/user/settings/favorites -> -  
+595 GET /api/projects -> -  
+596 GET /api/agents/chat/active -> -  
+597 GET /api/convos -> -  
+598 GET /api/mcp/servers -> -  
+599 GET /api/permissions/mcpServer/effective/all -> -  
+600 GET /api/files/speech/config/get -> -  
+601 GET /api/models -> -  
+602 GET /api/prompts/groups -> -  
+603 GET /api/prompts/all -> -  
+604 GET /api/files -> -  
+605 GET /api/search/enable -> -  
+742 GET /api/tags -> -  
+848 GET /api/keys -> -  
+849 GET /api/agents -> -  
+850 GET /api/presets -> -  
+851 GET /api/files/config -> -  
+852 GET /api/agents/tools/web_search/auth -> -  
+853 GET /api/endpoints/token-config -> -  
+854 GET /api/agents -> -  
+1110 GET /health -> -  
+18514 POST /api/agents/chat/openAI -> action:muemdm8u:193 state_effect submit button {"aria-label": "Send message", "data-testid": "send-button", "type": "submit"}
+19627 GET /api/agents/chat/stream/ac75ea16-f589-56f8-b7d4-8cc8afaf94ce -> action:muemdm8u:193 state_effect submit button {"aria-label": "Send message", "data-testid": "send-button", "type": "submit"}
+22280 GET /api/agents/chat/status/ac75ea16-f589-56f8-b7d4-8cc8afaf94ce -> action:muemdm8u:193 state_effect submit button {"aria-label": "Send message", "data-testid": "send-button", "type": "submit"}
+26303 GET /api/convos/gen_title/ac75ea16-f589-56f8-b7d4-8cc8afaf94ce -> action:muemdm8u:193 state_effect submit button {"aria-label": "Send message", "data-testid": "send-button", "type": "submit"}
+30799 PUT /api/messages/new/3dca32c4-646c-45cc-bc2c-b5bef9acd558_/feedback -> action:muemdsxw:199 direct click button {"type": "button", "aria-label": "Didn't match my request"}
+32671 POST /api/agents/chat/openAI -> action:muemdt03:201 direct click button {"data-testid": "regenerate-generation-button", "type": "button"}
+32810 GET /api/agents/chat/stream/ac75ea16-f589-56f8-b7d4-8cc8afaf94ce -> action:muemdt03:201 direct click button {"data-testid": "regenerate-generation-button", "type": "button"}
+35798 GET /api/share/link/ac75ea16-f589-56f8-b7d4-8cc8afaf94ce -> action:muemdt03:201 direct click button {"data-testid": "regenerate-generation-button", "type": "button"}
+35799 GET /api/messages/ac75ea16-f589-56f8-b7d4-8cc8afaf94ce -> action:muemdt03:201 direct click button {"data-testid": "regenerate-generation-button", "type": "button"}
+35800 GET /api/agents/tools/calls -> action:muemdt03:201 direct click button {"data-testid": "regenerate-generation-button", "type": "button"}
+40056 GET /api/agents/chat/status/ac75ea16-f589-56f8-b7d4-8cc8afaf94ce -> action:muemdt03:201 direct click button {"data-testid": "regenerate-generation-button", "type": "button"}
+44444 GET /api/messages/ac75ea16-f589-56f8-b7d4-8cc8afaf94ce -> -  
+47832 POST /api/agents/chat/openAI -> action:muemdv4y:211 direct click button {}
+47968 GET /api/agents/chat/stream/ac75ea16-f589-56f8-b7d4-8cc8afaf94ce -> action:muemdv4y:211 direct click button {}
+56103 GET /api/agents/chat/status/ac75ea16-f589-56f8-b7d4-8cc8afaf94ce -> action:muemdv4y:211 direct click button {}
+62789 POST /api/convos/update -> action:muemdy7e:241 direct click button {"aria-label": "Save", "type": "button"}
+67595 POST /api/agents/chat/openAI -> action:muemdyms:243 direct click button {"data-testid": "regenerate-generation-button", "type": "button"}
+67728 GET /api/agents/chat/stream/ac75ea16-f589-56f8-b7d4-8cc8afaf94ce -> action:muemdyms:243 direct click button {"data-testid": "regenerate-generation-button", "type": "button"}
+75633 GET /api/agents/chat/status/ac75ea16-f589-56f8-b7d4-8cc8afaf94ce -> action:muemdyms:243 direct click button {"data-testid": "regenerate-generation-button", "type": "button"}
+80659 GET /api/agents/categories -> action:muemdz74:247 mount_effect click button {"type": "button", "aria-label": "Agent Builder", "data-testid": "nav-panel-agents"}
+80660 GET /api/skills -> action:muemdz74:247 mount_effect click button {"type": "button", "aria-label": "Agent Builder", "data-testid": "nav-panel-agents"}
+80661 GET /api/admin/roles -> action:muemdz74:247 mount_effect click button {"type": "button", "aria-label": "Agent Builder", "data-testid": "nav-panel-agents"}
+80662 GET /api/models -> action:muemdz74:247 mount_effect click button {"type": "button", "aria-label": "Agent Builder", "data-testid": "nav-panel-agents"}
+80663 GET /api/agents/tools -> action:muemdz74:247 mount_effect click button {"type": "button", "aria-label": "Agent Builder", "data-testid": "nav-panel-agents"}
+81820 POST /api/agents -> action:mueme19c:267 direct submit button {"type": "submit", "aria-label": "Create"}
+82598 GET /api/agents/agent_p5K3tfF6UuKEClSCB0Ugp -> -  
+82599 GET /api/agents/actions -> -  
+82600 GET /api/permissions/agent/6ab445ad22ad6affe3d95a97/effective -> -  
+82601 GET /api/permissions/remoteAgent/6ab445ad22ad6affe3d95a97/effective -> -  
+82602 GET /api/permissions/agent/6ab445ad22ad6affe3d95a97 -> -  
+82603 GET /api/agents/agent_p5K3tfF6UuKEClSCB0Ugp/expanded -> -  
+82606 GET /api/permissions/remoteAgent/6ab445ad22ad6affe3d95a97 -> -  
+83991 GET /api/keys -> action:mueme20c:269 direct click button {"type": "button", "aria-label": "Select Agent"}
+83992 GET /api/agents/agent_p5K3tfF6UuKEClSCB0Ugp -> action:mueme20c:269 direct click button {"type": "button", "aria-label": "Select Agent"}
+90346 GET /api/messages/ac75ea16-f589-56f8-b7d4-8cc8afaf94ce -> action:mueme2dk:272 direct click a {"data-testid": "new-chat-button", "aria-label": "New chat"}
+90347 GET /api/agents/agent_p5K3tfF6UuKEClSCB0Ugp -> action:mueme2dk:272 direct click a {"data-testid": "new-chat-button", "aria-label": "New chat"}
+101645 POST /api/agents/chat/agents -> action:mueme2xf:321 state_effect submit button {"aria-label": "Send message", "data-testid": "send-button", "type": "submit"}
+102511 GET /api/agents/chat/stream/df6a9a8b-9ab8-5739-9d1b-8336431a8eaf -> action:mueme2xf:321 state_effect submit button {"aria-label": "Send message", "data-testid": "send-button", "type": "submit"}
+108267 GET /api/share/link/df6a9a8b-9ab8-5739-9d1b-8336431a8eaf -> action:mueme2xf:321 state_effect submit button {"aria-label": "Send message", "data-testid": "send-button", "type": "submit"}
+108268 GET /api/messages/df6a9a8b-9ab8-5739-9d1b-8336431a8eaf -> action:mueme2xf:321 state_effect submit button {"aria-label": "Send message", "data-testid": "send-button", "type": "submit"}
+108269 GET /api/agents/tools/calls -> action:mueme2xf:321 state_effect submit button {"aria-label": "Send message", "data-testid": "send-button", "type": "submit"}
+112435 GET /api/agents/chat/status/df6a9a8b-9ab8-5739-9d1b-8336431a8eaf -> action:mueme2xf:321 state_effect submit button {"aria-label": "Send message", "data-testid": "send-button", "type": "submit"}
+116783 GET /api/messages/df6a9a8b-9ab8-5739-9d1b-8336431a8eaf -> -  
+116784 GET /api/agents/chat/status/df6a9a8b-9ab8-5739-9d1b-8336431a8eaf -> -  
+117992 DELETE /api/convos -> action:mueme581:329 direct click button {"type": "button"}
+121080 GET /api/convos -> action:mueme581:329 direct click button {"type": "button"}
+121081 GET /api/projects -> action:mueme581:329 direct click button {"type": "button"}
+121082 GET /api/tags -> action:mueme581:329 direct click button {"type": "button"}
+121083 GET /api/messages/df6a9a8b-9ab8-5739-9d1b-8336431a8eaf -> action:mueme581:329 direct click button {"type": "button"}
+121084 GET /api/agents/agent_p5K3tfF6UuKEClSCB0Ugp -> action:mueme581:329 direct click button {"type": "button"}

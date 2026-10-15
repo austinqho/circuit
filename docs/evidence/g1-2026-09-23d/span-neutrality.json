@@ -1,0 +1,12 @@
+{
+  "schema": "producttrace.span-neutrality.v1",
+  "build_on": "687a51791eb4",
+  "build_off": "75fc652de7fb",
+  "env_off": "PRODUCTTRACE_PLACEMENTS=0 PRODUCTTRACE_AWAIT_CONTINUATIONS=0",
+  "functions_on": 8928,
+  "functions_off": 8928,
+  "only_on": [],
+  "only_off": [],
+  "placements_on": 8198,
+  "placements_off": 0
+}

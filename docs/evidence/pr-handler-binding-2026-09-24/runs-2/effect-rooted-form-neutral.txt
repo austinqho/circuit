@@ -1,0 +1,1 @@
+{"status":"ok","headless":true,"action_id":"action:mug6xeqs:13","credited":["fixture-submit|submit"],"spine_only":"fixture-validator","invoked_by":[{"function_id":"fixture-validator","invoked_by":"event"},{"function_id":"fixture-submit","invoked_by":"async"}]}

@@ -1,0 +1,3640 @@
+[
+  {
+    "step": 1,
+    "name": "open-new-workspace",
+    "description": "click the sidebar \"+\" (New Workspace) button",
+    "started": 1790167778409,
+    "ended": 1790167779272,
+    "status": "done",
+    "actions": [
+      {
+        "action_id": "action:mue3oa68:2",
+        "event": "focusin",
+        "at": 1790167778432,
+        "target": {
+          "tag": "button",
+          "attributes": {}
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3oa69:3",
+        "event": "click",
+        "at": 1790167778433,
+        "target": {
+          "tag": "button",
+          "attributes": {}
+        },
+        "entry": {
+          "unit_id": "function:19c9007f75c3ed775a554998332b843d2fd939b441d3ccb957a09578b46e1b36:2399:2432|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:19c9007f75c3ed775a554998332b843d2fd939b441d3ccb957a09578b46e1b36:2399:2432",
+          "resolved": true,
+          "file": "frontend/src/components/Modals/NewWorkspace.jsx",
+          "start": 2399,
+          "end": 2432,
+          "line": 72,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => { setShowing(true); }"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3oa6c:4",
+        "event": "focusin",
+        "at": 1790167778437,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "id": "name",
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      }
+    ]
+  },
+  {
+    "step": 2,
+    "name": "create-workspace",
+    "description": "type \"Tracer G2\" into the workspace name field and click Save",
+    "started": 1790167779336,
+    "ended": 1790167781184,
+    "status": "done",
+    "actions": [
+      {
+        "action_id": "action:mue3oavu:5",
+        "event": "click",
+        "at": 1790167779354,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "id": "name",
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3oavy:6",
+        "event": "keydown",
+        "at": 1790167779358,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "id": "name",
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:1d3b1faced3faba76473f024a30e37b3012f87c953537f168558bbfb7ba0e332:1181:1319|keydown",
+          "rooted": false,
+          "invoked_by": "event",
+          "function_id": "function:1d3b1faced3faba76473f024a30e37b3012f87c953537f168558bbfb7ba0e332:1181:1319",
+          "resolved": true,
+          "file": "frontend/src/components/WorkspaceChat/ChatContainer/PromptInput/SpeechToText/MicButton/index.jsx",
+          "start": 1181,
+          "end": 1319,
+          "line": 33,
+          "content_hash_matches_fixture": true,
+          "snippet": "(event) => { // CTRL + m on Mac and Windows to toggle STT listening if (event.ctrlKey && event.keyCode === 77) toggle(); }"
+        },
+        "entry_frontier": null,
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3oaw0:7",
+        "event": "input",
+        "at": 1790167779360,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "id": "name",
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3oawn:8",
+        "event": "keydown",
+        "at": 1790167779383,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "id": "name",
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:1d3b1faced3faba76473f024a30e37b3012f87c953537f168558bbfb7ba0e332:1181:1319|keydown",
+          "rooted": false,
+          "invoked_by": "event",
+          "function_id": "function:1d3b1faced3faba76473f024a30e37b3012f87c953537f168558bbfb7ba0e332:1181:1319",
+          "resolved": true,
+          "file": "frontend/src/components/WorkspaceChat/ChatContainer/PromptInput/SpeechToText/MicButton/index.jsx",
+          "start": 1181,
+          "end": 1319,
+          "line": 33,
+          "content_hash_matches_fixture": true,
+          "snippet": "(event) => { // CTRL + m on Mac and Windows to toggle STT listening if (event.ctrlKey && event.keyCode === 77) toggle(); }"
+        },
+        "entry_frontier": null,
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3oawo:9",
+        "event": "input",
+        "at": 1790167779384,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "id": "name",
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3oaxa:10",
+        "event": "keydown",
+        "at": 1790167779406,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "id": "name",
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:1d3b1faced3faba76473f024a30e37b3012f87c953537f168558bbfb7ba0e332:1181:1319|keydown",
+          "rooted": false,
+          "invoked_by": "event",
+          "function_id": "function:1d3b1faced3faba76473f024a30e37b3012f87c953537f168558bbfb7ba0e332:1181:1319",
+          "resolved": true,
+          "file": "frontend/src/components/WorkspaceChat/ChatContainer/PromptInput/SpeechToText/MicButton/index.jsx",
+          "start": 1181,
+          "end": 1319,
+          "line": 33,
+          "content_hash_matches_fixture": true,
+          "snippet": "(event) => { // CTRL + m on Mac and Windows to toggle STT listening if (event.ctrlKey && event.keyCode === 77) toggle(); }"
+        },
+        "entry_frontier": null,
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3oaxb:11",
+        "event": "input",
+        "at": 1790167779407,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "id": "name",
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3oaxy:12",
+        "event": "keydown",
+        "at": 1790167779430,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "id": "name",
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:1d3b1faced3faba76473f024a30e37b3012f87c953537f168558bbfb7ba0e332:1181:1319|keydown",
+          "rooted": false,
+          "invoked_by": "event",
+          "function_id": "function:1d3b1faced3faba76473f024a30e37b3012f87c953537f168558bbfb7ba0e332:1181:1319",
+          "resolved": true,
+          "file": "frontend/src/components/WorkspaceChat/ChatContainer/PromptInput/SpeechToText/MicButton/index.jsx",
+          "start": 1181,
+          "end": 1319,
+          "line": 33,
+          "content_hash_matches_fixture": true,
+          "snippet": "(event) => { // CTRL + m on Mac and Windows to toggle STT listening if (event.ctrlKey && event.keyCode === 77) toggle(); }"
+        },
+        "entry_frontier": null,
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3oay1:13",
+        "event": "input",
+        "at": 1790167779433,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "id": "name",
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3oaym:14",
+        "event": "keydown",
+        "at": 1790167779454,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "id": "name",
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:1d3b1faced3faba76473f024a30e37b3012f87c953537f168558bbfb7ba0e332:1181:1319|keydown",
+          "rooted": false,
+          "invoked_by": "event",
+          "function_id": "function:1d3b1faced3faba76473f024a30e37b3012f87c953537f168558bbfb7ba0e332:1181:1319",
+          "resolved": true,
+          "file": "frontend/src/components/WorkspaceChat/ChatContainer/PromptInput/SpeechToText/MicButton/index.jsx",
+          "start": 1181,
+          "end": 1319,
+          "line": 33,
+          "content_hash_matches_fixture": true,
+          "snippet": "(event) => { // CTRL + m on Mac and Windows to toggle STT listening if (event.ctrlKey && event.keyCode === 77) toggle(); }"
+        },
+        "entry_frontier": null,
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3oayn:15",
+        "event": "input",
+        "at": 1790167779455,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "id": "name",
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3oaza:16",
+        "event": "keydown",
+        "at": 1790167779478,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "id": "name",
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:1d3b1faced3faba76473f024a30e37b3012f87c953537f168558bbfb7ba0e332:1181:1319|keydown",
+          "rooted": false,
+          "invoked_by": "event",
+          "function_id": "function:1d3b1faced3faba76473f024a30e37b3012f87c953537f168558bbfb7ba0e332:1181:1319",
+          "resolved": true,
+          "file": "frontend/src/components/WorkspaceChat/ChatContainer/PromptInput/SpeechToText/MicButton/index.jsx",
+          "start": 1181,
+          "end": 1319,
+          "line": 33,
+          "content_hash_matches_fixture": true,
+          "snippet": "(event) => { // CTRL + m on Mac and Windows to toggle STT listening if (event.ctrlKey && event.keyCode === 77) toggle(); }"
+        },
+        "entry_frontier": null,
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3oaza:17",
+        "event": "input",
+        "at": 1790167779478,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "id": "name",
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3oazx:18",
+        "event": "keydown",
+        "at": 1790167779501,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "id": "name",
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:1d3b1faced3faba76473f024a30e37b3012f87c953537f168558bbfb7ba0e332:1181:1319|keydown",
+          "rooted": false,
+          "invoked_by": "event",
+          "function_id": "function:1d3b1faced3faba76473f024a30e37b3012f87c953537f168558bbfb7ba0e332:1181:1319",
+          "resolved": true,
+          "file": "frontend/src/components/WorkspaceChat/ChatContainer/PromptInput/SpeechToText/MicButton/index.jsx",
+          "start": 1181,
+          "end": 1319,
+          "line": 33,
+          "content_hash_matches_fixture": true,
+          "snippet": "(event) => { // CTRL + m on Mac and Windows to toggle STT listening if (event.ctrlKey && event.keyCode === 77) toggle(); }"
+        },
+        "entry_frontier": null,
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3oazy:19",
+        "event": "input",
+        "at": 1790167779502,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "id": "name",
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ob0l:20",
+        "event": "keydown",
+        "at": 1790167779525,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "id": "name",
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:1d3b1faced3faba76473f024a30e37b3012f87c953537f168558bbfb7ba0e332:1181:1319|keydown",
+          "rooted": false,
+          "invoked_by": "event",
+          "function_id": "function:1d3b1faced3faba76473f024a30e37b3012f87c953537f168558bbfb7ba0e332:1181:1319",
+          "resolved": true,
+          "file": "frontend/src/components/WorkspaceChat/ChatContainer/PromptInput/SpeechToText/MicButton/index.jsx",
+          "start": 1181,
+          "end": 1319,
+          "line": 33,
+          "content_hash_matches_fixture": true,
+          "snippet": "(event) => { // CTRL + m on Mac and Windows to toggle STT listening if (event.ctrlKey && event.keyCode === 77) toggle(); }"
+        },
+        "entry_frontier": null,
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ob0m:21",
+        "event": "input",
+        "at": 1790167779526,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "id": "name",
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ob19:22",
+        "event": "keydown",
+        "at": 1790167779549,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "id": "name",
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:1d3b1faced3faba76473f024a30e37b3012f87c953537f168558bbfb7ba0e332:1181:1319|keydown",
+          "rooted": false,
+          "invoked_by": "event",
+          "function_id": "function:1d3b1faced3faba76473f024a30e37b3012f87c953537f168558bbfb7ba0e332:1181:1319",
+          "resolved": true,
+          "file": "frontend/src/components/WorkspaceChat/ChatContainer/PromptInput/SpeechToText/MicButton/index.jsx",
+          "start": 1181,
+          "end": 1319,
+          "line": 33,
+          "content_hash_matches_fixture": true,
+          "snippet": "(event) => { // CTRL + m on Mac and Windows to toggle STT listening if (event.ctrlKey && event.keyCode === 77) toggle(); }"
+        },
+        "entry_frontier": null,
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ob19:23",
+        "event": "input",
+        "at": 1790167779549,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "id": "name",
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ob2m:24",
+        "event": "change",
+        "at": 1790167779598,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "id": "name",
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ob2m:25",
+        "event": "focusin",
+        "at": 1790167779598,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "submit"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ob2m:26",
+        "event": "click",
+        "at": 1790167779598,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "submit"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ob2n:27",
+        "event": "submit",
+        "at": 1790167779599,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "submit"
+          }
+        },
+        "entry": {
+          "unit_id": "function:19c9007f75c3ed775a554998332b843d2fd939b441d3ccb957a09578b46e1b36:693:1438|submit",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:19c9007f75c3ed775a554998332b843d2fd939b441d3ccb957a09578b46e1b36:693:1438",
+          "resolved": true,
+          "file": "frontend/src/components/Modals/NewWorkspace.jsx",
+          "start": 693,
+          "end": 1438,
+          "line": 21,
+          "content_hash_matches_fixture": true,
+          "snippet": "async (e) => { setError(null); e.preventDefault(); const data = {}; const form = new FormData(formEl.current); for (var [key, value] of form.entries()) data[key] = value; const { workspace, message } = await Workspace.ne"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 41
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/api/workspace/new",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ob2n:27:request:12",
+            "route": {
+              "span_id": "3183158b1a773e28",
+              "method": "POST",
+              "route": "/api/workspace/new",
+              "status": 200
+            },
+            "handlers": [
+              {
+                "span_id": "742ff25dc50dec76",
+                "name": "validatedRequest",
+                "route": "/api/workspace/new",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "7fc9d69d615d94b3",
+                "name": "<anonymous>",
+                "route": "/api/workspace/new",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "65e24508f3a973a2",
+                "name": "<anonymous>",
+                "route": "/api/workspace/new",
+                "index": 2,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspaces",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ob2n:27:request:13",
+            "route": {
+              "span_id": "2d8d54407c785a80",
+              "method": "GET",
+              "route": "/api/workspaces",
+              "status": 200
+            },
+            "handlers": [
+              {
+                "span_id": "5cc09d7abc2c2ba1",
+                "name": "validatedRequest",
+                "route": "/api/workspaces",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "e3a24d08b2bf78f8",
+                "name": "<anonymous>",
+                "route": "/api/workspaces",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "131f6c87a4841987",
+                "name": "<anonymous>",
+                "route": "/api/workspaces",
+                "index": 2,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspace/tracer-g2/threads",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ob2n:27:request:14",
+            "route": {
+              "span_id": "3b1c4e3af4c191f4",
+              "method": "GET",
+              "route": "/api/workspace/:slug/threads",
+              "status": 200
+            },
+            "handlers": [
+              {
+                "span_id": "12411ea3730f0260",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug/threads",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "7fe895c21b4d99e2",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/threads",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "c2cf6151cabfd1c6",
+                "name": "validWorkspaceSlug",
+                "route": "/api/workspace/:slug/threads",
+                "index": 2,
+                "error": false
+              },
+              {
+                "span_id": "a170f6ba0674091e",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/threads",
+                "index": 3,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/setup-complete",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ob2n:27:request:15",
+            "route": {
+              "span_id": "2e9dbe82a1716503",
+              "method": "GET",
+              "route": "/api/setup-complete",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "18cb6a2102ae9604",
+                "name": "<anonymous>",
+                "route": "/api/setup-complete",
+                "index": 0,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspaces",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ob2n:27:request:16",
+            "route": {
+              "span_id": "780506e4fb8b3b13",
+              "method": "GET",
+              "route": "/api/workspaces",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "7c46a537be383e10",
+                "name": "validatedRequest",
+                "route": "/api/workspaces",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "a57a1e6b3cdc17c9",
+                "name": "<anonymous>",
+                "route": "/api/workspaces",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "3e26f0aeee5ff61c",
+                "name": "<anonymous>",
+                "route": "/api/workspaces",
+                "index": 2,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspace/tracer-g2",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ob2n:27:request:17",
+            "route": {
+              "span_id": "e631fbb8a9c03513",
+              "method": "GET",
+              "route": "/api/workspace/:slug",
+              "status": 200
+            },
+            "handlers": [
+              {
+                "span_id": "100aa133750183bf",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "8955f6418e99a1e6",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "3ee74a8b518fa7b9",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug",
+                "index": 2,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspace/tracer-g2/suggested-messages",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ob2n:27:request:18",
+            "route": {
+              "span_id": "ff5525d883282651",
+              "method": "GET",
+              "route": "/api/workspace/:slug/suggested-messages",
+              "status": 200
+            },
+            "handlers": [
+              {
+                "span_id": "c3cf8b468ce664f5",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug/suggested-messages",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "1a7dd9499c5646da",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/suggested-messages",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "b6672ba61370ce14",
+                "name": "validWorkspaceSlug",
+                "route": "/api/workspace/:slug/suggested-messages",
+                "index": 2,
+                "error": false
+              },
+              {
+                "span_id": "5ea50928f416d3a1",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/suggested-messages",
+                "index": 3,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspace/tracer-g2/is-agent-command-available",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ob2n:27:request:19",
+            "route": {
+              "span_id": "f7356d9b2ec7f078",
+              "method": "GET",
+              "route": "/api/workspace/:slug/is-agent-command-available",
+              "status": 500
+            },
+            "handlers": [
+              {
+                "span_id": "d4a0581e4bc2d363",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug/is-agent-command-available",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "b3ab72a4c7b592b0",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/is-agent-command-available",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "d06b0b87cb7ac586",
+                "name": "validWorkspaceSlug",
+                "route": "/api/workspace/:slug/is-agent-command-available",
+                "index": 2,
+                "error": false
+              },
+              {
+                "span_id": "4d959e6c09aca35e",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/is-agent-command-available",
+                "index": 3,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspace/tracer-g2/threads",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ob2n:27:request:20",
+            "route": {
+              "span_id": "5a41313aa45908e8",
+              "method": "GET",
+              "route": "/api/workspace/:slug/threads",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "80b05e8ea8762077",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug/threads",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "fd82d5b674d335be",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/threads",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "4047088d3baa8d20",
+                "name": "validWorkspaceSlug",
+                "route": "/api/workspace/:slug/threads",
+                "index": 2,
+                "error": false
+              },
+              {
+                "span_id": "64f7134e6808077e",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/threads",
+                "index": 3,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspace/tracer-g2/chats",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ob2n:27:request:21",
+            "route": {
+              "span_id": "8440e8fdc26870c2",
+              "method": "GET",
+              "route": "/api/workspace/:slug/chats",
+              "status": 200
+            },
+            "handlers": [
+              {
+                "span_id": "15eeda0cb66ed50b",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug/chats",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "781411d6bb0eae47",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/chats",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "39d5c7253aa68c87",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/chats",
+                "index": 2,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspace/tracer-g2",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ob2n:27:request:22",
+            "route": {
+              "span_id": "384fba6e34053453",
+              "method": "GET",
+              "route": "/api/workspace/:slug",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "0260170a61cca8fb",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "b51661d9da3a2a7c",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "060edfc6a12a50ee",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug",
+                "index": 2,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/setup-complete",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ob2n:27:request:23",
+            "route": {
+              "span_id": "b9b8d9d521e00794",
+              "method": "GET",
+              "route": "/api/setup-complete",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "0f99acc605cdcc2a",
+                "name": "<anonymous>",
+                "route": "/api/setup-complete",
+                "index": 0,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/system/logo",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ob2n:27:request:24",
+            "route": {
+              "span_id": "de8b5a0ec260dab1",
+              "method": "GET",
+              "route": "/api/system/logo",
+              "status": 200
+            },
+            "handlers": [
+              {
+                "span_id": "2429ba5f4bd4441a",
+                "name": "<anonymous>",
+                "route": "/api/system/logo",
+                "index": 0,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspace/tracer-g2/parsed-files",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ob2n:27:request:25",
+            "route": {
+              "span_id": "58dddb7d648be899",
+              "method": "GET",
+              "route": "/api/workspace/:slug/parsed-files",
+              "status": 200
+            },
+            "handlers": [
+              {
+                "span_id": "b1db14ff6ad532db",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug/parsed-files",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "b221e9f2a22ce692",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/parsed-files",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "d8027daf10722b2a",
+                "name": "validWorkspaceSlug",
+                "route": "/api/workspace/:slug/parsed-files",
+                "index": 2,
+                "error": false
+              },
+              {
+                "span_id": "52b3b609cfaa6118",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/parsed-files",
+                "index": 3,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/setup-complete",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ob2n:27:request:26",
+            "route": {
+              "span_id": "537ce3532b5c2f4e",
+              "method": "GET",
+              "route": "/api/setup-complete",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "16e683a3fe416186",
+                "name": "<anonymous>",
+                "route": "/api/setup-complete",
+                "index": 0,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          }
+        ]
+      },
+      {
+        "action_id": "action:mue3ob72:28",
+        "event": "focusin",
+        "at": 1790167779758,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "id": "primary-prompt-input"
+          }
+        },
+        "entry": {
+          "unit_id": "function:bcdfa427f69819b1fe46d859091c6cfd74c91f94506e7dffcb4ea09323251ea3:11923:11945|focusin",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:bcdfa427f69819b1fe46d859091c6cfd74c91f94506e7dffcb4ea09323251ea3:11923:11945",
+          "resolved": true,
+          "file": "frontend/src/components/WorkspaceChat/ChatContainer/PromptInput/index.jsx",
+          "start": 11923,
+          "end": 11945,
+          "line": 362,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => setFocused(true)"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 1
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/api/setup-complete",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ob72:28:request:27",
+            "route": {
+              "span_id": "208cf18a46693638",
+              "method": "GET",
+              "route": "/api/setup-complete",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "ee2ffab7d569e1be",
+                "name": "<anonymous>",
+                "route": "/api/setup-complete",
+                "index": 0,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "step": 3,
+    "name": "new-thread",
+    "description": "click \"New Thread\" under the workspace",
+    "started": 1790167781326,
+    "ended": 1790167782864,
+    "status": "done",
+    "actions": [
+      {
+        "action_id": "action:mue3ocf4:29",
+        "event": "focusin",
+        "at": 1790167781344,
+        "target": {
+          "tag": "button",
+          "attributes": {}
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 4
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ocf4:30",
+        "event": "click",
+        "at": 1790167781344,
+        "target": {
+          "tag": "button",
+          "attributes": {}
+        },
+        "entry": {
+          "unit_id": "function:05d69e9db9b7238c9d3f04428ddb1bd686609db18667f51f69ec49b5ea79b876:6250:6961|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:05d69e9db9b7238c9d3f04428ddb1bd686609db18667f51f69ec49b5ea79b876:6250:6961",
+          "resolved": true,
+          "file": "frontend/src/components/Sidebar/ActiveWorkspaces/ThreadContainer/index.jsx",
+          "start": 6250,
+          "end": 6961,
+          "line": 194,
+          "content_hash_matches_fixture": true,
+          "snippet": "async () => { setLoading(true); const { thread, error } = await Workspace.threads.new(workspace.slug); if (!!error) { showToast(`Could not create thread - ${error}`, \"error\", { clear: true }); setLoading(false); return; "
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 4
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/api/workspace/tracer-g2/thread/new",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ocf4:30:request:28",
+            "route": {
+              "span_id": "019c0bf59063cd38",
+              "method": "POST",
+              "route": "/api/workspace/:slug/thread/new",
+              "status": 200
+            },
+            "handlers": [
+              {
+                "span_id": "f012810df6117df2",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug/thread/new",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "f54094494fc6419e",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/thread/new",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "2559585508934c9d",
+                "name": "validWorkspaceSlug",
+                "route": "/api/workspace/:slug/thread/new",
+                "index": 2,
+                "error": false
+              },
+              {
+                "span_id": "3f449aa88fdba14e",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/thread/new",
+                "index": 3,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspace/tracer-g2/threads",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ocf4:30:request:29",
+            "route": {
+              "span_id": "dbd7b2a9622a3fd3",
+              "method": "GET",
+              "route": "/api/workspace/:slug/threads",
+              "status": 200
+            },
+            "handlers": [
+              {
+                "span_id": "4535671e3dc185ee",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug/threads",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "8e3d1dd7744db10e",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/threads",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "3db5434f7554c5a8",
+                "name": "validWorkspaceSlug",
+                "route": "/api/workspace/:slug/threads",
+                "index": 2,
+                "error": false
+              },
+              {
+                "span_id": "8dfbe739aef16381",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/threads",
+                "index": 3,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspace/tracer-g2/parsed-files",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ocf4:30:request:30",
+            "route": {
+              "span_id": "876292dd67cbf73c",
+              "method": "GET",
+              "route": "/api/workspace/:slug/parsed-files",
+              "status": 200
+            },
+            "handlers": [
+              {
+                "span_id": "fdc28df2140035be",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug/parsed-files",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "78bc437693a96ee0",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/parsed-files",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "6d67c5297c39b349",
+                "name": "validWorkspaceSlug",
+                "route": "/api/workspace/:slug/parsed-files",
+                "index": 2,
+                "error": false
+              },
+              {
+                "span_id": "e990d83215a21029",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/parsed-files",
+                "index": 3,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspace/tracer-g2/thread/d54fbc89-f988-47a5-b774-dcc560a0ac38/chats",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ocf4:30:request:31",
+            "route": {
+              "span_id": "edc671903e66373e",
+              "method": "GET",
+              "route": "/api/workspace/:slug/thread/:threadSlug/chats",
+              "status": 200
+            },
+            "handlers": [
+              {
+                "span_id": "649c77219f339fb4",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug/thread/:threadSlug/chats",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "f14bac44d9fa173d",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/thread/:threadSlug/chats",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "b39126899e0d99a9",
+                "name": "validWorkspaceAndThreadSlug",
+                "route": "/api/workspace/:slug/thread/:threadSlug/chats",
+                "index": 2,
+                "error": false
+              },
+              {
+                "span_id": "476bec36bcfe33c9",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/thread/:threadSlug/chats",
+                "index": 3,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspace/tracer-g2",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ocf4:30:request:32",
+            "route": {
+              "span_id": "a7ea4ea7e7288007",
+              "method": "GET",
+              "route": "/api/workspace/:slug",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "54c8c05a64f23198",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "039e3823699d11f0",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "0bb63281126191a2",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug",
+                "index": 2,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/setup-complete",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ocf4:30:request:33",
+            "route": {
+              "span_id": "73d00ec8df9c629e",
+              "method": "GET",
+              "route": "/api/setup-complete",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "b4d8644f541f5c9e",
+                "name": "<anonymous>",
+                "route": "/api/setup-complete",
+                "index": 0,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/system/logo",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ocf4:30:request:34",
+            "route": {
+              "span_id": "0b98d13740ea4ace",
+              "method": "GET",
+              "route": "/api/system/logo",
+              "status": 200
+            },
+            "handlers": [
+              {
+                "span_id": "99848c60b4e47571",
+                "name": "<anonymous>",
+                "route": "/api/system/logo",
+                "index": 0,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspace/tracer-g2/parsed-files",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ocf4:30:request:35",
+            "route": {
+              "span_id": "8de716f511882d85",
+              "method": "GET",
+              "route": "/api/workspace/:slug/parsed-files",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "58a7f5ac9219b276",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug/parsed-files",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "ba05a15f2c58950e",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/parsed-files",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "51844fc2c67e62c3",
+                "name": "validWorkspaceSlug",
+                "route": "/api/workspace/:slug/parsed-files",
+                "index": 2,
+                "error": false
+              },
+              {
+                "span_id": "1d3a45b0fa815f84",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/parsed-files",
+                "index": 3,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/setup-complete",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ocf4:30:request:36",
+            "route": {
+              "span_id": "56c2bca447fa0a13",
+              "method": "GET",
+              "route": "/api/setup-complete",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "dedafd236e65a925",
+                "name": "<anonymous>",
+                "route": "/api/setup-complete",
+                "index": 0,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          }
+        ]
+      },
+      {
+        "action_id": "action:mue3ocgm:31",
+        "event": "focusin",
+        "at": 1790167781398,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "id": "primary-prompt-input"
+          }
+        },
+        "entry": {
+          "unit_id": "function:bcdfa427f69819b1fe46d859091c6cfd74c91f94506e7dffcb4ea09323251ea3:11923:11945|focusin",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:bcdfa427f69819b1fe46d859091c6cfd74c91f94506e7dffcb4ea09323251ea3:11923:11945",
+          "resolved": true,
+          "file": "frontend/src/components/WorkspaceChat/ChatContainer/PromptInput/index.jsx",
+          "start": 11923,
+          "end": 11945,
+          "line": 362,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => setFocused(true)"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 1
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/api/system/document-processing-status",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ocgm:31:request:37",
+            "route": {
+              "span_id": "98ee21b83ea5b287",
+              "method": "GET",
+              "route": "/api/system/document-processing-status",
+              "status": 503
+            },
+            "handlers": [
+              {
+                "span_id": "e795cb059ca88a28",
+                "name": "validatedRequest",
+                "route": "/api/system/document-processing-status",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "905d3b6b386deebd",
+                "name": "<anonymous>",
+                "route": "/api/system/document-processing-status",
+                "index": 1,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "step": 4,
+    "name": "rename-thread",
+    "description": "open the thread options menu, click Rename, answer the prompt \"Renamed by Tracer\"",
+    "started": 1790167782890,
+    "ended": 1790167784437,
+    "status": "done",
+    "actions": [
+      {
+        "action_id": "action:mue3odmh:32",
+        "event": "focusin",
+        "at": 1790167782905,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "aria-label": "Thread options"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3odmh:33",
+        "event": "click",
+        "at": 1790167782905,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "aria-label": "Thread options"
+          }
+        },
+        "entry": {
+          "unit_id": "function:adf13beff62833c94c85f8c8fc2b3674d2866312a0f8934467afc4e31eb77ab9:4925:4959|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:adf13beff62833c94c85f8c8fc2b3674d2866312a0f8934467afc4e31eb77ab9:4925:4959",
+          "resolved": true,
+          "file": "frontend/src/components/Sidebar/ActiveWorkspaces/ThreadContainer/ThreadItem/index.jsx",
+          "start": 4925,
+          "end": 4959,
+          "line": 139,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => setShowOptions(!showOptions)"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3odn7:34",
+        "event": "focusin",
+        "at": 1790167782931,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3odn7:35",
+        "event": "click",
+        "at": 1790167782931,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button"
+          }
+        },
+        "entry": {
+          "unit_id": "function:adf13beff62833c94c85f8c8fc2b3674d2866312a0f8934467afc4e31eb77ab9:6736:7244|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:adf13beff62833c94c85f8c8fc2b3674d2866312a0f8934467afc4e31eb77ab9:6736:7244",
+          "resolved": true,
+          "file": "frontend/src/components/Sidebar/ActiveWorkspaces/ThreadContainer/ThreadItem/index.jsx",
+          "start": 6736,
+          "end": 7244,
+          "line": 209,
+          "content_hash_matches_fixture": true,
+          "snippet": "async () => { const name = window .prompt(\"What would you like to rename this thread to?\") ?.trim(); if (!name || name.length === 0) { close(); return; } const { message } = await Workspace.threads.update( workspace.slug"
+        },
+        "entry_frontier": null,
+        "mutation": null,
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/api/workspace/tracer-g2/thread/d54fbc89-f988-47a5-b774-dcc560a0ac38/update",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3odn7:35:request:38",
+            "route": {
+              "span_id": "71a4fa75491cd18b",
+              "method": "POST",
+              "route": "/api/workspace/:slug/thread/:threadSlug/update",
+              "status": 200
+            },
+            "handlers": [
+              {
+                "span_id": "545516fd37aba653",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug/thread/:threadSlug/update",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "2bee3a91e731415b",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/thread/:threadSlug/update",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "14be30b42fe795fc",
+                "name": "validWorkspaceAndThreadSlug",
+                "route": "/api/workspace/:slug/thread/:threadSlug/update",
+                "index": 2,
+                "error": false
+              },
+              {
+                "span_id": "8e18acda4bae585c",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/thread/:threadSlug/update",
+                "index": 3,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "step": 5,
+    "name": "delete-thread",
+    "description": "open the thread options menu, click Delete Thread, confirm",
+    "started": 1790167784459,
+    "ended": 1790167786002,
+    "status": "done",
+    "actions": [
+      {
+        "action_id": "action:mue3oeu1:36",
+        "event": "focusin",
+        "at": 1790167784473,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "aria-label": "Thread options"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3oeu2:37",
+        "event": "click",
+        "at": 1790167784474,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "aria-label": "Thread options"
+          }
+        },
+        "entry": {
+          "unit_id": "function:adf13beff62833c94c85f8c8fc2b3674d2866312a0f8934467afc4e31eb77ab9:4925:4959|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:adf13beff62833c94c85f8c8fc2b3674d2866312a0f8934467afc4e31eb77ab9:4925:4959",
+          "resolved": true,
+          "file": "frontend/src/components/Sidebar/ActiveWorkspaces/ThreadContainer/ThreadItem/index.jsx",
+          "start": 4925,
+          "end": 4959,
+          "line": 139,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => setShowOptions(!showOptions)"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3oeup:38",
+        "event": "focusin",
+        "at": 1790167784497,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3oeup:39",
+        "event": "click",
+        "at": 1790167784497,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button"
+          }
+        },
+        "entry": {
+          "unit_id": "function:adf13beff62833c94c85f8c8fc2b3674d2866312a0f8934467afc4e31eb77ab9:7270:8056|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:adf13beff62833c94c85f8c8fc2b3674d2866312a0f8934467afc4e31eb77ab9:7270:8056",
+          "resolved": true,
+          "file": "frontend/src/components/Sidebar/ActiveWorkspaces/ThreadContainer/ThreadItem/index.jsx",
+          "start": 7270,
+          "end": 8056,
+          "line": 235,
+          "content_hash_matches_fixture": true,
+          "snippet": "async () => { if ( !window.confirm( \"Are you sure you want to delete this thread? All of its chats will be deleted. You cannot undo this.\" ) ) return; const success = await Workspace.threads.delete(workspace.slug, thread"
+        },
+        "entry_frontier": null,
+        "mutation": null,
+        "requests": [
+          {
+            "method": "DELETE",
+            "path": "/api/workspace/tracer-g2/thread/d54fbc89-f988-47a5-b774-dcc560a0ac38",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3oeup:39:request:39",
+            "route": {
+              "span_id": "a8d1d45b93d4186e",
+              "method": "DELETE",
+              "route": "/api/workspace/:slug/thread/:threadSlug",
+              "status": 200
+            },
+            "handlers": [
+              {
+                "span_id": "68468b46c1c9669d",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug/thread/:threadSlug",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "7d1f5cb97980987f",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/thread/:threadSlug",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "3ddcff7f0e3ff864",
+                "name": "validWorkspaceAndThreadSlug",
+                "route": "/api/workspace/:slug/thread/:threadSlug",
+                "index": 2,
+                "error": false
+              },
+              {
+                "span_id": "4624690b4505be05",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/thread/:threadSlug",
+                "index": 3,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspace/tracer-g2/threads",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3oeup:39:request:40",
+            "route": {
+              "span_id": "a96aa2978e488304",
+              "method": "GET",
+              "route": "/api/workspace/:slug/threads",
+              "status": 200
+            },
+            "handlers": [
+              {
+                "span_id": "2636ec9db801c791",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug/threads",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "d44946731d2236f5",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/threads",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "e40f8175be5dbc20",
+                "name": "validWorkspaceSlug",
+                "route": "/api/workspace/:slug/threads",
+                "index": 2,
+                "error": false
+              },
+              {
+                "span_id": "a4273233e0495f72",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/threads",
+                "index": 3,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspace/tracer-g2/parsed-files",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3oeup:39:request:41",
+            "route": {
+              "span_id": "abbc1dac71efd6d3",
+              "method": "GET",
+              "route": "/api/workspace/:slug/parsed-files",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "508bbad72762b0df",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug/parsed-files",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "87d23fda7c5e2e99",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/parsed-files",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "a7d5c2a61c85527e",
+                "name": "validWorkspaceSlug",
+                "route": "/api/workspace/:slug/parsed-files",
+                "index": 2,
+                "error": false
+              },
+              {
+                "span_id": "0eebd1dbf1e8a986",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/parsed-files",
+                "index": 3,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspace/tracer-g2/chats",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3oeup:39:request:42",
+            "route": {
+              "span_id": "b035b6b3f0b374f0",
+              "method": "GET",
+              "route": "/api/workspace/:slug/chats",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "5e3e616d23efdcb7",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug/chats",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "2ac03f919fa6b321",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/chats",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "c126ae6682e0753b",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/chats",
+                "index": 2,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspace/tracer-g2",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3oeup:39:request:43",
+            "route": {
+              "span_id": "12a5cb5fa4ffe427",
+              "method": "GET",
+              "route": "/api/workspace/:slug",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "86b888fa7d98205f",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "d61c86f3d20b8d75",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "526fb6abb892e671",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug",
+                "index": 2,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/setup-complete",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3oeup:39:request:44",
+            "route": {
+              "span_id": "4135c371a186004b",
+              "method": "GET",
+              "route": "/api/setup-complete",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "dcd6ed95103bc915",
+                "name": "<anonymous>",
+                "route": "/api/setup-complete",
+                "index": 0,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/system/logo",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3oeup:39:request:45",
+            "route": {
+              "span_id": "f681c279cc80583d",
+              "method": "GET",
+              "route": "/api/system/logo",
+              "status": 200
+            },
+            "handlers": [
+              {
+                "span_id": "a89cf9e095f242aa",
+                "name": "<anonymous>",
+                "route": "/api/system/logo",
+                "index": 0,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspace/tracer-g2/parsed-files",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3oeup:39:request:46",
+            "route": {
+              "span_id": "456cc9afee19487c",
+              "method": "GET",
+              "route": "/api/workspace/:slug/parsed-files",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "5942bbc0b96cc1c6",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug/parsed-files",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "4c1470131559a50b",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/parsed-files",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "6f133d3b6795af23",
+                "name": "validWorkspaceSlug",
+                "route": "/api/workspace/:slug/parsed-files",
+                "index": 2,
+                "error": false
+              },
+              {
+                "span_id": "5c7bf097b8541686",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/parsed-files",
+                "index": 3,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/setup-complete",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3oeup:39:request:47",
+            "route": {
+              "span_id": "901d6ab891699e8d",
+              "method": "GET",
+              "route": "/api/setup-complete",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "9748b42f3222bd76",
+                "name": "<anonymous>",
+                "route": "/api/setup-complete",
+                "index": 0,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          }
+        ]
+      },
+      {
+        "action_id": "action:mue3oewd:40",
+        "event": "focusin",
+        "at": 1790167784557,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "id": "primary-prompt-input"
+          }
+        },
+        "entry": {
+          "unit_id": "function:bcdfa427f69819b1fe46d859091c6cfd74c91f94506e7dffcb4ea09323251ea3:11923:11945|focusin",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:bcdfa427f69819b1fe46d859091c6cfd74c91f94506e7dffcb4ea09323251ea3:11923:11945",
+          "resolved": true,
+          "file": "frontend/src/components/WorkspaceChat/ChatContainer/PromptInput/index.jsx",
+          "start": 11923,
+          "end": 11945,
+          "line": 362,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => setFocused(true)"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      }
+    ]
+  },
+  {
+    "step": 6,
+    "name": "open-workspace-settings",
+    "description": "click the workspace gear (General appearance settings)",
+    "started": 1790167786029,
+    "ended": 1790167787666,
+    "status": "done",
+    "actions": [
+      {
+        "action_id": "action:mue3og1x:41",
+        "event": "focusin",
+        "at": 1790167786053,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "aria-label": "General appearance settings"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 5
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3og1y:42",
+        "event": "click",
+        "at": 1790167786054,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "aria-label": "General appearance settings"
+          }
+        },
+        "entry": {
+          "unit_id": "function:25b364a91be9b63ef9cf011098cd09bd89b04c7d4fff042545bc1a7c3bbc117f:8548:9118|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:25b364a91be9b63ef9cf011098cd09bd89b04c7d4fff042545bc1a7c3bbc117f:8548:9118",
+          "resolved": true,
+          "file": "frontend/src/components/Sidebar/ActiveWorkspaces/index.jsx",
+          "start": 8548,
+          "end": 9118,
+          "line": 187,
+          "content_hash_matches_fixture": true,
+          "snippet": "(e) => { e.preventDefault(); e.stopPropagation(); navigate( isInWorkspaceSettings ? paths.workspace.chat(workspace.slug) : paths.workspace.settings.generalAppearance( workspace.slug ) ); }"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 5
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/api/onboarding",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3og1y:42:request:48",
+            "route": {
+              "span_id": "9a809a0b8785e54b",
+              "method": "GET",
+              "route": "/api/onboarding",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "4e871e8e09840325",
+                "name": "<anonymous>",
+                "route": "/api/onboarding",
+                "index": 0,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/setup-complete",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3og1y:42:request:49",
+            "route": {
+              "span_id": "ce744017098ab089",
+              "method": "GET",
+              "route": "/api/setup-complete",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "9a2317d37e4a998c",
+                "name": "<anonymous>",
+                "route": "/api/setup-complete",
+                "index": 0,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/system/support-email",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3og1y:42:request:50",
+            "route": {
+              "span_id": "423c1d5c9067b468",
+              "method": "GET",
+              "route": "/api/system/support-email",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "fabf645280dad615",
+                "name": "validatedRequest",
+                "route": "/api/system/support-email",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "6897c9f50348ecbb",
+                "name": "<anonymous>",
+                "route": "/api/system/support-email",
+                "index": 1,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/setup-complete",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3og1y:42:request:51",
+            "route": {
+              "span_id": "0bd7d8f43b49b89f",
+              "method": "GET",
+              "route": "/api/setup-complete",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "d6186c7047891fbb",
+                "name": "<anonymous>",
+                "route": "/api/setup-complete",
+                "index": 0,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspace/tracer-g2",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3og1y:42:request:52",
+            "route": {
+              "span_id": "ed1c756203c74a3b",
+              "method": "GET",
+              "route": "/api/workspace/:slug",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "32cd844259f40280",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "5530c9dcfe36abf6",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "288757008486324b",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug",
+                "index": 2,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/setup-complete",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3og1y:42:request:53",
+            "route": {
+              "span_id": "b2a58cb4bcffb6dd",
+              "method": "GET",
+              "route": "/api/setup-complete",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "52e66c1c0c4f8454",
+                "name": "<anonymous>",
+                "route": "/api/setup-complete",
+                "index": 0,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspace/tracer-g2/suggested-messages",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3og1y:42:request:54",
+            "route": {
+              "span_id": "3ca83306c4b962e8",
+              "method": "GET",
+              "route": "/api/workspace/:slug/suggested-messages",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "07914de61644d1be",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug/suggested-messages",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "a2a9af37cd5a5b89",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/suggested-messages",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "3a59502025c3af76",
+                "name": "validWorkspaceSlug",
+                "route": "/api/workspace/:slug/suggested-messages",
+                "index": 2,
+                "error": false
+              },
+              {
+                "span_id": "4c187cbf7a0c49a8",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/suggested-messages",
+                "index": 3,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspaces",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3og1y:42:request:55",
+            "route": {
+              "span_id": "8a9b7f3fc6193e6b",
+              "method": "GET",
+              "route": "/api/workspaces",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "395a6b5f1113243f",
+                "name": "validatedRequest",
+                "route": "/api/workspaces",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "cfdf0110e56ab184",
+                "name": "<anonymous>",
+                "route": "/api/workspaces",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "40437694793511c2",
+                "name": "<anonymous>",
+                "route": "/api/workspaces",
+                "index": 2,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspace/tracer-g2",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3og1y:42:request:56",
+            "route": {
+              "span_id": "944de98acaec728f",
+              "method": "GET",
+              "route": "/api/workspace/:slug",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "60ad8e90c88a1a03",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "64662bc40b5e8e3f",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "75112c53ef53e6eb",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug",
+                "index": 2,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspace/tracer-g2/threads",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3og1y:42:request:57",
+            "route": {
+              "span_id": "e8105ca3d4657da7",
+              "method": "GET",
+              "route": "/api/workspace/:slug/threads",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "272c363afb00eb60",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug/threads",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "3bae527bf828496a",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/threads",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "8629ee4cacdd8b3a",
+                "name": "validWorkspaceSlug",
+                "route": "/api/workspace/:slug/threads",
+                "index": 2,
+                "error": false
+              },
+              {
+                "span_id": "3cbcc6529da5f602",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/threads",
+                "index": 3,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/workspace/tracer-g2/suggested-messages",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3og1y:42:request:58",
+            "route": {
+              "span_id": "4f57b8f871530206",
+              "method": "GET",
+              "route": "/api/workspace/:slug/suggested-messages",
+              "status": 304
+            },
+            "handlers": [
+              {
+                "span_id": "7fb384caf9412bb9",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug/suggested-messages",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "e587d98110a306af",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/suggested-messages",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "74839b12987d79aa",
+                "name": "validWorkspaceSlug",
+                "route": "/api/workspace/:slug/suggested-messages",
+                "index": 2,
+                "error": false
+              },
+              {
+                "span_id": "6bebb9e605f24c8f",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/suggested-messages",
+                "index": 3,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "step": 7,
+    "name": "rename-workspace",
+    "description": "append \" renamed\" to the workspace name and click Update Workspace",
+    "started": 1790167787692,
+    "ended": 1790167789440,
+    "status": "done",
+    "actions": [
+      {
+        "action_id": "action:mue3ohbt:43",
+        "event": "focusin",
+        "at": 1790167787705,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 3
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ohbu:44",
+        "event": "click",
+        "at": 1790167787706,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:eef8fba780f34c2547d2738eeb6efbac7adf80a92d8853fb58eee8ac09b08d79:6127:6313|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:eef8fba780f34c2547d2738eeb6efbac7adf80a92d8853fb58eee8ac09b08d79:6127:6313",
+          "resolved": true,
+          "file": "frontend/src/components/WorkspaceChat/index.jsx",
+          "start": 6127,
+          "end": 6313,
+          "line": 192,
+          "content_hash_matches_fixture": true,
+          "snippet": "function (e) { const target = e.target.closest(\"[data-code-snippet]\"); const uuidCode = target?.dataset?.code; if (!uuidCode) return false; copyCodeSnippet(uuidCode); }"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 3
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ohbw:45",
+        "event": "keydown",
+        "at": 1790167787708,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:755ba1b4a7d97bf9b028b4e5efd4366065014dc893d7ffdfcbcc42792ac6f58e:1024:1172|keydown",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:755ba1b4a7d97bf9b028b4e5efd4366065014dc893d7ffdfcbcc42792ac6f58e:1024:1172",
+          "resolved": true,
+          "file": "frontend/src/components/Sidebar/ActiveWorkspaces/ThreadContainer/hooks.js",
+          "start": 1024,
+          "end": 1172,
+          "line": 33,
+          "content_hash_matches_fixture": true,
+          "snippet": "(event) => { if (!isHovering.current) return; if ([\"Control\", \"Meta\"].includes(event.key)) { setCtrlPressed(true); } }"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 3
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ohbz:46",
+        "event": "keydown",
+        "at": 1790167787711,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:755ba1b4a7d97bf9b028b4e5efd4366065014dc893d7ffdfcbcc42792ac6f58e:1024:1172|keydown",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:755ba1b4a7d97bf9b028b4e5efd4366065014dc893d7ffdfcbcc42792ac6f58e:1024:1172",
+          "resolved": true,
+          "file": "frontend/src/components/Sidebar/ActiveWorkspaces/ThreadContainer/hooks.js",
+          "start": 1024,
+          "end": 1172,
+          "line": 33,
+          "content_hash_matches_fixture": true,
+          "snippet": "(event) => { if (!isHovering.current) return; if ([\"Control\", \"Meta\"].includes(event.key)) { setCtrlPressed(true); } }"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 2
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ohbz:47",
+        "event": "input",
+        "at": 1790167787711,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:97668e7566e7b61c64d0632c11399e5e05d8902c58ea7e54f1ee0d3fe35ed42e:991:1016|input",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:97668e7566e7b61c64d0632c11399e5e05d8902c58ea7e54f1ee0d3fe35ed42e:991:1016",
+          "resolved": true,
+          "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/WorkspaceName/index.jsx",
+          "start": 991,
+          "end": 1016,
+          "line": 25,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => setHasChanges(true)"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ohcq:48",
+        "event": "keydown",
+        "at": 1790167787738,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:755ba1b4a7d97bf9b028b4e5efd4366065014dc893d7ffdfcbcc42792ac6f58e:1024:1172|keydown",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:755ba1b4a7d97bf9b028b4e5efd4366065014dc893d7ffdfcbcc42792ac6f58e:1024:1172",
+          "resolved": true,
+          "file": "frontend/src/components/Sidebar/ActiveWorkspaces/ThreadContainer/hooks.js",
+          "start": 1024,
+          "end": 1172,
+          "line": 33,
+          "content_hash_matches_fixture": true,
+          "snippet": "(event) => { if (!isHovering.current) return; if ([\"Control\", \"Meta\"].includes(event.key)) { setCtrlPressed(true); } }"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ohcq:49",
+        "event": "input",
+        "at": 1790167787738,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:97668e7566e7b61c64d0632c11399e5e05d8902c58ea7e54f1ee0d3fe35ed42e:991:1016|input",
+          "rooted": false,
+          "invoked_by": "event",
+          "function_id": "function:97668e7566e7b61c64d0632c11399e5e05d8902c58ea7e54f1ee0d3fe35ed42e:991:1016",
+          "resolved": true,
+          "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/WorkspaceName/index.jsx",
+          "start": 991,
+          "end": 1016,
+          "line": 25,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => setHasChanges(true)"
+        },
+        "entry_frontier": null,
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ohde:50",
+        "event": "keydown",
+        "at": 1790167787762,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:755ba1b4a7d97bf9b028b4e5efd4366065014dc893d7ffdfcbcc42792ac6f58e:1024:1172|keydown",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:755ba1b4a7d97bf9b028b4e5efd4366065014dc893d7ffdfcbcc42792ac6f58e:1024:1172",
+          "resolved": true,
+          "file": "frontend/src/components/Sidebar/ActiveWorkspaces/ThreadContainer/hooks.js",
+          "start": 1024,
+          "end": 1172,
+          "line": 33,
+          "content_hash_matches_fixture": true,
+          "snippet": "(event) => { if (!isHovering.current) return; if ([\"Control\", \"Meta\"].includes(event.key)) { setCtrlPressed(true); } }"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ohde:51",
+        "event": "input",
+        "at": 1790167787762,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:97668e7566e7b61c64d0632c11399e5e05d8902c58ea7e54f1ee0d3fe35ed42e:991:1016|input",
+          "rooted": false,
+          "invoked_by": "event",
+          "function_id": "function:97668e7566e7b61c64d0632c11399e5e05d8902c58ea7e54f1ee0d3fe35ed42e:991:1016",
+          "resolved": true,
+          "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/WorkspaceName/index.jsx",
+          "start": 991,
+          "end": 1016,
+          "line": 25,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => setHasChanges(true)"
+        },
+        "entry_frontier": null,
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ohe1:52",
+        "event": "keydown",
+        "at": 1790167787785,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:755ba1b4a7d97bf9b028b4e5efd4366065014dc893d7ffdfcbcc42792ac6f58e:1024:1172|keydown",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:755ba1b4a7d97bf9b028b4e5efd4366065014dc893d7ffdfcbcc42792ac6f58e:1024:1172",
+          "resolved": true,
+          "file": "frontend/src/components/Sidebar/ActiveWorkspaces/ThreadContainer/hooks.js",
+          "start": 1024,
+          "end": 1172,
+          "line": 33,
+          "content_hash_matches_fixture": true,
+          "snippet": "(event) => { if (!isHovering.current) return; if ([\"Control\", \"Meta\"].includes(event.key)) { setCtrlPressed(true); } }"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ohe1:53",
+        "event": "input",
+        "at": 1790167787785,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:97668e7566e7b61c64d0632c11399e5e05d8902c58ea7e54f1ee0d3fe35ed42e:991:1016|input",
+          "rooted": false,
+          "invoked_by": "event",
+          "function_id": "function:97668e7566e7b61c64d0632c11399e5e05d8902c58ea7e54f1ee0d3fe35ed42e:991:1016",
+          "resolved": true,
+          "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/WorkspaceName/index.jsx",
+          "start": 991,
+          "end": 1016,
+          "line": 25,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => setHasChanges(true)"
+        },
+        "entry_frontier": null,
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3oheo:54",
+        "event": "keydown",
+        "at": 1790167787808,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:755ba1b4a7d97bf9b028b4e5efd4366065014dc893d7ffdfcbcc42792ac6f58e:1024:1172|keydown",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:755ba1b4a7d97bf9b028b4e5efd4366065014dc893d7ffdfcbcc42792ac6f58e:1024:1172",
+          "resolved": true,
+          "file": "frontend/src/components/Sidebar/ActiveWorkspaces/ThreadContainer/hooks.js",
+          "start": 1024,
+          "end": 1172,
+          "line": 33,
+          "content_hash_matches_fixture": true,
+          "snippet": "(event) => { if (!isHovering.current) return; if ([\"Control\", \"Meta\"].includes(event.key)) { setCtrlPressed(true); } }"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ohep:55",
+        "event": "input",
+        "at": 1790167787809,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:97668e7566e7b61c64d0632c11399e5e05d8902c58ea7e54f1ee0d3fe35ed42e:991:1016|input",
+          "rooted": false,
+          "invoked_by": "event",
+          "function_id": "function:97668e7566e7b61c64d0632c11399e5e05d8902c58ea7e54f1ee0d3fe35ed42e:991:1016",
+          "resolved": true,
+          "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/WorkspaceName/index.jsx",
+          "start": 991,
+          "end": 1016,
+          "line": 25,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => setHasChanges(true)"
+        },
+        "entry_frontier": null,
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ohfb:56",
+        "event": "keydown",
+        "at": 1790167787831,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:755ba1b4a7d97bf9b028b4e5efd4366065014dc893d7ffdfcbcc42792ac6f58e:1024:1172|keydown",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:755ba1b4a7d97bf9b028b4e5efd4366065014dc893d7ffdfcbcc42792ac6f58e:1024:1172",
+          "resolved": true,
+          "file": "frontend/src/components/Sidebar/ActiveWorkspaces/ThreadContainer/hooks.js",
+          "start": 1024,
+          "end": 1172,
+          "line": 33,
+          "content_hash_matches_fixture": true,
+          "snippet": "(event) => { if (!isHovering.current) return; if ([\"Control\", \"Meta\"].includes(event.key)) { setCtrlPressed(true); } }"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ohfc:57",
+        "event": "input",
+        "at": 1790167787832,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:97668e7566e7b61c64d0632c11399e5e05d8902c58ea7e54f1ee0d3fe35ed42e:991:1016|input",
+          "rooted": false,
+          "invoked_by": "event",
+          "function_id": "function:97668e7566e7b61c64d0632c11399e5e05d8902c58ea7e54f1ee0d3fe35ed42e:991:1016",
+          "resolved": true,
+          "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/WorkspaceName/index.jsx",
+          "start": 991,
+          "end": 1016,
+          "line": 25,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => setHasChanges(true)"
+        },
+        "entry_frontier": null,
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ohfy:58",
+        "event": "keydown",
+        "at": 1790167787854,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:755ba1b4a7d97bf9b028b4e5efd4366065014dc893d7ffdfcbcc42792ac6f58e:1024:1172|keydown",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:755ba1b4a7d97bf9b028b4e5efd4366065014dc893d7ffdfcbcc42792ac6f58e:1024:1172",
+          "resolved": true,
+          "file": "frontend/src/components/Sidebar/ActiveWorkspaces/ThreadContainer/hooks.js",
+          "start": 1024,
+          "end": 1172,
+          "line": 33,
+          "content_hash_matches_fixture": true,
+          "snippet": "(event) => { if (!isHovering.current) return; if ([\"Control\", \"Meta\"].includes(event.key)) { setCtrlPressed(true); } }"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ohfz:59",
+        "event": "input",
+        "at": 1790167787855,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:97668e7566e7b61c64d0632c11399e5e05d8902c58ea7e54f1ee0d3fe35ed42e:991:1016|input",
+          "rooted": false,
+          "invoked_by": "event",
+          "function_id": "function:97668e7566e7b61c64d0632c11399e5e05d8902c58ea7e54f1ee0d3fe35ed42e:991:1016",
+          "resolved": true,
+          "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/WorkspaceName/index.jsx",
+          "start": 991,
+          "end": 1016,
+          "line": 25,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => setHasChanges(true)"
+        },
+        "entry_frontier": null,
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ohgm:60",
+        "event": "keydown",
+        "at": 1790167787878,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:755ba1b4a7d97bf9b028b4e5efd4366065014dc893d7ffdfcbcc42792ac6f58e:1024:1172|keydown",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:755ba1b4a7d97bf9b028b4e5efd4366065014dc893d7ffdfcbcc42792ac6f58e:1024:1172",
+          "resolved": true,
+          "file": "frontend/src/components/Sidebar/ActiveWorkspaces/ThreadContainer/hooks.js",
+          "start": 1024,
+          "end": 1172,
+          "line": 33,
+          "content_hash_matches_fixture": true,
+          "snippet": "(event) => { if (!isHovering.current) return; if ([\"Control\", \"Meta\"].includes(event.key)) { setCtrlPressed(true); } }"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ohgm:61",
+        "event": "input",
+        "at": 1790167787878,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": {
+          "unit_id": "function:97668e7566e7b61c64d0632c11399e5e05d8902c58ea7e54f1ee0d3fe35ed42e:991:1016|input",
+          "rooted": false,
+          "invoked_by": "event",
+          "function_id": "function:97668e7566e7b61c64d0632c11399e5e05d8902c58ea7e54f1ee0d3fe35ed42e:991:1016",
+          "resolved": true,
+          "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/WorkspaceName/index.jsx",
+          "start": 991,
+          "end": 1016,
+          "line": 25,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => setHasChanges(true)"
+        },
+        "entry_frontier": null,
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ohhu:62",
+        "event": "change",
+        "at": 1790167787922,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "name",
+            "type": "text"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 2
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ohhu:63",
+        "event": "focusin",
+        "at": 1790167787922,
+        "target": {
+          "tag": "button",
+          "attributes": {}
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 2
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ohhv:64",
+        "event": "click",
+        "at": 1790167787923,
+        "target": {
+          "tag": "button",
+          "attributes": {}
+        },
+        "entry": {
+          "unit_id": "function:f067e70e602936c4f8e9c326a164ca171480ddde3f990590f3c0db1b03c5e60b:166:183|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:f067e70e602936c4f8e9c326a164ca171480ddde3f990590f3c0db1b03c5e60b:166:183",
+          "resolved": true,
+          "file": "frontend/src/components/lib/CTAButton/index.jsx",
+          "start": 166,
+          "end": 183,
+          "line": 10,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => onClick?.()"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 2
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3ohhv:65",
+        "event": "submit",
+        "at": 1790167787923,
+        "target": {
+          "tag": "button",
+          "attributes": {}
+        },
+        "entry": {
+          "unit_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488|submit",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488",
+          "resolved": true,
+          "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx",
+          "start": 931,
+          "end": 1488,
+          "line": 26,
+          "content_hash_matches_fixture": true,
+          "snippet": "async (e) => { setSaving(true); e.preventDefault(); const data = {}; const form = new FormData(formEl.current); for (var [key, value] of form.entries()) data[key] = castToType(key, value); const { workspace: updatedWorks"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 15
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/api/workspace/tracer-g2/update",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3ohhv:65:request:59",
+            "route": {
+              "span_id": "09de595fd4a414a1",
+              "method": "POST",
+              "route": "/api/workspace/:slug/update",
+              "status": 200
+            },
+            "handlers": [
+              {
+                "span_id": "92d5ecce1f9c2826",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug/update",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "819e58154a17142f",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/update",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "36ca1bcb6234df0a",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug/update",
+                "index": 2,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "step": 8,
+    "name": "delete-workspace",
+    "description": "click Delete Workspace and confirm",
+    "started": 1790167789467,
+    "ended": 1790167792133,
+    "status": "done",
+    "actions": [
+      {
+        "action_id": "action:mue3oipd:66",
+        "event": "focusin",
+        "at": 1790167789489,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button"
+          }
+        },
+        "entry": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 2
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:mue3oipd:67",
+        "event": "click",
+        "at": 1790167789489,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button"
+          }
+        },
+        "entry": {
+          "unit_id": "function:0631020dadc805089f4fc5b57a0d86d0245ebe1edd631cab21a389a6d62a5b34:464:999|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:0631020dadc805089f4fc5b57a0d86d0245ebe1edd631cab21a389a6d62a5b34:464:999",
+          "resolved": true,
+          "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/DeleteWorkspace/index.jsx",
+          "start": 464,
+          "end": 999,
+          "line": 13,
+          "content_hash_matches_fixture": true,
+          "snippet": "async () => { if ( !window.confirm( `${t(\"general.delete.confirm-start\")} ${workspace.name} ${t( \"general.delete.confirm-end\" )}` ) ) return false; setDeleting(true); const success = await Workspace.delete(workspace.slug"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 2
+        },
+        "requests": [
+          {
+            "method": "DELETE",
+            "path": "/api/workspace/tracer-g2",
+            "transport": "fetch",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:mue3oipd:67:request:60",
+            "route": {
+              "span_id": "aa42950b0ecc6a7b",
+              "method": "DELETE",
+              "route": "/api/workspace/:slug",
+              "status": 200
+            },
+            "handlers": [
+              {
+                "span_id": "676a323a1becb8cd",
+                "name": "validatedRequest",
+                "route": "/api/workspace/:slug",
+                "index": 0,
+                "error": false
+              },
+              {
+                "span_id": "9f4366b95b969650",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug",
+                "index": 1,
+                "error": false
+              },
+              {
+                "span_id": "42afd492420b165e",
+                "name": "workspaceDeletionProtection",
+                "route": "/api/workspace/:slug",
+                "index": 2,
+                "error": false
+              },
+              {
+                "span_id": "382f3695cbc453b4",
+                "name": "<anonymous>",
+                "route": "/api/workspace/:slug",
+                "index": 3,
+                "error": false
+              }
+            ],
+            "terminal_handler": "<anonymous>",
+            "db": [],
+            "reached": "handler",
+            "stopped_at": "handler",
+            "because": "database client not instrumented (Prisma/SQLite has no Tracer adapter)"
+          }
+        ]
+      },
+      {
+        "action_id": "action:mue3oium:1",
+        "event": "focusin",
+        "at": 1790167789678,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "id": "primary-prompt-input"
+          }
+        },
+        "entry": {
+          "unit_id": "function:bcdfa427f69819b1fe46d859091c6cfd74c91f94506e7dffcb4ea09323251ea3:11923:11945|focusin",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:bcdfa427f69819b1fe46d859091c6cfd74c91f94506e7dffcb4ea09323251ea3:11923:11945",
+          "resolved": true,
+          "file": "frontend/src/components/WorkspaceChat/ChatContainer/PromptInput/index.jsx",
+          "start": 11923,
+          "end": 11945,
+          "line": 362,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => setFocused(true)"
+        },
+        "entry_frontier": null,
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      }
+    ]
+  }
+]

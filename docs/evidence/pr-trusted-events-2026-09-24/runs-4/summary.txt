@@ -1,0 +1,21 @@
+Head: ea4e39ba (rebase-work on main 39449f7a)
+trusted-events: 118/118 x3 (3 main page loads per invocation)
+negative control, main 39449f7a runtime: 5/44 (expected nonzero exit)
+npm test: 730/731 (known react-context-ref-semantics failure)
+D12: 24/24 x3
+continuations-neutral: ok (5 runs)
+shadow-dom-context: ok (3 runs)
+no-cross-control-neutral: ok
+episode-focus: ok x3
+outcome-labels: 169/169
+mcp-gaps: 35/35
+body-capture: 51/51 (complete rerun after interrupted attempt)
+unlinked-coverage-neutral: 13/13
+honest-coverage: 45/45
+function-names: 263/263
+middleware-reads: 343/343
+client-aborts: 245/245
+server-outbound --runs 3 --control: 170/170
+G4 grader: 81/81
+G6 grader: 6/6; main/branch compare equal after server_args store-path normalization
+src/dist browser runtime: byte-identical

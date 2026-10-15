@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Producttrace discover mode</title>
+<script src="/src/producttrace-runtime.js"></script>
+<script src="/test/browser/react.js"></script>
+<script src="/test/browser/react-dom.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<pre id="result">RUNNING</pre>
+<script>
+ProductTrace.start({ name: 'discover-test', identity: {}, actions: [] }, { outputMode: 'evidence' });
+ProductTrace.discover();
+
+const e = React.createElement;
+function MessageSurface({ message }) {
+  return e('section', null,
+    e('button', { 'data-testid': 'copy-response-button', 'aria-label': 'Copy response' }, 'Copy'),
+    e('input', { 'data-testid': 'composer', 'aria-label': 'Message input', value: 'private-input', readOnly: true }));
+}
+ReactDOM.createRoot(document.getElementById('root')).render(
+  e(MessageSurface, { message: {
+    messageId: '3cf69bc2-54ae-40a2-9955-75774792c226',
+    conversationId: '02288ac9-dff1-5f7b-9f99-285919afb682',
+  } }),
+);
+
+function assert(condition, message, counter) {
+  if (!condition) throw new Error(message);
+  counter.count++;
+}
+
+setTimeout(() => {
+  const counter = { count: 0 };
+  try {
+    const copy = document.querySelector('[data-testid="copy-response-button"]');
+    copy.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    copy.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    document.querySelector('[data-testid="composer"]').dispatchEvent(
+      new MouseEvent('click', { bubbles: true }),
+    );
+
+    let report = ProductTrace.discoveryReport();
+    const copyEntry = report.entries.find((entry) => entry.anchor.value === 'copy-response-button');
+    const inputEntry = report.entries.find((entry) => entry.anchor.value === 'composer');
+    assert(ProductTrace.stats().total > 0, 'ordinary capture must remain active', counter);
+    assert(ProductTrace.start() === ProductTrace.start(), 'start must remain idempotent', counter);
+    assert(ProductTrace.discoveryReport().enabled === true, 'discover mode must report enabled', counter);
+    assert(report.entries.filter((entry) => entry.anchor.value === 'copy-response-button').length === 1,
+      'repeated clicks must dedupe', counter);
+    assert(copyEntry && copyEntry.component === 'MessageSurface',
+      'entry must identify its innermost component', counter);
+    assert(copyEntry.components.length <= 8, 'component ancestry must be capped at eight', counter);
+    assert(copyEntry.identity_candidates.some((item) =>
+      item.key === 'messageId' && item.sample === '3cf69bc2-54ae-40a2-9955-75774792c226' &&
+      item.component === 'MessageSurface'), 'messageId must carry its real sample and component', counter);
+    assert(copyEntry.identity_candidates.some((item) =>
+      item.key === 'conversationId' && item.sample === '02288ac9-dff1-5f7b-9f99-285919afb682'),
+      'conversationId must carry its real sample', counter);
+    assert(inputEntry && inputEntry.anchors.some((anchor) => anchor.value === 'textbox:Message input'),
+      'value-bearing controls may expose their safe accessible name', counter);
+    assert(!JSON.stringify(report).includes('private-input'), 'input values must never enter discovery', counter);
+
+    for (let i = 0; i < 505; i++) {
+      const node = document.createElement('button');
+      node.dataset.testid = `overflow-${i}`;
+      node.textContent = `overflow-${i}`;
+      document.body.appendChild(node);
+      node.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+    }
+    report = ProductTrace.discoveryReport();
+    assert(report.count === 500, 'discovery report must cap at 500 entries', counter);
+    assert(report.discovery_truncated === true, 'cap overflow must set discovery_truncated', counter);
+    assert(JSON.stringify(report.entries).length > 0, 'discovery report must be serializable', counter);
+    ProductTrace.discover(false);
+    assert(ProductTrace.discoveryReport().enabled === false &&
+      ProductTrace.start().status().discover.enabled === false,
+      'discover(false) and status must report mode off', counter);
+
+    document.getElementById('result').textContent = JSON.stringify({
+      status: 'PASS', assertions: counter.count, discovery_entries: report.count,
+    }, null, 2);
+  } catch (error) {
+    document.getElementById('result').textContent = JSON.stringify({
+      status: 'FAIL', assertions: counter.count, error: error.message,
+    }, null, 2);
+  }
+}, 100);
+</script>
+</body>
+</html>

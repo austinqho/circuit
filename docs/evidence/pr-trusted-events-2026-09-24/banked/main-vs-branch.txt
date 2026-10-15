@@ -1,0 +1,52 @@
+## final7
+{
+  "calls": 58,
+  "identical_text": 58,
+  "identical_structured": 57,
+  "differences": {
+    "recent_actions.context_omitted": {
+      "n": 1,
+      "example": "recent_actions.context_omitted: undefined -> 0"
+    }
+  }
+}
+## g6
+{
+  "calls": 421,
+  "identical_text": 421,
+  "identical_structured": 420,
+  "differences": {
+    "recent_actions.context_omitted": {
+      "n": 1,
+      "example": "recent_actions.context_omitted: undefined -> 0"
+    }
+  }
+}
+## g3-2026-09-23e
+{
+  "calls": 49,
+  "identical_text": 49,
+  "identical_structured": 40,
+  "differences": {
+    "recent_actions.context_omitted": {
+      "n": 1,
+      "example": "recent_actions.context_omitted: undefined -> 0"
+    },
+    "element_history.context_omitted": {
+      "n": 8,
+      "example": "element_history.context_omitted: undefined -> 0"
+    }
+  }
+}
+## g2-anything-llm-2026-09-23-r4
+{
+  "calls": 71,
+  "identical_text": 71,
+  "identical_structured": 70,
+  "differences": {
+    "recent_actions.context_omitted": {
+      "n": 1,
+      "example": "recent_actions.context_omitted: undefined -> 0"
+    }
+  }
+}

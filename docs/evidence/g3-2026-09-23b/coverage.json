@@ -1,0 +1,813 @@
+{
+  "schema": "producttrace.g3-librechat-stamps.v1",
+  "headless": true,
+  "worktree": "/tmp/producttrace-librechat-m1-final2",
+  "origin": "http://127.0.0.1:51692",
+  "stamp_rows": 325,
+  "distinct_element_keys": 188,
+  "builds": [
+    "550051da4ebe"
+  ],
+  "surfaces": [
+    {
+      "variant": "oai-stub",
+      "surface": "/c/new",
+      "url": "/c/new",
+      "interactive_hosts": 68,
+      "stamped": 67,
+      "unstamped_count": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      },
+      "stamped_elements_total": 174,
+      "stats": {
+        "commits": 66,
+        "hosts_checked": 17513,
+        "stamped_nodes": 195,
+        "stamp_rows": 195,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 5602,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 41,
+        "state_receipts_applied": 18,
+        "await_resumptions": 55,
+        "build": "550051da4ebe",
+        "placements": 1537
+      },
+      "annotations": 174
+    },
+    {
+      "variant": "oai-stub",
+      "surface": "existing-conversation",
+      "url": "/c/e4701999-7ce6-550a-82df-ec10c16ff6b6",
+      "interactive_hosts": 86,
+      "stamped": 85,
+      "unstamped_count": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      },
+      "stamped_elements_total": 191,
+      "stats": {
+        "commits": 98,
+        "hosts_checked": 36438,
+        "stamped_nodes": 224,
+        "stamp_rows": 221,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 11483,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 146,
+        "state_receipts_applied": 64,
+        "await_resumptions": 104,
+        "build": "550051da4ebe",
+        "placements": 1537
+      },
+      "annotations": 191
+    },
+    {
+      "variant": "oai-stub",
+      "surface": "conversation-menu",
+      "url": "/c/e4701999-7ce6-550a-82df-ec10c16ff6b6",
+      "interactive_hosts": 98,
+      "stamped": 97,
+      "unstamped_count": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      },
+      "stamped_elements_total": 210,
+      "stats": {
+        "commits": 110,
+        "hosts_checked": 44331,
+        "stamped_nodes": 243,
+        "stamp_rows": 237,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 13930,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 194,
+        "state_receipts_applied": 91,
+        "await_resumptions": 104,
+        "build": "550051da4ebe",
+        "placements": 1537
+      },
+      "annotations": 210
+    },
+    {
+      "variant": "oai-stub",
+      "surface": "agent-builder",
+      "url": "/c/e4701999-7ce6-550a-82df-ec10c16ff6b6",
+      "interactive_hosts": 82,
+      "stamped": 81,
+      "unstamped_count": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      },
+      "stamped_elements_total": 135,
+      "stats": {
+        "commits": 128,
+        "hosts_checked": 54231,
+        "stamped_nodes": 295,
+        "stamp_rows": 288,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 16658,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 370,
+        "state_receipts_applied": 164,
+        "await_resumptions": 109,
+        "build": "550051da4ebe",
+        "placements": 1537
+      },
+      "annotations": 135
+    },
+    {
+      "variant": "no-oai",
+      "surface": "/c/new",
+      "url": "/c/new",
+      "interactive_hosts": 68,
+      "stamped": 67,
+      "unstamped_count": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      },
+      "stamped_elements_total": 174,
+      "stats": {
+        "commits": 62,
+        "hosts_checked": 15698,
+        "stamped_nodes": 195,
+        "stamp_rows": 195,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 0,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 41,
+        "state_receipts_applied": 18,
+        "await_resumptions": 56,
+        "build": "550051da4ebe",
+        "placements": 1537
+      },
+      "annotations": 0
+    },
+    {
+      "variant": "no-oai",
+      "surface": "existing-conversation",
+      "url": "/c/e4701999-7ce6-550a-82df-ec10c16ff6b6",
+      "interactive_hosts": 86,
+      "stamped": 85,
+      "unstamped_count": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      },
+      "stamped_elements_total": 191,
+      "stats": {
+        "commits": 90,
+        "hosts_checked": 32108,
+        "stamped_nodes": 224,
+        "stamp_rows": 221,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 0,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 152,
+        "state_receipts_applied": 65,
+        "await_resumptions": 102,
+        "build": "550051da4ebe",
+        "placements": 1537
+      },
+      "annotations": 0
+    },
+    {
+      "variant": "no-oai",
+      "surface": "conversation-menu",
+      "url": "/c/e4701999-7ce6-550a-82df-ec10c16ff6b6",
+      "interactive_hosts": 98,
+      "stamped": 97,
+      "unstamped_count": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      },
+      "stamped_elements_total": 210,
+      "stats": {
+        "commits": 102,
+        "hosts_checked": 40001,
+        "stamped_nodes": 243,
+        "stamp_rows": 237,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 0,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 200,
+        "state_receipts_applied": 92,
+        "await_resumptions": 102,
+        "build": "550051da4ebe",
+        "placements": 1537
+      },
+      "annotations": 0
+    },
+    {
+      "variant": "no-oai",
+      "surface": "agent-builder",
+      "url": "/c/e4701999-7ce6-550a-82df-ec10c16ff6b6",
+      "interactive_hosts": 82,
+      "stamped": 81,
+      "unstamped_count": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      },
+      "stamped_elements_total": 135,
+      "stats": {
+        "commits": 120,
+        "hosts_checked": 49901,
+        "stamped_nodes": 295,
+        "stamp_rows": 288,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 0,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 376,
+        "state_receipts_applied": 165,
+        "await_resumptions": 107,
+        "build": "550051da4ebe",
+        "placements": 1537
+      },
+      "annotations": 0
+    }
+  ],
+  "interactive_coverage": [
+    {
+      "variant": "oai-stub",
+      "surface": "/c/new",
+      "interactive_hosts": 68,
+      "stamped": 67,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    },
+    {
+      "variant": "oai-stub",
+      "surface": "existing-conversation",
+      "interactive_hosts": 86,
+      "stamped": 85,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    },
+    {
+      "variant": "oai-stub",
+      "surface": "conversation-menu",
+      "interactive_hosts": 98,
+      "stamped": 97,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    },
+    {
+      "variant": "oai-stub",
+      "surface": "agent-builder",
+      "interactive_hosts": 82,
+      "stamped": 81,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    },
+    {
+      "variant": "no-oai",
+      "surface": "/c/new",
+      "interactive_hosts": 68,
+      "stamped": 67,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    },
+    {
+      "variant": "no-oai",
+      "surface": "existing-conversation",
+      "interactive_hosts": 86,
+      "stamped": 85,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    },
+    {
+      "variant": "no-oai",
+      "surface": "conversation-menu",
+      "interactive_hosts": 98,
+      "stamped": 97,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    },
+    {
+      "variant": "no-oai",
+      "surface": "agent-builder",
+      "interactive_hosts": 82,
+      "stamped": 81,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    }
+  ],
+  "unstamped_examples": [
+    {
+      "variant": "oai-stub",
+      "surface": "/c/new",
+      "examples": [
+        {
+          "tag": "textarea",
+          "role": null,
+          "testid": null,
+          "label": "",
+          "reason": "not_rendered_by_react"
+        }
+      ]
+    },
+    {
+      "variant": "oai-stub",
+      "surface": "existing-conversation",
+      "examples": [
+        {
+          "tag": "textarea",
+          "role": null,
+          "testid": null,
+          "label": "",
+          "reason": "not_rendered_by_react"
+        }
+      ]
+    },
+    {
+      "variant": "oai-stub",
+      "surface": "conversation-menu",
+      "examples": [
+        {
+          "tag": "textarea",
+          "role": null,
+          "testid": null,
+          "label": "",
+          "reason": "not_rendered_by_react"
+        }
+      ]
+    },
+    {
+      "variant": "oai-stub",
+      "surface": "agent-builder",
+      "examples": [
+        {
+          "tag": "textarea",
+          "role": null,
+          "testid": null,
+          "label": "",
+          "reason": "not_rendered_by_react"
+        }
+      ]
+    },
+    {
+      "variant": "no-oai",
+      "surface": "/c/new",
+      "examples": [
+        {
+          "tag": "textarea",
+          "role": null,
+          "testid": null,
+          "label": "",
+          "reason": "not_rendered_by_react"
+        }
+      ]
+    },
+    {
+      "variant": "no-oai",
+      "surface": "existing-conversation",
+      "examples": [
+        {
+          "tag": "textarea",
+          "role": null,
+          "testid": null,
+          "label": "",
+          "reason": "not_rendered_by_react"
+        }
+      ]
+    },
+    {
+      "variant": "no-oai",
+      "surface": "conversation-menu",
+      "examples": [
+        {
+          "tag": "textarea",
+          "role": null,
+          "testid": null,
+          "label": "",
+          "reason": "not_rendered_by_react"
+        }
+      ]
+    },
+    {
+      "variant": "no-oai",
+      "surface": "agent-builder",
+      "examples": [
+        {
+          "tag": "textarea",
+          "role": null,
+          "testid": null,
+          "label": "",
+          "reason": "not_rendered_by_react"
+        }
+      ]
+    }
+  ],
+  "oai": {
+    "stub_payloads": 710,
+    "stub_invalid": 0,
+    "no_oai_payloads": 0,
+    "rejected_rows": 0
+  },
+  "resolve_sample": {
+    "size": 30,
+    "ok": 30,
+    "checks": [
+      {
+        "element_key": "p_d5057d754b71:3853-5796#n13",
+        "status": "exact",
+        "file": "client/src/components/Chat/Messages/MessagesView.tsx",
+        "line": 115,
+        "tag": "div",
+        "component": "MessagesViewContent",
+        "line_at_start_on_disk": 115,
+        "text_at_start_on_disk": "<div",
+        "source_line": "<div className=\"relative h-full\">",
+        "ok": true
+      },
+      {
+        "element_key": "p_8535bff87ea3:4759-5153#n25",
+        "status": "exact",
+        "file": "packages/client/src/components/Tooltip.tsx",
+        "line": 159,
+        "tag": "Ariakit.TooltipProvider",
+        "component": "Ariakit.TooltipProvider",
+        "line_at_start_on_disk": 159,
+        "text_at_start_on_disk": "<Ariakit.TooltipProvider",
+        "source_line": "<Ariakit.TooltipProvider store={tooltip} hideTimeout={0}>",
+        "ok": true
+      },
+      {
+        "element_key": "p_a9c81c835765:6265-7112#n1",
+        "status": "exact",
+        "file": "client/src/components/Chat/Landing.tsx",
+        "line": 181,
+        "tag": "div",
+        "component": "Landing",
+        "line_at_start_on_disk": 181,
+        "text_at_start_on_disk": "<div",
+        "source_line": "<div className={`relative size-10 justify-center ${textHasMultipleLines ? 'mb-2' : ''}`}>",
+        "ok": true
+      },
+      {
+        "element_key": "p_37698d9b8cce:5876-6771#n108",
+        "status": "exact",
+        "file": "client/src/components/UnifiedSidebar/UnifiedSidebar.tsx",
+        "line": 179,
+        "tag": "ActivePanelProvider",
+        "component": "ActivePanelProvider",
+        "line_at_start_on_disk": 179,
+        "text_at_start_on_disk": "<ActivePanelProvider",
+        "source_line": "<ActivePanelProvider>",
+        "ok": true
+      },
+      {
+        "element_key": "p_c3157a7c2c41:14880-16099#n1",
+        "status": "exact",
+        "file": "client/src/components/Conversations/Conversations.tsx",
+        "line": 461,
+        "tag": "div",
+        "component": "Conversations",
+        "line_at_start_on_disk": 461,
+        "text_at_start_on_disk": "<div",
+        "source_line": "<div className=\"relative flex h-full min-h-0 flex-col pb-2 text-sm text-text-primary\">",
+        "ok": true
+      },
+      {
+        "element_key": "p_41c0fc7a44c2:1058-1824#n1",
+        "status": "exact",
+        "file": "client/src/components/Chat/Messages/Content/MarkdownLite.tsx",
+        "line": 31,
+        "tag": "CodeBlockProvider",
+        "component": "CodeBlockProvider",
+        "line_at_start_on_disk": 31,
+        "text_at_start_on_disk": "<CodeBlockProvider",
+        "source_line": "<CodeBlockProvider>",
+        "ok": true
+      },
+      {
+        "element_key": "p_8d743139e77d:15339-18574#n3",
+        "status": "exact",
+        "file": "client/src/components/SidePanel/Agents/AgentPanel.tsx",
+        "line": 502,
+        "tag": "form",
+        "component": "AgentPanel",
+        "line_at_start_on_disk": 502,
+        "text_at_start_on_disk": "<form",
+        "source_line": "<form",
+        "ok": true
+      },
+      {
+        "element_key": "p_bf83f5540c24:2820-4308#n1",
+        "status": "exact",
+        "file": "client/src/components/Chat/Menus/Endpoints/ModelSelector.tsx",
+        "line": 90,
+        "tag": "div",
+        "component": "ModelSelectorContent",
+        "line_at_start_on_disk": 90,
+        "text_at_start_on_disk": "<div",
+        "source_line": "<div className=\"relative flex w-full max-w-md flex-col items-center gap-2\">",
+        "ok": true
+      },
+      {
+        "element_key": "p_966e47d78e67:3265-6768#n1",
+        "status": "exact",
+        "file": "packages/client/src/components/ControlCombobox.tsx",
+        "line": 125,
+        "tag": "div",
+        "component": "ControlCombobox",
+        "line_at_start_on_disk": 125,
+        "text_at_start_on_disk": "<div",
+        "source_line": "<div className={cn('flex w-full items-center justify-center px-1', containerClassName)}>",
+        "ok": true
+      },
+      {
+        "element_key": "p_ccab13181549:1008-1983#n2",
+        "status": "exact",
+        "file": "client/src/components/Chat/Messages/SiblingSwitch.tsx",
+        "line": 34,
+        "tag": "nav",
+        "component": "SiblingSwitch",
+        "line_at_start_on_disk": 34,
+        "text_at_start_on_disk": "<nav",
+        "source_line": "<nav",
+        "ok": true
+      },
+      {
+        "element_key": "p_5d6b8b95481a:2490-4082#n1",
+        "status": "exact",
+        "file": "client/src/components/SidePanel/Agents/Instructions.tsx",
+        "line": 67,
+        "tag": "div",
+        "component": "Instructions",
+        "line_at_start_on_disk": 67,
+        "text_at_start_on_disk": "<div",
+        "source_line": "<div className=\"flex items-center gap-0.5\">",
+        "ok": true
+      },
+      {
+        "element_key": "p_c15c44aa0e87:3754-7517#n1",
+        "status": "exact",
+        "file": "client/src/components/Auth/LoginForm.tsx",
+        "line": 91,
+        "tag": "form",
+        "component": "LoginForm",
+        "line_at_start_on_disk": 91,
+        "text_at_start_on_disk": "<form",
+        "source_line": "<form",
+        "ok": true
+      },
+      {
+        "element_key": "p_df29f4ea0c83:2244-2460#n1",
+        "status": "exact",
+        "file": "client/src/components/Nav/AccountSettings.tsx",
+        "line": 67,
+        "tag": "Menu.MenuItem",
+        "component": "Menu.MenuItem",
+        "line_at_start_on_disk": 67,
+        "text_at_start_on_disk": "<Menu.MenuItem",
+        "source_line": "<Menu.MenuItem onClick={onShowShortcuts} className=\"select-item text-sm\">",
+        "ok": true
+      },
+      {
+        "element_key": "p_8535bff87ea3:4759-5153#n12",
+        "status": "exact",
+        "file": "packages/client/src/components/Tooltip.tsx",
+        "line": 159,
+        "tag": "Ariakit.TooltipProvider",
+        "component": "Ariakit.TooltipProvider",
+        "line_at_start_on_disk": 159,
+        "text_at_start_on_disk": "<Ariakit.TooltipProvider",
+        "source_line": "<Ariakit.TooltipProvider store={tooltip} hideTimeout={0}>",
+        "ok": true
+      },
+      {
+        "element_key": "p_5d35bea8b4c3:398-482#n1",
+        "status": "exact",
+        "file": "client/src/components/SidePanel/Agents/AgentPanelSwitch.tsx",
+        "line": 11,
+        "tag": "AgentPanelProvider",
+        "component": "AgentPanelProvider",
+        "line_at_start_on_disk": 11,
+        "text_at_start_on_disk": "<AgentPanelProvider",
+        "source_line": "<AgentPanelProvider>",
+        "ok": true
+      },
+      {
+        "element_key": "p_d5057d754b71:3853-5796#n3",
+        "status": "exact",
+        "file": "client/src/components/Chat/Messages/MessagesView.tsx",
+        "line": 115,
+        "tag": "div",
+        "component": "MessagesViewContent",
+        "line_at_start_on_disk": 115,
+        "text_at_start_on_disk": "<div",
+        "source_line": "<div className=\"relative h-full\">",
+        "ok": true
+      },
+      {
+        "element_key": "p_d5057d754b71:3853-5796#n4",
+        "status": "exact",
+        "file": "client/src/components/Chat/Messages/MessagesView.tsx",
+        "line": 115,
+        "tag": "div",
+        "component": "MessagesViewContent",
+        "line_at_start_on_disk": 115,
+        "text_at_start_on_disk": "<div",
+        "source_line": "<div className=\"relative h-full\">",
+        "ok": true
+      },
+      {
+        "element_key": "p_df29f4ea0c83:7174-7371#n1",
+        "status": "exact",
+        "file": "client/src/components/Nav/AccountSettings.tsx",
+        "line": 180,
+        "tag": "Menu.MenuItem",
+        "component": "Menu.MenuItem",
+        "line_at_start_on_disk": 180,
+        "text_at_start_on_disk": "<Menu.MenuItem",
+        "source_line": "<Menu.MenuItem onClick={() => logout()} className=\"select-item text-sm\">",
+        "ok": true
+      },
+      {
+        "element_key": "p_56f3aaf330c6:2421-2884#n1",
+        "status": "exact",
+        "file": "client/src/App.jsx",
+        "line": 65,
+        "tag": "ToastProvider",
+        "component": "ToastProvider",
+        "line_at_start_on_disk": 65,
+        "text_at_start_on_disk": "<ToastProvider",
+        "source_line": "<ToastProvider>",
+        "ok": true
+      },
+      {
+        "element_key": "p_d5057d754b71:3853-5796#n15",
+        "status": "exact",
+        "file": "client/src/components/Chat/Messages/MessagesView.tsx",
+        "line": 115,
+        "tag": "div",
+        "component": "MessagesViewContent",
+        "line_at_start_on_disk": 115,
+        "text_at_start_on_disk": "<div",
+        "source_line": "<div className=\"relative h-full\">",
+        "ok": true
+      },
+      {
+        "element_key": "p_ef5c3b4d89cf:15472-16078#n1",
+        "status": "exact",
+        "file": "client/src/components/SidePanel/Agents/Tools/ToolsSection.tsx",
+        "line": 439,
+        "tag": "button",
+        "component": "SelectedSection",
+        "line_at_start_on_disk": 439,
+        "text_at_start_on_disk": "<button",
+        "source_line": "<button",
+        "ok": true
+      },
+      {
+        "element_key": "p_5bffa2fdd4c7:21985-24653#n1",
+        "status": "exact",
+        "file": "client/src/components/Chat/Input/ChatForm.tsx",
+        "line": 578,
+        "tag": "div",
+        "component": "ChatForm",
+        "line_at_start_on_disk": 578,
+        "text_at_start_on_disk": "<div",
+        "source_line": "<div className={cn('flex', isRTL ? 'flex-row-reverse' : 'flex-row')}>",
+        "ok": true
+      },
+      {
+        "element_key": "p_8d743139e77d:15564-17109#n1",
+        "status": "exact",
+        "file": "client/src/components/SidePanel/Agents/AgentPanel.tsx",
+        "line": 508,
+        "tag": "div",
+        "component": "AgentPanel",
+        "line_at_start_on_disk": 508,
+        "text_at_start_on_disk": "<div",
+        "source_line": "<div className=\"flex w-full flex-wrap gap-2\">",
+        "ok": true
+      },
+      {
+        "element_key": "p_8535bff87ea3:4759-5153#n6",
+        "status": "exact",
+        "file": "packages/client/src/components/Tooltip.tsx",
+        "line": 159,
+        "tag": "Ariakit.TooltipProvider",
+        "component": "Ariakit.TooltipProvider",
+        "line_at_start_on_disk": 159,
+        "text_at_start_on_disk": "<Ariakit.TooltipProvider",
+        "source_line": "<Ariakit.TooltipProvider store={tooltip} hideTimeout={0}>",
+        "ok": true
+      },
+      {
+        "element_key": "p_8d743139e77d:15339-18574#n1",
+        "status": "exact",
+        "file": "client/src/components/SidePanel/Agents/AgentPanel.tsx",
+        "line": 502,
+        "tag": "form",
+        "component": "AgentPanel",
+        "line_at_start_on_disk": 502,
+        "text_at_start_on_disk": "<form",
+        "source_line": "<form",
+        "ok": true
+      },
+      {
+        "element_key": "p_37698d9b8cce:5876-6771#n2",
+        "status": "exact",
+        "file": "client/src/components/UnifiedSidebar/UnifiedSidebar.tsx",
+        "line": 179,
+        "tag": "ActivePanelProvider",
+        "component": "ActivePanelProvider",
+        "line_at_start_on_disk": 179,
+        "text_at_start_on_disk": "<ActivePanelProvider",
+        "source_line": "<ActivePanelProvider>",
+        "ok": true
+      },
+      {
+        "element_key": "p_a9c81c835765:6035-9150#n5",
+        "status": "exact",
+        "file": "client/src/components/Chat/Landing.tsx",
+        "line": 177,
+        "tag": "div",
+        "component": "Landing",
+        "line_at_start_on_disk": 177,
+        "text_at_start_on_disk": "<div",
+        "source_line": "<div ref={contentRef} className=\"flex flex-col items-center gap-0 p-2\">",
+        "ok": true
+      },
+      {
+        "element_key": "p_8535bff87ea3:4759-5153#n15",
+        "status": "exact",
+        "file": "packages/client/src/components/Tooltip.tsx",
+        "line": 159,
+        "tag": "Ariakit.TooltipProvider",
+        "component": "Ariakit.TooltipProvider",
+        "line_at_start_on_disk": 159,
+        "text_at_start_on_disk": "<Ariakit.TooltipProvider",
+        "source_line": "<Ariakit.TooltipProvider store={tooltip} hideTimeout={0}>",
+        "ok": true
+      },
+      {
+        "element_key": "p_966e47d78e67:3265-6768#n2",
+        "status": "exact",
+        "file": "packages/client/src/components/ControlCombobox.tsx",
+        "line": 125,
+        "tag": "div",
+        "component": "ControlCombobox",
+        "line_at_start_on_disk": 125,
+        "text_at_start_on_disk": "<div",
+        "source_line": "<div className={cn('flex w-full items-center justify-center px-1', containerClassName)}>",
+        "ok": true
+      },
+      {
+        "element_key": "p_37698d9b8cce:5876-6771#n116",
+        "status": "exact",
+        "file": "client/src/components/UnifiedSidebar/UnifiedSidebar.tsx",
+        "line": 179,
+        "tag": "ActivePanelProvider",
+        "component": "ActivePanelProvider",
+        "line_at_start_on_disk": 179,
+        "text_at_start_on_disk": "<ActivePanelProvider",
+        "source_line": "<ActivePanelProvider>",
+        "ok": true
+      }
+    ]
+  },
+  "checks": {
+    "stamps_emitted": true,
+    "every_interactive_host_stamped": false,
+    "resolve_sample_exact": true,
+    "oai_written_with_stub": true,
+    "oai_payloads_valid": true,
+    "no_oai_without_stub": true
+  }
+}

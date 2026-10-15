@@ -1,0 +1,863 @@
+{
+  "classification": "wrong_model_proposal",
+  "original_report": "paid-memoize-one-1789073878933.json",
+  "original_status": "rejected",
+  "failures": [
+    {
+      "reason": "callback_order_or_count_mismatch",
+      "occurrence": "library-call:13",
+      "detail": {
+        "boundary": "returned_callback",
+        "observed_callback_count": 0,
+        "predicted_callback_ordinal": 1,
+        "predicted_callback": "argument:0",
+        "observed_callback": null,
+        "invocation": {
+          "arguments": [
+            {
+              "type": "number",
+              "value": "NaN"
+            }
+          ],
+          "receiver": {
+            "type": "object",
+            "identity": "identity:2"
+          }
+        },
+        "predicted_arguments": [
+          {
+            "type": "number",
+            "value": "NaN"
+          }
+        ],
+        "predicted_decisions": [
+          {
+            "path": "/body/body/body/body/body/body/body/body/body/test",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": true
+              }
+            ],
+            "result": true
+          },
+          {
+            "path": "/body/body/body/body/body/body/body/body/body/test/then/test",
+            "op": "equal",
+            "operands": [
+              {
+                "type": "object",
+                "identity": "identity:2"
+              },
+              {
+                "type": "object",
+                "identity": "identity:2"
+              }
+            ],
+            "result": true
+          },
+          {
+            "path": "/body/body/body/body/body/body/body/body/body/test/then",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": true
+              }
+            ],
+            "result": true
+          },
+          {
+            "path": "/body/body/value/then/body/test",
+            "op": "equal",
+            "operands": [
+              {
+                "type": "number",
+                "value": 1
+              },
+              {
+                "type": "number",
+                "value": 1
+              }
+            ],
+            "result": true
+          },
+          {
+            "path": "/body/body/value/then/body",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": true
+              }
+            ],
+            "result": true
+          },
+          {
+            "path": "/body/body/value/then/body/then/test/body/test",
+            "op": "equal",
+            "operands": [
+              {
+                "type": "number",
+                "value": "NaN"
+              },
+              {
+                "type": "number",
+                "value": "NaN"
+              }
+            ],
+            "result": false
+          },
+          {
+            "path": "/body/body/value/then/body/then/test/body",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": false
+              }
+            ],
+            "result": false
+          },
+          {
+            "path": "/body/body/value/then/body/then/test/body/else/test",
+            "op": "equal",
+            "operands": [
+              {
+                "type": "string",
+                "value": "number",
+                "truncated": false
+              },
+              {
+                "type": "string",
+                "value": "number",
+                "truncated": false
+              }
+            ],
+            "result": true
+          },
+          {
+            "path": "/body/body/value/then/body/then/test/body/else",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": true
+              }
+            ],
+            "result": true
+          },
+          {
+            "path": "/body/body/value/then/body/then/test/body/else/then/test/value",
+            "op": "same",
+            "operands": [
+              {
+                "type": "number",
+                "value": "NaN"
+              },
+              {
+                "type": "number",
+                "value": "NaN"
+              }
+            ],
+            "result": true
+          },
+          {
+            "path": "/body/body/value/then/body/then/test/body/else/then",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": false
+              }
+            ],
+            "result": false
+          },
+          {
+            "path": "/body/body/body/body/body/body/body/body/body",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": false
+              }
+            ],
+            "result": false
+          }
+        ]
+      }
+    },
+    {
+      "reason": "callback_order_or_count_mismatch",
+      "occurrence": "library-call:14",
+      "detail": {
+        "boundary": "returned_callback",
+        "observed_callback_count": 0,
+        "predicted_callback_ordinal": 1,
+        "predicted_callback": "argument:0",
+        "observed_callback": null,
+        "invocation": {
+          "arguments": [
+            {
+              "type": "number",
+              "value": "NaN"
+            }
+          ],
+          "receiver": {
+            "type": "object",
+            "identity": "identity:3"
+          }
+        },
+        "predicted_arguments": [
+          {
+            "type": "number",
+            "value": "NaN"
+          }
+        ],
+        "predicted_decisions": [
+          {
+            "path": "/body/body/body/body/body/body/body/body/body/test",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": true
+              }
+            ],
+            "result": true
+          },
+          {
+            "path": "/body/body/body/body/body/body/body/body/body/test/then/test",
+            "op": "equal",
+            "operands": [
+              {
+                "type": "object",
+                "identity": "identity:3"
+              },
+              {
+                "type": "object",
+                "identity": "identity:3"
+              }
+            ],
+            "result": true
+          },
+          {
+            "path": "/body/body/body/body/body/body/body/body/body/test/then",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": true
+              }
+            ],
+            "result": true
+          },
+          {
+            "path": "/body/body/value/then/body/test",
+            "op": "equal",
+            "operands": [
+              {
+                "type": "number",
+                "value": 1
+              },
+              {
+                "type": "number",
+                "value": 1
+              }
+            ],
+            "result": true
+          },
+          {
+            "path": "/body/body/value/then/body",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": true
+              }
+            ],
+            "result": true
+          },
+          {
+            "path": "/body/body/value/then/body/then/test/body/test",
+            "op": "equal",
+            "operands": [
+              {
+                "type": "number",
+                "value": "NaN"
+              },
+              {
+                "type": "number",
+                "value": "NaN"
+              }
+            ],
+            "result": false
+          },
+          {
+            "path": "/body/body/value/then/body/then/test/body",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": false
+              }
+            ],
+            "result": false
+          },
+          {
+            "path": "/body/body/value/then/body/then/test/body/else/test",
+            "op": "equal",
+            "operands": [
+              {
+                "type": "string",
+                "value": "number",
+                "truncated": false
+              },
+              {
+                "type": "string",
+                "value": "number",
+                "truncated": false
+              }
+            ],
+            "result": true
+          },
+          {
+            "path": "/body/body/value/then/body/then/test/body/else",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": true
+              }
+            ],
+            "result": true
+          },
+          {
+            "path": "/body/body/value/then/body/then/test/body/else/then/test/value",
+            "op": "same",
+            "operands": [
+              {
+                "type": "number",
+                "value": "NaN"
+              },
+              {
+                "type": "number",
+                "value": "NaN"
+              }
+            ],
+            "result": true
+          },
+          {
+            "path": "/body/body/value/then/body/then/test/body/else/then",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": false
+              }
+            ],
+            "result": false
+          },
+          {
+            "path": "/body/body/body/body/body/body/body/body/body",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": false
+              }
+            ],
+            "result": false
+          }
+        ]
+      }
+    },
+    {
+      "reason": "callback_arguments_or_receiver_mismatch",
+      "occurrence": "library-call:31",
+      "detail": {
+        "callback": "argument:0",
+        "arguments_match": true,
+        "invocation": {
+          "arguments": [
+            {
+              "type": "number",
+              "value": 1
+            }
+          ],
+          "receiver": {
+            "type": "number",
+            "value": 0
+          }
+        },
+        "observed_arguments": [
+          {
+            "type": "number",
+            "value": 1
+          }
+        ],
+        "predicted_arguments": [
+          {
+            "type": "number",
+            "value": 1
+          }
+        ],
+        "observed_receiver": {
+          "type": "number",
+          "value": 0
+        },
+        "predicted_receiver": {
+          "type": "object",
+          "identity": "identity:6"
+        },
+        "predicted_decisions": [
+          {
+            "path": "/body/body/body/body/body/body/body/body/body/test",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": true
+              }
+            ],
+            "result": true
+          },
+          {
+            "path": "/body/body/body/body/body/body/body/body/body/test/then/test",
+            "op": "equal",
+            "operands": [
+              {
+                "type": "object",
+                "identity": "identity:2"
+              },
+              {
+                "type": "object",
+                "identity": "identity:6"
+              }
+            ],
+            "result": false
+          },
+          {
+            "path": "/body/body/body/body/body/body/body/body/body/test/then",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": false
+              }
+            ],
+            "result": false
+          },
+          {
+            "path": "/body/body/body/body/body/body/body/body/body",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": false
+              }
+            ],
+            "result": false
+          }
+        ]
+      }
+    },
+    {
+      "reason": "callback_order_or_count_mismatch",
+      "occurrence": "library-call:32",
+      "detail": {
+        "boundary": "returned_callback",
+        "observed_callback_count": 0,
+        "predicted_callback_ordinal": 1,
+        "predicted_callback": "argument:0",
+        "observed_callback": null,
+        "invocation": {
+          "arguments": [
+            {
+              "type": "number",
+              "value": 1
+            }
+          ],
+          "receiver": {
+            "type": "number",
+            "value": "-0"
+          }
+        },
+        "predicted_arguments": [
+          {
+            "type": "number",
+            "value": 1
+          }
+        ],
+        "predicted_decisions": [
+          {
+            "path": "/body/body/body/body/body/body/body/body/body/test",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": true
+              }
+            ],
+            "result": true
+          },
+          {
+            "path": "/body/body/body/body/body/body/body/body/body/test/then/test",
+            "op": "equal",
+            "operands": [
+              {
+                "type": "object",
+                "identity": "identity:2"
+              },
+              {
+                "type": "object",
+                "identity": "identity:7"
+              }
+            ],
+            "result": false
+          },
+          {
+            "path": "/body/body/body/body/body/body/body/body/body/test/then",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": false
+              }
+            ],
+            "result": false
+          },
+          {
+            "path": "/body/body/body/body/body/body/body/body/body",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": false
+              }
+            ],
+            "result": false
+          }
+        ]
+      }
+    },
+    {
+      "reason": "callback_arguments_or_receiver_mismatch",
+      "occurrence": "library-call:50",
+      "detail": {
+        "callback": "argument:0",
+        "arguments_match": true,
+        "invocation": {
+          "arguments": [],
+          "receiver": {
+            "type": "undefined"
+          }
+        },
+        "observed_arguments": [],
+        "predicted_arguments": [],
+        "observed_receiver": {
+          "type": "undefined"
+        },
+        "predicted_receiver": {
+          "type": "object",
+          "identity": "identity:13"
+        },
+        "predicted_decisions": [
+          {
+            "path": "/body/body/body/body/body/body/body/body/body/test",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": false
+              }
+            ],
+            "result": false
+          },
+          {
+            "path": "/body/body/body/body/body/body/body/body/body",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": false
+              }
+            ],
+            "result": false
+          }
+        ]
+      }
+    },
+    {
+      "reason": "callback_arguments_or_receiver_mismatch",
+      "occurrence": "library-call:51",
+      "detail": {
+        "callback": "argument:0",
+        "arguments_match": true,
+        "invocation": {
+          "arguments": [],
+          "receiver": {
+            "type": "undefined"
+          }
+        },
+        "observed_arguments": [],
+        "predicted_arguments": [],
+        "observed_receiver": {
+          "type": "undefined"
+        },
+        "predicted_receiver": {
+          "type": "object",
+          "identity": "identity:13"
+        },
+        "predicted_decisions": [
+          {
+            "path": "/body/body/body/body/body/body/body/body/body/test",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": false
+              }
+            ],
+            "result": false
+          },
+          {
+            "path": "/body/body/body/body/body/body/body/body/body",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": false
+              }
+            ],
+            "result": false
+          }
+        ]
+      }
+    },
+    {
+      "reason": "callback_order_or_count_mismatch",
+      "occurrence": "library-call:52",
+      "detail": {
+        "boundary": "returned_callback",
+        "observed_callback_count": 0,
+        "predicted_callback_ordinal": 1,
+        "predicted_callback": "argument:0",
+        "observed_callback": null,
+        "invocation": {
+          "arguments": [],
+          "receiver": {
+            "type": "undefined"
+          }
+        },
+        "predicted_arguments": [],
+        "predicted_decisions": [
+          {
+            "path": "/body/body/body/body/body/body/body/body/body/test",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": false
+              }
+            ],
+            "result": false
+          },
+          {
+            "path": "/body/body/body/body/body/body/body/body/body",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": false
+              }
+            ],
+            "result": false
+          }
+        ]
+      }
+    },
+    {
+      "reason": "callback_arguments_or_receiver_mismatch",
+      "occurrence": "library-call:54",
+      "detail": {
+        "callback": "argument:0",
+        "arguments_match": true,
+        "invocation": {
+          "arguments": [
+            {
+              "type": "number",
+              "value": 1
+            }
+          ],
+          "receiver": {
+            "type": "undefined"
+          }
+        },
+        "observed_arguments": [
+          {
+            "type": "number",
+            "value": 1
+          }
+        ],
+        "predicted_arguments": [
+          {
+            "type": "number",
+            "value": 1
+          }
+        ],
+        "observed_receiver": {
+          "type": "undefined"
+        },
+        "predicted_receiver": {
+          "type": "object",
+          "identity": "identity:13"
+        },
+        "predicted_decisions": [
+          {
+            "path": "/body/body/body/body/body/body/body/body/body/test",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": false
+              }
+            ],
+            "result": false
+          },
+          {
+            "path": "/body/body/body/body/body/body/body/body/body",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": false
+              }
+            ],
+            "result": false
+          }
+        ]
+      }
+    },
+    {
+      "reason": "callback_order_or_count_mismatch",
+      "occurrence": "library-call:55",
+      "detail": {
+        "boundary": "returned_callback",
+        "observed_callback_count": 1,
+        "predicted_callback_ordinal": 1,
+        "predicted_callback": "argument:0",
+        "observed_callback": "argument:1",
+        "invocation": {
+          "arguments": [
+            {
+              "type": "number",
+              "value": 2
+            }
+          ],
+          "receiver": {
+            "type": "undefined"
+          }
+        },
+        "predicted_arguments": [
+          {
+            "type": "number",
+            "value": 2
+          }
+        ],
+        "predicted_decisions": [
+          {
+            "path": "/body/body/body/body/body/body/body/body/body/test",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": false
+              }
+            ],
+            "result": false
+          },
+          {
+            "path": "/body/body/body/body/body/body/body/body/body",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": false
+              }
+            ],
+            "result": false
+          }
+        ]
+      }
+    },
+    {
+      "reason": "callback_order_or_count_mismatch",
+      "occurrence": "library-call:56",
+      "detail": {
+        "boundary": "returned_callback",
+        "observed_callback_count": 1,
+        "predicted_callback_ordinal": 1,
+        "predicted_callback": "argument:0",
+        "observed_callback": "argument:1",
+        "invocation": {
+          "arguments": [
+            {
+              "type": "number",
+              "value": 3
+            }
+          ],
+          "receiver": {
+            "type": "undefined"
+          }
+        },
+        "predicted_arguments": [
+          {
+            "type": "number",
+            "value": 3
+          }
+        ],
+        "predicted_decisions": [
+          {
+            "path": "/body/body/body/body/body/body/body/body/body/test",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": false
+              }
+            ],
+            "result": false
+          },
+          {
+            "path": "/body/body/body/body/body/body/body/body/body",
+            "op": "if",
+            "operands": [
+              {
+                "type": "boolean",
+                "value": false
+              }
+            ],
+            "result": false
+          }
+        ]
+      }
+    }
+  ],
+  "diagnostic_only": {
+    "not_admitted": true,
+    "replacements": 2,
+    "behavior": "rejected",
+    "integration": false
+  },
+  "fix": "Opt-in checker-owned execution diagnostics report the comparison operands, opcode, result, and instruction path. No correct rule is sent to the proposer.",
+  "additional_diagnosis": "Attempt 3 also changed the returned closure to sloppy receiver mode, despite the exact implementation being strict. Earlier feedback selected two duplicate count failures and omitted the distinct receiver failure.",
+  "fully_corrected_diagnostic_only": {
+    "not_admitted": true,
+    "equality_corrections": 2,
+    "receiver_corrections": 1,
+    "behavior": "passed",
+    "integration": true
+  }
+}

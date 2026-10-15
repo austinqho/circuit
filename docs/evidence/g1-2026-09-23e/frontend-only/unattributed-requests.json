@@ -1,0 +1,761 @@
+{
+  "count": 39,
+  "counts": {
+    "before_first_action": 4,
+    "unowned_continuation": 35
+  },
+  "requests": [
+    {
+      "sequence": 1,
+      "method": "GET",
+      "url": "/api/config",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "before_first_action",
+      "during_step": 1,
+      "preceding_action": null,
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 2,
+      "method": "POST",
+      "url": "/api/auth/refresh",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "before_first_action",
+      "during_step": 1,
+      "preceding_action": null
+    },
+    {
+      "sequence": 3,
+      "method": "GET",
+      "url": "/api/banner",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "before_first_action",
+      "during_step": 1,
+      "preceding_action": null,
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 4,
+      "method": "GET",
+      "url": "/api/config",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "before_first_action",
+      "during_step": 1,
+      "preceding_action": null,
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 446,
+      "method": "GET",
+      "url": "/api/roles/USER",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjb1w:83",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-label": "Continue",
+          "data-testid": "login-button"
+        },
+        "ms_before": 174
+      },
+      "note": "post-login: queries mounted by the route change after the login response; their observers subscribe in passive effects flushed on React's scheduler with no receipt reaching those fibers (abstention)"
+    },
+    {
+      "sequence": 447,
+      "method": "GET",
+      "url": "/api/roles/ADMIN",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjb1w:83",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-label": "Continue",
+          "data-testid": "login-button"
+        },
+        "ms_before": 174
+      },
+      "note": "post-login: queries mounted by the route change after the login response; their observers subscribe in passive effects flushed on React's scheduler with no receipt reaching those fibers (abstention)"
+    },
+    {
+      "sequence": 448,
+      "method": "GET",
+      "url": "/api/user",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjb1w:83",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-label": "Continue",
+          "data-testid": "login-button"
+        },
+        "ms_before": 174
+      },
+      "note": "post-login: queries mounted by the route change after the login response; their observers subscribe in passive effects flushed on React's scheduler with no receipt reaching those fibers (abstention)"
+    },
+    {
+      "sequence": 605,
+      "method": "GET",
+      "url": "/api/endpoints",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjb1w:83",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-label": "Continue",
+          "data-testid": "login-button"
+        },
+        "ms_before": 254
+      },
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 606,
+      "method": "GET",
+      "url": "/api/user/settings/favorites",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjb1w:83",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-label": "Continue",
+          "data-testid": "login-button"
+        },
+        "ms_before": 254
+      },
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 607,
+      "method": "GET",
+      "url": "/api/projects",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjb1w:83",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-label": "Continue",
+          "data-testid": "login-button"
+        },
+        "ms_before": 254
+      },
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 608,
+      "method": "GET",
+      "url": "/api/agents/chat/active",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjb1w:83",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-label": "Continue",
+          "data-testid": "login-button"
+        },
+        "ms_before": 254
+      },
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 609,
+      "method": "GET",
+      "url": "/api/convos",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjb1w:83",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-label": "Continue",
+          "data-testid": "login-button"
+        },
+        "ms_before": 254
+      },
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 610,
+      "method": "GET",
+      "url": "/api/mcp/servers",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjb1w:83",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-label": "Continue",
+          "data-testid": "login-button"
+        },
+        "ms_before": 254
+      },
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 611,
+      "method": "GET",
+      "url": "/api/permissions/mcpServer/effective/all",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjb1w:83",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-label": "Continue",
+          "data-testid": "login-button"
+        },
+        "ms_before": 254
+      },
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 612,
+      "method": "GET",
+      "url": "/api/files/speech/config/get",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjb1w:83",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-label": "Continue",
+          "data-testid": "login-button"
+        },
+        "ms_before": 254
+      },
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 613,
+      "method": "GET",
+      "url": "/api/models",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjb1w:83",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-label": "Continue",
+          "data-testid": "login-button"
+        },
+        "ms_before": 254
+      },
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 614,
+      "method": "GET",
+      "url": "/api/prompts/groups",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjb1w:83",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-label": "Continue",
+          "data-testid": "login-button"
+        },
+        "ms_before": 254
+      },
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 615,
+      "method": "GET",
+      "url": "/api/prompts/all",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjb1w:83",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-label": "Continue",
+          "data-testid": "login-button"
+        },
+        "ms_before": 254
+      },
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 616,
+      "method": "GET",
+      "url": "/api/files",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjb1w:83",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-label": "Continue",
+          "data-testid": "login-button"
+        },
+        "ms_before": 254
+      },
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 617,
+      "method": "GET",
+      "url": "/api/search/enable",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjb1w:83",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-label": "Continue",
+          "data-testid": "login-button"
+        },
+        "ms_before": 254
+      },
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 686,
+      "method": "GET",
+      "url": "/api/tags",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjb1w:83",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-label": "Continue",
+          "data-testid": "login-button"
+        },
+        "ms_before": 274
+      },
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 792,
+      "method": "GET",
+      "url": "/api/keys",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjbco:84",
+        "event": "focusin",
+        "target": {
+          "name": "text",
+          "id": "prompt-textarea",
+          "data-testid": "text-input",
+          "aria-label": "Message input"
+        },
+        "ms_before": 19
+      },
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 793,
+      "method": "GET",
+      "url": "/api/agents",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjbco:84",
+        "event": "focusin",
+        "target": {
+          "name": "text",
+          "id": "prompt-textarea",
+          "data-testid": "text-input",
+          "aria-label": "Message input"
+        },
+        "ms_before": 19
+      },
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 794,
+      "method": "GET",
+      "url": "/api/presets",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjbco:84",
+        "event": "focusin",
+        "target": {
+          "name": "text",
+          "id": "prompt-textarea",
+          "data-testid": "text-input",
+          "aria-label": "Message input"
+        },
+        "ms_before": 19
+      },
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 795,
+      "method": "GET",
+      "url": "/api/files/config",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjbco:84",
+        "event": "focusin",
+        "target": {
+          "name": "text",
+          "id": "prompt-textarea",
+          "data-testid": "text-input",
+          "aria-label": "Message input"
+        },
+        "ms_before": 19
+      },
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 796,
+      "method": "GET",
+      "url": "/api/agents/tools/web_search/auth",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjbco:84",
+        "event": "focusin",
+        "target": {
+          "name": "text",
+          "id": "prompt-textarea",
+          "data-testid": "text-input",
+          "aria-label": "Message input"
+        },
+        "ms_before": 19
+      },
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 797,
+      "method": "GET",
+      "url": "/api/endpoints/token-config",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjbco:84",
+        "event": "focusin",
+        "target": {
+          "name": "text",
+          "id": "prompt-textarea",
+          "data-testid": "text-input",
+          "aria-label": "Message input"
+        },
+        "ms_before": 19
+      },
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 798,
+      "method": "GET",
+      "url": "/api/agents",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjbco:84",
+        "event": "focusin",
+        "target": {
+          "name": "text",
+          "id": "prompt-textarea",
+          "data-testid": "text-input",
+          "aria-label": "Message input"
+        },
+        "ms_before": 19
+      },
+      "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"
+    },
+    {
+      "sequence": 1044,
+      "method": "GET",
+      "url": "/health",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 1,
+      "preceding_action": {
+        "action_id": "action:muejjbco:84",
+        "event": "focusin",
+        "target": {
+          "name": "text",
+          "id": "prompt-textarea",
+          "data-testid": "text-input",
+          "aria-label": "Message input"
+        },
+        "ms_before": 344
+      },
+      "note": "periodic health poll from a timer armed before any action (correctly unowned)"
+    },
+    {
+      "sequence": 44251,
+      "method": "GET",
+      "url": "/api/messages/e8f8ef13-913b-5482-9836-504e0244b93f",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 5,
+      "preceding_action": {
+        "action_id": "action:muejjj8r:201",
+        "event": "click",
+        "target": {
+          "data-testid": "regenerate-generation-button",
+          "type": "button"
+        },
+        "ms_before": 511
+      },
+      "note": "react-query refetch of the conversation after the stream finished: created by the stream's end handler through query invalidation flushed on the scheduler without a receipt (abstention)"
+    },
+    {
+      "sequence": 83228,
+      "method": "GET",
+      "url": "/api/agents/agent_z6D1Zf2DJNRkImTT2FjX9",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 8,
+      "preceding_action": {
+        "action_id": "action:muejjrhm:267",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-busy": "false",
+          "aria-label": "Create"
+        },
+        "ms_before": 74
+      },
+      "note": "after agent create: queries for the newly selected agent mounted by the panel re-render; observers subscribed in scheduler-flushed effects whose fibers carry no receipt (abstention)"
+    },
+    {
+      "sequence": 83229,
+      "method": "GET",
+      "url": "/api/agents/actions",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 8,
+      "preceding_action": {
+        "action_id": "action:muejjrhm:267",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-busy": "false",
+          "aria-label": "Create"
+        },
+        "ms_before": 74
+      },
+      "note": "after agent create: queries for the newly selected agent mounted by the panel re-render; observers subscribed in scheduler-flushed effects whose fibers carry no receipt (abstention)"
+    },
+    {
+      "sequence": 83230,
+      "method": "GET",
+      "url": "/api/permissions/agent/6ab4330936bf94412a27808d/effective",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 8,
+      "preceding_action": {
+        "action_id": "action:muejjrhm:267",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-busy": "false",
+          "aria-label": "Create"
+        },
+        "ms_before": 108
+      },
+      "note": "after agent create: queries for the newly selected agent mounted by the panel re-render; observers subscribed in scheduler-flushed effects whose fibers carry no receipt (abstention)"
+    },
+    {
+      "sequence": 83231,
+      "method": "GET",
+      "url": "/api/permissions/agent/6ab4330936bf94412a27808d",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 8,
+      "preceding_action": {
+        "action_id": "action:muejjrhm:267",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-busy": "false",
+          "aria-label": "Create"
+        },
+        "ms_before": 136
+      },
+      "note": "after agent create: queries for the newly selected agent mounted by the panel re-render; observers subscribed in scheduler-flushed effects whose fibers carry no receipt (abstention)"
+    },
+    {
+      "sequence": 83232,
+      "method": "GET",
+      "url": "/api/permissions/remoteAgent/6ab4330936bf94412a27808d/effective",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 8,
+      "preceding_action": {
+        "action_id": "action:muejjrhm:267",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-busy": "false",
+          "aria-label": "Create"
+        },
+        "ms_before": 137
+      },
+      "note": "after agent create: queries for the newly selected agent mounted by the panel re-render; observers subscribed in scheduler-flushed effects whose fibers carry no receipt (abstention)"
+    },
+    {
+      "sequence": 83233,
+      "method": "GET",
+      "url": "/api/agents/agent_z6D1Zf2DJNRkImTT2FjX9/expanded",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 8,
+      "preceding_action": {
+        "action_id": "action:muejjrhm:267",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-busy": "false",
+          "aria-label": "Create"
+        },
+        "ms_before": 137
+      },
+      "note": "after agent create: queries for the newly selected agent mounted by the panel re-render; observers subscribed in scheduler-flushed effects whose fibers carry no receipt (abstention)"
+    },
+    {
+      "sequence": 83236,
+      "method": "GET",
+      "url": "/api/permissions/remoteAgent/6ab4330936bf94412a27808d",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 8,
+      "preceding_action": {
+        "action_id": "action:muejjrhm:267",
+        "event": "submit",
+        "target": {
+          "type": "submit",
+          "aria-busy": "false",
+          "aria-label": "Create"
+        },
+        "ms_before": 150
+      },
+      "note": "after agent create: queries for the newly selected agent mounted by the panel re-render; observers subscribed in scheduler-flushed effects whose fibers carry no receipt (abstention)"
+    },
+    {
+      "sequence": 117687,
+      "method": "GET",
+      "url": "/api/messages/a6dbcaf4-2467-5520-b61f-312e7888e904",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 9,
+      "preceding_action": {
+        "action_id": "action:muejjt7c:321",
+        "event": "submit",
+        "target": {
+          "aria-label": "Send message",
+          "id": "send-button",
+          "data-testid": "send-button",
+          "type": "submit"
+        },
+        "ms_before": 480
+      },
+      "note": "react-query refetch of the conversation after the stream finished: created by the stream's end handler through query invalidation flushed on the scheduler without a receipt (abstention)"
+    },
+    {
+      "sequence": 117688,
+      "method": "GET",
+      "url": "/api/agents/chat/status/a6dbcaf4-2467-5520-b61f-312e7888e904",
+      "transport": "xhr",
+      "runtime_reason": "unattributed_transport",
+      "reason": "unowned_continuation",
+      "during_step": 9,
+      "preceding_action": {
+        "action_id": "action:muejjt7c:321",
+        "event": "submit",
+        "target": {
+          "aria-label": "Send message",
+          "id": "send-button",
+          "data-testid": "send-button",
+          "type": "submit"
+        },
+        "ms_before": 542
+      },
+      "note": "stream status poll created after the stream ended, from an effect flushed on the scheduler without a receipt (abstention)"
+    }
+  ]
+}

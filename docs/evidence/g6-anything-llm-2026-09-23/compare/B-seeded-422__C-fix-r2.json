@@ -1,0 +1,178 @@
+{
+  "pair": {
+    "before": {
+      "label": "B-seeded-422",
+      "run_id": "run-20260923t130846609z-81efcd",
+      "build": "b-2dc9ecff4d63b25e",
+      "commit": "8bc8ae75a6e6014d93a603aa7115cd49d7b8108c",
+      "step": "rename-workspace",
+      "event": "submit",
+      "action_id": "action:mue4cr85:65",
+      "rule": "the unique dom.action with event \"submit\", tracer_run run-20260923t130846609z-81efcd, timestamp within step \"rename-workspace\" [1790168920054, 1790168921793]"
+    },
+    "after": {
+      "label": "C-fix-r2",
+      "run_id": "run-20260923t131403619z-eb5304",
+      "build": "b-2dc9ecff4d63b25e",
+      "commit": "719f17689ebe6ef7b9c543b84ced0ed082c2b758",
+      "step": "rename-workspace",
+      "event": "submit",
+      "action_id": "action:mue4jjss:65",
+      "rule": "the unique dom.action with event \"submit\", tracer_run run-20260923t131403619z-eb5304, timestamp within step \"rename-workspace\" [1790169237007, 1790169238766]"
+    }
+  },
+  "server_args": [
+    "--store",
+    "/Users/austinho/dev/fixtures/anything-llm/.tracer",
+    "--source-root",
+    "/Users/austinho/dev/fixtures/anything-llm"
+  ],
+  "compare_chains": {
+    "status": "ok",
+    "tool": "compare_chains",
+    "store": {
+      "records": 40391,
+      "actions": 408,
+      "sessions": 12,
+      "episodes": 60,
+      "spans": 6924,
+      "backend_instrumented": true,
+      "stamps": false,
+      "builds": [],
+      "manifest_functions": 5109,
+      "source_root": "/Users/austinho/dev/fixtures/anything-llm",
+      "manifest_builds": [
+        "b-2dc9ecff4d63b25e",
+        "b-492209beb3a2e901",
+        "b-a33d446fe91e8701"
+      ],
+      "runs": 6,
+      "malformed_records": 0,
+      "malformed_spans": 0
+    },
+    "before": {
+      "action_id": "action:mue4cr85:65",
+      "episode_id": "episode:form:mue4cjgo-wpryroc8qv8:object%3A48",
+      "reached": "handler",
+      "stopped_at": "handler",
+      "because": "server responded 422; no database span descends from the admitted handler span"
+    },
+    "after": {
+      "action_id": "action:mue4jjss:65",
+      "episode_id": "episode:form:mue4jbz1-0mwigcs2bvhd:object%3A48",
+      "reached": "handler",
+      "stopped_at": "handler",
+      "because": "no database span descends from the admitted handler span"
+    },
+    "same_episode": false,
+    "stops": [
+      {
+        "stop": "entry_handler",
+        "key": "entry_handler",
+        "status": "same",
+        "change_kind": null,
+        "before": {
+          "function_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488",
+          "event": "submit",
+          "source": {
+            "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx",
+            "start": 931,
+            "end": 1488,
+            "line": 26,
+            "line_status": "ok"
+          }
+        },
+        "after": {
+          "function_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488",
+          "event": "submit",
+          "source": {
+            "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx",
+            "start": 931,
+            "end": 1488,
+            "line": 26,
+            "line_status": "ok"
+          }
+        },
+        "detail": null
+      },
+      {
+        "stop": "request",
+        "key": "POST /api/workspace/tracer-g2/update",
+        "status": "same",
+        "change_kind": null,
+        "before": "POST /api/workspace/tracer-g2/update",
+        "after": "POST /api/workspace/tracer-g2/update",
+        "detail": null
+      },
+      {
+        "stop": "route",
+        "key": "/api/workspace/:slug/update",
+        "status": "changed",
+        "change_kind": "different_value",
+        "before": "POST /api/workspace/:slug/update 422",
+        "after": "POST /api/workspace/:slug/update 200",
+        "detail": null
+      },
+      {
+        "stop": "handler",
+        "key": "/api/workspace/:slug/update#0",
+        "status": "same",
+        "change_kind": null,
+        "before": "validatedRequest",
+        "after": "validatedRequest",
+        "detail": null
+      },
+      {
+        "stop": "handler",
+        "key": "/api/workspace/:slug/update#1",
+        "status": "same",
+        "change_kind": null,
+        "before": "<anonymous>",
+        "after": "<anonymous>",
+        "detail": null
+      },
+      {
+        "stop": "handler",
+        "key": "/api/workspace/:slug/update#2",
+        "status": "same",
+        "change_kind": null,
+        "before": "<anonymous>",
+        "after": "<anonymous>",
+        "detail": null
+      }
+    ],
+    "outcome_delta": {
+      "before": {
+        "stage": "stopped",
+        "status": "incomplete",
+        "http_status": 422,
+        "writes": [],
+        "reads": [],
+        "stop_reason": "no_database_effect_before_idle",
+        "stopped_at": "handler"
+      },
+      "after": {
+        "stage": "stopped",
+        "status": "incomplete",
+        "http_status": 200,
+        "writes": [],
+        "reads": [],
+        "stop_reason": "no_database_effect_before_idle",
+        "stopped_at": "handler"
+      },
+      "changed": [
+        "http_status"
+      ]
+    },
+    "path_changed": true,
+    "path_change_reasons": [
+      "route",
+      "outcome"
+    ],
+    "summary": "runtime path changed (route, outcome): 5 same, 1 changed; outcome http_status 422 → 200. Before: submit action:mue4cr85:65 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g2/update → route /api/workspace/:slug/update 422 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because server responded 422; no database span descends from the admitted handler span. After: submit action:mue4jjss:65 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g2/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span"
+  },
+  "action_chain_summaries": {
+    "before": "submit action:mue4cr85:65 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g2/update → route /api/workspace/:slug/update 422 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because server responded 422; no database span descends from the admitted handler span",
+    "after": "submit action:mue4jjss:65 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g2/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span"
+  }
+}

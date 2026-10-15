@@ -1,0 +1,1081 @@
+{
+  "schema": "producttrace.g3-librechat-stamps.v1",
+  "headless": true,
+  "worktree": "/tmp/producttrace-librechat-m1-final2",
+  "origin": "http://127.0.0.1:52601",
+  "own_site": {
+    "self": 902,
+    "not_self": 560,
+    "via": {
+      "self": 822,
+      "render_prop": 80
+    },
+    "causes": {
+      "first_host: rendered inside a library component (no first-party JSX for the element)": 530,
+      "ancestor: rendered inside a library component (no first-party JSX for the element)": 24,
+      "first_host: first-party JSX returned by a function child of a library component (not placed: first-party JSX missed)": 6
+    },
+    "examples": {
+      "first_host: rendered inside a library component (no first-party JSX for the element)": [
+        {
+          "host": "svg",
+          "stamp_tag": "SquarePen",
+          "file": "client/src/components/UnifiedSidebar/ExpandedPanel.tsx",
+          "line": 58,
+          "component": "SquarePen"
+        },
+        {
+          "host": "svg",
+          "stamp_tag": "link.icon",
+          "file": "client/src/components/UnifiedSidebar/ExpandedPanel.tsx",
+          "line": 119,
+          "component": "link.icon"
+        },
+        {
+          "host": "svg",
+          "stamp_tag": "link.icon",
+          "file": "client/src/components/UnifiedSidebar/ExpandedPanel.tsx",
+          "line": 119,
+          "component": "link.icon"
+        },
+        {
+          "host": "svg",
+          "stamp_tag": "link.icon",
+          "file": "client/src/components/UnifiedSidebar/ExpandedPanel.tsx",
+          "line": 119,
+          "component": "link.icon"
+        },
+        {
+          "host": "svg",
+          "stamp_tag": "link.icon",
+          "file": "client/src/components/UnifiedSidebar/ExpandedPanel.tsx",
+          "line": 119,
+          "component": "link.icon"
+        },
+        {
+          "host": "svg",
+          "stamp_tag": "link.icon",
+          "file": "client/src/components/UnifiedSidebar/ExpandedPanel.tsx",
+          "line": 119,
+          "component": "link.icon"
+        },
+        {
+          "host": "svg",
+          "stamp_tag": "link.icon",
+          "file": "client/src/components/UnifiedSidebar/ExpandedPanel.tsx",
+          "line": 119,
+          "component": "link.icon"
+        },
+        {
+          "host": "svg",
+          "stamp_tag": "link.icon",
+          "file": "client/src/components/UnifiedSidebar/ExpandedPanel.tsx",
+          "line": 119,
+          "component": "link.icon"
+        },
+        {
+          "host": "button",
+          "stamp_tag": "Menu.MenuButton",
+          "file": "client/src/components/Nav/AccountSettings.tsx",
+          "line": 110,
+          "component": "Menu.MenuButton"
+        },
+        {
+          "host": "svg",
+          "stamp_tag": "LayoutGrid",
+          "file": "client/src/components/Nav/Favorites/FavoritesList.tsx",
+          "line": 414,
+          "component": "LayoutGrid"
+        },
+        {
+          "host": "svg",
+          "stamp_tag": "ChevronDown",
+          "file": "client/src/components/Conversations/ProjectsSection.tsx",
+          "line": 509,
+          "component": "ChevronDown"
+        },
+        {
+          "host": "svg",
+          "stamp_tag": "Folders",
+          "file": "client/src/components/Conversations/ProjectsSection.tsx",
+          "line": 526,
+          "component": "Folders"
+        }
+      ],
+      "ancestor: rendered inside a library component (no first-party JSX for the element)": [
+        {
+          "host": "div",
+          "stamp_tag": "List",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 475,
+          "component": "List"
+        },
+        {
+          "host": "ol",
+          "stamp_tag": "RadixToast.Viewport",
+          "file": "client/src/App.jsx",
+          "line": 71,
+          "component": "RadixToast.Viewport"
+        },
+        {
+          "host": "div",
+          "stamp_tag": "List",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 475,
+          "component": "List"
+        },
+        {
+          "host": "ol",
+          "stamp_tag": "RadixToast.Viewport",
+          "file": "client/src/App.jsx",
+          "line": 71,
+          "component": "RadixToast.Viewport"
+        },
+        {
+          "host": "div",
+          "stamp_tag": "List",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 475,
+          "component": "List"
+        },
+        {
+          "host": "span",
+          "stamp_tag": "Ariakit.Menu",
+          "file": "packages/client/src/components/DropdownPopup.tsx",
+          "line": 82,
+          "component": "Ariakit.Menu"
+        },
+        {
+          "host": "ol",
+          "stamp_tag": "RadixToast.Viewport",
+          "file": "client/src/App.jsx",
+          "line": 71,
+          "component": "RadixToast.Viewport"
+        },
+        {
+          "host": "span",
+          "stamp_tag": "Ariakit.Menu",
+          "file": "packages/client/src/components/DropdownPopup.tsx",
+          "line": 82,
+          "component": "Ariakit.Menu"
+        },
+        {
+          "host": "div",
+          "stamp_tag": "Ariakit.Menu",
+          "file": "packages/client/src/components/DropdownPopup.tsx",
+          "line": 82,
+          "component": "Ariakit.Menu"
+        },
+        {
+          "host": "span",
+          "stamp_tag": "Ariakit.Menu",
+          "file": "packages/client/src/components/DropdownPopup.tsx",
+          "line": 82,
+          "component": "Ariakit.Menu"
+        },
+        {
+          "host": "input",
+          "stamp_tag": "SwitchPrimitives.Root",
+          "file": "packages/client/src/components/Switch.tsx",
+          "line": 24,
+          "component": "SwitchPrimitives.Root"
+        },
+        {
+          "host": "ol",
+          "stamp_tag": "RadixToast.Viewport",
+          "file": "client/src/App.jsx",
+          "line": 71,
+          "component": "RadixToast.Viewport"
+        }
+      ],
+      "first_host: first-party JSX returned by a function child of a library component (not placed: first-party JSX missed)": [
+        {
+          "host": "div",
+          "stamp_tag": "CellMeasurer",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 59,
+          "component": "CellMeasurer"
+        },
+        {
+          "host": "div",
+          "stamp_tag": "CellMeasurer",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 59,
+          "component": "CellMeasurer"
+        },
+        {
+          "host": "div",
+          "stamp_tag": "CellMeasurer",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 59,
+          "component": "CellMeasurer"
+        },
+        {
+          "host": "div",
+          "stamp_tag": "CellMeasurer",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 59,
+          "component": "CellMeasurer"
+        },
+        {
+          "host": "div",
+          "stamp_tag": "CellMeasurer",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 59,
+          "component": "CellMeasurer"
+        },
+        {
+          "host": "div",
+          "stamp_tag": "CellMeasurer",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 59,
+          "component": "CellMeasurer"
+        }
+      ]
+    },
+    "own_share": 0.6169630642954856,
+    "library_rendered": 554,
+    "own_share_of_first_party_jsx": 0.9933920704845814,
+    "first_party_jsx_missed": 6,
+    "per_stamp_row": {
+      "own": 380,
+      "library": 218,
+      "missed": 2,
+      "not_in_final_dom": 4,
+      "own_share_of_first_party_jsx": 0.9947643979057592,
+      "own_share_all_rows": 0.6291390728476821
+    }
+  },
+  "stamp_rows": 604,
+  "distinct_element_keys": 339,
+  "builds": [
+    "687a51791eb4"
+  ],
+  "surfaces": [
+    {
+      "variant": "oai-stub",
+      "surface": "/c/new",
+      "url": "/c/new",
+      "interactive_hosts": 68,
+      "stamped": 67,
+      "unstamped_count": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      },
+      "stamped_elements_total": 315,
+      "stats": {
+        "commits": 65,
+        "hosts_checked": 16382,
+        "stamped_nodes": 359,
+        "stamp_rows": 356,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 9180,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 2,
+        "state_receipts_applied": 1,
+        "state_receipts_refused": 1,
+        "state_receipts_consumed": 2,
+        "mount_effects_applied": 0,
+        "await_resumptions": 296,
+        "build": "687a51791eb4",
+        "placements": 8076
+      },
+      "annotations": 315
+    },
+    {
+      "variant": "oai-stub",
+      "surface": "existing-conversation",
+      "url": "/c/8e305bc9-33a9-52ee-934a-5c8a9a8bf547",
+      "interactive_hosts": 86,
+      "stamped": 85,
+      "unstamped_count": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      },
+      "stamped_elements_total": 344,
+      "stats": {
+        "commits": 97,
+        "hosts_checked": 35307,
+        "stamped_nodes": 426,
+        "stamp_rows": 419,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 19803,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 97,
+        "state_receipts_applied": 12,
+        "state_receipts_refused": 40,
+        "state_receipts_consumed": 88,
+        "mount_effects_applied": 15,
+        "await_resumptions": 586,
+        "build": "687a51791eb4",
+        "placements": 8076
+      },
+      "annotations": 344
+    },
+    {
+      "variant": "oai-stub",
+      "surface": "conversation-menu",
+      "url": "/c/8e305bc9-33a9-52ee-934a-5c8a9a8bf547",
+      "interactive_hosts": 98,
+      "stamped": 97,
+      "unstamped_count": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      },
+      "stamped_elements_total": 370,
+      "stats": {
+        "commits": 109,
+        "hosts_checked": 43200,
+        "stamped_nodes": 453,
+        "stamp_rows": 445,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 24143,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 99,
+        "state_receipts_applied": 14,
+        "state_receipts_refused": 40,
+        "state_receipts_consumed": 90,
+        "mount_effects_applied": 15,
+        "await_resumptions": 697,
+        "build": "687a51791eb4",
+        "placements": 8076
+      },
+      "annotations": 370
+    },
+    {
+      "variant": "oai-stub",
+      "surface": "agent-builder",
+      "url": "/c/8e305bc9-33a9-52ee-934a-5c8a9a8bf547",
+      "interactive_hosts": 82,
+      "stamped": 81,
+      "unstamped_count": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      },
+      "stamped_elements_total": 222,
+      "stats": {
+        "commits": 127,
+        "hosts_checked": 53100,
+        "stamped_nodes": 530,
+        "stamp_rows": 519,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 28727,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 258,
+        "state_receipts_applied": 16,
+        "state_receipts_refused": 111,
+        "state_receipts_consumed": 242,
+        "mount_effects_applied": 88,
+        "await_resumptions": 718,
+        "build": "687a51791eb4",
+        "placements": 8076
+      },
+      "annotations": 222
+    },
+    {
+      "variant": "no-oai",
+      "surface": "/c/new",
+      "url": "/c/new",
+      "interactive_hosts": 68,
+      "stamped": 67,
+      "unstamped_count": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      },
+      "stamped_elements_total": 315,
+      "stats": {
+        "commits": 63,
+        "hosts_checked": 16272,
+        "stamped_nodes": 359,
+        "stamp_rows": 356,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 0,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 2,
+        "state_receipts_applied": 1,
+        "state_receipts_refused": 1,
+        "state_receipts_consumed": 2,
+        "mount_effects_applied": 0,
+        "await_resumptions": 320,
+        "build": "687a51791eb4",
+        "placements": 8076
+      },
+      "annotations": 0
+    },
+    {
+      "variant": "no-oai",
+      "surface": "existing-conversation",
+      "url": "/c/8e305bc9-33a9-52ee-934a-5c8a9a8bf547",
+      "interactive_hosts": 86,
+      "stamped": 85,
+      "unstamped_count": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      },
+      "stamped_elements_total": 344,
+      "stats": {
+        "commits": 91,
+        "hosts_checked": 32682,
+        "stamped_nodes": 426,
+        "stamp_rows": 419,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 0,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 97,
+        "state_receipts_applied": 12,
+        "state_receipts_refused": 40,
+        "state_receipts_consumed": 88,
+        "mount_effects_applied": 15,
+        "await_resumptions": 589,
+        "build": "687a51791eb4",
+        "placements": 8076
+      },
+      "annotations": 0
+    },
+    {
+      "variant": "no-oai",
+      "surface": "conversation-menu",
+      "url": "/c/8e305bc9-33a9-52ee-934a-5c8a9a8bf547",
+      "interactive_hosts": 98,
+      "stamped": 97,
+      "unstamped_count": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      },
+      "stamped_elements_total": 370,
+      "stats": {
+        "commits": 103,
+        "hosts_checked": 40575,
+        "stamped_nodes": 453,
+        "stamp_rows": 445,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 0,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 99,
+        "state_receipts_applied": 14,
+        "state_receipts_refused": 40,
+        "state_receipts_consumed": 90,
+        "mount_effects_applied": 15,
+        "await_resumptions": 700,
+        "build": "687a51791eb4",
+        "placements": 8076
+      },
+      "annotations": 0
+    },
+    {
+      "variant": "no-oai",
+      "surface": "agent-builder",
+      "url": "/c/8e305bc9-33a9-52ee-934a-5c8a9a8bf547",
+      "interactive_hosts": 82,
+      "stamped": 81,
+      "unstamped_count": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      },
+      "stamped_elements_total": 222,
+      "stats": {
+        "commits": 121,
+        "hosts_checked": 50475,
+        "stamped_nodes": 530,
+        "stamp_rows": 519,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 0,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 258,
+        "state_receipts_applied": 16,
+        "state_receipts_refused": 111,
+        "state_receipts_consumed": 242,
+        "mount_effects_applied": 88,
+        "await_resumptions": 721,
+        "build": "687a51791eb4",
+        "placements": 8076
+      },
+      "annotations": 0
+    }
+  ],
+  "interactive_coverage": [
+    {
+      "variant": "oai-stub",
+      "surface": "/c/new",
+      "interactive_hosts": 68,
+      "stamped": 67,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    },
+    {
+      "variant": "oai-stub",
+      "surface": "existing-conversation",
+      "interactive_hosts": 86,
+      "stamped": 85,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    },
+    {
+      "variant": "oai-stub",
+      "surface": "conversation-menu",
+      "interactive_hosts": 98,
+      "stamped": 97,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    },
+    {
+      "variant": "oai-stub",
+      "surface": "agent-builder",
+      "interactive_hosts": 82,
+      "stamped": 81,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    },
+    {
+      "variant": "no-oai",
+      "surface": "/c/new",
+      "interactive_hosts": 68,
+      "stamped": 67,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    },
+    {
+      "variant": "no-oai",
+      "surface": "existing-conversation",
+      "interactive_hosts": 86,
+      "stamped": 85,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    },
+    {
+      "variant": "no-oai",
+      "surface": "conversation-menu",
+      "interactive_hosts": 98,
+      "stamped": 97,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    },
+    {
+      "variant": "no-oai",
+      "surface": "agent-builder",
+      "interactive_hosts": 82,
+      "stamped": 81,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    }
+  ],
+  "unstamped_examples": [
+    {
+      "variant": "oai-stub",
+      "surface": "/c/new",
+      "examples": [
+        {
+          "tag": "textarea",
+          "role": null,
+          "testid": null,
+          "label": "",
+          "reason": "not_rendered_by_react"
+        }
+      ]
+    },
+    {
+      "variant": "oai-stub",
+      "surface": "existing-conversation",
+      "examples": [
+        {
+          "tag": "textarea",
+          "role": null,
+          "testid": null,
+          "label": "",
+          "reason": "not_rendered_by_react"
+        }
+      ]
+    },
+    {
+      "variant": "oai-stub",
+      "surface": "conversation-menu",
+      "examples": [
+        {
+          "tag": "textarea",
+          "role": null,
+          "testid": null,
+          "label": "",
+          "reason": "not_rendered_by_react"
+        }
+      ]
+    },
+    {
+      "variant": "oai-stub",
+      "surface": "agent-builder",
+      "examples": [
+        {
+          "tag": "textarea",
+          "role": null,
+          "testid": null,
+          "label": "",
+          "reason": "not_rendered_by_react"
+        }
+      ]
+    },
+    {
+      "variant": "no-oai",
+      "surface": "/c/new",
+      "examples": [
+        {
+          "tag": "textarea",
+          "role": null,
+          "testid": null,
+          "label": "",
+          "reason": "not_rendered_by_react"
+        }
+      ]
+    },
+    {
+      "variant": "no-oai",
+      "surface": "existing-conversation",
+      "examples": [
+        {
+          "tag": "textarea",
+          "role": null,
+          "testid": null,
+          "label": "",
+          "reason": "not_rendered_by_react"
+        }
+      ]
+    },
+    {
+      "variant": "no-oai",
+      "surface": "conversation-menu",
+      "examples": [
+        {
+          "tag": "textarea",
+          "role": null,
+          "testid": null,
+          "label": "",
+          "reason": "not_rendered_by_react"
+        }
+      ]
+    },
+    {
+      "variant": "no-oai",
+      "surface": "agent-builder",
+      "examples": [
+        {
+          "tag": "textarea",
+          "role": null,
+          "testid": null,
+          "label": "",
+          "reason": "not_rendered_by_react"
+        }
+      ]
+    }
+  ],
+  "oai": {
+    "stub_payloads": 1251,
+    "stub_invalid": 0,
+    "no_oai_payloads": 0,
+    "rejected_rows": 0
+  },
+  "resolve_sample": {
+    "size": 30,
+    "ok": 30,
+    "checks": [
+      {
+        "element_key": "p_d565bcf6d31c:372-1532#n1",
+        "status": "exact",
+        "file": "packages/client/src/svgs/EditIcon.tsx",
+        "line": 13,
+        "tag": "svg",
+        "component": "EditIcon",
+        "line_at_start_on_disk": 13,
+        "text_at_start_on_disk": "<svg",
+        "source_line": "<svg",
+        "ok": true
+      },
+      {
+        "element_key": "p_966e47d78e67:4593-4648#n1",
+        "status": "exact",
+        "file": "packages/client/src/components/ControlCombobox.tsx",
+        "line": 158,
+        "tag": "ChevronDown",
+        "component": "ChevronDown",
+        "line_at_start_on_disk": 158,
+        "text_at_start_on_disk": "<ChevronDown",
+        "source_line": "{showCarat && <ChevronDown className=\"h-4 w-4 text-text-secondary\" />}",
+        "ok": true
+      },
+      {
+        "element_key": "p_c057074eb90d:5274-8232#n1",
+        "status": "exact",
+        "file": "client/src/components/Messages/ContentRender.tsx",
+        "line": 172,
+        "tag": "div",
+        "component": "ContentRender",
+        "line_at_start_on_disk": 172,
+        "text_at_start_on_disk": "<div",
+        "source_line": "<div",
+        "ok": true
+      },
+      {
+        "element_key": "p_1ea515b6ccf6:4012-5672#n4",
+        "status": "exact",
+        "file": "packages/client/src/components/DropdownPopup.tsx",
+        "line": 141,
+        "tag": "Ariakit.MenuItem",
+        "component": "Ariakit.MenuItem",
+        "line_at_start_on_disk": 141,
+        "text_at_start_on_disk": "<Ariakit.MenuItem",
+        "source_line": "<Ariakit.MenuItem",
+        "ok": true
+      },
+      {
+        "element_key": "p_c82be1fb3ea3:294-725#n1",
+        "status": "exact",
+        "file": "client/src/components/Chat/Input/Files/DragDropOverlay.tsx",
+        "line": 13,
+        "tag": "div",
+        "component": "DragDropOverlay",
+        "line_at_start_on_disk": 13,
+        "text_at_start_on_disk": "<div",
+        "source_line": "<div",
+        "ok": true
+      },
+      {
+        "element_key": "p_41480ba05a1f:2488-2678#n1",
+        "status": "exact",
+        "file": "client/src/components/Endpoints/Icon.tsx",
+        "line": 78,
+        "tag": "img",
+        "component": "UserAvatar",
+        "line_at_start_on_disk": 78,
+        "text_at_start_on_disk": "<img",
+        "source_line": "<img",
+        "ok": true
+      },
+      {
+        "element_key": "p_a5ce0bb53d8b:1982-2244#n1",
+        "status": "exact",
+        "file": "client/src/components/Auth/AuthLayout.tsx",
+        "line": 63,
+        "tag": "div",
+        "component": "AuthLayout",
+        "line_at_start_on_disk": 63,
+        "text_at_start_on_disk": "<div",
+        "source_line": "<div className=\"mt-6 h-10 w-full bg-cover\">",
+        "ok": true
+      },
+      {
+        "element_key": "p_c15c44aa0e87:4684-4915#n1",
+        "status": "exact",
+        "file": "client/src/components/Auth/LoginForm.tsx",
+        "line": 115,
+        "tag": "label",
+        "component": "LoginForm",
+        "line_at_start_on_disk": 115,
+        "text_at_start_on_disk": "<label",
+        "source_line": "<label htmlFor=\"email\" className={authLabelClassName}>",
+        "ok": true
+      },
+      {
+        "element_key": "p_aa747ac5c293:4282-4539#k14",
+        "status": "exact",
+        "file": "packages/client/src/components/SplitText.tsx",
+        "line": 152,
+        "tag": "animated.span",
+        "component": "animated.span",
+        "line_at_start_on_disk": 152,
+        "text_at_start_on_disk": "<animated.span",
+        "source_line": "<animated.span",
+        "ok": true
+      },
+      {
+        "element_key": "p_ccab13181549:1387-1431#n1",
+        "status": "exact",
+        "file": "client/src/components/Chat/Messages/SiblingSwitch.tsx",
+        "line": 46,
+        "tag": "ChevronLeft",
+        "component": "ChevronLeft",
+        "line_at_start_on_disk": 46,
+        "text_at_start_on_disk": "<ChevronLeft",
+        "source_line": "<ChevronLeft size=\"19\" aria-hidden=\"true\" />",
+        "ok": true
+      },
+      {
+        "element_key": "p_650d204cb86c:2925-3152#n7",
+        "status": "exact",
+        "file": "client/src/components/Chat/Messages/HoverButtons.tsx",
+        "line": 99,
+        "tag": "button",
+        "component": "HoverButton",
+        "line_at_start_on_disk": 99,
+        "text_at_start_on_disk": "<button",
+        "source_line": "<button",
+        "ok": true
+      },
+      {
+        "element_key": "p_c3157a7c2c41:14880-16099#n1",
+        "status": "exact",
+        "file": "client/src/components/Conversations/Conversations.tsx",
+        "line": 461,
+        "tag": "div",
+        "component": "Conversations",
+        "line_at_start_on_disk": 461,
+        "text_at_start_on_disk": "<div",
+        "source_line": "<div className=\"relative flex h-full min-h-0 flex-col pb-2 text-sm text-text-primary\">",
+        "ok": true
+      },
+      {
+        "element_key": "p_e18ee40c562f:6011-6177#n2",
+        "status": "exact",
+        "file": "packages/client/src/components/DropdownMenu.tsx",
+        "line": 156,
+        "tag": "DropdownMenuPrimitive.Separator",
+        "component": "DropdownMenuPrimitive.Separator",
+        "line_at_start_on_disk": 156,
+        "text_at_start_on_disk": "<DropdownMenuPrimitive.Separator",
+        "source_line": "<DropdownMenuPrimitive.Separator",
+        "ok": true
+      },
+      {
+        "element_key": "p_8535bff87ea3:4823-5033#n5",
+        "status": "exact",
+        "file": "packages/client/src/components/Tooltip.tsx",
+        "line": 160,
+        "tag": "Ariakit.TooltipAnchor",
+        "component": "Ariakit.TooltipAnchor",
+        "line_at_start_on_disk": 160,
+        "text_at_start_on_disk": "<Ariakit.TooltipAnchor",
+        "source_line": "<Ariakit.TooltipAnchor",
+        "ok": true
+      },
+      {
+        "element_key": "p_650d204cb86c:2925-3152#n1",
+        "status": "exact",
+        "file": "client/src/components/Chat/Messages/HoverButtons.tsx",
+        "line": 99,
+        "tag": "button",
+        "component": "HoverButton",
+        "line_at_start_on_disk": 99,
+        "text_at_start_on_disk": "<button",
+        "source_line": "<button",
+        "ok": true
+      },
+      {
+        "element_key": "p_d8c88d65fb12:4929-4955#n1",
+        "status": "exact",
+        "file": "packages/client/src/components/SecretInput.tsx",
+        "line": 138,
+        "tag": "Eye",
+        "component": "Eye",
+        "line_at_start_on_disk": 138,
+        "text_at_start_on_disk": "<Eye",
+        "source_line": "{isVisible ? <EyeOff className=\"size-4\" /> : <Eye className=\"size-4\" />}",
+        "ok": true
+      },
+      {
+        "element_key": "p_d9fe31e8e3a4:341-404#n1",
+        "status": "exact",
+        "file": "packages/client/src/components/Resizable.tsx",
+        "line": 11,
+        "tag": "Group",
+        "component": "Group",
+        "line_at_start_on_disk": 11,
+        "text_at_start_on_disk": "<Group",
+        "source_line": "<Group className={cn('h-full w-full', className)} {...props} />",
+        "ok": true
+      },
+      {
+        "element_key": "p_ef5c3b4d89cf:14175-16395#n1",
+        "status": "exact",
+        "file": "client/src/components/SidePanel/Agents/Tools/ToolsSection.tsx",
+        "line": 411,
+        "tag": "div",
+        "component": "SelectedSection",
+        "line_at_start_on_disk": 411,
+        "text_at_start_on_disk": "<div",
+        "source_line": "<div className=\"mb-3 flex flex-col\">",
+        "ok": true
+      },
+      {
+        "element_key": "p_55cdfa4e9b9c:4333-5803#n1",
+        "status": "exact",
+        "file": "client/src/components/UnifiedSidebar/ExpandedPanel.tsx",
+        "line": 147,
+        "tag": "div",
+        "component": "ExpandedPanel",
+        "line_at_start_on_disk": 147,
+        "text_at_start_on_disk": "<div",
+        "source_line": "<div className=\"flex h-full flex-shrink-0 flex-col gap-2 border-r border-border-light bg-surface-primary-alt px-2 py-2\">",
+        "ok": true
+      },
+      {
+        "element_key": "p_d8c88d65fb12:2097-5004#n1",
+        "status": "exact",
+        "file": "packages/client/src/components/SecretInput.tsx",
+        "line": 78,
+        "tag": "div",
+        "component": "SecretInput",
+        "line_at_start_on_disk": 78,
+        "text_at_start_on_disk": "<div",
+        "source_line": "<div className={cn('group/secret-input relative', containerClassName)}>",
+        "ok": true
+      },
+      {
+        "element_key": "p_f58f71348217:1076-1141#n1",
+        "status": "exact",
+        "file": "client/src/components/SidePanel/Agents/Images.tsx",
+        "line": 36,
+        "tag": "div",
+        "component": "AgentAvatarRender",
+        "line_at_start_on_disk": 36,
+        "text_at_start_on_disk": "<div",
+        "source_line": "return <div className=\"h-full w-full rounded-full\" aria-hidden=\"true\" />;",
+        "ok": true
+      },
+      {
+        "element_key": "p_62b7e5960431:1199-1449#n1",
+        "status": "exact",
+        "file": "packages/client/src/components/Switch.tsx",
+        "line": 32,
+        "tag": "SwitchPrimitives.Thumb",
+        "component": "SwitchPrimitives.Thumb",
+        "line_at_start_on_disk": 32,
+        "text_at_start_on_disk": "<SwitchPrimitives.Thumb",
+        "source_line": "<SwitchPrimitives.Thumb",
+        "ok": true
+      },
+      {
+        "element_key": "p_aa747ac5c293:4282-4539#k12",
+        "status": "exact",
+        "file": "packages/client/src/components/SplitText.tsx",
+        "line": 152,
+        "tag": "animated.span",
+        "component": "animated.span",
+        "line_at_start_on_disk": 152,
+        "text_at_start_on_disk": "<animated.span",
+        "source_line": "<animated.span",
+        "ok": true
+      },
+      {
+        "element_key": "p_96f4d9a9550b:2548-2710#n11",
+        "status": "exact",
+        "file": "packages/client/src/components/Button.tsx",
+        "line": 67,
+        "tag": "Comp",
+        "component": "Comp",
+        "line_at_start_on_disk": 67,
+        "text_at_start_on_disk": "<Comp",
+        "source_line": "<Comp",
+        "ok": true
+      },
+      {
+        "element_key": "p_9e517159a753:1078-2244#n1",
+        "status": "exact",
+        "file": "packages/client/src/svgs/ThumbUpIcon.tsx",
+        "line": 32,
+        "tag": "svg",
+        "component": "ThumbUpIcon",
+        "line_at_start_on_disk": 32,
+        "text_at_start_on_disk": "<svg",
+        "source_line": "<svg",
+        "ok": true
+      },
+      {
+        "element_key": "p_3bba1791a3fd:9246-9320#n1",
+        "status": "exact",
+        "file": "client/src/components/Conversations/ConvoOptions/ConvoOptions.tsx",
+        "line": 300,
+        "tag": "CopyPlus",
+        "component": "CopyPlus",
+        "line_at_start_on_disk": 300,
+        "text_at_start_on_disk": "<CopyPlus",
+        "source_line": "<CopyPlus className=\"icon-sm mr-2 text-text-primary\" aria-hidden=\"true\" />",
+        "ok": true
+      },
+      {
+        "element_key": "p_b4472b81bab0:257-883#n2",
+        "status": "exact",
+        "file": "packages/client/src/svgs/Clipboard.tsx",
+        "line": 12,
+        "tag": "svg",
+        "component": "Clipboard",
+        "line_at_start_on_disk": 12,
+        "text_at_start_on_disk": "<svg",
+        "source_line": "<svg",
+        "ok": true
+      },
+      {
+        "element_key": "p_8a5dd402fcbf:11617-15874#n1",
+        "status": "exact",
+        "file": "client/src/components/Nav/Favorites/FavoritesList.tsx",
+        "line": 381,
+        "tag": "div",
+        "component": "FavoritesList",
+        "line_at_start_on_disk": 381,
+        "text_at_start_on_disk": "<div",
+        "source_line": "<div className=\"mb-2 flex flex-col\">",
+        "ok": true
+      },
+      {
+        "element_key": "p_aa747ac5c293:4282-4539#k19",
+        "status": "exact",
+        "file": "packages/client/src/components/SplitText.tsx",
+        "line": 152,
+        "tag": "animated.span",
+        "component": "animated.span",
+        "line_at_start_on_disk": 152,
+        "text_at_start_on_disk": "<animated.span",
+        "source_line": "<animated.span",
+        "ok": true
+      },
+      {
+        "element_key": "p_2776ee4ca2e2:5418-5472#n1",
+        "status": "exact",
+        "file": "client/src/components/Chat/Messages/Content/MarkdownComponents.tsx",
+        "line": 184,
+        "tag": "p",
+        "component": "p",
+        "line_at_start_on_disk": 184,
+        "text_at_start_on_disk": "<p",
+        "source_line": "return <p className=\"mb-2 whitespace-pre-wrap\">{children}</p>;",
+        "ok": true
+      }
+    ]
+  },
+  "checks": {
+    "stamps_emitted": true,
+    "every_interactive_host_stamped": false,
+    "own_jsx_site_share_over_90": true,
+    "resolve_sample_exact": true,
+    "oai_written_with_stub": true,
+    "oai_payloads_valid": true,
+    "no_oai_without_stub": true
+  }
+}

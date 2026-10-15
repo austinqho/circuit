@@ -1,0 +1,15 @@
+[producttrace] first-party: 4 functions instrumented; excluded functions by rule: outside repository 571; excluded modules by rule: none; include=[] exclude=["**/node_modules/**","**/vendor/**","**/dist/**","**/build/**","**/.git/**"]
+PASS A0 the browser made the third-party request and the runtime wrapper saw it unattributed
+PASS A1 the click has a first-party entry handler and no attributed request
+PASS A2 frontier is scoped absence at the browser, naming the request that left the page in its window
+PASS A3 the third-party request is listed under unlinked, attribution none
+PASS A4 the MCP renders them under the unlinked heading
+PASS A5 the next click does not inherit the listing (its window starts at its own dispatch)
+PASS A6 coverage complete: every emitted row received, contiguous, no limits
+PASS A7 action_chain carries the page coverage plus its window: not complete for the click whose window holds the unattributed request
+PASS A8 unobserved is measured from what the runtime installed (event kinds, transports), never a constant
+PASS B0 the first sink batch was aborted on every attempt and counted as dropped by the sink
+PASS B1 coverage incomplete with a sequence gap starting at 1
+PASS B2 the summary reports the sink drop as a reason
+PASS B3 action_chain on that page reports complete: false with the reasons
+13/13 checks pass; store /var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/tracer-unlinked-store-r7zF0u

@@ -1,0 +1,218 @@
+{
+  "schema": "producttrace.runtime-attribution-manifest.v1",
+  "first_party": {
+    "include": [],
+    "exclude": [
+      "**/node_modules/**",
+      "**/vendor/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/.git/**"
+    ],
+    "excluded_functions": {
+      "outside repository": 875
+    },
+    "excluded_modules": {}
+  },
+  "build": "7beda28bde66",
+  "functions": [
+    {
+      "id": "function:0a4526e4ffa90d6ce0ec0578422e12425964388f95c43492dfea5f4763f899b2:384:804",
+      "index": 0,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 384,
+        "end": 804
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-middleware-reads-PdZVcT/client/dist/assets/index-QooC0Pk8.js",
+        "start": 4218,
+        "end": 4979
+      }
+    },
+    {
+      "id": "function:0a4526e4ffa90d6ce0ec0578422e12425964388f95c43492dfea5f4763f899b2:688:698",
+      "index": 1,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 688,
+        "end": 698
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-middleware-reads-PdZVcT/client/dist/assets/index-QooC0Pk8.js",
+        "start": 4671,
+        "end": 4681
+      }
+    },
+    {
+      "id": "function:0a4526e4ffa90d6ce0ec0578422e12425964388f95c43492dfea5f4763f899b2:1833:2406",
+      "index": 2,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1833,
+        "end": 2406
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-middleware-reads-PdZVcT/client/dist/assets/index-QooC0Pk8.js",
+        "start": 6162,
+        "end": 7370
+      }
+    },
+    {
+      "id": "function:0a4526e4ffa90d6ce0ec0578422e12425964388f95c43492dfea5f4763f899b2:2154:2177",
+      "index": 3,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 2154,
+        "end": 2177
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-middleware-reads-PdZVcT/client/dist/assets/index-QooC0Pk8.js",
+        "start": 6812,
+        "end": 6835
+      }
+    },
+    {
+      "id": "function:0a4526e4ffa90d6ce0ec0578422e12425964388f95c43492dfea5f4763f899b2:2408:2586",
+      "index": 4,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 2408,
+        "end": 2586
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-middleware-reads-PdZVcT/client/dist/assets/index-QooC0Pk8.js",
+        "start": 7442,
+        "end": 8337
+      }
+    },
+    {
+      "id": "function:0a4526e4ffa90d6ce0ec0578422e12425964388f95c43492dfea5f4763f899b2:2474:2569",
+      "index": 5,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 2474,
+        "end": 2569
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-middleware-reads-PdZVcT/client/dist/assets/index-QooC0Pk8.js",
+        "start": 7953,
+        "end": 8126
+      }
+    }
+  ],
+  "placements": [
+    {
+      "index": 0,
+      "id": "placement:872996aded6ec2fe61bb2e7cf70aa9e2ba169792e4ea7222010b5d2e84aff4cb:2091:2267",
+      "key": "p_872996aded6e:2091-2267",
+      "file": "client/src/main.jsx",
+      "line": 36,
+      "tag": "li",
+      "component": "ActionButton",
+      "start": 2091,
+      "end": 2267
+    },
+    {
+      "index": 1,
+      "id": "placement:872996aded6ec2fe61bb2e7cf70aa9e2ba169792e4ea7222010b5d2e84aff4cb:2102:2195",
+      "key": "p_872996aded6e:2102-2195",
+      "file": "client/src/main.jsx",
+      "line": 37,
+      "tag": "button",
+      "component": "ActionButton",
+      "start": 2102,
+      "end": 2195,
+      "bound": {
+        "onClick": [
+          3
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "id": "placement:872996aded6ec2fe61bb2e7cf70aa9e2ba169792e4ea7222010b5d2e84aff4cb:2202:2257",
+      "key": "p_872996aded6e:2202-2257",
+      "file": "client/src/main.jsx",
+      "line": 38,
+      "tag": "output",
+      "component": "ActionButton",
+      "start": 2202,
+      "end": 2257
+    },
+    {
+      "index": 3,
+      "id": "placement:872996aded6ec2fe61bb2e7cf70aa9e2ba169792e4ea7222010b5d2e84aff4cb:2302:2451",
+      "key": "p_872996aded6e:2302-2451",
+      "file": "client/src/main.jsx",
+      "line": 44,
+      "tag": "main",
+      "component": "App",
+      "start": 2302,
+      "end": 2451
+    },
+    {
+      "index": 4,
+      "id": "placement:872996aded6ec2fe61bb2e7cf70aa9e2ba169792e4ea7222010b5d2e84aff4cb:2308:2325",
+      "key": "p_872996aded6e:2308-2325",
+      "file": "client/src/main.jsx",
+      "line": 44,
+      "tag": "h1",
+      "component": "App",
+      "start": 2308,
+      "end": 2325
+    },
+    {
+      "index": 5,
+      "id": "placement:872996aded6ec2fe61bb2e7cf70aa9e2ba169792e4ea7222010b5d2e84aff4cb:2325:2444",
+      "key": "p_872996aded6e:2325-2444",
+      "file": "client/src/main.jsx",
+      "line": 44,
+      "tag": "ul",
+      "component": "App",
+      "start": 2325,
+      "end": 2444
+    },
+    {
+      "index": 6,
+      "id": "placement:872996aded6ec2fe61bb2e7cf70aa9e2ba169792e4ea7222010b5d2e84aff4cb:2368:2437",
+      "key": "p_872996aded6e:2368-2437",
+      "file": "client/src/main.jsx",
+      "line": 44,
+      "tag": "ActionButton",
+      "component": "ActionButton",
+      "start": 2368,
+      "end": 2437
+    },
+    {
+      "index": 7,
+      "id": "placement:872996aded6ec2fe61bb2e7cf70aa9e2ba169792e4ea7222010b5d2e84aff4cb:2592:2658",
+      "key": "p_872996aded6e:2592-2658",
+      "file": "client/src/main.jsx",
+      "line": 48,
+      "tag": "QueryClientProvider",
+      "component": "QueryClientProvider",
+      "start": 2592,
+      "end": 2658
+    },
+    {
+      "index": 8,
+      "id": "placement:872996aded6ec2fe61bb2e7cf70aa9e2ba169792e4ea7222010b5d2e84aff4cb:2629:2636",
+      "key": "p_872996aded6e:2629-2636",
+      "file": "client/src/main.jsx",
+      "line": 48,
+      "tag": "App",
+      "component": "App",
+      "start": 2629,
+      "end": 2636
+    }
+  ],
+  "placement_short_key_collisions": 0,
+  "library_boundaries": []
+}

@@ -1,0 +1,192 @@
+{
+  "schema": "producttrace.react-boundary-commit-acceptance.v1",
+  "react": "18.3.1",
+  "runtime": [
+    {
+      "apis": [
+        "react/Fragment/18.3.1",
+        "react/StrictMode/18.3.1",
+        "react/Profiler/18.3.1",
+        "react/Suspense/18.3.1"
+      ],
+      "build": "development",
+      "hydration": false,
+      "suspending": false,
+      "installed_source_attested": true,
+      "symbol_reads": 4,
+      "element_descriptions": 4,
+      "actual_clicks": 5,
+      "source_controls_resolved": 4,
+      "fallback_control_joined": false,
+      "wrong_or_missing_marker_rejected": true,
+      "original_hydration_nodes_preserved": false,
+      "stop_preserves_behavior": true,
+      "renderer_execution_proven": false,
+      "boundary_inputs_committed": 4,
+      "renderer_selections_verified": true,
+      "incorrect_renderer_rules_rejected": 12,
+      "corrupted_commit_receipts_rejected": 16,
+      "click_path_conditions_discharged": 4,
+      "missing_foreign_stale_boundary_proof_rejected": true,
+      "descendant_callbacks_inferred": false
+    },
+    {
+      "apis": [
+        "react/Fragment/18.3.1",
+        "react/StrictMode/18.3.1",
+        "react/Profiler/18.3.1",
+        "react/Suspense/18.3.1"
+      ],
+      "build": "development",
+      "hydration": true,
+      "suspending": false,
+      "installed_source_attested": true,
+      "symbol_reads": 4,
+      "element_descriptions": 4,
+      "actual_clicks": 5,
+      "source_controls_resolved": 4,
+      "fallback_control_joined": false,
+      "wrong_or_missing_marker_rejected": true,
+      "original_hydration_nodes_preserved": true,
+      "stop_preserves_behavior": true,
+      "renderer_execution_proven": false,
+      "boundary_inputs_committed": 8,
+      "renderer_selections_verified": true,
+      "incorrect_renderer_rules_rejected": 24,
+      "corrupted_commit_receipts_rejected": 32,
+      "click_path_conditions_discharged": 4,
+      "missing_foreign_stale_boundary_proof_rejected": true,
+      "descendant_callbacks_inferred": false
+    },
+    {
+      "apis": [
+        "react/Fragment/18.3.1",
+        "react/StrictMode/18.3.1",
+        "react/Profiler/18.3.1",
+        "react/Suspense/18.3.1"
+      ],
+      "build": "development",
+      "hydration": false,
+      "suspending": true,
+      "installed_source_attested": true,
+      "symbol_reads": 4,
+      "element_descriptions": 4,
+      "actual_clicks": 5,
+      "source_controls_resolved": 4,
+      "fallback_control_joined": true,
+      "wrong_or_missing_marker_rejected": true,
+      "original_hydration_nodes_preserved": false,
+      "stop_preserves_behavior": true,
+      "renderer_execution_proven": false,
+      "boundary_inputs_committed": 4,
+      "renderer_selections_verified": true,
+      "incorrect_renderer_rules_rejected": 13,
+      "corrupted_commit_receipts_rejected": 16,
+      "click_path_conditions_discharged": 4,
+      "missing_foreign_stale_boundary_proof_rejected": true,
+      "descendant_callbacks_inferred": false
+    },
+    {
+      "apis": [
+        "react/Fragment/18.3.1",
+        "react/StrictMode/18.3.1",
+        "react/Profiler/18.3.1",
+        "react/Suspense/18.3.1"
+      ],
+      "build": "production",
+      "hydration": false,
+      "suspending": false,
+      "installed_source_attested": true,
+      "symbol_reads": 4,
+      "element_descriptions": 4,
+      "actual_clicks": 5,
+      "source_controls_resolved": 4,
+      "fallback_control_joined": false,
+      "wrong_or_missing_marker_rejected": true,
+      "original_hydration_nodes_preserved": false,
+      "stop_preserves_behavior": true,
+      "renderer_execution_proven": false,
+      "boundary_inputs_committed": 4,
+      "renderer_selections_verified": true,
+      "incorrect_renderer_rules_rejected": 12,
+      "corrupted_commit_receipts_rejected": 16,
+      "click_path_conditions_discharged": 4,
+      "missing_foreign_stale_boundary_proof_rejected": true,
+      "descendant_callbacks_inferred": false
+    },
+    {
+      "apis": [
+        "react/Fragment/18.3.1",
+        "react/StrictMode/18.3.1",
+        "react/Profiler/18.3.1",
+        "react/Suspense/18.3.1"
+      ],
+      "build": "production",
+      "hydration": true,
+      "suspending": false,
+      "installed_source_attested": true,
+      "symbol_reads": 4,
+      "element_descriptions": 4,
+      "actual_clicks": 5,
+      "source_controls_resolved": 4,
+      "fallback_control_joined": false,
+      "wrong_or_missing_marker_rejected": true,
+      "original_hydration_nodes_preserved": true,
+      "stop_preserves_behavior": true,
+      "renderer_execution_proven": false,
+      "boundary_inputs_committed": 8,
+      "renderer_selections_verified": true,
+      "incorrect_renderer_rules_rejected": 24,
+      "corrupted_commit_receipts_rejected": 32,
+      "click_path_conditions_discharged": 4,
+      "missing_foreign_stale_boundary_proof_rejected": true,
+      "descendant_callbacks_inferred": false
+    },
+    {
+      "apis": [
+        "react/Fragment/18.3.1",
+        "react/StrictMode/18.3.1",
+        "react/Profiler/18.3.1",
+        "react/Suspense/18.3.1"
+      ],
+      "build": "production",
+      "hydration": false,
+      "suspending": true,
+      "installed_source_attested": true,
+      "symbol_reads": 4,
+      "element_descriptions": 4,
+      "actual_clicks": 5,
+      "source_controls_resolved": 4,
+      "fallback_control_joined": true,
+      "wrong_or_missing_marker_rejected": true,
+      "original_hydration_nodes_preserved": false,
+      "stop_preserves_behavior": true,
+      "renderer_execution_proven": false,
+      "boundary_inputs_committed": 4,
+      "renderer_selections_verified": true,
+      "incorrect_renderer_rules_rejected": 13,
+      "corrupted_commit_receipts_rejected": 16,
+      "click_path_conditions_discharged": 4,
+      "missing_foreign_stale_boundary_proof_rejected": true,
+      "descendant_callbacks_inferred": false
+    }
+  ],
+  "source": {
+    "file": "node_modules/react-dom/cjs/react-dom.development.js",
+    "ranges": [
+      [
+        28384,
+        28404
+      ],
+      [
+        28513,
+        28544
+      ]
+    ],
+    "sha256": "1459b808bc6991de5a1ec3a86d8beee32dbb6c14282cf13f84e00dfebfbdc025"
+  },
+  "limits": [
+    "A committed boundary input does not establish descendant callback execution.",
+    "Profiler callbacks, StrictMode replay attribution, Fragment reconciliation and Suspense lifetime/streaming cases remain incomplete."
+  ]
+}

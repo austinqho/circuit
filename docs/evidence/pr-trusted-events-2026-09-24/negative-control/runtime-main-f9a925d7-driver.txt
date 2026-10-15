@@ -1,0 +1,72 @@
+
+PASS R0 the pages ran without errors
+FAIL run 1 K1 capture.page lists the discovered kinds (on* handlers + focusin/focusout/composition), model version 1
+  {"listened":0}
+FAIL run 1 K2 every kind a row was recorded for is a listened kind, and the summary counts match the rows
+  {"rangeRows":0}
+FAIL run 1 D1 the drag's request is owned by the recorded pointerup (window listener from an effect), in the canvas gesture
+  null
+FAIL run 1 D2 the same gesture holds the pointerdown (buttons 1, press) and one coalesced pointermove range (count >= 8, bounds span the drag)
+  {}
+FAIL run 1 D3 pointer capture is recorded (gotpointercapture on the canvas, same gesture)
+  ["click"]
+FAIL run 1 U1 the upload is owned by the trusted change on the hidden file input (1 file, text/plain), opened by the Upload click
+  {"upload":{"schema":"producttrace.runtime-evidence.v1","sequence":44,"timestamp":1790285253581,"parent_continuation_id":null,"kind":"dom.action","action_id":"action:mug1m6kt:15","event":"change","target":{"tag":"input","attributes":{"type":"file","aria-label":"File"},"ref":"object:12","element_key":"p_1c1d0e26b55d:3805-3904#n1","key_kind":"ordinal","instances":1,"stamp_sequence":10},"target_ref":"object:12","bound_handlers":{"ids":["function:1c1d0e26b55d7b136b99714d004f561d6d996d91d0fb7e96ea1fcf0be6cfd117:3499:3685"],"library":0},"source_ref":null,"continuation_id":"continuation:action:mug1m6kt:15:action:142","spine":{"action_id":"action:mug1m6kt:15","function_ids":[]},"evidence_ids":[],"capture_page_id":"s_6a3048d7","tracer_run":"run-20260924t212726523z-78471f","tracer_build":"unknown"},"opener":"action:mug1m6kn:13"}
+FAIL run 1 U2 no row for the synthetic click on the file input; the summary counts it as untrusted
+  undefined
+FAIL run 1 S1 the shortcut's request is owned by keydown K with ctrlKey and shiftKey
+  {"key":"Printable"}
+FAIL run 1 W1 the load-more request is owned by a coalesced scroll range on the feed whose close row shows the scroll passing 150
+  {}
+FAIL run 1 W2 coalescing: each wheel/scroll row is a range closed with a count; per kind, the close rows' counts sum to the summary's coalesced events; ranges hold fewer rows than events
+  {"scrollRows":0,"wheelRows":0}
+FAIL run 1 C1 copy and paste are recorded as ClipboardEvent rows; paste owns its request
+  null
+FAIL run 1 T1 the details request is owned by the toggle row (ToggleEvent, closed -> open)
+  null
+FAIL run 1 X1 Radix Select: the trigger's pointerdown is recorded; the choice is owned by the pointerup on the portal option (Radix selects on pointerup)
+  {"role":null}
+PASS run 1 X2 Radix Dialog: confirm owned by its click, Escape dismissal owned by keydown Escape
+FAIL run 1 P1 native select change owns its request; typing records inputType and data (never the value)
+  [null,null]
+PASS run 1 P2 the trusted Ping owns its request; the untrusted dispatchEvent's request is unattributed and left no row
+FAIL run 1 P3 every request but the untrusted one has an owner
+  ["/api/choice?value=banana","/api/drag","/api/more","/api/pasted","/api/details?open=true","/api/ping"]
+FAIL run 1 M1 action_chain(pointerup): POST /api/drag is its request; the dispatch line names the mouse pointer
+  undefined
+FAIL run 1 M2 action_chain(change): the upload, 1 file (text/plain), and the opened-by pointer to the Upload click
+  "change action:mug1m6kt:15 → handler <unnamed> client/src/main.jsx@3499-3685 → 1 request: (1) <unnamed> client/src/main.jsx@643-692 → POST /api/upload [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented"
+FAIL run 1 M3 the Upload click's chain lists the change under opened
+  undefined
+FAIL run 1 M4 action_chain(keydown): "Ctrl+Shift+K", modifiers [Ctrl, Shift] (not [])
+  {"key":"Printable","code":null,"modifiers":[],"repeat":false,"target":"<button type=\"button\">","text":"Printable in <button type=\"button\">"}
+FAIL run 1 M5 action_chain(scroll range): GET /api/more; the range count equals the raw close row
+  undefined
+FAIL run 1 M6 page_requests: totals equal the raw rows; one request with no action (the untrusted Ping)
+  {"total":12,"attributed":6,"unattributed":6}
+FAIL run 1 M7 recent_actions: gesture context no episode holds is counted, not listed; include_context lists it
+  {"omitted":0,"listed":45,"all":45}
+{
+  "sessions": [
+    {
+      "session": "s_6a3048d7",
+      "actions": 45,
+      "ranges": 0,
+      "owners": {
+        "/api/choice?value=banana": null,
+        "/api/archive": "click",
+        "/api/dialog-dismissed": "keydown",
+        "/api/drag": null,
+        "/api/upload": "change",
+        "/api/shortcut": "keydown",
+        "/api/more": null,
+        "/api/pasted": null,
+        "/api/details?open=true": null,
+        "/api/size?value=l": "change",
+        "/api/ping": null
+      }
+    }
+  ]
+}
+3/25 checks pass over 1 page loads; store /var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/tracer-trusted-events-store-BC4HWC
+kept store /var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/tracer-trusted-events-store-BC4HWC and fixture /private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-trusted-events-bckewO

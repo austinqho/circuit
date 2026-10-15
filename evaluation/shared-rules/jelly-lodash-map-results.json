@@ -1,0 +1,958 @@
+{
+  "scope": "Static candidate discovery for the frozen LibreChat lodash.map callback shape; not runtime proof or rule admission.",
+  "fixture": "const lodash = require('lodash');\nconst hits = [{ id: 'a' }, { id: 'b' }];\nfunction pickIdentity(hit) { return hit.id; }\nlodash.map(hits, pickIdentity);\n",
+  "jelly_version": "0.13.0",
+  "diagnostics": {
+    "packages": 2,
+    "modules": 2,
+    "functions": 693,
+    "functionToFunctionEdges": 8520,
+    "callToFunctionEdges": 12658,
+    "analysisTime": 1124,
+    "maxMemoryUsage": 255,
+    "errors": 0,
+    "warnings": 168,
+    "timeout": false
+  },
+  "callback_incoming_candidates": [
+    {
+      "function_id": "67",
+      "location": "1:1449:23:17227:4",
+      "source_line": "var runInContext = (function runInContext(context) {"
+    },
+    {
+      "function_id": "93",
+      "location": "1:2190:5:2197:6",
+      "source_line": "function mapCacheClear() {"
+    },
+    {
+      "function_id": "98",
+      "location": "1:2276:5:2284:6",
+      "source_line": "function SetCache(values) {"
+    },
+    {
+      "function_id": "106",
+      "location": "1:2397:5:2411:6",
+      "source_line": "function stackSet(key, value) {"
+    },
+    {
+      "function_id": "107",
+      "location": "1:2430:5:2455:6",
+      "source_line": "function arrayLikeKeys(value, inherited) {"
+    },
+    {
+      "function_id": "121",
+      "location": "1:2667:5:2741:6",
+      "source_line": "function baseClone(value, bitmask, customizer, key, object, stack) {"
+    },
+    {
+      "function_id": "130",
+      "location": "1:2811:5:2854:6",
+      "source_line": "function baseDifference(array, values, iteratee, comparator) {"
+    },
+    {
+      "function_id": "143",
+      "location": "1:3098:5:3101:6",
+      "source_line": "function baseGetAllKeys(object, keysFunc, symbolsFunc) {"
+    },
+    {
+      "function_id": "149",
+      "location": "1:3179:5:3230:6",
+      "source_line": "function baseIntersection(arrays, iteratee, comparator) {"
+    },
+    {
+      "function_id": "157",
+      "location": "1:3338:5:3381:6",
+      "source_line": "function baseIsEqualDeep(object, other, bitmask, customizer, equalFunc, stack) {"
+    },
+    {
+      "function_id": "159",
+      "location": "1:3404:5:3446:6",
+      "source_line": "function baseIsMatch(object, source, matchData, customizer) {"
+    },
+    {
+      "function_id": "175",
+      "location": "1:3647:23:3662:8",
+      "source_line": "baseFor(source, function(srcValue, key) {"
+    },
+    {
+      "function_id": "176",
+      "location": "1:3680:5:3740:6",
+      "source_line": "function baseMergeDeep(object, source, key, srcIndex, mergeFunc, customizer, stack) {"
+    },
+    {
+      "function_id": "189",
+      "location": "1:3861:5:3886:6",
+      "source_line": "function basePullAll(array, values, iteratee, comparator) {"
+    },
+    {
+      "function_id": "197",
+      "location": "1:4025:5:4057:6",
+      "source_line": "function baseSet(object, path, value, customizer) {"
+    },
+    {
+      "function_id": "208",
+      "location": "1:4291:5:4305:6",
+      "source_line": "function baseToString(value) {"
+    },
+    {
+      "function_id": "209",
+      "location": "1:4316:5:4366:6",
+      "source_line": "function baseUniq(array, iteratee, comparator) {"
+    },
+    {
+      "function_id": "211",
+      "location": "1:4418:5:4420:6",
+      "source_line": "function baseUpdate(object, path, updater, customizer) {"
+    },
+    {
+      "function_id": "212",
+      "location": "1:4433:5:4443:6",
+      "source_line": "function baseWhile(array, predicate, isDrop, fromRight) {"
+    },
+    {
+      "function_id": "214",
+      "location": "1:4460:35:4462:8",
+      "source_line": "return arrayReduce(actions, function(result, action) {"
+    },
+    {
+      "function_id": "213",
+      "location": "1:4455:5:4463:6",
+      "source_line": "function baseWrapperValue(value, actions) {"
+    },
+    {
+      "function_id": "224",
+      "location": "1:4631:5:4634:6",
+      "source_line": "function cloneDataView(dataView, isDeep) {"
+    },
+    {
+      "function_id": "227",
+      "location": "1:4668:5:4671:6",
+      "source_line": "function cloneTypedArray(typedArray, isDeep) {"
+    },
+    {
+      "function_id": "233",
+      "location": "1:4853:5:4877:6",
+      "source_line": "function copyObject(source, props, object, customizer) {"
+    },
+    {
+      "function_id": "247",
+      "location": "1:5035:14:5051:8",
+      "source_line": "return function(string) {"
+    },
+    {
+      "function_id": "258",
+      "location": "1:5165:23:5215:8",
+      "source_line": "return flatRest(function(funcs) {"
+    },
+    {
+      "function_id": "261",
+      "location": "1:5245:7:5287:8",
+      "source_line": "function wrapper() {"
+    },
+    {
+      "function_id": "283",
+      "location": "1:5581:5:5634:6",
+      "source_line": "function createWrap(func, bitmask, thisArg, partials, holders, argPos, ary, arity) {"
+    },
+    {
+      "function_id": "285",
+      "location": "1:5670:5:5678:6",
+      "source_line": "function customDefaultsMerge(objValue, srcValue, key, object, source, stack) {"
+    },
+    {
+      "function_id": "287",
+      "location": "1:5706:5:5766:6",
+      "source_line": "function equalArrays(array, other, bitmask, customizer, equalFunc, stack) {"
+    },
+    {
+      "function_id": "289",
+      "location": "1:5785:5:5848:6",
+      "source_line": "function equalByTag(object, other, tag, bitmask, customizer, equalFunc, stack) {"
+    },
+    {
+      "function_id": "302",
+      "location": "1:6106:54:6114:6",
+      "source_line": "var getSymbols = !nativeGetSymbols ? stubArray : function(object) {"
+    },
+    {
+      "function_id": "308",
+      "location": "1:6214:5:6234:6",
+      "source_line": "function hasPath(object, path, hasFunc) {"
+    },
+    {
+      "function_id": "311",
+      "location": "1:6280:5:6314:6",
+      "source_line": "function initCloneByTag(object, tag, isDeep) {"
+    },
+    {
+      "function_id": "326",
+      "location": "1:6547:5:6600:6",
+      "source_line": "function mergeData(data, source) {"
+    },
+    {
+      "function_id": "332",
+      "location": "1:6684:5:6694:6",
+      "source_line": "function reorder(array, indexes) {"
+    },
+    {
+      "function_id": "346",
+      "location": "1:6934:5:6952:6",
+      "source_line": "function chunk(array, size, guard) {"
+    },
+    {
+      "function_id": "358",
+      "location": "1:7391:5:7404:6",
+      "source_line": "function findLastIndex(array, predicate, fromIndex) {"
+    },
+    {
+      "function_id": "371",
+      "location": "1:7730:5:7743:6",
+      "source_line": "function lastIndexOf(array, value, fromIndex) {"
+    },
+    {
+      "function_id": "378",
+      "location": "1:7942:5:7961:6",
+      "source_line": "function remove(array, predicate) {"
+    },
+    {
+      "function_id": "415",
+      "location": "1:8909:30:8931:6",
+      "source_line": "var wrapperAt = flatRest(function(paths) {"
+    },
+    {
+      "function_id": "425",
+      "location": "1:9172:36:9178:6",
+      "source_line": "var countBy = createAggregator(function(result, value, key) {"
+    },
+    {
+      "function_id": "433",
+      "location": "1:9492:36:9498:6",
+      "source_line": "var groupBy = createAggregator(function(result, value, key) {"
+    },
+    {
+      "function_id": "434",
+      "location": "1:9530:5:9541:6",
+      "source_line": "function includes(collection, value, fromIndex, guard) {"
+    },
+    {
+      "function_id": "463",
+      "location": "1:10436:7:10443:8",
+      "source_line": "function leadingEdge(time) {"
+    },
+    {
+      "function_id": "470",
+      "location": "1:10499:7:10522:8",
+      "source_line": "function debounced() {"
+    },
+    {
+      "function_id": "479",
+      "location": "1:10751:29:10766:6",
+      "source_line": "var overArgs = castRest(function(func, transforms) {"
+    },
+    {
+      "function_id": "480",
+      "location": "1:10757:23:10765:8",
+      "source_line": "return baseRest(function(args) {"
+    },
+    {
+      "function_id": "485",
+      "location": "1:10936:5:10950:6",
+      "source_line": "function spread(func, start) {"
+    },
+    {
+      "function_id": "489",
+      "location": "1:11055:5:11057:6",
+      "source_line": "function wrap(value, wrapper) {"
+    },
+    {
+      "function_id": "521",
+      "location": "1:12135:5:12146:6",
+      "source_line": "function isPlainObject(value) {"
+    },
+    {
+      "function_id": "523",
+      "location": "1:12234:5:12237:6",
+      "source_line": "function isString(value) {"
+    },
+    {
+      "function_id": "537",
+      "location": "1:12694:33:12704:6",
+      "source_line": "var assign = createAssigner(function(object, source) {"
+    },
+    {
+      "function_id": "542",
+      "location": "1:12885:29:12914:6",
+      "source_line": "var defaults = baseRest(function(object, sources) {"
+    },
+    {
+      "function_id": "560",
+      "location": "1:13461:26:13463:8",
+      "source_line": "baseForOwn(object, function(value, key, object) {"
+    },
+    {
+      "function_id": "562",
+      "location": "1:13499:26:13501:8",
+      "source_line": "baseForOwn(object, function(value, key, object) {"
+    },
+    {
+      "function_id": "584",
+      "location": "1:14186:5:14223:6",
+      "source_line": "function random(lower, upper, floating) {"
+    },
+    {
+      "function_id": "588",
+      "location": "1:14317:5:14329:6",
+      "source_line": "function endsWith(string, target, position) {"
+    },
+    {
+      "function_id": "596",
+      "location": "1:14585:5:14592:6",
+      "source_line": "function parseInt(string, radix, guard) {"
+    },
+    {
+      "function_id": "600",
+      "location": "1:14695:5:14714:6",
+      "source_line": "function split(string, separator, limit) {"
+    },
+    {
+      "function_id": "602",
+      "location": "1:14764:5:14772:6",
+      "source_line": "function startsWith(string, target, position) {"
+    },
+    {
+      "function_id": "603",
+      "location": "1:14882:5:15003:6",
+      "source_line": "function template(string, options, guard) {"
+    },
+    {
+      "function_id": "612",
+      "location": "1:15196:5:15250:6",
+      "source_line": "function truncate(string, options) {"
+    },
+    {
+      "function_id": "618",
+      "location": "1:15409:30:15412:8",
+      "source_line": "arrayEach(methodNames, function(key) {"
+    },
+    {
+      "function_id": "636",
+      "location": "1:15846:42:15857:12",
+      "source_line": "object.prototype[methodName] = function() {"
+    },
+    {
+      "function_id": "649",
+      "location": "1:16258:5:16274:6",
+      "source_line": "function times(n, iteratee) {"
+    },
+    {
+      "function_id": "668",
+      "location": "1:17017:43:17033:8",
+      "source_line": "LazyWrapper.prototype[methodName] = function(n) {"
+    },
+    {
+      "function_id": "682",
+      "location": "1:17099:35:17116:6",
+      "source_line": "LazyWrapper.prototype.slice = function(start, end) {"
+    },
+    {
+      "function_id": "687",
+      "location": "1:17143:27:17146:10",
+      "source_line": "var interceptor = function(value) {"
+    },
+    {
+      "function_id": "686",
+      "location": "1:17136:38:17168:8",
+      "source_line": "lodash.prototype[methodName] = function() {"
+    },
+    {
+      "function_id": "313",
+      "location": "1:6342:5:6345:6",
+      "source_line": "function isFlattenable(value) {"
+    },
+    {
+      "function_id": "290",
+      "location": "1:5863:5:5926:6",
+      "source_line": "function equalObjects(object, other, bitmask, customizer, equalFunc, stack) {"
+    },
+    {
+      "function_id": "128",
+      "location": "1:2793:5:2798:6",
+      "source_line": "function baseDelay(func, wait, args) {"
+    },
+    {
+      "function_id": "70",
+      "location": "1:1691:5:1701:6",
+      "source_line": "function lodash(value) {"
+    },
+    {
+      "function_id": "112",
+      "location": "1:2518:5:2524:6",
+      "source_line": "function assignValue(object, key, value) {"
+    },
+    {
+      "function_id": "122",
+      "location": "1:2718:23:2720:10",
+      "source_line": "value.forEach(function(subValue) {"
+    },
+    {
+      "function_id": "123",
+      "location": "1:2722:23:2724:10",
+      "source_line": "value.forEach(function(subValue, key) {"
+    },
+    {
+      "function_id": "164",
+      "location": "1:3505:5:3520:6",
+      "source_line": "function baseIteratee(value) {"
+    },
+    {
+      "function_id": "190",
+      "location": "1:3897:5:3913:6",
+      "source_line": "function basePullAt(array, indexes) {"
+    },
+    {
+      "function_id": "79",
+      "location": "1:1889:5:1936:6",
+      "source_line": "function lazyValue() {"
+    },
+    {
+      "function_id": "210",
+      "location": "1:4376:5:4406:6",
+      "source_line": "function baseUnset(object, path) {"
+    },
+    {
+      "function_id": "94",
+      "location": "1:2208:5:2212:6",
+      "source_line": "function mapCacheDelete(key) {"
+    },
+    {
+      "function_id": "95",
+      "location": "1:2223:5:2225:6",
+      "source_line": "function mapCacheGet(key) {"
+    },
+    {
+      "function_id": "96",
+      "location": "1:2236:5:2238:6",
+      "source_line": "function mapCacheHas(key) {"
+    },
+    {
+      "function_id": "97",
+      "location": "1:2250:5:2257:6",
+      "source_line": "function mapCacheSet(key, value) {"
+    },
+    {
+      "function_id": "69",
+      "location": "1:1518:27:1524:6",
+      "source_line": "var defineProperty = (function() {"
+    },
+    {
+      "function_id": "144",
+      "location": "1:3110:5:3117:6",
+      "source_line": "function baseGetTag(value) {"
+    },
+    {
+      "function_id": "239",
+      "location": "1:4928:23:4950:8",
+      "source_line": "return baseRest(function(object, sources) {"
+    },
+    {
+      "function_id": "219",
+      "location": "1:4548:5:4553:6",
+      "source_line": "function castPath(value, object) {"
+    },
+    {
+      "function_id": "165",
+      "location": "1:3529:5:3540:6",
+      "source_line": "function baseKeys(object) {"
+    },
+    {
+      "function_id": "166",
+      "location": "1:3549:5:3562:6",
+      "source_line": "function baseKeysIn(object) {"
+    },
+    {
+      "function_id": "206",
+      "location": "1:4247:5:4263:6",
+      "source_line": "function baseSortedUniq(array, iteratee) {"
+    },
+    {
+      "function_id": "284",
+      "location": "1:5648:5:5654:6",
+      "source_line": "function customDefaultsAssignIn(objValue, srcValue, key, object) {"
+    },
+    {
+      "function_id": "168",
+      "location": "1:3585:5:3593:6",
+      "source_line": "function baseMap(collection, iteratee) {"
+    },
+    {
+      "function_id": "241",
+      "location": "1:4962:14:4979:8",
+      "source_line": "return function(collection, iteratee) {"
+    },
+    {
+      "function_id": "435",
+      "location": "1:9566:30:9575:6",
+      "source_line": "var invokeMap = baseRest(function(collection, path, args) {"
+    },
+    {
+      "function_id": "401",
+      "location": "1:8565:34:8570:8",
+      "source_line": "array = arrayFilter(array, function(group) {"
+    },
+    {
+      "function_id": "251",
+      "location": "1:5076:14:5097:8",
+      "source_line": "return function() {"
+    },
+    {
+      "function_id": "461",
+      "location": "1:10403:5:10526:6",
+      "source_line": "function debounce(func, wait, options) {"
+    },
+    {
+      "function_id": "499",
+      "location": "1:11357:95:11360:6",
+      "source_line": "var isArguments = baseIsArguments(function() { return arguments; }()) ? baseIsArguments : function(value) {"
+    },
+    {
+      "function_id": "133",
+      "location": "1:2904:5:2921:6",
+      "source_line": "function baseExtremum(array, iteratee, comparator) {"
+    },
+    {
+      "function_id": "205",
+      "location": "1:4195:5:4236:6",
+      "source_line": "function baseSortedIndexBy(array, value, iteratee, retHighest) {"
+    },
+    {
+      "function_id": "316",
+      "location": "1:6397:5:6408:6",
+      "source_line": "function isKey(value, object) {"
+    },
+    {
+      "function_id": "279",
+      "location": "1:5509:14:5522:8",
+      "source_line": "return function(number, precision) {"
+    },
+    {
+      "function_id": "119",
+      "location": "1:2618:5:2628:6",
+      "source_line": "function baseAt(object, paths) {"
+    },
+    {
+      "function_id": "199",
+      "location": "1:4080:56:4087:6",
+      "source_line": "var baseSetToString = !defineProperty ? identity : function(func, string) {"
+    },
+    {
+      "function_id": "334",
+      "location": "1:6740:39:6742:6",
+      "source_line": "var setTimeout = ctxSetTimeout || function(func, wait) {"
+    },
+    {
+      "function_id": "151",
+      "location": "1:3244:26:3246:8",
+      "source_line": "baseForOwn(object, function(value, key, object) {"
+    },
+    {
+      "function_id": "115",
+      "location": "1:2556:28:2558:8",
+      "source_line": "baseEach(collection, function(value, key, collection) {"
+    },
+    {
+      "function_id": "4",
+      "location": "1:506:3:515:4",
+      "source_line": "function arrayAggregator(array, setter, iteratee, accumulator) {"
+    },
+    {
+      "function_id": "256",
+      "location": "1:5150:23:5150:87",
+      "source_line": "predicate = function(key) { return iteratee(iterable[key], key, iterable); };"
+    },
+    {
+      "function_id": "32",
+      "location": "1:963:3:975:4",
+      "source_line": "function baseSum(array, iteratee) {"
+    },
+    {
+      "function_id": "620",
+      "location": "1:15449:46:15454:8",
+      "source_line": "pairs = !length ? [] : arrayMap(pairs, function(pair) {"
+    },
+    {
+      "function_id": "576",
+      "location": "1:13904:52:13906:8",
+      "source_line": "(isArrLike ? arrayEach : baseForOwn)(object, function(value, index, object) {"
+    },
+    {
+      "function_id": "571",
+      "location": "1:13688:40:13690:8",
+      "source_line": "return basePickBy(object, props, function(value, path) {"
+    },
+    {
+      "function_id": "19",
+      "location": "1:792:26:797:6",
+      "source_line": "eachFunc(collection, function(value, key, collection) {"
+    },
+    {
+      "function_id": "203",
+      "location": "1:4142:28:4145:8",
+      "source_line": "baseEach(collection, function(value, index, collection) {"
+    },
+    {
+      "function_id": "15",
+      "location": "1:736:3:746:4",
+      "source_line": "function arraySome(array, predicate) {"
+    },
+    {
+      "function_id": "14",
+      "location": "1:715:3:724:4",
+      "source_line": "function arrayReduceRight(array, iteratee, accumulator, initAccum) {"
+    },
+    {
+      "function_id": "30",
+      "location": "1:926:26:930:6",
+      "source_line": "eachFunc(collection, function(value, index, collection) {"
+    },
+    {
+      "function_id": "13",
+      "location": "1:690:3:701:4",
+      "source_line": "function arrayReduce(array, iteratee, accumulator, initAccum) {"
+    },
+    {
+      "function_id": "169",
+      "location": "1:3589:28:3591:8",
+      "source_line": "baseEach(collection, function(value, key, collection) {"
+    },
+    {
+      "function_id": "6",
+      "location": "1:547:3:556:4",
+      "source_line": "function arrayEachRight(array, iteratee) {"
+    },
+    {
+      "function_id": "5",
+      "location": "1:526:3:536:4",
+      "source_line": "function arrayEach(array, iteratee) {"
+    },
+    {
+      "function_id": "136",
+      "location": "1:2961:28:2965:8",
+      "source_line": "baseEach(collection, function(value, index, collection) {"
+    },
+    {
+      "function_id": "8",
+      "location": "1:589:3:602:4",
+      "source_line": "function arrayFilter(array, predicate) {"
+    },
+    {
+      "function_id": "132",
+      "location": "1:2887:28:2890:8",
+      "source_line": "baseEach(collection, function(value, index, collection) {"
+    },
+    {
+      "function_id": "7",
+      "location": "1:568:3:578:4",
+      "source_line": "function arrayEvery(array, predicate) {"
+    },
+    {
+      "function_id": "38",
+      "location": "1:1032:12:1034:6",
+      "source_line": "return function(value) {"
+    },
+    {
+      "function_id": "33",
+      "location": "1:986:3:994:4",
+      "source_line": "function baseTimes(n, iteratee) {"
+    },
+    {
+      "function_id": "11",
+      "location": "1:648:3:657:4",
+      "source_line": "function arrayMap(array, iteratee) {"
+    },
+    {
+      "function_id": "20",
+      "location": "1:812:3:822:4",
+      "source_line": "function baseFindIndex(array, predicate, fromIndex, fromRight) {"
+    },
+    {
+      "function_id": "243",
+      "location": "1:4990:14:5003:8",
+      "source_line": "return function(object, iteratee, keysFunc) {"
+    },
+    {
+      "function_id": "323",
+      "location": "1:6502:14:6508:8",
+      "source_line": "return function(object) {"
+    },
+    {
+      "function_id": "53",
+      "location": "1:1225:12:1227:6",
+      "source_line": "return function(arg) {"
+    },
+    {
+      "function_id": "3",
+      "location": "1:486:3:494:4",
+      "source_line": "function apply(func, thisArg, args) {"
+    },
+    {
+      "function_id": "92",
+      "location": "1:2172:5:2181:6",
+      "source_line": "function MapCache(entries) {"
+    },
+    {
+      "function_id": "41",
+      "location": "1:1061:3:1063:4",
+      "source_line": "function cacheHas(cache, key) {"
+    },
+    {
+      "function_id": "477",
+      "location": "1:10686:14:10695:8",
+      "source_line": "return function() {"
+    },
+    {
+      "function_id": "245",
+      "location": "1:5020:7:5023:8",
+      "source_line": "function wrapper() {"
+    },
+    {
+      "function_id": "475",
+      "location": "1:10643:22:10654:8",
+      "source_line": "var memoized = function() {"
+    },
+    {
+      "function_id": "10",
+      "location": "1:627:3:637:4",
+      "source_line": "function arrayIncludesWith(array, value, comparator) {"
+    },
+    {
+      "function_id": "223",
+      "location": "1:4617:5:4621:6",
+      "source_line": "function cloneArrayBuffer(arrayBuffer) {"
+    },
+    {
+      "function_id": "118",
+      "location": "1:2597:5:2608:6",
+      "source_line": "function baseAssignValue(object, key, value) {"
+    },
+    {
+      "function_id": "147",
+      "location": "1:3152:5:3154:6",
+      "source_line": "function baseHasIn(object, key) {"
+    },
+    {
+      "function_id": "327",
+      "location": "1:6611:5:6619:6",
+      "source_line": "function nativeKeysIn(object) {"
+    },
+    {
+      "function_id": "182",
+      "location": "1:3786:44:3788:10",
+      "source_line": "var criteria = arrayMap(iteratees, function(iteratee) {"
+    },
+    {
+      "function_id": "280",
+      "location": "1:5532:88:5534:6",
+      "source_line": "var createSet = !(Set && (1 / setToArray(new Set([,-0]))[1]) == INFINITY) ? noop : function(values) {"
+    },
+    {
+      "function_id": "201",
+      "location": "1:4109:5:4128:6",
+      "source_line": "function baseSlice(array, start, end) {"
+    },
+    {
+      "function_id": "232",
+      "location": "1:4832:5:4841:6",
+      "source_line": "function copyArray(source, array) {"
+    },
+    {
+      "function_id": "605",
+      "location": "1:14928:36:14951:8",
+      "source_line": "string.replace(reDelimiters, function(match, escapeValue, interpolateValue, esTemplateValue, evaluateValue, offset) {"
+    },
+    {
+      "function_id": "179",
+      "location": "1:3770:41:3777:10",
+      "source_line": "iteratees = arrayMap(iteratees, function(iteratee) {"
+    },
+    {
+      "function_id": "148",
+      "location": "1:3165:5:3167:6",
+      "source_line": "function baseInRange(number, start, end) {"
+    },
+    {
+      "function_id": "329",
+      "location": "1:6641:5:6660:6",
+      "source_line": "function overRest(func, start, transform) {"
+    },
+    {
+      "function_id": "222",
+      "location": "1:4599:5:4608:6",
+      "source_line": "function cloneBuffer(buffer, isDeep) {"
+    },
+    {
+      "function_id": "225",
+      "location": "1:4643:5:4647:6",
+      "source_line": "function cloneRegExp(regexp) {"
+    },
+    {
+      "function_id": "309",
+      "location": "1:6243:5:6253:6",
+      "source_line": "function initCloneArray(array) {"
+    },
+    {
+      "function_id": "63",
+      "location": "1:1365:3:1370:4",
+      "source_line": "function trimmedEndIndex(string) {"
+    },
+    {
+      "function_id": "440",
+      "location": "1:9735:38:9737:6",
+      "source_line": "var partition = createAggregator(function(result, value, key) {"
+    },
+    {
+      "function_id": "127",
+      "location": "1:2765:5:2781:6",
+      "source_line": "function baseConformsTo(object, source, props) {"
+    },
+    {
+      "function_id": "129",
+      "location": "1:2797:25:2797:68",
+      "source_line": "return setTimeout(function() { func.apply(undefined, args); }, wait);"
+    },
+    {
+      "function_id": "198",
+      "location": "1:4067:45:4070:6",
+      "source_line": "var baseSetData = !metaMap ? identity : function(func, data) {"
+    },
+    {
+      "function_id": "294",
+      "location": "1:5969:37:5971:6",
+      "source_line": "var getData = !metaMap ? noop : function(func) {"
+    },
+    {
+      "function_id": "259",
+      "location": "1:5200:16:5214:10",
+      "source_line": "return function() {"
+    },
+    {
+      "function_id": "556",
+      "location": "1:13344:35:13355:6",
+      "source_line": "var invertBy = createInverter(function(result, value, key) {"
+    },
+    {
+      "function_id": "100",
+      "location": "1:2310:5:2312:6",
+      "source_line": "function setCacheHas(value) {"
+    },
+    {
+      "function_id": "99",
+      "location": "1:2296:5:2299:6",
+      "source_line": "function setCacheAdd(value) {"
+    },
+    {
+      "function_id": "226",
+      "location": "1:4656:5:4658:6",
+      "source_line": "function cloneSymbol(symbol) {"
+    },
+    {
+      "function_id": "342",
+      "location": "1:6863:5:6873:6",
+      "source_line": "function toSource(func) {"
+    },
+    {
+      "function_id": "303",
+      "location": "1:6111:52:6113:8",
+      "source_line": "return arrayFilter(nativeGetSymbols(object), function(symbol) {"
+    },
+    {
+      "function_id": "301",
+      "location": "1:6079:5:6097:6",
+      "source_line": "function getRawTag(value) {"
+    },
+    {
+      "function_id": "328",
+      "location": "1:6628:5:6630:6",
+      "source_line": "function objectToString(value) {"
+    },
+    {
+      "function_id": "555",
+      "location": "1:13309:33:13316:6",
+      "source_line": "var invert = createInverter(function(result, value, key) {"
+    },
+    {
+      "function_id": "146",
+      "location": "1:3140:5:3142:6",
+      "source_line": "function baseHas(object, key) {"
+    },
+    {
+      "function_id": "665",
+      "location": "1:16991:26:16995:8",
+      "source_line": "baseForOwn(lodash, function(func, methodName) {"
+    },
+    {
+      "function_id": "508",
+      "location": "1:11725:5:11727:6",
+      "source_line": "function isFinite(value) {"
+    },
+    {
+      "function_id": "81",
+      "location": "1:1969:5:1972:6",
+      "source_line": "function hashClear() {"
+    },
+    {
+      "function_id": "104",
+      "location": "1:2370:5:2372:6",
+      "source_line": "function stackGet(key) {"
+    },
+    {
+      "function_id": "103",
+      "location": "1:2353:5:2359:6",
+      "source_line": "function stackDelete(key) {"
+    },
+    {
+      "function_id": "84",
+      "location": "1:2017:5:2020:6",
+      "source_line": "function hashHas(key) {"
+    },
+    {
+      "function_id": "306",
+      "location": "1:6175:5:6191:6",
+      "source_line": "function getView(start, end, transforms) {"
+    },
+    {
+      "function_id": "379",
+      "location": "1:7986:5:7988:6",
+      "source_line": "function reverse(array) {"
+    },
+    {
+      "function_id": "414",
+      "location": "1:8889:5:8891:6",
+      "source_line": "function thru(value, interceptor) {"
+    },
+    {
+      "function_id": "105",
+      "location": "1:2383:5:2385:6",
+      "source_line": "function stackHas(key) {"
+    },
+    {
+      "function_id": "22",
+      "location": "1:849:3:859:4",
+      "source_line": "function baseIndexOfWith(array, value, fromIndex, comparator) {"
+    }
+  ],
+  "source_reader_frontier": {
+    "reason": "captured_parameter:context;declaration_limit",
+    "selected_declarations": 117,
+    "selected_source_bytes": 21559
+  },
+  "failed_setup_attempts": [
+    "Absolute module path ignored; no dependency analysis.",
+    "Symlink target was outside basedir; reran with common basedir."
+  ],
+  "model_requests": 0,
+  "model_spend_usd": 0,
+  "callback_candidate_count": 185,
+  "arrayMap_candidate_found": true,
+  "conclusion": "Jelly finds the expected arrayMap candidate but also many unrelated possible callers; this graph cannot independently establish the scoped closure or admit the rule."
+}

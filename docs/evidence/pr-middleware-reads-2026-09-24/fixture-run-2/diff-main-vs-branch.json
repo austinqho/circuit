@@ -1,0 +1,291 @@
+{
+  "actions": 24,
+  "new_ops": 12,
+  "new_ops_by_issuer": {
+    "find users (middleware: authenticate)": 11,
+    "insert activity (middleware: recordActivity)": 1
+  },
+  "removed_ops": 0,
+  "actions_changed": 12,
+  "status_moves": {
+    "responded -> completed": 1
+  },
+  "changed_fields": {
+    "because": 12,
+    "reached": 2,
+    "stopped_at": 4,
+    "status": 1,
+    "label": 2
+  },
+  "ops": [
+    {
+      "action_id": "action:mug2edcy:4",
+      "request": "GET /api/projects/p1/tasks",
+      "request_occurrence_id": "action:mug2edcy:4:request:2",
+      "span_id": "6a34de0b8f9193c0",
+      "op": "find users",
+      "issued_by": "middleware: authenticate"
+    },
+    {
+      "action_id": "action:mug2edku:6",
+      "request": "GET /api/projects/p1/tasks",
+      "request_occurrence_id": "action:mug2edku:6:request:3",
+      "span_id": "ccc09bb6a18b65df",
+      "op": "find users",
+      "issued_by": "middleware: authenticate"
+    },
+    {
+      "action_id": "action:mug2edsq:8",
+      "request": "PATCH /api/projects/p1/tasks/t1",
+      "request_occurrence_id": "action:mug2edsq:8:request:4",
+      "span_id": "7726ca139ff5686d",
+      "op": "find users",
+      "issued_by": "middleware: authenticate"
+    },
+    {
+      "action_id": "action:mug2ee0s:10",
+      "request": "POST /api/projects/p1/summary",
+      "request_occurrence_id": "action:mug2ee0s:10:request:5",
+      "span_id": "ad130e01a53fd4b9",
+      "op": "find users",
+      "issued_by": "middleware: authenticate"
+    },
+    {
+      "action_id": "action:mug2ee0s:10",
+      "request": "POST /api/projects/p1/summary",
+      "request_occurrence_id": "action:mug2ee0s:10:request:5",
+      "span_id": "33d19671e83e7295",
+      "op": "insert activity",
+      "issued_by": "middleware: recordActivity"
+    },
+    {
+      "action_id": "action:mug2ee8y:12",
+      "request": "POST /api/projects/p1/ping",
+      "request_occurrence_id": "action:mug2ee8y:12:request:6",
+      "span_id": "4f8619462de6f72a",
+      "op": "find users",
+      "issued_by": "middleware: authenticate"
+    },
+    {
+      "action_id": "action:mug2eehh:14",
+      "request": "POST /api/projects/p1/archive",
+      "request_occurrence_id": "action:mug2eehh:14:request:7",
+      "span_id": "8c665a07ff5af0a7",
+      "op": "find users",
+      "issued_by": "middleware: authenticate"
+    },
+    {
+      "action_id": "action:mug2eepc:16",
+      "request": "POST /api/projects/p1/explode",
+      "request_occurrence_id": "action:mug2eepc:16:request:8",
+      "span_id": "fd346308e5a046a4",
+      "op": "find users",
+      "issued_by": "middleware: authenticate"
+    },
+    {
+      "action_id": "action:mug2eex8:18",
+      "request": "GET /api/projects/zz/tasks",
+      "request_occurrence_id": "action:mug2eex8:18:request:9",
+      "span_id": "2be21a3233c5e024",
+      "op": "find users",
+      "issued_by": "middleware: authenticate"
+    },
+    {
+      "action_id": "action:mug2ef53:20",
+      "request": "GET /api/projects/p1/stats",
+      "request_occurrence_id": "action:mug2ef53:20:request:10",
+      "span_id": "3233ded460ef1047",
+      "op": "find users",
+      "issued_by": "middleware: authenticate"
+    },
+    {
+      "action_id": "action:mug2efcy:22",
+      "request": "GET /api/projects/p1/owner",
+      "request_occurrence_id": "action:mug2efcy:22:request:11",
+      "span_id": "3333f1b2f0eb52ea",
+      "op": "find users",
+      "issued_by": "middleware: authenticate"
+    },
+    {
+      "action_id": "action:mug2efkt:24",
+      "request": "GET /api/whoami",
+      "request_occurrence_id": "action:mug2efkt:24:request:12",
+      "span_id": "6a8cf53c4be56f2e",
+      "op": "find users",
+      "issued_by": "middleware: authenticate"
+    }
+  ],
+  "changed": [
+    {
+      "action_id": "action:mug2ed3t:2",
+      "fields": [
+        "because"
+      ],
+      "before": {
+        "because": "database read aggregate $cmd joined by exact span parentage; no write"
+      },
+      "after": {
+        "because": "database read aggregate $cmd (handler: countTasks) joined by exact span parentage; no write"
+      }
+    },
+    {
+      "action_id": "action:mug2edcy:4",
+      "fields": [
+        "reached",
+        "stopped_at",
+        "because"
+      ],
+      "before": {
+        "reached": "route",
+        "stopped_at": "route",
+        "because": "server responded 401; no registered handler span descends from the server span"
+      },
+      "after": {
+        "reached": "db",
+        "stopped_at": "middleware",
+        "because": "server responded 401 from middleware authenticate; no handler ran"
+      }
+    },
+    {
+      "action_id": "action:mug2edku:6",
+      "fields": [
+        "because"
+      ],
+      "before": {
+        "because": "database read find tasks joined by exact span parentage; no write"
+      },
+      "after": {
+        "because": "database read find tasks (handler: listTasks) joined by exact span parentage; no write"
+      }
+    },
+    {
+      "action_id": "action:mug2edsq:8",
+      "fields": [
+        "because"
+      ],
+      "before": {
+        "because": "database write update tasks joined by exact span parentage"
+      },
+      "after": {
+        "because": "database write update tasks (handler: renameTask) joined by exact span parentage"
+      }
+    },
+    {
+      "action_id": "action:mug2ee0s:10",
+      "fields": [
+        "status",
+        "label",
+        "because"
+      ],
+      "before": {
+        "status": "responded",
+        "label": "Responded 200: no write observed",
+        "because": "database read aggregate $cmd joined by exact span parentage; no write"
+      },
+      "after": {
+        "status": "completed",
+        "label": "Completed 200: insert activity (middleware: recordActivity)",
+        "because": "database write insert activity (middleware: recordActivity) joined by exact span parentage"
+      }
+    },
+    {
+      "action_id": "action:mug2ee8y:12",
+      "fields": [
+        "stopped_at",
+        "because"
+      ],
+      "before": {
+        "stopped_at": null,
+        "because": "database read find projects joined by exact span parentage; no write"
+      },
+      "after": {
+        "stopped_at": "handler",
+        "because": "no database work after the preconditions (find users by middleware authenticate, find projects by param loadProject)"
+      }
+    },
+    {
+      "action_id": "action:mug2eehh:14",
+      "fields": [
+        "because"
+      ],
+      "before": {
+        "because": "database write insert audit joined by exact span parentage"
+      },
+      "after": {
+        "because": "database write insert audit (handler: archiveProject) joined by exact span parentage"
+      }
+    },
+    {
+      "action_id": "action:mug2eepc:16",
+      "fields": [
+        "stopped_at",
+        "because"
+      ],
+      "before": {
+        "stopped_at": null,
+        "because": "server responded 500; database read aggregate $cmd joined by exact span parentage; no write"
+      },
+      "after": {
+        "stopped_at": "middleware",
+        "because": "server responded 500 from error handler reportError; after handler explodeProject"
+      }
+    },
+    {
+      "action_id": "action:mug2eex8:18",
+      "fields": [
+        "stopped_at",
+        "because"
+      ],
+      "before": {
+        "stopped_at": null,
+        "because": "server responded 404; database read find projects joined by exact span parentage; no write"
+      },
+      "after": {
+        "stopped_at": "middleware",
+        "because": "server responded 404 from param loadProject; no handler ran"
+      }
+    },
+    {
+      "action_id": "action:mug2ef53:20",
+      "fields": [
+        "because"
+      ],
+      "before": {
+        "because": "database read aggregate $cmd joined by exact span parentage; no write"
+      },
+      "after": {
+        "because": "database read aggregate $cmd (handler: projectStats (in app span loadStats)) joined by exact span parentage; no write"
+      }
+    },
+    {
+      "action_id": "action:mug2efcy:22",
+      "fields": [
+        "because"
+      ],
+      "before": {
+        "because": "database read find users joined by exact span parentage; no write"
+      },
+      "after": {
+        "because": "database read find users (handler: requireOwner) joined by exact span parentage; no write"
+      }
+    },
+    {
+      "action_id": "action:mug2efkt:24",
+      "fields": [
+        "label",
+        "reached",
+        "because"
+      ],
+      "before": {
+        "label": "Responded 200: no effect evidence",
+        "reached": "handler",
+        "because": "no database span descends from the admitted handler span"
+      },
+      "after": {
+        "label": "Responded 200: no database work after the preconditions (find users by middleware authenticate)",
+        "reached": "db",
+        "because": "no database work after the preconditions (find users by middleware authenticate)"
+      }
+    }
+  ]
+}

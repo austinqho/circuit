@@ -1,0 +1,12 @@
+{
+  "recorded_at": "2026-09-10T20:53:06.922Z",
+  "authorization": "The current user goal explicitly authorizes continuing until acceptance, using local fixes and regressions before targeted paid batches under the existing cumulative $20 cap. The 9AM cutoff was inherited from the previous runner configuration, not a new user-imposed deadline for this goal. Preserve every prior charge and reservation. The no-provider cutoff failure was diagnosed, 204 regressions and all 11 local gates pass, and only the frozen memoize-one case is next. No broad sweep, merger, schedule or usage reset is authorized by this resumption.",
+  "previous_stop": {
+    "failed_at": "2026-09-10T18:22:50.819Z",
+    "case_id": "memoize-one",
+    "report": "paid-memoize-one-1789064570811.json",
+    "reason": "provider_failure"
+  },
+  "local_gate": "338f3ea430b9a0da82f819289f2f7f4fb52aa4c07ad96673ff170801be6b6aee",
+  "scope": "one frozen case; same cumulative ledger; original failed report preserved"
+}

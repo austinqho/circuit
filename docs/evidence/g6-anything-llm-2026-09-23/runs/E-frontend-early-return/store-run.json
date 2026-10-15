@@ -1,0 +1,83 @@
+{
+  "schema": "producttrace.store-run.v1",
+  "run_id": "run-20260923t131912210z-854780",
+  "build": "b-492209beb3a2e901",
+  "label": "E-frontend-early-return",
+  "started": "2026-09-23T13:19:12.210Z",
+  "ended": "2026-09-23T13:19:12.264Z",
+  "source": {
+    "repository": "/Users/austinho/dev/fixtures/anything-llm",
+    "commit": "879685d1bf9974b4d90b8cd6d79588136228c2c1",
+    "status_clean": true,
+    "session": "anything-llm"
+  },
+  "records": 6704,
+  "spans": 1144,
+  "manifest_functions": 5101,
+  "steps": [
+    {
+      "step": 1,
+      "name": "open-new-workspace",
+      "started": 1790169536495,
+      "ended": 1790169537349,
+      "status": "done"
+    },
+    {
+      "step": 2,
+      "name": "create-workspace",
+      "started": 1790169537399,
+      "ended": 1790169539245,
+      "status": "done"
+    },
+    {
+      "step": 3,
+      "name": "new-thread",
+      "started": 1790169539278,
+      "ended": 1790169540817,
+      "status": "done"
+    },
+    {
+      "step": 4,
+      "name": "rename-thread",
+      "started": 1790169540842,
+      "ended": 1790169542385,
+      "status": "done"
+    },
+    {
+      "step": 5,
+      "name": "delete-thread",
+      "started": 1790169542408,
+      "ended": 1790169543944,
+      "status": "done"
+    },
+    {
+      "step": 6,
+      "name": "open-workspace-settings",
+      "started": 1790169543968,
+      "ended": 1790169545606,
+      "status": "done"
+    },
+    {
+      "step": 7,
+      "name": "rename-workspace",
+      "started": 1790169545636,
+      "ended": 1790169547380,
+      "status": "done"
+    },
+    {
+      "step": 8,
+      "name": "delete-workspace",
+      "started": 1790169547410,
+      "ended": 1790169550097,
+      "status": "done"
+    }
+  ],
+  "evidence": "docs/evidence/g6-anything-llm-2026-09-23/runs/E-frontend-early-return",
+  "gates": {
+    "markers": true,
+    "parity": true,
+    "smoke": "ok",
+    "lossless": true,
+    "transports_equal": true
+  }
+}

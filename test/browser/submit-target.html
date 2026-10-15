@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ProductTrace submit target regression</title>
+<script src="/src/producttrace-runtime.js"></script>
+</head>
+<body>
+<div id="root">
+  <form aria-label="Agent configuration form">
+    <button type="submit" aria-label="Create agent">Create</button>
+  </form>
+</div>
+<pre id="result">RUNNING</pre>
+<script>
+ProductTrace.start({ name: 'submit-target', identity: {}, actions: [] }, { sink: 'buffer', outputMode: 'evidence' });
+
+const submitter = document.querySelector('[aria-label="Create agent"]');
+const submitEvent = new SubmitEvent('submit', {
+  bubbles: true,
+  submitter,
+});
+document.querySelector('form').dispatchEvent(submitEvent);
+
+const submit = ProductTrace.records.find((record) => record.kind === 'action' && record.event === 'submit');
+document.querySelector('#result').textContent = JSON.stringify(
+  submit?.target?.aria === 'Agent configuration form'
+    ? { status: 'PASS', target: submit.target }
+    : { status: 'FAIL', target: submit?.target ?? null },
+  null,
+  2,
+);
+</script>
+</body>
+</html>

@@ -1,0 +1,332 @@
+{
+  "schema": "producttrace.m1-cycle11-coverage.v1",
+  "headless": true,
+  "gates": {
+    "markers_manifest": [
+      9663,
+      9663
+    ],
+    "neutral_registration": [
+      8,
+      8
+    ],
+    "transport": {
+      "observed": 79,
+      "wrapper_recorded": 79,
+      "reconciliation": 0
+    },
+    "burst": {
+      "emitted": 3001,
+      "received": 3001,
+      "queued": 0,
+      "gaps": []
+    }
+  },
+  "registration": {
+    "before_direct": 189,
+    "after_direct": 189,
+    "after_via_ancestor": 11,
+    "after_via_ancestor_any": 44,
+    "after_unregistered": 332,
+    "before_unregistered": 376,
+    "reclassified_via_ancestor_any": 44
+  },
+  "unregistered_breakdown": [
+    {
+      "origin": "unknown|unknown",
+      "count": 332
+    }
+  ],
+  "surfaces": [
+    {
+      "surface": "/c/new",
+      "producttrace": true,
+      "runtime": true,
+      "hook_present": true,
+      "renderer_count": 1,
+      "roots": 1,
+      "host_event_props": 576,
+      "direct": 189,
+      "via_ancestor": 11,
+      "via_ancestor_any": 44,
+      "unregistered": 332,
+      "stamped": 28,
+      "breakdown": [
+        {
+          "origin": "unknown|unknown",
+          "count": 332
+        }
+      ],
+      "units": 60
+    },
+    {
+      "surface": "existing-conversation",
+      "producttrace": true,
+      "runtime": true,
+      "hook_present": true,
+      "renderer_count": 1,
+      "roots": 1,
+      "host_event_props": 576,
+      "direct": 189,
+      "via_ancestor": 11,
+      "via_ancestor_any": 44,
+      "unregistered": 332,
+      "stamped": 28,
+      "breakdown": [
+        {
+          "origin": "unknown|unknown",
+          "count": 332
+        }
+      ],
+      "units": 60
+    },
+    {
+      "surface": "sidebar-conversation-menu",
+      "producttrace": true,
+      "runtime": true,
+      "hook_present": true,
+      "renderer_count": 1,
+      "roots": 1,
+      "host_event_props": 615,
+      "direct": 189,
+      "via_ancestor": 13,
+      "via_ancestor_any": 54,
+      "unregistered": 359,
+      "stamped": 28,
+      "breakdown": [
+        {
+          "origin": "unknown|unknown",
+          "count": 359
+        }
+      ],
+      "units": 61
+    },
+    {
+      "surface": "agent-builder",
+      "producttrace": true,
+      "runtime": true,
+      "hook_present": true,
+      "renderer_count": 1,
+      "roots": 1,
+      "host_event_props": 470,
+      "direct": 179,
+      "via_ancestor": 6,
+      "via_ancestor_any": 24,
+      "unregistered": 261,
+      "stamped": 27,
+      "breakdown": [
+        {
+          "origin": "unknown|unknown",
+          "count": 261
+        }
+      ],
+      "units": 41
+    },
+    {
+      "surface": "agent-model-panel",
+      "producttrace": true,
+      "runtime": true,
+      "hook_present": true,
+      "renderer_count": 1,
+      "roots": 1,
+      "host_event_props": 470,
+      "direct": 179,
+      "via_ancestor": 6,
+      "via_ancestor_any": 24,
+      "unregistered": 261,
+      "stamped": 27,
+      "breakdown": [
+        {
+          "origin": "unknown|unknown",
+          "count": 261
+        }
+      ],
+      "units": 41
+    },
+    {
+      "surface": "agents-marketplace",
+      "producttrace": true,
+      "runtime": true,
+      "hook_present": true,
+      "renderer_count": 1,
+      "roots": 1,
+      "host_event_props": 576,
+      "direct": 189,
+      "via_ancestor": 11,
+      "via_ancestor_any": 44,
+      "unregistered": 332,
+      "stamped": 28,
+      "breakdown": [
+        {
+          "origin": "unknown|unknown",
+          "count": 332
+        }
+      ],
+      "units": 60
+    },
+    {
+      "surface": "prompts",
+      "producttrace": true,
+      "runtime": true,
+      "hook_present": true,
+      "renderer_count": 1,
+      "roots": 1,
+      "host_event_props": 639,
+      "direct": 182,
+      "via_ancestor": 7,
+      "via_ancestor_any": 27,
+      "unregistered": 423,
+      "stamped": 29,
+      "breakdown": [
+        {
+          "origin": "unknown|unknown",
+          "count": 423
+        }
+      ],
+      "units": 48
+    },
+    {
+      "surface": "bookmarks",
+      "producttrace": true,
+      "runtime": true,
+      "hook_present": true,
+      "renderer_count": 1,
+      "roots": 1,
+      "host_event_props": 2,
+      "direct": 2,
+      "via_ancestor": 0,
+      "via_ancestor_any": 0,
+      "unregistered": 0,
+      "stamped": 2,
+      "breakdown": [],
+      "units": 2
+    },
+    {
+      "surface": "settings",
+      "producttrace": true,
+      "runtime": true,
+      "hook_present": true,
+      "renderer_count": 1,
+      "roots": 1,
+      "host_event_props": 2,
+      "direct": 2,
+      "via_ancestor": 0,
+      "via_ancestor_any": 0,
+      "unregistered": 0,
+      "stamped": 2,
+      "breakdown": [],
+      "units": 2
+    },
+    {
+      "surface": "search",
+      "producttrace": true,
+      "runtime": true,
+      "hook_present": true,
+      "renderer_count": 1,
+      "roots": 1,
+      "host_event_props": 470,
+      "direct": 179,
+      "via_ancestor": 6,
+      "via_ancestor_any": 24,
+      "unregistered": 261,
+      "stamped": 27,
+      "breakdown": [
+        {
+          "origin": "unknown|unknown",
+          "count": 261
+        }
+      ],
+      "units": 41
+    },
+    {
+      "surface": "file-attach",
+      "producttrace": true,
+      "runtime": true,
+      "hook_present": true,
+      "renderer_count": 1,
+      "roots": 1,
+      "host_event_props": 576,
+      "direct": 189,
+      "via_ancestor": 11,
+      "via_ancestor_any": 44,
+      "unregistered": 332,
+      "stamped": 28,
+      "breakdown": [
+        {
+          "origin": "unknown|unknown",
+          "count": 332
+        }
+      ],
+      "units": 60
+    },
+    {
+      "surface": "/c/new#reveal-depth-1",
+      "producttrace": true,
+      "runtime": true,
+      "hook_present": true,
+      "renderer_count": 1,
+      "roots": 1,
+      "host_event_props": 412,
+      "direct": 16,
+      "via_ancestor": 11,
+      "via_ancestor_any": 46,
+      "unregistered": 339,
+      "stamped": 4,
+      "breakdown": [
+        {
+          "origin": "unknown|unknown",
+          "count": 339
+        }
+      ],
+      "units": 55
+    },
+    {
+      "surface": "/c/new#reveal-depth-2",
+      "producttrace": true,
+      "runtime": true,
+      "hook_present": true,
+      "renderer_count": 1,
+      "roots": 1,
+      "host_event_props": 416,
+      "direct": 18,
+      "via_ancestor": 11,
+      "via_ancestor_any": 44,
+      "unregistered": 343,
+      "stamped": 4,
+      "breakdown": [
+        {
+          "origin": "unknown|unknown",
+          "count": 343
+        }
+      ],
+      "units": 57
+    }
+  ],
+  "units": 74,
+  "capture": {
+    "emitted": 481,
+    "sent": 481,
+    "queued": 0,
+    "busy": false,
+    "page_id": "mucqj35x-ghytf6g3xqr",
+    "received": 481,
+    "dropped": 0,
+    "gaps": []
+  },
+  "outcomes": {
+    "reached_db": 0,
+    "reached_backend": 0,
+    "reached_request": 0,
+    "correct_stop": 25,
+    "stop_with_reason": 0,
+    "not_encountered": 0,
+    "unreachable": 49
+  },
+  "observed_requests": 180,
+  "unregistered_breakdown_pre_ancestor_any": [
+    {
+      "origin": "unknown|unknown",
+      "count": 376
+    }
+  ]
+}

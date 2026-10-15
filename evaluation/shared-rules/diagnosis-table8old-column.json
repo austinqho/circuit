@@ -1,0 +1,18 @@
+{
+  "case_id": "table8old-createColumnHelper",
+  "failed_report": "paid-table8old-createColumnHelper-1789078911284.json",
+  "classification": "wrong_model_proposal",
+  "contributing_context_defects": [
+    "Prompt falsely said there was no property mutation despite private put support.",
+    "The structured boundary capability summary omitted returned-method paths."
+  ],
+  "evidence": "Local calibration and the independent accepted newer-version proposal both use existing keys/lookup/put/every instructions to copy own data. No new opcode or relaxed check was needed.",
+  "fixes": [
+    "Clarify private allocation writes versus forbidden application mutation.",
+    "Generate the operation inventory from shared syntax and include checker-declared method paths.",
+    "Keep ambiguous producer ownership as an explicit frontier, including across source files."
+  ],
+  "local_gate": "5ba4472af1fc62615459184d50a3494ecabffa8713445622cea0a2b2c640fec3",
+  "regressions": 247,
+  "paid_requests_during_diagnosis": 0
+}

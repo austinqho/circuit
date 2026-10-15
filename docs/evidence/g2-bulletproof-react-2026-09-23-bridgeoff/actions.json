@@ -1,0 +1,6680 @@
+[
+  {
+    "step": 1,
+    "name": "get-started",
+    "description": "click \"Get started\" on the landing page",
+    "started": 1790200383676,
+    "ended": 1790200384518,
+    "status": "done",
+    "stamps": {
+      "interactive": 5,
+      "interactive_stamped": 5,
+      "visible_interactive": 5,
+      "visible_interactive_stamped": 5,
+      "stamped_elements": 14,
+      "unstamped_visible_sample": [],
+      "stamp_stats": {
+        "commits": 5,
+        "hosts_checked": 73,
+        "stamped_nodes": 22,
+        "stamp_rows": 21,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 0,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 2,
+        "state_receipts_applied": 1,
+        "state_receipts_refused": 0,
+        "state_receipts_consumed": 2,
+        "mount_effects_applied": 7,
+        "await_resumptions": 26,
+        "unreceipted_effects": 26,
+        "owned_listeners": 1,
+        "owned_messages": 2,
+        "task_ambient_cleared": 0,
+        "build": "bbbf541e4c4a",
+        "placements": 188
+      }
+    },
+    "actions": [
+      {
+        "action_id": "action:muen34ka:1",
+        "event": "focusin",
+        "at": 1790200383707,
+        "target": {
+          "tag": "button",
+          "attributes": {}
+        },
+        "entry": null,
+        "element_key": "p_ce24901c7a71:1821-2142#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 4
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen34kb:2",
+        "event": "click",
+        "at": 1790200383707,
+        "target": {
+          "tag": "button",
+          "attributes": {}
+        },
+        "entry": {
+          "unit_id": "function:8c5d10e3d0fd77a2dcf87b3c564d39e85dbd1f2f47c5966a18b90b40633adc63:364:506|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:8c5d10e3d0fd77a2dcf87b3c564d39e85dbd1f2f47c5966a18b90b40633adc63:364:506",
+          "resolved": true,
+          "file": "apps/react-vite/src/app/routes/landing.tsx",
+          "start": 364,
+          "end": 506,
+          "line": 13,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => { if (user.data) { navigate(paths.app.dashboard.getHref()); } else { navigate(paths.auth.login.getHref()); } }"
+        },
+        "element_key": "p_ce24901c7a71:1821-2142#n1",
+        "abstention": null,
+        "entry_frontier": null,
+        "mutation": {
+          "count": 4
+        },
+        "requests": []
+      }
+    ]
+  },
+  {
+    "step": 2,
+    "name": "open-register",
+    "description": "click the \"Register\" link",
+    "started": 1790200384569,
+    "ended": 1790200385396,
+    "status": "done",
+    "stamps": {
+      "interactive": 10,
+      "interactive_stamped": 10,
+      "visible_interactive": 10,
+      "visible_interactive_stamped": 10,
+      "stamped_elements": 27,
+      "unstamped_visible_sample": [],
+      "stamp_stats": {
+        "commits": 10,
+        "hosts_checked": 266,
+        "stamped_nodes": 48,
+        "stamp_rows": 38,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 0,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 7,
+        "state_receipts_applied": 2,
+        "state_receipts_refused": 2,
+        "state_receipts_consumed": 6,
+        "mount_effects_applied": 23,
+        "await_resumptions": 39,
+        "unreceipted_effects": 66,
+        "owned_listeners": 2,
+        "owned_messages": 4,
+        "task_ambient_cleared": 0,
+        "build": "bbbf541e4c4a",
+        "placements": 206
+      }
+    },
+    "actions": [
+      {
+        "action_id": "action:muen358r:3",
+        "event": "focusin",
+        "at": 1790200384587,
+        "target": {
+          "tag": "a",
+          "attributes": {}
+        },
+        "entry": null,
+        "element_key": "p_fcba878f5720:1479-1662#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen358r:4",
+        "event": "click",
+        "at": 1790200384587,
+        "target": {
+          "tag": "a",
+          "attributes": {}
+        },
+        "entry": null,
+        "element_key": "p_fcba878f5720:1479-1662#n1",
+        "abstention": {
+          "stopped_at": "entry_handler",
+          "because": "no element-bound handler ran; global listeners: [function:bf63cee669390954c05d9c933a63310bf6d9a4ec27c7d7b3493d7d21f8745dfb:912:977]",
+          "global_listeners": [
+            "apps/react-vite/src/app/router.tsx:32"
+          ],
+          "bound_handlers": [
+            "apps/react-vite/src/app/routes/auth/login.tsx:15"
+          ],
+          "library_bound": 1
+        },
+        "entry_frontier": "stopped_at entry_handler: no element-bound handler ran; global listeners: [function:bf63cee669390954c05d9c933a63310bf6d9a4ec27c7d7b3493d7d21f8745dfb:912:977]",
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      }
+    ]
+  },
+  {
+    "step": 3,
+    "name": "register",
+    "description": "fill First/Last Name, Email, Password, Team Name and click Register",
+    "started": 1790200385423,
+    "ended": 1790200388416,
+    "status": "done",
+    "stamps": {
+      "interactive": 6,
+      "interactive_stamped": 6,
+      "visible_interactive": 5,
+      "visible_interactive_stamped": 5,
+      "stamped_elements": 13,
+      "unstamped_visible_sample": [],
+      "stamp_stats": {
+        "commits": 23,
+        "hosts_checked": 857,
+        "stamped_nodes": 61,
+        "stamp_rows": 48,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 0,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 23,
+        "state_receipts_applied": 5,
+        "state_receipts_refused": 9,
+        "state_receipts_consumed": 18,
+        "mount_effects_applied": 41,
+        "await_resumptions": 97,
+        "unreceipted_effects": 154,
+        "owned_listeners": 4,
+        "owned_messages": 7,
+        "task_ambient_cleared": 0,
+        "build": "bbbf541e4c4a",
+        "placements": 221
+      }
+    },
+    "actions": [
+      {
+        "action_id": "action:muen35wd:5",
+        "event": "focusin",
+        "at": 1790200385437,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen35wf:6",
+        "event": "click",
+        "at": 1790200385439,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen35wl:7",
+        "event": "keydown",
+        "at": 1790200385446,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen35wo:8",
+        "event": "input",
+        "at": 1790200385448,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen35x0:9",
+        "event": "keydown",
+        "at": 1790200385460,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen35x0:10",
+        "event": "input",
+        "at": 1790200385461,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen35xb:11",
+        "event": "keydown",
+        "at": 1790200385472,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen35xc:12",
+        "event": "input",
+        "at": 1790200385472,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen35xo:13",
+        "event": "keydown",
+        "at": 1790200385484,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen35xp:14",
+        "event": "input",
+        "at": 1790200385485,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen35y2:15",
+        "event": "keydown",
+        "at": 1790200385498,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen35y2:16",
+        "event": "input",
+        "at": 1790200385498,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen35ye:17",
+        "event": "keydown",
+        "at": 1790200385510,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen35yf:18",
+        "event": "input",
+        "at": 1790200385511,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen35z5:19",
+        "event": "change",
+        "at": 1790200385537,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "firstName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen35z5:20",
+        "event": "focusin",
+        "at": 1790200385537,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "lastName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n2",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen35z5:21",
+        "event": "click",
+        "at": 1790200385537,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "lastName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n2",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen35z9:22",
+        "event": "keydown",
+        "at": 1790200385541,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "lastName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n2",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen35z9:23",
+        "event": "input",
+        "at": 1790200385541,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "lastName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n2",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen35zl:24",
+        "event": "keydown",
+        "at": 1790200385553,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "lastName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n2",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen35zl:25",
+        "event": "input",
+        "at": 1790200385553,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "lastName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n2",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen35zx:26",
+        "event": "keydown",
+        "at": 1790200385565,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "lastName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n2",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen35zx:27",
+        "event": "input",
+        "at": 1790200385565,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "lastName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n2",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3609:28",
+        "event": "keydown",
+        "at": 1790200385577,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "lastName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n2",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen360a:29",
+        "event": "input",
+        "at": 1790200385578,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "lastName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n2",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen360y:30",
+        "event": "change",
+        "at": 1790200385602,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "lastName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n2",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen360z:31",
+        "event": "focusin",
+        "at": 1790200385603,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen360z:32",
+        "event": "click",
+        "at": 1790200385603,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3611:33",
+        "event": "keydown",
+        "at": 1790200385605,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3612:34",
+        "event": "input",
+        "at": 1790200385606,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen361d:35",
+        "event": "keydown",
+        "at": 1790200385617,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen361d:36",
+        "event": "input",
+        "at": 1790200385617,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen361p:37",
+        "event": "keydown",
+        "at": 1790200385629,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen361p:38",
+        "event": "input",
+        "at": 1790200385629,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3621:39",
+        "event": "keydown",
+        "at": 1790200385641,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3622:40",
+        "event": "input",
+        "at": 1790200385642,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen362d:41",
+        "event": "keydown",
+        "at": 1790200385653,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen362d:42",
+        "event": "input",
+        "at": 1790200385653,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen362p:43",
+        "event": "keydown",
+        "at": 1790200385665,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen362p:44",
+        "event": "input",
+        "at": 1790200385665,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3630:45",
+        "event": "keydown",
+        "at": 1790200385676,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3631:46",
+        "event": "input",
+        "at": 1790200385677,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen363d:47",
+        "event": "keydown",
+        "at": 1790200385689,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen363e:48",
+        "event": "input",
+        "at": 1790200385690,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen363q:49",
+        "event": "keydown",
+        "at": 1790200385702,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen363q:50",
+        "event": "input",
+        "at": 1790200385702,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3641:51",
+        "event": "keydown",
+        "at": 1790200385714,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3642:52",
+        "event": "input",
+        "at": 1790200385714,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen364e:53",
+        "event": "keydown",
+        "at": 1790200385726,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen364e:54",
+        "event": "input",
+        "at": 1790200385726,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen364q:55",
+        "event": "keydown",
+        "at": 1790200385739,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen364r:56",
+        "event": "input",
+        "at": 1790200385739,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3653:57",
+        "event": "keydown",
+        "at": 1790200385751,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3654:58",
+        "event": "input",
+        "at": 1790200385752,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen365f:59",
+        "event": "keydown",
+        "at": 1790200385763,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen365f:60",
+        "event": "input",
+        "at": 1790200385764,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen365r:61",
+        "event": "keydown",
+        "at": 1790200385775,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen365r:62",
+        "event": "input",
+        "at": 1790200385775,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3663:63",
+        "event": "keydown",
+        "at": 1790200385787,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3663:64",
+        "event": "input",
+        "at": 1790200385787,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen366e:65",
+        "event": "keydown",
+        "at": 1790200385798,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen366e:66",
+        "event": "input",
+        "at": 1790200385798,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen366q:67",
+        "event": "keydown",
+        "at": 1790200385810,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen366q:68",
+        "event": "input",
+        "at": 1790200385810,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 0
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3671:69",
+        "event": "keydown",
+        "at": 1790200385822,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3672:70",
+        "event": "input",
+        "at": 1790200385822,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen367d:71",
+        "event": "keydown",
+        "at": 1790200385833,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen367e:72",
+        "event": "input",
+        "at": 1790200385834,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen367p:73",
+        "event": "keydown",
+        "at": 1790200385845,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen367p:74",
+        "event": "input",
+        "at": 1790200385845,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3681:75",
+        "event": "keydown",
+        "at": 1790200385857,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3681:76",
+        "event": "input",
+        "at": 1790200385857,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen368u:77",
+        "event": "change",
+        "at": 1790200385886,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "email",
+            "name": "email"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen368u:78",
+        "event": "focusin",
+        "at": 1790200385886,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen368u:79",
+        "event": "click",
+        "at": 1790200385886,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3691:80",
+        "event": "keydown",
+        "at": 1790200385893,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3692:81",
+        "event": "input",
+        "at": 1790200385894,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen369d:82",
+        "event": "keydown",
+        "at": 1790200385905,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen369d:83",
+        "event": "input",
+        "at": 1790200385905,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen369q:84",
+        "event": "keydown",
+        "at": 1790200385918,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen369q:85",
+        "event": "input",
+        "at": 1790200385918,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36a1:86",
+        "event": "keydown",
+        "at": 1790200385929,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36a1:87",
+        "event": "input",
+        "at": 1790200385929,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36ac:88",
+        "event": "keydown",
+        "at": 1790200385940,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36ad:89",
+        "event": "input",
+        "at": 1790200385941,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36ao:90",
+        "event": "keydown",
+        "at": 1790200385952,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36ao:91",
+        "event": "input",
+        "at": 1790200385952,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36b0:92",
+        "event": "keydown",
+        "at": 1790200385964,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36b0:93",
+        "event": "input",
+        "at": 1790200385964,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36bc:94",
+        "event": "keydown",
+        "at": 1790200385976,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36bc:95",
+        "event": "input",
+        "at": 1790200385976,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36bo:96",
+        "event": "keydown",
+        "at": 1790200385988,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36bo:97",
+        "event": "input",
+        "at": 1790200385988,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36c0:98",
+        "event": "keydown",
+        "at": 1790200386000,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36c0:99",
+        "event": "input",
+        "at": 1790200386000,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36cc:100",
+        "event": "keydown",
+        "at": 1790200386012,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36cc:101",
+        "event": "input",
+        "at": 1790200386012,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36cp:102",
+        "event": "keydown",
+        "at": 1790200386025,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36cp:103",
+        "event": "input",
+        "at": 1790200386025,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36d1:104",
+        "event": "keydown",
+        "at": 1790200386037,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36d2:105",
+        "event": "input",
+        "at": 1790200386038,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36de:106",
+        "event": "keydown",
+        "at": 1790200386050,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36de:107",
+        "event": "input",
+        "at": 1790200386051,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36dx:108",
+        "event": "change",
+        "at": 1790200386069,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "password",
+            "name": "password"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36dx:109",
+        "event": "focusin",
+        "at": 1790200386069,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36dx:110",
+        "event": "click",
+        "at": 1790200386069,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36e1:111",
+        "event": "keydown",
+        "at": 1790200386073,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36e1:112",
+        "event": "input",
+        "at": 1790200386073,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36ed:113",
+        "event": "keydown",
+        "at": 1790200386085,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36ed:114",
+        "event": "input",
+        "at": 1790200386085,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36ep:115",
+        "event": "keydown",
+        "at": 1790200386097,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36eq:116",
+        "event": "input",
+        "at": 1790200386098,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36f1:117",
+        "event": "keydown",
+        "at": 1790200386109,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36f2:118",
+        "event": "input",
+        "at": 1790200386110,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36fd:119",
+        "event": "keydown",
+        "at": 1790200386122,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36fe:120",
+        "event": "input",
+        "at": 1790200386122,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36fp:121",
+        "event": "keydown",
+        "at": 1790200386133,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36fq:122",
+        "event": "input",
+        "at": 1790200386134,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36g1:123",
+        "event": "keydown",
+        "at": 1790200386145,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36g2:124",
+        "event": "input",
+        "at": 1790200386146,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36gc:125",
+        "event": "keydown",
+        "at": 1790200386156,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36gd:126",
+        "event": "input",
+        "at": 1790200386157,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36go:127",
+        "event": "keydown",
+        "at": 1790200386168,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36gp:128",
+        "event": "input",
+        "at": 1790200386169,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36h0:129",
+        "event": "keydown",
+        "at": 1790200386180,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36h0:130",
+        "event": "input",
+        "at": 1790200386180,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36hb:131",
+        "event": "keydown",
+        "at": 1790200386191,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36hc:132",
+        "event": "input",
+        "at": 1790200386192,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36hv:133",
+        "event": "change",
+        "at": 1790200386211,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "type": "text",
+            "name": "teamName"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36hv:134",
+        "event": "focusin",
+        "at": 1790200386211,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "submit"
+          }
+        },
+        "entry": null,
+        "element_key": "p_ce24901c7a71:1821-2142#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36hv:135",
+        "event": "click",
+        "at": 1790200386211,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "submit"
+          }
+        },
+        "entry": null,
+        "element_key": "p_ce24901c7a71:1821-2142#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen36hw:136",
+        "event": "submit",
+        "at": 1790200386212,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "submit"
+          }
+        },
+        "entry": {
+          "unit_id": "function:2e2904429abb8ce0f0d6ad89cdc9ac824ec2ea9364cedb8da73a630d07e73f1f:787:848|submit",
+          "rooted": true,
+          "invoked_by": "async",
+          "function_id": "function:2e2904429abb8ce0f0d6ad89cdc9ac824ec2ea9364cedb8da73a630d07e73f1f:787:848",
+          "resolved": true,
+          "file": "apps/react-vite/src/features/auth/components/register-form.tsx",
+          "start": 787,
+          "end": 848,
+          "line": 30,
+          "content_hash_matches_fixture": true,
+          "snippet": "(values) => { registering.mutate(values); }"
+        },
+        "element_key": "p_ce24901c7a71:1821-2142#n1",
+        "abstention": null,
+        "entry_frontier": null,
+        "mutation": {
+          "count": 8
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/api/auth/register",
+            "transport": "xhr",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:muen36hw:136:request:2",
+            "route": null,
+            "handlers": [],
+            "terminal_handler": null,
+            "db": [],
+            "reached": "network",
+            "stopped_at": "network",
+            "because": "backend not instrumented (repository mock API server; frontend-only repository)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "step": 4,
+    "name": "open-discussions",
+    "description": "click the \"Discussions\" navigation link",
+    "started": 1790200388432,
+    "ended": 1790200390086,
+    "status": "done",
+    "stamps": {
+      "interactive": 7,
+      "interactive_stamped": 7,
+      "visible_interactive": 6,
+      "visible_interactive_stamped": 6,
+      "stamped_elements": 17,
+      "unstamped_visible_sample": [],
+      "stamp_stats": {
+        "commits": 30,
+        "hosts_checked": 1230,
+        "stamped_nodes": 66,
+        "stamp_rows": 53,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 0,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 25,
+        "state_receipts_applied": 6,
+        "state_receipts_refused": 9,
+        "state_receipts_consumed": 20,
+        "mount_effects_applied": 49,
+        "await_resumptions": 114,
+        "unreceipted_effects": 228,
+        "owned_listeners": 6,
+        "owned_messages": 9,
+        "task_ambient_cleared": 0,
+        "build": "bbbf541e4c4a",
+        "placements": 318
+      }
+    },
+    "actions": [
+      {
+        "action_id": "action:muen387w:137",
+        "event": "focusin",
+        "at": 1790200388444,
+        "target": {
+          "tag": "a",
+          "attributes": {}
+        },
+        "entry": null,
+        "element_key": "p_0f58eb5dc4e3:3020-3745#kDiscussions",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 4
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen387w:138",
+        "event": "click",
+        "at": 1790200388444,
+        "target": {
+          "tag": "a",
+          "attributes": {}
+        },
+        "entry": {
+          "unit_id": "function:bf63cee669390954c05d9c933a63310bf6d9a4ec27c7d7b3493d7d21f8745dfb:1379:1499|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:bf63cee669390954c05d9c933a63310bf6d9a4ec27c7d7b3493d7d21f8745dfb:1379:1499",
+          "resolved": true,
+          "file": "apps/react-vite/src/app/router.tsx",
+          "start": 1379,
+          "end": 1499,
+          "line": 49,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => import('./routes/app/discussions/discussions').then( convert(queryClient), )"
+        },
+        "element_key": "p_0f58eb5dc4e3:3020-3745#kDiscussions",
+        "abstention": null,
+        "entry_frontier": null,
+        "mutation": {
+          "count": 4
+        },
+        "requests": [
+          {
+            "method": "GET",
+            "path": "/api/discussions",
+            "transport": "xhr",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:muen387w:138:request:3",
+            "route": null,
+            "handlers": [],
+            "terminal_handler": null,
+            "db": [],
+            "reached": "network",
+            "stopped_at": "network",
+            "because": "backend not instrumented (repository mock API server; frontend-only repository)"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "step": 5,
+    "name": "create-discussion",
+    "description": "click \"Create Discussion\", type Title and Body, click Submit",
+    "started": 1790200390100,
+    "ended": 1790200393429,
+    "status": "done",
+    "stamps": {
+      "interactive": 11,
+      "interactive_stamped": 11,
+      "visible_interactive": 10,
+      "visible_interactive_stamped": 10,
+      "stamped_elements": 49,
+      "unstamped_visible_sample": [],
+      "stamp_stats": {
+        "commits": 59,
+        "hosts_checked": 3696,
+        "stamped_nodes": 116,
+        "stamp_rows": 95,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 0,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 147,
+        "state_receipts_applied": 10,
+        "state_receipts_refused": 75,
+        "state_receipts_consumed": 100,
+        "mount_effects_applied": 49,
+        "await_resumptions": 132,
+        "unreceipted_effects": 493,
+        "owned_listeners": 20,
+        "owned_messages": 16,
+        "task_ambient_cleared": 0,
+        "build": "bbbf541e4c4a",
+        "placements": 318
+      }
+    },
+    "actions": [
+      {
+        "action_id": "action:muen39if:139",
+        "event": "focusin",
+        "at": 1790200390119,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "aria-haspopup": "dialog",
+            "aria-expanded": "false",
+            "aria-controls": "radix-:r5:"
+          }
+        },
+        "entry": null,
+        "element_key": "p_ce24901c7a71:1821-2142#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 19
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen39ig:140",
+        "event": "click",
+        "at": 1790200390120,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "aria-haspopup": "dialog",
+            "aria-expanded": "false",
+            "aria-controls": "radix-:r5:"
+          }
+        },
+        "entry": {
+          "unit_id": "function:2d7c02d89c04a611649cfec20c4bedfc292a0fa6ed416f27733d82d55d539fd0:751:859|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:2d7c02d89c04a611649cfec20c4bedfc292a0fa6ed416f27733d82d55d539fd0:751:859",
+          "resolved": true,
+          "file": "apps/react-vite/src/components/ui/form/form-drawer.tsx",
+          "start": 751,
+          "end": 859,
+          "line": 42,
+          "content_hash_matches_fixture": true,
+          "snippet": "(isOpen) => { if (!isOpen) { close(); } else { open(); } }"
+        },
+        "element_key": "p_ce24901c7a71:1821-2142#n3",
+        "abstention": null,
+        "entry_frontier": null,
+        "mutation": {
+          "count": 19
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen39io:141",
+        "event": "focusin",
+        "at": 1790200390128,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a5l:142",
+        "event": "click",
+        "at": 1790200390953,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a5o:143",
+        "event": "keydown",
+        "at": 1790200390956,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a5p:144",
+        "event": "input",
+        "at": 1790200390957,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a60:145",
+        "event": "keydown",
+        "at": 1790200390968,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a60:146",
+        "event": "input",
+        "at": 1790200390968,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a6d:147",
+        "event": "keydown",
+        "at": 1790200390981,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a6e:148",
+        "event": "input",
+        "at": 1790200390982,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a6p:149",
+        "event": "keydown",
+        "at": 1790200390993,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a6p:150",
+        "event": "input",
+        "at": 1790200390993,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a72:151",
+        "event": "keydown",
+        "at": 1790200391006,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a73:152",
+        "event": "input",
+        "at": 1790200391007,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a7f:153",
+        "event": "keydown",
+        "at": 1790200391019,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a7g:154",
+        "event": "input",
+        "at": 1790200391020,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a7s:155",
+        "event": "keydown",
+        "at": 1790200391032,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a7s:156",
+        "event": "input",
+        "at": 1790200391032,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a84:157",
+        "event": "keydown",
+        "at": 1790200391044,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a84:158",
+        "event": "input",
+        "at": 1790200391044,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a8f:159",
+        "event": "keydown",
+        "at": 1790200391055,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a8f:160",
+        "event": "input",
+        "at": 1790200391055,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a8q:161",
+        "event": "keydown",
+        "at": 1790200391066,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a8r:162",
+        "event": "input",
+        "at": 1790200391067,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a92:163",
+        "event": "keydown",
+        "at": 1790200391078,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a93:164",
+        "event": "input",
+        "at": 1790200391079,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a9f:165",
+        "event": "keydown",
+        "at": 1790200391091,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a9f:166",
+        "event": "input",
+        "at": 1790200391091,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a9r:167",
+        "event": "keydown",
+        "at": 1790200391103,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3a9r:168",
+        "event": "input",
+        "at": 1790200391103,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3aa3:169",
+        "event": "keydown",
+        "at": 1790200391115,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3aa3:170",
+        "event": "input",
+        "at": 1790200391115,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3aaf:171",
+        "event": "keydown",
+        "at": 1790200391127,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3aag:172",
+        "event": "input",
+        "at": 1790200391128,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3aas:173",
+        "event": "keydown",
+        "at": 1790200391141,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3aat:174",
+        "event": "input",
+        "at": 1790200391141,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ab4:175",
+        "event": "keydown",
+        "at": 1790200391152,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ab5:176",
+        "event": "input",
+        "at": 1790200391153,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3abg:177",
+        "event": "keydown",
+        "at": 1790200391164,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3abh:178",
+        "event": "input",
+        "at": 1790200391165,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3abt:179",
+        "event": "keydown",
+        "at": 1790200391177,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3abt:180",
+        "event": "input",
+        "at": 1790200391177,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ac5:181",
+        "event": "keydown",
+        "at": 1790200391189,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ac5:182",
+        "event": "input",
+        "at": 1790200391189,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3acz:183",
+        "event": "change",
+        "at": 1790200391219,
+        "target": {
+          "tag": "input",
+          "attributes": {
+            "name": "title"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7c750b8a5a4a:598-1108#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ad0:184",
+        "event": "focusin",
+        "at": 1790200391220,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ad0:185",
+        "event": "click",
+        "at": 1790200391220,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ad3:186",
+        "event": "keydown",
+        "at": 1790200391223,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ad3:187",
+        "event": "input",
+        "at": 1790200391223,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ad9:188",
+        "event": "keydown",
+        "at": 1790200391229,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ad9:189",
+        "event": "input",
+        "at": 1790200391229,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3adg:190",
+        "event": "keydown",
+        "at": 1790200391236,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3adg:191",
+        "event": "input",
+        "at": 1790200391236,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3adm:192",
+        "event": "keydown",
+        "at": 1790200391242,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3adm:193",
+        "event": "input",
+        "at": 1790200391242,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3adt:194",
+        "event": "keydown",
+        "at": 1790200391249,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3adt:195",
+        "event": "input",
+        "at": 1790200391249,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3adz:196",
+        "event": "keydown",
+        "at": 1790200391255,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3adz:197",
+        "event": "input",
+        "at": 1790200391255,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ae5:198",
+        "event": "keydown",
+        "at": 1790200391261,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ae6:199",
+        "event": "input",
+        "at": 1790200391262,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3aeb:200",
+        "event": "keydown",
+        "at": 1790200391267,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3aeb:201",
+        "event": "input",
+        "at": 1790200391267,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3aei:202",
+        "event": "keydown",
+        "at": 1790200391274,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3aei:203",
+        "event": "input",
+        "at": 1790200391274,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3aeo:204",
+        "event": "keydown",
+        "at": 1790200391280,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3aep:205",
+        "event": "input",
+        "at": 1790200391281,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3aeu:206",
+        "event": "keydown",
+        "at": 1790200391287,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3aev:207",
+        "event": "input",
+        "at": 1790200391287,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3af1:208",
+        "event": "keydown",
+        "at": 1790200391293,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3af1:209",
+        "event": "input",
+        "at": 1790200391293,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3af6:210",
+        "event": "keydown",
+        "at": 1790200391299,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3af7:211",
+        "event": "input",
+        "at": 1790200391299,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3afc:212",
+        "event": "keydown",
+        "at": 1790200391304,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3afc:213",
+        "event": "input",
+        "at": 1790200391304,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3afi:214",
+        "event": "keydown",
+        "at": 1790200391310,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3afj:215",
+        "event": "input",
+        "at": 1790200391311,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3afo:216",
+        "event": "keydown",
+        "at": 1790200391316,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3afo:217",
+        "event": "input",
+        "at": 1790200391316,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3afv:218",
+        "event": "keydown",
+        "at": 1790200391323,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3afv:219",
+        "event": "input",
+        "at": 1790200391323,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ag1:220",
+        "event": "keydown",
+        "at": 1790200391329,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ag1:221",
+        "event": "input",
+        "at": 1790200391329,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ag8:222",
+        "event": "keydown",
+        "at": 1790200391336,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ag8:223",
+        "event": "input",
+        "at": 1790200391336,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3agf:224",
+        "event": "keydown",
+        "at": 1790200391343,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3agf:225",
+        "event": "input",
+        "at": 1790200391343,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3agl:226",
+        "event": "keydown",
+        "at": 1790200391349,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3agm:227",
+        "event": "input",
+        "at": 1790200391350,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3agr:228",
+        "event": "keydown",
+        "at": 1790200391355,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ags:229",
+        "event": "input",
+        "at": 1790200391356,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3agw:230",
+        "event": "keydown",
+        "at": 1790200391361,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3agx:231",
+        "event": "input",
+        "at": 1790200391361,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ah3:232",
+        "event": "keydown",
+        "at": 1790200391367,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ah4:233",
+        "event": "input",
+        "at": 1790200391368,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ah9:234",
+        "event": "keydown",
+        "at": 1790200391373,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ah9:235",
+        "event": "input",
+        "at": 1790200391373,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ahf:236",
+        "event": "keydown",
+        "at": 1790200391379,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ahf:237",
+        "event": "input",
+        "at": 1790200391379,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ahm:238",
+        "event": "keydown",
+        "at": 1790200391386,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ahm:239",
+        "event": "input",
+        "at": 1790200391386,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ahs:240",
+        "event": "keydown",
+        "at": 1790200391392,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ahs:241",
+        "event": "input",
+        "at": 1790200391392,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ahz:242",
+        "event": "keydown",
+        "at": 1790200391399,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ahz:243",
+        "event": "input",
+        "at": 1790200391399,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ai5:244",
+        "event": "keydown",
+        "at": 1790200391405,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ai5:245",
+        "event": "input",
+        "at": 1790200391405,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3aia:246",
+        "event": "keydown",
+        "at": 1790200391410,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3aib:247",
+        "event": "input",
+        "at": 1790200391411,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3aig:248",
+        "event": "keydown",
+        "at": 1790200391416,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3aig:249",
+        "event": "input",
+        "at": 1790200391416,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3aim:250",
+        "event": "keydown",
+        "at": 1790200391422,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ain:251",
+        "event": "input",
+        "at": 1790200391423,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3aj8:252",
+        "event": "change",
+        "at": 1790200391444,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3aj9:253",
+        "event": "focusin",
+        "at": 1790200391445,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "submit"
+          }
+        },
+        "entry": null,
+        "element_key": "p_ce24901c7a71:1821-2142#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3aj9:254",
+        "event": "click",
+        "at": 1790200391445,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "submit"
+          }
+        },
+        "entry": null,
+        "element_key": "p_ce24901c7a71:1821-2142#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3aj9:255",
+        "event": "submit",
+        "at": 1790200391445,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "submit"
+          }
+        },
+        "entry": {
+          "unit_id": "function:375a31626199c3642b9e9a8ab2f361ca4e2d97a0302b62284f5db92f12374c7f:1341:1429|submit",
+          "rooted": true,
+          "invoked_by": "async",
+          "function_id": "function:375a31626199c3642b9e9a8ab2f361ca4e2d97a0302b62284f5db92f12374c7f:1341:1429",
+          "resolved": true,
+          "file": "apps/react-vite/src/features/discussions/components/create-discussion.tsx",
+          "start": 1341,
+          "end": 1429,
+          "line": 49,
+          "content_hash_matches_fixture": true,
+          "snippet": "(values) => { createDiscussionMutation.mutate({ data: values }); }"
+        },
+        "element_key": "p_ce24901c7a71:1821-2142#n5",
+        "abstention": null,
+        "entry_frontier": null,
+        "mutation": {
+          "count": 12
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/api/discussions",
+            "transport": "xhr",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:muen3aj9:255:request:4",
+            "route": null,
+            "handlers": [],
+            "terminal_handler": null,
+            "db": [],
+            "reached": "network",
+            "stopped_at": "network",
+            "because": "backend not instrumented (repository mock API server; frontend-only repository)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/discussions",
+            "transport": "xhr",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:muen3aj9:255:request:5",
+            "route": null,
+            "handlers": [],
+            "terminal_handler": null,
+            "db": [],
+            "reached": "network",
+            "stopped_at": "network",
+            "because": "backend not instrumented (repository mock API server; frontend-only repository)"
+          }
+        ]
+      },
+      {
+        "action_id": "action:muen3b65:256",
+        "event": "focusin",
+        "at": 1790200392269,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "aria-haspopup": "dialog",
+            "aria-expanded": "false",
+            "aria-controls": "radix-:r5:"
+          }
+        },
+        "entry": null,
+        "element_key": "p_ce24901c7a71:1821-2142#n3",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      }
+    ]
+  },
+  {
+    "step": 6,
+    "name": "view-discussion",
+    "description": "click the discussion's \"View\" link",
+    "started": 1790200393458,
+    "ended": 1790200395968,
+    "status": "done",
+    "stamps": {
+      "interactive": 9,
+      "interactive_stamped": 9,
+      "visible_interactive": 8,
+      "visible_interactive_stamped": 8,
+      "stamped_elements": 35,
+      "unstamped_visible_sample": [],
+      "stamp_stats": {
+        "commits": 67,
+        "hosts_checked": 4436,
+        "stamped_nodes": 130,
+        "stamp_rows": 102,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 0,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 149,
+        "state_receipts_applied": 11,
+        "state_receipts_refused": 75,
+        "state_receipts_consumed": 102,
+        "mount_effects_applied": 73,
+        "await_resumptions": 154,
+        "unreceipted_effects": 619,
+        "owned_listeners": 22,
+        "owned_messages": 19,
+        "task_ambient_cleared": 0,
+        "build": "bbbf541e4c4a",
+        "placements": 380
+      }
+    },
+    "actions": [
+      {
+        "action_id": "action:muen3c3r:257",
+        "event": "focusin",
+        "at": 1790200393479,
+        "target": {
+          "tag": "a",
+          "attributes": {}
+        },
+        "entry": null,
+        "element_key": "p_639452b5c1b5:184-324#n2",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 2
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3c3r:258",
+        "event": "click",
+        "at": 1790200393480,
+        "target": {
+          "tag": "a",
+          "attributes": {}
+        },
+        "entry": null,
+        "element_key": "p_639452b5c1b5:184-324#n2",
+        "abstention": {
+          "stopped_at": "entry_handler",
+          "because": "no element-bound handler ran; global listeners: [function:bf63cee669390954c05d9c933a63310bf6d9a4ec27c7d7b3493d7d21f8745dfb:1581:1700]",
+          "global_listeners": [
+            "apps/react-vite/src/app/router.tsx:56"
+          ],
+          "bound_handlers": [
+            "apps/react-vite/src/app/routes/app/discussions/discussions.tsx:34",
+            "apps/react-vite/src/features/discussions/components/discussions-list.tsx:63"
+          ],
+          "library_bound": 1
+        },
+        "entry_frontier": "stopped_at entry_handler: no element-bound handler ran; global listeners: [function:bf63cee669390954c05d9c933a63310bf6d9a4ec27c7d7b3493d7d21f8745dfb:1581:1700]",
+        "mutation": {
+          "count": 2
+        },
+        "requests": []
+      }
+    ]
+  },
+  {
+    "step": 7,
+    "name": "create-comment",
+    "description": "click \"Create Comment\", type Body, click Submit",
+    "started": 1790200395982,
+    "ended": 1790200399471,
+    "status": "done",
+    "stamps": {
+      "interactive": 11,
+      "interactive_stamped": 11,
+      "visible_interactive": 10,
+      "visible_interactive_stamped": 10,
+      "stamped_elements": 51,
+      "unstamped_visible_sample": [],
+      "stamp_stats": {
+        "commits": 96,
+        "hosts_checked": 7799,
+        "stamped_nodes": 161,
+        "stamp_rows": 120,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 0,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 271,
+        "state_receipts_applied": 15,
+        "state_receipts_refused": 141,
+        "state_receipts_consumed": 182,
+        "mount_effects_applied": 73,
+        "await_resumptions": 174,
+        "unreceipted_effects": 886,
+        "owned_listeners": 36,
+        "owned_messages": 26,
+        "task_ambient_cleared": 0,
+        "build": "bbbf541e4c4a",
+        "placements": 380
+      }
+    },
+    "actions": [
+      {
+        "action_id": "action:muen3e1n:259",
+        "event": "focusin",
+        "at": 1790200395995,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "aria-haspopup": "dialog",
+            "aria-expanded": "false",
+            "aria-controls": "radix-:rh:"
+          }
+        },
+        "entry": null,
+        "element_key": "p_ce24901c7a71:1821-2142#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 19
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3e1n:260",
+        "event": "click",
+        "at": 1790200395995,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "aria-haspopup": "dialog",
+            "aria-expanded": "false",
+            "aria-controls": "radix-:rh:"
+          }
+        },
+        "entry": {
+          "unit_id": "function:2d7c02d89c04a611649cfec20c4bedfc292a0fa6ed416f27733d82d55d539fd0:751:859|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:2d7c02d89c04a611649cfec20c4bedfc292a0fa6ed416f27733d82d55d539fd0:751:859",
+          "resolved": true,
+          "file": "apps/react-vite/src/components/ui/form/form-drawer.tsx",
+          "start": 751,
+          "end": 859,
+          "line": 42,
+          "content_hash_matches_fixture": true,
+          "snippet": "(isOpen) => { if (!isOpen) { close(); } else { open(); } }"
+        },
+        "element_key": "p_ce24901c7a71:1821-2142#n4",
+        "abstention": null,
+        "entry_frontier": null,
+        "mutation": {
+          "count": 19
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3e1q:261",
+        "event": "focusin",
+        "at": 1790200395998,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eo3:262",
+        "event": "click",
+        "at": 1790200396803,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eo6:263",
+        "event": "keydown",
+        "at": 1790200396806,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eo7:264",
+        "event": "input",
+        "at": 1790200396807,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eoc:265",
+        "event": "keydown",
+        "at": 1790200396812,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eod:266",
+        "event": "input",
+        "at": 1790200396813,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eoj:267",
+        "event": "keydown",
+        "at": 1790200396819,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eok:268",
+        "event": "input",
+        "at": 1790200396820,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eoq:269",
+        "event": "keydown",
+        "at": 1790200396826,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eoq:270",
+        "event": "input",
+        "at": 1790200396826,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eov:271",
+        "event": "keydown",
+        "at": 1790200396831,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eow:272",
+        "event": "input",
+        "at": 1790200396832,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ep2:273",
+        "event": "keydown",
+        "at": 1790200396838,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ep3:274",
+        "event": "input",
+        "at": 1790200396839,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ep8:275",
+        "event": "keydown",
+        "at": 1790200396844,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ep8:276",
+        "event": "input",
+        "at": 1790200396844,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3epf:277",
+        "event": "keydown",
+        "at": 1790200396851,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3epf:278",
+        "event": "input",
+        "at": 1790200396851,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3epm:279",
+        "event": "keydown",
+        "at": 1790200396858,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3epm:280",
+        "event": "input",
+        "at": 1790200396859,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eps:281",
+        "event": "keydown",
+        "at": 1790200396864,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ept:282",
+        "event": "input",
+        "at": 1790200396865,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eq0:283",
+        "event": "keydown",
+        "at": 1790200396872,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eq0:284",
+        "event": "input",
+        "at": 1790200396872,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eq6:285",
+        "event": "keydown",
+        "at": 1790200396878,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eq6:286",
+        "event": "input",
+        "at": 1790200396878,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eqd:287",
+        "event": "keydown",
+        "at": 1790200396885,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eqd:288",
+        "event": "input",
+        "at": 1790200396885,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eqj:289",
+        "event": "keydown",
+        "at": 1790200396891,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eqk:290",
+        "event": "input",
+        "at": 1790200396892,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eqp:291",
+        "event": "keydown",
+        "at": 1790200396898,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eqq:292",
+        "event": "input",
+        "at": 1790200396898,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eqw:293",
+        "event": "keydown",
+        "at": 1790200396904,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3eqx:294",
+        "event": "input",
+        "at": 1790200396905,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3er3:295",
+        "event": "keydown",
+        "at": 1790200396911,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3er3:296",
+        "event": "input",
+        "at": 1790200396911,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3er9:297",
+        "event": "keydown",
+        "at": 1790200396917,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3era:298",
+        "event": "input",
+        "at": 1790200396918,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3erf:299",
+        "event": "keydown",
+        "at": 1790200396923,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3erg:300",
+        "event": "input",
+        "at": 1790200396924,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3erl:301",
+        "event": "keydown",
+        "at": 1790200396929,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3erl:302",
+        "event": "input",
+        "at": 1790200396929,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ers:303",
+        "event": "keydown",
+        "at": 1790200396936,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ers:304",
+        "event": "input",
+        "at": 1790200396936,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3ery:305",
+        "event": "keydown",
+        "at": 1790200396943,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3erz:306",
+        "event": "input",
+        "at": 1790200396943,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3es5:307",
+        "event": "keydown",
+        "at": 1790200396949,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3es5:308",
+        "event": "input",
+        "at": 1790200396949,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3esb:309",
+        "event": "keydown",
+        "at": 1790200396955,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3esb:310",
+        "event": "input",
+        "at": 1790200396955,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3esg:311",
+        "event": "keydown",
+        "at": 1790200396961,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3esh:312",
+        "event": "input",
+        "at": 1790200396961,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3esm:313",
+        "event": "keydown",
+        "at": 1790200396966,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3esm:314",
+        "event": "input",
+        "at": 1790200396966,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3et6:315",
+        "event": "change",
+        "at": 1790200396986,
+        "target": {
+          "tag": "textarea",
+          "attributes": {
+            "name": "body"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7a4442137e65:605-1023#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3et6:316",
+        "event": "focusin",
+        "at": 1790200396986,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "submit"
+          }
+        },
+        "entry": null,
+        "element_key": "p_ce24901c7a71:1821-2142#n6",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3et6:317",
+        "event": "click",
+        "at": 1790200396986,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "submit"
+          }
+        },
+        "entry": null,
+        "element_key": "p_ce24901c7a71:1821-2142#n6",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3et6:318",
+        "event": "submit",
+        "at": 1790200396986,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "submit"
+          }
+        },
+        "entry": {
+          "unit_id": "function:e34e373b7bb4b1fe003eab7045be4e5298353fb2e626fa48e506cc653e71384e:1305:1409|submit",
+          "rooted": true,
+          "invoked_by": "async",
+          "function_id": "function:e34e373b7bb4b1fe003eab7045be4e5298353fb2e626fa48e506cc653e71384e:1305:1409",
+          "resolved": true,
+          "file": "apps/react-vite/src/features/comments/components/create-comment.tsx",
+          "start": 1305,
+          "end": 1409,
+          "line": 53,
+          "content_hash_matches_fixture": true,
+          "snippet": "(values) => { createCommentMutation.mutate({ data: values, }); }"
+        },
+        "element_key": "p_ce24901c7a71:1821-2142#n6",
+        "abstention": null,
+        "entry_frontier": null,
+        "mutation": {
+          "count": 11
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/api/comments",
+            "transport": "xhr",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:muen3et6:318:request:8",
+            "route": null,
+            "handlers": [],
+            "terminal_handler": null,
+            "db": [],
+            "reached": "network",
+            "stopped_at": "network",
+            "because": "backend not instrumented (repository mock API server; frontend-only repository)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/comments",
+            "transport": "xhr",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:muen3et6:318:request:9",
+            "route": null,
+            "handlers": [],
+            "terminal_handler": null,
+            "db": [],
+            "reached": "network",
+            "stopped_at": "network",
+            "because": "backend not instrumented (repository mock API server; frontend-only repository)"
+          }
+        ]
+      },
+      {
+        "action_id": "action:muen3fbe:319",
+        "event": "focusin",
+        "at": 1790200397642,
+        "target": {
+          "tag": "div",
+          "attributes": {
+            "role": "dialog",
+            "id": "radix-:rh:",
+            "aria-describedby": "radix-:rj:",
+            "aria-labelledby": "radix-:ri:"
+          }
+        },
+        "entry": null,
+        "element_key": "p_1b9de70bf5ad:2151-2774#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 4
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3fjs:320",
+        "event": "focusin",
+        "at": 1790200397944,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "aria-haspopup": "dialog",
+            "aria-expanded": "false",
+            "aria-controls": "radix-:rh:"
+          }
+        },
+        "entry": null,
+        "element_key": "p_ce24901c7a71:1821-2142#n4",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      }
+    ]
+  },
+  {
+    "step": 8,
+    "name": "delete-comment",
+    "description": "click \"Delete Comment\", then confirm \"Delete Comment\"",
+    "started": 1790200399485,
+    "ended": 1790200402673,
+    "status": "done",
+    "stamps": {
+      "interactive": 11,
+      "interactive_stamped": 11,
+      "visible_interactive": 10,
+      "visible_interactive_stamped": 10,
+      "stamped_elements": 61,
+      "unstamped_visible_sample": [],
+      "stamp_stats": {
+        "commits": 122,
+        "hosts_checked": 11463,
+        "stamped_nodes": 188,
+        "stamp_rows": 142,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 0,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 386,
+        "state_receipts_applied": 17,
+        "state_receipts_refused": 204,
+        "state_receipts_consumed": 255,
+        "mount_effects_applied": 73,
+        "await_resumptions": 185,
+        "unreceipted_effects": 1102,
+        "owned_listeners": 50,
+        "owned_messages": 32,
+        "task_ambient_cleared": 0,
+        "build": "bbbf541e4c4a",
+        "placements": 380
+      }
+    },
+    "actions": [
+      {
+        "action_id": "action:muen3gr2:321",
+        "event": "focusin",
+        "at": 1790200399502,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "aria-haspopup": "dialog",
+            "aria-expanded": "false",
+            "aria-controls": "radix-:rk:"
+          }
+        },
+        "entry": null,
+        "element_key": "p_ce24901c7a71:1821-2142#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 19
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3gr3:322",
+        "event": "click",
+        "at": 1790200399503,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "aria-haspopup": "dialog",
+            "aria-expanded": "false",
+            "aria-controls": "radix-:rk:"
+          }
+        },
+        "entry": {
+          "unit_id": "function:9f7f59228a8a9158c5dd599d8c83b33f1bc9a95d7a6d6fc6727d0a0a0a29035a:1012:1120|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:9f7f59228a8a9158c5dd599d8c83b33f1bc9a95d7a6d6fc6727d0a0a0a29035a:1012:1120",
+          "resolved": true,
+          "file": "apps/react-vite/src/components/ui/dialog/confirmation-dialog/confirmation-dialog.tsx",
+          "start": 1012,
+          "end": 1120,
+          "line": 48,
+          "content_hash_matches_fixture": true,
+          "snippet": "(isOpen) => { if (!isOpen) { close(); } else { open(); } }"
+        },
+        "element_key": "p_ce24901c7a71:1821-2142#n5",
+        "abstention": null,
+        "entry_frontier": null,
+        "mutation": {
+          "count": 19
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3gr6:323",
+        "event": "focusin",
+        "at": 1790200399506,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button"
+          }
+        },
+        "entry": null,
+        "element_key": "p_ce24901c7a71:1821-2142#n6",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3gw6:324",
+        "event": "click",
+        "at": 1790200399686,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button"
+          }
+        },
+        "entry": {
+          "unit_id": "function:9c106ec7c68b33b46d55a0941eb9c29190eb0421efc324f13667e06b329545bc:1266:1319|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:9c106ec7c68b33b46d55a0941eb9c29190eb0421efc324f13667e06b329545bc:1266:1319",
+          "resolved": true,
+          "file": "apps/react-vite/src/features/comments/components/delete-comment.tsx",
+          "start": 1266,
+          "end": 1319,
+          "line": 48,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => deleteCommentMutation.mutate({ commentId: id })"
+        },
+        "element_key": "p_ce24901c7a71:1821-2142#n6",
+        "abstention": null,
+        "entry_frontier": null,
+        "mutation": null,
+        "requests": [
+          {
+            "method": "DELETE",
+            "path": "/api/comments/4ni9uIGjoV-57IsqUPYQp",
+            "transport": "xhr",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:muen3gw6:324:request:10",
+            "route": null,
+            "handlers": [],
+            "terminal_handler": null,
+            "db": [],
+            "reached": "network",
+            "stopped_at": "network",
+            "because": "backend not instrumented (repository mock API server; frontend-only repository)"
+          },
+          {
+            "method": "GET",
+            "path": "/api/comments",
+            "transport": "xhr",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:muen3gw6:324:request:11",
+            "route": null,
+            "handlers": [],
+            "terminal_handler": null,
+            "db": [],
+            "reached": "network",
+            "stopped_at": "network",
+            "because": "backend not instrumented (repository mock API server; frontend-only repository)"
+          }
+        ]
+      },
+      {
+        "action_id": "action:muen3hpd:325",
+        "event": "focusin",
+        "at": 1790200400737,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "aria-haspopup": "dialog",
+            "aria-expanded": "false",
+            "aria-controls": "radix-:rk:"
+          }
+        },
+        "entry": null,
+        "element_key": "p_ce24901c7a71:1821-2142#n5",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      }
+    ]
+  },
+  {
+    "step": 9,
+    "name": "dismiss-notifications",
+    "description": "click Close on each visible notification toast",
+    "started": 1790200402704,
+    "ended": 1790200403552,
+    "status": "done",
+    "stamps": {
+      "interactive": 8,
+      "interactive_stamped": 8,
+      "visible_interactive": 7,
+      "visible_interactive_stamped": 7,
+      "stamped_elements": 22,
+      "unstamped_visible_sample": [],
+      "stamp_stats": {
+        "commits": 125,
+        "hosts_checked": 11733,
+        "stamped_nodes": 188,
+        "stamp_rows": 142,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 0,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 386,
+        "state_receipts_applied": 17,
+        "state_receipts_refused": 204,
+        "state_receipts_consumed": 255,
+        "mount_effects_applied": 73,
+        "await_resumptions": 185,
+        "unreceipted_effects": 1160,
+        "owned_listeners": 50,
+        "owned_messages": 35,
+        "task_ambient_cleared": 0,
+        "build": "bbbf541e4c4a",
+        "placements": 380
+      }
+    },
+    "actions": [
+      {
+        "action_id": "action:muen3j8b:326",
+        "event": "focusin",
+        "at": 1790200402716,
+        "target": {
+          "tag": "button",
+          "attributes": {}
+        },
+        "entry": null,
+        "element_key": "p_28e9a3012afa:1370-1790#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3j8c:327",
+        "event": "click",
+        "at": 1790200402716,
+        "target": {
+          "tag": "button",
+          "attributes": {}
+        },
+        "entry": {
+          "unit_id": "function:28e9a3012afa3d41067d6e279a0154b6daf9b92a41e18c361dabfb35bb1de430:1570:1628|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:28e9a3012afa3d41067d6e279a0154b6daf9b92a41e18c361dabfb35bb1de430:1570:1628",
+          "resolved": true,
+          "file": "apps/react-vite/src/components/ui/notifications/notification.tsx",
+          "start": 1570,
+          "end": 1628,
+          "line": 39,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => { onDismiss(id); }"
+        },
+        "element_key": "p_28e9a3012afa:1370-1790#n1",
+        "abstention": null,
+        "entry_frontier": null,
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3j8s:328",
+        "event": "focusin",
+        "at": 1790200402732,
+        "target": {
+          "tag": "button",
+          "attributes": {}
+        },
+        "entry": null,
+        "element_key": "p_28e9a3012afa:1370-1790#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3j8s:329",
+        "event": "click",
+        "at": 1790200402732,
+        "target": {
+          "tag": "button",
+          "attributes": {}
+        },
+        "entry": {
+          "unit_id": "function:28e9a3012afa3d41067d6e279a0154b6daf9b92a41e18c361dabfb35bb1de430:1570:1628|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:28e9a3012afa3d41067d6e279a0154b6daf9b92a41e18c361dabfb35bb1de430:1570:1628",
+          "resolved": true,
+          "file": "apps/react-vite/src/components/ui/notifications/notification.tsx",
+          "start": 1570,
+          "end": 1628,
+          "line": 39,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => { onDismiss(id); }"
+        },
+        "element_key": "p_28e9a3012afa:1370-1790#n1",
+        "abstention": null,
+        "entry_frontier": null,
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3j98:330",
+        "event": "focusin",
+        "at": 1790200402748,
+        "target": {
+          "tag": "button",
+          "attributes": {}
+        },
+        "entry": null,
+        "element_key": "p_28e9a3012afa:1370-1790#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3j98:331",
+        "event": "click",
+        "at": 1790200402748,
+        "target": {
+          "tag": "button",
+          "attributes": {}
+        },
+        "entry": {
+          "unit_id": "function:28e9a3012afa3d41067d6e279a0154b6daf9b92a41e18c361dabfb35bb1de430:1570:1628|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:28e9a3012afa3d41067d6e279a0154b6daf9b92a41e18c361dabfb35bb1de430:1570:1628",
+          "resolved": true,
+          "file": "apps/react-vite/src/components/ui/notifications/notification.tsx",
+          "start": 1570,
+          "end": 1628,
+          "line": 39,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => { onDismiss(id); }"
+        },
+        "element_key": "p_28e9a3012afa:1370-1790#n1",
+        "abstention": null,
+        "entry_frontier": null,
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      }
+    ]
+  },
+  {
+    "step": 10,
+    "name": "sign-out",
+    "description": "open the user menu and click \"Sign Out\"",
+    "started": 1790200403568,
+    "ended": 1790200405802,
+    "status": "done",
+    "stamps": {
+      "interactive": 5,
+      "interactive_stamped": 5,
+      "visible_interactive": 5,
+      "visible_interactive_stamped": 5,
+      "stamped_elements": 14,
+      "unstamped_visible_sample": [],
+      "stamp_stats": {
+        "commits": 151,
+        "hosts_checked": 13587,
+        "stamped_nodes": 205,
+        "stamp_rows": 146,
+        "unplaced_nodes": 0,
+        "invalid_keys": 0,
+        "annotation_written": 0,
+        "annotation_rejected": 0,
+        "errors": 0,
+        "state_receipts_recorded": 452,
+        "state_receipts_applied": 19,
+        "state_receipts_refused": 236,
+        "state_receipts_consumed": 291,
+        "mount_effects_applied": 80,
+        "await_resumptions": 298,
+        "unreceipted_effects": 1453,
+        "owned_listeners": 51,
+        "owned_messages": 38,
+        "task_ambient_cleared": 0,
+        "build": "bbbf541e4c4a",
+        "placements": 380
+      }
+    },
+    "actions": [
+      {
+        "action_id": "action:muen3jwk:332",
+        "event": "focusin",
+        "at": 1790200403588,
+        "target": {
+          "tag": "div",
+          "attributes": {
+            "role": "menu",
+            "aria-orientation": "vertical",
+            "id": "radix-:r4:",
+            "aria-labelledby": "radix-:r3:"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7d3eb786ba2a:2415-3093#n1",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 9
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3jwm:333",
+        "event": "click",
+        "at": 1790200403590,
+        "target": {
+          "tag": "html",
+          "attributes": {}
+        },
+        "entry": null,
+        "element_key": null,
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 1
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3k1p:334",
+        "event": "focusin",
+        "at": 1790200403773,
+        "target": {
+          "tag": "div",
+          "attributes": {
+            "role": "menuitem"
+          }
+        },
+        "entry": null,
+        "element_key": "p_7d3eb786ba2a:3418-3778#n2",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": {
+          "count": 7
+        },
+        "requests": []
+      },
+      {
+        "action_id": "action:muen3k1r:335",
+        "event": "click",
+        "at": 1790200403775,
+        "target": {
+          "tag": "div",
+          "attributes": {
+            "role": "menuitem"
+          }
+        },
+        "entry": {
+          "unit_id": "function:0f58eb5dc4e3834134eead251678c03de9dbbb8bb5a1a7ad39cf939dd95262f8:6526:6549|click",
+          "rooted": true,
+          "invoked_by": "event",
+          "function_id": "function:0f58eb5dc4e3834134eead251678c03de9dbbb8bb5a1a7ad39cf939dd95262f8:6526:6549",
+          "resolved": true,
+          "file": "apps/react-vite/src/components/layouts/dashboard-layout.tsx",
+          "start": 6526,
+          "end": 6549,
+          "line": 192,
+          "content_hash_matches_fixture": true,
+          "snippet": "() => logout.mutate({})"
+        },
+        "element_key": "p_7d3eb786ba2a:3418-3778#n2",
+        "abstention": null,
+        "entry_frontier": null,
+        "mutation": {
+          "count": 5
+        },
+        "requests": [
+          {
+            "method": "POST",
+            "path": "/api/auth/logout",
+            "transport": "xhr",
+            "linkage_kind": "direct",
+            "request_occurrence_id": "action:muen3k1r:335:request:12",
+            "route": null,
+            "handlers": [],
+            "terminal_handler": null,
+            "db": [],
+            "reached": "network",
+            "stopped_at": "network",
+            "because": "backend not instrumented (repository mock API server; frontend-only repository)"
+          }
+        ]
+      },
+      {
+        "action_id": "action:muen3k6c:336",
+        "event": "focusin",
+        "at": 1790200403940,
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button",
+            "id": "radix-:r3:",
+            "aria-haspopup": "menu",
+            "aria-expanded": "false"
+          }
+        },
+        "entry": null,
+        "element_key": "p_ce24901c7a71:1821-2142#n2",
+        "abstention": null,
+        "entry_frontier": "no first-party function entered on this action",
+        "mutation": null,
+        "requests": []
+      }
+    ]
+  }
+]

@@ -1,0 +1,214 @@
+{
+ "rule": "abstained old id whose span lies inside a function node starting at most 3 chars before it",
+ "abstained": 1350,
+ "real_function_present_in_new_manifest": 12,
+ "real_function_missing_from_new_manifest": 22,
+ "lost": [
+  {
+   "old": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:4643:4857",
+   "file": "packages/data-provider/src/parsers.ts",
+   "function": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:4643:4857",
+   "text": "export function getFirstDefinedValue(possibleValues: string[]) {\n  let returnVal"
+  },
+  {
+   "old": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:4859:5051",
+   "file": "packages/data-provider/src/parsers.ts",
+   "function": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:4859:5051",
+   "text": "export function getNonEmptyValue(possibleValues: string[]) {\n  for (const value "
+  },
+  {
+   "old": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:6142:6385",
+   "file": "packages/data-provider/src/parsers.ts",
+   "function": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:6141:6385",
+   "text": "(modelStr: string): string => {\n  const gptMatch = modelStr.match(/gpt-(\\d+(?:\\."
+  },
+  {
+   "old": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:6504:6693",
+   "file": "packages/data-provider/src/parsers.ts",
+   "function": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:6503:6693",
+   "text": "(modelStr: string): string => {\n  const omniMatch = modelStr.match(/\\bo(\\d+(?:\\."
+  },
+  {
+   "old": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:6730:9333",
+   "file": "packages/data-provider/src/parsers.ts",
+   "function": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:6729:9333",
+   "text": "(endpointOption: Partial<t.TEndpointOption>): string => {\n  const {\n    model: _"
+  },
+  {
+   "old": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:11497:12693",
+   "file": "packages/data-provider/src/parsers.ts",
+   "function": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:11497:12693",
+   "text": "export function parseTextParts(\n  contentParts: Array<a.TMessageContentParts | u"
+  },
+  {
+   "old": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:11711:11934",
+   "file": "packages/data-provider/src/parsers.ts",
+   "function": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:11710:11934",
+   "text": "(textValue: string) => {\n    if (\n      result.length > 0 &&\n      textValue.len"
+  },
+  {
+   "old": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:13305:13548",
+   "file": "packages/data-provider/src/parsers.ts",
+   "function": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:13305:13548",
+   "text": "function applyTimezone(value: dayjs.Dayjs, timezone?: string): dayjs.Dayjs {\n  i"
+  },
+  {
+   "old": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:13550:14455",
+   "file": "packages/data-provider/src/parsers.ts",
+   "function": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:13550:14455",
+   "text": "export function replaceSpecialVars({\n  text,\n  user,\n  now: inputNow,\n  timezone"
+  },
+  {
+   "old": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:15182:15729",
+   "file": "packages/data-provider/src/parsers.ts",
+   "function": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:15182:15729",
+   "text": "export function encodeEphemeralAgentId({\n  endpoint,\n  model,\n  sender,\n  index,"
+  },
+  {
+   "old": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:16409:17583",
+   "file": "packages/data-provider/src/parsers.ts",
+   "function": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:16409:17583",
+   "text": "export function parseEphemeralAgentId(agentId: string): ParsedEphemeralAgentId |"
+  },
+  {
+   "old": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:17738:17862",
+   "file": "packages/data-provider/src/parsers.ts",
+   "function": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:17738:17862",
+   "text": "export function isEphemeralAgentId(agentId: string | null | undefined): boolean "
+  },
+  {
+   "old": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:18221:18326",
+   "file": "packages/data-provider/src/parsers.ts",
+   "function": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:18221:18326",
+   "text": "export function stripAgentIdSuffix(agentId: string): string {\n  return agentId.r"
+  },
+  {
+   "old": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:18622:18736",
+   "file": "packages/data-provider/src/parsers.ts",
+   "function": "function:07490603b8c2d4248fed8c1888b687e792e481e88780639b419ace4743b3692d:18622:18736",
+   "text": "export function appendAgentIdSuffix(agentId: string, index: number): string {\n  "
+  },
+  {
+   "old": "function:dc45dbed82a6e87e1e32be38335d04258c0cd41971476384c681dfcac0fd802b:12338:12533",
+   "file": "client/src/utils/artifacts.ts",
+   "function": "function:dc45dbed82a6e87e1e32be38335d04258c0cd41971476384c681dfcac0fd802b:12338:12533",
+   "text": "export function isPreviewOnlyArtifact(type: string | null | undefined): boolean "
+  },
+  {
+   "old": "function:dc45dbed82a6e87e1e32be38335d04258c0cd41971476384c681dfcac0fd802b:12699:12823",
+   "file": "client/src/utils/artifacts.ts",
+   "function": "function:dc45dbed82a6e87e1e32be38335d04258c0cd41971476384c681dfcac0fd802b:12699:12823",
+   "text": "export function isCodeOnlyArtifact(type: string | null | undefined): boolean {\n "
+  },
+  {
+   "old": "function:dc45dbed82a6e87e1e32be38335d04258c0cd41971476384c681dfcac0fd802b:17192:17964",
+   "file": "client/src/utils/artifacts.ts",
+   "function": "function:dc45dbed82a6e87e1e32be38335d04258c0cd41971476384c681dfcac0fd802b:17192:17964",
+   "text": "export function languageForFilename(\n  filename: string | undefined,\n  mime?: st"
+  },
+  {
+   "old": "function:dc45dbed82a6e87e1e32be38335d04258c0cd41971476384c681dfcac0fd802b:18495:19065",
+   "file": "client/src/utils/artifacts.ts",
+   "function": "function:dc45dbed82a6e87e1e32be38335d04258c0cd41971476384c681dfcac0fd802b:18495:19065",
+   "text": "export function longestLeadingBacktickRun(source: string): number {\n  let max = "
+  },
+  {
+   "old": "function:dc45dbed82a6e87e1e32be38335d04258c0cd41971476384c681dfcac0fd802b:19965:20480",
+   "file": "client/src/utils/artifacts.ts",
+   "function": "function:dc45dbed82a6e87e1e32be38335d04258c0cd41971476384c681dfcac0fd802b:19965:20480",
+   "text": "export function wrapAsFencedCodeBlock(source: string, lang: string): string {\n  "
+  },
+  {
+   "old": "function:dc45dbed82a6e87e1e32be38335d04258c0cd41971476384c681dfcac0fd802b:27431:31222",
+   "file": "client/src/utils/artifacts.ts",
+   "function": "function:dc45dbed82a6e87e1e32be38335d04258c0cd41971476384c681dfcac0fd802b:27431:31222",
+   "text": "export function detectArtifactTypeFromFile(\n  attachment: Partial<Pick<TFile, 'f"
+  },
+  {
+   "old": "function:dc45dbed82a6e87e1e32be38335d04258c0cd41971476384c681dfcac0fd802b:32159:32424",
+   "file": "client/src/utils/artifacts.ts",
+   "function": "function:dc45dbed82a6e87e1e32be38335d04258c0cd41971476384c681dfcac0fd802b:32158:32424",
+   "text": "(file: Partial<Pick<TFile, 'updatedAt' | 'createdAt'>>): number => {\n  const val"
+  },
+  {
+   "old": "function:dc45dbed82a6e87e1e32be38335d04258c0cd41971476384c681dfcac0fd802b:33261:36952",
+   "file": "client/src/utils/artifacts.ts",
+   "function": "function:dc45dbed82a6e87e1e32be38335d04258c0cd41971476384c681dfcac0fd802b:33261:36952",
+   "text": "export function fileToArtifact(\n  // Every picked field is read with a fallback "
+  }
+ ],
+ "kept": [
+  {
+   "old": "function:a8fe84f9fed40319c33b6887d401ff5e8fc8f270ec879a0651b51389c6cfb287:4075:4076",
+   "file": "client/src/hooks/Artifacts/useArtifacts.ts",
+   "function": "function:a8fe84f9fed40319c33b6887d401ff5e8fc8f270ec879a0651b51389c6cfb287:4075:9807",
+   "text": "export default function useArtifacts() {\n  const [activeTab, setActiveTab] = use"
+  },
+  {
+   "old": "function:266ed5994412e263969373eccdb859fe7b2d7aea6404ed2fc2f31615cc32bce2:516:517",
+   "file": "client/src/components/Chat/Messages/SearchButtons.tsx",
+   "function": "function:266ed5994412e263969373eccdb859fe7b2d7aea6404ed2fc2f31615cc32bce2:516:2196",
+   "text": "export default function SearchButtons({ message }: { message: TMessage }) {\n  co"
+  },
+  {
+   "old": "function:20cee0ec525c973a74095f553d3eb83969ddfb1294a1ab3c0fec0f617633deea:6629:6644",
+   "file": "client/src/components/Conversations/ProjectsSection.tsx",
+   "function": "function:20cee0ec525c973a74095f553d3eb83969ddfb1294a1ab3c0fec0f617633deea:6628:6656",
+   "text": "(page) => page.conversations"
+  },
+  {
+   "old": "function:34883dbece28d3402249b62ac73f996394ab00ad7fea62fcca1df168e364e113:644:645",
+   "file": "client/src/hooks/Input/useSelectMention.ts",
+   "function": "function:34883dbece28d3402249b62ac73f996394ab00ad7fea62fcca1df168e364e113:644:10178",
+   "text": "export default function useSelectMention({\n  presets,\n  modelSpecs,\n  assistants"
+  },
+  {
+   "old": "function:b17478cca7e5c03088b8b91b1ad4f02a5ad72afa7e7a23345de05c81742ace78:1259:1260",
+   "file": "client/src/components/Skills/dialogs/CreateSkillDialog.tsx",
+   "function": "function:b17478cca7e5c03088b8b91b1ad4f02a5ad72afa7e7a23345de05c81742ace78:1259:7612",
+   "text": "export default function CreateSkillDialog({\n  isOpen,\n  setIsOpen,\n  defaultName"
+  },
+  {
+   "old": "function:9127e6a01adb9f7a62248ce4e82cda6c26c1c9cadcc6d8722f00d312cbed5419:2219:2220",
+   "file": "packages/data-provider/src/feedback.ts",
+   "function": "function:9127e6a01adb9f7a62248ce4e82cda6c26c1c9cadcc6d8722f00d312cbed5419:2219:2362",
+   "text": "export function getTagsForRating(rating: TFeedbackRating): TFeedbackTag[] {\n  re"
+  },
+  {
+   "old": "function:9127e6a01adb9f7a62248ce4e82cda6c26c1c9cadcc6d8722f00d312cbed5419:3363:3364",
+   "file": "packages/data-provider/src/feedback.ts",
+   "function": "function:9127e6a01adb9f7a62248ce4e82cda6c26c1c9cadcc6d8722f00d312cbed5419:3363:3549",
+   "text": "export function getTagByKey(key: TFeedbackTagKey | undefined): TFeedbackTag | un"
+  },
+  {
+   "old": "function:1096ee24562adfcc32f10adb252318d90e50a4c938f378919fad7cf6b6dfe16d:37670:37671",
+   "file": "packages/data-provider/src/schemas.ts",
+   "function": "function:1096ee24562adfcc32f10adb252318d90e50a4c938f378919fad7cf6b6dfe16d:37670:38147",
+   "text": "export function removeNullishValues<T extends Record<string, unknown>>(\n  obj: T"
+  },
+  {
+   "old": "function:67d634d123b8bf64d8e681be1aedf52eb6ca66fa27485bebf2f488246644be5f:33242:33243",
+   "file": "packages/data-provider/src/file-config.ts",
+   "function": "function:67d634d123b8bf64d8e681be1aedf52eb6ca66fa27485bebf2f488246644be5f:33242:36875",
+   "text": "export function mergeFileConfig(dynamic: z.infer<typeof fileConfigSchema> | unde"
+  },
+  {
+   "old": "function:9f7f90cf08308b6f9302599fe44bd3dfd2d6abbf90cde1629a61c79542a85008:15769:15770",
+   "file": "packages/data-provider/src/config.ts",
+   "function": "function:9f7f90cf08308b6f9302599fe44bd3dfd2d6abbf90cde1629a61c79542a85008:15769:16286",
+   "text": "export function getSchemaDefaults<Schema extends z.AnyZodObject>(\n  schema: Sche"
+  },
+  {
+   "old": "function:e0911e688e09f23836561dfa73de6b57e3a00f72051a62ab85fd5d26fc691611:9420:9421",
+   "file": "packages/data-provider/src/request.ts",
+   "function": "function:e0911e688e09f23836561dfa73de6b57e3a00f72051a62ab85fd5d26fc691611:9420:10255",
+   "text": "async function _authenticatedFetch(url: string, options?: RequestInit): Promise<"
+  },
+  {
+   "old": "function:aec4b9d0590db5da3ff1be619d3f70ee37b3bdf5819ec49cf122e1399de03d48:1003:1055",
+   "file": "client/src/components/Chat/Messages/Content/Parts/useLazyHighlight.ts",
+   "function": "function:aec4b9d0590db5da3ff1be619d3f70ee37b3bdf5819ec49cf122e1399de03d48:1002:1064",
+   "text": "(mod) => {\n      lowlightModule = mod;\n      return mod;\n    }"
+  }
+ ]
+}

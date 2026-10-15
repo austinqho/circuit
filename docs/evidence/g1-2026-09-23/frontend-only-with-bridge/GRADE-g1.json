@@ -1,0 +1,183 @@
+{
+  "schema": "producttrace.g1-grade.v1",
+  "backend_instrumented": false,
+  "grader": "independent recomputation from raw records.jsonl + spans.jsonl (no analysis package import)",
+  "actions": 336,
+  "chains": 336,
+  "extra_chains": 0,
+  "mismatches": 0,
+  "mismatch_examples": [],
+  "terminal_counts": {
+    "browser | no request observed": 323,
+    "network | backend not instrumented": 13
+  },
+  "backend_rows_in_records": 0,
+  "chains_with_backend_steps": 0,
+  "spans": 0,
+  "flows": {
+    "login": {
+      "step": 1,
+      "result": "login attempted",
+      "actions": 84,
+      "expected_function_id": "function:c15c44aa0e87167c0174eb68367210b93204299c880fce28068d3117f8c0bf0e:3870:3894",
+      "handler_reproduced": true,
+      "credited_function_ids": [
+        "function:3c08149a2f85d32fe0470634de19a4c328e835489fd6a7779ce41a0560ce6e6f:352:456",
+        "function:f607e3900a9d4f60b7811dba6cd08cc15e1c9973b71c9541599db447d14af3c3:789:951",
+        "function:c15c44aa0e87167c0174eb68367210b93204299c880fce28068d3117f8c0bf0e:3870:3894",
+        "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:6368:6437"
+      ],
+      "frontiers": [
+        "browser | no request observed",
+        "network | backend not instrumented"
+      ],
+      "joined_writes": []
+    },
+    "send": {
+      "step": 2,
+      "result": "reply waited",
+      "actions": 109,
+      "expected_function_id": "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:17345:18011",
+      "handler_reproduced": true,
+      "credited_function_ids": [
+        "function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428",
+        "function:c3157a7c2c41cf7836df40621b7304393c56cbd1b99632f5f2577a7f2940253c:3442:3600",
+        "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:6368:6437",
+        "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:6238:6307",
+        "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:23024:23389",
+        "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:15018:15139",
+        "function:33a9763db82db8f7c78e3a35d68af3766502e776ded837e64454a7f3f1254f61:4745:5213",
+        "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:6504:6548",
+        "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:6016:6189",
+        "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:17345:18011"
+      ],
+      "frontiers": [
+        "browser | no request observed",
+        "network | backend not instrumented"
+      ],
+      "joined_writes": []
+    },
+    "feedback": {
+      "step": 4,
+      "result": "feedback submitted",
+      "actions": 4,
+      "expected_function_id": "function:b6e145fc35bd0ba6db55e49be03b3feca87fa96f6806ac5b0544ae8b6145c59c:3324:3559",
+      "handler_reproduced": true,
+      "credited_function_ids": [
+        "function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428",
+        "function:b6e145fc35bd0ba6db55e49be03b3feca87fa96f6806ac5b0544ae8b6145c59c:3040:3236",
+        "function:b6e145fc35bd0ba6db55e49be03b3feca87fa96f6806ac5b0544ae8b6145c59c:3324:3559"
+      ],
+      "frontiers": [
+        "browser | no request observed",
+        "network | backend not instrumented"
+      ],
+      "joined_writes": []
+    },
+    "regenerate": {
+      "step": 5,
+      "result": "regeneration waited",
+      "actions": 2,
+      "expected_function_id": "function:c057074eb90d959be20f9e8d7801624cfaa20e2e8d36fad2558178c65501d329:3465:3490",
+      "handler_reproduced": true,
+      "credited_function_ids": [
+        "function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428",
+        "function:c057074eb90d959be20f9e8d7801624cfaa20e2e8d36fad2558178c65501d329:3465:3490"
+      ],
+      "frontiers": [
+        "browser | no request observed",
+        "network | backend not instrumented"
+      ],
+      "joined_writes": []
+    },
+    "edit-resubmit": {
+      "step": 6,
+      "result": "edited reply waited",
+      "actions": 10,
+      "expected_function_id": "function:289ebfafc16db6ab1b7c43f3ad92ef1ef1bbc05f52d4aaad5105283f68e4ab40:1759:3526",
+      "handler_reproduced": true,
+      "credited_function_ids": [
+        "function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428",
+        "function:650d204cb86c5d8d205f4f14a39f9465dd47b1595658212cd3961bb38b951241:6446:6446",
+        "function:26049ed0174c7ccfea71e985f00ce21907cdca7207f38100812e244f1199274e:2309:2377",
+        "function:dc38a923ef12eaf4ea45d3f0214840e9770867e144210c5a2b43c9235ef7c91d:3590:3653",
+        "function:289ebfafc16db6ab1b7c43f3ad92ef1ef1bbc05f52d4aaad5105283f68e4ab40:4818:4898",
+        "function:289ebfafc16db6ab1b7c43f3ad92ef1ef1bbc05f52d4aaad5105283f68e4ab40:1759:3526"
+      ],
+      "frontiers": [
+        "browser | no request observed",
+        "network | backend not instrumented"
+      ],
+      "joined_writes": []
+    },
+    "rename": {
+      "step": 7,
+      "result": "renamed Tracer M1",
+      "actions": 30,
+      "expected_function_id": "function:348389e6924deb31f91c5d32cce54049ff9abb71061655c299e6cfc4957e1491:1876:1902",
+      "handler_reproduced": true,
+      "credited_function_ids": [
+        "function:5b55f6a2a632b9afc6d3bc3e813b83fb1556b6bc3227408982f251fdc0b467d7:3599:3672",
+        "function:3bba1791a3fdf183ba30c32c208c672d1070797fec38692102eb25c78f597bf8:13949:14037",
+        "function:1ea515b6ccf6f7cdaa309ee977af745b491d84055bd0d553ee76f79c5e35eb91:4872:5157",
+        "function:5b55f6a2a632b9afc6d3bc3e813b83fb1556b6bc3227408982f251fdc0b467d7:7805:7965",
+        "function:348389e6924deb31f91c5d32cce54049ff9abb71061655c299e6cfc4957e1491:671:897",
+        "function:348389e6924deb31f91c5d32cce54049ff9abb71061655c299e6cfc4957e1491:1312:1348",
+        "function:5b55f6a2a632b9afc6d3bc3e813b83fb1556b6bc3227408982f251fdc0b467d7:3869:4156",
+        "function:348389e6924deb31f91c5d32cce54049ff9abb71061655c299e6cfc4957e1491:1876:1902"
+      ],
+      "frontiers": [
+        "browser | no request observed",
+        "network | backend not instrumented"
+      ],
+      "joined_writes": []
+    },
+    "agent-create": {
+      "step": 8,
+      "result": "create clicked",
+      "actions": 26,
+      "expected_function_id": "function:8d743139e77d92b28cd8136781b34251ae924d248459cafcdbca5688fb1bab76:13140:14819",
+      "handler_reproduced": true,
+      "credited_function_ids": [
+        "function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3289:3428",
+        "function:c057074eb90d959be20f9e8d7801624cfaa20e2e8d36fad2558178c65501d329:3465:3490",
+        "function:55cdfa4e9b9cd76a31a8abb6ec207cca6b3a91d5252491d7cc409c80c6eb2272:2699:3019",
+        "function:32f0c87d989a4c84e694c5d4ad0ceb76b01e9ce94cfbc0c659234c2d334bb994:8036:8424",
+        "function:75f32896411a3ab25642d745d3682ef5fd9a661d711ad25ea95b65f896af07f3:3921:4072",
+        "function:03e1cb3bc038e969913a678f7dba70299865e9d83f2601d7e4a8a558aec974db:4516:4549",
+        "function:26049ed0174c7ccfea71e985f00ce21907cdca7207f38100812e244f1199274e:2309:2377",
+        "function:c0169f7950996fe2f5e8e81025ad13e25b144fbdb2b6c2c96b93c2af58c0b4b2:272815:273643",
+        "function:91de705a9d09aa413eb1e56614762f75457313382f64c8b189e698e83c063e35:1389:1584",
+        "function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927",
+        "function:8d743139e77d92b28cd8136781b34251ae924d248459cafcdbca5688fb1bab76:13140:14819"
+      ],
+      "frontiers": [
+        "browser | no request observed",
+        "network | backend not instrumented"
+      ],
+      "joined_writes": []
+    },
+    "agent-chat": {
+      "step": 9,
+      "result": "STOP: agent chat interaction failed",
+      "actions": 0,
+      "expected_function_id": "function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:17345:18011",
+      "handler_reproduced": false,
+      "credited_function_ids": [],
+      "frontiers": [],
+      "joined_writes": []
+    },
+    "delete": {
+      "step": 10,
+      "result": "STOP: step 9 did not complete",
+      "actions": 0,
+      "expected_function_id": "function:3dace8c0d4accdb10fae5d6fa1c4ebfae91dc12defb5c15125de63e5c908766f:2331:2656",
+      "handler_reproduced": false,
+      "credited_function_ids": [],
+      "frontiers": [],
+      "joined_writes": []
+    }
+  },
+  "mongo": null,
+  "pass": true
+}

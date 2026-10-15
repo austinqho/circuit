@@ -1,0 +1,5 @@
+{
+  "fetch": "function productTraceFetch(input, init) {\n    const incomingHeaders = new Headers(init?.headers || input?.headers || {});\n    const context = pendingRequests.get(incomingHeaders.ge",
+  "xhrOpen": "function productTraceOpen(method, url, ...rest) {\n    this.__productTraceRequest = { method, url, traceparent: null };\n    return withTransportGuard(() => xhrOpen.call(this, method",
+  "runtime_records": 1817
+}

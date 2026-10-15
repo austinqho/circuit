@@ -1,0 +1,71 @@
+[producttrace] first-party: 49 functions instrumented; excluded functions by rule: outside repository 571; excluded modules by rule: none; include=[] exclude=["**/node_modules/**","**/vendor/**","**/dist/**","**/build/**","**/.git/**"]
+{
+ "hover_bare": [
+  {
+   "task_ms": 366,
+   "script_ms": 49,
+   "heap_mb": 2.1
+  },
+  {
+   "task_ms": 321,
+   "script_ms": 44,
+   "heap_mb": 2
+  },
+  {
+   "task_ms": 260,
+   "script_ms": 34,
+   "heap_mb": 2
+  }
+ ],
+ "hover_inst": [
+  {
+   "task_ms": 307,
+   "script_ms": 78,
+   "heap_mb": 3.4
+  },
+  {
+   "task_ms": 325,
+   "script_ms": 87,
+   "heap_mb": 3.3
+  },
+  {
+   "task_ms": 469,
+   "script_ms": 131,
+   "heap_mb": 3.4
+  }
+ ],
+ "hoverbtn_bare": [
+  {
+   "task_ms": 351,
+   "script_ms": 45,
+   "heap_mb": 2.1
+  },
+  {
+   "task_ms": 325,
+   "script_ms": 42,
+   "heap_mb": 2.1
+  },
+  {
+   "task_ms": 387,
+   "script_ms": 41,
+   "heap_mb": 2.1
+  }
+ ],
+ "hoverbtn_inst": [
+  {
+   "task_ms": 445,
+   "script_ms": 133,
+   "heap_mb": 3.3
+  },
+  {
+   "task_ms": 403,
+   "script_ms": 98,
+   "heap_mb": 3.5
+  },
+  {
+   "task_ms": 379,
+   "script_ms": 102,
+   "heap_mb": 3.5
+  }
+ ]
+}

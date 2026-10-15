@@ -1,0 +1,90 @@
+{
+  "schema": "producttrace.g2-build-gates.v1",
+  "repository": "/Users/austinho/dev/fixtures/anything-llm",
+  "session": "anything-llm",
+  "source": {
+    "commit": "ad97bc8dfcb6919f34f7d6d0c722efdda64d66d9",
+    "status_before": "",
+    "status_after": "",
+    "pass": true
+  },
+  "package": {
+    "tarball": "producttrace-0.1.0.tgz",
+    "integrity": "sha512-gPpuTe55oMnipucK6huNu+Rqgiul/IPoTQ0VKiIW3yC4CI881cxlvvm5wNNsU8+iV8pYUG0tiS/F+pxaBuhN7Q==",
+    "files": 140
+  },
+  "install": {
+    "original_config": "frontend/vite.config.js",
+    "wrapper": "/Users/austinho/dev/fixtures/.g2-work/anything-llm-mue2fcpp/install/vite.g2.config.mjs",
+    "plugin_line": "...(process.env.G2_PRODUCTTRACE === \"0\" ? [] : producttrace()),"
+  },
+  "builds": {
+    "vite": "4.5.3",
+    "disabled": {
+      "label": "disabled",
+      "dir": "/Users/austinho/dev/fixtures/.g2-work/anything-llm-mue2fcpp/dist-disabled",
+      "ms": 14147
+    },
+    "enabled": {
+      "label": "enabled",
+      "dir": "/Users/austinho/dev/fixtures/.g2-work/anything-llm-mue2fcpp/dist-enabled",
+      "ms": 124384
+    }
+  },
+  "markers": {
+    "manifest_functions": 5101,
+    "indexes_with_executable_site": 5101,
+    "indexes_with_enter_site": 4934,
+    "indexes_with_proxy_only": 167,
+    "indexes_registration_only": 0,
+    "enter_sites": 6742,
+    "proxy_sites": 1001,
+    "register_sites": 7833,
+    "indexes_with_multiple_enter_sites": 1798,
+    "register_manifest_prefixes": 57,
+    "missing": [],
+    "missing_count": 0,
+    "unmanifested": [],
+    "unmanifested_count": 0,
+    "pass": true
+  },
+  "manifest_spans": {
+    "functions": 5101,
+    "exact_function_boundary": 5101,
+    "inexact": 0,
+    "inexact_sample": []
+  },
+  "markers_disabled_build_sites": 0,
+  "playwright": {
+    "version": "1.62.1",
+    "from": "/Users/austinho/dev/trace-consolidated/.live-demo/librechat-m1",
+    "headless": true
+  },
+  "parity": {
+    "landing": "/",
+    "url_disabled": "/",
+    "url_enabled": "/",
+    "lines": 115,
+    "identical": true,
+    "control_identical": true,
+    "diff": [],
+    "control_diff": [],
+    "enabled_stamped_elements": 6,
+    "errors": {
+      "disabled": [],
+      "enabled": []
+    },
+    "pass": true
+  },
+  "smoke": {
+    "status": "ok",
+    "headless": true,
+    "function_id": "function:4990e9b08348617d740eb9591279d8a1923ddb02e18a4b551d71a761de1decf2:2314:2432",
+    "enters": 1,
+    "network_requests": 3,
+    "same_action": true,
+    "poll_unattributed": true,
+    "caused_attributed": true,
+    "stream_attributed": true
+  }
+}

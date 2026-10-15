@@ -1,0 +1,405 @@
+{
+  "schema": "producttrace.runtime-attribution-manifest.v1",
+  "first_party": {
+    "include": [],
+    "exclude": [
+      "**/node_modules/**",
+      "**/vendor/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/.git/**"
+    ],
+    "excluded_functions": {
+      "outside repository": 621
+    },
+    "excluded_modules": {}
+  },
+  "build": "b2c77c8a871f",
+  "functions": [
+    {
+      "id": "function:abba38864f1eefdd7cba63a51be44c92b8771375e3a23dc28b8aa44b3595c213:375:484",
+      "index": 0,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 375,
+        "end": 484
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-server-outbound-rvwUAH/client/dist/assets/index-V6mQ0w1T.js",
+        "start": 7643,
+        "end": 8343
+      }
+    },
+    {
+      "id": "function:abba38864f1eefdd7cba63a51be44c92b8771375e3a23dc28b8aa44b3595c213:486:3245",
+      "index": 1,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 486,
+        "end": 3245
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-server-outbound-rvwUAH/client/dist/assets/index-V6mQ0w1T.js",
+        "start": 8407,
+        "end": 14748
+      }
+    },
+    {
+      "id": "function:abba38864f1eefdd7cba63a51be44c92b8771375e3a23dc28b8aa44b3595c213:633:822",
+      "index": 2,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 633,
+        "end": 822
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-server-outbound-rvwUAH/client/dist/assets/index-V6mQ0w1T.js",
+        "start": 8666,
+        "end": 9110
+      }
+    },
+    {
+      "id": "function:abba38864f1eefdd7cba63a51be44c92b8771375e3a23dc28b8aa44b3595c213:825:1034",
+      "index": 3,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 825,
+        "end": 1034
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-server-outbound-rvwUAH/client/dist/assets/index-V6mQ0w1T.js",
+        "start": 9185,
+        "end": 9678
+      }
+    },
+    {
+      "id": "function:abba38864f1eefdd7cba63a51be44c92b8771375e3a23dc28b8aa44b3595c213:1037:1195",
+      "index": 4,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1037,
+        "end": 1195
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-server-outbound-rvwUAH/client/dist/assets/index-V6mQ0w1T.js",
+        "start": 9756,
+        "end": 10198
+      }
+    },
+    {
+      "id": "function:abba38864f1eefdd7cba63a51be44c92b8771375e3a23dc28b8aa44b3595c213:1198:1362",
+      "index": 5,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1198,
+        "end": 1362
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-server-outbound-rvwUAH/client/dist/assets/index-V6mQ0w1T.js",
+        "start": 10273,
+        "end": 10721
+      }
+    },
+    {
+      "id": "function:abba38864f1eefdd7cba63a51be44c92b8771375e3a23dc28b8aa44b3595c213:1365:1573",
+      "index": 6,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1365,
+        "end": 1573
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-server-outbound-rvwUAH/client/dist/assets/index-V6mQ0w1T.js",
+        "start": 10796,
+        "end": 11259
+      }
+    },
+    {
+      "id": "function:abba38864f1eefdd7cba63a51be44c92b8771375e3a23dc28b8aa44b3595c213:1576:1720",
+      "index": 7,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1576,
+        "end": 1720
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-server-outbound-rvwUAH/client/dist/assets/index-V6mQ0w1T.js",
+        "start": 11335,
+        "end": 11763
+      }
+    },
+    {
+      "id": "function:abba38864f1eefdd7cba63a51be44c92b8771375e3a23dc28b8aa44b3595c213:3247:3395",
+      "index": 8,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 3247,
+        "end": 3395
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-server-outbound-rvwUAH/client/dist/assets/index-V6mQ0w1T.js",
+        "start": 14819,
+        "end": 15561
+      }
+    },
+    {
+      "id": "function:abba38864f1eefdd7cba63a51be44c92b8771375e3a23dc28b8aa44b3595c213:3397:3628",
+      "index": 9,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 3397,
+        "end": 3628
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-server-outbound-rvwUAH/client/dist/assets/index-V6mQ0w1T.js",
+        "start": 15629,
+        "end": 16528
+      }
+    }
+  ],
+  "placements": [
+    {
+      "index": 0,
+      "id": "placement:4df8f3760df6d4cdc07720f73e7c247dbce0b61e45228f2a51d42d21ffcefb61:402:481",
+      "key": "p_4df8f3760df6:402-481",
+      "file": "client/src/main.jsx",
+      "line": 9,
+      "tag": "nav",
+      "component": "Home",
+      "start": 402,
+      "end": 481
+    },
+    {
+      "index": 1,
+      "id": "placement:4df8f3760df6d4cdc07720f73e7c247dbce0b61e45228f2a51d42d21ffcefb61:407:424",
+      "key": "p_4df8f3760df6:407-424",
+      "file": "client/src/main.jsx",
+      "line": 9,
+      "tag": "h1",
+      "component": "Home",
+      "start": 407,
+      "end": 424
+    },
+    {
+      "index": 2,
+      "id": "placement:4df8f3760df6d4cdc07720f73e7c247dbce0b61e45228f2a51d42d21ffcefb61:424:475",
+      "key": "p_4df8f3760df6:424-475",
+      "file": "client/src/main.jsx",
+      "line": 9,
+      "tag": "Link",
+      "component": "Link",
+      "start": 424,
+      "end": 475
+    },
+    {
+      "index": 3,
+      "id": "placement:4df8f3760df6d4cdc07720f73e7c247dbce0b61e45228f2a51d42d21ffcefb61:1736:2446",
+      "key": "p_4df8f3760df6:1736-2446",
+      "file": "client/src/main.jsx",
+      "line": 44,
+      "tag": "main",
+      "component": "ProjectPage",
+      "start": 1736,
+      "end": 2446
+    },
+    {
+      "index": 4,
+      "id": "placement:4df8f3760df6d4cdc07720f73e7c247dbce0b61e45228f2a51d42d21ffcefb61:1749:1770",
+      "key": "p_4df8f3760df6:1749-1770",
+      "file": "client/src/main.jsx",
+      "line": 45,
+      "tag": "h1",
+      "component": "ProjectPage",
+      "start": 1749,
+      "end": 1770
+    },
+    {
+      "index": 5,
+      "id": "placement:4df8f3760df6d4cdc07720f73e7c247dbce0b61e45228f2a51d42d21ffcefb61:1777:1806",
+      "key": "p_4df8f3760df6:1777-1806",
+      "file": "client/src/main.jsx",
+      "line": 46,
+      "tag": "p",
+      "component": "ProjectPage",
+      "start": 1777,
+      "end": 1806
+    },
+    {
+      "index": 6,
+      "id": "placement:4df8f3760df6d4cdc07720f73e7c247dbce0b61e45228f2a51d42d21ffcefb61:1813:1904",
+      "key": "p_4df8f3760df6:1813-1904",
+      "file": "client/src/main.jsx",
+      "line": 47,
+      "tag": "button",
+      "component": "ProjectPage",
+      "start": 1813,
+      "end": 1904
+    },
+    {
+      "index": 7,
+      "id": "placement:4df8f3760df6d4cdc07720f73e7c247dbce0b61e45228f2a51d42d21ffcefb61:1911:2011",
+      "key": "p_4df8f3760df6:1911-2011",
+      "file": "client/src/main.jsx",
+      "line": 48,
+      "tag": "button",
+      "component": "ProjectPage",
+      "start": 1911,
+      "end": 2011
+    },
+    {
+      "index": 8,
+      "id": "placement:4df8f3760df6d4cdc07720f73e7c247dbce0b61e45228f2a51d42d21ffcefb61:2018:2113",
+      "key": "p_4df8f3760df6:2018-2113",
+      "file": "client/src/main.jsx",
+      "line": 49,
+      "tag": "button",
+      "component": "ProjectPage",
+      "start": 2018,
+      "end": 2113
+    },
+    {
+      "index": 9,
+      "id": "placement:4df8f3760df6d4cdc07720f73e7c247dbce0b61e45228f2a51d42d21ffcefb61:2120:2211",
+      "key": "p_4df8f3760df6:2120-2211",
+      "file": "client/src/main.jsx",
+      "line": 50,
+      "tag": "button",
+      "component": "ProjectPage",
+      "start": 2120,
+      "end": 2211
+    },
+    {
+      "index": 10,
+      "id": "placement:4df8f3760df6d4cdc07720f73e7c247dbce0b61e45228f2a51d42d21ffcefb61:2218:2312",
+      "key": "p_4df8f3760df6:2218-2312",
+      "file": "client/src/main.jsx",
+      "line": 51,
+      "tag": "button",
+      "component": "ProjectPage",
+      "start": 2218,
+      "end": 2312
+    },
+    {
+      "index": 11,
+      "id": "placement:4df8f3760df6d4cdc07720f73e7c247dbce0b61e45228f2a51d42d21ffcefb61:2319:2401",
+      "key": "p_4df8f3760df6:2319-2401",
+      "file": "client/src/main.jsx",
+      "line": 52,
+      "tag": "button",
+      "component": "ProjectPage",
+      "start": 2319,
+      "end": 2401
+    },
+    {
+      "index": 12,
+      "id": "placement:4df8f3760df6d4cdc07720f73e7c247dbce0b61e45228f2a51d42d21ffcefb61:2408:2434",
+      "key": "p_4df8f3760df6:2408-2434",
+      "file": "client/src/main.jsx",
+      "line": 53,
+      "tag": "Link",
+      "component": "Link",
+      "start": 2408,
+      "end": 2434
+    },
+    {
+      "index": 13,
+      "id": "placement:4df8f3760df6d4cdc07720f73e7c247dbce0b61e45228f2a51d42d21ffcefb61:2496:2600",
+      "key": "p_4df8f3760df6:2496-2600",
+      "file": "client/src/main.jsx",
+      "line": 59,
+      "tag": "main",
+      "component": "Archived",
+      "start": 2496,
+      "end": 2600
+    },
+    {
+      "index": 14,
+      "id": "placement:4df8f3760df6d4cdc07720f73e7c247dbce0b61e45228f2a51d42d21ffcefb61:2502:2531",
+      "key": "p_4df8f3760df6:2502-2531",
+      "file": "client/src/main.jsx",
+      "line": 59,
+      "tag": "h1",
+      "component": "Archived",
+      "start": 2502,
+      "end": 2531
+    },
+    {
+      "index": 15,
+      "id": "placement:4df8f3760df6d4cdc07720f73e7c247dbce0b61e45228f2a51d42d21ffcefb61:2531:2593",
+      "key": "p_4df8f3760df6:2531-2593",
+      "file": "client/src/main.jsx",
+      "line": 59,
+      "tag": "Link",
+      "component": "Link",
+      "start": 2531,
+      "end": 2593
+    },
+    {
+      "index": 16,
+      "id": "placement:4df8f3760df6d4cdc07720f73e7c247dbce0b61e45228f2a51d42d21ffcefb61:2637:2829",
+      "key": "p_4df8f3760df6:2637-2829",
+      "file": "client/src/main.jsx",
+      "line": 64,
+      "tag": "Switch",
+      "component": "Switch",
+      "start": 2637,
+      "end": 2829
+    },
+    {
+      "index": 17,
+      "id": "placement:4df8f3760df6d4cdc07720f73e7c247dbce0b61e45228f2a51d42d21ffcefb61:2652:2687",
+      "key": "p_4df8f3760df6:2652-2687",
+      "file": "client/src/main.jsx",
+      "line": 65,
+      "tag": "Route",
+      "component": "Route",
+      "start": 2652,
+      "end": 2687
+    },
+    {
+      "index": 18,
+      "id": "placement:4df8f3760df6d4cdc07720f73e7c247dbce0b61e45228f2a51d42d21ffcefb61:2694:2754",
+      "key": "p_4df8f3760df6:2694-2754",
+      "file": "client/src/main.jsx",
+      "line": 66,
+      "tag": "Route",
+      "component": "Route",
+      "start": 2694,
+      "end": 2754
+    },
+    {
+      "index": 19,
+      "id": "placement:4df8f3760df6d4cdc07720f73e7c247dbce0b61e45228f2a51d42d21ffcefb61:2761:2815",
+      "key": "p_4df8f3760df6:2761-2815",
+      "file": "client/src/main.jsx",
+      "line": 67,
+      "tag": "Route",
+      "component": "Route",
+      "start": 2761,
+      "end": 2815
+    },
+    {
+      "index": 20,
+      "id": "placement:4df8f3760df6d4cdc07720f73e7c247dbce0b61e45228f2a51d42d21ffcefb61:2889:2896",
+      "key": "p_4df8f3760df6:2889-2896",
+      "file": "client/src/main.jsx",
+      "line": 72,
+      "tag": "App",
+      "component": "App",
+      "start": 2889,
+      "end": 2896
+    }
+  ],
+  "placement_short_key_collisions": 0,
+  "library_boundaries": []
+}

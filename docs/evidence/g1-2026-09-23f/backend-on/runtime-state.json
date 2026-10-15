@@ -1,0 +1,5 @@
+{
+  "fetch": "function productTraceRuntimeFetch(input, init) {\n    const active = ownable(settleAmbient()) ? current : null;\n    const url = String(input?.url || input || '');\n    const internal",
+  "xhrOpen": "function productTraceRuntimeOpen(method, url, ...rest) { this.__productTraceRuntimeRequest = { method, url, headers: {} }; return xhrOpen.call(this, method, url, ...rest); }",
+  "runtime_records": 128038
+}

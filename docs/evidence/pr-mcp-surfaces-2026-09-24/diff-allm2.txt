@@ -1,0 +1,65 @@
+{
+ "compared": 93,
+ "missing_in_branch": [],
+ "only_in_branch": []
+}
+
+## recent_actions
+added        4  $.actions[].outcome.deferred  e.g. {"ms_after_dispatch":62,"via":"effect","continuation_kind":"mount_effect","continuation_id":"continuation:action:muful0p9:42:mount_effect:4709","dispatch_event":"click","basis":"the request's code ran on a mount_effect c
+changed      6  $.actions[].summary  e.g. {"main":"submit action:muful245:65 → handler handleUpdate frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → 1 request: (1) update frontend/src/models/workspace.js:26 → POST /api/workspace/tracer-g2/up
+changed      6  $.summaries[]  e.g. {"main":"submit action:muful245:65 → handler handleUpdate frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → 1 request: (1) update frontend/src/models/workspace.js:26 → POST /api/workspace/tracer-g2/up
+
+## action_chain
+added        4  $.outcome.deferred  e.g. {"ms_after_dispatch":62,"via":"effect","continuation_kind":"mount_effect","continuation_id":"continuation:action:muful0p9:42:mount_effect:4709","dispatch_event":"click","basis":"the request's code ran on a mount_effect c
+added       27  $.segments[].browser_status  e.g. 200
+changed     21  $.segments[].deferred  e.g. {"main":null,"branch":{"ms_after_dispatch":9,"via":"effect","continuation_kind":"mount_effect","continuation_id":"continuation:action:muful0p9:42:mount_effect:4062","dispatch_event":"click","basis":"the request's code ra
+added       27  $.segments[].request_fields  e.g. null
+added       27  $.segments[].response_fields  e.g. null
+added       14  $.segments[].status_mismatch  e.g. {"browser":200,"server":304,"reason":"server answered 304; the browser reported 200 from its cache"}
+changed     24  $.segments[].summary  e.g. {"main":"update frontend/src/models/workspace.js:26 → POST /api/workspace/tracer-g2/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous> [responded 200; no effect evidence; res
+changed      7  $.summary  e.g. {"main":"submit action:muful245:65 → handler handleUpdate frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → 1 request: (1) update frontend/src/models/workspace.js:26 → POST /api/workspace/tracer-g2/up
+added        2  $.unlinked.requests[].body  e.g. null
+added        2  $.unlinked.requests[].browser_status  e.g. 503
+added        2  $.unlinked.requests[].request_fields  e.g. null
+added        2  $.unlinked.requests[].response_body  e.g. {"direction":"response","content_type":"text/plain; charset=utf-8","bytes":19,"truncated":false,"captured":true,"format":"text","status":503,"redactions":0,"ids":{},"shape":"text","text_preview":"Service Unavailable"}
+added        2  $.unlinked.requests[].response_fields  e.g. null
+added        1  $.unlinked.requests[].status_mismatch  e.g. {"browser":200,"server":304,"reason":"server answered 304; the browser reported 200 from its cache"}
+
+## element_history
+added        4  $.actions[].outcome.deferred  e.g. {"ms_after_dispatch":62,"via":"effect","continuation_kind":"mount_effect","continuation_id":"continuation:action:muful0p9:42:mount_effect:4709","dispatch_event":"click","basis":"the request's code ran on a mount_effect c
+added       27  $.actions[].segments[].browser_status  e.g. 200
+changed     21  $.actions[].segments[].deferred  e.g. {"main":null,"branch":{"ms_after_dispatch":9,"via":"effect","continuation_kind":"mount_effect","continuation_id":"continuation:action:muful0p9:42:mount_effect:4062","dispatch_event":"click","basis":"the request's code ra
+added       27  $.actions[].segments[].request_fields  e.g. null
+added       27  $.actions[].segments[].response_fields  e.g. null
+added       14  $.actions[].segments[].status_mismatch  e.g. {"browser":200,"server":304,"reason":"server answered 304; the browser reported 200 from its cache"}
+changed     24  $.actions[].segments[].summary  e.g. {"main":"update frontend/src/models/workspace.js:26 → POST /api/workspace/tracer-g2/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous> [responded 200; no effect evidence; res
+changed      6  $.actions[].summary  e.g. {"main":"submit action:muful245:65 → handler handleUpdate frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → 1 request: (1) update frontend/src/models/workspace.js:26 → POST /api/workspace/tracer-g2/up
+added        5  $.attempts[].outcome.deferred  e.g. {"ms_after_dispatch":62,"via":"effect","continuation_kind":"mount_effect","continuation_id":"continuation:action:muful0p9:42:mount_effect:4709","dispatch_event":"click","basis":"the request's code ran on a mount_effect c
+added       37  $.attempts[].segments[].browser_status  e.g. 200
+changed     29  $.attempts[].segments[].deferred  e.g. {"main":null,"branch":{"ms_after_dispatch":9,"via":"effect","continuation_kind":"mount_effect","continuation_id":"continuation:action:muful0p9:42:mount_effect:4062","dispatch_event":"click","basis":"the request's code ra
+added       37  $.attempts[].segments[].request_fields  e.g. null
+added       37  $.attempts[].segments[].response_fields  e.g. null
+added       17  $.attempts[].segments[].status_mismatch  e.g. {"browser":200,"server":304,"reason":"server answered 304; the browser reported 200 from its cache"}
+changed     34  $.attempts[].segments[].summary  e.g. {"main":"update frontend/src/models/workspace.js:26 → POST /api/workspace/tracer-g2/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous> [responded 200; no effect evidence; res
+changed      8  $.attempts[].summary  e.g. {"main":"submit action:muful245:65 → handler handleUpdate frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → 1 request: (1) update frontend/src/models/workspace.js:26 → POST /api/workspace/tracer-g2/up
+changed      6  $.summaries[]  e.g. {"main":"submit action:muful245:65 → handler handleUpdate frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → 1 request: (1) update frontend/src/models/workspace.js:26 → POST /api/workspace/tracer-g2/up
+changed      8  $.summary  e.g. {"main":"3 action(s) in 1 attempt(s) on element frontend/src/components/lib/CTAButton/index.jsx:8; newest: submit action:muful245:65 → handler handleUpdate frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx
+
+## page_requests
+added      115  $.requests[].body  e.g. null
+added      115  $.requests[].browser_status  e.g. 200
+added      115  $.requests[].deferred  e.g. null
+added      115  $.requests[].request_fields  e.g. null
+added      115  $.requests[].response_body  e.g. {"direction":"response","content_type":"application/json; charset=utf-8","bytes":27,"truncated":false,"captured":true,"format":"json","status":200,"redactions":0,"ids":{},"shape":"object","fields":{"onboardingComplete":t
+added      115  $.requests[].response_fields  e.g. null
+added       60  $.requests[].status_mismatch  e.g. {"browser":200,"server":304,"reason":"server answered 304; the browser reported 200 from its cache"}
+changed     75  $.requests[].summary  e.g. {"main":"18:10:33.884 GET /api/setup-complete [none: no user action; issuer not recorded (runtime before 2026-09-24)] → route /api/setup-complete 200 → server <anonymous> [responded 200; no effect evidence]","branch":"18
+changed      2  $.summary  e.g. {"main":"71 request(s): 27 attributed to a user action, 44 with no action\n- GET /api/setup-complete ×17 (4 action, 13 none; statuses 200×1, 304×16); interval median 15 ms (min 0, max 3118, 15 gaps, each within one page)
+
+## text
+tools/list {"calls":1,"first_line_changed":0,"lines_added":0,"lines_removed":0,"examples":[]}
+recent_actions {"calls":1,"first_line_changed":0,"lines_added":0,"lines_removed":0,"examples":[]}
+action_chain {"calls":68,"first_line_changed":6,"lines_added":7,"lines_removed":7,"examples":[{"main":"submit action:muful245:65 → handler handleUpdate frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → 1 request: (1) update frontend/src/models/workspace.js:26 → POST /api/workspace/tracer-g2/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous> [responded 200; no effect evidence; response ids workspace.id=1, workspace.router_id=null] [ou","branch":"submit action:muful245:65 → handler handleUpdate frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → 1 request: (1) update frontend/src/models/workspace.js:26 → POST /api/workspace/tracer-g2/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous> [responded 200; no effect evidence; sent name: Tracer G2 renamed; response ids workspace.id=1,"},{"main":"click action:muful0p9:42 → handler <anonymous> frontend/src/components/Sidebar/ActiveWorkspaces/index.jsx:187 → 11 requests: (1) <anonymous> frontend/src/components/PrivateRoute/index.jsx:20 → validateSession frontend/src/components/PrivateRoute/index.jsx:21 → isOnboardingComplete frontend/src/models/system.js:40 → GET /api/onboarding → route /api/onboarding 304 → server <anonymous> [responded 304","branch":"click action:muful0p9:42 → handler <anonymous> frontend/src/components/Sidebar/ActiveWorkspaces/index.jsx:187 → 11 requests: (1) <anonymous> frontend/src/components/PrivateRo
+element_history {"calls":14,"first_line_changed":8,"lines_added":8,"lines_removed":8,"examples":[{"main":"3 action(s) in 1 attempt(s) on element frontend/src/components/lib/CTAButton/index.jsx:8; newest: submit action:muful245:65 → handler handleUpdate frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → 1 request: (1) update frontend/src/models/workspace.js:26 → POST /api/workspace/tracer-g2/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymo","branch":"3 action(s) in 1 attempt(s) on element frontend/src/components/lib/CTAButton/index.jsx:8; newest: submit action:muful245:65 → handler handleUpdate frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → 1 request: (1) update frontend/src/models/workspace.js:26 → POST /api/workspace/tracer-g2/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymo"},{"main":"20 action(s) in 1 attempt(s) on element frontend/src/pages/WorkspaceSettings/GeneralAppearance/WorkspaceName/index.jsx:15; newest: change action:muful244:62 → handler handleUpdate frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → 1 request: (1) update frontend/src/models/workspace.js:26 → POST /api/workspace/tracer-g2/update → route /api/workspace/:slug/update 200 → server vali","branch":"20 action(s) in 1 attempt(s) on element frontend/src/pages/WorkspaceSettings/GeneralAppearance/WorkspaceName/index.jsx:15; newest: change action:muful244:62 → handler handleU
+resolve_element {"calls":7,"first_line_changed":0,"lines_added":0,"lines_removed":0,"examples":[]}
+page_requests {"calls":2,"first_line_changed":0,"lines_added":28,"lines_removed":28,"examples":[]}

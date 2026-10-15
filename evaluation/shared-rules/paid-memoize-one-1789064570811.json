@@ -1,0 +1,375 @@
+{
+  "schema": "producttrace.shared-rule-paid.v1",
+  "case_id": "memoize-one",
+  "passed": false,
+  "frozen": {
+    "schema": "producttrace.shared-rule-freeze.v1",
+    "files": {
+      "analysis/library-program.mjs": "933107e263c0ae98be0eb4daa02b91a60c5b8adf46a516fa2eeaf70b9bbb274a",
+      "analysis/library-boundary.mjs": "c7e311d39b20426d109e3f8120b0d625815870abe4536f875590f390a4083217",
+      "analysis/library-program-bank.mjs": "ad159ac8fd3a9be21166c33192ed07fcc94ed34508c8da0c556adee3fee3228b",
+      "analysis/library-program-integration.mjs": "2ba75579db93f5e46259406cdd75a55a63d9d3b39295f63ca534baa3a6bd6258",
+      "authoring/library-implementation.mjs": "60d78943e20355b324d3433af5f6a1cb13a1aefa52294da187631fee71d85813",
+      "authoring/library-program-author.mjs": "a215fb9d61414f6594678effedccb752d610386f4b65a84919813472193030ec",
+      "authoring/library-program-format.mjs": "ce3904d1e64a5d76bc6819eb53ac6b99f2f6cd80189967c812685035aca56473",
+      "evaluation/shared-rules/cases.mjs": "641ba14486553126914ce119e0367c331b1c1cef05d6da902bc0e079ac05f0d8",
+      "evaluation/shared-rules/check-case.mjs": "5917df8aad16e07b4ddd9d335766a400670a1348970533f432fbe70558a90754",
+      "evaluation/shared-rules/run.mjs": "6840ed98310103ddb5cb187562c705aa978e45bf62608a5e05ee93515c677464"
+    },
+    "cases": [
+      {
+        "id": "react18-createRef",
+        "implementation_sha256": "54f589eae765267b80af66a06b6a34f764e4b5e056347c21bd65ccad71c84ffd",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react18",
+        "exportName": "createRef",
+        "scope": {
+          "callbackArguments": [],
+          "resultPaths": null,
+          "description": "No arguments; fresh reference object, own data property descriptors and extensibility. No later renderer assignment is claimed."
+        }
+      },
+      {
+        "id": "react18-isValidElement",
+        "implementation_sha256": "08668baba49448628eeeccc4d87f6e88b9dcad48911adc07675206b606a42435",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react18",
+        "exportName": "isValidElement",
+        "scope": {
+          "callbackArguments": [],
+          "resultPaths": null,
+          "description": "Finite primitive values and plain objects with own data properties, including symbol-tagged React elements. Excludes accessors, proxies and inherited properties."
+        }
+      },
+      {
+        "id": "react18-forwardRef",
+        "implementation_sha256": "5107b67c06d7096c388e40a1f66a3711809eb6af982467231cc5ecffc004cb04",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react18",
+        "exportName": "forwardRef",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": [
+            [
+              "$$typeof"
+            ],
+            [
+              "render"
+            ]
+          ],
+          "description": "Valid render functions with zero or two declared parameters. Check only the returned marker and stored render identity, and absence of callback execution during construction. Renderer execution and debug displayName behavior are outside this boundary."
+        }
+      },
+      {
+        "id": "react18-memo",
+        "implementation_sha256": "9f36a6e578b6f1860d424cd486b7097d5a4f0e14892940f4e4140e98c38089e5",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react18",
+        "exportName": "memo",
+        "scope": {
+          "callbackArguments": [
+            0,
+            1
+          ],
+          "resultPaths": [
+            [
+              "$$typeof"
+            ],
+            [
+              "type"
+            ],
+            [
+              "compare"
+            ]
+          ],
+          "description": "Valid function components, optional comparison callback. Check returned marker and exact stored type/compare identities and no construction callback. Does not claim later renderer bailout behavior or debug displayName setters."
+        }
+      },
+      {
+        "id": "react19-createRef",
+        "implementation_sha256": "ff81a3680066c565dd9723460dddf7a3ea34c1a6194e0c3c096730aedc290c4a",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react19",
+        "exportName": "createRef",
+        "scope": {
+          "callbackArguments": [],
+          "resultPaths": null,
+          "description": "No arguments; fresh reference object, own data property descriptors and extensibility. No later renderer assignment is claimed."
+        }
+      },
+      {
+        "id": "react19-isValidElement",
+        "implementation_sha256": "9acdd7a5629e1160639efbe99b922f03dd9dc919893b42ec0773e66ab0fdc4df",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react19",
+        "exportName": "isValidElement",
+        "scope": {
+          "callbackArguments": [],
+          "resultPaths": null,
+          "description": "Finite primitive values and plain objects with own data properties, including symbol-tagged React elements. Excludes accessors, proxies and inherited properties."
+        }
+      },
+      {
+        "id": "react19-forwardRef",
+        "implementation_sha256": "3398e50cbb99c848bad6cc7f89a3a4380cd5621aaaee852f302f857dd5cf0a18",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react19",
+        "exportName": "forwardRef",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": [
+            [
+              "$$typeof"
+            ],
+            [
+              "render"
+            ]
+          ],
+          "description": "Valid render functions with zero or two declared parameters. Check only the returned marker and stored render identity, and absence of callback execution during construction. Renderer execution and debug displayName behavior are outside this boundary."
+        }
+      },
+      {
+        "id": "react19-memo",
+        "implementation_sha256": "63018656760ec5ebe0d8e0c68323be1e8cce469be013ad282d8992f5f9a6d800",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react19",
+        "exportName": "memo",
+        "scope": {
+          "callbackArguments": [
+            0,
+            1
+          ],
+          "resultPaths": [
+            [
+              "$$typeof"
+            ],
+            [
+              "type"
+            ],
+            [
+              "compare"
+            ]
+          ],
+          "description": "Valid function components, optional comparison callback. Check returned marker and exact stored type/compare identities and no construction callback. Does not claim later renderer bailout behavior or debug displayName setters."
+        }
+      },
+      {
+        "id": "table8old-functionalUpdate",
+        "implementation_sha256": "b65b4aedd8231c1e9d147ce26b516191c65bd4cf30dda076827d076c41ef2286",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "table8old",
+        "exportName": "functionalUpdate",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": null,
+          "description": "Two arguments: a plain value or callback, and any finite primitive/plain data value. Include callback result identity, receiver, count, and throws."
+        }
+      },
+      {
+        "id": "table8new-functionalUpdate",
+        "implementation_sha256": "cc79df283039cef02d462f8f593988ce933bb5908d912368f3fa770fa0e7a33e",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "table8new",
+        "exportName": "functionalUpdate",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": null,
+          "description": "Two arguments: a plain value or callback, and any finite primitive/plain data value. Include callback result identity, receiver, count, and throws."
+        }
+      },
+      {
+        "id": "async2-apply",
+        "implementation_sha256": "dd4612ab26ffd914b10a5961d084ef0d0e256c2f7eca17d47ce3a9bdd6dc7c96",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "async2",
+        "exportName": "apply",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": null,
+          "description": "A callback and any finite list of preset plain values; invoke the returned function repeatedly with changed values and receivers. Include callback forwarding, results, throws, interleaved instances and no idle calls. Returned function custom properties are outside the boundary."
+        }
+      },
+      {
+        "id": "async3-apply",
+        "implementation_sha256": "a4037efa1508f84b3aa3236dfa7ea5740b19b1407d7e3daa733e193ad6a1b5c2",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "async3",
+        "exportName": "apply",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": null,
+          "description": "A callback and any finite list of preset plain values; invoke the returned function repeatedly with changed values and receivers. Include callback forwarding, results, throws, interleaved instances and no idle calls. Returned function custom properties are outside the boundary."
+        }
+      },
+      {
+        "id": "once",
+        "implementation_sha256": "ac5abf9604c0e4e455a2f7f75917d5a9ae887bc6c54870bb480883ad392c94bd",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "once",
+        "exportName": "default",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": null,
+          "description": "A callback with no custom properties. Repeated calls to the returned function, changed arguments and receivers, independent instances, callback returns and throws. Returned function custom properties are outside the boundary."
+        }
+      },
+      {
+        "id": "queue-microtask",
+        "implementation_sha256": "277c49c585d4077aa1a1722d204858cc550561a6ac1db1c995312c2e2dae1ab5",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "queue-microtask",
+        "exportName": "default",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": null,
+          "description": "One callback, normal return only. Observe immediate return, then callbacks through a host-controlled microtask checkpoint and a bounded idle window. No arbitrary future timing claim."
+        }
+      },
+      {
+        "id": "memoize-one",
+        "implementation_sha256": "eb63878c43572d6764e9594fe4304475e2ad3d6b0e839870f9e6895331bc0d32",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "memoize-one",
+        "exportName": "default",
+        "scope": {
+          "callbackArguments": [
+            0,
+            1
+          ],
+          "resultPaths": null,
+          "description": "A result callback and optional custom argument-comparison callback. Invoke the returned function with finite primitive/plain-data arguments, changed lengths, repeated values, NaN, signed zeros, changed receivers, returns and throws, and interleaved instances. Include custom comparator truthiness, arguments, receiver, and failure recovery. Custom properties of the returned function are excluded."
+        }
+      }
+    ]
+  },
+  "active_engine": {
+    "analysis/library-program.mjs": "933107e263c0ae98be0eb4daa02b91a60c5b8adf46a516fa2eeaf70b9bbb274a",
+    "analysis/library-boundary.mjs": "c7e311d39b20426d109e3f8120b0d625815870abe4536f875590f390a4083217",
+    "analysis/library-program-bank.mjs": "ad159ac8fd3a9be21166c33192ed07fcc94ed34508c8da0c556adee3fee3228b",
+    "analysis/library-program-integration.mjs": "2ba75579db93f5e46259406cdd75a55a63d9d3b39295f63ca534baa3a6bd6258",
+    "authoring/library-implementation.mjs": "60d78943e20355b324d3433af5f6a1cb13a1aefa52294da187631fee71d85813",
+    "authoring/library-program-author.mjs": "a215fb9d61414f6594678effedccb752d610386f4b65a84919813472193030ec",
+    "authoring/library-program-format.mjs": "ce3904d1e64a5d76bc6819eb53ac6b99f2f6cd80189967c812685035aca56473",
+    "evaluation/shared-rules/cases.mjs": "641ba14486553126914ce119e0367c331b1c1cef05d6da902bc0e079ac05f0d8",
+    "evaluation/shared-rules/check-case.mjs": "5917df8aad16e07b4ddd9d335766a400670a1348970533f432fbe70558a90754",
+    "evaluation/shared-rules/run.mjs": "6840ed98310103ddb5cb187562c705aa978e45bf62608a5e05ee93515c677464"
+  },
+  "local_gate": {
+    "passed": true,
+    "source_sha256": "15f253d6177d21d2a305fea08782e361a20dd2bc55fa2aff9a067fe66336c41b",
+    "checked_at": "2026-09-10T18:21:51.213Z",
+    "checks": [
+      {
+        "name": "regressions",
+        "exit_status": 0,
+        "output_sha256": "4ff9ee642329d4f12b7cce1e034ad476dbda7b0d0fdc8b6d7289be517d177598"
+      },
+      {
+        "name": "real_libraries",
+        "exit_status": 0,
+        "output_sha256": "e1fc9c1d867fd718507837f901d3b6f5e8da2130356020bfc3db3cadcdd7bcfc"
+      },
+      {
+        "name": "actual_http",
+        "exit_status": 0,
+        "output_sha256": "a1d2acfcde84d6e86eb5225ad630a48eb30f57c258708c5b9222111ff487ade6"
+      }
+    ]
+  },
+  "model": "gpt-5.4",
+  "reasoning_effort": "low",
+  "resumed_from": null,
+  "implementation_sha256": "eb63878c43572d6764e9594fe4304475e2ad3d6b0e839870f9e6895331bc0d32",
+  "implementation": {
+    "schema": "producttrace.library-implementation.v1",
+    "specifier": "memoize-one",
+    "export_name": "default",
+    "runtime": {
+      "host": "node",
+      "mode": "development",
+      "entry": "node_modules/memoize-one/dist/memoize-one.cjs.js"
+    },
+    "packages": [
+      {
+        "path": "node_modules/memoize-one",
+        "name": "memoize-one",
+        "version": "5.2.1",
+        "integrity": "sha512-zYiwtZUcYyXKo/np96AGZAckk+FWWsUdJ3cHGGmld7+AhvcWmQyGCYUh1hc4Q/pkOhb65dQR/pqCyK0cOaHz4Q==",
+        "manifest_sha256": "42f75cce8e78478ae86f07c881c8f52073c2698aaf17b2fdae916bea56fc3925"
+      }
+    ],
+    "files": [
+      {
+        "path": "node_modules/memoize-one/dist/memoize-one.cjs.js",
+        "sha256": "92cb0c0ab5213bc04496269fd7aeafc411c8ef2e1c6575bcd605452c0ab8b665"
+      }
+    ],
+    "source_status": "ready_for_scoped_proposal",
+    "source_reason": null,
+    "scope": "runtime_export_and_loaded_initialization_dependencies",
+    "implementation": "function memoizeOne(resultFn, isEqual) {\n    if (isEqual === void 0) { isEqual = areInputsEqual; }\n    var lastThis;\n    var lastArgs = [];\n    var lastResult;\n    var calledOnce = false;\n    function memoized() {\n        var newArgs = [];\n        for (var _i = 0; _i < arguments.length; _i++) {\n            newArgs[_i] = arguments[_i];\n        }\n        if (calledOnce && lastThis === this && isEqual(newArgs, lastArgs)) {\n            return lastResult;\n        }\n        lastResult = resultFn.apply(this, newArgs);\n        calledOnce = true;\n        lastThis = this;\n        lastArgs = newArgs;\n        return lastResult;\n    }\n    return memoized;\n}",
+    "slices": [
+      {
+        "file": "node_modules/memoize-one/dist/memoize-one.cjs.js",
+        "start": 0,
+        "end": 1305,
+        "source": "'use strict';\n\nvar safeIsNaN = Number.isNaN ||\n    function ponyfill(value) {\n        return typeof value === 'number' && value !== value;\n    };\nfunction isEqual(first, second) {\n    if (first === second) {\n        return true;\n    }\n    if (safeIsNaN(first) && safeIsNaN(second)) {\n        return true;\n    }\n    return false;\n}\nfunction areInputsEqual(newInputs, lastInputs) {\n    if (newInputs.length !== lastInputs.length) {\n        return false;\n    }\n    for (var i = 0; i < newInputs.length; i++) {\n        if (!isEqual(newInputs[i], lastInputs[i])) {\n            return false;\n        }\n    }\n    return true;\n}\n\nfunction memoizeOne(resultFn, isEqual) {\n    if (isEqual === void 0) { isEqual = areInputsEqual; }\n    var lastThis;\n    var lastArgs = [];\n    var lastResult;\n    var calledOnce = false;\n    function memoized() {\n        var newArgs = [];\n        for (var _i = 0; _i < arguments.length; _i++) {\n            newArgs[_i] = arguments[_i];\n        }\n        if (calledOnce && lastThis === this && isEqual(newArgs, lastArgs)) {\n            return lastResult;\n        }\n        lastResult = resultFn.apply(this, newArgs);\n        calledOnce = true;\n        lastThis = this;\n        lastArgs = newArgs;\n        return lastResult;\n    }\n    return memoized;\n}\n\nmodule.exports = memoizeOne;\n"
+      }
+    ]
+  },
+  "result": {
+    "status": "frontier",
+    "reason": "provider_failure",
+    "detail": "overnight_deadline_reached",
+    "attempts": [
+      {
+        "number": 1,
+        "proposal": null,
+        "provider_error": "overnight_deadline_reached",
+        "finish_reason": null,
+        "usage": null,
+        "cost_usd": null,
+        "latency_ms": null,
+        "prompt_sha256": "c7bf406cd675cddce1559067742515a8217acfeaaf36e406d4fc7fdfd8e4b888",
+        "check": {
+          "status": "frontier",
+          "stage": "provider",
+          "reason": "provider_failure"
+        }
+      }
+    ]
+  },
+  "integration": null,
+  "output": "paid-memoize-one-1789064570811.json"
+}

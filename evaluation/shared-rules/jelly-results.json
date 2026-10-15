@@ -1,0 +1,91 @@
+{
+  "tool": "Jelly",
+  "version": "0.13.0",
+  "fixture_sha256": "d7d4ac5a06f6708fe1ed95072b0c3c1509d429ca5b2fb7e57194cfe5c124e8b6",
+  "dependency_policy": "included",
+  "raw_graph_sha256": "65709bc3f41b94defcd4014a9eccd111986b2b5e482f8e41a3daa15884d91de7",
+  "analysis_time_ms": 290,
+  "packages": 5,
+  "modules": 35,
+  "functions": 1059,
+  "warnings": 180,
+  "errors": 0,
+  "main_calls": [
+    {
+      "call": "0:5:15:5:27",
+      "targets": [
+        {
+          "id": "339",
+          "location": "4:19:3:32:4",
+          "file": "node_modules/wrappy/wrappy.js"
+        },
+        {
+          "id": "5",
+          "location": "1:22:11:26:4",
+          "file": "node_modules/once/once.js"
+        },
+        {
+          "id": "7",
+          "location": "1:32:11:37:4",
+          "file": "node_modules/once/once.js"
+        }
+      ]
+    },
+    {
+      "call": "0:6:1:6:15",
+      "targets": [
+        {
+          "id": "5",
+          "location": "1:22:11:26:4",
+          "file": "node_modules/once/once.js"
+        },
+        {
+          "id": "7",
+          "location": "1:32:11:37:4",
+          "file": "node_modules/once/once.js"
+        }
+      ]
+    },
+    {
+      "call": "0:7:16:7:39",
+      "targets": [
+        {
+          "id": "10",
+          "location": "2:52:5:54:6",
+          "file": "node_modules/async3/dist/async.js"
+        }
+      ]
+    },
+    {
+      "call": "0:8:1:8:17",
+      "targets": [
+        {
+          "id": "11",
+          "location": "2:53:16:53:56",
+          "file": "node_modules/async3/dist/async.js"
+        }
+      ]
+    },
+    {
+      "call": "0:9:1:9:34",
+      "targets": [
+        {
+          "id": "956",
+          "location": "24:19:1:21:2",
+          "file": "node_modules/table8old/build/lib/utils.js"
+        }
+      ]
+    }
+  ],
+  "target_callback_callers": [
+    {
+      "call": "2:53:33:53:56",
+      "file": "node_modules/async3/dist/async.js"
+    },
+    {
+      "call": "24:20:42:20:56",
+      "file": "node_modules/table8old/build/lib/utils.js"
+    }
+  ],
+  "conclusion": "Found callback edges through async.apply and TanStack functionalUpdate. once has multiple returned candidates and no recorded edge to target in this graph. Static candidates are useful source-discovery hints, not evidence of actual execution or complete coverage."
+}

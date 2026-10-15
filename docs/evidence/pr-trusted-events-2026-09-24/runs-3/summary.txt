@@ -1,0 +1,15 @@
+trusted-events 1 exit 0
+trusted-events 2 exit 0
+trusted-events 3 exit 0
+episode-focus 1 exit 0
+episode-focus 2 exit 0
+episode-focus 3 exit 0
+continuations-neutral exit 0
+outcome-labels exit 0
+mcp-gaps exit 0
+body-capture exit 0
+shadow-dom-context exit 0
+no-cross-control-neutral exit 0
+d12 exit 0
+g4 exit 0
+DONE

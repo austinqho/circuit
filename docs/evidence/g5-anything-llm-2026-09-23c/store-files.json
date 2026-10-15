@@ -1,0 +1,38 @@
+[
+  {
+    "file": "store/records.jsonl.gz",
+    "source": ".tracer/records.jsonl",
+    "bytes": 4228101,
+    "sha256": "ca6e540986e5069bcc2ff00250c149b26b9cee6db9834c9b20eaafe4a9b317a7",
+    "rows": 2644,
+    "gz_bytes": 120451,
+    "gz_sha256": "84d38b56d72ce8e578a42e4b68904fb663c6b6f3b808de09d34fbdc8afcacbd7"
+  },
+  {
+    "file": "store/spans.jsonl.gz",
+    "source": ".tracer/spans.jsonl",
+    "bytes": 316079,
+    "sha256": "67d03ec0cd9ea5f20b94f295b92ac2c99bbaec58c15399a9f701e016e5726044",
+    "rows": 465,
+    "gz_bytes": 17174,
+    "gz_sha256": "49bf2cd7866af6eb728be722e22bd14aa233281e8d824437ef41d22cc8cb728a"
+  },
+  {
+    "file": "store/runs.jsonl.gz",
+    "source": ".tracer/runs.jsonl",
+    "bytes": 1192,
+    "sha256": "dca18df038b3abf9d76b07f738a0b0b591b8bcfa922effed21e6851828189be2",
+    "rows": 1,
+    "gz_bytes": 510,
+    "gz_sha256": "5e519220dc2f498ad064284937abccdbd0fa0693f349f7c924ed325b4185f2ca"
+  },
+  {
+    "file": "store/manifests/e061322a6809.json.gz",
+    "source": ".tracer/manifests/e061322a6809.json",
+    "bytes": 4131155,
+    "sha256": "1166a7bd65c54170ebf9f2c4ef850af4f0ed7a6d8f3689346f52dd3025378862",
+    "rows": null,
+    "gz_bytes": 599902,
+    "gz_sha256": "b78963d7c52f49e9242a49ebf0c5eaa33351da12db26eb3d247295d38d31a99a"
+  }
+]

@@ -1,0 +1,253 @@
+
+PASS R0 the pages ran without errors
+PASS run 1 K1 capture.page lists the discovered kinds (on* handlers + focusin/focusout/composition), model version 1
+PASS run 1 K2 every kind a row was recorded for is a listened kind, and the summary counts match the rows
+PASS run 1 D1 the drag's request is owned by the recorded pointerup (window listener from an effect), in the canvas gesture
+PASS run 1 D2 the same gesture holds the pointerdown (buttons 1, press) and one coalesced pointermove range (count >= 8, bounds span the drag)
+PASS run 1 D3 pointer capture is recorded (gotpointercapture on the canvas, same gesture)
+PASS run 1 U1 the upload is owned by the trusted change on the hidden file input (1 file, text/plain), opened by the Upload click
+PASS run 1 U2 no row for the synthetic click on the file input; the summary counts it as untrusted
+PASS run 1 S1 the shortcut's request is owned by keydown K with ctrlKey and shiftKey
+PASS run 1 W1 the load-more request is owned by a coalesced scroll range on the feed whose close row shows the scroll passing 150
+PASS run 1 W2 coalescing: each wheel/scroll row is a range closed with a count; per kind, the close rows' counts sum to the summary's coalesced events; ranges hold fewer rows than events
+PASS run 1 C1 copy and paste are recorded as ClipboardEvent rows; paste owns its request
+PASS run 1 T1 the details request is owned by the toggle row (ToggleEvent, closed -> open)
+PASS run 1 X1 Radix Select: the trigger's pointerdown is recorded; the choice is owned by the pointerup on the portal option (Radix selects on pointerup)
+PASS run 1 X2 Radix Dialog: confirm owned by its click, Escape dismissal owned by keydown Escape
+PASS run 1 P1 native select change owns its request; typing records inputType and data (never the value)
+PASS run 1 P2 the trusted Ping owns its request; the untrusted dispatchEvent's request is unattributed and left no row
+PASS run 1 P3 every request but the untrusted one has an owner
+PASS run 1 M1 action_chain(pointerup): POST /api/drag is its request; the dispatch line names the mouse pointer
+PASS run 1 M2 action_chain(change): the upload, 1 file (text/plain), and the opened-by pointer to the Upload click
+PASS run 1 M3 the Upload click's chain lists the change under opened
+PASS run 1 M4 action_chain(keydown): "Ctrl+Shift+K", modifiers [Ctrl, Shift] (not [])
+PASS run 1 M5 action_chain(scroll range): GET /api/more; the range count equals the raw close row
+PASS run 1 M6 page_requests: totals equal the raw rows; one request with no action (the untrusted Ping)
+PASS run 1 M7 recent_actions: gesture context no episode holds is counted, not listed; include_context lists it
+PASS run 2 K1 capture.page lists the discovered kinds (on* handlers + focusin/focusout/composition), model version 1
+PASS run 2 K2 every kind a row was recorded for is a listened kind, and the summary counts match the rows
+PASS run 2 D1 the drag's request is owned by the recorded pointerup (window listener from an effect), in the canvas gesture
+PASS run 2 D2 the same gesture holds the pointerdown (buttons 1, press) and one coalesced pointermove range (count >= 8, bounds span the drag)
+PASS run 2 D3 pointer capture is recorded (gotpointercapture on the canvas, same gesture)
+PASS run 2 U1 the upload is owned by the trusted change on the hidden file input (1 file, text/plain), opened by the Upload click
+PASS run 2 U2 no row for the synthetic click on the file input; the summary counts it as untrusted
+PASS run 2 S1 the shortcut's request is owned by keydown K with ctrlKey and shiftKey
+PASS run 2 W1 the load-more request is owned by a coalesced scroll range on the feed whose close row shows the scroll passing 150
+PASS run 2 W2 coalescing: each wheel/scroll row is a range closed with a count; per kind, the close rows' counts sum to the summary's coalesced events; ranges hold fewer rows than events
+PASS run 2 C1 copy and paste are recorded as ClipboardEvent rows; paste owns its request
+PASS run 2 T1 the details request is owned by the toggle row (ToggleEvent, closed -> open)
+PASS run 2 X1 Radix Select: the trigger's pointerdown is recorded; the choice is owned by the pointerup on the portal option (Radix selects on pointerup)
+PASS run 2 X2 Radix Dialog: confirm owned by its click, Escape dismissal owned by keydown Escape
+PASS run 2 P1 native select change owns its request; typing records inputType and data (never the value)
+PASS run 2 P2 the trusted Ping owns its request; the untrusted dispatchEvent's request is unattributed and left no row
+PASS run 2 P3 every request but the untrusted one has an owner
+PASS run 2 M1 action_chain(pointerup): POST /api/drag is its request; the dispatch line names the mouse pointer
+PASS run 2 M2 action_chain(change): the upload, 1 file (text/plain), and the opened-by pointer to the Upload click
+PASS run 2 M3 the Upload click's chain lists the change under opened
+PASS run 2 M4 action_chain(keydown): "Ctrl+Shift+K", modifiers [Ctrl, Shift] (not [])
+PASS run 2 M5 action_chain(scroll range): GET /api/more; the range count equals the raw close row
+PASS run 2 M6 page_requests: totals equal the raw rows; one request with no action (the untrusted Ping)
+PASS run 2 M7 recent_actions: gesture context no episode holds is counted, not listed; include_context lists it
+PASS run 3 K1 capture.page lists the discovered kinds (on* handlers + focusin/focusout/composition), model version 1
+PASS run 3 K2 every kind a row was recorded for is a listened kind, and the summary counts match the rows
+PASS run 3 D1 the drag's request is owned by the recorded pointerup (window listener from an effect), in the canvas gesture
+PASS run 3 D2 the same gesture holds the pointerdown (buttons 1, press) and one coalesced pointermove range (count >= 8, bounds span the drag)
+PASS run 3 D3 pointer capture is recorded (gotpointercapture on the canvas, same gesture)
+PASS run 3 U1 the upload is owned by the trusted change on the hidden file input (1 file, text/plain), opened by the Upload click
+PASS run 3 U2 no row for the synthetic click on the file input; the summary counts it as untrusted
+PASS run 3 S1 the shortcut's request is owned by keydown K with ctrlKey and shiftKey
+PASS run 3 W1 the load-more request is owned by a coalesced scroll range on the feed whose close row shows the scroll passing 150
+PASS run 3 W2 coalescing: each wheel/scroll row is a range closed with a count; per kind, the close rows' counts sum to the summary's coalesced events; ranges hold fewer rows than events
+PASS run 3 C1 copy and paste are recorded as ClipboardEvent rows; paste owns its request
+PASS run 3 T1 the details request is owned by the toggle row (ToggleEvent, closed -> open)
+PASS run 3 X1 Radix Select: the trigger's pointerdown is recorded; the choice is owned by the pointerup on the portal option (Radix selects on pointerup)
+PASS run 3 X2 Radix Dialog: confirm owned by its click, Escape dismissal owned by keydown Escape
+PASS run 3 P1 native select change owns its request; typing records inputType and data (never the value)
+PASS run 3 P2 the trusted Ping owns its request; the untrusted dispatchEvent's request is unattributed and left no row
+PASS run 3 P3 every request but the untrusted one has an owner
+PASS run 3 M1 action_chain(pointerup): POST /api/drag is its request; the dispatch line names the mouse pointer
+PASS run 3 M2 action_chain(change): the upload, 1 file (text/plain), and the opened-by pointer to the Upload click
+PASS run 3 M3 the Upload click's chain lists the change under opened
+PASS run 3 M4 action_chain(keydown): "Ctrl+Shift+K", modifiers [Ctrl, Shift] (not [])
+PASS run 3 M5 action_chain(scroll range): GET /api/more; the range count equals the raw close row
+PASS run 3 M6 page_requests: totals equal the raw rows; one request with no action (the untrusted Ping)
+PASS run 3 M7 recent_actions: gesture context no episode holds is counted, not listed; include_context lists it
+{
+  "sessions": [
+    {
+      "session": "s_b78e66e9",
+      "actions": 284,
+      "ranges": 126,
+      "kinds": {
+        "pointerdown": 11,
+        "focus": 13,
+        "focusin": 13,
+        "pointerout": 1,
+        "pointerover": 1,
+        "pointerup": 11,
+        "click": 10,
+        "blur": 12,
+        "focusout": 12,
+        "mousedown": 10,
+        "selectstart": 3,
+        "mouseup": 10,
+        "keydown": 13,
+        "keyup": 13,
+        "lostpointercapture": 1,
+        "input": 5,
+        "change": 4,
+        "scrollend": 4,
+        "select": 1,
+        "beforecopy": 1,
+        "copy": 1,
+        "paste": 1,
+        "beforeinput": 3,
+        "toggle": 1,
+        "keypress": 3
+      },
+      "coalesced": {
+        "selectionchange": 6,
+        "pointerrawupdate": 20,
+        "pointerover": 19,
+        "mouseover": 20,
+        "pointermove": 20,
+        "mousemove": 20,
+        "mouseout": 17,
+        "pointerout": 16,
+        "gotpointercapture": 1,
+        "wheel": 4,
+        "scroll": 4
+      },
+      "owners": {
+        "/api/choice?value=banana": "pointerup",
+        "/api/archive": "click",
+        "/api/dialog-dismissed": "keydown",
+        "/api/drag": "pointerup",
+        "/api/upload": "change",
+        "/api/shortcut": "keydown",
+        "/api/more": "scroll (range)",
+        "/api/pasted": "paste",
+        "/api/details?open=true": "toggle",
+        "/api/size?value=l": "change",
+        "/api/ping": null
+      }
+    },
+    {
+      "session": "s_6de51292",
+      "actions": 285,
+      "ranges": 127,
+      "kinds": {
+        "pointerdown": 11,
+        "focus": 13,
+        "focusin": 13,
+        "pointerout": 1,
+        "pointerover": 1,
+        "pointerup": 11,
+        "click": 10,
+        "blur": 12,
+        "focusout": 12,
+        "mousedown": 10,
+        "selectstart": 3,
+        "mouseup": 10,
+        "keydown": 13,
+        "keyup": 13,
+        "lostpointercapture": 1,
+        "input": 5,
+        "change": 4,
+        "scrollend": 4,
+        "select": 1,
+        "beforecopy": 1,
+        "copy": 1,
+        "paste": 1,
+        "beforeinput": 3,
+        "toggle": 1,
+        "keypress": 3
+      },
+      "coalesced": {
+        "selectionchange": 7,
+        "pointerrawupdate": 20,
+        "pointerover": 19,
+        "mouseover": 20,
+        "pointermove": 20,
+        "mousemove": 20,
+        "mouseout": 17,
+        "pointerout": 16,
+        "gotpointercapture": 1,
+        "wheel": 4,
+        "scroll": 4
+      },
+      "owners": {
+        "/api/choice?value=banana": "pointerup",
+        "/api/archive": "click",
+        "/api/dialog-dismissed": "keydown",
+        "/api/drag": "pointerup",
+        "/api/upload": "change",
+        "/api/shortcut": "keydown",
+        "/api/more": "scroll (range)",
+        "/api/pasted": "paste",
+        "/api/details?open=true": "toggle",
+        "/api/size?value=l": "change",
+        "/api/ping": null
+      }
+    },
+    {
+      "session": "s_66e1353f",
+      "actions": 284,
+      "ranges": 126,
+      "kinds": {
+        "pointerdown": 11,
+        "focus": 13,
+        "focusin": 13,
+        "pointerout": 1,
+        "pointerover": 1,
+        "pointerup": 11,
+        "click": 10,
+        "blur": 12,
+        "focusout": 12,
+        "mousedown": 10,
+        "selectstart": 3,
+        "mouseup": 10,
+        "keydown": 13,
+        "keyup": 13,
+        "lostpointercapture": 1,
+        "input": 5,
+        "change": 4,
+        "scrollend": 4,
+        "select": 1,
+        "beforecopy": 1,
+        "copy": 1,
+        "paste": 1,
+        "beforeinput": 3,
+        "toggle": 1,
+        "keypress": 3
+      },
+      "coalesced": {
+        "selectionchange": 6,
+        "pointerrawupdate": 20,
+        "pointerover": 19,
+        "mouseover": 20,
+        "pointermove": 20,
+        "mousemove": 20,
+        "mouseout": 17,
+        "pointerout": 16,
+        "gotpointercapture": 1,
+        "wheel": 4,
+        "scroll": 4
+      },
+      "owners": {
+        "/api/choice?value=banana": "pointerup",
+        "/api/archive": "click",
+        "/api/dialog-dismissed": "keydown",
+        "/api/drag": "pointerup",
+        "/api/upload": "change",
+        "/api/shortcut": "keydown",
+        "/api/more": "scroll (range)",
+        "/api/pasted": "paste",
+        "/api/details?open=true": "toggle",
+        "/api/size?value=l": "change",
+        "/api/ping": null
+      }
+    }
+  ]
+}
+73/73 checks pass over 3 page loads; store /var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/tracer-trusted-events-store-QioNkJ

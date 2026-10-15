@@ -1,0 +1,2847 @@
+{
+  "schema": "producttrace.runtime-attribution-manifest.v1",
+  "first_party": {
+    "include": [],
+    "exclude": [
+      "**/node_modules/**",
+      "**/vendor/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/.git/**"
+    ],
+    "excluded_functions": {
+      "**/vendor/**": 7,
+      "outside repository": 1664
+    },
+    "excluded_modules": {
+      "**/vendor/**": 2
+    }
+  },
+  "build": "4e1e16d2a8dd",
+  "functions": [
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:1151:1200",
+      "index": 0,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1151,
+        "end": 1200
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 34446,
+        "end": 34694
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:1191:1199",
+      "index": 1,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1191,
+        "end": 1199
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 34527,
+        "end": 34675
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:1299:1553",
+      "index": 2,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1299,
+        "end": 1553
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 34733,
+        "end": 36081
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:1338:1545",
+      "index": 3,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1338,
+        "end": 1545
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 34925,
+        "end": 35881
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:1350:1419",
+      "index": 4,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1350,
+        "end": 1419
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 35034,
+        "end": 35441
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:1484:1540",
+      "index": 5,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1484,
+        "end": 1540
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 35615,
+        "end": 35671
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:1625:1912",
+      "index": 6,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1625,
+        "end": 1912
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 36154,
+        "end": 37077
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:1785:1821",
+      "index": 7,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1785,
+        "end": 1821
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 36666,
+        "end": 36704
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:1984:2777",
+      "index": 8,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1984,
+        "end": 2777
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 37149,
+        "end": 39565
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:2130:2255",
+      "index": 9,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 2130,
+        "end": 2255
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 37466,
+        "end": 37909
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:2274:2382",
+      "index": 10,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 2274,
+        "end": 2382
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 37988,
+        "end": 38415
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:2571:2752",
+      "index": 11,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 2571,
+        "end": 2752
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 38974,
+        "end": 39357
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:2854:3687",
+      "index": 12,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 2854,
+        "end": 3687
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 39636,
+        "end": 42423
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:2977:3075",
+      "index": 13,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 2977,
+        "end": 3075
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 39931,
+        "end": 40348
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:3095:3150",
+      "index": 14,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 3095,
+        "end": 3150
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 40429,
+        "end": 40486
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:3171:3271",
+      "index": 15,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 3171,
+        "end": 3271
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 40568,
+        "end": 40990
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:3764:3993",
+      "index": 16,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 3764,
+        "end": 3993
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 42490,
+        "end": 43193
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:3920:3942",
+      "index": 17,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 3920,
+        "end": 3942
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 42910,
+        "end": 42932
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:4068:4585",
+      "index": 18,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 4068,
+        "end": 4585
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 43265,
+        "end": 45256
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:4158:4218",
+      "index": 19,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 4158,
+        "end": 4218
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 43510,
+        "end": 43888
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:4239:4364",
+      "index": 20,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 4239,
+        "end": 4364
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 43970,
+        "end": 44417
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:4709:5423",
+      "index": 21,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 4709,
+        "end": 5423
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 45327,
+        "end": 47456
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:4800:4881",
+      "index": 22,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 4800,
+        "end": 4881
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 45573,
+        "end": 45975
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:5213:5317",
+      "index": 23,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 5213,
+        "end": 5317
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 46926,
+        "end": 47219
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:5640:6463",
+      "index": 24,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 5640,
+        "end": 6463
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 47528,
+        "end": 49892
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:5760:5890",
+      "index": 25,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 5760,
+        "end": 5890
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 47821,
+        "end": 48286
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:6567:6643",
+      "index": 26,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 6567,
+        "end": 6643
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 50027,
+        "end": 50230
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:6592:6640",
+      "index": 27,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 6592,
+        "end": 6640
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 50097,
+        "end": 50207
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:6602:6639",
+      "index": 28,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 6602,
+        "end": 6639
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 50148,
+        "end": 50187
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:6646:6789",
+      "index": 29,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 6646,
+        "end": 6789
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 50252,
+        "end": 50904
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:6692:6710",
+      "index": 30,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 6692,
+        "end": 6710
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 50435,
+        "end": 50455
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:6753:6764",
+      "index": 31,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 6753,
+        "end": 6764
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 50657,
+        "end": 50668
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:6790:7023",
+      "index": 32,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 6790,
+        "end": 7023
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 50975,
+        "end": 52025
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:6837:6857",
+      "index": 33,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 6837,
+        "end": 6857
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 51159,
+        "end": 51181
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:6872:6955",
+      "index": 34,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 6872,
+        "end": 6955
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 51274,
+        "end": 51650
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:7133:7398",
+      "index": 35,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 7133,
+        "end": 7398
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 52095,
+        "end": 53219
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:7249:7300",
+      "index": 36,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 7249,
+        "end": 7300
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 52465,
+        "end": 52851
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:7311:7357",
+      "index": 37,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 7311,
+        "end": 7357
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 52925,
+        "end": 52971
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:7553:8205",
+      "index": 38,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 7553,
+        "end": 8205
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 53293,
+        "end": 55361
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:7658:7709",
+      "index": 39,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 7658,
+        "end": 7709
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 53571,
+        "end": 53622
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:7735:7788",
+      "index": 40,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 7735,
+        "end": 7788
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 53709,
+        "end": 53762
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:7802:7910",
+      "index": 41,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 7802,
+        "end": 7910
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 53855,
+        "end": 54381
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:7835:7867",
+      "index": 42,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 7835,
+        "end": 7867
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 54032,
+        "end": 54064
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:7882:7907",
+      "index": 43,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 7882,
+        "end": 7907
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 54143,
+        "end": 54168
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:7979:8008",
+      "index": 44,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 7979,
+        "end": 8008
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 54705,
+        "end": 54734
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:8275:8437",
+      "index": 45,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 8275,
+        "end": 8437
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 55433,
+        "end": 56363
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:8317:8408",
+      "index": 46,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 8317,
+        "end": 8408
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 55630,
+        "end": 56139
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:8350:8365",
+      "index": 47,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 8350,
+        "end": 8365
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 55807,
+        "end": 55822
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:8380:8405",
+      "index": 48,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 8380,
+        "end": 8405
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 55901,
+        "end": 55926
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:8453:8501",
+      "index": 49,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 8453,
+        "end": 8501
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 56484,
+        "end": 56824
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:8542:8839",
+      "index": 50,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 8542,
+        "end": 8839
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 56846,
+        "end": 57615
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:8584:8662",
+      "index": 51,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 8584,
+        "end": 8662
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 57025,
+        "end": 57105
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:8993:9344",
+      "index": 52,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 8993,
+        "end": 9344
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 57686,
+        "end": 58834
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:9125:9156",
+      "index": 53,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 9125,
+        "end": 9156
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 58069,
+        "end": 58102
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:9690:9896",
+      "index": 54,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 9690,
+        "end": 9896
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 58906,
+        "end": 59584
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:9773:9796",
+      "index": 55,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 9773,
+        "end": 9796
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 59144,
+        "end": 59167
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:9979:10238",
+      "index": 56,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 9979,
+        "end": 10238
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 59654,
+        "end": 60449
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:10067:10122",
+      "index": 57,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 10067,
+        "end": 10122
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 59897,
+        "end": 60016
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:10084:10121",
+      "index": 58,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 10084,
+        "end": 10121
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 59957,
+        "end": 59996
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:10323:10510",
+      "index": 59,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 10323,
+        "end": 10510
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 60519,
+        "end": 61157
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:10364:10412",
+      "index": 60,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 10364,
+        "end": 10412
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 60697,
+        "end": 60745
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:10596:10869",
+      "index": 61,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 10596,
+        "end": 10869
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 61226,
+        "end": 62154
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:10677:10721",
+      "index": 62,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 10677,
+        "end": 10721
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 61462,
+        "end": 61570
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:10691:10720",
+      "index": 63,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 10691,
+        "end": 10720
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 61519,
+        "end": 61550
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:10969:11244",
+      "index": 64,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 10969,
+        "end": 11244
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 62226,
+        "end": 63156
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:11049:11102",
+      "index": 65,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 11049,
+        "end": 11102
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 62461,
+        "end": 62578
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:11063:11101",
+      "index": 66,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 11063,
+        "end": 11101
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 62518,
+        "end": 62558
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:11389:12418",
+      "index": 67,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 11389,
+        "end": 12418
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 63228,
+        "end": 66577
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:11464:12119",
+      "index": 68,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 11464,
+        "end": 12119
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 63476,
+        "end": 65542
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:11476:11622",
+      "index": 69,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 11476,
+        "end": 11622
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 63587,
+        "end": 64075
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:11710:11865",
+      "index": 70,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 11710,
+        "end": 11865
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 64149,
+        "end": 64646
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:11992:12114",
+      "index": 71,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 11992,
+        "end": 12114
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 64887,
+        "end": 65329
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:12147:12190",
+      "index": 72,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 12147,
+        "end": 12190
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 65630,
+        "end": 65673
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:12214:12236",
+      "index": 73,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 12214,
+        "end": 12236
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 65758,
+        "end": 65842
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:12225:12235",
+      "index": 74,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 12225,
+        "end": 12235
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 65810,
+        "end": 65822
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:12489:12930",
+      "index": 75,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 12489,
+        "end": 12930
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 66654,
+        "end": 67883
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:12667:12699",
+      "index": 76,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 12667,
+        "end": 12699
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 66987,
+        "end": 67021
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:13002:13231",
+      "index": 77,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 13002,
+        "end": 13231
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 67952,
+        "end": 68841
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:13095:13120",
+      "index": 78,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 13095,
+        "end": 13120
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 68200,
+        "end": 68227
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:13323:13939",
+      "index": 79,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 13323,
+        "end": 13939
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 68916,
+        "end": 71536
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:13442:13558",
+      "index": 80,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 13442,
+        "end": 13558
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 69208,
+        "end": 69708
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:13458:13468",
+      "index": 81,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 13458,
+        "end": 13468
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 69393,
+        "end": 69405
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:13579:13635",
+      "index": 82,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 13579,
+        "end": 13635
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 69790,
+        "end": 70200
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:13598:13626",
+      "index": 83,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 13598,
+        "end": 13626
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 69954,
+        "end": 69982
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:13649:13753",
+      "index": 84,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 13649,
+        "end": 13753
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 70293,
+        "end": 70815
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:13682:13710",
+      "index": 85,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 13682,
+        "end": 13710
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 70470,
+        "end": 70498
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:13725:13750",
+      "index": 86,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 13725,
+        "end": 13750
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 70577,
+        "end": 70602
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:14074:14380",
+      "index": 87,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 14074,
+        "end": 14380
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 71614,
+        "end": 72575
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:14163:14213",
+      "index": 88,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 14163,
+        "end": 14213
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 71858,
+        "end": 71972
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:14177:14212",
+      "index": 89,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 14177,
+        "end": 14212
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 71915,
+        "end": 71952
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:14480:14781",
+      "index": 90,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 14480,
+        "end": 14781
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 72652,
+        "end": 73607
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:14575:14622",
+      "index": 91,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 14575,
+        "end": 14622
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 72902,
+        "end": 73013
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:14591:14621",
+      "index": 92,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 14591,
+        "end": 14621
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 72961,
+        "end": 72993
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:14906:15312",
+      "index": 93,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 14906,
+        "end": 15312
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 73684,
+        "end": 74873
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:15000:15050",
+      "index": 94,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 15000,
+        "end": 15050
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 73933,
+        "end": 74047
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:15014:15049",
+      "index": 95,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 15014,
+        "end": 15049
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 73990,
+        "end": 74027
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:15078:15123",
+      "index": 96,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 15078,
+        "end": 15123
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 74136,
+        "end": 74245
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:15092:15122",
+      "index": 97,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 15092,
+        "end": 15122
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 74193,
+        "end": 74225
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:15611:15714",
+      "index": 98,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 15611,
+        "end": 15714
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 75022,
+        "end": 75432
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:15718:15821",
+      "index": 99,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 15718,
+        "end": 15821
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 75435,
+        "end": 75845
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:15825:15971",
+      "index": 100,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 15825,
+        "end": 15971
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 75848,
+        "end": 76302
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:15977:16262",
+      "index": 101,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 15977,
+        "end": 16262
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 76307,
+        "end": 77343
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16060:16104",
+      "index": 102,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 16060,
+        "end": 16104
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 76546,
+        "end": 76655
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16079:16103",
+      "index": 103,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 16079,
+        "end": 16103
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 76608,
+        "end": 76634
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16350:16469",
+      "index": 104,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 16350,
+        "end": 16469
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 77414,
+        "end": 77982
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16408:16451",
+      "index": 105,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 16408,
+        "end": 16451
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 77709,
+        "end": 77752
+      }
+    },
+    {
+      "id": "function:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16471:17104",
+      "index": 106,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 16471,
+        "end": 17104
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-wp9nHQ/client/dist/assets/index-BewvZ7KO.js",
+        "start": 78048,
+        "end": 81669
+      }
+    }
+  ],
+  "placements": [
+    {
+      "index": 0,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:1705:1905",
+      "key": "p_18d69bb0aabe:1705-1905",
+      "file": "client/src/main.jsx",
+      "line": 37,
+      "tag": "label",
+      "component": "NotifyToggle",
+      "start": 1705,
+      "end": 1905
+    },
+    {
+      "index": 1,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:1719:1825",
+      "key": "p_18d69bb0aabe:1719-1825",
+      "file": "client/src/main.jsx",
+      "line": 38,
+      "tag": "input",
+      "component": "NotifyToggle",
+      "start": 1719,
+      "end": 1825,
+      "bound": {
+        "onChange": [
+          7
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:1832:1892",
+      "key": "p_18d69bb0aabe:1832-1892",
+      "file": "client/src/main.jsx",
+      "line": 39,
+      "tag": "span",
+      "component": "NotifyToggle",
+      "start": 1832,
+      "end": 1892
+    },
+    {
+      "index": 3,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:2399:2770",
+      "key": "p_18d69bb0aabe:2399-2770",
+      "file": "client/src/main.jsx",
+      "line": 51,
+      "tag": "fieldset",
+      "component": "Preferences",
+      "start": 2399,
+      "end": 2770
+    },
+    {
+      "index": 4,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:2416:2444",
+      "key": "p_18d69bb0aabe:2416-2444",
+      "file": "client/src/main.jsx",
+      "line": 52,
+      "tag": "legend",
+      "component": "Preferences",
+      "start": 2416,
+      "end": 2444
+    },
+    {
+      "index": 5,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:2451:2543",
+      "key": "p_18d69bb0aabe:2451-2543",
+      "file": "client/src/main.jsx",
+      "line": 53,
+      "tag": "input",
+      "component": "Preferences",
+      "start": 2451,
+      "end": 2543
+    },
+    {
+      "index": 6,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:2590:2744",
+      "key": "p_18d69bb0aabe:2590-2744",
+      "file": "client/src/main.jsx",
+      "line": 55,
+      "tag": "label",
+      "component": "Preferences",
+      "start": 2590,
+      "end": 2744
+    },
+    {
+      "index": 7,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:2609:2729",
+      "key": "p_18d69bb0aabe:2609-2729",
+      "file": "client/src/main.jsx",
+      "line": 55,
+      "tag": "input",
+      "component": "Preferences",
+      "start": 2609,
+      "end": 2729
+    },
+    {
+      "index": 8,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:3288:3680",
+      "key": "p_18d69bb0aabe:3288-3680",
+      "file": "client/src/main.jsx",
+      "line": 69,
+      "tag": "section",
+      "component": "Fields",
+      "start": 3288,
+      "end": 3680
+    },
+    {
+      "index": 9,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:3304:3365",
+      "key": "p_18d69bb0aabe:3304-3365",
+      "file": "client/src/main.jsx",
+      "line": 70,
+      "tag": "input",
+      "component": "Fields",
+      "start": 3304,
+      "end": 3365
+    },
+    {
+      "index": 10,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:3372:3564",
+      "key": "p_18d69bb0aabe:3372-3564",
+      "file": "client/src/main.jsx",
+      "line": 71,
+      "tag": "select",
+      "component": "Fields",
+      "start": 3372,
+      "end": 3564
+    },
+    {
+      "index": 11,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:3446:3478",
+      "key": "p_18d69bb0aabe:3446-3478",
+      "file": "client/src/main.jsx",
+      "line": 72,
+      "tag": "option",
+      "component": "Fields",
+      "start": 3446,
+      "end": 3478
+    },
+    {
+      "index": 12,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:3478:3512",
+      "key": "p_18d69bb0aabe:3478-3512",
+      "file": "client/src/main.jsx",
+      "line": 72,
+      "tag": "option",
+      "component": "Fields",
+      "start": 3478,
+      "end": 3512
+    },
+    {
+      "index": 13,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:3512:3548",
+      "key": "p_18d69bb0aabe:3512-3548",
+      "file": "client/src/main.jsx",
+      "line": 72,
+      "tag": "option",
+      "component": "Fields",
+      "start": 3512,
+      "end": 3548
+    },
+    {
+      "index": 14,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:3571:3665",
+      "key": "p_18d69bb0aabe:3571-3665",
+      "file": "client/src/main.jsx",
+      "line": 74,
+      "tag": "input",
+      "component": "Fields",
+      "start": 3571,
+      "end": 3665
+    },
+    {
+      "index": 15,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:3847:3990",
+      "key": "p_18d69bb0aabe:3847-3990",
+      "file": "client/src/main.jsx",
+      "line": 82,
+      "tag": "div",
+      "component": "RenameLabel",
+      "start": 3847,
+      "end": 3990,
+      "bound": {
+        "onDoubleClick": [
+          17
+        ]
+      }
+    },
+    {
+      "index": 16,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:4381:4578",
+      "key": "p_18d69bb0aabe:4381-4578",
+      "file": "client/src/main.jsx",
+      "line": 91,
+      "tag": "form",
+      "component": "SearchForm",
+      "start": 4381,
+      "end": 4578
+    },
+    {
+      "index": 17,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:4434:4493",
+      "key": "p_18d69bb0aabe:4434-4493",
+      "file": "client/src/main.jsx",
+      "line": 92,
+      "tag": "input",
+      "component": "SearchForm",
+      "start": 4434,
+      "end": 4493
+    },
+    {
+      "index": 18,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:4500:4537",
+      "key": "p_18d69bb0aabe:4500-4537",
+      "file": "client/src/main.jsx",
+      "line": 93,
+      "tag": "button",
+      "component": "SearchForm",
+      "start": 4500,
+      "end": 4537
+    },
+    {
+      "index": 19,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:4544:4566",
+      "key": "p_18d69bb0aabe:4544-4566",
+      "file": "client/src/main.jsx",
+      "line": 94,
+      "tag": "span",
+      "component": "SearchForm",
+      "start": 4544,
+      "end": 4566
+    },
+    {
+      "index": 20,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:4898:5416",
+      "key": "p_18d69bb0aabe:4898-5416",
+      "file": "client/src/main.jsx",
+      "line": 105,
+      "tag": "Select.Root",
+      "component": "Select.Root",
+      "start": 4898,
+      "end": 5416
+    },
+    {
+      "index": 21,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:4962:5057",
+      "key": "p_18d69bb0aabe:4962-5057",
+      "file": "client/src/main.jsx",
+      "line": 106,
+      "tag": "Select.Trigger",
+      "component": "Select.Trigger",
+      "start": 4962,
+      "end": 5057
+    },
+    {
+      "index": 22,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:4997:5040",
+      "key": "p_18d69bb0aabe:4997-5040",
+      "file": "client/src/main.jsx",
+      "line": 106,
+      "tag": "Select.Value",
+      "component": "Select.Value",
+      "start": 4997,
+      "end": 5040
+    },
+    {
+      "index": 23,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:5064:5397",
+      "key": "p_18d69bb0aabe:5064-5397",
+      "file": "client/src/main.jsx",
+      "line": 107,
+      "tag": "Select.Portal",
+      "component": "Select.Portal",
+      "start": 5064,
+      "end": 5397
+    },
+    {
+      "index": 24,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:5088:5374",
+      "key": "p_18d69bb0aabe:5088-5374",
+      "file": "client/src/main.jsx",
+      "line": 108,
+      "tag": "Select.Content",
+      "component": "Select.Content",
+      "start": 5088,
+      "end": 5374
+    },
+    {
+      "index": 25,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:5148:5348",
+      "key": "p_18d69bb0aabe:5148-5348",
+      "file": "client/src/main.jsx",
+      "line": 109,
+      "tag": "Select.Viewport",
+      "component": "Select.Viewport",
+      "start": 5148,
+      "end": 5348
+    },
+    {
+      "index": 26,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:5222:5317",
+      "key": "p_18d69bb0aabe:5222-5317",
+      "file": "client/src/main.jsx",
+      "line": 110,
+      "tag": "Select.Item",
+      "component": "Select.Item",
+      "start": 5222,
+      "end": 5317
+    },
+    {
+      "index": 27,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:5261:5303",
+      "key": "p_18d69bb0aabe:5261-5303",
+      "file": "client/src/main.jsx",
+      "line": 110,
+      "tag": "Select.ItemText",
+      "component": "Select.ItemText",
+      "start": 5261,
+      "end": 5303
+    },
+    {
+      "index": 28,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:5907:6456",
+      "key": "p_18d69bb0aabe:5907-6456",
+      "file": "client/src/main.jsx",
+      "line": 126,
+      "tag": "Dialog.Root",
+      "component": "Dialog.Root",
+      "start": 5907,
+      "end": 6456
+    },
+    {
+      "index": 29,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:5967:6007",
+      "key": "p_18d69bb0aabe:5967-6007",
+      "file": "client/src/main.jsx",
+      "line": 127,
+      "tag": "Dialog.Trigger",
+      "component": "Dialog.Trigger",
+      "start": 5967,
+      "end": 6007
+    },
+    {
+      "index": 30,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:6014:6437",
+      "key": "p_18d69bb0aabe:6014-6437",
+      "file": "client/src/main.jsx",
+      "line": 128,
+      "tag": "Dialog.Portal",
+      "component": "Dialog.Portal",
+      "start": 6014,
+      "end": 6437
+    },
+    {
+      "index": 31,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:6038:6149",
+      "key": "p_18d69bb0aabe:6038-6149",
+      "file": "client/src/main.jsx",
+      "line": 129,
+      "tag": "Dialog.Overlay",
+      "component": "Dialog.Overlay",
+      "start": 6038,
+      "end": 6149
+    },
+    {
+      "index": 32,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:6158:6414",
+      "key": "p_18d69bb0aabe:6158-6414",
+      "file": "client/src/main.jsx",
+      "line": 130,
+      "tag": "Dialog.Content",
+      "component": "Dialog.Content",
+      "start": 6158,
+      "end": 6414
+    },
+    {
+      "index": 33,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:6296:6342",
+      "key": "p_18d69bb0aabe:6296-6342",
+      "file": "client/src/main.jsx",
+      "line": 131,
+      "tag": "Dialog.Title",
+      "component": "Dialog.Title",
+      "start": 6296,
+      "end": 6342
+    },
+    {
+      "index": 34,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:6353:6388",
+      "key": "p_18d69bb0aabe:6353-6388",
+      "file": "client/src/main.jsx",
+      "line": 132,
+      "tag": "button",
+      "component": "DeleteDialog",
+      "start": 6353,
+      "end": 6388
+    },
+    {
+      "index": 35,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:6722:6786",
+      "key": "p_18d69bb0aabe:6722-6786",
+      "file": "client/src/main.jsx",
+      "line": 143,
+      "tag": "button",
+      "component": "CartButton",
+      "start": 6722,
+      "end": 6786,
+      "bound": {
+        "onClick": [
+          31
+        ]
+      }
+    },
+    {
+      "index": 36,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:6976:7020",
+      "key": "p_18d69bb0aabe:6976-7020",
+      "file": "client/src/main.jsx",
+      "line": 148,
+      "tag": "span",
+      "component": "CartBadge",
+      "start": 6976,
+      "end": 7020
+    },
+    {
+      "index": 37,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:7212:7395",
+      "key": "p_18d69bb0aabe:7212-7395",
+      "file": "client/src/main.jsx",
+      "line": 155,
+      "tag": "button",
+      "component": "ArchiveButton",
+      "start": 7212,
+      "end": 7395,
+      "bound": {
+        "onContextMenu": [
+          36
+        ],
+        "onClick": [
+          37
+        ]
+      }
+    },
+    {
+      "index": 38,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:7932:8198",
+      "key": "p_18d69bb0aabe:7932-8198",
+      "file": "client/src/main.jsx",
+      "line": 166,
+      "tag": "section",
+      "component": "FocusFields",
+      "start": 7932,
+      "end": 8198
+    },
+    {
+      "index": 39,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:7948:8031",
+      "key": "p_18d69bb0aabe:7948-8031",
+      "file": "client/src/main.jsx",
+      "line": 167,
+      "tag": "button",
+      "component": "FocusFields",
+      "start": 7948,
+      "end": 8031,
+      "bound": {
+        "onClick": [
+          44
+        ]
+      }
+    },
+    {
+      "index": 40,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:8038:8101",
+      "key": "p_18d69bb0aabe:8038-8101",
+      "file": "client/src/main.jsx",
+      "line": 168,
+      "tag": "input",
+      "component": "FocusFields",
+      "start": 8038,
+      "end": 8101
+    },
+    {
+      "index": 41,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:8108:8183",
+      "key": "p_18d69bb0aabe:8108-8183",
+      "file": "client/src/main.jsx",
+      "line": 169,
+      "tag": "input",
+      "component": "FocusFields",
+      "start": 8108,
+      "end": 8183
+    },
+    {
+      "index": 42,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:8673:8836",
+      "key": "p_18d69bb0aabe:8673-8836",
+      "file": "client/src/main.jsx",
+      "line": 184,
+      "tag": "div",
+      "component": "Scratchpad",
+      "start": 8673,
+      "end": 8836
+    },
+    {
+      "index": 43,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:9075:9337",
+      "key": "p_18d69bb0aabe:9075-9337",
+      "file": "client/src/main.jsx",
+      "line": 192,
+      "tag": "form",
+      "component": "ProfileForm",
+      "start": 9075,
+      "end": 9337,
+      "bound": {
+        "onSubmit": [
+          53
+        ]
+      }
+    },
+    {
+      "index": 44,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:9166:9224",
+      "key": "p_18d69bb0aabe:9166-9224",
+      "file": "client/src/main.jsx",
+      "line": 193,
+      "tag": "input",
+      "component": "ProfileForm",
+      "start": 9166,
+      "end": 9224
+    },
+    {
+      "index": 45,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:9231:9274",
+      "key": "p_18d69bb0aabe:9231-9274",
+      "file": "client/src/main.jsx",
+      "line": 194,
+      "tag": "button",
+      "component": "ProfileForm",
+      "start": 9231,
+      "end": 9274
+    },
+    {
+      "index": 46,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:9281:9325",
+      "key": "p_18d69bb0aabe:9281-9325",
+      "file": "client/src/main.jsx",
+      "line": 195,
+      "tag": "span",
+      "component": "ProfileForm",
+      "start": 9281,
+      "end": 9325
+    },
+    {
+      "index": 47,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:9807:9893",
+      "key": "p_18d69bb0aabe:9807-9893",
+      "file": "client/src/main.jsx",
+      "line": 208,
+      "tag": "button",
+      "component": "DualNoArg",
+      "start": 9807,
+      "end": 9893
+    },
+    {
+      "index": 48,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:10133:10235",
+      "key": "p_18d69bb0aabe:10133-10235",
+      "file": "client/src/main.jsx",
+      "line": 214,
+      "tag": "button",
+      "component": "DualEvent",
+      "start": 10133,
+      "end": 10235
+    },
+    {
+      "index": 49,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:10423:10507",
+      "key": "p_18d69bb0aabe:10423-10507",
+      "file": "client/src/main.jsx",
+      "line": 219,
+      "tag": "button",
+      "component": "DualSend",
+      "start": 10423,
+      "end": 10507
+    },
+    {
+      "index": 50,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:10732:10866",
+      "key": "p_18d69bb0aabe:10732-10866",
+      "file": "client/src/main.jsx",
+      "line": 225,
+      "tag": "div",
+      "component": "NestedMixed",
+      "start": 10732,
+      "end": 10866
+    },
+    {
+      "index": 51,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:10786:10860",
+      "key": "p_18d69bb0aabe:10786-10860",
+      "file": "client/src/main.jsx",
+      "line": 225,
+      "tag": "button",
+      "component": "NestedMixed",
+      "start": 10786,
+      "end": 10860
+    },
+    {
+      "index": 52,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:11113:11241",
+      "key": "p_18d69bb0aabe:11113-11241",
+      "file": "client/src/main.jsx",
+      "line": 231,
+      "tag": "div",
+      "component": "NestedTwice",
+      "start": 11113,
+      "end": 11241
+    },
+    {
+      "index": 53,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:11166:11235",
+      "key": "p_18d69bb0aabe:11166-11235",
+      "file": "client/src/main.jsx",
+      "line": 231,
+      "tag": "button",
+      "component": "NestedTwice",
+      "start": 11166,
+      "end": 11235
+    },
+    {
+      "index": 54,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:12247:12415",
+      "key": "p_18d69bb0aabe:12247-12415",
+      "file": "client/src/main.jsx",
+      "line": 247,
+      "tag": "section",
+      "component": "AnalyticsSection",
+      "start": 12247,
+      "end": 12415
+    },
+    {
+      "index": 55,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:12277:12338",
+      "key": "p_18d69bb0aabe:12277-12338",
+      "file": "client/src/main.jsx",
+      "line": 247,
+      "tag": "button",
+      "component": "AnalyticsSection",
+      "start": 12277,
+      "end": 12338
+    },
+    {
+      "index": 56,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:12338:12405",
+      "key": "p_18d69bb0aabe:12338-12405",
+      "file": "client/src/main.jsx",
+      "line": 247,
+      "tag": "button",
+      "component": "AnalyticsSection",
+      "start": 12338,
+      "end": 12405
+    },
+    {
+      "index": 57,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:12716:12923",
+      "key": "p_18d69bb0aabe:12716-12923",
+      "file": "client/src/main.jsx",
+      "line": 255,
+      "tag": "form",
+      "component": "RhfNamed",
+      "start": 12716,
+      "end": 12923
+    },
+    {
+      "index": 58,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:12782:12838",
+      "key": "p_18d69bb0aabe:12782-12838",
+      "file": "client/src/main.jsx",
+      "line": 256,
+      "tag": "input",
+      "component": "RhfNamed",
+      "start": 12782,
+      "end": 12838
+    },
+    {
+      "index": 59,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:12845:12884",
+      "key": "p_18d69bb0aabe:12845-12884",
+      "file": "client/src/main.jsx",
+      "line": 257,
+      "tag": "button",
+      "component": "RhfNamed",
+      "start": 12845,
+      "end": 12884
+    },
+    {
+      "index": 60,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:12891:12911",
+      "key": "p_18d69bb0aabe:12891-12911",
+      "file": "client/src/main.jsx",
+      "line": 258,
+      "tag": "span",
+      "component": "RhfNamed",
+      "start": 12891,
+      "end": 12911
+    },
+    {
+      "index": 61,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:13131:13228",
+      "key": "p_18d69bb0aabe:13131-13228",
+      "file": "client/src/main.jsx",
+      "line": 266,
+      "tag": "section",
+      "component": "WidgetCallback",
+      "start": 13131,
+      "end": 13228
+    },
+    {
+      "index": 62,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:13140:13197",
+      "key": "p_18d69bb0aabe:13140-13197",
+      "file": "client/src/main.jsx",
+      "line": 266,
+      "tag": "Widget",
+      "component": "Widget",
+      "start": 13140,
+      "end": 13197
+    },
+    {
+      "index": 63,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:13197:13218",
+      "key": "p_18d69bb0aabe:13197-13218",
+      "file": "client/src/main.jsx",
+      "line": 266,
+      "tag": "span",
+      "component": "WidgetCallback",
+      "start": 13197,
+      "end": 13218
+    },
+    {
+      "index": 64,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:13769:13936",
+      "key": "p_18d69bb0aabe:13769-13936",
+      "file": "client/src/main.jsx",
+      "line": 275,
+      "tag": "section",
+      "component": "ProgrammaticClick",
+      "start": 13769,
+      "end": 13936
+    },
+    {
+      "index": 65,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:13778:13842",
+      "key": "p_18d69bb0aabe:13778-13842",
+      "file": "client/src/main.jsx",
+      "line": 275,
+      "tag": "button",
+      "component": "ProgrammaticClick",
+      "start": 13778,
+      "end": 13842
+    },
+    {
+      "index": 66,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:13842:13926",
+      "key": "p_18d69bb0aabe:13842-13926",
+      "file": "client/src/main.jsx",
+      "line": 275,
+      "tag": "button",
+      "component": "ProgrammaticClick",
+      "start": 13842,
+      "end": 13926
+    },
+    {
+      "index": 67,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:14224:14377",
+      "key": "p_18d69bb0aabe:14224-14377",
+      "file": "client/src/main.jsx",
+      "line": 282,
+      "tag": "div",
+      "component": "CaptureAndTarget",
+      "start": 14224,
+      "end": 14377
+    },
+    {
+      "index": 68,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:14292:14371",
+      "key": "p_18d69bb0aabe:14292-14371",
+      "file": "client/src/main.jsx",
+      "line": 282,
+      "tag": "button",
+      "component": "CaptureAndTarget",
+      "start": 14292,
+      "end": 14371
+    },
+    {
+      "index": 69,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:14633:14778",
+      "key": "p_18d69bb0aabe:14633-14778",
+      "file": "client/src/main.jsx",
+      "line": 288,
+      "tag": "div",
+      "component": "BothPhasesOneDiv",
+      "start": 14633,
+      "end": 14778
+    },
+    {
+      "index": 70,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:14724:14772",
+      "key": "p_18d69bb0aabe:14724-14772",
+      "file": "client/src/main.jsx",
+      "line": 288,
+      "tag": "button",
+      "component": "BothPhasesOneDiv",
+      "start": 14724,
+      "end": 14772
+    },
+    {
+      "index": 71,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:15134:15309",
+      "key": "p_18d69bb0aabe:15134-15309",
+      "file": "client/src/main.jsx",
+      "line": 295,
+      "tag": "div",
+      "component": "CaptureOnlyAncestor",
+      "start": 15134,
+      "end": 15309
+    },
+    {
+      "index": 72,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:15230:15303",
+      "key": "p_18d69bb0aabe:15230-15303",
+      "file": "client/src/main.jsx",
+      "line": 295,
+      "tag": "button",
+      "component": "CaptureOnlyAncestor",
+      "start": 15230,
+      "end": 15303
+    },
+    {
+      "index": 73,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16115:16259",
+      "key": "p_18d69bb0aabe:16115-16259",
+      "file": "client/src/main.jsx",
+      "line": 309,
+      "tag": "div",
+      "component": "ProxyArea",
+      "start": 16115,
+      "end": 16259
+    },
+    {
+      "index": 74,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16161:16232",
+      "key": "p_18d69bb0aabe:16161-16232",
+      "file": "client/src/main.jsx",
+      "line": 309,
+      "tag": "ProxyPicker",
+      "component": "ProxyPicker",
+      "start": 16161,
+      "end": 16232
+    },
+    {
+      "index": 75,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16232:16253",
+      "key": "p_18d69bb0aabe:16232-16253",
+      "file": "client/src/main.jsx",
+      "line": 309,
+      "tag": "span",
+      "component": "ProxyArea",
+      "start": 16232,
+      "end": 16253
+    },
+    {
+      "index": 76,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16377:16466",
+      "key": "p_18d69bb0aabe:16377-16466",
+      "file": "client/src/main.jsx",
+      "line": 314,
+      "tag": "button",
+      "component": "Ping",
+      "start": 16377,
+      "end": 16466,
+      "bound": {
+        "onClick": [
+          105
+        ]
+      }
+    },
+    {
+      "index": 77,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16522:17097",
+      "key": "p_18d69bb0aabe:16522-17097",
+      "file": "client/src/main.jsx",
+      "line": 320,
+      "tag": "main",
+      "component": "App",
+      "start": 16522,
+      "end": 17097
+    },
+    {
+      "index": 78,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16535:16551",
+      "key": "p_18d69bb0aabe:16535-16551",
+      "file": "client/src/main.jsx",
+      "line": 321,
+      "tag": "NotifyToggle",
+      "component": "NotifyToggle",
+      "start": 16535,
+      "end": 16551
+    },
+    {
+      "index": 79,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16558:16573",
+      "key": "p_18d69bb0aabe:16558-16573",
+      "file": "client/src/main.jsx",
+      "line": 322,
+      "tag": "Preferences",
+      "component": "Preferences",
+      "start": 16558,
+      "end": 16573
+    },
+    {
+      "index": 80,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16580:16590",
+      "key": "p_18d69bb0aabe:16580-16590",
+      "file": "client/src/main.jsx",
+      "line": 323,
+      "tag": "Fields",
+      "component": "Fields",
+      "start": 16580,
+      "end": 16590
+    },
+    {
+      "index": 81,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16597:16612",
+      "key": "p_18d69bb0aabe:16597-16612",
+      "file": "client/src/main.jsx",
+      "line": 324,
+      "tag": "RenameLabel",
+      "component": "RenameLabel",
+      "start": 16597,
+      "end": 16612
+    },
+    {
+      "index": 82,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16619:16633",
+      "key": "p_18d69bb0aabe:16619-16633",
+      "file": "client/src/main.jsx",
+      "line": 325,
+      "tag": "SearchForm",
+      "component": "SearchForm",
+      "start": 16619,
+      "end": 16633
+    },
+    {
+      "index": 83,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16640:16655",
+      "key": "p_18d69bb0aabe:16640-16655",
+      "file": "client/src/main.jsx",
+      "line": 326,
+      "tag": "FruitSelect",
+      "component": "FruitSelect",
+      "start": 16640,
+      "end": 16655
+    },
+    {
+      "index": 84,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16662:16678",
+      "key": "p_18d69bb0aabe:16662-16678",
+      "file": "client/src/main.jsx",
+      "line": 327,
+      "tag": "DeleteDialog",
+      "component": "DeleteDialog",
+      "start": 16662,
+      "end": 16678
+    },
+    {
+      "index": 85,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16685:16699",
+      "key": "p_18d69bb0aabe:16685-16699",
+      "file": "client/src/main.jsx",
+      "line": 328,
+      "tag": "CartButton",
+      "component": "CartButton",
+      "start": 16685,
+      "end": 16699
+    },
+    {
+      "index": 86,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16699:16712",
+      "key": "p_18d69bb0aabe:16699-16712",
+      "file": "client/src/main.jsx",
+      "line": 328,
+      "tag": "CartBadge",
+      "component": "CartBadge",
+      "start": 16699,
+      "end": 16712
+    },
+    {
+      "index": 87,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16719:16736",
+      "key": "p_18d69bb0aabe:16719-16736",
+      "file": "client/src/main.jsx",
+      "line": 329,
+      "tag": "ArchiveButton",
+      "component": "ArchiveButton",
+      "start": 16719,
+      "end": 16736
+    },
+    {
+      "index": 88,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16743:16758",
+      "key": "p_18d69bb0aabe:16743-16758",
+      "file": "client/src/main.jsx",
+      "line": 330,
+      "tag": "FocusFields",
+      "component": "FocusFields",
+      "start": 16743,
+      "end": 16758
+    },
+    {
+      "index": 89,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16765:16791",
+      "key": "p_18d69bb0aabe:16765-16791",
+      "file": "client/src/main.jsx",
+      "line": 331,
+      "tag": "Ticker",
+      "component": "Ticker",
+      "start": 16765,
+      "end": 16791
+    },
+    {
+      "index": 90,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16798:16812",
+      "key": "p_18d69bb0aabe:16798-16812",
+      "file": "client/src/main.jsx",
+      "line": 332,
+      "tag": "Scratchpad",
+      "component": "Scratchpad",
+      "start": 16798,
+      "end": 16812
+    },
+    {
+      "index": 91,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16819:16827",
+      "key": "p_18d69bb0aabe:16819-16827",
+      "file": "client/src/main.jsx",
+      "line": 333,
+      "tag": "Ping",
+      "component": "Ping",
+      "start": 16819,
+      "end": 16827
+    },
+    {
+      "index": 92,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16834:16849",
+      "key": "p_18d69bb0aabe:16834-16849",
+      "file": "client/src/main.jsx",
+      "line": 334,
+      "tag": "ProfileForm",
+      "component": "ProfileForm",
+      "start": 16834,
+      "end": 16849
+    },
+    {
+      "index": 93,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16856:16869",
+      "key": "p_18d69bb0aabe:16856-16869",
+      "file": "client/src/main.jsx",
+      "line": 335,
+      "tag": "DualNoArg",
+      "component": "DualNoArg",
+      "start": 16856,
+      "end": 16869
+    },
+    {
+      "index": 94,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16869:16882",
+      "key": "p_18d69bb0aabe:16869-16882",
+      "file": "client/src/main.jsx",
+      "line": 335,
+      "tag": "DualEvent",
+      "component": "DualEvent",
+      "start": 16869,
+      "end": 16882
+    },
+    {
+      "index": 95,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16882:16894",
+      "key": "p_18d69bb0aabe:16882-16894",
+      "file": "client/src/main.jsx",
+      "line": 335,
+      "tag": "DualSend",
+      "component": "DualSend",
+      "start": 16882,
+      "end": 16894
+    },
+    {
+      "index": 96,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16894:16909",
+      "key": "p_18d69bb0aabe:16894-16909",
+      "file": "client/src/main.jsx",
+      "line": 335,
+      "tag": "NestedMixed",
+      "component": "NestedMixed",
+      "start": 16894,
+      "end": 16909
+    },
+    {
+      "index": 97,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16909:16924",
+      "key": "p_18d69bb0aabe:16909-16924",
+      "file": "client/src/main.jsx",
+      "line": 335,
+      "tag": "NestedTwice",
+      "component": "NestedTwice",
+      "start": 16909,
+      "end": 16924
+    },
+    {
+      "index": 98,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16931:16951",
+      "key": "p_18d69bb0aabe:16931-16951",
+      "file": "client/src/main.jsx",
+      "line": 336,
+      "tag": "AnalyticsSection",
+      "component": "AnalyticsSection",
+      "start": 16931,
+      "end": 16951
+    },
+    {
+      "index": 99,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16951:16963",
+      "key": "p_18d69bb0aabe:16951-16963",
+      "file": "client/src/main.jsx",
+      "line": 336,
+      "tag": "RhfNamed",
+      "component": "RhfNamed",
+      "start": 16951,
+      "end": 16963
+    },
+    {
+      "index": 100,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16963:16981",
+      "key": "p_18d69bb0aabe:16963-16981",
+      "file": "client/src/main.jsx",
+      "line": 336,
+      "tag": "WidgetCallback",
+      "component": "WidgetCallback",
+      "start": 16963,
+      "end": 16981
+    },
+    {
+      "index": 101,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:16981:17002",
+      "key": "p_18d69bb0aabe:16981-17002",
+      "file": "client/src/main.jsx",
+      "line": 336,
+      "tag": "ProgrammaticClick",
+      "component": "ProgrammaticClick",
+      "start": 16981,
+      "end": 17002
+    },
+    {
+      "index": 102,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:17009:17029",
+      "key": "p_18d69bb0aabe:17009-17029",
+      "file": "client/src/main.jsx",
+      "line": 337,
+      "tag": "CaptureAndTarget",
+      "component": "CaptureAndTarget",
+      "start": 17009,
+      "end": 17029
+    },
+    {
+      "index": 103,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:17029:17049",
+      "key": "p_18d69bb0aabe:17029-17049",
+      "file": "client/src/main.jsx",
+      "line": 337,
+      "tag": "BothPhasesOneDiv",
+      "component": "BothPhasesOneDiv",
+      "start": 17029,
+      "end": 17049
+    },
+    {
+      "index": 104,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:17049:17072",
+      "key": "p_18d69bb0aabe:17049-17072",
+      "file": "client/src/main.jsx",
+      "line": 337,
+      "tag": "CaptureOnlyAncestor",
+      "component": "CaptureOnlyAncestor",
+      "start": 17049,
+      "end": 17072
+    },
+    {
+      "index": 105,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:17072:17085",
+      "key": "p_18d69bb0aabe:17072-17085",
+      "file": "client/src/main.jsx",
+      "line": 337,
+      "tag": "ProxyArea",
+      "component": "ProxyArea",
+      "start": 17072,
+      "end": 17085
+    },
+    {
+      "index": 106,
+      "id": "placement:18d69bb0aabecf996bafba417a84a9c234a9cf2850d72d20e10454f9e8dbe42b:17157:17164",
+      "key": "p_18d69bb0aabe:17157-17164",
+      "file": "client/src/main.jsx",
+      "line": 342,
+      "tag": "App",
+      "component": "App",
+      "start": 17157,
+      "end": 17164
+    }
+  ],
+  "placement_short_key_collisions": 0,
+  "library_boundaries": []
+}

@@ -1,0 +1,488 @@
+{
+  "schema": "producttrace.shared-rule-paid.v1",
+  "case_id": "queue-microtask",
+  "passed": true,
+  "frozen": {
+    "schema": "producttrace.shared-rule-freeze.v1",
+    "files": {
+      "analysis/library-program.mjs": "d2e64adf30aafc485f8415833bb10f40e3efaa7df64319dc11808d1cc52ad2b8",
+      "analysis/library-boundary.mjs": "5568dd0abcd13e416151a2588c05c9bb024f72d477d768e67a94ec85c706274d",
+      "analysis/library-program-bank.mjs": "ad159ac8fd3a9be21166c33192ed07fcc94ed34508c8da0c556adee3fee3228b",
+      "analysis/library-program-integration.mjs": "9799be56a318c4056c32498775947a3ade8dfa7ec79ff66a543e7841c98c558f",
+      "authoring/library-implementation.mjs": "3567d985b86ad3a725f4894d99646611d03ee3b7b8e58624aba607b3a3d6a583",
+      "authoring/library-program-author.mjs": "7c5aab2735fe36659426461d8ad9f1f3b956666dd620b1b22a269e6f41462a83",
+      "evaluation/shared-rules/cases.mjs": "a86ec1dbafcf1b80c6d1f6116751b11cfd5abbafa2e33e5e210f3cf7c266e89b",
+      "evaluation/shared-rules/check-case.mjs": "3da1134bb563299700da8748557be099faedf0889301321682463f04b815137a",
+      "evaluation/shared-rules/run.mjs": "3b1fa6b2a9ae2f4fdb64d49e2eea418902b7e667f6037affded57b6efa286486"
+    },
+    "cases": [
+      {
+        "id": "react18-createRef",
+        "implementation_sha256": "54f589eae765267b80af66a06b6a34f764e4b5e056347c21bd65ccad71c84ffd",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react18",
+        "exportName": "createRef",
+        "scope": {
+          "callbackArguments": [],
+          "resultPaths": null,
+          "description": "No arguments; fresh reference object, own data property descriptors and extensibility. No later renderer assignment is claimed."
+        }
+      },
+      {
+        "id": "react18-isValidElement",
+        "implementation_sha256": "08668baba49448628eeeccc4d87f6e88b9dcad48911adc07675206b606a42435",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react18",
+        "exportName": "isValidElement",
+        "scope": {
+          "callbackArguments": [],
+          "resultPaths": null,
+          "description": "Finite primitive values and plain objects with own data properties, including symbol-tagged React elements. Excludes accessors, proxies and inherited properties."
+        }
+      },
+      {
+        "id": "react18-forwardRef",
+        "implementation_sha256": "5107b67c06d7096c388e40a1f66a3711809eb6af982467231cc5ecffc004cb04",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react18",
+        "exportName": "forwardRef",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": [
+            [
+              "$$typeof"
+            ],
+            [
+              "render"
+            ]
+          ],
+          "description": "Valid render functions with zero or two declared parameters. Check only the returned marker and stored render identity, and absence of callback execution during construction. Renderer execution and debug displayName behavior are outside this boundary."
+        }
+      },
+      {
+        "id": "react18-memo",
+        "implementation_sha256": "9f36a6e578b6f1860d424cd486b7097d5a4f0e14892940f4e4140e98c38089e5",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react18",
+        "exportName": "memo",
+        "scope": {
+          "callbackArguments": [
+            0,
+            1
+          ],
+          "resultPaths": [
+            [
+              "$$typeof"
+            ],
+            [
+              "type"
+            ],
+            [
+              "compare"
+            ]
+          ],
+          "description": "Valid function components, optional comparison callback. Check returned marker and exact stored type/compare identities and no construction callback. Does not claim later renderer bailout behavior or debug displayName setters."
+        }
+      },
+      {
+        "id": "react19-createRef",
+        "implementation_sha256": "ff81a3680066c565dd9723460dddf7a3ea34c1a6194e0c3c096730aedc290c4a",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react19",
+        "exportName": "createRef",
+        "scope": {
+          "callbackArguments": [],
+          "resultPaths": null,
+          "description": "No arguments; fresh reference object, own data property descriptors and extensibility. No later renderer assignment is claimed."
+        }
+      },
+      {
+        "id": "react19-isValidElement",
+        "implementation_sha256": "9acdd7a5629e1160639efbe99b922f03dd9dc919893b42ec0773e66ab0fdc4df",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react19",
+        "exportName": "isValidElement",
+        "scope": {
+          "callbackArguments": [],
+          "resultPaths": null,
+          "description": "Finite primitive values and plain objects with own data properties, including symbol-tagged React elements. Excludes accessors, proxies and inherited properties."
+        }
+      },
+      {
+        "id": "react19-forwardRef",
+        "implementation_sha256": "3398e50cbb99c848bad6cc7f89a3a4380cd5621aaaee852f302f857dd5cf0a18",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react19",
+        "exportName": "forwardRef",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": [
+            [
+              "$$typeof"
+            ],
+            [
+              "render"
+            ]
+          ],
+          "description": "Valid render functions with zero or two declared parameters. Check only the returned marker and stored render identity, and absence of callback execution during construction. Renderer execution and debug displayName behavior are outside this boundary."
+        }
+      },
+      {
+        "id": "react19-memo",
+        "implementation_sha256": "63018656760ec5ebe0d8e0c68323be1e8cce469be013ad282d8992f5f9a6d800",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "react19",
+        "exportName": "memo",
+        "scope": {
+          "callbackArguments": [
+            0,
+            1
+          ],
+          "resultPaths": [
+            [
+              "$$typeof"
+            ],
+            [
+              "type"
+            ],
+            [
+              "compare"
+            ]
+          ],
+          "description": "Valid function components, optional comparison callback. Check returned marker and exact stored type/compare identities and no construction callback. Does not claim later renderer bailout behavior or debug displayName setters."
+        }
+      },
+      {
+        "id": "table8old-functionalUpdate",
+        "implementation_sha256": "b65b4aedd8231c1e9d147ce26b516191c65bd4cf30dda076827d076c41ef2286",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "table8old",
+        "exportName": "functionalUpdate",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": null,
+          "description": "Two arguments: a plain value or callback, and any finite primitive/plain data value. Include callback result identity, receiver, count, and throws."
+        }
+      },
+      {
+        "id": "table8new-functionalUpdate",
+        "implementation_sha256": "cc79df283039cef02d462f8f593988ce933bb5908d912368f3fa770fa0e7a33e",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "table8new",
+        "exportName": "functionalUpdate",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": null,
+          "description": "Two arguments: a plain value or callback, and any finite primitive/plain data value. Include callback result identity, receiver, count, and throws."
+        }
+      },
+      {
+        "id": "async2-apply",
+        "implementation_sha256": "dd4612ab26ffd914b10a5961d084ef0d0e256c2f7eca17d47ce3a9bdd6dc7c96",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "async2",
+        "exportName": "apply",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": null,
+          "description": "A callback and any finite list of preset plain values; invoke the returned function repeatedly with changed values and receivers. Include callback forwarding, results, throws, interleaved instances and no idle calls. Returned function custom properties are outside the boundary."
+        }
+      },
+      {
+        "id": "async3-apply",
+        "implementation_sha256": "a4037efa1508f84b3aa3236dfa7ea5740b19b1407d7e3daa733e193ad6a1b5c2",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "async3",
+        "exportName": "apply",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": null,
+          "description": "A callback and any finite list of preset plain values; invoke the returned function repeatedly with changed values and receivers. Include callback forwarding, results, throws, interleaved instances and no idle calls. Returned function custom properties are outside the boundary."
+        }
+      },
+      {
+        "id": "once",
+        "implementation_sha256": "ac5abf9604c0e4e455a2f7f75917d5a9ae887bc6c54870bb480883ad392c94bd",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "once",
+        "exportName": "default",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": null,
+          "description": "A callback with no custom properties. Repeated calls to the returned function, changed arguments and receivers, independent instances, callback returns and throws. Returned function custom properties are outside the boundary."
+        }
+      },
+      {
+        "id": "queue-microtask",
+        "implementation_sha256": "277c49c585d4077aa1a1722d204858cc550561a6ac1db1c995312c2e2dae1ab5",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "queue-microtask",
+        "exportName": "default",
+        "scope": {
+          "callbackArguments": [
+            0
+          ],
+          "resultPaths": null,
+          "description": "One callback, normal return only. Observe immediate return, then callbacks through a host-controlled microtask checkpoint and a bounded idle window. No arbitrary future timing claim."
+        }
+      }
+    ]
+  },
+  "active_engine": {
+    "analysis/library-program.mjs": "d2e64adf30aafc485f8415833bb10f40e3efaa7df64319dc11808d1cc52ad2b8",
+    "analysis/library-boundary.mjs": "d1101bb7292506c0ae54a9d265d3b91015c0e1888957e15fc524ef2681096f70",
+    "analysis/library-program-bank.mjs": "ad159ac8fd3a9be21166c33192ed07fcc94ed34508c8da0c556adee3fee3228b",
+    "analysis/library-program-integration.mjs": "9799be56a318c4056c32498775947a3ade8dfa7ec79ff66a543e7841c98c558f",
+    "authoring/library-implementation.mjs": "3567d985b86ad3a725f4894d99646611d03ee3b7b8e58624aba607b3a3d6a583",
+    "authoring/library-program-author.mjs": "193d6702adbca62a842e964780d8d0f25c2cc25d1f6b94a4d0a0812aa2a6b18b",
+    "evaluation/shared-rules/cases.mjs": "a86ec1dbafcf1b80c6d1f6116751b11cfd5abbafa2e33e5e210f3cf7c266e89b",
+    "evaluation/shared-rules/check-case.mjs": "3da1134bb563299700da8748557be099faedf0889301321682463f04b815137a",
+    "evaluation/shared-rules/run.mjs": "3b1fa6b2a9ae2f4fdb64d49e2eea418902b7e667f6037affded57b6efa286486"
+  },
+  "model": "gpt-5.4",
+  "reasoning_effort": "low",
+  "resumed_from": null,
+  "implementation_sha256": "277c49c585d4077aa1a1722d204858cc550561a6ac1db1c995312c2e2dae1ab5",
+  "implementation": {
+    "schema": "producttrace.library-implementation.v1",
+    "specifier": "queue-microtask",
+    "export_name": "default",
+    "runtime": {
+      "host": "node",
+      "mode": "development",
+      "entry": "node_modules/queue-microtask/index.js"
+    },
+    "packages": [
+      {
+        "path": "node_modules/queue-microtask",
+        "name": "queue-microtask",
+        "version": "1.2.3",
+        "integrity": "sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==",
+        "manifest_sha256": "e6d153dda4c9aee863e7d8cc59419d4eb94b9829277cda9289a40f96efb36c11"
+      }
+    ],
+    "files": [
+      {
+        "path": "node_modules/queue-microtask/index.js",
+        "sha256": "e56672f1cf34e0be38f3c28c164810c878a243918d19bd0ac82d701209b5b9a2"
+      }
+    ],
+    "source_status": "ready_for_scoped_proposal",
+    "source_reason": null,
+    "scope": "runtime_export_and_loaded_initialization_dependencies",
+    "implementation": "function () { [native code] }",
+    "slices": [
+      {
+        "file": "node_modules/queue-microtask/index.js",
+        "start": 0,
+        "end": 402,
+        "source": "/*! queue-microtask. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */\nlet promise\n\nmodule.exports = typeof queueMicrotask === 'function'\n  ? queueMicrotask.bind(typeof window !== 'undefined' ? window : global)\n  // reuse resolved promise, and allocate it lazily\n  : cb => (promise || (promise = Promise.resolve()))\n    .then(cb)\n    .catch(err => setTimeout(() => { throw err }, 0))\n"
+      }
+    ]
+  },
+  "result": {
+    "status": "admitted",
+    "program": {
+      "schema": "producttrace.library-program.v1",
+      "body": {
+        "op": "sequence",
+        "steps": [
+          {
+            "op": "defer",
+            "body": {
+              "op": "call",
+              "target": {
+                "op": "arg",
+                "index": 0
+              },
+              "receiver": {
+                "op": "undefined"
+              },
+              "args": {
+                "op": "array",
+                "items": []
+              }
+            }
+          },
+          {
+            "op": "undefined"
+          }
+        ]
+      }
+    },
+    "admission": {
+      "status": "admitted",
+      "id": "library-program:81167ddc964c3ca579e3ad94b8af3c8dae7288905bcc3276abe37b4ed16d5566",
+      "program_sha256": "713ed3bc9d75a6f4a9ee518a35d2d1758e567c039d2380794fb50a2f3f245757",
+      "implementation_sha256": "277c49c585d4077aa1a1722d204858cc550561a6ac1db1c995312c2e2dae1ab5",
+      "scope": {
+        "callbackArguments": [
+          0
+        ],
+        "resultPaths": null,
+        "description": "One callback, normal return only. Observe immediate return, then callbacks through a host-controlled microtask checkpoint and a bounded idle window. No arbitrary future timing claim."
+      },
+      "report": {
+        "status": "passed",
+        "stage": "behavior_and_boundary_replay",
+        "reason": null,
+        "scope": "One callback, normal return only. Observe immediate return, then callbacks through a host-controlled microtask checkpoint and a bounded idle window. No arbitrary future timing claim.",
+        "calls": 2,
+        "actual_callbacks": 2,
+        "evidence": [
+          {
+            "schema": "producttrace.library-boundary-evidence.v1",
+            "occurrence": "library-call:1",
+            "callback": "first-source",
+            "ordinal": 0,
+            "timing": "deferred",
+            "status": "observed_agreement",
+            "outcome": "return",
+            "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+          },
+          {
+            "schema": "producttrace.library-boundary-evidence.v1",
+            "occurrence": "library-call:2",
+            "callback": "second-source",
+            "ordinal": 0,
+            "timing": "deferred",
+            "status": "observed_agreement",
+            "outcome": "return",
+            "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+          }
+        ],
+        "failures": []
+      }
+    },
+    "attempts": [
+      {
+        "number": 1,
+        "proposal": {
+          "schema": "producttrace.library-program-proposal.v1",
+          "status": "propose",
+          "program_json": "{\"schema\":\"producttrace.library-program.v1\",\"body\":{\"op\":\"sequence\",\"steps\":[{\"op\":\"defer\",\"body\":{\"op\":\"call\",\"target\":{\"op\":\"arg\",\"index\":0},\"receiver\":{\"op\":\"undefined\"},\"args\":{\"op\":\"array\",\"items\":[]}}},{\"op\":\"undefined\"}]}}",
+          "reason": "In the provided Node runtime, the installed source exports the native queueMicrotask bound to the global object because typeof queueMicrotask === 'function'. Within the requested scope of one callback and normal return only, calling the export returns undefined immediately and schedules exactly one microtask that invokes the supplied callback with no arguments."
+        },
+        "usage": {
+          "input_tokens": 1326,
+          "cached_input_tokens": 0,
+          "output_tokens": 494,
+          "reasoning_output_tokens": 328
+        },
+        "cost_usd": 0.010725,
+        "latency_ms": 5619.649917,
+        "prompt_sha256": "9316057fa03ee406c578eee5797650feb694c0304f9aada81dc1c6e4fa1c550f",
+        "check": {
+          "status": "admitted",
+          "id": "library-program:81167ddc964c3ca579e3ad94b8af3c8dae7288905bcc3276abe37b4ed16d5566",
+          "program_sha256": "713ed3bc9d75a6f4a9ee518a35d2d1758e567c039d2380794fb50a2f3f245757",
+          "implementation_sha256": "277c49c585d4077aa1a1722d204858cc550561a6ac1db1c995312c2e2dae1ab5",
+          "scope": {
+            "callbackArguments": [
+              0
+            ],
+            "resultPaths": null,
+            "description": "One callback, normal return only. Observe immediate return, then callbacks through a host-controlled microtask checkpoint and a bounded idle window. No arbitrary future timing claim."
+          },
+          "report": {
+            "status": "passed",
+            "stage": "behavior_and_boundary_replay",
+            "reason": null,
+            "scope": "One callback, normal return only. Observe immediate return, then callbacks through a host-controlled microtask checkpoint and a bounded idle window. No arbitrary future timing claim.",
+            "calls": 2,
+            "actual_callbacks": 2,
+            "evidence": [
+              {
+                "schema": "producttrace.library-boundary-evidence.v1",
+                "occurrence": "library-call:1",
+                "callback": "first-source",
+                "ordinal": 0,
+                "timing": "deferred",
+                "status": "observed_agreement",
+                "outcome": "return",
+                "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+              },
+              {
+                "schema": "producttrace.library-boundary-evidence.v1",
+                "occurrence": "library-call:2",
+                "callback": "second-source",
+                "ordinal": 0,
+                "timing": "deferred",
+                "status": "observed_agreement",
+                "outcome": "return",
+                "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+              }
+            ],
+            "failures": []
+          }
+        }
+      }
+    ]
+  },
+  "integration": {
+    "passed": true,
+    "callbacks": 1,
+    "bindings": [
+      {
+        "id": "8fbcd07e58b87e590dda8d19e43e54ad7ee5b1e25892dc80afaaeb17b7b83334:call:72",
+        "file": "queue-microtask.ts",
+        "start": 72,
+        "end": 81,
+        "specifier": "queue-microtask",
+        "exportName": "default",
+        "rule": "library-program:81167ddc964c3ca579e3ad94b8af3c8dae7288905bcc3276abe37b4ed16d5566"
+      }
+    ],
+    "reports": [
+      {
+        "binding": "8fbcd07e58b87e590dda8d19e43e54ad7ee5b1e25892dc80afaaeb17b7b83334:call:72",
+        "rule": "library-program:81167ddc964c3ca579e3ad94b8af3c8dae7288905bcc3276abe37b4ed16d5566",
+        "status": "observed_agreement",
+        "scope": "observations_through_checkpoint",
+        "calls": 1,
+        "failures": [],
+        "evidence": [
+          {
+            "schema": "producttrace.library-boundary-evidence.v1",
+            "occurrence": "8fbcd07e58b87e590dda8d19e43e54ad7ee5b1e25892dc80afaaeb17b7b83334:call:72:1",
+            "callback": "8fbcd07e58b87e590dda8d19e43e54ad7ee5b1e25892dc80afaaeb17b7b83334:call:72:argument:0",
+            "ordinal": 0,
+            "timing": "deferred",
+            "status": "observed_agreement",
+            "outcome": "return",
+            "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+          }
+        ]
+      }
+    ]
+  },
+  "output": "paid-queue-microtask-1789033169558.json"
+}

@@ -1,0 +1,411 @@
+{
+  "schema": "producttrace.library-program-catalog.v1",
+  "skeletons": [
+    {
+      "schema": "producttrace.library-program-skeleton.v1",
+      "package": "react",
+      "export_name": "createContext",
+      "scope": {
+        "callbackArguments": [],
+        "resultPaths": [
+          [
+            "$$typeof"
+          ],
+          [
+            "_currentValue"
+          ],
+          [
+            "_currentValue2"
+          ],
+          [
+            "Provider",
+            "$$typeof"
+          ],
+          [
+            "Consumer",
+            "$$typeof"
+          ]
+        ],
+        "resultIdentityPaths": [
+          [],
+          [
+            "Provider"
+          ],
+          [
+            "Consumer"
+          ],
+          [
+            "Consumer",
+            "_context"
+          ],
+          [
+            "Provider",
+            "_context"
+          ]
+        ],
+        "description": "Context creation only: initial default value identity in both renderer slots, marker tags, and exact context/Provider/Consumer object relationships. Unprojected warning accessors and renderer metadata, later Provider updates and Consumer execution require separate evidence. Defaults are primitives or ordinary own-data values; no callback is executed by creation."
+      },
+      "program": {
+        "schema": "producttrace.library-program.v1",
+        "body": {
+          "op": "bind",
+          "name": "context",
+          "value": {
+            "op": "object",
+            "entries": {
+              "$$typeof": {
+                "op": "symbol",
+                "key": "react.context"
+              },
+              "_currentValue": {
+                "op": "arg",
+                "index": 0
+              },
+              "_currentValue2": {
+                "op": "arg",
+                "index": 0
+              }
+            }
+          },
+          "body": {
+            "op": "sequence",
+            "steps": [
+              {
+                "op": "put",
+                "value": {
+                  "op": "local",
+                  "name": "context"
+                },
+                "key": {
+                  "op": "literal",
+                  "value": "Provider"
+                },
+                "item": {
+                  "op": "object",
+                  "entries": {
+                    "$$typeof": {
+                      "op": "symbol",
+                      "key": "react.provider"
+                    },
+                    "_context": {
+                      "op": "local",
+                      "name": "context"
+                    }
+                  }
+                }
+              },
+              {
+                "op": "put",
+                "value": {
+                  "op": "local",
+                  "name": "context"
+                },
+                "key": {
+                  "op": "literal",
+                  "value": "Consumer"
+                },
+                "item": {
+                  "op": "object",
+                  "entries": {
+                    "$$typeof": {
+                      "op": "symbol",
+                      "key": "react.context"
+                    },
+                    "_context": {
+                      "op": "local",
+                      "name": "context"
+                    }
+                  }
+                }
+              },
+              {
+                "op": "local",
+                "name": "context"
+              }
+            ]
+          }
+        }
+      },
+      "versions": [
+        {
+          "version": "18.2.0",
+          "scope": {
+            "callbackArguments": [],
+            "resultPaths": [
+              [
+                "$$typeof"
+              ],
+              [
+                "_currentValue"
+              ],
+              [
+                "_currentValue2"
+              ],
+              [
+                "Provider",
+                "$$typeof"
+              ],
+              [
+                "Consumer",
+                "$$typeof"
+              ]
+            ],
+            "resultIdentityPaths": [
+              [],
+              [
+                "Provider"
+              ],
+              [
+                "Consumer"
+              ],
+              [
+                "Consumer",
+                "_context"
+              ],
+              [
+                "Provider",
+                "_context"
+              ]
+            ],
+            "description": "Context creation only: initial default value identity in both renderer slots, marker tags, and exact context/Provider/Consumer object relationships. Unprojected warning accessors and renderer metadata, later Provider updates and Consumer execution require separate evidence. Defaults are primitives or ordinary own-data values; no callback is executed by creation."
+          },
+          "base_sha256": "03e246603a3070fb85446c2c3b7a594b40444b7f36b7510de4d9a5e347ac809b",
+          "overrides": [],
+          "program_sha256": "03e246603a3070fb85446c2c3b7a594b40444b7f36b7510de4d9a5e347ac809b",
+          "implementation_sha256": "6669be343183a2c2fb4b28bffc200b620a25dc3928e4e9b3b535190f139a2a57",
+          "implementation": {
+            "runtime": {
+              "host": "node",
+              "mode": "development",
+              "entry": {
+                "name": "react",
+                "version": "18.2.0",
+                "path": "index.js"
+              }
+            },
+            "export_name": "createContext",
+            "packages": [
+              {
+                "name": "react",
+                "version": "18.2.0",
+                "integrity": "sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==",
+                "manifest_sha256": "74e589ae1dca62bf6f76140b92e60b1c829e8e1b6c9645b39e9d1c0b4008ad80"
+              }
+            ],
+            "files": [
+              {
+                "name": "react",
+                "version": "18.2.0",
+                "path": "cjs/react.development.js",
+                "sha256": "27fc0fb02e9574c64f86387f5ad6ce525017470e2dd7d9f2826027b6083fd2de"
+              },
+              {
+                "name": "react",
+                "version": "18.2.0",
+                "path": "index.js",
+                "sha256": "a216c390bf956cbb906c66d29fdb2e2ad6999464a5ca83e476533a6f25ad0ef3"
+              }
+            ]
+          },
+          "verification": {
+            "origin": "manual_exact_installed_source",
+            "scope": "Context creation only: initial default value identity in both renderer slots, marker tags, and exact context/Provider/Consumer object relationships. Unprojected warning accessors and renderer metadata, later Provider updates and Consumer execution require separate evidence. Defaults are primitives or ordinary own-data values; no callback is executed by creation."
+          }
+        },
+        {
+          "version": "18.3.1",
+          "scope": {
+            "callbackArguments": [],
+            "resultPaths": [
+              [
+                "$$typeof"
+              ],
+              [
+                "_currentValue"
+              ],
+              [
+                "_currentValue2"
+              ],
+              [
+                "Provider",
+                "$$typeof"
+              ],
+              [
+                "Consumer",
+                "$$typeof"
+              ]
+            ],
+            "resultIdentityPaths": [
+              [],
+              [
+                "Provider"
+              ],
+              [
+                "Consumer"
+              ],
+              [
+                "Consumer",
+                "_context"
+              ],
+              [
+                "Provider",
+                "_context"
+              ]
+            ],
+            "description": "Context creation only: initial default value identity in both renderer slots, marker tags, and exact context/Provider/Consumer object relationships. Unprojected warning accessors and renderer metadata, later Provider updates and Consumer execution require separate evidence. Defaults are primitives or ordinary own-data values; no callback is executed by creation."
+          },
+          "base_sha256": "03e246603a3070fb85446c2c3b7a594b40444b7f36b7510de4d9a5e347ac809b",
+          "overrides": [],
+          "program_sha256": "03e246603a3070fb85446c2c3b7a594b40444b7f36b7510de4d9a5e347ac809b",
+          "implementation_sha256": "9e5b086f32c27bcc3aff5ccccd28d75587329ea8faf441d1daab1347ac37d24f",
+          "implementation": {
+            "runtime": {
+              "host": "node",
+              "mode": "development",
+              "entry": {
+                "name": "react",
+                "version": "18.3.1",
+                "path": "index.js"
+              }
+            },
+            "export_name": "createContext",
+            "packages": [
+              {
+                "name": "react",
+                "version": "18.3.1",
+                "integrity": "sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==",
+                "manifest_sha256": "d4e68a5c96babb20cad1daafea8b78822eae45b341552cf5418d06a5304fa64c"
+              }
+            ],
+            "files": [
+              {
+                "name": "react",
+                "version": "18.3.1",
+                "path": "cjs/react.development.js",
+                "sha256": "1ff3a1d9861a87984329584fa1172aea920855d79eb57dae0d1cebe54093d7e3"
+              },
+              {
+                "name": "react",
+                "version": "18.3.1",
+                "path": "index.js",
+                "sha256": "a216c390bf956cbb906c66d29fdb2e2ad6999464a5ca83e476533a6f25ad0ef3"
+              }
+            ]
+          },
+          "verification": {
+            "origin": "manual_exact_installed_source",
+            "scope": "Context creation only: initial default value identity in both renderer slots, marker tags, and exact context/Provider/Consumer object relationships. Unprojected warning accessors and renderer metadata, later Provider updates and Consumer execution require separate evidence. Defaults are primitives or ordinary own-data values; no callback is executed by creation."
+          }
+        },
+        {
+          "version": "19.1.1",
+          "scope": {
+            "callbackArguments": [],
+            "resultPaths": [
+              [
+                "$$typeof"
+              ],
+              [
+                "_currentValue"
+              ],
+              [
+                "_currentValue2"
+              ],
+              [
+                "Provider",
+                "$$typeof"
+              ],
+              [
+                "Consumer",
+                "$$typeof"
+              ]
+            ],
+            "resultIdentityPaths": [
+              [],
+              [
+                "Provider"
+              ],
+              [
+                "Consumer"
+              ],
+              [
+                "Consumer",
+                "_context"
+              ]
+            ],
+            "description": "Context creation only: initial default value identity in both renderer slots, marker tags, and exact context/Provider/Consumer object relationships. Unprojected warning accessors and renderer metadata, later Provider updates and Consumer execution require separate evidence. Defaults are primitives or ordinary own-data values; no callback is executed by creation."
+          },
+          "base_sha256": "03e246603a3070fb85446c2c3b7a594b40444b7f36b7510de4d9a5e347ac809b",
+          "overrides": [
+            {
+              "path": [
+                "body",
+                "body",
+                "steps",
+                0,
+                "item"
+              ],
+              "value": {
+                "op": "local",
+                "name": "context"
+              }
+            },
+            {
+              "path": [
+                "body",
+                "body",
+                "steps",
+                1,
+                "item",
+                "entries",
+                "$$typeof",
+                "key"
+              ],
+              "value": "react.consumer"
+            }
+          ],
+          "program_sha256": "e85e20c0f6f4ae72c5b09a94f5a29c1fcbb5dc0869dc512098596ce95d1bb8e1",
+          "implementation_sha256": "a579c8f120d4b65a364105a84d059ca62455028e10cb0da1ddac2d100882e1b0",
+          "implementation": {
+            "runtime": {
+              "host": "node",
+              "mode": "development",
+              "entry": {
+                "name": "react",
+                "version": "19.1.1",
+                "path": "index.js"
+              }
+            },
+            "export_name": "createContext",
+            "packages": [
+              {
+                "name": "react",
+                "version": "19.1.1",
+                "integrity": "sha512-w8nqGImo45dmMIfljjMwOGtbmC/mk4CMYhWIicdSflH91J9TyCyczcPFXJzrZ/ZXcgGRFeP6BU0BEJTw6tZdfQ==",
+                "manifest_sha256": "7e862b437058f8dde0fe1b538266b934d725f76fe5b981305d6e942714d49608"
+              }
+            ],
+            "files": [
+              {
+                "name": "react",
+                "version": "19.1.1",
+                "path": "cjs/react.development.js",
+                "sha256": "c3140127dd572acd866efa06e63c5c27f79daa5879e4c39af5c91644f8574751"
+              },
+              {
+                "name": "react",
+                "version": "19.1.1",
+                "path": "index.js",
+                "sha256": "60caffdecbdc5db3bc4ec4e83df9488345ccb271d07533b9210bf5750918d97e"
+              }
+            ]
+          },
+          "verification": {
+            "origin": "manual_exact_installed_source",
+            "scope": "Context creation only: initial default value identity in both renderer slots, marker tags, and exact context/Provider/Consumer object relationships. Unprojected warning accessors and renderer metadata, later Provider updates and Consumer execution require separate evidence. Defaults are primitives or ordinary own-data values; no callback is executed by creation."
+          }
+        }
+      ]
+    }
+  ]
+}

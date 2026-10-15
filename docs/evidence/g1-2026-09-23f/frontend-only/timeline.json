@@ -1,0 +1,3712 @@
+[
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:10.318Z",
+    "type": "error",
+    "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:10.318Z",
+    "url": "http://127.0.0.1:51929/producttrace-request-bridge.js?v=5eb72840bc7b3758",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:10.592Z",
+    "type": "warning",
+    "text": "Service Worker registration blocked by Playwright"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:10.607Z",
+    "url": "http://127.0.0.1:51929/assets/silence.mp3",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:10.617Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:10.617Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:10.621Z",
+    "type": "log",
+    "text": "Token is not present. User is not authenticated."
+  },
+  {
+    "step": "api-response",
+    "at": "2026-09-23T21:33:10.622Z",
+    "url": "/api/config",
+    "status": 200,
+    "resource_type": "xhr"
+  },
+  {
+    "step": "api-shape",
+    "at": "2026-09-23T21:33:10.629Z",
+    "url": "/api/config",
+    "status": 200,
+    "config_keys": [
+      "appTitle",
+      "appleLoginEnabled",
+      "buildInfo",
+      "discordLoginEnabled",
+      "emailEnabled",
+      "emailLoginEnabled",
+      "facebookLoginEnabled",
+      "githubLoginEnabled",
+      "googleLoginEnabled",
+      "ldap",
+      "openidAutoRedirect",
+      "openidImageUrl",
+      "openidLabel",
+      "openidLoginEnabled",
+      "passwordResetEnabled",
+      "registrationEnabled",
+      "samlImageUrl",
+      "samlLabel",
+      "samlLoginEnabled",
+      "serverDomain",
+      "socialLoginEnabled",
+      "socialLogins",
+      "turnstile"
+    ]
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:10.630Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:10.630Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "api-response",
+    "at": "2026-09-23T21:33:10.633Z",
+    "url": "/api/config",
+    "status": 200,
+    "resource_type": "xhr"
+  },
+  {
+    "step": "api-shape",
+    "at": "2026-09-23T21:33:10.636Z",
+    "url": "/api/config",
+    "status": 200,
+    "config_keys": [
+      "appTitle",
+      "appleLoginEnabled",
+      "buildInfo",
+      "discordLoginEnabled",
+      "emailEnabled",
+      "emailLoginEnabled",
+      "facebookLoginEnabled",
+      "githubLoginEnabled",
+      "googleLoginEnabled",
+      "ldap",
+      "openidAutoRedirect",
+      "openidImageUrl",
+      "openidLabel",
+      "openidLoginEnabled",
+      "passwordResetEnabled",
+      "registrationEnabled",
+      "samlImageUrl",
+      "samlLabel",
+      "samlLoginEnabled",
+      "serverDomain",
+      "socialLoginEnabled",
+      "socialLogins",
+      "turnstile"
+    ]
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:10.650Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:10.650Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:11.656Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:11.656Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:11.724Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:11.724Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:11.724Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:11.757Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:11.757Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:11.757Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:11.807Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:11.807Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:11.888Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:11.888Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:11.955Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:11.956Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:11.965Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "api-response",
+    "at": "2026-09-23T21:33:11.966Z",
+    "url": "/api/config",
+    "status": 200,
+    "resource_type": "xhr"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:11.973Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "api-shape",
+    "at": "2026-09-23T21:33:11.974Z",
+    "url": "/api/config",
+    "status": 200,
+    "config_keys": [
+      "allowAccountDeletion",
+      "appTitle",
+      "appleLoginEnabled",
+      "balance",
+      "buildInfo",
+      "conversationImportMaxFileSize",
+      "discordLoginEnabled",
+      "emailEnabled",
+      "emailLoginEnabled",
+      "facebookLoginEnabled",
+      "fileUploadSseEnabled",
+      "githubLoginEnabled",
+      "googleLoginEnabled",
+      "helpAndFaqURL",
+      "interface",
+      "langfuseConnectionAccess",
+      "langfuseFanoutEnabled",
+      "ldap",
+      "openidAutoRedirect",
+      "openidImageUrl",
+      "openidLabel",
+      "openidLoginEnabled",
+      "openidReuseTokens",
+      "passwordResetEnabled",
+      "publicSharedLinksEnabled",
+      "registrationEnabled",
+      "samlImageUrl",
+      "samlLabel",
+      "samlLoginEnabled",
+      "serverDomain",
+      "sharePointFilePickerEnabled",
+      "sharedLinksEnabled",
+      "sharedLinksSnapshotFilesEnabled",
+      "showBirthdayIcon",
+      "socialLoginEnabled",
+      "socialLogins",
+      "titleGenerationTiming",
+      "turnstile"
+    ]
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:11.980Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:11.985Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:12.007Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:12.017Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "api-response",
+    "at": "2026-09-23T21:33:12.018Z",
+    "url": "/api/endpoints",
+    "status": 200,
+    "resource_type": "xhr"
+  },
+  {
+    "step": "api-shape",
+    "at": "2026-09-23T21:33:12.048Z",
+    "url": "/api/endpoints",
+    "status": 200,
+    "endpoint_keys": [
+      "agents",
+      "anthropic",
+      "assistants",
+      "google",
+      "openAI"
+    ],
+    "agents": {
+      "allowedProviders": null,
+      "capabilities": [
+        "deferred_tools",
+        "execute_code",
+        "file_search",
+        "web_search",
+        "artifacts",
+        "subagents",
+        "actions",
+        "context",
+        "skills",
+        "ask_user_question",
+        "tools",
+        "chain",
+        "ocr"
+      ],
+      "disableBuilder": false,
+      "userProvide": false
+    }
+  },
+  {
+    "step": "api-response",
+    "at": "2026-09-23T21:33:12.056Z",
+    "url": "/api/models",
+    "status": 200,
+    "resource_type": "xhr"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:12.138Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: new, messagesLoaded: false, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:12.138Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Skipping - not enabled or new convo"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:12.138Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Resetting processedConvoRef for new conversation: {old: null, new: new}"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:12.157Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "api-shape",
+    "at": "2026-09-23T21:33:12.157Z",
+    "url": "/api/models",
+    "status": 200,
+    "model_counts": {
+      "openAI": 1,
+      "google": 11,
+      "anthropic": 24,
+      "azureOpenAI": 24,
+      "assistants": 1,
+      "azureAssistants": 1,
+      "bedrock": 28
+    },
+    "model_samples": {
+      "openAI": [
+        "gpt-3.5-turbo"
+      ],
+      "google": [
+        "gemini-3.6-flash",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite"
+      ],
+      "anthropic": [
+        "claude-fable-5",
+        "claude-opus-5",
+        "claude-opus-4-8"
+      ],
+      "azureOpenAI": [
+        "gpt-5.6",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna"
+      ],
+      "assistants": [
+        "gpt-3.5-turbo"
+      ],
+      "azureAssistants": [
+        "gpt-3.5-turbo"
+      ],
+      "bedrock": [
+        "global.anthropic.claude-fable-5",
+        "global.anthropic.claude-opus-5",
+        "global.anthropic.claude-opus-4-8"
+      ]
+    }
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:12.172Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: new, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:12.172Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Skipping - not enabled or new convo"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:12.184Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "api-response",
+    "at": "2026-09-23T21:33:12.186Z",
+    "url": "/api/endpoints/token-config",
+    "status": 200,
+    "resource_type": "xhr"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:12.200Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "api-shape",
+    "at": "2026-09-23T21:33:12.204Z",
+    "url": "/api/endpoints/token-config",
+    "status": 200,
+    "token_config": [
+      "anthropic",
+      "assistants",
+      "azureAssistants",
+      "azureOpenAI",
+      "bedrock",
+      "google",
+      "openAI"
+    ]
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:12.216Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:12.267Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:12.269Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:12.269Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:12.503Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:12.504Z",
+    "type": "error",
+    "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:12.504Z",
+    "type": "error",
+    "text": "Health check failed: AxiosError: Request failed with status code 404\n    at Kt (http://127.0.0.1:51929/assets/http-client.Bnu7plte.js:4:10492)\n    at XMLHttpRequest.g (http://127.0.0.1:51929/assets/http-client.Bnu7plte.js:4:16698)"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:12.546Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": 1,
+    "at": "2026-09-23T21:33:13.001Z",
+    "control": "focused email/password inputs; clicked Continue",
+    "result": "login attempted"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:13.111Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: new, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:13.111Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Skipping - not enabled or new convo"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:13.144Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:13.152Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:13.154Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:13.156Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:13.158Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:13.475Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:13.495Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:13.512Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:13.528Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:13.545Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:14.261Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: new, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: null}"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:14.261Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Skipping - not enabled or new convo"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.261Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.268Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:14.268Z",
+    "type": "warning",
+    "text": "[WakeLock] request failed NotAllowedError: Wake Lock permission request denied"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.294Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:14.328Z",
+    "type": "error",
+    "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.330Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.352Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.410Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.437Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.462Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.479Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.497Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.512Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.527Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.542Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.558Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.573Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.588Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.603Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.618Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.633Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.648Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.663Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.679Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.695Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.712Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.728Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.738Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:14.738Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": 2,
+    "at": "2026-09-23T21:33:16.799Z",
+    "control": "clicked New chat; entered coffee prompt; clicked send-button",
+    "result": "reply waited"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:16.890Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:16.891Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": 3,
+    "at": "2026-09-23T21:33:16.891Z",
+    "control": "clicked copy-response-button",
+    "result": "copy clicked"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:16.892Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:16.896Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:16.896Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:19.375Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:19.375Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:19.892Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:19.893Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "feedback-precondition",
+    "at": "2026-09-23T21:33:21.926Z",
+    "conversation_id_in_url": true,
+    "placeholder_message_gone": false,
+    "url": "/c/ac75ea16-f589-56f8-b7d4-8cc8afaf94ce"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:21.989Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:21.991Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.261Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.261Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": 4,
+    "at": "2026-09-23T21:33:22.261Z",
+    "control": "clicked Needs improvement; selected a reason",
+    "result": "feedback submitted"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.267Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.268Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:22.338Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: new, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: ac75ea16-f589-56f8-b7d4-8cc8afaf94ce}"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:22.338Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Skipping - not enabled or new convo"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:22.370Z",
+    "type": "warning",
+    "text": "[WakeLock] request failed NotAllowedError: Wake Lock permission request denied"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.370Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.387Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.396Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.396Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.451Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.451Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.485Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.504Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.572Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.601Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.624Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.648Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.666Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.683Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.701Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.754Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.787Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.808Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.830Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:22.852Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: ac75ea16-f589-56f8-b7d4-8cc8afaf94ce, messagesLoaded: false, hasCurrentSubmission: true, currentSubmissionConvoId: ac75ea16-f589-56f8-b7d4-8cc8afaf94ce}"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:22.852Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Waiting for messages to load"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:22.852Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Resetting processedConvoRef for new conversation: {old: null, new: ac75ea16-f589-56f8-b7d4-8cc8afaf94ce}"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.859Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.877Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.895Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:22.918Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: ac75ea16-f589-56f8-b7d4-8cc8afaf94ce, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: ac75ea16-f589-56f8-b7d4-8cc8afaf94ce}"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:22.918Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Skipping - already have active submission for this conversation"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.918Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.937Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.953Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.970Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:22.986Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:23.003Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:23.019Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:23.034Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:23.049Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:23.064Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:23.080Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:23.088Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:23.088Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:23.730Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:23.730Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:24.843Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:24.843Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": 5,
+    "at": "2026-09-23T21:33:24.892Z",
+    "control": "clicked regenerate-generation-button",
+    "result": "regeneration waited"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.026Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.026Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.027Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.077Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.077Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:25.110Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: ac75ea16-f589-56f8-b7d4-8cc8afaf94ce, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: ac75ea16-f589-56f8-b7d4-8cc8afaf94ce}"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:25.110Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Skipping - already have active submission for this conversation"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:25.158Z",
+    "type": "warning",
+    "text": "[WakeLock] request failed NotAllowedError: Wake Lock permission request denied"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.164Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.184Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.209Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.252Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.285Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.307Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.329Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.354Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.408Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.437Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.455Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.471Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.486Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.501Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.517Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.533Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.549Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.565Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.580Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.597Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.612Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.629Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.646Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.662Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.678Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.694Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.710Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.725Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.742Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.758Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.774Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.787Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:25.787Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:26.381Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:26.382Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:27.611Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:27.611Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": 6,
+    "at": "2026-09-23T21:33:27.690Z",
+    "control": "clicked Edit; typed into edit textarea {\"tag\":\"TEXTAREA\",\"aria_label\":\"Message input\",\"testid\":\"message-text-editor\",\"placeholder\":null}; clicked Save & Submit",
+    "result": "edited reply waited",
+    "edit_target": {
+      "tag": "TEXTAREA",
+      "aria_label": "Message input",
+      "testid": "message-text-editor",
+      "placeholder": null
+    },
+    "expected_text": "Give me three names for a tea shop in one line."
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:28.990Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:28.992Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:28.992Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.006Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.007Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.007Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.062Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.064Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.064Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.073Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.073Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.091Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.110Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.113Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.130Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.138Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.138Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": 7,
+    "at": "2026-09-23T21:33:29.573Z",
+    "control": "opened Conversation Menu Options; clicked Rename; clicked Save",
+    "result": "renamed Tracer M1"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:29.644Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: ac75ea16-f589-56f8-b7d4-8cc8afaf94ce, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: ac75ea16-f589-56f8-b7d4-8cc8afaf94ce}"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:29.644Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Skipping - already have active submission for this conversation"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:29.684Z",
+    "type": "warning",
+    "text": "[WakeLock] request failed NotAllowedError: Wake Lock permission request denied"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.684Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.703Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.729Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.757Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.827Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.852Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.877Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.899Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.920Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:29.941Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.005Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "overlap",
+    "at": "2026-09-23T21:33:30.025Z",
+    "control": "started regenerate; confirmed stream request open; opened bookmarks surface concurrently",
+    "result": "concurrent bookmark surface opened",
+    "stream_open": true,
+    "stream_url": "http://127.0.0.1:51929/api/agents/chat/stream/ac75ea16-f589-56f8-b7d4-8cc8afaf94ce"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.025Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.047Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.072Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.088Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.103Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.120Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.136Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.152Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.171Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.186Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.206Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.224Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.241Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.257Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.275Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.292Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.307Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.322Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.338Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.387Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.405Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "api-response",
+    "at": "2026-09-23T21:33:30.425Z",
+    "url": "/api/models",
+    "status": 200,
+    "resource_type": "xhr"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.425Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.451Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "api-shape",
+    "at": "2026-09-23T21:33:30.451Z",
+    "url": "/api/models",
+    "status": 200,
+    "model_counts": {
+      "openAI": 1,
+      "google": 11,
+      "anthropic": 24,
+      "azureOpenAI": 24,
+      "assistants": 1,
+      "azureAssistants": 1,
+      "bedrock": 28
+    },
+    "model_samples": {
+      "openAI": [
+        "gpt-3.5-turbo"
+      ],
+      "google": [
+        "gemini-3.6-flash",
+        "gemini-3.5-flash",
+        "gemini-3.5-flash-lite"
+      ],
+      "anthropic": [
+        "claude-fable-5",
+        "claude-opus-5",
+        "claude-opus-4-8"
+      ],
+      "azureOpenAI": [
+        "gpt-5.6",
+        "gpt-5.6-terra",
+        "gpt-5.6-luna"
+      ],
+      "assistants": [
+        "gpt-3.5-turbo"
+      ],
+      "azureAssistants": [
+        "gpt-3.5-turbo"
+      ],
+      "bedrock": [
+        "global.anthropic.claude-fable-5",
+        "global.anthropic.claude-opus-5",
+        "global.anthropic.claude-opus-4-8"
+      ]
+    }
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.458Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.458Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.949Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:30.950Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:31.135Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:31.135Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:31.153Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:31.154Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:31.154Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:31.156Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:31.167Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:31.168Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:31.192Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:31.192Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:31.554Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:31.555Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:31.556Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:31.979Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:31.981Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:31.982Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:32.145Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:32.145Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:33.053Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:33.053Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:33.110Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:33.112Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:33.112Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:33.167Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:33.178Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:33.180Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:33.202Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:33.207Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:33.217Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:33.225Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:33.225Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:33.779Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": 8,
+    "at": "2026-09-23T21:33:33.955Z",
+    "control": "selected openAI/gpt-3.5-turbo; created Barista 1790199189940 agent with coffee-only instructions",
+    "result": "create clicked",
+    "provider_options": 3,
+    "provider": "OpenAI",
+    "model": "gpt-3.5-turbo"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:34.025Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: ac75ea16-f589-56f8-b7d4-8cc8afaf94ce, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:34.025Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Waiting for stream status query"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.055Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.077Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:34.091Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: ac75ea16-f589-56f8-b7d4-8cc8afaf94ce, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:34.091Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Waiting for stream status query"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.101Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.128Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.137Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.138Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.138Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.172Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.172Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.179Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.179Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.193Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.193Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:34.507Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: ac75ea16-f589-56f8-b7d4-8cc8afaf94ce, messagesLoaded: false, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:34.507Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Waiting for messages to load"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.571Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:34.591Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: ac75ea16-f589-56f8-b7d4-8cc8afaf94ce, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:34.591Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Waiting for stream status query"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.596Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.619Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:34.637Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: new, messagesLoaded: false, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:34.637Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Skipping - not enabled or new convo"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:34.637Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Resetting processedConvoRef for new conversation: {old: ac75ea16-f589-56f8-b7d4-8cc8afaf94ce, new: new}"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.641Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:34.662Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: new, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:34.662Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Skipping - not enabled or new convo"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.664Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.685Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.693Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.695Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.695Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.950Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:34.950Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:35.204Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: new, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: null}"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:35.204Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Skipping - not enabled or new convo"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:35.240Z",
+    "type": "warning",
+    "text": "[WakeLock] request failed NotAllowedError: Wake Lock permission request denied"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.241Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.272Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.313Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.373Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.405Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.426Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.447Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.469Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.489Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.536Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.570Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.590Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.611Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:35.629Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: df6a9a8b-9ab8-5739-9d1b-8336431a8eaf, messagesLoaded: false, hasCurrentSubmission: true, currentSubmissionConvoId: null}"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:35.629Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Waiting for messages to load"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:35.629Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Resetting processedConvoRef for new conversation: {old: null, new: df6a9a8b-9ab8-5739-9d1b-8336431a8eaf}"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.633Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.651Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:35.675Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: df6a9a8b-9ab8-5739-9d1b-8336431a8eaf, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: null}"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:35.675Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Waiting for stream status query"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.676Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.693Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.708Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:35.724Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: df6a9a8b-9ab8-5739-9d1b-8336431a8eaf, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: null}"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:35.724Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] No active job to resume for: df6a9a8b-9ab8-5739-9d1b-8336431a8eaf"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.730Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.748Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.764Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.779Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.794Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.810Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.826Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.841Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.856Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.871Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.887Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.903Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.917Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.934Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.949Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.965Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.969Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:35.969Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:36.231Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:36.238Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:36.238Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:36.513Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:36.513Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:37.709Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:37.709Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": 9,
+    "at": "2026-09-23T21:33:37.745Z",
+    "control": "opened New chat after committing Barista in the Agent Builder Select control; entered flat-white question; clicked send-button",
+    "result": "reply waited",
+    "selected_agent": "Barista 1790199189940",
+    "selection_commit": "Agent Builder Select",
+    "agent_chat_bodies": [
+      {
+        "keys": [
+          "clientRequestId",
+          "clientTimestamp",
+          "conversationId",
+          "endpoint",
+          "error",
+          "generationProtocolVersion",
+          "isContinued",
+          "isCreatedByUser",
+          "isRegenerate",
+          "isTemporary",
+          "key",
+          "maxContextTokens",
+          "messageId",
+          "model",
+          "parentMessageId",
+          "resendFiles",
+          "sender",
+          "text",
+          "timezone"
+        ],
+        "agent_id": null,
+        "endpoint": "openAI",
+        "model": "gpt-3.5-turbo"
+      },
+      {
+        "keys": [
+          "clientRequestId",
+          "clientTimestamp",
+          "conversationId",
+          "endpoint",
+          "error",
+          "generationProtocolVersion",
+          "isContinued",
+          "isCreatedByUser",
+          "isRegenerate",
+          "isTemporary",
+          "key",
+          "maxContextTokens",
+          "messageId",
+          "model",
+          "overrideParentMessageId",
+          "parentMessageId",
+          "resendFiles",
+          "responseMessageId",
+          "sender",
+          "text",
+          "timezone"
+        ],
+        "agent_id": null,
+        "endpoint": "openAI",
+        "model": "gpt-3.5-turbo"
+      }
+    ]
+  },
+  {
+    "step": "delete-precondition",
+    "at": "2026-09-23T21:33:37.784Z",
+    "conversation_id_in_url": true,
+    "url": "/c/df6a9a8b-9ab8-5739-9d1b-8336431a8eaf"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:37.820Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:37.823Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:37.823Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:37.850Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:37.851Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:37.851Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:38.075Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:38.075Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": 10,
+    "at": "2026-09-23T21:33:38.169Z",
+    "control": "opened second conversation menu; clicked Delete and confirmation",
+    "result": "delete clicked"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:38.171Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:38.173Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:38.268Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: df6a9a8b-9ab8-5739-9d1b-8336431a8eaf, messagesLoaded: false, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:38.268Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Waiting for messages to load"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:38.330Z",
+    "type": "error",
+    "text": "Failed to load resource: the server responded with a status of 404 (Not Found)"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:38.330Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:38.357Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:38.392Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:38.417Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:38.438Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:38.460Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: new, messagesLoaded: false, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:38.460Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Skipping - not enabled or new convo"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:38.460Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Resetting processedConvoRef for new conversation: {old: df6a9a8b-9ab8-5739-9d1b-8336431a8eaf, new: new}"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:38.464Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:38.484Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: new, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"
+  },
+  {
+    "step": "console",
+    "at": "2026-09-23T21:33:38.484Z",
+    "type": "log",
+    "text": "[ResumeOnLoad] Skipping - not enabled or new convo"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:38.486Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:38.507Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:38.524Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:38.545Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:38.548Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:38.548Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:39.333Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:39.333Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:40.516Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:40.517Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:40.744Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:40.745Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:41.404Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:41.414Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:33:41.414Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:08.341Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:08.341Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:08.762Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:08.764Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:08.764Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:08.791Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:08.791Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:08.842Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:08.842Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:08.891Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:08.891Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:08.941Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:08.942Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:08.991Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:08.992Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.038Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.038Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.125Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.171Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.184Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.205Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.229Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.243Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.250Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.253Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.292Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.293Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.308Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.308Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.342Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.342Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.357Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.357Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.393Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.393Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.406Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.406Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.437Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.454Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.454Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.455Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.488Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.490Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.490Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.508Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.508Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.541Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.542Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.559Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.560Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.592Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.592Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.608Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.608Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.641Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.641Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.658Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.658Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.691Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.691Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.709Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.709Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.748Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.748Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.756Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.757Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.797Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.798Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.798Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.813Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.813Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.841Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.842Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.858Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.858Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.891Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.891Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.908Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.908Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.925Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.925Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.941Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.941Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.958Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.958Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.991Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:09.991Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.008Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.009Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.045Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.045Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.072Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.073Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.091Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.092Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.137Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.137Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.187Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.187Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.238Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.238Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.289Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.289Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.339Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.339Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.388Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.388Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.439Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.439Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.487Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.487Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.537Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.537Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.587Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.587Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.637Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.637Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.686Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.686Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.687Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.687Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.737Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.737Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.989Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "requestfailed",
+    "at": "2026-09-23T21:34:10.990Z",
+    "url": "http://127.0.0.1:51929/__capture",
+    "error": "net::ERR_ABORTED"
+  },
+  {
+    "step": "capture-drain",
+    "at": "2026-09-23T21:34:12.011Z",
+    "ok": true,
+    "waited_ms": 2,
+    "page_id": "muemdjqb-8dj7wcabh7c",
+    "emitted": 138688,
+    "sent": 138688,
+    "dropped": 0,
+    "queued": 0,
+    "inflight": 0,
+    "flushing": false,
+    "last_sequence": 137898,
+    "last_stamp_sequence": 790,
+    "rows_at_drain": 138688,
+    "received_through_drain": 137898,
+    "stamps_through_drain": 790
+  }
+]

@@ -1,0 +1,56 @@
+{
+ "window": [
+  "2026-09-23T21:34:43.000Z",
+  "2026-09-23T21:36:50.000Z"
+ ],
+ "sessions": [
+  {
+   "id": "6ab445f5",
+   "at": "2026-09-23T21:34:45.000Z"
+  }
+ ],
+ "conversations": [
+  {
+   "id": "6f618dc7",
+   "title": "Tracer M1",
+   "createdAt": "2026-09-23T21:34:47.279Z",
+   "updatedAt": "2026-09-23T21:35:03.390Z"
+  }
+ ],
+ "messages_by_conversation": [
+  {
+   "_id": "6f618dc7-7319-5865-9d91-7b41879520c1",
+   "n": 7
+  }
+ ],
+ "agents": [
+  {
+   "id": "agent_y5E-ciibW7YrSdTZQ7iMv",
+   "name": "Barista 1790199283710",
+   "createdAt": "2026-09-23T21:35:06.497Z"
+  }
+ ],
+ "aclentries": [
+  {
+   "resourceType": "agent",
+   "permBits": 15,
+   "createdAt": "2026-09-23T21:35:06.502Z"
+  },
+  {
+   "resourceType": "remoteAgent",
+   "permBits": 15,
+   "createdAt": "2026-09-23T21:35:06.503Z"
+  }
+ ],
+ "transactions_by_conversation": [
+  {
+   "_id": "6f618dc7-7319-5865-9d91-7b41879520c1",
+   "n": 10
+  },
+  {
+   "_id": "c34236b5-53a2-5e5a-aa7d-933fab2dc8de",
+   "n": 4
+  }
+ ],
+ "feedback_messages": 0
+}

@@ -1,0 +1,60 @@
+<!doctype html>
+<!-- Browser adaptation of Palmier Pro at eece943; see PALMIER-PRO-LICENSE.txt. -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ProductTrace shows what someone did in a product, what the product did next, and the evidence connecting both.">
+    <title>Palmier Pro — Tracer preview</title>
+    <link rel="stylesheet" href="/test/browser/palmier-demo.css">
+  </head>
+  <body>
+    <main>
+      <section class="demo-canvas" aria-label="Interactive ProductTrace examples">
+        <div class="demo-grid">
+          <section class="product-widget" aria-label="Product interaction">
+            <div class="product-sim" id="productSim"></div>
+            <div class="demo-cursor" id="demoCursor" aria-hidden="true">
+              <svg viewBox="0 0 28 34" role="presentation">
+                <path d="M2 2 24 20l-10 1 6 10-5 2-6-10-7 7Z"></path>
+              </svg>
+              <i></i>
+            </div>
+          </section>
+
+          <aside class="trace-widget" aria-label="ProductTrace activity">
+            <header class="trace-head">
+              <div>
+                <span class="demo-label">Interactive demo</span>
+                <strong id="traceState">Playing</strong>
+              </div>
+              <button class="resume-demo" id="resumeDemo" type="button">Pause demo</button>
+            </header>
+            <section class="workflow-control" data-workflow-ui>
+              <span>Workflow</span>
+              <button class="workflow-trigger" id="workflowTrigger" type="button" data-workflow-ui>Choose workflow</button>
+              <div class="workflow-menu" id="workflowMenu" data-workflow-ui hidden></div>
+            </section>
+            <section class="workflow-now">
+              <span>Trying now</span>
+              <p id="traceHeadline">Browse project media</p>
+              <span id="traceBadge" hidden>Preview</span>
+            </section>
+            <section class="logs-panel">
+              <header>Logs</header>
+              <div class="trace-feed" id="traceFeed" aria-live="polite"></div>
+            </section>
+            <span id="evidenceNote" hidden></span>
+            <nav class="demo-pagination" aria-label="Demo examples">
+              <button class="active" type="button" data-slide-index="0" aria-label="Palmier Pro"></button>
+              <button type="button" data-slide-index="1" aria-label="LibreChat"></button>
+              <button type="button" data-slide-index="2" aria-label="Your product"></button>
+            </nav>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <script src="/test/browser/palmier-demo.js"></script>
+  </body>
+</html>

@@ -1,0 +1,903 @@
+{
+ "frontend-only": {
+  "count": 25,
+  "requests": [
+   {
+    "sequence": 1,
+    "method": "GET",
+    "url": "/api/config",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": null
+   },
+   {
+    "sequence": 2,
+    "method": "POST",
+    "url": "/api/auth/refresh",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": null
+   },
+   {
+    "sequence": 3,
+    "method": "GET",
+    "url": "/api/banner",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": null
+   },
+   {
+    "sequence": 4,
+    "method": "GET",
+    "url": "/api/config",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": null
+   },
+   {
+    "sequence": 4616,
+    "method": "GET",
+    "url": "/api/tags",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 4615,
+     "kind": "function.exit",
+     "action_id": "action:muea1vk1:83",
+     "invoked_by": "effect",
+     "function_id": "function:8a5dd402fcbf94410898bffd0c1ebe4d57673e1efbb606da70fa84f55cd95475:11096:11156"
+    }
+   },
+   {
+    "sequence": 102598,
+    "method": "GET",
+    "url": "/api/agents/chat/status/4555d6b9-2c70-5a90-8b95-f165d135ab50",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 102597,
+     "kind": "function.exit",
+     "action_id": "action:muea1wux:193",
+     "invoked_by": "effect",
+     "function_id": "function:b57bb8c6c0e41a4971af646bb9d1bc557bc94b46996cd0a8d493326cf472617b:14381:14414"
+    }
+   },
+   {
+    "sequence": 113746,
+    "method": "GET",
+    "url": "/api/share/link/4555d6b9-2c70-5a90-8b95-f165d135ab50",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 113745,
+     "kind": "function.exit",
+     "action_id": "action:muea23fs:201",
+     "invoked_by": "effect",
+     "function_id": "function:d74f570d080a5553b9b1c8be6ee08049aa77cc8ef4441fec0b2f66678d1559f5:1492:1753"
+    }
+   },
+   {
+    "sequence": 113747,
+    "method": "GET",
+    "url": "/api/messages/4555d6b9-2c70-5a90-8b95-f165d135ab50",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 113745,
+     "kind": "function.exit",
+     "action_id": "action:muea23fs:201",
+     "invoked_by": "effect",
+     "function_id": "function:d74f570d080a5553b9b1c8be6ee08049aa77cc8ef4441fec0b2f66678d1559f5:1492:1753"
+    }
+   },
+   {
+    "sequence": 113748,
+    "method": "GET",
+    "url": "/api/agents/tools/calls",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 113745,
+     "kind": "function.exit",
+     "action_id": "action:muea23fs:201",
+     "invoked_by": "effect",
+     "function_id": "function:d74f570d080a5553b9b1c8be6ee08049aa77cc8ef4441fec0b2f66678d1559f5:1492:1753"
+    }
+   },
+   {
+    "sequence": 113753,
+    "method": "GET",
+    "url": "/api/agents/chat/status/4555d6b9-2c70-5a90-8b95-f165d135ab50",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 113752,
+     "kind": "function.exit",
+     "action_id": "action:muea1vk1:83",
+     "invoked_by": "async",
+     "function_id": "function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927"
+    }
+   },
+   {
+    "sequence": 113754,
+    "method": "GET",
+    "url": "/api/messages/4555d6b9-2c70-5a90-8b95-f165d135ab50",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 113752,
+     "kind": "function.exit",
+     "action_id": "action:muea1vk1:83",
+     "invoked_by": "async",
+     "function_id": "function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927"
+    }
+   },
+   {
+    "sequence": 128578,
+    "method": "GET",
+    "url": "/api/agents/chat/status/4555d6b9-2c70-5a90-8b95-f165d135ab50",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 128577,
+     "kind": "function.exit",
+     "action_id": "action:muea25ko:211",
+     "invoked_by": "effect",
+     "function_id": "function:d74f570d080a5553b9b1c8be6ee08049aa77cc8ef4441fec0b2f66678d1559f5:1492:1753"
+    }
+   },
+   {
+    "sequence": 153467,
+    "method": "GET",
+    "url": "/api/agents/chat/status/4555d6b9-2c70-5a90-8b95-f165d135ab50",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 153466,
+     "kind": "function.exit",
+     "action_id": "action:muea294f:247",
+     "invoked_by": "async",
+     "function_id": "function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927"
+    }
+   },
+   {
+    "sequence": 170911,
+    "method": "GET",
+    "url": "/api/agents/agent_wYfgQMgfH0C7SPRmTsP2S",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 170910,
+     "kind": "function.exit",
+     "action_id": "action:muea2b4w:267",
+     "invoked_by": "async",
+     "function_id": "function:e0911e688e09f23836561dfa73de6b57e3a00f72051a62ab85fd5d26fc691611:10327:10502"
+    }
+   },
+   {
+    "sequence": 171741,
+    "method": "GET",
+    "url": "/api/permissions/agent/6ab3f4ce3cf0902bec4ae5a6/effective",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 171740,
+     "kind": "function.exit",
+     "action_id": "action:muea2b4w:267",
+     "invoked_by": "async",
+     "function_id": "function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927"
+    }
+   },
+   {
+    "sequence": 171742,
+    "method": "GET",
+    "url": "/api/permissions/agent/6ab3f4ce3cf0902bec4ae5a6",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 171740,
+     "kind": "function.exit",
+     "action_id": "action:muea2b4w:267",
+     "invoked_by": "async",
+     "function_id": "function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927"
+    }
+   },
+   {
+    "sequence": 171743,
+    "method": "GET",
+    "url": "/api/permissions/remoteAgent/6ab3f4ce3cf0902bec4ae5a6/effective",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 171740,
+     "kind": "function.exit",
+     "action_id": "action:muea2b4w:267",
+     "invoked_by": "async",
+     "function_id": "function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927"
+    }
+   },
+   {
+    "sequence": 171744,
+    "method": "GET",
+    "url": "/api/agents/agent_wYfgQMgfH0C7SPRmTsP2S/expanded",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 171740,
+     "kind": "function.exit",
+     "action_id": "action:muea2b4w:267",
+     "invoked_by": "async",
+     "function_id": "function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927"
+    }
+   },
+   {
+    "sequence": 171747,
+    "method": "GET",
+    "url": "/api/permissions/remoteAgent/6ab3f4ce3cf0902bec4ae5a6",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 171746,
+     "kind": "function.exit",
+     "action_id": "action:muea2b4w:267",
+     "invoked_by": "async",
+     "function_id": "function:5c8a784586466b3cc8b2d5e219bfe80922381fe902a0227c1f1ceca6590ebf28:1330:1696"
+    }
+   },
+   {
+    "sequence": 244006,
+    "method": "GET",
+    "url": "/api/share/link/af9e546c-31d1-5714-8527-22e825a9d77a",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 244005,
+     "kind": "function.exit",
+     "action_id": "action:muea2csv:321",
+     "invoked_by": "effect",
+     "function_id": "function:1366f907344f9c25068523cfff37ce1e8d84765d79207519782d40d5fe4464f0:1067:1374"
+    }
+   },
+   {
+    "sequence": 244007,
+    "method": "GET",
+    "url": "/api/messages/af9e546c-31d1-5714-8527-22e825a9d77a",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 244005,
+     "kind": "function.exit",
+     "action_id": "action:muea2csv:321",
+     "invoked_by": "effect",
+     "function_id": "function:1366f907344f9c25068523cfff37ce1e8d84765d79207519782d40d5fe4464f0:1067:1374"
+    }
+   },
+   {
+    "sequence": 244008,
+    "method": "GET",
+    "url": "/api/agents/tools/calls",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 244005,
+     "kind": "function.exit",
+     "action_id": "action:muea2csv:321",
+     "invoked_by": "effect",
+     "function_id": "function:1366f907344f9c25068523cfff37ce1e8d84765d79207519782d40d5fe4464f0:1067:1374"
+    }
+   },
+   {
+    "sequence": 244089,
+    "method": "GET",
+    "url": "/api/agents/chat/status/af9e546c-31d1-5714-8527-22e825a9d77a",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 244088,
+     "kind": "function.exit",
+     "action_id": "action:muea2csv:321",
+     "invoked_by": "async",
+     "function_id": "function:4526d708df117de5282ad63641370373c8651707bbf0bc91e0166bb4fc25141e:938:977"
+    }
+   },
+   {
+    "sequence": 244090,
+    "method": "GET",
+    "url": "/api/messages/af9e546c-31d1-5714-8527-22e825a9d77a",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 244088,
+     "kind": "function.exit",
+     "action_id": "action:muea2csv:321",
+     "invoked_by": "async",
+     "function_id": "function:4526d708df117de5282ad63641370373c8651707bbf0bc91e0166bb4fc25141e:938:977"
+    }
+   },
+   {
+    "sequence": 244091,
+    "method": "GET",
+    "url": "/api/agents/chat/status/af9e546c-31d1-5714-8527-22e825a9d77a",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 244088,
+     "kind": "function.exit",
+     "action_id": "action:muea2csv:321",
+     "invoked_by": "async",
+     "function_id": "function:4526d708df117de5282ad63641370373c8651707bbf0bc91e0166bb4fc25141e:938:977"
+    }
+   }
+  ]
+ },
+ "backend-on": {
+  "count": 42,
+  "requests": [
+   {
+    "sequence": 1,
+    "method": "GET",
+    "url": "/api/config",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": null
+   },
+   {
+    "sequence": 2,
+    "method": "POST",
+    "url": "/api/auth/refresh",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": null
+   },
+   {
+    "sequence": 3,
+    "method": "GET",
+    "url": "/api/banner",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": null
+   },
+   {
+    "sequence": 4,
+    "method": "GET",
+    "url": "/api/config",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": null
+   },
+   {
+    "sequence": 1173,
+    "method": "GET",
+    "url": "/api/endpoints",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 1172,
+     "kind": "function.exit",
+     "action_id": "action:mue98h6z:83",
+     "invoked_by": "async",
+     "function_id": "function:e0911e688e09f23836561dfa73de6b57e3a00f72051a62ab85fd5d26fc691611:10545:10567"
+    }
+   },
+   {
+    "sequence": 1174,
+    "method": "GET",
+    "url": "/api/user/settings/favorites",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 1172,
+     "kind": "function.exit",
+     "action_id": "action:mue98h6z:83",
+     "invoked_by": "async",
+     "function_id": "function:e0911e688e09f23836561dfa73de6b57e3a00f72051a62ab85fd5d26fc691611:10545:10567"
+    }
+   },
+   {
+    "sequence": 1175,
+    "method": "GET",
+    "url": "/api/projects",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 1172,
+     "kind": "function.exit",
+     "action_id": "action:mue98h6z:83",
+     "invoked_by": "async",
+     "function_id": "function:e0911e688e09f23836561dfa73de6b57e3a00f72051a62ab85fd5d26fc691611:10545:10567"
+    }
+   },
+   {
+    "sequence": 1176,
+    "method": "GET",
+    "url": "/api/agents/chat/active",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 1172,
+     "kind": "function.exit",
+     "action_id": "action:mue98h6z:83",
+     "invoked_by": "async",
+     "function_id": "function:e0911e688e09f23836561dfa73de6b57e3a00f72051a62ab85fd5d26fc691611:10545:10567"
+    }
+   },
+   {
+    "sequence": 1177,
+    "method": "GET",
+    "url": "/api/convos",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 1172,
+     "kind": "function.exit",
+     "action_id": "action:mue98h6z:83",
+     "invoked_by": "async",
+     "function_id": "function:e0911e688e09f23836561dfa73de6b57e3a00f72051a62ab85fd5d26fc691611:10545:10567"
+    }
+   },
+   {
+    "sequence": 1178,
+    "method": "GET",
+    "url": "/api/files/speech/config/get",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 1172,
+     "kind": "function.exit",
+     "action_id": "action:mue98h6z:83",
+     "invoked_by": "async",
+     "function_id": "function:e0911e688e09f23836561dfa73de6b57e3a00f72051a62ab85fd5d26fc691611:10545:10567"
+    }
+   },
+   {
+    "sequence": 1179,
+    "method": "GET",
+    "url": "/api/models",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 1172,
+     "kind": "function.exit",
+     "action_id": "action:mue98h6z:83",
+     "invoked_by": "async",
+     "function_id": "function:e0911e688e09f23836561dfa73de6b57e3a00f72051a62ab85fd5d26fc691611:10545:10567"
+    }
+   },
+   {
+    "sequence": 1180,
+    "method": "GET",
+    "url": "/api/files",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 1172,
+     "kind": "function.exit",
+     "action_id": "action:mue98h6z:83",
+     "invoked_by": "async",
+     "function_id": "function:e0911e688e09f23836561dfa73de6b57e3a00f72051a62ab85fd5d26fc691611:10545:10567"
+    }
+   },
+   {
+    "sequence": 1181,
+    "method": "GET",
+    "url": "/api/search/enable",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 1172,
+     "kind": "function.exit",
+     "action_id": "action:mue98h6z:83",
+     "invoked_by": "async",
+     "function_id": "function:e0911e688e09f23836561dfa73de6b57e3a00f72051a62ab85fd5d26fc691611:10545:10567"
+    }
+   },
+   {
+    "sequence": 4484,
+    "method": "GET",
+    "url": "/api/agents",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 4479,
+     "kind": "function.exit",
+     "action_id": "action:mue98h6z:83",
+     "invoked_by": "async",
+     "function_id": "function:e7b808967cd0fa8076e05202d0c874d4b6e68a210fd448bb31e04fb180d3b639:984:1038"
+    }
+   },
+   {
+    "sequence": 9974,
+    "method": "GET",
+    "url": "/api/keys",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 9973,
+     "kind": "function.exit",
+     "action_id": "action:mue98hh2:84",
+     "invoked_by": "async",
+     "function_id": "function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927"
+    }
+   },
+   {
+    "sequence": 9975,
+    "method": "GET",
+    "url": "/api/agents",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 9973,
+     "kind": "function.exit",
+     "action_id": "action:mue98hh2:84",
+     "invoked_by": "async",
+     "function_id": "function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927"
+    }
+   },
+   {
+    "sequence": 9976,
+    "method": "GET",
+    "url": "/api/presets",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 9973,
+     "kind": "function.exit",
+     "action_id": "action:mue98hh2:84",
+     "invoked_by": "async",
+     "function_id": "function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927"
+    }
+   },
+   {
+    "sequence": 9977,
+    "method": "GET",
+    "url": "/api/tags",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 9973,
+     "kind": "function.exit",
+     "action_id": "action:mue98hh2:84",
+     "invoked_by": "async",
+     "function_id": "function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927"
+    }
+   },
+   {
+    "sequence": 9978,
+    "method": "GET",
+    "url": "/api/files/config",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 9973,
+     "kind": "function.exit",
+     "action_id": "action:mue98hh2:84",
+     "invoked_by": "async",
+     "function_id": "function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927"
+    }
+   },
+   {
+    "sequence": 9979,
+    "method": "GET",
+    "url": "/api/agents/tools/web_search/auth",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 9973,
+     "kind": "function.exit",
+     "action_id": "action:mue98hh2:84",
+     "invoked_by": "async",
+     "function_id": "function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927"
+    }
+   },
+   {
+    "sequence": 9980,
+    "method": "GET",
+    "url": "/api/endpoints/token-config",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 9973,
+     "kind": "function.exit",
+     "action_id": "action:mue98hh2:84",
+     "invoked_by": "async",
+     "function_id": "function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927"
+    }
+   },
+   {
+    "sequence": 11912,
+    "method": "GET",
+    "url": "/health",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 11911,
+     "kind": "function.exit",
+     "action_id": "action:mue98h6z:83",
+     "invoked_by": "async",
+     "function_id": "function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927"
+    }
+   },
+   {
+    "sequence": 72106,
+    "method": "GET",
+    "url": "/api/agents/chat/status/fa1b0fc1-7e40-50a1-ad0f-a9b1ac781ab5",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 72105,
+     "kind": "function.exit",
+     "action_id": "action:mue98iie:193",
+     "invoked_by": "effect",
+     "function_id": "function:b57bb8c6c0e41a4971af646bb9d1bc557bc94b46996cd0a8d493326cf472617b:14381:14414"
+    }
+   },
+   {
+    "sequence": 83242,
+    "method": "GET",
+    "url": "/api/share/link/fa1b0fc1-7e40-50a1-ad0f-a9b1ac781ab5",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 83241,
+     "kind": "function.exit",
+     "action_id": "action:mue98p4a:201",
+     "invoked_by": "effect",
+     "function_id": "function:d74f570d080a5553b9b1c8be6ee08049aa77cc8ef4441fec0b2f66678d1559f5:1492:1753"
+    }
+   },
+   {
+    "sequence": 83243,
+    "method": "GET",
+    "url": "/api/messages/fa1b0fc1-7e40-50a1-ad0f-a9b1ac781ab5",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 83241,
+     "kind": "function.exit",
+     "action_id": "action:mue98p4a:201",
+     "invoked_by": "effect",
+     "function_id": "function:d74f570d080a5553b9b1c8be6ee08049aa77cc8ef4441fec0b2f66678d1559f5:1492:1753"
+    }
+   },
+   {
+    "sequence": 83244,
+    "method": "GET",
+    "url": "/api/agents/tools/calls",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 83241,
+     "kind": "function.exit",
+     "action_id": "action:mue98p4a:201",
+     "invoked_by": "effect",
+     "function_id": "function:d74f570d080a5553b9b1c8be6ee08049aa77cc8ef4441fec0b2f66678d1559f5:1492:1753"
+    }
+   },
+   {
+    "sequence": 83245,
+    "method": "GET",
+    "url": "/api/agents/chat/status/fa1b0fc1-7e40-50a1-ad0f-a9b1ac781ab5",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 83241,
+     "kind": "function.exit",
+     "action_id": "action:mue98p4a:201",
+     "invoked_by": "effect",
+     "function_id": "function:d74f570d080a5553b9b1c8be6ee08049aa77cc8ef4441fec0b2f66678d1559f5:1492:1753"
+    }
+   },
+   {
+    "sequence": 83246,
+    "method": "GET",
+    "url": "/api/messages/fa1b0fc1-7e40-50a1-ad0f-a9b1ac781ab5",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 83241,
+     "kind": "function.exit",
+     "action_id": "action:mue98p4a:201",
+     "invoked_by": "effect",
+     "function_id": "function:d74f570d080a5553b9b1c8be6ee08049aa77cc8ef4441fec0b2f66678d1559f5:1492:1753"
+    }
+   },
+   {
+    "sequence": 98092,
+    "method": "GET",
+    "url": "/api/agents/chat/status/fa1b0fc1-7e40-50a1-ad0f-a9b1ac781ab5",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 98091,
+     "kind": "function.exit",
+     "action_id": "action:mue98r93:211",
+     "invoked_by": "async",
+     "function_id": "function:4526d708df117de5282ad63641370373c8651707bbf0bc91e0166bb4fc25141e:938:977"
+    }
+   },
+   {
+    "sequence": 123119,
+    "method": "GET",
+    "url": "/api/agents/chat/status/fa1b0fc1-7e40-50a1-ad0f-a9b1ac781ab5",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 123118,
+     "kind": "function.exit",
+     "action_id": "action:mue98utp:247",
+     "invoked_by": "async",
+     "function_id": "function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927"
+    }
+   },
+   {
+    "sequence": 140487,
+    "method": "GET",
+    "url": "/api/agents/agent_z4xr8fH4LcSRfEiJlLuPD",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 140486,
+     "kind": "function.exit",
+     "action_id": "action:mue98wty:267",
+     "invoked_by": "async",
+     "function_id": "function:e0911e688e09f23836561dfa73de6b57e3a00f72051a62ab85fd5d26fc691611:10327:10502"
+    }
+   },
+   {
+    "sequence": 140489,
+    "method": "GET",
+    "url": "/api/permissions/agent/6ab3ef730785106715a2a03d/effective",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 140486,
+     "kind": "function.exit",
+     "action_id": "action:mue98wty:267",
+     "invoked_by": "async",
+     "function_id": "function:e0911e688e09f23836561dfa73de6b57e3a00f72051a62ab85fd5d26fc691611:10327:10502"
+    }
+   },
+   {
+    "sequence": 142288,
+    "method": "GET",
+    "url": "/api/permissions/remoteAgent/6ab3ef730785106715a2a03d/effective",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 142287,
+     "kind": "function.exit",
+     "action_id": "action:mue98wty:267",
+     "invoked_by": "async",
+     "function_id": "function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927"
+    }
+   },
+   {
+    "sequence": 142291,
+    "method": "GET",
+    "url": "/api/permissions/agent/6ab3ef730785106715a2a03d",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 142290,
+     "kind": "function.exit",
+     "action_id": "action:mue98wty:267",
+     "invoked_by": "async",
+     "function_id": "function:5c8a784586466b3cc8b2d5e219bfe80922381fe902a0227c1f1ceca6590ebf28:1330:1696"
+    }
+   },
+   {
+    "sequence": 142292,
+    "method": "GET",
+    "url": "/api/agents/agent_z4xr8fH4LcSRfEiJlLuPD/expanded",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 142290,
+     "kind": "function.exit",
+     "action_id": "action:mue98wty:267",
+     "invoked_by": "async",
+     "function_id": "function:5c8a784586466b3cc8b2d5e219bfe80922381fe902a0227c1f1ceca6590ebf28:1330:1696"
+    }
+   },
+   {
+    "sequence": 142293,
+    "method": "GET",
+    "url": "/api/permissions/remoteAgent/6ab3ef730785106715a2a03d",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 142290,
+     "kind": "function.exit",
+     "action_id": "action:mue98wty:267",
+     "invoked_by": "async",
+     "function_id": "function:5c8a784586466b3cc8b2d5e219bfe80922381fe902a0227c1f1ceca6590ebf28:1330:1696"
+    }
+   },
+   {
+    "sequence": 214269,
+    "method": "GET",
+    "url": "/api/share/link/3a9eeeb1-6e62-5037-8735-21c8aa3744e4",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 214268,
+     "kind": "function.exit",
+     "action_id": "action:mue98yhz:321",
+     "invoked_by": "effect",
+     "function_id": "function:1366f907344f9c25068523cfff37ce1e8d84765d79207519782d40d5fe4464f0:1067:1374"
+    }
+   },
+   {
+    "sequence": 214270,
+    "method": "GET",
+    "url": "/api/messages/3a9eeeb1-6e62-5037-8735-21c8aa3744e4",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 214268,
+     "kind": "function.exit",
+     "action_id": "action:mue98yhz:321",
+     "invoked_by": "effect",
+     "function_id": "function:1366f907344f9c25068523cfff37ce1e8d84765d79207519782d40d5fe4464f0:1067:1374"
+    }
+   },
+   {
+    "sequence": 214271,
+    "method": "GET",
+    "url": "/api/agents/tools/calls",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 214268,
+     "kind": "function.exit",
+     "action_id": "action:mue98yhz:321",
+     "invoked_by": "effect",
+     "function_id": "function:1366f907344f9c25068523cfff37ce1e8d84765d79207519782d40d5fe4464f0:1067:1374"
+    }
+   },
+   {
+    "sequence": 216848,
+    "method": "GET",
+    "url": "/api/agents/chat/status/3a9eeeb1-6e62-5037-8735-21c8aa3744e4",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 216847,
+     "kind": "function.exit",
+     "action_id": "action:mue98yhz:321",
+     "invoked_by": "async",
+     "function_id": "function:4526d708df117de5282ad63641370373c8651707bbf0bc91e0166bb4fc25141e:938:977"
+    }
+   },
+   {
+    "sequence": 216849,
+    "method": "GET",
+    "url": "/api/messages/3a9eeeb1-6e62-5037-8735-21c8aa3744e4",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 216847,
+     "kind": "function.exit",
+     "action_id": "action:mue98yhz:321",
+     "invoked_by": "async",
+     "function_id": "function:4526d708df117de5282ad63641370373c8651707bbf0bc91e0166bb4fc25141e:938:977"
+    }
+   },
+   {
+    "sequence": 216850,
+    "method": "GET",
+    "url": "/api/agents/chat/status/3a9eeeb1-6e62-5037-8735-21c8aa3744e4",
+    "transport": "xhr",
+    "reason": "unattributed_transport",
+    "preceding_function_row": {
+     "sequence": 216847,
+     "kind": "function.exit",
+     "action_id": "action:mue98yhz:321",
+     "invoked_by": "async",
+     "function_id": "function:4526d708df117de5282ad63641370373c8651707bbf0bc91e0166bb4fc25141e:938:977"
+    }
+   }
+  ]
+ },
+ "note": "Every unattributed request is an XHR whose send ran with no active continuation frame. For all but the four pre-login boot requests, the immediately preceding instrumented row is the exit of a function of some action (effect or async). No frame was open at send, so the scheduling hop between the two was not identified. It was not attributed (abstain)."
+}

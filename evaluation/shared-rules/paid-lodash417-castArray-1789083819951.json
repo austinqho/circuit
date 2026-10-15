@@ -1,0 +1,1842 @@
+{
+  "schema": "producttrace.shared-rule-paid.v1",
+  "case_id": "lodash417-castArray",
+  "passed": true,
+  "frozen": {
+    "schema": "producttrace.shared-rule-freeze.v1",
+    "files": {
+      "analysis/library-execution-context.mjs": "5c969015edfe916281df5dfc56ed9386bd49cd06970b0ef2f6f3af5708bb22f7",
+      "analysis/library-program.mjs": "d47d4c9d10c8f6307628aab78e7316a8372881f7ed9372af348bdebd4e49b1af",
+      "analysis/library-boundary.mjs": "c2e5aed2424a26d4df689034eb01b74425e26684d0d6db69b383e4174de9ce93",
+      "analysis/library-program-bank.mjs": "3051034e980001e19799518f0c464424b4f9bc02bd2e758d8d27d5be47541086",
+      "analysis/library-program-integration.mjs": "df8fe960b297acf0e6ecf8cb2397c9c6ad8347cca1b561102919b6f4e7e61070",
+      "authoring/library-implementation.mjs": "702abf551475038b31f7c580ec76c294a45d49b2f13983e732d36fda9c65f1ec",
+      "authoring/library-export-getter.mjs": "0f98bd85ff1fb6c26918b3c2fdf76805260b9f81e7ce5843d594ed63e2eacab2",
+      "analysis/library-owned-reference.mjs": "daa29c4047a3b80a6b3a3c89396596700209614b9105540fe5624cb905c66af7",
+      "analysis/library-owned-value.mjs": "9dad684280d3714ba7f232b87de52b6504069a799f661345b8147221b540cd00",
+      "authoring/library-program-catalog.mjs": "a711b25be524f82cc953665f2b30978c61617a576989f65754ec35bdd83b26e4",
+      "authoring/library-program-verifier.mjs": "bc379149d0f858a9b2e8fbe4163d5dae3941768098227bbabdd2ccb91144de03",
+      "authoring/library-program-experiments.mjs": "269eb65f43eecb43a12fa4e9b06a42688d6d475587f1c420b427e339abf88fd9",
+      "evaluation/shared-rules/experiments.mjs": "319ca0a6caadea20f37be973d7b1a04dc6535b33a38881e8f69502d59dd1b173",
+      "authoring/library-program-resolver.mjs": "f0025db701eb18f9ce599ca3494954068000af3e88d75e9125325618559d38eb",
+      "authoring/library-program-compatibility.mjs": "e549e0c11e1a108fc8430799d6eff31c3f5eb8e33f2dac8235ef12f0c66c1f8c",
+      "authoring/library-program-normalize.mjs": "6c5bcb1cdd5ba970c910830d43cfbc97dd8fbf428cb71aa99aea4bd623eb6e12",
+      "analysis/library-program-syntax.mjs": "96baeca597d56af5cc206495eb27d2fba66708f5ca076e96772cb2b32f0b124e",
+      "authoring/library-program-author.mjs": "94a37c21b48768596e9f328dca8c66d7750d5be592b521fb29d6e87f63c4cd9e",
+      "authoring/library-program-format.mjs": "d184dab9225d4ab0f7e6820c8009293096a4d95673444633a6061608e2ba40c5",
+      "evaluation/shared-rules/cases.mjs": "25a7f82456c7405fdce263f24edd11e0620d1e7a94fc7c2a53b724c0d1f6bd30",
+      "evaluation/shared-rules/check-case.mjs": "68f51f942078c38a8648c88c3427c9c58667cb9769ebb37e5be9f353554a473f",
+      "evaluation/shared-rules/run.mjs": "2fd32cf78ed2b7416179f0d828b372bd2e985821efa3754ab4e03b637b8c7015",
+      "evaluation/shared-rules/children-traversal-check.mjs": "d00b3c389c177a5c3d766a52ef24e5bf9877c30e1f072bd91c4f38c06fea6562",
+      "evaluation/shared-rules/children-traversal-scope.mjs": "10ff05d6721820b6c997f928f9c4d8d2a3a77dfa7b33b56cab146987245a8c93"
+    },
+    "cases": [
+      {
+        "id": "lodash417-castArray",
+        "implementation_sha256": "1f63affbeacc45f9d20e1ed51d84dbf5eeea40af21406b36859ddd6c9672f0fc",
+        "source_status": "ready_for_scoped_proposal",
+        "source_reason": null,
+        "specifier": "lodash417/castArray",
+        "exportName": "default",
+        "scope": {
+          "callbackArguments": [],
+          "resultPaths": null,
+          "description": "Finite primitive, plain object, array and function values as data, including missing arguments and additional plain arguments. Compare complete returned values and exact input identities. No supplied function is granted invocation capability. Function properties, proxies, getters and outside writes are excluded."
+        }
+      }
+    ]
+  },
+  "active_engine": {
+    "analysis/library-execution-context.mjs": "5c969015edfe916281df5dfc56ed9386bd49cd06970b0ef2f6f3af5708bb22f7",
+    "analysis/library-program.mjs": "d47d4c9d10c8f6307628aab78e7316a8372881f7ed9372af348bdebd4e49b1af",
+    "analysis/library-boundary.mjs": "c2e5aed2424a26d4df689034eb01b74425e26684d0d6db69b383e4174de9ce93",
+    "analysis/library-program-bank.mjs": "3051034e980001e19799518f0c464424b4f9bc02bd2e758d8d27d5be47541086",
+    "analysis/library-program-integration.mjs": "df8fe960b297acf0e6ecf8cb2397c9c6ad8347cca1b561102919b6f4e7e61070",
+    "authoring/library-implementation.mjs": "702abf551475038b31f7c580ec76c294a45d49b2f13983e732d36fda9c65f1ec",
+    "authoring/library-export-getter.mjs": "0f98bd85ff1fb6c26918b3c2fdf76805260b9f81e7ce5843d594ed63e2eacab2",
+    "analysis/library-owned-reference.mjs": "daa29c4047a3b80a6b3a3c89396596700209614b9105540fe5624cb905c66af7",
+    "analysis/library-owned-value.mjs": "9dad684280d3714ba7f232b87de52b6504069a799f661345b8147221b540cd00",
+    "authoring/library-program-catalog.mjs": "a711b25be524f82cc953665f2b30978c61617a576989f65754ec35bdd83b26e4",
+    "authoring/library-program-verifier.mjs": "bc379149d0f858a9b2e8fbe4163d5dae3941768098227bbabdd2ccb91144de03",
+    "authoring/library-program-experiments.mjs": "269eb65f43eecb43a12fa4e9b06a42688d6d475587f1c420b427e339abf88fd9",
+    "evaluation/shared-rules/experiments.mjs": "319ca0a6caadea20f37be973d7b1a04dc6535b33a38881e8f69502d59dd1b173",
+    "authoring/library-program-resolver.mjs": "f0025db701eb18f9ce599ca3494954068000af3e88d75e9125325618559d38eb",
+    "authoring/library-program-compatibility.mjs": "e549e0c11e1a108fc8430799d6eff31c3f5eb8e33f2dac8235ef12f0c66c1f8c",
+    "authoring/library-program-normalize.mjs": "6c5bcb1cdd5ba970c910830d43cfbc97dd8fbf428cb71aa99aea4bd623eb6e12",
+    "analysis/library-program-syntax.mjs": "96baeca597d56af5cc206495eb27d2fba66708f5ca076e96772cb2b32f0b124e",
+    "authoring/library-program-author.mjs": "94a37c21b48768596e9f328dca8c66d7750d5be592b521fb29d6e87f63c4cd9e",
+    "authoring/library-program-format.mjs": "d184dab9225d4ab0f7e6820c8009293096a4d95673444633a6061608e2ba40c5",
+    "evaluation/shared-rules/cases.mjs": "25a7f82456c7405fdce263f24edd11e0620d1e7a94fc7c2a53b724c0d1f6bd30",
+    "evaluation/shared-rules/check-case.mjs": "68f51f942078c38a8648c88c3427c9c58667cb9769ebb37e5be9f353554a473f",
+    "evaluation/shared-rules/run.mjs": "2fd32cf78ed2b7416179f0d828b372bd2e985821efa3754ab4e03b637b8c7015",
+    "evaluation/shared-rules/children-traversal-check.mjs": "d00b3c389c177a5c3d766a52ef24e5bf9877c30e1f072bd91c4f38c06fea6562",
+    "evaluation/shared-rules/children-traversal-scope.mjs": "10ff05d6721820b6c997f928f9c4d8d2a3a77dfa7b33b56cab146987245a8c93"
+  },
+  "local_gate": {
+    "passed": true,
+    "source_sha256": "952fcc7983de7668e3a21c364a4eddb57c3c4ab6b4d37b235890ac8630d19d4d",
+    "checked_at": "2026-09-10T23:42:33.598Z",
+    "checks": [
+      {
+        "name": "regressions",
+        "exit_status": 0,
+        "output_sha256": "209ae36fad8bf095a37386694ad4668c28206f61b531ac8b4d9be4f6ceb8d5eb"
+      },
+      {
+        "name": "real_libraries",
+        "exit_status": 0,
+        "output_sha256": "83109afd90174da4fa2d5d8d8098956fcce91734895b41cdba0d6bff2cb94ce6"
+      },
+      {
+        "name": "library_composition",
+        "exit_status": 0,
+        "output_sha256": "c7cba0f4e037fad93178daf41adc30624a0d7460cb0a722734af42b204b897d4"
+      },
+      {
+        "name": "actual_http",
+        "exit_status": 0,
+        "output_sha256": "ff2a1bea8836fd23b1041abc0cda3406b42ee18a7de84c06ca5624e0e1a96aaf"
+      },
+      {
+        "name": "react182_owned_reference",
+        "exit_status": 0,
+        "output_sha256": "347becdfe71d2d9d6213978776f7880066ee92ee5547689ca171efa4c2b9f3e4"
+      },
+      {
+        "name": "react18_owned_reference",
+        "exit_status": 0,
+        "output_sha256": "c8d48c37aaaebdea611238084e1078db81ff3d15f3d6a3890921a82c8db4804d"
+      },
+      {
+        "name": "react19_owned_reference",
+        "exit_status": 0,
+        "output_sha256": "ea6d10557fd8ac06969020768e1fe2e2485da825aa5280a6972f03bc7fe2bf8d"
+      },
+      {
+        "name": "react_production_catalog",
+        "exit_status": 0,
+        "output_sha256": "df27572354a0cda9a4565affe0bd0e785c3a3d21ae40995d1750ac9bbf8c4f4d"
+      },
+      {
+        "name": "react_transition",
+        "exit_status": 0,
+        "output_sha256": "dda06e3b38d47d49ed40fac8fededa7e32cffe8c61be88eb631c9c175ea0dd74"
+      },
+      {
+        "name": "react_memo_generations",
+        "exit_status": 0,
+        "output_sha256": "d240985e4f1b45b494a28c4a6702198c4764888bc520558ff3fd13bfdb2ea82f"
+      },
+      {
+        "name": "react_ref_cells",
+        "exit_status": 0,
+        "output_sha256": "b07e2c549dbfd928cb0d6beed1a6f587b82c0909391e32eb2378630a2947c0f5"
+      },
+      {
+        "name": "react_context_read_development",
+        "exit_status": 0,
+        "output_sha256": "5930bf07f44d8712c4250ca128e860916b3ca26f531d8bbb6dcacf49ca0352cc"
+      },
+      {
+        "name": "react_context_read",
+        "exit_status": 0,
+        "output_sha256": "5930bf07f44d8712c4250ca128e860916b3ca26f531d8bbb6dcacf49ca0352cc"
+      },
+      {
+        "name": "react_context_creation",
+        "exit_status": 0,
+        "output_sha256": "32a1fa1b4930f90bb67b834a4540ae189015637987b698bf10f8fd3cecb25b31"
+      },
+      {
+        "name": "react_children_traversal_development",
+        "exit_status": 0,
+        "output_sha256": "935f7e1016caaee2886e7ac12d6ba29857694732b97ac41f5cb74ed3312d09df"
+      },
+      {
+        "name": "react_children_traversal_production",
+        "exit_status": 0,
+        "output_sha256": "9ff62e8c66041e850e66d33a4cfdf1cd283d589668107926c4bb3750ca291b99"
+      },
+      {
+        "name": "react_children_only",
+        "exit_status": 0,
+        "output_sha256": "316e7a2f93244cc9b2e2609407b73c65da69310333723e165e948e79eeb5c10a"
+      },
+      {
+        "name": "react_element_data",
+        "exit_status": 0,
+        "output_sha256": "e2dcb498d1460b5a345b1c4849ff4d67df82ef08e20a8c85d27af1d0bf44a124"
+      },
+      {
+        "name": "react_simple_production",
+        "exit_status": 0,
+        "output_sha256": "f1446552b285e1db879496a47f8f0f65e6959acd58eb5290e853266d622167bd"
+      },
+      {
+        "name": "version_compatibility",
+        "exit_status": 0,
+        "output_sha256": "e4e888a51c78392019e2ccfe5d347a2257b993cdcf07ee0577b78370c141efff"
+      },
+      {
+        "name": "usable_catalog",
+        "exit_status": 0,
+        "output_sha256": "77778436b836a86547a566a9a8ffeb9a70e2bf5c07ad02141565e34fb8bd77c2"
+      }
+    ]
+  },
+  "model": "gpt-5.4-mini",
+  "reasoning_effort": "low",
+  "resumed_from": null,
+  "implementation_sha256": "1f63affbeacc45f9d20e1ed51d84dbf5eeea40af21406b36859ddd6c9672f0fc",
+  "implementation": {
+    "schema": "producttrace.library-implementation.v1",
+    "specifier": "lodash417/castArray",
+    "export_name": "default",
+    "runtime": {
+      "host": "node",
+      "mode": "development",
+      "entry": "node_modules/lodash417/castArray.js"
+    },
+    "packages": [
+      {
+        "path": "node_modules/lodash417",
+        "name": "lodash",
+        "version": "4.17.21",
+        "integrity": "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==",
+        "manifest_sha256": "8e41b07c744a0de0d2c1c23ed41418ecb0849abb56395d28802e601b4730d7c2"
+      }
+    ],
+    "files": [
+      {
+        "path": "node_modules/lodash417/castArray.js",
+        "sha256": "30f012884b6f1056dbad98343de77f9c7cde538a7ac376da97ffdf771984217c"
+      },
+      {
+        "path": "node_modules/lodash417/isArray.js",
+        "sha256": "69a51a3435d6152559e524eb881a6350c76892b4d1ba83055333690533d6b4d6"
+      }
+    ],
+    "source_status": "ready_for_scoped_proposal",
+    "source_reason": null,
+    "scope": "runtime_export_and_loaded_initialization_dependencies",
+    "implementation": "function castArray() {\n  if (!arguments.length) {\n    return [];\n  }\n  var value = arguments[0];\n  return isArray(value) ? value : [value];\n}",
+    "slices": [
+      {
+        "file": "node_modules/lodash417/castArray.js",
+        "start": 0,
+        "end": 768,
+        "source": "var isArray = require('./isArray');\n\n/**\n * Casts `value` as an array if it's not one.\n *\n * @static\n * @memberOf _\n * @since 4.4.0\n * @category Lang\n * @param {*} value The value to inspect.\n * @returns {Array} Returns the cast array.\n * @example\n *\n * _.castArray(1);\n * // => [1]\n *\n * _.castArray({ 'a': 1 });\n * // => [{ 'a': 1 }]\n *\n * _.castArray('abc');\n * // => ['abc']\n *\n * _.castArray(null);\n * // => [null]\n *\n * _.castArray(undefined);\n * // => [undefined]\n *\n * _.castArray();\n * // => []\n *\n * var array = [1, 2, 3];\n * console.log(_.castArray(array) === array);\n * // => true\n */\nfunction castArray() {\n  if (!arguments.length) {\n    return [];\n  }\n  var value = arguments[0];\n  return isArray(value) ? value : [value];\n}\n\nmodule.exports = castArray;\n"
+      },
+      {
+        "file": "node_modules/lodash417/isArray.js",
+        "start": 0,
+        "end": 488,
+        "source": "/**\n * Checks if `value` is classified as an `Array` object.\n *\n * @static\n * @memberOf _\n * @since 0.1.0\n * @category Lang\n * @param {*} value The value to check.\n * @returns {boolean} Returns `true` if `value` is an array, else `false`.\n * @example\n *\n * _.isArray([1, 2, 3]);\n * // => true\n *\n * _.isArray(document.body.children);\n * // => false\n *\n * _.isArray('abc');\n * // => false\n *\n * _.isArray(_.noop);\n * // => false\n */\nvar isArray = Array.isArray;\n\nmodule.exports = isArray;\n"
+      }
+    ]
+  },
+  "result": {
+    "status": "admitted",
+    "program": {
+      "schema": "producttrace.library-program.v1",
+      "body": {
+        "op": "if",
+        "test": {
+          "op": "equal",
+          "left": {
+            "op": "get",
+            "value": {
+              "op": "args"
+            },
+            "key": "length"
+          },
+          "right": {
+            "op": "literal",
+            "value": 0
+          }
+        },
+        "then": {
+          "op": "array",
+          "items": []
+        },
+        "else": {
+          "op": "bind",
+          "name": "value",
+          "value": {
+            "op": "arg",
+            "index": 0
+          },
+          "body": {
+            "op": "if",
+            "test": {
+              "op": "is_array",
+              "value": {
+                "op": "local",
+                "name": "value"
+              }
+            },
+            "then": {
+              "op": "local",
+              "name": "value"
+            },
+            "else": {
+              "op": "array",
+              "items": [
+                {
+                  "op": "local",
+                  "name": "value"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "admission": {
+      "status": "admitted",
+      "id": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2",
+      "program_sha256": "1b8e750be50c95033346a92d9ae75e3e20a161f3b8cdba98862795a70bc774e7",
+      "implementation_sha256": "1f63affbeacc45f9d20e1ed51d84dbf5eeea40af21406b36859ddd6c9672f0fc",
+      "scope": {
+        "callbackArguments": [],
+        "resultPaths": null,
+        "description": "Finite primitive, plain object, array and function values as data, including missing arguments and additional plain arguments. Compare complete returned values and exact input identities. No supplied function is granted invocation capability. Function properties, proxies, getters and outside writes are excluded."
+      },
+      "report": {
+        "status": "passed",
+        "stage": "behavior_and_integration",
+        "behavior": {
+          "status": "passed",
+          "reason": null,
+          "failures": [],
+          "reports": [
+            {
+              "experiment": "no-arguments",
+              "observations": {
+                "returned": 1,
+                "thrown": 0,
+                "boolean_outcomes": [],
+                "other_terminal_values": 1
+              },
+              "microtask": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 1,
+                "failures": [],
+                "evidence": []
+              },
+              "final": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 1,
+                "failures": [],
+                "evidence": []
+              }
+            },
+            {
+              "experiment": "value-0",
+              "observations": {
+                "returned": 2,
+                "thrown": 0,
+                "boolean_outcomes": [],
+                "other_terminal_values": 2
+              },
+              "microtask": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              },
+              "final": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              }
+            },
+            {
+              "experiment": "value-1",
+              "observations": {
+                "returned": 2,
+                "thrown": 0,
+                "boolean_outcomes": [],
+                "other_terminal_values": 2
+              },
+              "microtask": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              },
+              "final": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              }
+            },
+            {
+              "experiment": "value-2",
+              "observations": {
+                "returned": 2,
+                "thrown": 0,
+                "boolean_outcomes": [],
+                "other_terminal_values": 2
+              },
+              "microtask": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              },
+              "final": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              }
+            },
+            {
+              "experiment": "value-3",
+              "observations": {
+                "returned": 2,
+                "thrown": 0,
+                "boolean_outcomes": [],
+                "other_terminal_values": 2
+              },
+              "microtask": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              },
+              "final": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              }
+            },
+            {
+              "experiment": "value-4",
+              "observations": {
+                "returned": 2,
+                "thrown": 0,
+                "boolean_outcomes": [],
+                "other_terminal_values": 2
+              },
+              "microtask": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              },
+              "final": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              }
+            },
+            {
+              "experiment": "value-5",
+              "observations": {
+                "returned": 2,
+                "thrown": 0,
+                "boolean_outcomes": [],
+                "other_terminal_values": 2
+              },
+              "microtask": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              },
+              "final": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              }
+            },
+            {
+              "experiment": "value-6",
+              "observations": {
+                "returned": 2,
+                "thrown": 0,
+                "boolean_outcomes": [],
+                "other_terminal_values": 2
+              },
+              "microtask": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              },
+              "final": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              }
+            },
+            {
+              "experiment": "value-7",
+              "observations": {
+                "returned": 2,
+                "thrown": 0,
+                "boolean_outcomes": [],
+                "other_terminal_values": 2
+              },
+              "microtask": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              },
+              "final": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              }
+            },
+            {
+              "experiment": "value-8",
+              "observations": {
+                "returned": 2,
+                "thrown": 0,
+                "boolean_outcomes": [],
+                "other_terminal_values": 2
+              },
+              "microtask": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              },
+              "final": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              }
+            },
+            {
+              "experiment": "value-9",
+              "observations": {
+                "returned": 2,
+                "thrown": 0,
+                "boolean_outcomes": [],
+                "other_terminal_values": 2
+              },
+              "microtask": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              },
+              "final": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              }
+            },
+            {
+              "experiment": "value-10",
+              "observations": {
+                "returned": 2,
+                "thrown": 0,
+                "boolean_outcomes": [],
+                "other_terminal_values": 2
+              },
+              "microtask": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              },
+              "final": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              }
+            },
+            {
+              "experiment": "value-11",
+              "observations": {
+                "returned": 2,
+                "thrown": 0,
+                "boolean_outcomes": [],
+                "other_terminal_values": 2
+              },
+              "microtask": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              },
+              "final": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              }
+            },
+            {
+              "experiment": "value-12",
+              "observations": {
+                "returned": 2,
+                "thrown": 0,
+                "boolean_outcomes": [],
+                "other_terminal_values": 2
+              },
+              "microtask": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              },
+              "final": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              }
+            },
+            {
+              "experiment": "value-13",
+              "observations": {
+                "returned": 2,
+                "thrown": 0,
+                "boolean_outcomes": [],
+                "other_terminal_values": 2
+              },
+              "microtask": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              },
+              "final": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              }
+            },
+            {
+              "experiment": "value-14",
+              "observations": {
+                "returned": 2,
+                "thrown": 0,
+                "boolean_outcomes": [],
+                "other_terminal_values": 2
+              },
+              "microtask": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              },
+              "final": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              }
+            },
+            {
+              "experiment": "value-15",
+              "observations": {
+                "returned": 2,
+                "thrown": 0,
+                "boolean_outcomes": [],
+                "other_terminal_values": 2
+              },
+              "microtask": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              },
+              "final": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              }
+            },
+            {
+              "experiment": "value-16",
+              "observations": {
+                "returned": 2,
+                "thrown": 0,
+                "boolean_outcomes": [],
+                "other_terminal_values": 2
+              },
+              "microtask": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              },
+              "final": {
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "reject",
+                "calls": 2,
+                "failures": [],
+                "evidence": []
+              }
+            }
+          ],
+          "observation_window": "One microtask checkpoint followed by one zero-delay timer checkpoint; no claim about later external triggers.",
+          "successful_calls": 35,
+          "thrown_calls": 0
+        },
+        "integration": {
+          "status": "passed",
+          "reason": null,
+          "failures": [],
+          "reports": [
+            {
+              "experiment": "actual_namespace_source",
+              "observations": {
+                "returned": 35,
+                "thrown": 0,
+                "boolean_outcomes": [],
+                "other_terminal_values": 35
+              },
+              "microtask": [
+                {
+                  "binding": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:74",
+                  "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2",
+                  "status": "observed_agreement",
+                  "scope": "observations_through_checkpoint",
+                  "observation_mode": "invocations",
+                  "error_observation": "identity",
+                  "accessor_observation": "reject",
+                  "calls": 1,
+                  "failures": [],
+                  "evidence": []
+                },
+                {
+                  "binding": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:121",
+                  "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2",
+                  "status": "observed_agreement",
+                  "scope": "observations_through_checkpoint",
+                  "observation_mode": "invocations",
+                  "error_observation": "identity",
+                  "accessor_observation": "reject",
+                  "calls": 17,
+                  "failures": [],
+                  "evidence": []
+                },
+                {
+                  "binding": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:177",
+                  "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2",
+                  "status": "observed_agreement",
+                  "scope": "observations_through_checkpoint",
+                  "observation_mode": "invocations",
+                  "error_observation": "identity",
+                  "accessor_observation": "reject",
+                  "calls": 17,
+                  "failures": [],
+                  "evidence": []
+                }
+              ],
+              "final": [
+                {
+                  "binding": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:74",
+                  "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2",
+                  "status": "observed_agreement",
+                  "scope": "observations_through_checkpoint",
+                  "observation_mode": "invocations",
+                  "error_observation": "identity",
+                  "accessor_observation": "reject",
+                  "calls": 1,
+                  "failures": [],
+                  "evidence": []
+                },
+                {
+                  "binding": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:121",
+                  "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2",
+                  "status": "observed_agreement",
+                  "scope": "observations_through_checkpoint",
+                  "observation_mode": "invocations",
+                  "error_observation": "identity",
+                  "accessor_observation": "reject",
+                  "calls": 17,
+                  "failures": [],
+                  "evidence": []
+                },
+                {
+                  "binding": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:177",
+                  "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2",
+                  "status": "observed_agreement",
+                  "scope": "observations_through_checkpoint",
+                  "observation_mode": "invocations",
+                  "error_observation": "identity",
+                  "accessor_observation": "reject",
+                  "calls": 17,
+                  "failures": [],
+                  "evidence": []
+                }
+              ]
+            }
+          ],
+          "observation_window": "One microtask checkpoint followed by one zero-delay timer checkpoint; no claim about later external triggers.",
+          "successful_calls": 35,
+          "thrown_calls": 0,
+          "bindings": [
+            {
+              "id": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:74",
+              "file": "independent-library-experiment.ts",
+              "start": 74,
+              "end": 82,
+              "specifier": "lodash417/castArray",
+              "exportName": "default",
+              "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2"
+            },
+            {
+              "id": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:121",
+              "file": "independent-library-experiment.ts",
+              "start": 121,
+              "end": 133,
+              "specifier": "lodash417/castArray",
+              "exportName": "default",
+              "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2"
+            },
+            {
+              "id": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:177",
+              "file": "independent-library-experiment.ts",
+              "start": 177,
+              "end": 194,
+              "specifier": "lodash417/castArray",
+              "exportName": "default",
+              "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2"
+            }
+          ],
+          "passed": true
+        }
+      }
+    },
+    "attempts": [
+      {
+        "number": 1,
+        "proposal": {
+          "schema": "producttrace.library-program-proposal.v2",
+          "status": "propose",
+          "program": {
+            "schema": "producttrace.library-program.v1",
+            "body": {
+              "op": "if",
+              "test": {
+                "op": "equal",
+                "left": {
+                  "op": "get",
+                  "value": {
+                    "op": "args"
+                  },
+                  "key": "length"
+                },
+                "right": {
+                  "op": "literal",
+                  "value": 0
+                }
+              },
+              "then": {
+                "op": "array",
+                "items": []
+              },
+              "else": {
+                "op": "bind",
+                "name": "value",
+                "value": {
+                  "op": "arg",
+                  "index": 0
+                },
+                "body": {
+                  "op": "if",
+                  "test": {
+                    "op": "is_array",
+                    "value": {
+                      "op": "local",
+                      "name": "value"
+                    }
+                  },
+                  "then": {
+                    "op": "local",
+                    "name": "value"
+                  },
+                  "else": {
+                    "op": "array",
+                    "items": [
+                      {
+                        "op": "local",
+                        "name": "value"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "reason": "Handles the exported castArray boundary for no-argument, array, and non-array inputs using only the installed operations."
+        },
+        "usage": {
+          "input_tokens": 4013,
+          "cached_input_tokens": 2304,
+          "output_tokens": 431,
+          "reasoning_output_tokens": 238
+        },
+        "cost_usd": 0.00339405,
+        "latency_ms": 4016.2207089999997,
+        "prompt_sha256": "6e7195a038783d273cb0e3f8d4af5b8e53aaf948b319853aff351281e6ac8520",
+        "check": {
+          "status": "admitted",
+          "id": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2",
+          "program_sha256": "1b8e750be50c95033346a92d9ae75e3e20a161f3b8cdba98862795a70bc774e7",
+          "implementation_sha256": "1f63affbeacc45f9d20e1ed51d84dbf5eeea40af21406b36859ddd6c9672f0fc",
+          "scope": {
+            "callbackArguments": [],
+            "resultPaths": null,
+            "description": "Finite primitive, plain object, array and function values as data, including missing arguments and additional plain arguments. Compare complete returned values and exact input identities. No supplied function is granted invocation capability. Function properties, proxies, getters and outside writes are excluded."
+          },
+          "report": {
+            "status": "passed",
+            "stage": "behavior_and_integration",
+            "behavior": {
+              "status": "passed",
+              "reason": null,
+              "failures": [],
+              "reports": [
+                {
+                  "experiment": "no-arguments",
+                  "observations": {
+                    "returned": 1,
+                    "thrown": 0,
+                    "boolean_outcomes": [],
+                    "other_terminal_values": 1
+                  },
+                  "microtask": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 1,
+                    "failures": [],
+                    "evidence": []
+                  },
+                  "final": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 1,
+                    "failures": [],
+                    "evidence": []
+                  }
+                },
+                {
+                  "experiment": "value-0",
+                  "observations": {
+                    "returned": 2,
+                    "thrown": 0,
+                    "boolean_outcomes": [],
+                    "other_terminal_values": 2
+                  },
+                  "microtask": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  },
+                  "final": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  }
+                },
+                {
+                  "experiment": "value-1",
+                  "observations": {
+                    "returned": 2,
+                    "thrown": 0,
+                    "boolean_outcomes": [],
+                    "other_terminal_values": 2
+                  },
+                  "microtask": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  },
+                  "final": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  }
+                },
+                {
+                  "experiment": "value-2",
+                  "observations": {
+                    "returned": 2,
+                    "thrown": 0,
+                    "boolean_outcomes": [],
+                    "other_terminal_values": 2
+                  },
+                  "microtask": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  },
+                  "final": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  }
+                },
+                {
+                  "experiment": "value-3",
+                  "observations": {
+                    "returned": 2,
+                    "thrown": 0,
+                    "boolean_outcomes": [],
+                    "other_terminal_values": 2
+                  },
+                  "microtask": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  },
+                  "final": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  }
+                },
+                {
+                  "experiment": "value-4",
+                  "observations": {
+                    "returned": 2,
+                    "thrown": 0,
+                    "boolean_outcomes": [],
+                    "other_terminal_values": 2
+                  },
+                  "microtask": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  },
+                  "final": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  }
+                },
+                {
+                  "experiment": "value-5",
+                  "observations": {
+                    "returned": 2,
+                    "thrown": 0,
+                    "boolean_outcomes": [],
+                    "other_terminal_values": 2
+                  },
+                  "microtask": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  },
+                  "final": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  }
+                },
+                {
+                  "experiment": "value-6",
+                  "observations": {
+                    "returned": 2,
+                    "thrown": 0,
+                    "boolean_outcomes": [],
+                    "other_terminal_values": 2
+                  },
+                  "microtask": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  },
+                  "final": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  }
+                },
+                {
+                  "experiment": "value-7",
+                  "observations": {
+                    "returned": 2,
+                    "thrown": 0,
+                    "boolean_outcomes": [],
+                    "other_terminal_values": 2
+                  },
+                  "microtask": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  },
+                  "final": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  }
+                },
+                {
+                  "experiment": "value-8",
+                  "observations": {
+                    "returned": 2,
+                    "thrown": 0,
+                    "boolean_outcomes": [],
+                    "other_terminal_values": 2
+                  },
+                  "microtask": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  },
+                  "final": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  }
+                },
+                {
+                  "experiment": "value-9",
+                  "observations": {
+                    "returned": 2,
+                    "thrown": 0,
+                    "boolean_outcomes": [],
+                    "other_terminal_values": 2
+                  },
+                  "microtask": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  },
+                  "final": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  }
+                },
+                {
+                  "experiment": "value-10",
+                  "observations": {
+                    "returned": 2,
+                    "thrown": 0,
+                    "boolean_outcomes": [],
+                    "other_terminal_values": 2
+                  },
+                  "microtask": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  },
+                  "final": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  }
+                },
+                {
+                  "experiment": "value-11",
+                  "observations": {
+                    "returned": 2,
+                    "thrown": 0,
+                    "boolean_outcomes": [],
+                    "other_terminal_values": 2
+                  },
+                  "microtask": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  },
+                  "final": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  }
+                },
+                {
+                  "experiment": "value-12",
+                  "observations": {
+                    "returned": 2,
+                    "thrown": 0,
+                    "boolean_outcomes": [],
+                    "other_terminal_values": 2
+                  },
+                  "microtask": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  },
+                  "final": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  }
+                },
+                {
+                  "experiment": "value-13",
+                  "observations": {
+                    "returned": 2,
+                    "thrown": 0,
+                    "boolean_outcomes": [],
+                    "other_terminal_values": 2
+                  },
+                  "microtask": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  },
+                  "final": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  }
+                },
+                {
+                  "experiment": "value-14",
+                  "observations": {
+                    "returned": 2,
+                    "thrown": 0,
+                    "boolean_outcomes": [],
+                    "other_terminal_values": 2
+                  },
+                  "microtask": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  },
+                  "final": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  }
+                },
+                {
+                  "experiment": "value-15",
+                  "observations": {
+                    "returned": 2,
+                    "thrown": 0,
+                    "boolean_outcomes": [],
+                    "other_terminal_values": 2
+                  },
+                  "microtask": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  },
+                  "final": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  }
+                },
+                {
+                  "experiment": "value-16",
+                  "observations": {
+                    "returned": 2,
+                    "thrown": 0,
+                    "boolean_outcomes": [],
+                    "other_terminal_values": 2
+                  },
+                  "microtask": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  },
+                  "final": {
+                    "status": "observed_agreement",
+                    "scope": "observations_through_checkpoint",
+                    "observation_mode": "invocations",
+                    "error_observation": "identity",
+                    "accessor_observation": "reject",
+                    "calls": 2,
+                    "failures": [],
+                    "evidence": []
+                  }
+                }
+              ],
+              "observation_window": "One microtask checkpoint followed by one zero-delay timer checkpoint; no claim about later external triggers.",
+              "successful_calls": 35,
+              "thrown_calls": 0
+            },
+            "integration": {
+              "status": "passed",
+              "reason": null,
+              "failures": [],
+              "reports": [
+                {
+                  "experiment": "actual_namespace_source",
+                  "observations": {
+                    "returned": 35,
+                    "thrown": 0,
+                    "boolean_outcomes": [],
+                    "other_terminal_values": 35
+                  },
+                  "microtask": [
+                    {
+                      "binding": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:74",
+                      "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2",
+                      "status": "observed_agreement",
+                      "scope": "observations_through_checkpoint",
+                      "observation_mode": "invocations",
+                      "error_observation": "identity",
+                      "accessor_observation": "reject",
+                      "calls": 1,
+                      "failures": [],
+                      "evidence": []
+                    },
+                    {
+                      "binding": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:121",
+                      "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2",
+                      "status": "observed_agreement",
+                      "scope": "observations_through_checkpoint",
+                      "observation_mode": "invocations",
+                      "error_observation": "identity",
+                      "accessor_observation": "reject",
+                      "calls": 17,
+                      "failures": [],
+                      "evidence": []
+                    },
+                    {
+                      "binding": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:177",
+                      "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2",
+                      "status": "observed_agreement",
+                      "scope": "observations_through_checkpoint",
+                      "observation_mode": "invocations",
+                      "error_observation": "identity",
+                      "accessor_observation": "reject",
+                      "calls": 17,
+                      "failures": [],
+                      "evidence": []
+                    }
+                  ],
+                  "final": [
+                    {
+                      "binding": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:74",
+                      "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2",
+                      "status": "observed_agreement",
+                      "scope": "observations_through_checkpoint",
+                      "observation_mode": "invocations",
+                      "error_observation": "identity",
+                      "accessor_observation": "reject",
+                      "calls": 1,
+                      "failures": [],
+                      "evidence": []
+                    },
+                    {
+                      "binding": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:121",
+                      "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2",
+                      "status": "observed_agreement",
+                      "scope": "observations_through_checkpoint",
+                      "observation_mode": "invocations",
+                      "error_observation": "identity",
+                      "accessor_observation": "reject",
+                      "calls": 17,
+                      "failures": [],
+                      "evidence": []
+                    },
+                    {
+                      "binding": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:177",
+                      "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2",
+                      "status": "observed_agreement",
+                      "scope": "observations_through_checkpoint",
+                      "observation_mode": "invocations",
+                      "error_observation": "identity",
+                      "accessor_observation": "reject",
+                      "calls": 17,
+                      "failures": [],
+                      "evidence": []
+                    }
+                  ]
+                }
+              ],
+              "observation_window": "One microtask checkpoint followed by one zero-delay timer checkpoint; no claim about later external triggers.",
+              "successful_calls": 35,
+              "thrown_calls": 0,
+              "bindings": [
+                {
+                  "id": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:74",
+                  "file": "independent-library-experiment.ts",
+                  "start": 74,
+                  "end": 82,
+                  "specifier": "lodash417/castArray",
+                  "exportName": "default",
+                  "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2"
+                },
+                {
+                  "id": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:121",
+                  "file": "independent-library-experiment.ts",
+                  "start": 121,
+                  "end": 133,
+                  "specifier": "lodash417/castArray",
+                  "exportName": "default",
+                  "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2"
+                },
+                {
+                  "id": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:177",
+                  "file": "independent-library-experiment.ts",
+                  "start": 177,
+                  "end": 194,
+                  "specifier": "lodash417/castArray",
+                  "exportName": "default",
+                  "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2"
+                }
+              ],
+              "passed": true
+            }
+          }
+        }
+      }
+    ],
+    "origin": "authoring",
+    "bank_miss": "catalog_bypassed_for_unfamiliar_evaluation"
+  },
+  "integration": {
+    "status": "passed",
+    "reason": null,
+    "failures": [],
+    "reports": [
+      {
+        "experiment": "actual_namespace_source",
+        "observations": {
+          "returned": 35,
+          "thrown": 0,
+          "boolean_outcomes": [],
+          "other_terminal_values": 35
+        },
+        "microtask": [
+          {
+            "binding": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:74",
+            "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2",
+            "status": "observed_agreement",
+            "scope": "observations_through_checkpoint",
+            "observation_mode": "invocations",
+            "error_observation": "identity",
+            "accessor_observation": "reject",
+            "calls": 1,
+            "failures": [],
+            "evidence": []
+          },
+          {
+            "binding": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:121",
+            "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2",
+            "status": "observed_agreement",
+            "scope": "observations_through_checkpoint",
+            "observation_mode": "invocations",
+            "error_observation": "identity",
+            "accessor_observation": "reject",
+            "calls": 17,
+            "failures": [],
+            "evidence": []
+          },
+          {
+            "binding": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:177",
+            "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2",
+            "status": "observed_agreement",
+            "scope": "observations_through_checkpoint",
+            "observation_mode": "invocations",
+            "error_observation": "identity",
+            "accessor_observation": "reject",
+            "calls": 17,
+            "failures": [],
+            "evidence": []
+          }
+        ],
+        "final": [
+          {
+            "binding": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:74",
+            "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2",
+            "status": "observed_agreement",
+            "scope": "observations_through_checkpoint",
+            "observation_mode": "invocations",
+            "error_observation": "identity",
+            "accessor_observation": "reject",
+            "calls": 1,
+            "failures": [],
+            "evidence": []
+          },
+          {
+            "binding": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:121",
+            "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2",
+            "status": "observed_agreement",
+            "scope": "observations_through_checkpoint",
+            "observation_mode": "invocations",
+            "error_observation": "identity",
+            "accessor_observation": "reject",
+            "calls": 17,
+            "failures": [],
+            "evidence": []
+          },
+          {
+            "binding": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:177",
+            "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2",
+            "status": "observed_agreement",
+            "scope": "observations_through_checkpoint",
+            "observation_mode": "invocations",
+            "error_observation": "identity",
+            "accessor_observation": "reject",
+            "calls": 17,
+            "failures": [],
+            "evidence": []
+          }
+        ]
+      }
+    ],
+    "observation_window": "One microtask checkpoint followed by one zero-delay timer checkpoint; no claim about later external triggers.",
+    "successful_calls": 35,
+    "thrown_calls": 0,
+    "bindings": [
+      {
+        "id": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:74",
+        "file": "independent-library-experiment.ts",
+        "start": 74,
+        "end": 82,
+        "specifier": "lodash417/castArray",
+        "exportName": "default",
+        "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2"
+      },
+      {
+        "id": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:121",
+        "file": "independent-library-experiment.ts",
+        "start": 121,
+        "end": 133,
+        "specifier": "lodash417/castArray",
+        "exportName": "default",
+        "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2"
+      },
+      {
+        "id": "837c1cb46f123a5c3f6fa7b404504292983c773927c5d1f041a3f0ad33f322d1:call:177",
+        "file": "independent-library-experiment.ts",
+        "start": 177,
+        "end": 194,
+        "specifier": "lodash417/castArray",
+        "exportName": "default",
+        "rule": "library-program:37d999d12ff3c792e255878a60e26ee344ba19c1f170d557763c72e44c25eea2"
+      }
+    ],
+    "passed": true
+  },
+  "output": "paid-lodash417-castArray-1789083819951.json"
+}

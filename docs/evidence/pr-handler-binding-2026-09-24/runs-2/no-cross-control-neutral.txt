@@ -1,0 +1,121 @@
+[producttrace] first-party: 18 functions instrumented; excluded functions by rule: outside repository 571; excluded modules by rule: none; include=[] exclude=["**/node_modules/**","**/vendor/**","**/dist/**","**/build/**","**/.git/**"]
+[33m[PLUGIN_TIMINGS] [0mYour build spent 95% of 4.3s inside plugin hooks (4.1s).
+Measured inside the callback, so queue time is excluded and time the callback itself awaited is not:
+  - producttrace-runtime-attribution generateBundle (87%, 3.7s, 1 call)
+See https://rolldown.rs/reference/InputOptions.checks#plugintimings for more details.
+
+{
+  "status": "ok",
+  "headless": true,
+  "episodes": 8,
+  "report": {
+    "alpha": {
+      "opener": {
+        "episode_id": "episode:action:mug6xa5m:12",
+        "actions": [
+          "focusin",
+          "click"
+        ],
+        "reached": "dom_mutation",
+        "stopped_at": "browser",
+        "request": null
+      },
+      "confirm": {
+        "episode_id": "episode:action:mug6xag6:17",
+        "actions": [
+          "keydown:Enter"
+        ],
+        "carrier_event": "keydown",
+        "request": "DELETE /api/items/alpha",
+        "stopped_at": "network"
+      }
+    },
+    "beta": {
+      "opener": {
+        "episode_id": "episode:action:mug6xaso:34",
+        "actions": [
+          "focusin",
+          "click"
+        ],
+        "reached": "dom_mutation",
+        "stopped_at": "browser",
+        "request": null
+      },
+      "confirm": {
+        "episode_id": "episode:action:mug6xb1j:39",
+        "actions": [
+          "keydown:Enter"
+        ],
+        "carrier_event": "keydown",
+        "request": "DELETE /api/items/beta",
+        "stopped_at": "network"
+      },
+      "form_submit": {
+        "episode_id": "episode:form:default:object%3A5",
+        "actions": [
+          "focusin",
+          "click",
+          "keydown",
+          "input",
+          "change",
+          "focusin",
+          "click",
+          "submit"
+        ],
+        "request": "POST /api/beta"
+      }
+    },
+    "gamma": {
+      "opener": {
+        "episode_id": "episode:action:mug6xc8m:97",
+        "actions": [
+          "focusin",
+          "click"
+        ],
+        "reached": "dom_mutation",
+        "stopped_at": "browser",
+        "request": null
+      },
+      "confirm": {
+        "episode_id": "episode:form:default:object%3A11",
+        "actions": [
+          "keydown:Printable",
+          "input",
+          "keydown:Printable",
+          "input",
+          "keydown:Printable",
+          "input",
+          "keydown:Printable",
+          "input",
+          "keydown:Printable",
+          "input",
+          "keydown:Enter",
+          "change",
+          "click",
+          "submit"
+        ],
+        "carrier_event": "submit",
+        "request": "DELETE /api/items/gamma",
+        "stopped_at": "network"
+      }
+    },
+    "add_item": {
+      "episode_id": "episode:form:default:object%3A14",
+      "actions": [
+        "focusin",
+        "click",
+        "keydown:Printable",
+        "input",
+        "keydown:Printable",
+        "input",
+        "keydown:Printable",
+        "input",
+        "change",
+        "focusin",
+        "click",
+        "submit"
+      ],
+      "carrier_event": "submit"
+    }
+  }
+}

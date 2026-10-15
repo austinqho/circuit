@@ -1,0 +1,20 @@
+import type {LibraryExecutionContext} from './library-execution-context.mjs';
+import type { LibraryProgramBank } from './library-program-bank.mjs';
+import type { LibraryBoundaryReport } from './library-boundary.mjs';
+import type { OwnedValueReport } from './library-owned-value.mjs';
+import type { OwnedReferenceReport } from './library-owned-reference.mjs';
+export function instrumentLibraryPrograms(options: { source: string; file?: string; bank: LibraryProgramBank;
+  stateHost?: ReturnType<typeof import('./library-react-state.mjs').createReactStateHost> | null;
+  hostEventHost?: import('./library-react-effect-host.mjs').LibraryHostEventAdapter | null;
+  ownedReferenceHost?: { captureOwner(args?: unknown[]): object; captureGeneration?(args: unknown[]): object } | null }): {
+  code: string; runtimeKey: string;
+  memberBindings: Array<{id: string; file: string; start: number; end: number}>;
+  bindings: Array<{ id: string; file: string; start: number; end: number; specifier: string; exportName: string; rule: string }>;
+  frontiers: Array<{ reason: string; specifier: string; exportName: string; start: number; end: number }>;
+  runtime: { currentExecution: LibraryExecutionContext['current']; execution: LibraryExecutionContext['checkpoint'];
+    prepareObservedCall(id: string, producer: Function): (...args: unknown[]) => unknown;
+    prepareObservedMember(id: string, receiver: any, key: string): (...args: unknown[]) => unknown;
+    prepareMember(id: string, receiver: any, key: string): (...args: unknown[]) => unknown;
+    invoke(id: string, producer: Function, receiver: unknown, args: unknown[]): unknown;
+    checkpoint(): Array<(ReturnType<ReturnType<typeof import('./library-react-state.mjs').createReactStateBoundary>['checkpoint']> | LibraryBoundaryReport | OwnedReferenceReport | OwnedValueReport | ReturnType<ReturnType<typeof import('./library-host-events.mjs').createHostEventBoundary>['checkpoint']>) & { binding: string; rule: string } | { binding: string; status: 'frontier'; reason: string }> };
+};

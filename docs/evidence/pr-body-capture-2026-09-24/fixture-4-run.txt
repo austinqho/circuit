@@ -1,0 +1,80 @@
+[producttrace] first-party: 42 functions instrumented; excluded functions by rule: outside repository 571; excluded modules by rule: none; include=[] exclude=["**/node_modules/**","**/vendor/**","**/dist/**","**/build/**","**/.git/**"]
+[producttrace] first-party: 42 functions instrumented; excluded functions by rule: outside repository 571; excluded modules by rule: none; include=[] exclude=["**/node_modules/**","**/vendor/**","**/dist/**","**/build/**","**/.git/**"]
+[producttrace] first-party: 42 functions instrumented; excluded functions by rule: outside repository 571; excluded modules by rule: none; include=[] exclude=["**/node_modules/**","**/vendor/**","**/dist/**","**/build/**","**/.git/**"]
+[producttrace] first-party: 42 functions instrumented; excluded functions by rule: outside repository 571; excluded modules by rule: none; include=[] exclude=["**/node_modules/**","**/vendor/**","**/dist/**","**/build/**","**/.git/**"]
+[producttrace] first-party: 42 functions instrumented; excluded functions by rule: outside repository 571; excluded modules by rule: none; include=[] exclude=["**/node_modules/**","**/vendor/**","**/dist/**","**/build/**","**/.git/**"]
+[producttrace] first-party: 42 functions instrumented; excluded functions by rule: outside repository 571; excluded modules by rule: none; include=[] exclude=["**/node_modules/**","**/vendor/**","**/dist/**","**/build/**","**/.git/**"]
+PASS B0 builds inject the body mode the option rules say
+PASS B1 warnings: bodies:true in production says disabled; on in any mode but development says ON (production, staging); dev and defaults silent
+PASS D0 dev: 15 clicks, no page errors but the fire-and-forget fetch failure, capture.page declares bodies "on"
+PASS D1 rename request body: JSON, ids kept, password and nested apiToken redacted, full size, not truncated
+PASS D2 rename response body: _id recorded, session redacted, sessionId (an identifier) kept, status 200
+PASS D3 large JSON response: bytes = full size, truncated, text = the first 4096 bytes of the redacted serialization
+PASS D4 text/plain response recorded as text
+PASS D5 binary response: type and size only
+PASS D6 streamed response: captured false (streaming), content type recorded
+PASS D7 the app read the streamed body intact with bodies on
+PASS D8 XHR POST: request body redacted (secretKey), response read on load
+PASS D9 FormData body: type and size only (parts total)
+PASS D10 JSON posted as text/plain is parsed and redacted
+PASS D11 no secret value, Authorization or Cookie header appears anywhere in records.jsonl
+PASS D12 the server did receive the Authorization header and the cookie (the capture, not the app, drops them)
+PASS D13 every body row links to a network.request row on the same page; no action_id, no sequence, contiguous body_sequence
+PASS D14 first 8 actions: request bodies only for requests with a body; one response row per response with a body
+PASS D15 capture.summary counts body rows, truncations and pending reads; coverage complete and declares bodies on
+PASS K1 key segments: secrets redacted (apiKey, x-api-key, privateKey, session, cvv, otp, pin, jwt, bearer, accesstoken, nested and in arrays; numeric pin/otp/cvv/card/secret); ids, author, scorecard, cardinality, quantities and booleans kept
+PASS T1 the app cancels a text/plain stream: the server sees the close as without Tracer (bytes written by the close within 3 ticks of uninstrumented and bodies off)
+PASS T2 the cancelled stream has a row: captured false, cancelled_by_app, bytes null, bytes_read
+PASS L1 text/plain of unknown length: first 4096 bytes kept, then Tracer lets go; bytes null, bytes_read, truncated
+PASS L2 the app read the whole unknown-length text
+PASS N1 204: no response row (no content)
+PASS U1 response with no content-type: captured false, unknown_type, exact size, never read
+PASS R1 a Request object with a typeless Blob body: type and size only, not read, no invented content type
+PASS P1 pipeTo into a destination aborted by its signal (text/plain): bytes written and time to close as without Tracer
+PASS P2 pipeTo into a destination that errors (JSON of unknown length): bytes written and time to close as without Tracer
+PASS P3 the piped JSON has a row (cancelled_by_app); no body read is pending at page close
+PASS P4 the wrapped stream prototypes look native: same name/length as uninstrumented, [Symbol.asyncIterator] === values
+PASS P5 microtask order on the fulfilment path is unchanged with bodies on
+PASS P6 documented difference: on the abort path the rejection reaction runs one microtask later with bodies on (listener-micro,b,fetch-rejected vs listener-micro,fetch-rejected,b)
+PASS A1 response_of marks on a .then chain and an await of the fetch are identical with bodies on and off (thenchain >= 2, rename >= 1)
+PASS F1 a fire-and-forget fetch failure raises unhandledrejection and a page error exactly as without Tracer (bodies on, off, production, uninstrumented)
+PASS O1 dev_off: capture.page bodies "off", no body rows, coverage complete
+PASS O2 parity: the page output is identical with bodies on, off and without Tracer
+PASS O3 the attributed rows have the same kinds, order, requests and ownership with bodies on and off
+PASS O4 prod (default): capture.page bodies "production_off", no body rows
+PASS O5 prod with bodies:"always": capture.page bodies "on", body rows present, same output
+PASS M0 action_chain publishes include_bodies (boolean)
+PASS M1 rename segment: request body summary with the entity id and the redacted value rendered as a plain string
+PASS M2 rename segment: response body summary names the _id and the sessionId; session is "[redacted]"
+PASS M3 the one-line summary names the request and response ids
+PASS M4 include_bodies: true returns the stored JSON in full
+PASS M5 truncated JSON: summary from the cut text, truncated true, top-level ids kept, rows as [n+ items]
+PASS M6 binary response rendered as captured false with its reason and size
+PASS M7 element_history attempts show only the id-shaped fields
+PASS M8 include_bodies must be a boolean
+PASS M11 the MCP work listing says "after response" for the .then chain, the same lines with bodies on and off
+PASS M9 bodies off: segments carry body: null and the chain declares bodies "off"
+PASS M10 the frontier line is otherwise identical with bodies on and off
+51/51 checks pass; store /var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/tracer-body-store-HTiS7U
+{
+  "sizes": {
+    "requests": 22,
+    "body_rows": 26,
+    "body_row_bytes": 22718,
+    "bytes_per_request": 1033,
+    "largest_body_row": 5380,
+    "all_rows_bytes_dev": 228539,
+    "all_rows_bytes_dev_off": 205801
+  },
+  "body_stats": {
+    "mode": "on",
+    "rows": 26,
+    "truncated": 2,
+    "not_captured": 8,
+    "redactions": 27,
+    "bytes_recorded": 20924,
+    "errors": 0,
+    "pending": 0,
+    "last_body_sequence": 26
+  }
+}

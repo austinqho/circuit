@@ -1,0 +1,81 @@
+{
+ "rule": "abstained old id whose span lies inside a function node starting at most 3 chars before it",
+ "abstained": 1327,
+ "real_function_present_in_new_manifest": 12,
+ "real_function_missing_from_new_manifest": 0,
+ "lost": [],
+ "kept": [
+  {
+   "old": "function:a8fe84f9fed40319c33b6887d401ff5e8fc8f270ec879a0651b51389c6cfb287:4075:4076",
+   "file": "client/src/hooks/Artifacts/useArtifacts.ts",
+   "function": "function:a8fe84f9fed40319c33b6887d401ff5e8fc8f270ec879a0651b51389c6cfb287:4075:9807",
+   "text": "export default function useArtifacts() {\n  const [activeTab, setActiveTab] = use"
+  },
+  {
+   "old": "function:266ed5994412e263969373eccdb859fe7b2d7aea6404ed2fc2f31615cc32bce2:516:517",
+   "file": "client/src/components/Chat/Messages/SearchButtons.tsx",
+   "function": "function:266ed5994412e263969373eccdb859fe7b2d7aea6404ed2fc2f31615cc32bce2:516:2196",
+   "text": "export default function SearchButtons({ message }: { message: TMessage }) {\n  co"
+  },
+  {
+   "old": "function:20cee0ec525c973a74095f553d3eb83969ddfb1294a1ab3c0fec0f617633deea:6629:6644",
+   "file": "client/src/components/Conversations/ProjectsSection.tsx",
+   "function": "function:20cee0ec525c973a74095f553d3eb83969ddfb1294a1ab3c0fec0f617633deea:6628:6656",
+   "text": "(page) => page.conversations"
+  },
+  {
+   "old": "function:34883dbece28d3402249b62ac73f996394ab00ad7fea62fcca1df168e364e113:644:645",
+   "file": "client/src/hooks/Input/useSelectMention.ts",
+   "function": "function:34883dbece28d3402249b62ac73f996394ab00ad7fea62fcca1df168e364e113:644:10178",
+   "text": "export default function useSelectMention({\n  presets,\n  modelSpecs,\n  assistants"
+  },
+  {
+   "old": "function:b17478cca7e5c03088b8b91b1ad4f02a5ad72afa7e7a23345de05c81742ace78:1259:1260",
+   "file": "client/src/components/Skills/dialogs/CreateSkillDialog.tsx",
+   "function": "function:b17478cca7e5c03088b8b91b1ad4f02a5ad72afa7e7a23345de05c81742ace78:1259:7612",
+   "text": "export default function CreateSkillDialog({\n  isOpen,\n  setIsOpen,\n  defaultName"
+  },
+  {
+   "old": "function:9127e6a01adb9f7a62248ce4e82cda6c26c1c9cadcc6d8722f00d312cbed5419:2219:2220",
+   "file": "packages/data-provider/src/feedback.ts",
+   "function": "function:9127e6a01adb9f7a62248ce4e82cda6c26c1c9cadcc6d8722f00d312cbed5419:2219:2362",
+   "text": "export function getTagsForRating(rating: TFeedbackRating): TFeedbackTag[] {\n  re"
+  },
+  {
+   "old": "function:9127e6a01adb9f7a62248ce4e82cda6c26c1c9cadcc6d8722f00d312cbed5419:3363:3364",
+   "file": "packages/data-provider/src/feedback.ts",
+   "function": "function:9127e6a01adb9f7a62248ce4e82cda6c26c1c9cadcc6d8722f00d312cbed5419:3363:3549",
+   "text": "export function getTagByKey(key: TFeedbackTagKey | undefined): TFeedbackTag | un"
+  },
+  {
+   "old": "function:1096ee24562adfcc32f10adb252318d90e50a4c938f378919fad7cf6b6dfe16d:37670:37671",
+   "file": "packages/data-provider/src/schemas.ts",
+   "function": "function:1096ee24562adfcc32f10adb252318d90e50a4c938f378919fad7cf6b6dfe16d:37670:38147",
+   "text": "export function removeNullishValues<T extends Record<string, unknown>>(\n  obj: T"
+  },
+  {
+   "old": "function:67d634d123b8bf64d8e681be1aedf52eb6ca66fa27485bebf2f488246644be5f:33242:33243",
+   "file": "packages/data-provider/src/file-config.ts",
+   "function": "function:67d634d123b8bf64d8e681be1aedf52eb6ca66fa27485bebf2f488246644be5f:33242:36875",
+   "text": "export function mergeFileConfig(dynamic: z.infer<typeof fileConfigSchema> | unde"
+  },
+  {
+   "old": "function:9f7f90cf08308b6f9302599fe44bd3dfd2d6abbf90cde1629a61c79542a85008:15769:15770",
+   "file": "packages/data-provider/src/config.ts",
+   "function": "function:9f7f90cf08308b6f9302599fe44bd3dfd2d6abbf90cde1629a61c79542a85008:15769:16286",
+   "text": "export function getSchemaDefaults<Schema extends z.AnyZodObject>(\n  schema: Sche"
+  },
+  {
+   "old": "function:e0911e688e09f23836561dfa73de6b57e3a00f72051a62ab85fd5d26fc691611:9420:9421",
+   "file": "packages/data-provider/src/request.ts",
+   "function": "function:e0911e688e09f23836561dfa73de6b57e3a00f72051a62ab85fd5d26fc691611:9420:10255",
+   "text": "async function _authenticatedFetch(url: string, options?: RequestInit): Promise<"
+  },
+  {
+   "old": "function:aec4b9d0590db5da3ff1be619d3f70ee37b3bdf5819ec49cf122e1399de03d48:1003:1055",
+   "file": "client/src/components/Chat/Messages/Content/Parts/useLazyHighlight.ts",
+   "function": "function:aec4b9d0590db5da3ff1be619d3f70ee37b3bdf5819ec49cf122e1399de03d48:1002:1064",
+   "text": "(mod) => {\n      lowlightModule = mod;\n      return mod;\n    }"
+  }
+ ]
+}

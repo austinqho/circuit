@@ -1,0 +1,429 @@
+{
+  "passed": true,
+  "installed_react": "18.3.1",
+  "renderer_sha256": "1459b808bc6991de5a1ec3a86d8beee32dbb6c14282cf13f84e00dfebfbdc025",
+  "program": {
+    "schema": "producttrace.library-program.v1",
+    "body": {
+      "op": "sequence",
+      "steps": [
+        {
+          "op": "call",
+          "target": {
+            "op": "arg",
+            "index": 2
+          },
+          "receiver": {
+            "op": "undefined"
+          },
+          "args": {
+            "op": "array",
+            "items": [
+              {
+                "op": "get",
+                "value": {
+                  "op": "arg",
+                  "index": 0
+                },
+                "key": 0
+              }
+            ]
+          }
+        },
+        {
+          "op": "call",
+          "target": {
+            "op": "arg",
+            "index": 3
+          },
+          "receiver": {
+            "op": "undefined"
+          },
+          "args": {
+            "op": "array",
+            "items": [
+              {
+                "op": "arg",
+                "index": 1
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "implementation": {
+    "runtime": {
+      "host": "node",
+      "mode": "development",
+      "entry": {
+        "name": "react",
+        "version": "18.3.1",
+        "path": "index.js"
+      }
+    },
+    "export_name": "useCallback",
+    "packages": [
+      {
+        "name": "react",
+        "version": "18.3.1",
+        "integrity": "sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==",
+        "manifest_sha256": "d4e68a5c96babb20cad1daafea8b78822eae45b341552cf5418d06a5304fa64c"
+      }
+    ],
+    "files": [
+      {
+        "name": "react",
+        "version": "18.3.1",
+        "path": "cjs/react.development.js",
+        "sha256": "1ff3a1d9861a87984329584fa1172aea920855d79eb57dae0d1cebe54093d7e3"
+      },
+      {
+        "name": "react",
+        "version": "18.3.1",
+        "path": "index.js",
+        "sha256": "a216c390bf956cbb906c66d29fdb2e2ad6999464a5ca83e476533a6f25ad0ef3"
+      }
+    ],
+    "host_dependencies": [
+      {
+        "runtime": {
+          "host": "node",
+          "mode": "development",
+          "entry": {
+            "name": "react-dom",
+            "version": "18.3.1",
+            "path": "client.js"
+          }
+        },
+        "export_name": "createRoot",
+        "packages": [
+          {
+            "name": "react-dom",
+            "version": "18.3.1",
+            "integrity": "sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==",
+            "manifest_sha256": "d2f29e31bd48b833e48cd7bbf41f192e8ee4ff8da249fdbe10d4ac4114b8b12e"
+          },
+          {
+            "name": "react",
+            "version": "18.3.1",
+            "integrity": "sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==",
+            "manifest_sha256": "d4e68a5c96babb20cad1daafea8b78822eae45b341552cf5418d06a5304fa64c"
+          },
+          {
+            "name": "scheduler",
+            "version": "0.23.2",
+            "integrity": "sha512-UOShsPwz7NrMUqhR6t0hWjFduvOzbtv7toDH1/hIrfRNIDBnnBWd0CwJTGvTpngVlmwGCdP9/Zl/tVrDqcuYzQ==",
+            "manifest_sha256": "0893643a24576d727174e639586b8833a53f2a7b4a2199a719b9cfcebe9bae88"
+          }
+        ],
+        "files": [
+          {
+            "name": "react-dom",
+            "version": "18.3.1",
+            "path": "cjs/react-dom.development.js",
+            "sha256": "1459b808bc6991de5a1ec3a86d8beee32dbb6c14282cf13f84e00dfebfbdc025"
+          },
+          {
+            "name": "react-dom",
+            "version": "18.3.1",
+            "path": "client.js",
+            "sha256": "a510041dfc40d69b3aa574e5e111864186c711fbeb3db41aa2f27196b27c429f"
+          },
+          {
+            "name": "react-dom",
+            "version": "18.3.1",
+            "path": "index.js",
+            "sha256": "f26fcb81b5d1dc32c6edea34645c75b60d259916293d3208c8be48ac33e882e4"
+          },
+          {
+            "name": "react",
+            "version": "18.3.1",
+            "path": "cjs/react.development.js",
+            "sha256": "1ff3a1d9861a87984329584fa1172aea920855d79eb57dae0d1cebe54093d7e3"
+          },
+          {
+            "name": "react",
+            "version": "18.3.1",
+            "path": "index.js",
+            "sha256": "a216c390bf956cbb906c66d29fdb2e2ad6999464a5ca83e476533a6f25ad0ef3"
+          },
+          {
+            "name": "scheduler",
+            "version": "0.23.2",
+            "path": "cjs/scheduler.development.js",
+            "sha256": "22e3d959dc9f9cd59fca4e1fc95fecb9fde4d2cb8ecadbd279137ada995983ac"
+          },
+          {
+            "name": "scheduler",
+            "version": "0.23.2",
+            "path": "index.js",
+            "sha256": "b413b3aac7bd209fd82cbe2241fda1467558daaef830744f45ed8396fac9185e"
+          }
+        ]
+      }
+    ]
+  },
+  "catalog_reused": true,
+  "helpers": [
+    {
+      "name": "areHookInputsEqual",
+      "source": "function areHookInputsEqual(nextDeps, prevDeps) {\n  {\n    if (ignorePreviousDependencies) {\n      // Only true when this component is being hot reloaded.\n      return false;\n    }\n  }\n\n  if (prevDeps === null) {\n    {\n      error('%s received a final argument during this render, but not during ' + 'the previous render. Even though the final argument is optional, ' + 'its type cannot change between renders.', currentHookNameInDev);\n    }\n\n    return false;\n  }\n\n  {\n    // Don't bother comparing lengths in prod because these arrays should be\n    // passed inline.\n    if (nextDeps.length !== prevDeps.length) {\n      error('The final argument passed to %s changed size between renders. The ' + 'order and size of this array must remain constant.\\n\\n' + 'Previous: %s\\n' + 'Incoming: %s', currentHookNameInDev, \"[\" + prevDeps.join(', ') + \"]\", \"[\" + nextDeps.join(', ') + \"]\");\n    }\n  }\n\n  for (var i = 0; i < prevDeps.length && i < nextDeps.length; i++) {\n    if (objectIs(nextDeps[i], prevDeps[i])) {\n      continue;\n    }\n\n    return false;\n  }\n\n  return true;\n}"
+    },
+    {
+      "name": "mountRef",
+      "source": "function mountRef(initialValue) {\n  var hook = mountWorkInProgressHook();\n\n  {\n    var _ref2 = {\n      current: initialValue\n    };\n    hook.memoizedState = _ref2;\n    return _ref2;\n  }\n}"
+    },
+    {
+      "name": "updateRef",
+      "source": "function updateRef(initialValue) {\n  var hook = updateWorkInProgressHook();\n  return hook.memoizedState;\n}"
+    },
+    {
+      "name": "mountCallback",
+      "source": "function mountCallback(callback, deps) {\n  var hook = mountWorkInProgressHook();\n  var nextDeps = deps === undefined ? null : deps;\n  hook.memoizedState = [callback, nextDeps];\n  return callback;\n}"
+    },
+    {
+      "name": "updateCallback",
+      "source": "function updateCallback(callback, deps) {\n  var hook = updateWorkInProgressHook();\n  var nextDeps = deps === undefined ? null : deps;\n  var prevState = hook.memoizedState;\n\n  if (prevState !== null) {\n    if (nextDeps !== null) {\n      var prevDeps = prevState[1];\n\n      if (areHookInputsEqual(nextDeps, prevDeps)) {\n        return prevState[0];\n      }\n    }\n  }\n\n  hook.memoizedState = [callback, nextDeps];\n  return callback;\n}"
+    }
+  ],
+  "negative_rule_rejected": true,
+  "source_binding": [
+    {
+      "id": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82",
+      "file": "owned-hook.ts",
+      "start": 82,
+      "end": 103,
+      "specifier": "react",
+      "exportName": "useCallback",
+      "rule": "library-program:aa19c48645f5e9c6850cc9ae923cb8366470e92a326752b66f4621e08d22fba0"
+    }
+  ],
+  "integration": {
+    "strict": true,
+    "clicks": [
+      "a:1",
+      "b:2"
+    ],
+    "report": {
+      "binding": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82",
+      "rule": "library-program:aa19c48645f5e9c6850cc9ae923cb8366470e92a326752b66f4621e08d22fba0",
+      "status": "observed_agreement",
+      "observation_mode": "owned_references",
+      "calls": 19,
+      "failures": [],
+      "evidence": [
+        {
+          "schema": "producttrace.library-owned-reference.v1",
+          "occurrence": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:1",
+          "owner": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:1",
+          "value": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:1:value:1",
+          "sources": [
+            "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:argument:0"
+          ],
+          "kind": "returned_callback_reference",
+          "reason": "The actual API returned this exact previously observed callback in the same host-attested slot. Registration is not execution or commit evidence."
+        },
+        {
+          "schema": "producttrace.library-owned-reference.v1",
+          "occurrence": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:2",
+          "owner": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:2",
+          "value": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:2:value:2",
+          "sources": [
+            "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:argument:0"
+          ],
+          "kind": "returned_callback_reference",
+          "reason": "The actual API returned this exact previously observed callback in the same host-attested slot. Registration is not execution or commit evidence."
+        },
+        {
+          "schema": "producttrace.library-owned-reference.v1",
+          "occurrence": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:3",
+          "owner": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:3",
+          "value": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:3:value:3",
+          "sources": [
+            "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:argument:0"
+          ],
+          "kind": "returned_callback_reference",
+          "reason": "The actual API returned this exact previously observed callback in the same host-attested slot. Registration is not execution or commit evidence."
+        },
+        {
+          "schema": "producttrace.library-owned-reference.v1",
+          "occurrence": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:4",
+          "owner": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:4",
+          "value": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:4:value:4",
+          "sources": [
+            "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:argument:0"
+          ],
+          "kind": "returned_callback_reference",
+          "reason": "The actual API returned this exact previously observed callback in the same host-attested slot. Registration is not execution or commit evidence."
+        },
+        {
+          "schema": "producttrace.library-owned-reference.v1",
+          "occurrence": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:5",
+          "owner": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:2",
+          "value": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:2:value:2",
+          "sources": [
+            "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:argument:0"
+          ],
+          "kind": "returned_callback_reference",
+          "reason": "The actual API returned this exact previously observed callback in the same host-attested slot. Registration is not execution or commit evidence."
+        },
+        {
+          "schema": "producttrace.library-owned-reference.v1",
+          "occurrence": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:6",
+          "owner": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:2",
+          "value": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:2:value:2",
+          "sources": [
+            "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:argument:0"
+          ],
+          "kind": "returned_callback_reference",
+          "reason": "The actual API returned this exact previously observed callback in the same host-attested slot. Registration is not execution or commit evidence."
+        },
+        {
+          "schema": "producttrace.library-owned-reference.v1",
+          "occurrence": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:7",
+          "owner": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:4",
+          "value": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:4:value:7",
+          "sources": [
+            "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:argument:0"
+          ],
+          "kind": "returned_callback_reference",
+          "reason": "The actual API returned this exact previously observed callback in the same host-attested slot. Registration is not execution or commit evidence."
+        },
+        {
+          "schema": "producttrace.library-owned-reference.v1",
+          "occurrence": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:8",
+          "owner": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:4",
+          "value": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:4:value:8",
+          "sources": [
+            "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:argument:0"
+          ],
+          "kind": "returned_callback_reference",
+          "reason": "The actual API returned this exact previously observed callback in the same host-attested slot. Registration is not execution or commit evidence."
+        },
+        {
+          "schema": "producttrace.library-owned-reference.v1",
+          "occurrence": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:9",
+          "owner": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:2",
+          "value": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:2:value:9",
+          "sources": [
+            "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:argument:0"
+          ],
+          "kind": "returned_callback_reference",
+          "reason": "The actual API returned this exact previously observed callback in the same host-attested slot. Registration is not execution or commit evidence."
+        },
+        {
+          "schema": "producttrace.library-owned-reference.v1",
+          "occurrence": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:10",
+          "owner": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:4",
+          "value": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:4:value:8",
+          "sources": [
+            "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:argument:0"
+          ],
+          "kind": "returned_callback_reference",
+          "reason": "The actual API returned this exact previously observed callback in the same host-attested slot. Registration is not execution or commit evidence."
+        },
+        {
+          "schema": "producttrace.library-owned-reference.v1",
+          "occurrence": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:11",
+          "owner": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:4",
+          "value": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:4:value:8",
+          "sources": [
+            "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:argument:0"
+          ],
+          "kind": "returned_callback_reference",
+          "reason": "The actual API returned this exact previously observed callback in the same host-attested slot. Registration is not execution or commit evidence."
+        },
+        {
+          "schema": "producttrace.library-owned-reference.v1",
+          "occurrence": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:12",
+          "owner": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:2",
+          "value": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:2:value:2",
+          "sources": [
+            "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:argument:0"
+          ],
+          "kind": "returned_callback_reference",
+          "reason": "The actual API returned this exact previously observed callback in the same host-attested slot. Registration is not execution or commit evidence."
+        },
+        {
+          "schema": "producttrace.library-owned-reference.v1",
+          "occurrence": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:13",
+          "owner": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:2",
+          "value": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:2:value:2",
+          "sources": [
+            "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:argument:0"
+          ],
+          "kind": "returned_callback_reference",
+          "reason": "The actual API returned this exact previously observed callback in the same host-attested slot. Registration is not execution or commit evidence."
+        },
+        {
+          "schema": "producttrace.library-owned-reference.v1",
+          "occurrence": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:14",
+          "owner": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:4",
+          "value": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:4:value:8",
+          "sources": [
+            "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:argument:0"
+          ],
+          "kind": "returned_callback_reference",
+          "reason": "The actual API returned this exact previously observed callback in the same host-attested slot. Registration is not execution or commit evidence."
+        },
+        {
+          "schema": "producttrace.library-owned-reference.v1",
+          "occurrence": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:15",
+          "owner": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:4",
+          "value": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:4:value:8",
+          "sources": [
+            "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:argument:0"
+          ],
+          "kind": "returned_callback_reference",
+          "reason": "The actual API returned this exact previously observed callback in the same host-attested slot. Registration is not execution or commit evidence."
+        },
+        {
+          "schema": "producttrace.library-owned-reference.v1",
+          "occurrence": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:16",
+          "owner": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:5",
+          "value": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:5:value:16",
+          "sources": [
+            "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:argument:0"
+          ],
+          "kind": "returned_callback_reference",
+          "reason": "The actual API returned this exact previously observed callback in the same host-attested slot. Registration is not execution or commit evidence."
+        },
+        {
+          "schema": "producttrace.library-owned-reference.v1",
+          "occurrence": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:17",
+          "owner": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:6",
+          "value": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:6:value:17",
+          "sources": [
+            "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:argument:0"
+          ],
+          "kind": "returned_callback_reference",
+          "reason": "The actual API returned this exact previously observed callback in the same host-attested slot. Registration is not execution or commit evidence."
+        },
+        {
+          "schema": "producttrace.library-owned-reference.v1",
+          "occurrence": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:18",
+          "owner": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:7",
+          "value": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:7:value:18",
+          "sources": [
+            "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:argument:0"
+          ],
+          "kind": "returned_callback_reference",
+          "reason": "The actual API returned this exact previously observed callback in the same host-attested slot. Registration is not execution or commit evidence."
+        },
+        {
+          "schema": "producttrace.library-owned-reference.v1",
+          "occurrence": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:19",
+          "owner": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:8",
+          "value": "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:owner:8:value:19",
+          "sources": [
+            "f844bdfd7c98e411ab8cdb3bd455c285db2a5034423225c166a5aa2b8f2aa3b0:call:82:argument:0"
+          ],
+          "kind": "returned_callback_reference",
+          "reason": "The actual API returned this exact previously observed callback in the same host-attested slot. Registration is not execution or commit evidence."
+        }
+      ]
+    }
+  },
+  "scope": "Actual returned callback identity in an observed mounted slot; excludes commit and invocation claims."
+}

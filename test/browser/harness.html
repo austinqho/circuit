@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>pt-runtime harness</title>
+<style>
+  body { font-family: system-ui; margin: 20px; max-width: 640px; }
+  .msg { border: 1px solid #ccc; border-radius: 8px; padding: 10px; margin: 8px 0; }
+  .msg.user { background: #eef; }
+  .hover button { margin-right: 6px; }
+  #composer { display: flex; gap: 8px; margin-top: 12px; }
+  #composer input { flex: 1; padding: 6px; }
+</style>
+<!-- MUST load before React -->
+<script src="/src/producttrace-runtime.js"></script>
+<script src="/test/browser/react.js"></script>
+<script src="/test/browser/react-dom.js"></script>
+</head>
+<body>
+<div id="root"></div>
+<script>
+// ---- bindings for the neutral test product ----
+ProductTrace.init({
+  name: 'harness-chat',
+  identity: {
+    trajectoryKey: 'conversationId',
+    stepKey: 'messageId',
+    propRules: [
+      {
+        path: 'message.messageId', as: 'messageId',
+        scope: { component: /Message|HoverButtons/ }, validate: (v) => /^m\d+$/.test(v),
+      },
+      {
+        path: 'message.conversationId', as: 'conversationId',
+        scope: { component: /Message|HoverButtons/ }, validate: (v) => /^conv-/.test(v),
+      },
+      {
+        path: 'conversationId', as: 'conversationId',
+        scope: { component: 'ChatForm' }, validate: (v) => /^conv-/.test(v),
+      },
+    ],
+    routePatterns: [
+      { pattern: /\/c\/([\w-]+)/, as: 'conversationId', validate: (v) => /^conv-/.test(v) },
+    ],
+  },
+  actions: [
+    { event: 'click', aria: 'Copy', action: 'message.copy', direction: 'Positive' },
+    { event: 'click', aria: 'Regenerate', action: 'message.regenerate', direction: 'Ambiguous' },
+    { event: 'click', testid: 'send-button', action: 'prompt.submit' },
+    { event: 'copy', selection: 'nonempty', action: 'selection.copy', direction: 'Positive' },
+  ],
+}, { console: true });
+
+// ---- minimal chat app with realistic component names ----
+const e = React.createElement;
+
+function HoverButtons({ message }) {
+  return e('div', { className: 'hover' },
+    e('button', { 'aria-label': 'Copy', onClick: () => {} }, 'copy'),
+    e('button', { 'aria-label': 'Regenerate', onClick: () => {} }, 'regen'));
+}
+function MessageRender({ message }) {
+  return e('div', { className: 'msg ' + (message.isCreatedByUser ? 'user' : 'ai') },
+    e('div', null, message.text),
+    !message.isCreatedByUser && e(HoverButtons, { message }));
+}
+function ChatForm({ conversationId, onSend }) {
+  const [v, setV] = React.useState('');
+  return e('div', { id: 'composer' },
+    e('input', { value: v, onChange: (ev) => setV(ev.target.value), placeholder: 'type…' }),
+    e('button', { 'data-testid': 'send-button', onClick: () => { onSend(v); setV(''); } }, 'Send'));
+}
+function ChatView() {
+  const conversationId = 'conv-42';
+  const [messages, setMessages] = React.useState([
+    { messageId: 'm1', conversationId, isCreatedByUser: true, text: 'hello' },
+    { messageId: 'm2', conversationId, isCreatedByUser: false, text: 'hi, how can I help?' },
+  ]);
+  const onSend = (text) => setMessages((m) => m.concat(
+    { messageId: 'm' + (m.length + 1), conversationId, isCreatedByUser: true, text },
+    { messageId: 'm' + (m.length + 2), conversationId, isCreatedByUser: false, text: 'echo: ' + text }));
+  return e('div', null,
+    messages.map((m) => e(MessageRender, { key: m.messageId, message: m })),
+    e(ChatForm, { conversationId, onSend }));
+}
+history.replaceState(null, '', '/c/conv-42');
+ReactDOM.createRoot(document.getElementById('root')).render(e(ChatView));
+</script>
+</body>
+</html>

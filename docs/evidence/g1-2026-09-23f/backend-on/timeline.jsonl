@@ -1,0 +1,593 @@
+{"step":"console","at":"2026-09-23T21:34:44.115Z","type":"error","text":"Failed to load resource: the server responded with a status of 404 (Not Found)"}
+{"step":"requestfailed","at":"2026-09-23T21:34:44.115Z","url":"http://127.0.0.1:52224/producttrace-request-bridge.js?v=5eb72840bc7b3758","error":"net::ERR_ABORTED"}
+{"step":"console","at":"2026-09-23T21:34:44.364Z","type":"warning","text":"Service Worker registration blocked by Playwright"}
+{"step":"requestfailed","at":"2026-09-23T21:34:44.377Z","url":"http://127.0.0.1:52224/assets/silence.mp3","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:44.390Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:44.390Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"console","at":"2026-09-23T21:34:44.396Z","type":"log","text":"Token is not present. User is not authenticated."}
+{"step":"api-response","at":"2026-09-23T21:34:44.404Z","url":"/api/config","status":200,"resource_type":"xhr"}
+{"step":"api-shape","at":"2026-09-23T21:34:44.411Z","url":"/api/config","status":200,"config_keys":["appTitle","appleLoginEnabled","buildInfo","discordLoginEnabled","emailEnabled","emailLoginEnabled","facebookLoginEnabled","githubLoginEnabled","googleLoginEnabled","ldap","openidAutoRedirect","openidImageUrl","openidLabel","openidLoginEnabled","passwordResetEnabled","registrationEnabled","samlImageUrl","samlLabel","samlLoginEnabled","serverDomain","socialLoginEnabled","socialLogins","turnstile"]}
+{"step":"requestfailed","at":"2026-09-23T21:34:44.412Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:44.412Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"api-response","at":"2026-09-23T21:34:44.414Z","url":"/api/config","status":200,"resource_type":"xhr"}
+{"step":"api-shape","at":"2026-09-23T21:34:44.416Z","url":"/api/config","status":200,"config_keys":["appTitle","appleLoginEnabled","buildInfo","discordLoginEnabled","emailEnabled","emailLoginEnabled","facebookLoginEnabled","githubLoginEnabled","googleLoginEnabled","ldap","openidAutoRedirect","openidImageUrl","openidLabel","openidLoginEnabled","passwordResetEnabled","registrationEnabled","samlImageUrl","samlLabel","samlLoginEnabled","serverDomain","socialLoginEnabled","socialLogins","turnstile"]}
+{"step":"requestfailed","at":"2026-09-23T21:34:44.430Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:44.430Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.420Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.420Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.471Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.471Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.471Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.504Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.504Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.504Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.537Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.537Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.640Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.640Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.705Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.708Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.714Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.720Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.726Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"api-response","at":"2026-09-23T21:34:45.728Z","url":"/api/config","status":200,"resource_type":"xhr"}
+{"step":"api-shape","at":"2026-09-23T21:34:45.735Z","url":"/api/config","status":200,"config_keys":["allowAccountDeletion","appTitle","appleLoginEnabled","balance","buildInfo","conversationImportMaxFileSize","discordLoginEnabled","emailEnabled","emailLoginEnabled","facebookLoginEnabled","fileUploadSseEnabled","githubLoginEnabled","googleLoginEnabled","helpAndFaqURL","interface","langfuseConnectionAccess","langfuseFanoutEnabled","ldap","openidAutoRedirect","openidImageUrl","openidLabel","openidLoginEnabled","openidReuseTokens","passwordResetEnabled","publicSharedLinksEnabled","registrationEnabled","samlImageUrl","samlLabel","samlLoginEnabled","serverDomain","sharePointFilePickerEnabled","sharedLinksEnabled","sharedLinksSnapshotFilesEnabled","showBirthdayIcon","socialLoginEnabled","socialLogins","titleGenerationTiming","turnstile"]}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.741Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.778Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.788Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"api-response","at":"2026-09-23T21:34:45.794Z","url":"/api/endpoints","status":200,"resource_type":"xhr"}
+{"step":"api-shape","at":"2026-09-23T21:34:45.798Z","url":"/api/endpoints","status":200,"endpoint_keys":["agents","anthropic","assistants","google","openAI"],"agents":{"allowedProviders":null,"capabilities":["deferred_tools","execute_code","file_search","web_search","artifacts","subagents","actions","context","skills","ask_user_question","tools","chain","ocr"],"disableBuilder":false,"userProvide":false}}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.845Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"api-response","at":"2026-09-23T21:34:45.845Z","url":"/api/models","status":200,"resource_type":"xhr"}
+{"step":"console","at":"2026-09-23T21:34:45.903Z","type":"log","text":"[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: new, messagesLoaded: false, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"}
+{"step":"console","at":"2026-09-23T21:34:45.904Z","type":"log","text":"[ResumeOnLoad] Skipping - not enabled or new convo"}
+{"step":"console","at":"2026-09-23T21:34:45.904Z","type":"log","text":"[ResumeOnLoad] Resetting processedConvoRef for new conversation: {old: null, new: new}"}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.920Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"api-shape","at":"2026-09-23T21:34:45.920Z","url":"/api/models","status":200,"model_counts":{"openAI":1,"google":11,"anthropic":24,"azureOpenAI":24,"assistants":1,"azureAssistants":1,"bedrock":28},"model_samples":{"openAI":["gpt-3.5-turbo"],"google":["gemini-3.6-flash","gemini-3.5-flash","gemini-3.5-flash-lite"],"anthropic":["claude-fable-5","claude-opus-5","claude-opus-4-8"],"azureOpenAI":["gpt-5.6","gpt-5.6-terra","gpt-5.6-luna"],"assistants":["gpt-3.5-turbo"],"azureAssistants":["gpt-3.5-turbo"],"bedrock":["global.anthropic.claude-fable-5","global.anthropic.claude-opus-5","global.anthropic.claude-opus-4-8"]}}
+{"step":"console","at":"2026-09-23T21:34:45.933Z","type":"log","text":"[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: new, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"}
+{"step":"console","at":"2026-09-23T21:34:45.933Z","type":"log","text":"[ResumeOnLoad] Skipping - not enabled or new convo"}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.952Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"api-response","at":"2026-09-23T21:34:45.953Z","url":"/api/endpoints/token-config","status":200,"resource_type":"xhr"}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.966Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"api-shape","at":"2026-09-23T21:34:45.967Z","url":"/api/endpoints/token-config","status":200,"token_config":["anthropic","assistants","azureAssistants","azureOpenAI","bedrock","google","openAI"]}
+{"step":"requestfailed","at":"2026-09-23T21:34:45.974Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:46.032Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:46.033Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:46.034Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:46.255Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"console","at":"2026-09-23T21:34:46.255Z","type":"error","text":"Failed to load resource: the server responded with a status of 404 (Not Found)"}
+{"step":"console","at":"2026-09-23T21:34:46.258Z","type":"error","text":"Health check failed: AxiosError: Request failed with status code 404\n    at Kt (http://127.0.0.1:52224/assets/http-client.Bnu7plte.js:4:10492)\n    at XMLHttpRequest.g (http://127.0.0.1:52224/assets/http-client.Bnu7plte.js:4:16698)"}
+{"step":"requestfailed","at":"2026-09-23T21:34:46.274Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":1,"at":"2026-09-23T21:34:46.727Z","control":"focused email/password inputs; clicked Continue","result":"login attempted","action_ids":["action:muemfl43:1","action:muemfl46:2","action:muemfl4f:3","action:muemfl4h:4","action:muemfl4i:5","action:muemfl4j:6","action:muemfl4j:7","action:muemfl4j:8","action:muemfl4k:9","action:muemfl4k:10","action:muemfl4k:11","action:muemfl4l:12","action:muemfl4l:13","action:muemfl4l:14","action:muemfl4m:15","action:muemfl4m:16","action:muemfl4m:17","action:muemfl4m:18","action:muemfl4n:19","action:muemfl4n:20","action:muemfl4n:21","action:muemfl4n:22","action:muemfl4o:23","action:muemfl4o:24","action:muemfl4o:25","action:muemfl4o:26","action:muemfl4o:27","action:muemfl4o:28","action:muemfl4p:29","action:muemfl4p:30","action:muemfl4p:31","action:muemfl4p:32","action:muemfl4p:33","action:muemfl4q:34","action:muemfl4q:35","action:muemfl4q:36","action:muemfl5d:37","action:muemfl5d:38","action:muemfl5e:39","action:muemfl5e:40","action:muemfl5f:41","action:muemfl5f:42","action:muemfl5f:43","action:muemfl5f:44","action:muemfl5g:45","action:muemfl5g:46","action:muemfl66:47","action:muemfl67:48","action:muemfl67:49","action:muemfl6a:50","action:muemfl6b:51","action:muemfl6b:52","action:muemfl6b:53","action:muemfl6c:54","action:muemfl6c:55","action:muemfl6c:56","action:muemfl6c:57","action:muemfl6d:58","action:muemfl6d:59","action:muemfl6d:60","action:muemfl6d:61","action:muemfl6d:62","action:muemfl6d:63","action:muemfl6e:64","action:muemfl6e:65","action:muemfl6e:66","action:muemfl6e:67","action:muemfl6f:68","action:muemfl6f:69","action:muemfl6f:70","action:muemfl6f:71","action:muemfl6g:72","action:muemfl6g:73","action:muemfl6g:74","action:muemfl6g:75","action:muemfl6g:76","action:muemfl6g:77","action:muemfl6h:78","action:muemfl6h:79","action:muemfl73:80","action:muemfl73:81","action:muemfl74:82","action:muemfl74:83","action:muemflho:84"]}
+{"step":"console","at":"2026-09-23T21:34:46.823Z","type":"log","text":"[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: new, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"}
+{"step":"console","at":"2026-09-23T21:34:46.823Z","type":"log","text":"[ResumeOnLoad] Skipping - not enabled or new convo"}
+{"step":"requestfailed","at":"2026-09-23T21:34:46.855Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:46.864Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:46.866Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:46.867Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:46.867Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:47.123Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:47.143Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:47.161Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:47.179Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:47.194Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"console","at":"2026-09-23T21:34:47.853Z","type":"log","text":"[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: new, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: null}"}
+{"step":"console","at":"2026-09-23T21:34:47.853Z","type":"log","text":"[ResumeOnLoad] Skipping - not enabled or new convo"}
+{"step":"requestfailed","at":"2026-09-23T21:34:47.853Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:47.860Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"console","at":"2026-09-23T21:34:47.860Z","type":"warning","text":"[WakeLock] request failed NotAllowedError: Wake Lock permission request denied"}
+{"step":"requestfailed","at":"2026-09-23T21:34:47.885Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"console","at":"2026-09-23T21:34:47.917Z","type":"error","text":"Failed to load resource: the server responded with a status of 404 (Not Found)"}
+{"step":"requestfailed","at":"2026-09-23T21:34:47.919Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:47.940Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:47.984Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:48.011Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:48.036Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:48.054Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:48.071Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:48.087Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:48.102Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:48.117Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:48.132Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:48.147Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:48.162Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:48.177Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:48.191Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:48.206Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:48.220Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:48.234Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:48.249Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:48.253Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:48.253Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":2,"at":"2026-09-23T21:34:50.390Z","control":"clicked New chat; entered coffee prompt; clicked send-button","result":"reply waited","action_ids":["action:muemfm6w:85","action:muemfm6x:86","action:muemfm8c:87","action:muemfm95:88","action:muemfm98:89","action:muemfm99:90","action:muemfm9d:91","action:muemfm9d:92","action:muemfm9g:93","action:muemfm9h:94","action:muemfm9k:95","action:muemfm9l:96","action:muemfm9o:97","action:muemfm9o:98","action:muemfm9q:99","action:muemfm9r:100","action:muemfm9u:101","action:muemfm9u:102","action:muemfm9w:103","action:muemfm9x:104","action:muemfma1:105","action:muemfma2:106","action:muemfma4:107","action:muemfma5:108","action:muemfma7:109","action:muemfma7:110","action:muemfmaa:111","action:muemfmaa:112","action:muemfmac:113","action:muemfmad:114","action:muemfmah:115","action:muemfmai:116","action:muemfmak:117","action:muemfmal:118","action:muemfman:119","action:muemfmao:120","action:muemfmaq:121","action:muemfmar:122","action:muemfmat:123","action:muemfmau:124","action:muemfmax:125","action:muemfmaz:126","action:muemfmb4:127","action:muemfmb5:128","action:muemfmb7:129","action:muemfmb9:130","action:muemfmbb:131","action:muemfmbc:132","action:muemfmbg:133","action:muemfmbh:134","action:muemfmbj:135","action:muemfmbk:136","action:muemfmbm:137","action:muemfmbn:138","action:muemfmbp:139","action:muemfmbq:140","action:muemfmbs:141","action:muemfmbt:142","action:muemfmby:143","action:muemfmbz:144","action:muemfmc1:145","action:muemfmc2:146","action:muemfmc5:147","action:muemfmc6:148","action:muemfmc8:149","action:muemfmc9:150","action:muemfmcd:151","action:muemfmcf:152","action:muemfmch:153","action:muemfmci:154","action:muemfmck:155","action:muemfmcl:156","action:muemfmcn:157","action:muemfmcp:158","action:muemfmcu:159","action:muemfmcw:160","action:muemfmcy:161","action:muemfmcz:162","action:muemfmd1:163","action:muemfmd3:164","action:muemfmd4:165","action:muemfmd6:166","action:muemfmda:167","action:muemfmdc:168","action:muemfmde:169","action:muemfmdg:170","action:muemfmdi:171","action:muemfmdp:172","action:muemfmdu:173","action:muemfmdw:174","action:muemfmdy:175","action:muemfme0:176","action:muemfme6:177","action:muemfme8:178","action:muemfmea:179","action:muemfmec:180","action:muemfmee:181","action:muemfmeg:182","action:muemfmei:183","action:muemfmej:184","action:muemfmeo:185","action:muemfmeq:186","action:muemfmet:187","action:muemfmeu:188","action:muemfmi0:189","action:muemfmi3:190","action:muemfmi3:191","action:muemfmi3:192","action:muemfmi5:193"]}
+{"step":3,"at":"2026-09-23T21:34:50.466Z","control":"clicked copy-response-button","result":"copy clicked","action_ids":["action:muemfp0b:194","action:muemfp0c:195"]}
+{"step":"requestfailed","at":"2026-09-23T21:34:50.471Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:50.472Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:50.472Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:52.963Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:52.963Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:53.474Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:53.474Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"feedback-precondition","at":"2026-09-23T21:34:55.511Z","conversation_id_in_url":true,"placeholder_message_gone":false,"url":"/c/6f618dc7-7319-5865-9d91-7b41879520c1"}
+{"step":"requestfailed","at":"2026-09-23T21:34:55.567Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:55.567Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:55.569Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:55.828Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:55.829Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":4,"at":"2026-09-23T21:34:55.829Z","control":"clicked Needs improvement; selected a reason","result":"feedback submitted","action_ids":["action:muemfsxh:196","action:muemfsxi:197","action:muemfsy0:198","action:muemft4z:199"]}
+{"step":"requestfailed","at":"2026-09-23T21:34:55.857Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:55.857Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"console","at":"2026-09-23T21:34:55.903Z","type":"log","text":"[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: new, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: 6f618dc7-7319-5865-9d91-7b41879520c1}"}
+{"step":"console","at":"2026-09-23T21:34:55.903Z","type":"log","text":"[ResumeOnLoad] Skipping - not enabled or new convo"}
+{"step":"console","at":"2026-09-23T21:34:55.937Z","type":"warning","text":"[WakeLock] request failed NotAllowedError: Wake Lock permission request denied"}
+{"step":"requestfailed","at":"2026-09-23T21:34:55.937Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:55.952Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:55.960Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:55.960Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.014Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.014Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.060Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.080Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.119Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.155Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.186Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.208Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.230Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.247Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.263Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.279Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.340Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.366Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.386Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.406Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"console","at":"2026-09-23T21:34:56.424Z","type":"log","text":"[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: 6f618dc7-7319-5865-9d91-7b41879520c1, messagesLoaded: false, hasCurrentSubmission: true, currentSubmissionConvoId: 6f618dc7-7319-5865-9d91-7b41879520c1}"}
+{"step":"console","at":"2026-09-23T21:34:56.424Z","type":"log","text":"[ResumeOnLoad] Waiting for messages to load"}
+{"step":"console","at":"2026-09-23T21:34:56.424Z","type":"log","text":"[ResumeOnLoad] Resetting processedConvoRef for new conversation: {old: null, new: 6f618dc7-7319-5865-9d91-7b41879520c1}"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.430Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.447Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.463Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"console","at":"2026-09-23T21:34:56.487Z","type":"log","text":"[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: 6f618dc7-7319-5865-9d91-7b41879520c1, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: 6f618dc7-7319-5865-9d91-7b41879520c1}"}
+{"step":"console","at":"2026-09-23T21:34:56.487Z","type":"log","text":"[ResumeOnLoad] Skipping - already have active submission for this conversation"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.488Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.505Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.521Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.537Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.552Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.567Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.581Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.596Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.611Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.626Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.641Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.642Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:56.642Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:57.305Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:57.305Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:58.408Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:58.408Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":5,"at":"2026-09-23T21:34:58.460Z","control":"clicked regenerate-generation-button","result":"regeneration waited","action_ids":["action:muemft72:200","action:muemft73:201"]}
+{"step":"requestfailed","at":"2026-09-23T21:34:58.589Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:58.590Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:58.590Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:58.639Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:58.639Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"console","at":"2026-09-23T21:34:58.679Z","type":"log","text":"[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: 6f618dc7-7319-5865-9d91-7b41879520c1, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: 6f618dc7-7319-5865-9d91-7b41879520c1}"}
+{"step":"console","at":"2026-09-23T21:34:58.679Z","type":"log","text":"[ResumeOnLoad] Skipping - already have active submission for this conversation"}
+{"step":"console","at":"2026-09-23T21:34:58.714Z","type":"warning","text":"[WakeLock] request failed NotAllowedError: Wake Lock permission request denied"}
+{"step":"requestfailed","at":"2026-09-23T21:34:58.714Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:58.730Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:58.753Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:58.774Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:58.823Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:58.848Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:58.865Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:58.887Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:58.907Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:58.927Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:58.982Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:58.999Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.015Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.031Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.047Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.063Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.079Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.095Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.109Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.124Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.139Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.155Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.172Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.187Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.204Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.219Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.234Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.250Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.264Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.279Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.294Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.311Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.313Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.313Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.935Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:34:59.935Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:01.183Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:01.183Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":6,"at":"2026-09-23T21:35:01.239Z","control":"clicked Edit; typed into edit textarea {\"tag\":\"TEXTAREA\",\"aria_label\":\"Message input\",\"testid\":\"message-text-editor\",\"placeholder\":null}; clicked Save & Submit","result":"edited reply waited","edit_target":{"tag":"TEXTAREA","aria_label":"Message input","testid":"message-text-editor","placeholder":null},"expected_text":"Give me three names for a tea shop in one line.","action_ids":["action:muemfv9m:202","action:muemfv9m:203","action:muemfv9y:204","action:muemfvaz:205","action:muemfvb2:206","action:muemfvb3:207","action:muemfvb8:208","action:muemfvc3:209","action:muemfvc3:210","action:muemfvc5:211"]}
+{"step":"requestfailed","at":"2026-09-23T21:35:02.528Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:02.528Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:02.529Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:02.542Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:02.542Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:02.543Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:02.586Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:02.589Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:02.589Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:02.595Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:02.595Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:02.620Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:02.638Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:02.651Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:02.651Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":7,"at":"2026-09-23T21:35:03.096Z","control":"opened Conversation Menu Options; clicked Rename; clicked Save","result":"renamed Tracer M1","action_ids":["action:muemfyak:212","action:muemfyaq:213","action:muemfybg:214","action:muemfybp:215","action:muemfybr:216","action:muemfybu:217","action:muemfyc1:218","action:muemfyc3:219","action:muemfyc3:220","action:muemfyc5:221","action:muemfyc6:222","action:muemfyc8:223","action:muemfyc9:224","action:muemfyca:225","action:muemfycb:226","action:muemfycc:227","action:muemfycd:228","action:muemfyce:229","action:muemfyce:230","action:muemfycf:231","action:muemfycg:232","action:muemfych:233","action:muemfych:234","action:muemfyci:235","action:muemfycj:236","action:muemfyck:237","action:muemfyck:238","action:muemfyda:239","action:muemfydb:240","action:muemfydb:241"]}
+{"step":"console","at":"2026-09-23T21:35:03.189Z","type":"log","text":"[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: 6f618dc7-7319-5865-9d91-7b41879520c1, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: 6f618dc7-7319-5865-9d91-7b41879520c1}"}
+{"step":"console","at":"2026-09-23T21:35:03.189Z","type":"log","text":"[ResumeOnLoad] Skipping - already have active submission for this conversation"}
+{"step":"console","at":"2026-09-23T21:35:03.236Z","type":"warning","text":"[WakeLock] request failed NotAllowedError: Wake Lock permission request denied"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.236Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.250Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.273Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.312Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.345Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.370Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.387Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.407Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.427Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.476Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.500Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.525Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.542Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"overlap","at":"2026-09-23T21:35:03.542Z","control":"started regenerate; confirmed stream request open; opened bookmarks surface concurrently","result":"concurrent bookmark surface opened","stream_open":true,"stream_url":"http://127.0.0.1:52224/api/agents/chat/stream/6f618dc7-7319-5865-9d91-7b41879520c1"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.557Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.572Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.587Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.603Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.617Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.632Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.646Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.670Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.677Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.690Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.706Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.723Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.739Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.754Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.769Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.784Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.798Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.814Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.828Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.838Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.838Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.880Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.880Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"api-response","at":"2026-09-23T21:35:03.883Z","url":"/api/models","status":200,"resource_type":"xhr"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.885Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"api-shape","at":"2026-09-23T21:35:03.885Z","url":"/api/models","status":200,"model_counts":{"openAI":1,"google":11,"anthropic":24,"azureOpenAI":24,"assistants":1,"azureAssistants":1,"bedrock":28},"model_samples":{"openAI":["gpt-3.5-turbo"],"google":["gemini-3.6-flash","gemini-3.5-flash","gemini-3.5-flash-lite"],"anthropic":["claude-fable-5","claude-opus-5","claude-opus-4-8"],"azureOpenAI":["gpt-5.6","gpt-5.6-terra","gpt-5.6-luna"],"assistants":["gpt-3.5-turbo"],"azureAssistants":["gpt-3.5-turbo"],"bedrock":["global.anthropic.claude-fable-5","global.anthropic.claude-opus-5","global.anthropic.claude-opus-4-8"]}}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.886Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.890Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.891Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.900Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.906Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:03.906Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:04.451Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:04.452Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:04.611Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:04.614Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:04.616Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:04.616Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:04.627Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:04.629Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:04.631Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:04.652Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:04.652Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:05.010Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:05.011Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:05.011Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:05.409Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:05.410Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:05.410Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:05.691Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:05.691Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:06.490Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:06.490Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:06.540Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:06.552Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:06.552Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:06.597Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:06.609Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:06.611Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:06.633Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:06.639Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:06.647Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:06.655Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:06.655Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:07.212Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":8,"at":"2026-09-23T21:35:07.392Z","control":"selected openAI/gpt-3.5-turbo; created Barista 1790199283710 agent with coffee-only instructions","result":"create clicked","provider_options":3,"provider":"OpenAI","model":"gpt-3.5-turbo","action_ids":["action:muemfytb:242","action:muemfytb:243","action:muemfz2z:244","action:muemfz30:245","action:muemfzbz:246","action:muemfzbz:247","action:muemfzwx:248","action:muemfzx0:249","action:muemfzxk:250","action:muemfzxl:251","action:muemfzxm:252","action:muemfzy1:253","action:muemfzy1:254","action:muemfzy1:255","action:muemg07v:256","action:muemg07w:257","action:muemg088:258","action:muemg0i5:259","action:muemg0i6:260","action:muemg0i8:261","action:muemg0i8:262","action:muemg0i8:263","action:muemg0ip:264","action:muemg1cm:265","action:muemg1cn:266","action:muemg1co:267"]}
+{"step":"console","at":"2026-09-23T21:35:07.480Z","type":"log","text":"[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: 6f618dc7-7319-5865-9d91-7b41879520c1, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"}
+{"step":"console","at":"2026-09-23T21:35:07.480Z","type":"log","text":"[ResumeOnLoad] Waiting for stream status query"}
+{"step":"requestfailed","at":"2026-09-23T21:35:07.509Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"console","at":"2026-09-23T21:35:07.535Z","type":"log","text":"[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: 6f618dc7-7319-5865-9d91-7b41879520c1, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"}
+{"step":"console","at":"2026-09-23T21:35:07.535Z","type":"log","text":"[ResumeOnLoad] Waiting for stream status query"}
+{"step":"requestfailed","at":"2026-09-23T21:35:07.543Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:07.565Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:07.584Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:07.587Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:07.588Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:07.588Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:07.618Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:07.618Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:07.636Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:07.637Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:07.637Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:07.638Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"console","at":"2026-09-23T21:35:07.947Z","type":"log","text":"[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: 6f618dc7-7319-5865-9d91-7b41879520c1, messagesLoaded: false, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"}
+{"step":"console","at":"2026-09-23T21:35:07.947Z","type":"log","text":"[ResumeOnLoad] Waiting for messages to load"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.010Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"console","at":"2026-09-23T21:35:08.030Z","type":"log","text":"[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: 6f618dc7-7319-5865-9d91-7b41879520c1, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"}
+{"step":"console","at":"2026-09-23T21:35:08.030Z","type":"log","text":"[ResumeOnLoad] Waiting for stream status query"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.035Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.058Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"console","at":"2026-09-23T21:35:08.076Z","type":"log","text":"[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: new, messagesLoaded: false, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"}
+{"step":"console","at":"2026-09-23T21:35:08.076Z","type":"log","text":"[ResumeOnLoad] Skipping - not enabled or new convo"}
+{"step":"console","at":"2026-09-23T21:35:08.076Z","type":"log","text":"[ResumeOnLoad] Resetting processedConvoRef for new conversation: {old: 6f618dc7-7319-5865-9d91-7b41879520c1, new: new}"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.080Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"console","at":"2026-09-23T21:35:08.100Z","type":"log","text":"[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: new, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"}
+{"step":"console","at":"2026-09-23T21:35:08.100Z","type":"log","text":"[ResumeOnLoad] Skipping - not enabled or new convo"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.100Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.122Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.128Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.129Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.129Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.452Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.452Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.520Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.520Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"console","at":"2026-09-23T21:35:08.633Z","type":"log","text":"[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: new, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: null}"}
+{"step":"console","at":"2026-09-23T21:35:08.633Z","type":"log","text":"[ResumeOnLoad] Skipping - not enabled or new convo"}
+{"step":"console","at":"2026-09-23T21:35:08.669Z","type":"warning","text":"[WakeLock] request failed NotAllowedError: Wake Lock permission request denied"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.670Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.697Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.721Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.753Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.811Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.832Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.852Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.877Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.896Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.939Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.966Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:08.987Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.008Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"console","at":"2026-09-23T21:35:09.028Z","type":"log","text":"[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: c34236b5-53a2-5e5a-aa7d-933fab2dc8de, messagesLoaded: false, hasCurrentSubmission: true, currentSubmissionConvoId: null}"}
+{"step":"console","at":"2026-09-23T21:35:09.028Z","type":"log","text":"[ResumeOnLoad] Waiting for messages to load"}
+{"step":"console","at":"2026-09-23T21:35:09.028Z","type":"log","text":"[ResumeOnLoad] Resetting processedConvoRef for new conversation: {old: null, new: c34236b5-53a2-5e5a-aa7d-933fab2dc8de}"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.032Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.053Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.072Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"console","at":"2026-09-23T21:35:09.094Z","type":"log","text":"[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: c34236b5-53a2-5e5a-aa7d-933fab2dc8de, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: null}"}
+{"step":"console","at":"2026-09-23T21:35:09.094Z","type":"log","text":"[ResumeOnLoad] Waiting for stream status query"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.095Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.114Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.129Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"console","at":"2026-09-23T21:35:09.145Z","type":"log","text":"[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: c34236b5-53a2-5e5a-aa7d-933fab2dc8de, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: null}"}
+{"step":"console","at":"2026-09-23T21:35:09.145Z","type":"log","text":"[ResumeOnLoad] No active job to resume for: c34236b5-53a2-5e5a-aa7d-933fab2dc8de"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.148Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.167Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.190Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.201Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.217Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.232Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.249Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.265Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.281Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.297Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.314Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.331Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.355Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.365Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.382Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.399Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.408Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.408Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.648Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.654Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.654Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.916Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:09.916Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.137Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.137Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":9,"at":"2026-09-23T21:35:11.173Z","control":"opened New chat after committing Barista in the Agent Builder Select control; entered flat-white question; clicked send-button","result":"reply waited","selected_agent":"Barista 1790199283710","selection_commit":"Agent Builder Select","agent_chat_bodies":[{"keys":["clientRequestId","clientTimestamp","conversationId","endpoint","error","generationProtocolVersion","isContinued","isCreatedByUser","isRegenerate","isTemporary","key","maxContextTokens","messageId","model","parentMessageId","resendFiles","sender","text","timezone"],"agent_id":null,"endpoint":"openAI","model":"gpt-3.5-turbo"},{"keys":["clientRequestId","clientTimestamp","conversationId","endpoint","error","generationProtocolVersion","isContinued","isCreatedByUser","isRegenerate","isTemporary","key","maxContextTokens","messageId","model","overrideParentMessageId","parentMessageId","resendFiles","responseMessageId","sender","text","timezone"],"agent_id":null,"endpoint":"openAI","model":"gpt-3.5-turbo"}],"action_ids":["action:muemg24c:268","action:muemg24d:269","action:muemg27t:270","action:muemg2hb:271","action:muemg2hb:272","action:muemg2ln:273","action:muemg2xt:274","action:muemg2y0:275","action:muemg2y3:276","action:muemg2ya:277","action:muemg2yc:278","action:muemg2yi:279","action:muemg2yk:280","action:muemg2yn:281","action:muemg2yo:282","action:muemg2yr:283","action:muemg2ys:284","action:muemg2yw:285","action:muemg2yx:286","action:muemg2z0:287","action:muemg2z0:288","action:muemg2z3:289","action:muemg2z4:290","action:muemg2z6:291","action:muemg2z7:292","action:muemg2za:293","action:muemg2za:294","action:muemg2ze:295","action:muemg2zf:296","action:muemg2zh:297","action:muemg2zi:298","action:muemg2zk:299","action:muemg2zl:300","action:muemg2zn:301","action:muemg2zo:302","action:muemg2zq:303","action:muemg2zr:304","action:muemg2zv:305","action:muemg2zw:306","action:muemg2zy:307","action:muemg2zz:308","action:muemg301:309","action:muemg305:310","action:muemg30a:311","action:muemg30b:312","action:muemg30d:313","action:muemg30e:314","action:muemg30g:315","action:muemg30h:316","action:muemg30l:317","action:muemg30n:318","action:muemg30o:319","action:muemg30o:320","action:muemg30q:321"]}
+{"step":"delete-precondition","at":"2026-09-23T21:35:11.212Z","conversation_id_in_url":true,"url":"/c/c34236b5-53a2-5e5a-aa7d-933fab2dc8de"}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.239Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.240Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.240Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.262Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.262Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.263Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.512Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.512Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":10,"at":"2026-09-23T21:35:11.581Z","control":"opened second conversation menu; clicked Delete and confirmation","result":"delete clicked","action_ids":["action:muemg50y:322","action:muemg510:323","action:muemg51f:324","action:muemg51n:325","action:muemg51o:326","action:muemg520:327","action:muemg5ar:328","action:muemg5as:329"]}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.582Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.583Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"console","at":"2026-09-23T21:35:11.635Z","type":"log","text":"[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: c34236b5-53a2-5e5a-aa7d-933fab2dc8de, messagesLoaded: false, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"}
+{"step":"console","at":"2026-09-23T21:35:11.635Z","type":"log","text":"[ResumeOnLoad] Waiting for messages to load"}
+{"step":"console","at":"2026-09-23T21:35:11.710Z","type":"error","text":"Failed to load resource: the server responded with a status of 404 (Not Found)"}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.715Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.749Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.770Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"console","at":"2026-09-23T21:35:11.794Z","type":"log","text":"[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: new, messagesLoaded: false, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"}
+{"step":"console","at":"2026-09-23T21:35:11.794Z","type":"log","text":"[ResumeOnLoad] Skipping - not enabled or new convo"}
+{"step":"console","at":"2026-09-23T21:35:11.794Z","type":"log","text":"[ResumeOnLoad] Resetting processedConvoRef for new conversation: {old: c34236b5-53a2-5e5a-aa7d-933fab2dc8de, new: new}"}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.801Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"console","at":"2026-09-23T21:35:11.818Z","type":"log","text":"[ResumeOnLoad] Effect check {resumableEnabled: true, conversationId: new, messagesLoaded: true, hasCurrentSubmission: true, currentSubmissionConvoId: undefined}"}
+{"step":"console","at":"2026-09-23T21:35:11.818Z","type":"log","text":"[ResumeOnLoad] Skipping - not enabled or new convo"}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.835Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.855Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.872Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.889Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.905Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.934Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.935Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:11.935Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:12.716Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:12.717Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:13.919Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:13.920Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:14.138Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:14.139Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:14.787Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:14.793Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:14.793Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:41.728Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:41.728Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.177Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.178Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.180Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.221Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.221Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.270Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.270Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.321Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.321Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.370Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.370Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.419Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.419Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.468Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.468Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.528Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.529Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.529Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.570Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.570Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.621Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.621Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.672Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.672Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.722Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.722Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.772Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.772Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.835Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.835Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.868Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.868Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.868Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.904Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.905Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.921Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.921Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.955Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.955Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.971Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:42.971Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.004Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.004Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.022Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.022Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.055Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.055Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.077Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.077Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.103Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.103Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.126Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.126Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.162Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.162Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.169Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.169Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.191Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.191Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.200Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.200Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.225Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.226Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.238Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.238Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.254Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.254Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.271Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.271Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.288Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.288Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.304Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.304Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.322Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.322Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.338Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.338Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.355Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.355Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.372Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.373Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.388Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.388Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.405Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.405Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.421Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.422Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.442Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.442Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.455Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.455Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.485Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.487Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.487Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.506Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.506Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.534Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.534Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.550Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.551Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.583Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.583Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.600Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.600Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.633Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.633Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.651Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.651Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.684Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.684Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.703Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.703Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.737Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.738Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.752Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.752Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.789Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.790Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.802Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.803Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.834Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.834Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.884Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.884Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.933Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.934Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.989Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:43.989Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:44.036Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:44.036Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:44.090Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:44.090Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:44.118Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:44.118Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:44.118Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:44.133Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:44.134Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:44.460Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"requestfailed","at":"2026-09-23T21:35:44.460Z","url":"http://127.0.0.1:52224/__capture","error":"net::ERR_ABORTED"}
+{"step":"capture-drain","at":"2026-09-23T21:35:45.473Z","ok":true,"waited_ms":2,"page_id":"muemfk3u-48u0k7fu919","emitted":128038,"sent":128038,"dropped":0,"queued":0,"inflight":0,"flushing":false,"last_sequence":127247,"last_stamp_sequence":791,"rows_at_drain":128038,"received_through_drain":127247,"stamps_through_drain":791}
+{"step":"runtime-buffer","at":"2026-09-23T21:35:45.531Z","records":82,"added":0}
+{"step":"request-coverage","at":"2026-09-23T21:35:45.583Z","observed":82,"tracer":82,"equal":true,"reconciliation_count":0,"reconciliation":[],"observed_requests":[{"method":"GET","url":"http://127.0.0.1:52224/api/config","resource_type":"xhr"},{"method":"POST","url":"http://127.0.0.1:52224/api/auth/refresh","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/banner","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/config","resource_type":"xhr"},{"method":"POST","url":"http://127.0.0.1:52224/api/auth/login","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/banner","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/config","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/roles/USER","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/roles/ADMIN","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/user","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/endpoints","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/user/settings/favorites","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/projects","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents/chat/active","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/convos","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/mcp/servers","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/permissions/mcpServer/effective/all","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/files/speech/config/get","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/models","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/prompts/groups","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/prompts/all","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/files","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/search/enable","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/tags","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/keys","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/presets","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/files/config","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents/tools/web_search/auth","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/endpoints/token-config","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/health","resource_type":"xhr"},{"method":"POST","url":"http://127.0.0.1:52224/api/agents/chat/openAI","resource_type":"fetch"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents/chat/stream/6f618dc7-7319-5865-9d91-7b41879520c1","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents/chat/status/6f618dc7-7319-5865-9d91-7b41879520c1","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/convos/gen_title/6f618dc7-7319-5865-9d91-7b41879520c1","resource_type":"xhr"},{"method":"PUT","url":"http://127.0.0.1:52224/api/messages/new/06a124ba-1f08-456a-81d2-2f092a46da28_/feedback","resource_type":"xhr"},{"method":"POST","url":"http://127.0.0.1:52224/api/agents/chat/openAI","resource_type":"fetch"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents/chat/stream/6f618dc7-7319-5865-9d91-7b41879520c1","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/share/link/6f618dc7-7319-5865-9d91-7b41879520c1","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/messages/6f618dc7-7319-5865-9d91-7b41879520c1","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents/tools/calls","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents/chat/status/6f618dc7-7319-5865-9d91-7b41879520c1","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/messages/6f618dc7-7319-5865-9d91-7b41879520c1","resource_type":"xhr"},{"method":"POST","url":"http://127.0.0.1:52224/api/agents/chat/openAI","resource_type":"fetch"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents/chat/stream/6f618dc7-7319-5865-9d91-7b41879520c1","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents/chat/status/6f618dc7-7319-5865-9d91-7b41879520c1","resource_type":"xhr"},{"method":"POST","url":"http://127.0.0.1:52224/api/convos/update","resource_type":"xhr"},{"method":"POST","url":"http://127.0.0.1:52224/api/agents/chat/openAI","resource_type":"fetch"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents/chat/stream/6f618dc7-7319-5865-9d91-7b41879520c1","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents/chat/status/6f618dc7-7319-5865-9d91-7b41879520c1","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents/categories","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/skills","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/admin/roles","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/models","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents/tools","resource_type":"xhr"},{"method":"POST","url":"http://127.0.0.1:52224/api/agents","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents/agent_y5E-ciibW7YrSdTZQ7iMv","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents/actions","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/permissions/agent/6ab4460a636d86c7c41cc996/effective","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/permissions/remoteAgent/6ab4460a636d86c7c41cc996/effective","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/permissions/agent/6ab4460a636d86c7c41cc996","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents/agent_y5E-ciibW7YrSdTZQ7iMv/expanded","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/permissions/remoteAgent/6ab4460a636d86c7c41cc996","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/keys","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents/agent_y5E-ciibW7YrSdTZQ7iMv","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/messages/6f618dc7-7319-5865-9d91-7b41879520c1","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents/agent_y5E-ciibW7YrSdTZQ7iMv","resource_type":"xhr"},{"method":"POST","url":"http://127.0.0.1:52224/api/agents/chat/agents","resource_type":"fetch"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents/chat/stream/c34236b5-53a2-5e5a-aa7d-933fab2dc8de","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/share/link/c34236b5-53a2-5e5a-aa7d-933fab2dc8de","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/messages/c34236b5-53a2-5e5a-aa7d-933fab2dc8de","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents/tools/calls","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents/chat/status/c34236b5-53a2-5e5a-aa7d-933fab2dc8de","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/messages/c34236b5-53a2-5e5a-aa7d-933fab2dc8de","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents/chat/status/c34236b5-53a2-5e5a-aa7d-933fab2dc8de","resource_type":"xhr"},{"method":"DELETE","url":"http://127.0.0.1:52224/api/convos","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/convos","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/projects","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/tags","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/messages/c34236b5-53a2-5e5a-aa7d-933fab2dc8de","resource_type":"xhr"},{"method":"GET","url":"http://127.0.0.1:52224/api/agents/agent_y5E-ciibW7YrSdTZQ7iMv","resource_type":"xhr"}],"cdp_initiators":[]}

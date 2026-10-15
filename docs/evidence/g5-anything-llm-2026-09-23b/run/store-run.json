@@ -1,0 +1,69 @@
+{
+  "schema": "producttrace.store-run.v1",
+  "run_id": "run-20260923t164113585z-64056d",
+  "build": "e061322a6809",
+  "label": "g5-demo",
+  "started": "2026-09-23T16:41:13.585Z",
+  "ended": "2026-09-23T16:41:28.523Z",
+  "source": {
+    "repository": "/Users/austinho/dev/fixtures/anything-llm",
+    "commit": "dc06bc049d3d1c618fd5d1c403c8e56cae942981",
+    "status_clean": true,
+    "session": "anything-llm-g5"
+  },
+  "records": 3303,
+  "spans": 465,
+  "manifest_functions": 5101,
+  "steps": [
+    {
+      "step": 1,
+      "name": "open-new-workspace",
+      "started": 1790181674625,
+      "ended": 1790181675477,
+      "status": "done"
+    },
+    {
+      "step": 2,
+      "name": "create-workspace",
+      "started": 1790181675538,
+      "ended": 1790181677384,
+      "status": "done"
+    },
+    {
+      "step": 3,
+      "name": "open-workspace-settings",
+      "started": 1790181677410,
+      "ended": 1790181679020,
+      "status": "done"
+    },
+    {
+      "step": 4,
+      "name": "rename-attempt-1",
+      "started": 1790181679046,
+      "ended": 1790181681164,
+      "status": "done"
+    },
+    {
+      "step": 5,
+      "name": "rename-attempt-2",
+      "started": 1790181681188,
+      "ended": 1790181683327,
+      "status": "done"
+    },
+    {
+      "step": 6,
+      "name": "rename-attempt-3",
+      "started": 1790181683346,
+      "ended": 1790181685471,
+      "status": "done"
+    },
+    {
+      "step": 7,
+      "name": "annotate-update-button",
+      "started": 1790181685496,
+      "ended": 1790181686438,
+      "status": "done"
+    }
+  ],
+  "evidence": "docs/evidence/g5-anything-llm-2026-09-23b/run"
+}

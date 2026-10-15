@@ -1,0 +1,1 @@
+{"passed":true,"boundaries":4,"wrong_rules_rejected":20,"real_dom_clicks":8}

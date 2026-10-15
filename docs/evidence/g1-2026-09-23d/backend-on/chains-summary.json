@@ -1,0 +1,25 @@
+{
+  "schema": "producttrace.g1-chain-summary.v1",
+  "backend_instrumented": true,
+  "records": 556548,
+  "spans": 2321,
+  "actions": 337,
+  "actions_with_requests": 10,
+  "terminals": {
+    "browser | no request observed": 211,
+    "entry_handler | no element-bound handler ran; global listeners: [function:f607e3900a9d4f60b7811dba6cd08cc15e1c9973b71c9541599db447d14af3c3:789:951]": 37,
+    "entry_handler | no element-bound handler ran; global listeners: [function:c15c44aa0e87167c0174eb68367210b93204299c880fce28068d3117f8c0bf0e:4451:4518]": 1,
+    "entry_handler | no element-bound handler ran; global listeners: [function:c3157a7c2c41cf7836df40621b7304393c56cbd1b99632f5f2577a7f2940253c:3442:3600]": 1,
+    "entry_handler | no element-bound handler ran; global listeners: [function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:15018:15139, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:22658:22879]": 71,
+    "reached_db | -": 9,
+    "handler | no db span under handler": 1,
+    "entry_handler | no element-bound handler ran; global listeners: [function:289ebfafc16db6ab1b7c43f3ad92ef1ef1bbc05f52d4aaad5105283f68e4ab40:4818:4898]": 1,
+    "entry_handler | no element-bound handler ran; global listeners: [function:b57bb8c6c0e41a4971af646bb9d1bc557bc94b46996cd0a8d493326cf472617b:28123:28967]": 1,
+    "entry_handler | no element-bound handler ran; global listeners: [function:55cdfa4e9b9cd76a31a8abb6ec207cca6b3a91d5252491d7cc409c80c6eb2272:2699:3019]": 1,
+    "entry_handler | no element-bound handler ran; global listeners: [function:03e1cb3bc038e969913a678f7dba70299865e9d83f2601d7e4a8a558aec974db:2617:3460, function:424533622d14e22d32eb712ef35b77138ee1a5fb7c44c7483b3f8587f61419fc:132:204]": 1,
+    "entry_handler | no element-bound handler ran; global listeners: [function:32f0c87d989a4c84e694c5d4ad0ceb76b01e9ce94cfbc0c659234c2d334bb994:6979:7983, function:f667eada3513bb273c47fcc29058e9efcbec25e2c40ed6df05d6db11ca6e8826:595:762, function:966e47d78e67e6084e594153f231c59f273fbf0814308394c0f27a565f1179cc:1624:1786, function:966e47d78e67e6084e594153f231c59f273fbf0814308394c0f27a565f1179cc:2260:2298, function:424533622d14e22d32eb712ef35b77138ee1a5fb7c44c7483b3f8587f61419fc:132:204, function:03e1cb3bc038e969913a678f7dba70299865e9d83f2601d7e4a8a558aec974db:2617:3460, function:03e1cb3bc038e969913a678f7dba70299865e9d83f2601d7e4a8a558aec974db:3578:3990, function:d8ee6dbb40961e642b4f6935b488a480c8a336a7372a77e2b8c2def324a34a63:2100:2745, function:5d6b8b95481aaafa07a9b2b53b823d0a62c6dcaf3d51ceefd302a8d0a14dd678:4184:4986, function:03e1cb3bc038e969913a678f7dba70299865e9d83f2601d7e4a8a558aec974db:7122:8146, function:03e1cb3bc038e969913a678f7dba70299865e9d83f2601d7e4a8a558aec974db:8439:9469, function:73e176bedd742e6df0b80c714875836f213092d072e923cd47a381fb112e5f91:6543:6927]": 1,
+    "entry_handler | no element-bound handler ran; global listeners: [function:8535bff87ea3c3f5bdeedf1ed964e0c4b059dd66bd32012506fecb5c72760e29:961:985, function:8535bff87ea3c3f5bdeedf1ed964e0c4b059dd66bd32012506fecb5c72760e29:1037:1063, function:7d7d3edbaa4cb1a0eb5df4463027e94da404cb4a5f38a27f9ce8475bdaafc43f:7558:8045, function:efd4db58ab25eb920f086652b7f8e3575d8f120ef36e1c8a9b3889997d9b349d:4405:4550, function:da3bcfbab834fa61e5dd6cc39365bfd3256757b226487308ddd8861fd6da274b:31929:33286, function:e3d53985ef814592c727c93367885669824b43b4eec3d8bedb5b0388900702b4:487:821]": 1
+  },
+  "chains_with_backend_steps": 10,
+  "credited_entry_handlers": 136
+}

@@ -1,0 +1,236 @@
+# G5 Part A: rehearsal assertions
+
+Question: "why did this fail?". Element key read from the live DOM: `p_f067e70e6029:117-485#n1`.
+
+MCP: protocol 2025-06-18, server {"name":"tracer","version":"0.1.0"}, tools resolve_element, element_history, action_chain, recent_actions, compare_chains.
+
+| id | result | assertion | evidence |
+|---|---|---|---|
+| A1 | PASS | DOM step from the prompt fields: one selector match, key via closest(), equals the annotated element's stamp | run/annotation-anchor.json, run/annotation-prompt.txt, run/annotated-element.html |
+| A2 | PASS | resolve_element: exact; component and file:line equal the stamp row and the fixture source | mcp-transcript.json (resolve_element), store/records.jsonl.gz (element.stamp) |
+| A3 | PASS | entry handler: one function for every attempt; it is the developer-named form onSubmit handler (checked in source) | mcp-transcript.json (element_history attempts[].entry_handler) |
+| A4 | PASS | element_history: three attempts newest first with request, route, HTTP status and frontier; the 4xx is named in because | mcp-transcript.json (element_history), run/attempts.json |
+| A5 | PASS | action_chain(failing attempt): because names the 422, route stop 422, stopped at handler | mcp-transcript.json (action_chain) |
+| A6 | PASS | no-key fallback (selector/path/name/nearby text only): ambiguous, candidates include the right key, never a pick | mcp-transcript.json (second resolve_element) |
+| A7a | PASS | store written through producttrace-collector equals the harness capture; G2 build gates pass; tracked source clean (store path excluded) | run/build-gates.json (store.crosscheck), run/coverage.json |
+
+Overall: PASS (7/7). A7b (fixture restored) is recorded in RUN.md.
+
+## Details
+
+### A1 PASS
+
+```json
+{
+  "selector": "form.flex.flex-col:nth-of-type(1) > div.absolute.top-0:nth-of-type(1) > button.border-none.text-xs:nth-of-type(1) > div.flex.items-center:nth-of-type(1)",
+  "matches": 1,
+  "via": "ancestor",
+  "query_selector_all_matches": 1,
+  "key": "p_f067e70e6029:117-485#n1",
+  "truth": "p_f067e70e6029:117-485#n1"
+}
+```
+
+### A2 PASS
+
+```json
+{
+  "status": "ok",
+  "confidence": "exact",
+  "component": "CTAButton",
+  "source": {
+    "file": "frontend/src/components/lib/CTAButton/index.jsx",
+    "start": 117,
+    "end": 485,
+    "line": 8,
+    "line_status": "ok"
+  },
+  "stamp": {
+    "component": "CTAButton",
+    "file": "frontend/src/components/lib/CTAButton/index.jsx",
+    "line": 8,
+    "start": 117,
+    "tag": "button"
+  },
+  "source_check": {
+    "file": "frontend/src/components/lib/CTAButton/index.jsx",
+    "line_of_start": 8,
+    "text_at_start": "<button disabled={disabl",
+    "tag": "button"
+  }
+}
+```
+
+### A3 PASS
+
+```json
+{
+  "function_ids": [
+    "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488"
+  ],
+  "source": {
+    "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx",
+    "start": 931,
+    "end": 1488,
+    "line": 26,
+    "line_status": "ok"
+  },
+  "source_check": {
+    "name": "handleUpdate",
+    "line": 26,
+    "text_head": "async (e) => { setSaving(true); ",
+    "bound_as_on_submit": true,
+    "hash_matches": true
+  }
+}
+```
+
+### A4 PASS
+
+```json
+{
+  "attempts_total": 3,
+  "per_attempt": [
+    {
+      "attempt": 3,
+      "carrier_action_id": "action:muen79uv:146",
+      "events": [
+        "submit",
+        "click",
+        "focusin"
+      ],
+      "request": "POST /api/workspace/tracer-g5/update",
+      "route": "/api/workspace/:slug/update",
+      "status": 200,
+      "observed_by_playwright": 200,
+      "stopped_at": "handler",
+      "because": "no database span descends from the admitted handler span",
+      "ok": true
+    },
+    {
+      "attempt": 2,
+      "carrier_action_id": "action:muen787e:108",
+      "events": [
+        "submit",
+        "click",
+        "focusin"
+      ],
+      "request": "POST /api/workspace/tracer-g5/update",
+      "route": "/api/workspace/:slug/update",
+      "status": 422,
+      "observed_by_playwright": 422,
+      "stopped_at": "handler",
+      "because": "server responded 422; no database span descends from the admitted handler span",
+      "ok": true
+    },
+    {
+      "attempt": 1,
+      "carrier_action_id": "action:muen76jn:68",
+      "events": [
+        "submit",
+        "click",
+        "focusin"
+      ],
+      "request": "POST /api/workspace/tracer-g5/update",
+      "route": "/api/workspace/:slug/update",
+      "status": 200,
+      "observed_by_playwright": 200,
+      "stopped_at": "handler",
+      "because": "no database span descends from the admitted handler span",
+      "ok": true
+    }
+  ]
+}
+```
+
+### A5 PASS
+
+```json
+{
+  "action_id": "action:muen787e:108",
+  "summary": "submit action:muen787e:108 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g5/update → route /api/workspace/:slug/update 422 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because server responded 422; no database span descends from the admitted handler span",
+  "because": "server responded 422; no database span descends from the admitted handler span",
+  "route": {
+    "stop": "route",
+    "span_id": "a6aec4250a0168cc",
+    "method": "POST",
+    "route": "/api/workspace/:slug/update",
+    "status_code": 422,
+    "admission_reason": "same trace_id; server.parent_span_id equals request.trace_context.span_id; method equal; exactly one server span"
+  },
+  "stopped_at": "handler"
+}
+```
+
+### A6 PASS
+
+```json
+{
+  "args": {
+    "url": "http://127.0.0.1:4100/workspace/tracer-g5/settings/general-appearance",
+    "selector": "form.flex.flex-col:nth-of-type(1) > div.absolute.top-0:nth-of-type(1) > button.border-none.text-xs:nth-of-type(1) > div.flex.items-center:nth-of-type(1)",
+    "element_path": "form > div > button > div",
+    "name": "Update Workspace",
+    "nearby_text": "Update Workspace"
+  },
+  "status": "ambiguous",
+  "confidence": "ambiguous",
+  "candidates_total": 4,
+  "candidate_keys": [
+    "p_f067e70e6029:117-485#n1",
+    "p_ed834b44909a:10547-10746#n1",
+    "p_25b364a91be9:8497-10305#n1",
+    "p_25511dc1202f:6108-6564#n1"
+  ],
+  "summary": "ambiguous: 4 observed target(s) match; best button (ancestor tag=button (the annotated element is inside a recorded <button> target)) with 9 actions. Not a pick: read data-tracer-el from the live element for an exact key."
+}
+```
+
+### A7a PASS
+
+```json
+{
+  "crosscheck": {
+    "pass": true,
+    "missing": 0,
+    "extra": 0,
+    "harness": {
+      "dom.action": 151,
+      "dom.mutation": 87,
+      "element.stamp": 119,
+      "function.enter": 1123,
+      "function.exit": 1123,
+      "network.request": 41
+    },
+    "store": {
+      "dom.action": 151,
+      "dom.mutation": 87,
+      "element.stamp": 119,
+      "function.enter": 1123,
+      "function.exit": 1123,
+      "network.request": 41
+    },
+    "spans": [
+      465,
+      465
+    ]
+  },
+  "sink": {
+    "endpoint": "http://127.0.0.1:4102",
+    "queued": 0,
+    "received": 2644,
+    "sent": 2644,
+    "batches": 28,
+    "retries": 0,
+    "dropped": 0,
+    "beacon": 0,
+    "malformed": 0
+  },
+  "markers": true,
+  "parity": true,
+  "smoke": "ok",
+  "source_clean": true,
+  "unfiltered_status_after": "?? .tracer/"
+}
+```
+

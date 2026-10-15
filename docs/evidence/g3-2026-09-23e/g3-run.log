@@ -1,0 +1,389 @@
+{
+  "own_site": {
+    "self": 728,
+    "not_self": 444,
+    "via": {
+      "self": 674,
+      "render_prop": 54
+    },
+    "causes": {
+      "first_host: rendered inside a library component (no first-party JSX for the element)": 408,
+      "ancestor: rendered inside a library component (no first-party JSX for the element)": 24,
+      "first_host: first-party JSX returned by a function child of a library component (not placed: first-party JSX missed)": 12
+    },
+    "examples": {
+      "first_host: rendered inside a library component (no first-party JSX for the element)": [
+        {
+          "host": "svg",
+          "stamp_tag": "SquarePen",
+          "file": "client/src/components/UnifiedSidebar/ExpandedPanel.tsx",
+          "line": 58,
+          "component": "SquarePen"
+        },
+        {
+          "host": "svg",
+          "stamp_tag": "link.icon",
+          "file": "client/src/components/UnifiedSidebar/ExpandedPanel.tsx",
+          "line": 119,
+          "component": "link.icon"
+        },
+        {
+          "host": "svg",
+          "stamp_tag": "link.icon",
+          "file": "client/src/components/UnifiedSidebar/ExpandedPanel.tsx",
+          "line": 119,
+          "component": "link.icon"
+        },
+        {
+          "host": "svg",
+          "stamp_tag": "link.icon",
+          "file": "client/src/components/UnifiedSidebar/ExpandedPanel.tsx",
+          "line": 119,
+          "component": "link.icon"
+        },
+        {
+          "host": "svg",
+          "stamp_tag": "link.icon",
+          "file": "client/src/components/UnifiedSidebar/ExpandedPanel.tsx",
+          "line": 119,
+          "component": "link.icon"
+        },
+        {
+          "host": "svg",
+          "stamp_tag": "link.icon",
+          "file": "client/src/components/UnifiedSidebar/ExpandedPanel.tsx",
+          "line": 119,
+          "component": "link.icon"
+        },
+        {
+          "host": "svg",
+          "stamp_tag": "link.icon",
+          "file": "client/src/components/UnifiedSidebar/ExpandedPanel.tsx",
+          "line": 119,
+          "component": "link.icon"
+        },
+        {
+          "host": "button",
+          "stamp_tag": "Menu.MenuButton",
+          "file": "client/src/components/Nav/AccountSettings.tsx",
+          "line": 110,
+          "component": "Menu.MenuButton"
+        },
+        {
+          "host": "svg",
+          "stamp_tag": "LayoutGrid",
+          "file": "client/src/components/Nav/Favorites/FavoritesList.tsx",
+          "line": 414,
+          "component": "LayoutGrid"
+        },
+        {
+          "host": "svg",
+          "stamp_tag": "ChevronDown",
+          "file": "client/src/components/Conversations/ProjectsSection.tsx",
+          "line": 509,
+          "component": "ChevronDown"
+        },
+        {
+          "host": "svg",
+          "stamp_tag": "Folders",
+          "file": "client/src/components/Conversations/ProjectsSection.tsx",
+          "line": 526,
+          "component": "Folders"
+        },
+        {
+          "host": "svg",
+          "stamp_tag": "FolderPlus",
+          "file": "client/src/components/Conversations/ProjectsSection.tsx",
+          "line": 539,
+          "component": "FolderPlus"
+        }
+      ],
+      "ancestor: rendered inside a library component (no first-party JSX for the element)": [
+        {
+          "host": "div",
+          "stamp_tag": "List",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 475,
+          "component": "List"
+        },
+        {
+          "host": "ol",
+          "stamp_tag": "RadixToast.Viewport",
+          "file": "client/src/App.jsx",
+          "line": 71,
+          "component": "RadixToast.Viewport"
+        },
+        {
+          "host": "div",
+          "stamp_tag": "List",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 475,
+          "component": "List"
+        },
+        {
+          "host": "ol",
+          "stamp_tag": "RadixToast.Viewport",
+          "file": "client/src/App.jsx",
+          "line": 71,
+          "component": "RadixToast.Viewport"
+        },
+        {
+          "host": "div",
+          "stamp_tag": "List",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 475,
+          "component": "List"
+        },
+        {
+          "host": "span",
+          "stamp_tag": "Ariakit.Menu",
+          "file": "packages/client/src/components/DropdownPopup.tsx",
+          "line": 82,
+          "component": "Ariakit.Menu"
+        },
+        {
+          "host": "ol",
+          "stamp_tag": "RadixToast.Viewport",
+          "file": "client/src/App.jsx",
+          "line": 71,
+          "component": "RadixToast.Viewport"
+        },
+        {
+          "host": "span",
+          "stamp_tag": "Ariakit.Menu",
+          "file": "packages/client/src/components/DropdownPopup.tsx",
+          "line": 82,
+          "component": "Ariakit.Menu"
+        },
+        {
+          "host": "div",
+          "stamp_tag": "Ariakit.Menu",
+          "file": "packages/client/src/components/DropdownPopup.tsx",
+          "line": 82,
+          "component": "Ariakit.Menu"
+        },
+        {
+          "host": "span",
+          "stamp_tag": "Ariakit.Menu",
+          "file": "packages/client/src/components/DropdownPopup.tsx",
+          "line": 82,
+          "component": "Ariakit.Menu"
+        },
+        {
+          "host": "input",
+          "stamp_tag": "SwitchPrimitives.Root",
+          "file": "packages/client/src/components/Switch.tsx",
+          "line": 24,
+          "component": "SwitchPrimitives.Root"
+        },
+        {
+          "host": "ol",
+          "stamp_tag": "RadixToast.Viewport",
+          "file": "client/src/App.jsx",
+          "line": 71,
+          "component": "RadixToast.Viewport"
+        }
+      ],
+      "first_host: first-party JSX returned by a function child of a library component (not placed: first-party JSX missed)": [
+        {
+          "host": "div",
+          "stamp_tag": "CellMeasurer",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 59,
+          "component": "CellMeasurer"
+        },
+        {
+          "host": "div",
+          "stamp_tag": "CellMeasurer",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 59,
+          "component": "CellMeasurer"
+        },
+        {
+          "host": "div",
+          "stamp_tag": "CellMeasurer",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 59,
+          "component": "CellMeasurer"
+        },
+        {
+          "host": "div",
+          "stamp_tag": "CellMeasurer",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 59,
+          "component": "CellMeasurer"
+        },
+        {
+          "host": "div",
+          "stamp_tag": "CellMeasurer",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 59,
+          "component": "CellMeasurer"
+        },
+        {
+          "host": "div",
+          "stamp_tag": "CellMeasurer",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 59,
+          "component": "CellMeasurer"
+        },
+        {
+          "host": "div",
+          "stamp_tag": "CellMeasurer",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 59,
+          "component": "CellMeasurer"
+        },
+        {
+          "host": "div",
+          "stamp_tag": "CellMeasurer",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 59,
+          "component": "CellMeasurer"
+        },
+        {
+          "host": "div",
+          "stamp_tag": "CellMeasurer",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 59,
+          "component": "CellMeasurer"
+        },
+        {
+          "host": "div",
+          "stamp_tag": "CellMeasurer",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 59,
+          "component": "CellMeasurer"
+        },
+        {
+          "host": "div",
+          "stamp_tag": "CellMeasurer",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 59,
+          "component": "CellMeasurer"
+        },
+        {
+          "host": "div",
+          "stamp_tag": "CellMeasurer",
+          "file": "client/src/components/Conversations/Conversations.tsx",
+          "line": 59,
+          "component": "CellMeasurer"
+        }
+      ]
+    },
+    "own_share": 0.621160409556314,
+    "library_rendered": 432,
+    "own_share_of_first_party_jsx": 0.9837837837837838,
+    "first_party_jsx_missed": 12,
+    "per_stamp_row": {
+      "own": 350,
+      "library": 187,
+      "missed": 3,
+      "not_in_final_dom": 4,
+      "own_share_of_first_party_jsx": 0.9915014164305949,
+      "own_share_all_rows": 0.6433823529411765
+    }
+  },
+  "checks": {
+    "stamps_emitted": true,
+    "every_interactive_host_stamped": false,
+    "own_jsx_site_share_over_90": true,
+    "resolve_sample_exact": true,
+    "oai_written_with_stub": true,
+    "oai_payloads_valid": true,
+    "no_oai_without_stub": true
+  },
+  "stamp_rows": 544,
+  "interactive_coverage": [
+    {
+      "variant": "oai-stub",
+      "surface": "/c/new",
+      "interactive_hosts": 69,
+      "stamped": 68,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    },
+    {
+      "variant": "oai-stub",
+      "surface": "existing-conversation",
+      "interactive_hosts": 87,
+      "stamped": 86,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    },
+    {
+      "variant": "oai-stub",
+      "surface": "conversation-menu",
+      "interactive_hosts": 99,
+      "stamped": 98,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    },
+    {
+      "variant": "oai-stub",
+      "surface": "agent-builder",
+      "interactive_hosts": 82,
+      "stamped": 81,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    },
+    {
+      "variant": "no-oai",
+      "surface": "/c/new",
+      "interactive_hosts": 69,
+      "stamped": 68,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    },
+    {
+      "variant": "no-oai",
+      "surface": "existing-conversation",
+      "interactive_hosts": 87,
+      "stamped": 86,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    },
+    {
+      "variant": "no-oai",
+      "surface": "conversation-menu",
+      "interactive_hosts": 99,
+      "stamped": 98,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    },
+    {
+      "variant": "no-oai",
+      "surface": "agent-builder",
+      "interactive_hosts": 82,
+      "stamped": 81,
+      "unstamped": 1,
+      "unstamped_by_reason": {
+        "not_rendered_by_react": 1
+      }
+    }
+  ],
+  "oai": {
+    "stub_payloads": 1268,
+    "stub_invalid": 0,
+    "no_oai_payloads": 0,
+    "rejected_rows": 0
+  },
+  "resolve": {
+    "size": 30,
+    "ok": 30
+  }
+}

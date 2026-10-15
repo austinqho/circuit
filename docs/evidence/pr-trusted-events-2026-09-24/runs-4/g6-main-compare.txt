@@ -1,0 +1,79 @@
+[
+  {
+    "pair": "A-baseline__B-seeded-422",
+    "before": "action:mue48zaw:65",
+    "after": "action:mue4cr85:65",
+    "path_changed": true,
+    "reasons": [
+      "route",
+      "outcome"
+    ],
+    "entry_handler": "same",
+    "outcome_changed": [
+      "status",
+      "http_status"
+    ]
+  },
+  {
+    "pair": "B-seeded-422__C-fix-r2",
+    "before": "action:mue4cr85:65",
+    "after": "action:mue4jjss:65",
+    "path_changed": true,
+    "reasons": [
+      "route",
+      "outcome"
+    ],
+    "entry_handler": "same",
+    "outcome_changed": [
+      "status",
+      "http_status"
+    ]
+  },
+  {
+    "pair": "A-baseline__C-fix-r2",
+    "before": "action:mue48zaw:65",
+    "after": "action:mue4jjss:65",
+    "path_changed": false,
+    "reasons": [],
+    "entry_handler": "same",
+    "outcome_changed": []
+  },
+  {
+    "pair": "A-baseline__D-noop-refactor",
+    "before": "action:mue48zaw:65",
+    "after": "action:mue4mtmf:65",
+    "path_changed": false,
+    "reasons": [],
+    "entry_handler": "source_revision",
+    "outcome_changed": []
+  },
+  {
+    "pair": "A-baseline__E-frontend-early-return",
+    "before": "action:mue48zaw:65",
+    "after": "action:mue4q5xu:65",
+    "path_changed": true,
+    "reasons": [
+      "request",
+      "route",
+      "handler",
+      "outcome"
+    ],
+    "entry_handler": "source_revision",
+    "outcome_changed": [
+      "status",
+      "http_status",
+      "stop_reason",
+      "stopped_at",
+      "reached"
+    ]
+  },
+  {
+    "pair": "B-seeded-422__C-fix",
+    "before": "action:mue4cr85:65",
+    "after": "action:mue4g90c:65",
+    "path_changed": false,
+    "reasons": [],
+    "entry_handler": "same",
+    "outcome_changed": []
+  }
+]

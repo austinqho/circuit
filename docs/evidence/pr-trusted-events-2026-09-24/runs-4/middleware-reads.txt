@@ -1,0 +1,345 @@
+[producttrace] first-party: 6 functions instrumented; excluded functions by rule: outside repository 875; excluded modules by rule: none; include=[] exclude=["**/node_modules/**","**/vendor/**","**/dist/**","**/build/**","**/.git/**"]
+PASS run 1: page ran without errors; every click settled
+PASS run 1: count: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 1: count: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 1: count: every op is in the request's own trace
+PASS run 1: count: stops list the same ops
+PASS run 1: count: export carries the same ops with issuers
+PASS run 1: count: live viewer chain carries the same ops with issuers and the same label
+PASS run 1: count: summary prints every op with its issuer
+PASS run 1: guest: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 1: guest: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 1: guest: every op is in the request's own trace
+PASS run 1: guest: stops list the same ops
+PASS run 1: guest: export carries the same ops with issuers
+PASS run 1: guest: live viewer chain carries the same ops with issuers and the same label
+PASS run 1: guest: summary prints every op with its issuer
+PASS run 1: tasks: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 1: tasks: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 1: tasks: every op is in the request's own trace
+PASS run 1: tasks: stops list the same ops
+PASS run 1: tasks: export carries the same ops with issuers
+PASS run 1: tasks: live viewer chain carries the same ops with issuers and the same label
+PASS run 1: tasks: summary prints every op with its issuer
+PASS run 1: rename: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 1: rename: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 1: rename: every op is in the request's own trace
+PASS run 1: rename: stops list the same ops
+PASS run 1: rename: export carries the same ops with issuers
+PASS run 1: rename: live viewer chain carries the same ops with issuers and the same label
+PASS run 1: rename: summary prints every op with its issuer
+PASS run 1: summary: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 1: summary: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 1: summary: every op is in the request's own trace
+PASS run 1: summary: stops list the same ops
+PASS run 1: summary: export carries the same ops with issuers
+PASS run 1: summary: live viewer chain carries the same ops with issuers and the same label
+PASS run 1: summary: summary prints every op with its issuer
+PASS run 1: ping: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 1: ping: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 1: ping: every op is in the request's own trace
+PASS run 1: ping: stops list the same ops
+PASS run 1: ping: export carries the same ops with issuers
+PASS run 1: ping: live viewer chain carries the same ops with issuers and the same label
+PASS run 1: ping: summary prints every op with its issuer
+PASS run 1: archive: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 1: archive: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 1: archive: every op is in the request's own trace
+PASS run 1: archive: stops list the same ops
+PASS run 1: archive: export carries the same ops with issuers
+PASS run 1: archive: live viewer chain carries the same ops with issuers and the same label
+PASS run 1: archive: summary prints every op with its issuer
+PASS run 1: explode: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 1: explode: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 1: explode: every op is in the request's own trace
+PASS run 1: explode: stops list the same ops
+PASS run 1: explode: export carries the same ops with issuers
+PASS run 1: explode: live viewer chain carries the same ops with issuers and the same label
+PASS run 1: explode: summary prints every op with its issuer
+PASS run 1: missing: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 1: missing: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 1: missing: every op is in the request's own trace
+PASS run 1: missing: stops list the same ops
+PASS run 1: missing: export carries the same ops with issuers
+PASS run 1: missing: live viewer chain carries the same ops with issuers and the same label
+PASS run 1: missing: summary prints every op with its issuer
+PASS run 1: stats: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 1: stats: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 1: stats: every op is in the request's own trace
+PASS run 1: stats: stops list the same ops
+PASS run 1: stats: export carries the same ops with issuers
+PASS run 1: stats: live viewer chain carries the same ops with issuers and the same label
+PASS run 1: stats: summary prints every op with its issuer
+PASS run 1: owner: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 1: owner: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 1: owner: every op is in the request's own trace
+PASS run 1: owner: stops list the same ops
+PASS run 1: owner: export carries the same ops with issuers
+PASS run 1: owner: live viewer chain carries the same ops with issuers and the same label
+PASS run 1: owner: summary prints every op with its issuer
+PASS run 1: whoami: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 1: whoami: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 1: whoami: every op is in the request's own trace
+PASS run 1: whoami: stops list the same ops
+PASS run 1: whoami: export carries the same ops with issuers
+PASS run 1: whoami: live viewer chain carries the same ops with issuers and the same label
+PASS run 1: whoami: summary prints every op with its issuer
+PASS run 1: count: ops are aggregate $cmd (handler: countTasks)
+PASS run 1: count: completed 200 on the handler read, stopped at none
+PASS run 1: guest: ops are find users (middleware: authenticate)
+PASS run 1: guest: failed 401; stopped at middleware authenticate; no handler ran
+PASS run 1: missing: ops are find users (middleware: authenticate), find projects (param: loadProject)
+PASS run 1: missing: failed 404; stopped at param loadProject; no handler ran
+PASS run 1: explode: ops are find users (middleware: authenticate), find projects (param: loadProject), aggregate $cmd (error handler: reportError)
+PASS run 1: explode: failed 500; stopped at the error middleware after the handler
+PASS run 1: tasks: ops are find users (middleware: authenticate), find projects (param: loadProject), find tasks (handler: listTasks)
+PASS run 1: tasks: completed 200
+PASS run 1: rename: ops are find users (middleware: authenticate), find projects (param: loadProject), update tasks (handler: renameTask)
+PASS run 1: rename: read-only middleware + handler write = completed; the sentence names the writer
+PASS run 1: summary: ops are find users (middleware: authenticate), insert activity (middleware: recordActivity), find projects (param: loadProject), aggregate $cmd (handler: summarizeProject)
+PASS run 1: summary: middleware write + read-only handler = completed, and the label says which code wrote
+PASS run 1: ping: ops are find users (middleware: authenticate), find projects (param: loadProject)
+PASS run 1: ping: unsafe method with reads only = responded, no write observed
+PASS run 1: stats: ops are find users (middleware: authenticate), find projects (param: loadProject), aggregate $cmd (handler: projectStats (in app span loadStats))
+PASS run 1: stats: the app span shipped as a skeleton (ids, name, kind, times; no attributes but the marker)
+PASS run 1: stats: completed 200 on the handler read
+PASS run 1: owner: ops are find users (middleware: authenticate), find projects (param: loadProject), find users (handler: requireOwner)
+PASS run 1: owner: the route-level middleware read completes the GET
+PASS run 1: whoami: ops are find users (middleware: authenticate)
+PASS run 1: whoami: only preconditions: responded, named, no terminal effect claimed
+PASS run 1: ping: only preconditions on an unsafe method: responded, no write observed, no terminal effect claimed
+PASS run 1: archive: ops are find users (middleware: authenticate), find projects (param: loadProject), update projects (handler: archiveProject), insert audit (handler: archiveProject)
+PASS run 1: archive: the two writes after the 202 are deferred (and only they), named by their issuer
+PASS run 1: ops outside every request trace (the background job) are in no chain; no op is listed twice
+PASS run 1: compare_chains(tasks → guest) compares the full op list by issuer
+PASS run 1: compare_chains(rename → summary): the middleware write is added, the handler write removed
+PASS run 2: page ran without errors; every click settled
+PASS run 2: count: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 2: count: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 2: count: every op is in the request's own trace
+PASS run 2: count: stops list the same ops
+PASS run 2: count: export carries the same ops with issuers
+PASS run 2: count: live viewer chain carries the same ops with issuers and the same label
+PASS run 2: count: summary prints every op with its issuer
+PASS run 2: guest: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 2: guest: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 2: guest: every op is in the request's own trace
+PASS run 2: guest: stops list the same ops
+PASS run 2: guest: export carries the same ops with issuers
+PASS run 2: guest: live viewer chain carries the same ops with issuers and the same label
+PASS run 2: guest: summary prints every op with its issuer
+PASS run 2: tasks: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 2: tasks: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 2: tasks: every op is in the request's own trace
+PASS run 2: tasks: stops list the same ops
+PASS run 2: tasks: export carries the same ops with issuers
+PASS run 2: tasks: live viewer chain carries the same ops with issuers and the same label
+PASS run 2: tasks: summary prints every op with its issuer
+PASS run 2: rename: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 2: rename: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 2: rename: every op is in the request's own trace
+PASS run 2: rename: stops list the same ops
+PASS run 2: rename: export carries the same ops with issuers
+PASS run 2: rename: live viewer chain carries the same ops with issuers and the same label
+PASS run 2: rename: summary prints every op with its issuer
+PASS run 2: summary: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 2: summary: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 2: summary: every op is in the request's own trace
+PASS run 2: summary: stops list the same ops
+PASS run 2: summary: export carries the same ops with issuers
+PASS run 2: summary: live viewer chain carries the same ops with issuers and the same label
+PASS run 2: summary: summary prints every op with its issuer
+PASS run 2: ping: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 2: ping: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 2: ping: every op is in the request's own trace
+PASS run 2: ping: stops list the same ops
+PASS run 2: ping: export carries the same ops with issuers
+PASS run 2: ping: live viewer chain carries the same ops with issuers and the same label
+PASS run 2: ping: summary prints every op with its issuer
+PASS run 2: archive: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 2: archive: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 2: archive: every op is in the request's own trace
+PASS run 2: archive: stops list the same ops
+PASS run 2: archive: export carries the same ops with issuers
+PASS run 2: archive: live viewer chain carries the same ops with issuers and the same label
+PASS run 2: archive: summary prints every op with its issuer
+PASS run 2: explode: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 2: explode: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 2: explode: every op is in the request's own trace
+PASS run 2: explode: stops list the same ops
+PASS run 2: explode: export carries the same ops with issuers
+PASS run 2: explode: live viewer chain carries the same ops with issuers and the same label
+PASS run 2: explode: summary prints every op with its issuer
+PASS run 2: missing: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 2: missing: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 2: missing: every op is in the request's own trace
+PASS run 2: missing: stops list the same ops
+PASS run 2: missing: export carries the same ops with issuers
+PASS run 2: missing: live viewer chain carries the same ops with issuers and the same label
+PASS run 2: missing: summary prints every op with its issuer
+PASS run 2: stats: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 2: stats: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 2: stats: every op is in the request's own trace
+PASS run 2: stats: stops list the same ops
+PASS run 2: stats: export carries the same ops with issuers
+PASS run 2: stats: live viewer chain carries the same ops with issuers and the same label
+PASS run 2: stats: summary prints every op with its issuer
+PASS run 2: owner: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 2: owner: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 2: owner: every op is in the request's own trace
+PASS run 2: owner: stops list the same ops
+PASS run 2: owner: export carries the same ops with issuers
+PASS run 2: owner: live viewer chain carries the same ops with issuers and the same label
+PASS run 2: owner: summary prints every op with its issuer
+PASS run 2: whoami: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 2: whoami: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 2: whoami: every op is in the request's own trace
+PASS run 2: whoami: stops list the same ops
+PASS run 2: whoami: export carries the same ops with issuers
+PASS run 2: whoami: live viewer chain carries the same ops with issuers and the same label
+PASS run 2: whoami: summary prints every op with its issuer
+PASS run 2: count: ops are aggregate $cmd (handler: countTasks)
+PASS run 2: count: completed 200 on the handler read, stopped at none
+PASS run 2: guest: ops are find users (middleware: authenticate)
+PASS run 2: guest: failed 401; stopped at middleware authenticate; no handler ran
+PASS run 2: missing: ops are find users (middleware: authenticate), find projects (param: loadProject)
+PASS run 2: missing: failed 404; stopped at param loadProject; no handler ran
+PASS run 2: explode: ops are find users (middleware: authenticate), find projects (param: loadProject), aggregate $cmd (error handler: reportError)
+PASS run 2: explode: failed 500; stopped at the error middleware after the handler
+PASS run 2: tasks: ops are find users (middleware: authenticate), find projects (param: loadProject), find tasks (handler: listTasks)
+PASS run 2: tasks: completed 200
+PASS run 2: rename: ops are find users (middleware: authenticate), find projects (param: loadProject), update tasks (handler: renameTask)
+PASS run 2: rename: read-only middleware + handler write = completed; the sentence names the writer
+PASS run 2: summary: ops are find users (middleware: authenticate), insert activity (middleware: recordActivity), find projects (param: loadProject), aggregate $cmd (handler: summarizeProject)
+PASS run 2: summary: middleware write + read-only handler = completed, and the label says which code wrote
+PASS run 2: ping: ops are find users (middleware: authenticate), find projects (param: loadProject)
+PASS run 2: ping: unsafe method with reads only = responded, no write observed
+PASS run 2: stats: ops are find users (middleware: authenticate), find projects (param: loadProject), aggregate $cmd (handler: projectStats (in app span loadStats))
+PASS run 2: stats: the app span shipped as a skeleton (ids, name, kind, times; no attributes but the marker)
+PASS run 2: stats: completed 200 on the handler read
+PASS run 2: owner: ops are find users (middleware: authenticate), find projects (param: loadProject), find users (handler: requireOwner)
+PASS run 2: owner: the route-level middleware read completes the GET
+PASS run 2: whoami: ops are find users (middleware: authenticate)
+PASS run 2: whoami: only preconditions: responded, named, no terminal effect claimed
+PASS run 2: ping: only preconditions on an unsafe method: responded, no write observed, no terminal effect claimed
+PASS run 2: archive: ops are find users (middleware: authenticate), find projects (param: loadProject), update projects (handler: archiveProject), insert audit (handler: archiveProject)
+PASS run 2: archive: the two writes after the 202 are deferred (and only they), named by their issuer
+PASS run 2: ops outside every request trace (the background job) are in no chain; no op is listed twice
+PASS run 2: compare_chains(tasks → guest) compares the full op list by issuer
+PASS run 2: compare_chains(rename → summary): the middleware write is added, the handler write removed
+PASS run 3: page ran without errors; every click settled
+PASS run 3: count: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 3: count: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 3: count: every op is in the request's own trace
+PASS run 3: count: stops list the same ops
+PASS run 3: count: export carries the same ops with issuers
+PASS run 3: count: live viewer chain carries the same ops with issuers and the same label
+PASS run 3: count: summary prints every op with its issuer
+PASS run 3: guest: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 3: guest: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 3: guest: every op is in the request's own trace
+PASS run 3: guest: stops list the same ops
+PASS run 3: guest: export carries the same ops with issuers
+PASS run 3: guest: live viewer chain carries the same ops with issuers and the same label
+PASS run 3: guest: summary prints every op with its issuer
+PASS run 3: tasks: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 3: tasks: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 3: tasks: every op is in the request's own trace
+PASS run 3: tasks: stops list the same ops
+PASS run 3: tasks: export carries the same ops with issuers
+PASS run 3: tasks: live viewer chain carries the same ops with issuers and the same label
+PASS run 3: tasks: summary prints every op with its issuer
+PASS run 3: rename: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 3: rename: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 3: rename: every op is in the request's own trace
+PASS run 3: rename: stops list the same ops
+PASS run 3: rename: export carries the same ops with issuers
+PASS run 3: rename: live viewer chain carries the same ops with issuers and the same label
+PASS run 3: rename: summary prints every op with its issuer
+PASS run 3: summary: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 3: summary: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 3: summary: every op is in the request's own trace
+PASS run 3: summary: stops list the same ops
+PASS run 3: summary: export carries the same ops with issuers
+PASS run 3: summary: live viewer chain carries the same ops with issuers and the same label
+PASS run 3: summary: summary prints every op with its issuer
+PASS run 3: ping: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 3: ping: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 3: ping: every op is in the request's own trace
+PASS run 3: ping: stops list the same ops
+PASS run 3: ping: export carries the same ops with issuers
+PASS run 3: ping: live viewer chain carries the same ops with issuers and the same label
+PASS run 3: ping: summary prints every op with its issuer
+PASS run 3: archive: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 3: archive: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 3: archive: every op is in the request's own trace
+PASS run 3: archive: stops list the same ops
+PASS run 3: archive: export carries the same ops with issuers
+PASS run 3: archive: live viewer chain carries the same ops with issuers and the same label
+PASS run 3: archive: summary prints every op with its issuer
+PASS run 3: explode: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 3: explode: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 3: explode: every op is in the request's own trace
+PASS run 3: explode: stops list the same ops
+PASS run 3: explode: export carries the same ops with issuers
+PASS run 3: explode: live viewer chain carries the same ops with issuers and the same label
+PASS run 3: explode: summary prints every op with its issuer
+PASS run 3: missing: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 3: missing: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 3: missing: every op is in the request's own trace
+PASS run 3: missing: stops list the same ops
+PASS run 3: missing: export carries the same ops with issuers
+PASS run 3: missing: live viewer chain carries the same ops with issuers and the same label
+PASS run 3: missing: summary prints every op with its issuer
+PASS run 3: stats: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 3: stats: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 3: stats: every op is in the request's own trace
+PASS run 3: stats: stops list the same ops
+PASS run 3: stats: export carries the same ops with issuers
+PASS run 3: stats: live viewer chain carries the same ops with issuers and the same label
+PASS run 3: stats: summary prints every op with its issuer
+PASS run 3: owner: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 3: owner: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 3: owner: every op is in the request's own trace
+PASS run 3: owner: stops list the same ops
+PASS run 3: owner: export carries the same ops with issuers
+PASS run 3: owner: live viewer chain carries the same ops with issuers and the same label
+PASS run 3: owner: summary prints every op with its issuer
+PASS run 3: whoami: MCP segment ops = every raw db span under the server span (span ids, start order)
+PASS run 3: whoami: each op names the code that issued it (raw nearest naming ancestor)
+PASS run 3: whoami: every op is in the request's own trace
+PASS run 3: whoami: stops list the same ops
+PASS run 3: whoami: export carries the same ops with issuers
+PASS run 3: whoami: live viewer chain carries the same ops with issuers and the same label
+PASS run 3: whoami: summary prints every op with its issuer
+PASS run 3: count: ops are aggregate $cmd (handler: countTasks)
+PASS run 3: count: completed 200 on the handler read, stopped at none
+PASS run 3: guest: ops are find users (middleware: authenticate)
+PASS run 3: guest: failed 401; stopped at middleware authenticate; no handler ran
+PASS run 3: missing: ops are find users (middleware: authenticate), find projects (param: loadProject)
+PASS run 3: missing: failed 404; stopped at param loadProject; no handler ran
+PASS run 3: explode: ops are find users (middleware: authenticate), find projects (param: loadProject), aggregate $cmd (error handler: reportError)
+PASS run 3: explode: failed 500; stopped at the error middleware after the handler
+PASS run 3: tasks: ops are find users (middleware: authenticate), find projects (param: loadProject), find tasks (handler: listTasks)
+PASS run 3: tasks: completed 200
+PASS run 3: rename: ops are find users (middleware: authenticate), find projects (param: loadProject), update tasks (handler: renameTask)
+PASS run 3: rename: read-only middleware + handler write = completed; the sentence names the writer
+PASS run 3: summary: ops are find users (middleware: authenticate), insert activity (middleware: recordActivity), find projects (param: loadProject), aggregate $cmd (handler: summarizeProject)
+PASS run 3: summary: middleware write + read-only handler = completed, and the label says which code wrote
+PASS run 3: ping: ops are find users (middleware: authenticate), find projects (param: loadProject)
+PASS run 3: ping: unsafe method with reads only = responded, no write observed
+PASS run 3: stats: ops are find users (middleware: authenticate), find projects (param: loadProject), aggregate $cmd (handler: projectStats (in app span loadStats))
+PASS run 3: stats: the app span shipped as a skeleton (ids, name, kind, times; no attributes but the marker)
+PASS run 3: stats: completed 200 on the handler read
+PASS run 3: owner: ops are find users (middleware: authenticate), find projects (param: loadProject), find users (handler: requireOwner)
+PASS run 3: owner: the route-level middleware read completes the GET
+PASS run 3: whoami: ops are find users (middleware: authenticate)
+PASS run 3: whoami: only preconditions: responded, named, no terminal effect claimed
+PASS run 3: ping: only preconditions on an unsafe method: responded, no write observed, no terminal effect claimed
+PASS run 3: archive: ops are find users (middleware: authenticate), find projects (param: loadProject), update projects (handler: archiveProject), insert audit (handler: archiveProject)
+PASS run 3: archive: the two writes after the 202 are deferred (and only they), named by their issuer
+PASS run 3: ops outside every request trace (the background job) are in no chain; no op is listed twice
+PASS run 3: compare_chains(tasks → guest) compares the full op list by issuer
+PASS run 3: compare_chains(rename → summary): the middleware write is added, the handler write removed
+PASS stable: the per-action answers are identical across 3 runs
+343/343 checks pass (TanStack Query 4.44.0); stores /var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/tracer-middleware-reads-store-1-4mgX4N, /var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/tracer-middleware-reads-store-2-rUQWqr, /var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/tracer-middleware-reads-store-3-5pWkb1

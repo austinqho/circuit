@@ -1,0 +1,48 @@
+{
+ "store": "/Users/austinho/dev/tracer-h-honest-coverage/docs/evidence/m1-2026-09-22-final7",
+ "counts": {
+  "actions": 54,
+  "stopped_at": 0,
+  "because": 0,
+  "label": 0,
+  "sentence": 0,
+  "status": 0,
+  "coverage_complete": 0,
+  "coverage_reasons": 5,
+  "first_line": 0
+ },
+ "examples": {
+  "coverage_reasons": [
+   {
+    "id": "action:mud8sc1x:9",
+    "main": [
+     "no coverage rows for this page (capture.page, capture.summary, capture.received): recorded before coverage existed, or none were delivered; delivery cannot be proven"
+    ],
+    "branch": [
+     "no coverage rows for this page (capture.page, capture.summary, capture.received): recorded before coverage existed, or none were delivered; delivery cannot be proven",
+     "4 request(s) left this page in this action's window not attributed to any user action and with no known issuer (listed as unlinked)"
+    ]
+   },
+   {
+    "id": "action:mud8smva:4",
+    "main": [
+     "no coverage rows for this page (capture.page, capture.summary, capture.received): recorded before coverage existed, or none were delivered; delivery cannot be proven"
+    ],
+    "branch": [
+     "no coverage rows for this page (capture.page, capture.summary, capture.received): recorded before coverage existed, or none were delivered; delivery cannot be proven",
+     "2 request(s) left this page in this action's window not attributed to any user action and with no known issuer (listed as unlinked)"
+    ]
+   },
+   {
+    "id": "action:mud8sqw6:11",
+    "main": [
+     "no coverage rows for this page (capture.page, capture.summary, capture.received): recorded before coverage existed, or none were delivered; delivery cannot be proven"
+    ],
+    "branch": [
+     "no coverage rows for this page (capture.page, capture.summary, capture.received): recorded before coverage existed, or none were delivered; delivery cannot be proven",
+     "2 request(s) left this page in this action's window not attributed to any user action and with no known issuer (listed as unlinked)"
+    ]
+   }
+  ]
+ }
+}

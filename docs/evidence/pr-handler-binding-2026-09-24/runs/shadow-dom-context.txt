@@ -1,0 +1,467 @@
+[producttrace] first-party: 39 functions instrumented; excluded functions by rule: outside repository 571; excluded modules by rule: none; include=[] exclude=["**/node_modules/**","**/vendor/**","**/dist/**","**/build/**","**/.git/**"]
+{
+  "status": "ok",
+  "headless": true,
+  "runs": 3,
+  "reports": [
+    {
+      "attempt": 0,
+      "share_click": {
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button"
+          },
+          "ref": "object:2",
+          "element_key": "p_fe68506bbb10:3525-3576#n1>button#n1",
+          "key_kind": "ordinal",
+          "instances": 1,
+          "stamp_sequence": 3,
+          "composed": true,
+          "shadow_host": {
+            "tag": "share-chip",
+            "element_key": "p_fe68506bbb10:3525-3576#n1"
+          }
+        },
+        "bound": {
+          "basis": "declared",
+          "ids": [
+            "function:0bd01ad1e35e0b80e0c0d8b73f32da5980a7a9a76961644cebe0aa9903f4dc5d:2020:2053"
+          ],
+          "library": 0,
+          "element_listeners": 1
+        }
+      },
+      "lock_click": {
+        "tag": "lock-chip",
+        "attributes": {},
+        "ref": "object:4",
+        "element_key": "p_fe68506bbb10:3456-3657#n1",
+        "key_kind": "ordinal",
+        "instances": 1,
+        "stamp_sequence": 2,
+        "composed": true,
+        "closed_shadow": true
+      },
+      "share_chain": {
+        "entry_handler": "function:0bd01ad1e35e0b80e0c0d8b73f32da5980a7a9a76961644cebe0aa9903f4dc5d:2020:2053",
+        "stopped_at": "network",
+        "because": "backend not instrumented",
+        "requests": [
+          "/api/share",
+          "/api/share-count"
+        ],
+        "target_frontier": {
+          "closed_shadow": false,
+          "host": "share-chip",
+          "target": "button"
+        }
+      },
+      "reregistered": {
+        "reshare": "reshare-click",
+        "ping": "ping-click",
+        "ping_down": "action:mug3tjy5:116",
+        "evaluate_share": null,
+        "later_share": "later-click",
+        "load_timer_share": null,
+        "focused": "action:mug3tl12:175",
+        "owned_listeners": 12,
+        "dispatch_won": 3,
+        "dispatcher": 4,
+        "ui_unowned": 0
+      },
+      "lock_chain": {
+        "stopped_at": "entry_handler",
+        "because": "target inside a closed shadow root (the inner target and its element-bound handlers are not observable); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+        "target_frontier": {
+          "closed_shadow": true,
+          "host": "lock-chip",
+          "because": "target inside a closed shadow root"
+        }
+      },
+      "requests": [
+        {
+          "url": "/api/refresh",
+          "action": "refresh-click",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/share",
+          "action": "share-click",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/share-count",
+          "action": "share-click",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/refresh",
+          "action": "refresh-click",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/reshare",
+          "action": "action:mug3tjix:92",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/ping-down",
+          "action": "action:mug3tjy5:116",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/ping",
+          "action": "action:mug3tjy5:124",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/reshare-evaluate",
+          "action": null,
+          "linkage_kind": null
+        },
+        {
+          "url": "/api/reshare-later",
+          "action": "action:mug3tkl0:156",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/reshare-load",
+          "action": null,
+          "linkage_kind": null
+        },
+        {
+          "url": "/api/focused",
+          "action": "action:mug3tl12:175",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/share",
+          "action": null,
+          "linkage_kind": null
+        },
+        {
+          "url": "/api/share-count",
+          "action": null,
+          "linkage_kind": null
+        },
+        {
+          "url": "/api/share",
+          "action": null,
+          "linkage_kind": null
+        },
+        {
+          "url": "/api/share-count",
+          "action": null,
+          "linkage_kind": null
+        }
+      ]
+    },
+    {
+      "attempt": 1,
+      "share_click": {
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button"
+          },
+          "ref": "object:2",
+          "element_key": "p_fe68506bbb10:3525-3576#n1>button#n1",
+          "key_kind": "ordinal",
+          "instances": 1,
+          "stamp_sequence": 3,
+          "composed": true,
+          "shadow_host": {
+            "tag": "share-chip",
+            "element_key": "p_fe68506bbb10:3525-3576#n1"
+          }
+        },
+        "bound": {
+          "basis": "declared",
+          "ids": [
+            "function:0bd01ad1e35e0b80e0c0d8b73f32da5980a7a9a76961644cebe0aa9903f4dc5d:2020:2053"
+          ],
+          "library": 0,
+          "element_listeners": 1
+        }
+      },
+      "lock_click": {
+        "tag": "lock-chip",
+        "attributes": {},
+        "ref": "object:4",
+        "element_key": "p_fe68506bbb10:3456-3657#n1",
+        "key_kind": "ordinal",
+        "instances": 1,
+        "stamp_sequence": 2,
+        "composed": true,
+        "closed_shadow": true
+      },
+      "share_chain": {
+        "entry_handler": "function:0bd01ad1e35e0b80e0c0d8b73f32da5980a7a9a76961644cebe0aa9903f4dc5d:2020:2053",
+        "stopped_at": "network",
+        "because": "backend not instrumented",
+        "requests": [
+          "/api/share",
+          "/api/share-count"
+        ],
+        "target_frontier": {
+          "closed_shadow": false,
+          "host": "share-chip",
+          "target": "button"
+        }
+      },
+      "reregistered": {
+        "reshare": "reshare-click",
+        "ping": "ping-click",
+        "ping_down": "action:mug3tnrm:116",
+        "evaluate_share": null,
+        "later_share": "later-click",
+        "load_timer_share": null,
+        "focused": "action:mug3tott:175",
+        "owned_listeners": 12,
+        "dispatch_won": 3,
+        "dispatcher": 4,
+        "ui_unowned": 0
+      },
+      "lock_chain": {
+        "stopped_at": "entry_handler",
+        "because": "target inside a closed shadow root (the inner target and its element-bound handlers are not observable); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+        "target_frontier": {
+          "closed_shadow": true,
+          "host": "lock-chip",
+          "because": "target inside a closed shadow root"
+        }
+      },
+      "requests": [
+        {
+          "url": "/api/refresh",
+          "action": "refresh-click",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/share",
+          "action": "share-click",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/share-count",
+          "action": "share-click",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/refresh",
+          "action": "refresh-click",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/reshare",
+          "action": "action:mug3tnc4:92",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/ping-down",
+          "action": "action:mug3tnrm:116",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/ping",
+          "action": "action:mug3tnrn:124",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/reshare-evaluate",
+          "action": null,
+          "linkage_kind": null
+        },
+        {
+          "url": "/api/reshare-later",
+          "action": "action:mug3todu:156",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/reshare-load",
+          "action": null,
+          "linkage_kind": null
+        },
+        {
+          "url": "/api/focused",
+          "action": "action:mug3tott:175",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/share",
+          "action": null,
+          "linkage_kind": null
+        },
+        {
+          "url": "/api/share-count",
+          "action": null,
+          "linkage_kind": null
+        },
+        {
+          "url": "/api/share",
+          "action": null,
+          "linkage_kind": null
+        },
+        {
+          "url": "/api/share-count",
+          "action": null,
+          "linkage_kind": null
+        }
+      ]
+    },
+    {
+      "attempt": 2,
+      "share_click": {
+        "target": {
+          "tag": "button",
+          "attributes": {
+            "type": "button"
+          },
+          "ref": "object:2",
+          "element_key": "p_fe68506bbb10:3525-3576#n1>button#n1",
+          "key_kind": "ordinal",
+          "instances": 1,
+          "stamp_sequence": 3,
+          "composed": true,
+          "shadow_host": {
+            "tag": "share-chip",
+            "element_key": "p_fe68506bbb10:3525-3576#n1"
+          }
+        },
+        "bound": {
+          "basis": "declared",
+          "ids": [
+            "function:0bd01ad1e35e0b80e0c0d8b73f32da5980a7a9a76961644cebe0aa9903f4dc5d:2020:2053"
+          ],
+          "library": 0,
+          "element_listeners": 1
+        }
+      },
+      "lock_click": {
+        "tag": "lock-chip",
+        "attributes": {},
+        "ref": "object:4",
+        "element_key": "p_fe68506bbb10:3456-3657#n1",
+        "key_kind": "ordinal",
+        "instances": 1,
+        "stamp_sequence": 2,
+        "composed": true,
+        "closed_shadow": true
+      },
+      "share_chain": {
+        "entry_handler": "function:0bd01ad1e35e0b80e0c0d8b73f32da5980a7a9a76961644cebe0aa9903f4dc5d:2020:2053",
+        "stopped_at": "network",
+        "because": "backend not instrumented",
+        "requests": [
+          "/api/share",
+          "/api/share-count"
+        ],
+        "target_frontier": {
+          "closed_shadow": false,
+          "host": "share-chip",
+          "target": "button"
+        }
+      },
+      "reregistered": {
+        "reshare": "reshare-click",
+        "ping": "ping-click",
+        "ping_down": "action:mug3trif:116",
+        "evaluate_share": null,
+        "later_share": "later-click",
+        "load_timer_share": null,
+        "focused": "action:mug3tskf:175",
+        "owned_listeners": 12,
+        "dispatch_won": 3,
+        "dispatcher": 4,
+        "ui_unowned": 0
+      },
+      "lock_chain": {
+        "stopped_at": "entry_handler",
+        "because": "target inside a closed shadow root (the inner target and its element-bound handlers are not observable); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+        "target_frontier": {
+          "closed_shadow": true,
+          "host": "lock-chip",
+          "because": "target inside a closed shadow root"
+        }
+      },
+      "requests": [
+        {
+          "url": "/api/refresh",
+          "action": "refresh-click",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/share",
+          "action": "share-click",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/share-count",
+          "action": "share-click",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/refresh",
+          "action": "refresh-click",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/reshare",
+          "action": "action:mug3tr32:92",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/ping-down",
+          "action": "action:mug3trif:116",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/ping",
+          "action": "action:mug3trig:124",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/reshare-evaluate",
+          "action": null,
+          "linkage_kind": null
+        },
+        {
+          "url": "/api/reshare-later",
+          "action": "action:mug3ts4f:156",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/reshare-load",
+          "action": null,
+          "linkage_kind": null
+        },
+        {
+          "url": "/api/focused",
+          "action": "action:mug3tskf:175",
+          "linkage_kind": "direct"
+        },
+        {
+          "url": "/api/share",
+          "action": null,
+          "linkage_kind": null
+        },
+        {
+          "url": "/api/share-count",
+          "action": null,
+          "linkage_kind": null
+        },
+        {
+          "url": "/api/share",
+          "action": null,
+          "linkage_kind": null
+        },
+        {
+          "url": "/api/share-count",
+          "action": null,
+          "linkage_kind": null
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "tracer-react-18-2-compatibility",
+  "private": true,
+  "dependencies": {
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "scheduler": "0.23.0",
+    "jsdom": "24.1.3"
+  }
+}

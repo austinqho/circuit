@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "tracer": {
+      "command": "node",
+      "args": ["./bin/tracer-mcp.mjs"],
+      "cwd": ".",
+      "env_vars": ["TRACER_PROJECT_ROOT", "TRACER_STORE", "TRACER_MANIFEST", "TRACER_SOURCE_ROOT", "PATH", "HOME"],
+      "startup_timeout_sec": 20,
+      "tool_timeout_sec": 60
+    }
+  }
+}

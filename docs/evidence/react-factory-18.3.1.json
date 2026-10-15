@@ -1,0 +1,82 @@
+{
+  "schema": "producttrace.react-factory-acceptance.v1",
+  "react": "18.3.1",
+  "format_and_behavior": {
+    "api": "react/createFactory/18.3.1",
+    "format_pass": true,
+    "behavior_pass": true,
+    "builds": [
+      {
+        "build": "development",
+        "cases": 8,
+        "incorrect_programs_rejected": 8,
+        "component_not_invoked": true,
+        "fresh_factories": true,
+        "type_property_not_binding": true,
+        "original_getter_error_preserved": true
+      },
+      {
+        "build": "production",
+        "cases": 8,
+        "incorrect_programs_rejected": 8,
+        "component_not_invoked": true,
+        "fresh_factories": true,
+        "type_property_not_binding": true,
+        "original_getter_error_preserved": true
+      }
+    ]
+  },
+  "runtime": [
+    {
+      "api": "react/createFactory/18.3.1",
+      "build": "development",
+      "installed_source_attested": true,
+      "description_observations": 6,
+      "actual_clicks": 4,
+      "factory_allocation_required": true,
+      "immutable_alias_selects_source_path": true,
+      "component_type_to_source_controls": true,
+      "native_type_alias_to_source_control": true,
+      "factory_config_stamped": true,
+      "explicit_props_reach_callback": true,
+      "independent_mutants_rejected": 8,
+      "stop_preserves_behavior": true,
+      "descriptor_props_to_committed_owner": true,
+      "commit_lineage_mutants_rejected": 7,
+      "owner_lineage_to_committed_fiber": true,
+      "production_owner_is_null": false,
+      "ref_input_to_committed_host": true,
+      "descriptor_to_exact_host_commit_proven": false,
+      "runtime_property_input_relations_proven": true
+    },
+    {
+      "api": "react/createFactory/18.3.1",
+      "build": "production",
+      "installed_source_attested": true,
+      "description_observations": 6,
+      "actual_clicks": 4,
+      "factory_allocation_required": true,
+      "immutable_alias_selects_source_path": true,
+      "component_type_to_source_controls": true,
+      "native_type_alias_to_source_control": true,
+      "factory_config_stamped": true,
+      "explicit_props_reach_callback": true,
+      "independent_mutants_rejected": 8,
+      "stop_preserves_behavior": true,
+      "descriptor_props_to_committed_owner": true,
+      "commit_lineage_mutants_rejected": 4,
+      "owner_lineage_to_committed_fiber": false,
+      "production_owner_is_null": true,
+      "ref_input_to_committed_host": true,
+      "descriptor_to_exact_host_commit_proven": false,
+      "runtime_property_input_relations_proven": true
+    }
+  ],
+  "full_api_admission": true,
+  "unproven": [
+    "Mutable or runtime-only factory aliases",
+    "Arbitrary configuration objects",
+    "Dynamic arguments",
+    "Other unresolved returned-function consumers"
+  ]
+}

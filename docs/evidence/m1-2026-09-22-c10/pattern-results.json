@@ -1,0 +1,572 @@
+[
+  {
+    "unit_id": "function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:1959:2033|onClick",
+    "function_id": "function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:1959:2033",
+    "event": "onClick",
+    "kind": "via_ancestor",
+    "element_id": "c10-89",
+    "tag": "DIV",
+    "testid": null,
+    "aria": null,
+    "text": "Help & FAQ",
+    "owner": "unknown",
+    "terminal": "unreachable",
+    "reason": "locator.scrollIntoViewIfNeeded: Timeout 1496.5550000000003ms exceeded.\nCall log:\n\u001b[2m  - attempting scroll into view action\u001b[22m\n\u001b[2m    2 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n"
+  },
+  {
+    "unit_id": "function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6334:6385|onClick",
+    "function_id": "function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6334:6385",
+    "event": "onClick",
+    "kind": "via_ancestor",
+    "element_id": "c10-97",
+    "tag": "DIV",
+    "testid": null,
+    "aria": null,
+    "text": "Keyboard Shortcuts",
+    "owner": "unknown",
+    "terminal": "unreachable",
+    "reason": "locator.scrollIntoViewIfNeeded: Timeout 1496.0109999999995ms exceeded.\nCall log:\n\u001b[2m  - attempting scroll into view action\u001b[22m\n\u001b[2m    2 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n"
+  },
+  {
+    "unit_id": "function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6421:6454|onClick",
+    "function_id": "function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6421:6454",
+    "event": "onClick",
+    "kind": "via_ancestor",
+    "element_id": "c10-108",
+    "tag": "DIV",
+    "testid": null,
+    "aria": null,
+    "text": "My Files",
+    "owner": "unknown",
+    "terminal": "unreachable",
+    "reason": "locator.scrollIntoViewIfNeeded: Timeout 1495.7439999999997ms exceeded.\nCall log:\n\u001b[2m  - attempting scroll into view action\u001b[22m\n\u001b[2m    2 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n"
+  },
+  {
+    "unit_id": "function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6640:6676|onClick",
+    "function_id": "function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6640:6676",
+    "event": "onClick",
+    "kind": "via_ancestor",
+    "element_id": "c10-115",
+    "tag": "DIV",
+    "testid": null,
+    "aria": null,
+    "text": "Archived chats",
+    "owner": "unknown",
+    "terminal": "unreachable",
+    "reason": "locator.scrollIntoViewIfNeeded: Timeout 1497.3560000000007ms exceeded.\nCall log:\n\u001b[2m  - attempting scroll into view action\u001b[22m\n\u001b[2m    2 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n"
+  },
+  {
+    "unit_id": "function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6877:6913|onClick",
+    "function_id": "function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:6877:6913",
+    "event": "onClick",
+    "kind": "via_ancestor",
+    "element_id": "c10-120",
+    "tag": "DIV",
+    "testid": "nav-settings",
+    "aria": null,
+    "text": "Settings",
+    "owner": "unknown",
+    "terminal": "unreachable",
+    "reason": "locator.scrollIntoViewIfNeeded: Timeout 1497.5860000000011ms exceeded.\nCall log:\n\u001b[2m  - attempting scroll into view action\u001b[22m\n\u001b[2m    2 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n"
+  },
+  {
+    "unit_id": "function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:7189:7212|onClick",
+    "function_id": "function:df29f4ea0c83a973c224841b8fca9ba62ba73000f16ea03d539c375f7cbc6502:7189:7212",
+    "event": "onClick",
+    "kind": "via_ancestor",
+    "element_id": "c10-125",
+    "tag": "DIV",
+    "testid": null,
+    "aria": null,
+    "text": "Log out",
+    "owner": "unknown",
+    "terminal": "unreachable",
+    "reason": "locator.scrollIntoViewIfNeeded: Timeout 1495.9740000000002ms exceeded.\nCall log:\n\u001b[2m  - attempting scroll into view action\u001b[22m\n\u001b[2m    2 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n"
+  },
+  {
+    "unit_id": "function:4974ad743c4b6bdd560294060bcd06848d519a8e7a3bf7bdcad8e104d0ee2495:17568:17680|onClick",
+    "function_id": "function:4974ad743c4b6bdd560294060bcd06848d519a8e7a3bf7bdcad8e104d0ee2495:17568:17680",
+    "event": "onClick",
+    "kind": "direct",
+    "element_id": "c10-140",
+    "tag": "BUTTON",
+    "testid": null,
+    "aria": null,
+    "text": "Projects",
+    "owner": "unknown",
+    "terminal": "correct_stop",
+    "action_id": "action:mucqcwtf:1",
+    "reason": "no first-party request observed in bounded wait"
+  },
+  {
+    "unit_id": "function:c3157a7c2c41cf7836df40621b7304393c56cbd1b99632f5f2577a7f2940253c:15066:15118|onClick",
+    "function_id": "function:c3157a7c2c41cf7836df40621b7304393c56cbd1b99632f5f2577a7f2940253c:15066:15118",
+    "event": "onClick",
+    "kind": "direct",
+    "element_id": "c10-157",
+    "tag": "BUTTON",
+    "testid": null,
+    "aria": null,
+    "text": "Chats",
+    "owner": "unknown",
+    "terminal": "correct_stop",
+    "action_id": "action:mucqcwut:4",
+    "reason": "no first-party request observed in bounded wait"
+  },
+  {
+    "unit_id": "function:39e637637866564da1cf2b34439a4b72697be19f677a4c6fa3a51f4d76ad581b:3587:3672|onMouseEnter",
+    "function_id": "function:39e637637866564da1cf2b34439a4b72697be19f677a4c6fa3a51f4d76ad581b:3587:3672",
+    "event": "onMouseEnter",
+    "kind": "direct",
+    "element_id": "c10-170",
+    "tag": "DIV",
+    "testid": "convo-item",
+    "aria": "Tracer M1 conversation",
+    "text": "Tracer M1",
+    "owner": "unknown",
+    "terminal": "unreachable",
+    "reason": "fiber element no longer rendered"
+  },
+  {
+    "unit_id": "function:39e637637866564da1cf2b34439a4b72697be19f677a4c6fa3a51f4d76ad581b:3720:3808|onMouseLeave",
+    "function_id": "function:39e637637866564da1cf2b34439a4b72697be19f677a4c6fa3a51f4d76ad581b:3720:3808",
+    "event": "onMouseLeave",
+    "kind": "direct",
+    "element_id": "c10-170",
+    "tag": "DIV",
+    "testid": "convo-item",
+    "aria": "Tracer M1 conversation",
+    "text": "Tracer M1",
+    "owner": "unknown",
+    "terminal": "unreachable",
+    "reason": "fiber element no longer rendered"
+  },
+  {
+    "unit_id": "function:39e637637866564da1cf2b34439a4b72697be19f677a4c6fa3a51f4d76ad581b:3587:3672|onFocus",
+    "function_id": "function:39e637637866564da1cf2b34439a4b72697be19f677a4c6fa3a51f4d76ad581b:3587:3672",
+    "event": "onFocus",
+    "kind": "direct",
+    "element_id": "c10-170",
+    "tag": "DIV",
+    "testid": "convo-item",
+    "aria": "Tracer M1 conversation",
+    "text": "Tracer M1",
+    "owner": "unknown",
+    "terminal": "unreachable",
+    "reason": "fiber element no longer rendered"
+  },
+  {
+    "unit_id": "function-index:4872|onBlur",
+    "function_id": "function-index:4872",
+    "event": "onBlur",
+    "kind": "direct",
+    "element_id": "c10-170",
+    "tag": "DIV",
+    "testid": "convo-item",
+    "aria": "Tracer M1 conversation",
+    "text": "Tracer M1",
+    "owner": "unknown",
+    "terminal": "unreachable",
+    "reason": "fiber element no longer rendered"
+  },
+  {
+    "unit_id": "function-index:4876|onClick",
+    "function_id": "function-index:4876",
+    "event": "onClick",
+    "kind": "direct",
+    "element_id": "c10-170",
+    "tag": "DIV",
+    "testid": "convo-item",
+    "aria": "Tracer M1 conversation",
+    "text": "Tracer M1",
+    "owner": "unknown",
+    "terminal": "unreachable",
+    "reason": "fiber element no longer rendered"
+  },
+  {
+    "unit_id": "function-index:4877|onKeyDown",
+    "function_id": "function-index:4877",
+    "event": "onKeyDown",
+    "kind": "direct",
+    "element_id": "c10-170",
+    "tag": "DIV",
+    "testid": "convo-item",
+    "aria": "Tracer M1 conversation",
+    "text": "Tracer M1",
+    "owner": "unknown",
+    "terminal": "unreachable",
+    "reason": "fiber element no longer rendered"
+  },
+  {
+    "unit_id": "function-index:5730|onDoubleClick",
+    "function_id": "function-index:5730",
+    "event": "onDoubleClick",
+    "kind": "direct",
+    "element_id": "c10-175",
+    "tag": "DIV",
+    "testid": null,
+    "aria": "Tracer M1",
+    "text": "Tracer M1",
+    "owner": "unknown",
+    "terminal": "unreachable",
+    "reason": "fiber element no longer rendered"
+  },
+  {
+    "unit_id": "function:58d1d95dd6356fb3391be133249edffdb47070dd0c8388e41c6b5d82d4d96cc3:2429:3490|onMouseDown",
+    "function_id": "function:58d1d95dd6356fb3391be133249edffdb47070dd0c8388e41c6b5d82d4d96cc3:2429:3490",
+    "event": "onMouseDown",
+    "kind": "direct",
+    "element_id": "c10-394",
+    "tag": "DIV",
+    "testid": null,
+    "aria": "Resize sidebar",
+    "text": "",
+    "owner": "unknown",
+    "terminal": "reached_request",
+    "requests": [
+      {
+        "method": "POST",
+        "url": "/api/auth/login"
+      },
+      {
+        "method": "GET",
+        "url": "/api/banner"
+      },
+      {
+        "method": "GET",
+        "url": "/api/config"
+      },
+      {
+        "method": "GET",
+        "url": "/api/roles/USER"
+      },
+      {
+        "method": "GET",
+        "url": "/api/user"
+      },
+      {
+        "method": "GET",
+        "url": "/api/endpoints"
+      },
+      {
+        "method": "GET",
+        "url": "/api/user/settings/favorites"
+      },
+      {
+        "method": "GET",
+        "url": "/api/projects"
+      },
+      {
+        "method": "GET",
+        "url": "/api/agents/chat/active"
+      },
+      {
+        "method": "GET",
+        "url": "/api/convos"
+      },
+      {
+        "method": "GET",
+        "url": "/api/files/speech/config/get"
+      },
+      {
+        "method": "GET",
+        "url": "/api/models"
+      },
+      {
+        "method": "GET",
+        "url": "/api/files"
+      },
+      {
+        "method": "GET",
+        "url": "/api/search/enable"
+      },
+      {
+        "method": "GET",
+        "url": "/api/mcp/servers"
+      },
+      {
+        "method": "GET",
+        "url": "/api/permissions/mcpServer/effective/all"
+      },
+      {
+        "method": "GET",
+        "url": "/api/prompts/groups"
+      },
+      {
+        "method": "GET",
+        "url": "/api/prompts/all"
+      },
+      {
+        "method": "GET",
+        "url": "/api/keys"
+      },
+      {
+        "method": "GET",
+        "url": "/api/agents"
+      },
+      {
+        "method": "GET",
+        "url": "/api/presets"
+      },
+      {
+        "method": "GET",
+        "url": "/api/tags"
+      },
+      {
+        "method": "GET",
+        "url": "/api/files/config"
+      },
+      {
+        "method": "GET",
+        "url": "/api/agents/tools/web_search/auth"
+      },
+      {
+        "method": "GET",
+        "url": "/api/endpoints/token-config"
+      },
+      {
+        "method": "GET",
+        "url": "/health"
+      }
+    ],
+    "action_id": "action:mucqcwuu:6"
+  },
+  {
+    "unit_id": "function-index:4174|onKeyDown",
+    "function_id": "function-index:4174",
+    "event": "onKeyDown",
+    "kind": "direct",
+    "element_id": "c10-394",
+    "tag": "DIV",
+    "testid": null,
+    "aria": "Resize sidebar",
+    "text": "",
+    "owner": "unknown",
+    "terminal": "correct_stop",
+    "action_id": "action:mucqd5bg:7",
+    "reason": "no first-party request observed in bounded wait"
+  },
+  {
+    "unit_id": "function:5a012ee28cab752976b744f05623cfa6e53a271f372c69dbdb8f7a92595db1d2:729:1062|onClick",
+    "function_id": "function:5a012ee28cab752976b744f05623cfa6e53a271f372c69dbdb8f7a92595db1d2:729:1062",
+    "event": "onClick",
+    "kind": "via_ancestor",
+    "element_id": "c10-418",
+    "tag": "DIV",
+    "testid": "add-multi-convo-button",
+    "aria": "Add multi-conversation",
+    "text": "",
+    "owner": "unknown",
+    "terminal": "correct_stop",
+    "action_id": "action:mucqd5bg:7",
+    "reason": "no first-party request observed in bounded wait"
+  },
+  {
+    "unit_id": "function:9febdf5a26a7b8768f5165b246bcad8e8bd86fba44acf337930cf5d0789023df:6004:6189|onClick",
+    "function_id": "function:9febdf5a26a7b8768f5165b246bcad8e8bd86fba44acf337930cf5d0789023df:6004:6189",
+    "event": "onClick",
+    "kind": "direct",
+    "element_id": "c10-478",
+    "tag": "DIV",
+    "testid": null,
+    "aria": null,
+    "text": "",
+    "owner": "unknown",
+    "terminal": "correct_stop",
+    "action_id": "action:mucqd5bg:7",
+    "reason": "no first-party request observed in bounded wait"
+  },
+  {
+    "unit_id": "function:9febdf5a26a7b8768f5165b246bcad8e8bd86fba44acf337930cf5d0789023df:6492:6548|onBlur",
+    "function_id": "function:9febdf5a26a7b8768f5165b246bcad8e8bd86fba44acf337930cf5d0789023df:6492:6548",
+    "event": "onBlur",
+    "kind": "direct",
+    "element_id": "c10-481",
+    "tag": "TEXTAREA",
+    "testid": "text-input",
+    "aria": "Message input",
+    "text": "",
+    "owner": "unknown",
+    "terminal": "correct_stop",
+    "action_id": "action:mucqd5bg:7",
+    "reason": "no first-party request observed in bounded wait"
+  },
+  {
+    "unit_id": "function-index:1247|onPaste",
+    "function_id": "function-index:1247",
+    "event": "onPaste",
+    "kind": "direct",
+    "element_id": "c10-481",
+    "tag": "TEXTAREA",
+    "testid": "text-input",
+    "aria": "Message input",
+    "text": "",
+    "owner": "unknown",
+    "terminal": "correct_stop",
+    "action_id": "action:mucqd5bg:7",
+    "reason": "no first-party request observed in bounded wait"
+  },
+  {
+    "unit_id": "function-index:3395|onKeyDown",
+    "function_id": "function-index:3395",
+    "event": "onKeyDown",
+    "kind": "direct",
+    "element_id": "c10-481",
+    "tag": "TEXTAREA",
+    "testid": "text-input",
+    "aria": "Message input",
+    "text": "",
+    "owner": "unknown",
+    "terminal": "correct_stop",
+    "action_id": "action:mucqd5bg:7",
+    "reason": "no first-party request observed in bounded wait"
+  },
+  {
+    "unit_id": "function-index:1233|onKeyUp",
+    "function_id": "function-index:1233",
+    "event": "onKeyUp",
+    "kind": "direct",
+    "element_id": "c10-481",
+    "tag": "TEXTAREA",
+    "testid": "text-input",
+    "aria": "Message input",
+    "text": "",
+    "owner": "unknown",
+    "terminal": "correct_stop",
+    "action_id": "action:mucqd5bg:7",
+    "reason": "no first-party request observed in bounded wait"
+  },
+  {
+    "unit_id": "function:150870815ca64d501e4a3ba6d6fcc3c76f3418c8cc8a2dc67456ffa10e5f68de:7730:7798|onCompositionStart",
+    "function_id": "function:150870815ca64d501e4a3ba6d6fcc3c76f3418c8cc8a2dc67456ffa10e5f68de:7730:7798",
+    "event": "onCompositionStart",
+    "kind": "direct",
+    "element_id": "c10-481",
+    "tag": "TEXTAREA",
+    "testid": "text-input",
+    "aria": "Message input",
+    "text": "",
+    "owner": "unknown",
+    "terminal": "correct_stop",
+    "action_id": "action:mucqd5bg:7",
+    "reason": "no first-party request observed in bounded wait"
+  },
+  {
+    "unit_id": "function:150870815ca64d501e4a3ba6d6fcc3c76f3418c8cc8a2dc67456ffa10e5f68de:7809:7876|onCompositionEnd",
+    "function_id": "function:150870815ca64d501e4a3ba6d6fcc3c76f3418c8cc8a2dc67456ffa10e5f68de:7809:7876",
+    "event": "onCompositionEnd",
+    "kind": "direct",
+    "element_id": "c10-481",
+    "tag": "TEXTAREA",
+    "testid": "text-input",
+    "aria": "Message input",
+    "text": "",
+    "owner": "unknown",
+    "terminal": "correct_stop",
+    "action_id": "action:mucqd5bg:7",
+    "reason": "no first-party request observed in bounded wait"
+  },
+  {
+    "unit_id": "function:9febdf5a26a7b8768f5165b246bcad8e8bd86fba44acf337930cf5d0789023df:6356:6437|onFocus",
+    "function_id": "function:9febdf5a26a7b8768f5165b246bcad8e8bd86fba44acf337930cf5d0789023df:6356:6437",
+    "event": "onFocus",
+    "kind": "direct",
+    "element_id": "c10-481",
+    "tag": "TEXTAREA",
+    "testid": "text-input",
+    "aria": "Message input",
+    "text": "",
+    "owner": "unknown",
+    "terminal": "correct_stop",
+    "action_id": "action:mucqd5bg:7",
+    "reason": "no first-party request observed in bounded wait"
+  },
+  {
+    "unit_id": "function:9febdf5a26a7b8768f5165b246bcad8e8bd86fba44acf337930cf5d0789023df:6226:6307|onClick",
+    "function_id": "function:9febdf5a26a7b8768f5165b246bcad8e8bd86fba44acf337930cf5d0789023df:6226:6307",
+    "event": "onClick",
+    "kind": "direct",
+    "element_id": "c10-481",
+    "tag": "TEXTAREA",
+    "testid": "text-input",
+    "aria": "Message input",
+    "text": "",
+    "owner": "unknown",
+    "terminal": "correct_stop",
+    "action_id": "action:mucqd5bg:7",
+    "reason": "no first-party request observed in bounded wait"
+  },
+  {
+    "unit_id": "function-index:5045|onChange",
+    "function_id": "function-index:5045",
+    "event": "onChange",
+    "kind": "direct",
+    "element_id": "c10-489",
+    "tag": "INPUT",
+    "testid": null,
+    "aria": null,
+    "text": "",
+    "owner": "unknown",
+    "terminal": "unreachable",
+    "reason": "locator.scrollIntoViewIfNeeded: Timeout 1497.978000000001ms exceeded.\nCall log:\n\u001b[2m  - attempting scroll into view action\u001b[22m\n\u001b[2m    2 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying scroll into view action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n"
+  },
+  {
+    "unit_id": "function:4974ad743c4b6bdd560294060bcd06848d519a8e7a3bf7bdcad8e104d0ee2495:15925:15961|onClick",
+    "function_id": "function:4974ad743c4b6bdd560294060bcd06848d519a8e7a3bf7bdcad8e104d0ee2495:15925:15961",
+    "event": "onClick",
+    "kind": "direct",
+    "element_id": "c10-154",
+    "tag": "BUTTON",
+    "testid": null,
+    "aria": null,
+    "text": "New project",
+    "owner": "unknown",
+    "terminal": "correct_stop",
+    "action_id": "action:mucqd5bg:7",
+    "reason": "no first-party request observed in bounded wait"
+  },
+  {
+    "unit_id": "function:7f1ec6b2730b07a75187ccad94069286be5f89dc10fd4fd8c647bbf38d10efc2:2048:2082|onClick",
+    "function_id": "function:7f1ec6b2730b07a75187ccad94069286be5f89dc10fd4fd8c647bbf38d10efc2:2048:2082",
+    "event": "onClick",
+    "kind": "direct",
+    "element_id": "c10-266",
+    "tag": "BUTTON",
+    "testid": null,
+    "aria": "Close added conversation",
+    "text": "",
+    "owner": "unknown",
+    "terminal": "unreachable",
+    "reason": "locator.click: Timeout 1500ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-c10-fiber-id=\"c10-266\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" data-c10-fiber-id=\"c10-266\" aria-label=\"Close added conversation\" class=\"text-token-text-secondary flex-shrink-0\" data-producttrace-control-click=\"f5a13ed2dfb3417d6247ad710ce816687ec005b5937035094d64807e86edee72:control:18c1531f92d0a8aadf141b05\">…</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div data-state=\"open\" aria-hidden=\"true\" data-aria-hidden=\"true\" class=\"fixed inset-0 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\"></div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div data-state=\"open\" aria-hidden=\"true\" data-aria-hidden=\"true\" class=\"fixed inset-0 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\"></div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    3 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - <div data-state=\"open\" aria-hidden=\"true\" data-aria-hidden=\"true\" class=\"fixed inset-0 bg-black/80 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0\"></div> intercepts pointer events\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n"
+  },
+  {
+    "unit_id": "function:09d560f32a16ead8e6069c7ff31f978caefec30404d2e573708f9f8f349b17e5:1417:1897|onSubmit",
+    "function_id": "function:09d560f32a16ead8e6069c7ff31f978caefec30404d2e573708f9f8f349b17e5:1417:1897",
+    "event": "onSubmit",
+    "kind": "direct",
+    "element_id": "c10-165",
+    "tag": "FORM",
+    "testid": null,
+    "aria": null,
+    "text": "Project name",
+    "owner": "unknown",
+    "terminal": "correct_stop",
+    "action_id": "action:mucqd5bg:7",
+    "reason": "no first-party request observed in bounded wait"
+  },
+  {
+    "unit_id": "function-index:3225|onChange",
+    "function_id": "function-index:3225",
+    "event": "onChange",
+    "kind": "direct",
+    "element_id": "c10-167",
+    "tag": "INPUT",
+    "testid": null,
+    "aria": null,
+    "text": "",
+    "owner": "unknown",
+    "terminal": "correct_stop",
+    "action_id": "action:mucqd5bg:7",
+    "reason": "no first-party request observed in bounded wait"
+  }
+]

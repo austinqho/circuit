@@ -1,0 +1,17 @@
+# Limits and frontiers (anything-llm r3)
+
+Reached / stopped at / because. Counts are from `summary.json` and the independent `GRADE.md`.
+
+1. **Database hop.** Every attributed request (49/49) reached the Express route and a registered-handler span, then **stopped at handler because Prisma/SQLite has no Tracer adapter**. No DB span exists; none is inferred.
+2. **Backend handler identity.** anything-llm registers inline anonymous handlers, so handler spans carry `<anonymous>`; the route pattern and handler index identify them. No backend source location is recorded (not in scope for G2).
+3. **No LLM flows.** No provider key is set; chat, embedding and agent flows were not driven. Server boot contacts public model-map endpoints; some GETs return 500/503 (`document-processing-status`, collector offline). These are recorded as-is.
+4. **Global listeners credited on inputs (19 rows, 3 groups, graded `global-listener`).** Keystrokes and a click on inputs that have no handler of their own credit first-party `document`/`window` listeners that genuinely ran: Ctrl+M speech shortcut (`MicButton/index.jsx:33`), code-snippet copy click (`WorkspaceChat/index.jsx:192`), bulk-thread-delete key tracking (`ThreadContainer/hooks.js:33`). On the step-7 keydowns the credited listener was the third to run; the runtime's terminal-owner choice prefers frames with `entry_hint` over call order. No wrong credits.
+5. **Programmatic focus is an action.** After navigation the app auto-focuses its prompt textarea; the resulting `focusin` is `isTrusted` and becomes a `dom.action` credited to `onFocus` (`PromptInput/index.jsx:362`). A few GETs issued by the re-render continuation are attributed to it. Correct by the runtime's rules, but not a user action.
+6. **Unattributed requests: 22, all page loads** (11 before the first action, 11 after the full reload that Delete Workspace performs). None lost after an in-session action on this repo.
+7. **Duplicate frames.** 1,798 functions have two framed `enter` sites (module pass + chunk pass, pre-existing M1 behavior), producing nested duplicate `function.enter` rows with the same id. No effect on crediting; it inflates rows.
+8. **Web worker not instrumented.** `new Worker(new URL('./worker.js', import.meta.url))` (piper TTS) is bundled by Vite's worker pipeline, which does not run the project's plugins. When the plugin enables hidden sourcemaps (the project has none) the worker's `.map` is still emitted; the plugin removes only main-bundle maps.
+9. **Static analysis is not the denominator here.** The installation found 912 controls / 475 runtime candidates, 16 backend routes (20 `dynamic_handler_identity`), 0 request actions (so the static request bridge maps nothing and only records transports). LibreChat-pinned library contracts (`analysis/library-contracts.mjs`) match no installed version and the Radix dialog list (`analysis/react-compiler.mjs`) is unused; neither blocked the build or runtime attribution.
+10. **Only 6 elements carry source stamps on the landing page** (`data-producttrace-*`), relevant to G3, not graded here.
+11. **Build cost.** Enabled build 124 s vs 14 s disabled (whole-repo static analysis plus TypeScript parsing of emitted chunks).
+12. **Harness-only accommodations.** Node 26 `SlowBuffer` shim for the fixture server; Playwright borrowed from the LibreChat fixture install.
+13. **Superseded runs.** Runs 1 and 2 (`../g2-anything-llm-2026-09-23`, `-r2`) failed the marker gate on one exponent-form index (`3e3`/`4e3`); fixed in `682fbd5a`.

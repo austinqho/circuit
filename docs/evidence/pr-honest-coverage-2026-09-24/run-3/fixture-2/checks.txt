@@ -1,0 +1,45 @@
+PASS R0 the page ran without errors; every /api response arrived
+PASS O1 raw: capture.page.observes lists the recorded event kinds and every other on* kind the page exposes (independent in-page enumeration)
+PASS O2 raw: the kind chosen at run time is one the runtime does not listen to, and it started no action
+PASS O3 raw: transports as installed: fetch/xhr/eventsource/websocket/worker/shared_worker wrapped; beacon and service_worker present and not wrapped
+PASS O4 raw: one capture.limit per child frame (3: the static same-origin and other-port frames, and the brief other-origin frame recorded when inserted), content never read (url only when same-origin)
+PASS O5 raw: one worker_fetch capture.limit per worker created (1: /worker.js)
+PASS O6 raw: the pagehide beacon reached the server with no browser request row (not wrapped) and no parent
+PASS C1 coverage.unobserved: the event kinds entry names exactly the page's unobserved kinds (the chosen one included), with a reason
+PASS C2 coverage.unobserved: transports beacon and service_worker (present, not wrapped), nothing wrapped listed
+PASS C3 coverage.unobserved: realms: 3 frames (1 same-origin, 2 cross-origin, the brief one included) and 1 worker (/worker.js), each with a reason
+PASS C4 page coverage: complete false; reasons name the capture limits and each unobserved realm; delivery itself is contiguous
+PASS A0 raw: one click row per control, in the driver's order (the Radix confirm button is in a portal; the opener carries aria-haspopup)
+PASS A1 raw: Save note → POST /api/notes joined exactly; its trace has no outbound client span; no root server span starts in its window
+PASS A2 raw: the sync handler's raw-socket call started a new root trace (/api/notify: no parent) during the sync server span; no client span (hop) recorded it
+PASS A3 raw: the export handler's node:http call is one client span under the joined server span, and no server span continues it
+PASS A4 raw: the armed listener's request left the page with no action_id and no first-party frame (issuer unknown), after Open panel and before the next dispatch
+PASS A5 raw: Open panel itself sent nothing
+PASS F1 plain: Save note stops at none (terminal effect observed); no escape; its window adds no coverage reason
+PASS F2 root continuation: Confirm sync reads reached db / stopped at server_hop with the root-span clause, never "terminal effect observed"
+PASS F3 root continuation: the root span is listed as unlinked under the sync action (the same span id as the raw /api/notify), with its DB op
+PASS F4 root continuation: the outcome keeps "completed 200" and says a hop may have escaped; coverage is not complete, with the window reason
+PASS F5 root continuation: the request segment says the same (stopped_at server_hop, the escape in its summary bracket)
+PASS F6 unfollowed outbound call: Export stops at server_hop naming the hop once (frontier, additional stop and coverage reason cite the same span)
+PASS F7 the root span does not surface under a later unrelated action: Export's window does not list it
+PASS G Batch (probe g): the call to the second process is followed, the call to the external service is its own hop and escaped: server_hop, complete: false
+PASS G Seq (probe g): the call to the second process is followed, the call to the external service is its own hop and escaped: server_hop, complete: false
+PASS H1 Open panel: stopped at browser; the headline names the request that left the page (method, path, issuer unknown)
+PASS H2 Open panel: outcome no_request says so in its label, sentence and bracket
+PASS H3 Open panel: coverage not complete: the unknown-issuer request and the beacon's root span in its window (page end)
+PASS E1 event kinds with no on* property are included (focusout, composition*, touch*) and the list says it is a lower bound
+PASS T1 the brief frame (inserted 50 ms after the click, removed 400 ms later) is a realm row in the click's window and a window reason
+PASS W1 raw: the socket message is a network.send row (2 bytes, owned by the Ping click, never its content); the socket server's write is a root trace in its window
+PASS W2 the Ping action stops at the socket (never "issued no request" alone) and is not complete: the send and the root span are reasons
+PASS X1 a transport wrapper replaced after install is reported at the summary and in coverage
+PASS P2 page end: the last window ends at the last runtime row + 2 s (never collector close); a root span after that is in no window of the page
+PASS H4 the dialog opener (no request, nothing left the page in its window) keeps the plain scoped sentence
+PASS P1 page_requests: the unattributed request reads "not attributed to any user action" plus what the stack showed, never "no user action"
+PASS S1 save: exported chain, chain display and recent_actions carry the same stopped_at, because (escape clause / headline) and outcome label as action_chain
+PASS S1 sync: exported chain, chain display and recent_actions carry the same stopped_at, because (escape clause / headline) and outcome label as action_chain
+PASS S1 export: exported chain, chain display and recent_actions carry the same stopped_at, because (escape clause / headline) and outcome label as action_chain
+PASS S1 panel: exported chain, chain display and recent_actions carry the same stopped_at, because (escape clause / headline) and outcome label as action_chain
+PASS S1 ping: exported chain, chain display and recent_actions carry the same stopped_at, because (escape clause / headline) and outcome label as action_chain
+PASS M1 stdio: action_chain answers equal the in-process ones (frontier, outcome, coverage, unobserved)
+PASS M2 stdio: the summary text carries the escape sentence, the headline and the "Not observed" line
+PASS M3 stdio: page_requests wording

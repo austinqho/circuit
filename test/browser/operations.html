@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ProductTrace workflow episodes</title>
+<script src="/src/producttrace-runtime.js"></script>
+</head>
+<body>
+<button id="start-agent">Start creating an agent</button>
+<form id="agent-form" aria-label="Agent configuration form" hidden>
+  <label>Agent name <input id="agent-name" name="name"></label>
+  <label>Agent description <input id="agent-description" name="description"></label>
+  <button id="add-capability" type="button">Add capability</button>
+  <button type="submit">Save agent</button>
+</form>
+<div id="capability-dialog" role="dialog" aria-label="Capability library" hidden>
+  <button id="capability-choice" type="button">Web search</button>
+  <button id="close-capability" type="button">Close</button>
+</div>
+<form id="draft-form" aria-label="Draft settings form">
+  <label>Draft name <input id="draft-name" name="draft-name"></label>
+</form>
+<pre id="result">RUNNING</pre>
+<script>
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const startAgent = document.querySelector('#start-agent');
+const agentForm = document.querySelector('#agent-form');
+const agentName = document.querySelector('#agent-name');
+const agentDescription = document.querySelector('#agent-description');
+const saveAgent = agentForm.querySelector('[type="submit"]');
+const addCapability = document.querySelector('#add-capability');
+const capabilityDialog = document.querySelector('#capability-dialog');
+const capabilityChoice = document.querySelector('#capability-choice');
+const closeCapability = document.querySelector('#close-capability');
+const draftName = document.querySelector('#draft-name');
+
+ProductTrace.start({ name: 'workflow-test', identity: {}, actions: [] }, {
+  sink: 'buffer',
+  operationSettleMs: 20,
+  workflowIdleMs: 1000,
+});
+
+const reportEffect = ProductTrace._claimEffectReporter();
+startAgent.addEventListener('click', (event) => {
+  agentForm.hidden = false;
+  reportEffect('surface_change', {
+    surfaces: [{ anchor: { kind: 'id', value: 'agent-name' } }],
+  }, event, [agentForm]);
+});
+addCapability.addEventListener('click', (event) => {
+  capabilityDialog.hidden = false;
+  reportEffect('surface_change', {
+    surfaces: [{ anchor: { kind: 'id', value: 'capability-dialog' } }],
+  }, event, [capabilityDialog]);
+});
+closeCapability.addEventListener('click', () => {
+  capabilityDialog.hidden = true;
+});
+agentForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  reportEffect('persistence_write', { method: 'POST', path: '/agents' }, event);
+});
+
+(async () => {
+  startAgent.click();
+  agentName.value = 'private-agent-name';
+  agentName.dispatchEvent(new Event('change', { bubbles: true }));
+  agentDescription.value = 'private-agent-description';
+  agentDescription.dispatchEvent(new Event('change', { bubbles: true }));
+  addCapability.click();
+  capabilityChoice.click();
+  closeCapability.click();
+  saveAgent.click();
+  await wait(80);
+
+  document.body.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+  document.body.dispatchEvent(new KeyboardEvent('keydown', { key: 'Meta', bubbles: true }));
+  await wait(30);
+
+  const firstEvents = ProductTrace.records.filter((record) => record.kind === 'workflow_event');
+  const completed = firstEvents.find((record) => record.event_type === 'product.workflow_completed');
+  const firstWorkflowIds = new Set(firstEvents.map((record) => record.workflow_id));
+  const firstSteps = completed?.properties?.summary?.steps || [];
+
+  draftName.value = 'private-draft-one';
+  draftName.dispatchEvent(new Event('change', { bubbles: true }));
+  await wait(1100);
+  const afterIdle = ProductTrace.records.filter((record) => record.kind === 'workflow_event');
+  const idleIncomplete = afterIdle.find((record) => record.event_type === 'product.workflow_incomplete'
+    && record.properties?.summary?.reason === 'idle');
+
+  draftName.value = 'private-draft-two';
+  draftName.dispatchEvent(new Event('change', { bubbles: true }));
+  ProductTrace.flush();
+
+  const workflowEvents = ProductTrace.records.filter((record) => record.kind === 'workflow_event');
+  const draftStarts = workflowEvents.filter((record) => record.event_type === 'product.workflow_started'
+    && record.properties?.workflow_label === 'Draft settings form');
+  const serialized = JSON.stringify(ProductTrace.records);
+  const passed = firstWorkflowIds.size === 1
+    && completed?.properties?.workflow_status === 'completed'
+    && firstSteps.length === 7
+    && firstSteps.some((step) => step.caption === 'Filled “Agent name”.')
+    && firstSteps.some((step) => step.caption === 'Filled “Agent description”.')
+    && firstSteps.some((step) => step.caption.includes('Save agent'))
+    && firstSteps.some((step) => step.caption === 'Clicked “Add capability”.')
+    && firstSteps.some((step) => step.caption === 'Clicked “Web search”.')
+    && firstSteps.some((step) => step.caption === 'Clicked “Close”.')
+    && idleIncomplete
+    && draftStarts.length === 2
+    && new Set(draftStarts.map((record) => record.workflow_id)).size === 2
+    && !serialized.includes('private-agent-name')
+    && !serialized.includes('private-agent-description')
+    && !serialized.includes('private-draft-one')
+    && !serialized.includes('private-draft-two')
+    && !serialized.includes('"kind":"action"')
+    && !serialized.includes('"kind":"effect"');
+
+  document.querySelector('#result').textContent = JSON.stringify({
+    status: passed ? 'PASS' : 'FAIL',
+    completed_workflow: completed,
+    idle_incomplete: idleIncomplete,
+    resumed_workflow_ids: draftStarts.map((record) => record.workflow_id),
+    workflow_event_count: workflowEvents.length,
+  }, null, 2);
+})();
+</script>
+</body>
+</html>

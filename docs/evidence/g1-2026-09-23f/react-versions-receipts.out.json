@@ -1,0 +1,1268 @@
+{
+  "status": "ok",
+  "headless": true,
+  "results": [
+    {
+      "dependency_root": "/Users/austinho/dev/trace-consolidated/.live-demo/librechat-m1",
+      "react_dom": "18.3.1",
+      "renderers": [
+        "18.3.1-next-f1338f8080-20240426"
+      ],
+      "summary": {
+        "/api/state-effect": [
+          {
+            "action_id": "action:muel7761:2",
+            "linkage_kind": "state_effect"
+          }
+        ],
+        "/api/mounted": [
+          {
+            "action_id": "action:muel7761:2",
+            "linkage_kind": "mount_effect"
+          }
+        ],
+        "/api/form-submit": [
+          {
+            "action_id": "action:muel77t2:7",
+            "linkage_kind": "direct"
+          }
+        ],
+        "/api/p1f-tick": [
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          }
+        ]
+      },
+      "capture_limit": {
+        "schema": "producttrace.runtime-evidence.v1",
+        "sequence": 427,
+        "timestamp": 1790197215707,
+        "parent_continuation_id": null,
+        "kind": "capture.limit",
+        "feature": "state_receipts",
+        "reason": "dispatcher not found",
+        "react_version": "99.0.0"
+      }
+    },
+    {
+      "dependency_root": "/private/tmp/claude-501/sp/r19root",
+      "react_dom": "19.2.4",
+      "renderers": [
+        "19.2.4"
+      ],
+      "summary": {
+        "/api/state-effect": [
+          {
+            "action_id": "action:muel7af6:2",
+            "linkage_kind": "state_effect"
+          }
+        ],
+        "/api/mounted": [
+          {
+            "action_id": "action:muel7af6:2",
+            "linkage_kind": "mount_effect"
+          }
+        ],
+        "/api/form-submit": [
+          {
+            "action_id": "action:muel7b2h:7",
+            "linkage_kind": "direct"
+          }
+        ],
+        "/api/p1f-tick": [
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          },
+          {
+            "action_id": null,
+            "linkage_kind": null
+          }
+        ]
+      },
+      "capture_limit": {
+        "schema": "producttrace.runtime-evidence.v1",
+        "sequence": 427,
+        "timestamp": 1790197219935,
+        "parent_continuation_id": null,
+        "kind": "capture.limit",
+        "feature": "state_receipts",
+        "reason": "dispatcher not found",
+        "react_version": "99.0.0"
+      }
+    }
+  ]
+}

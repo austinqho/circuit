@@ -1,0 +1,209 @@
+{
+  "schema": "producttrace.g2-stamp-check.v1",
+  "stamp_rows": 192,
+  "distinct_keys": 140,
+  "distinct_placements": 132,
+  "placements_verified": 132,
+  "placement_problems": [],
+  "acted_on_keys": 12,
+  "acted_on_keys_with_stamp_row": 12,
+  "sample": [
+    {
+      "element_key": "p_bcdfa427f698:11548-12595#n1",
+      "acted_on": true,
+      "file": "frontend/src/components/WorkspaceChat/ChatContainer/PromptInput/index.jsx",
+      "line": 352,
+      "start": 11548,
+      "end": 12595,
+      "tag": "textarea",
+      "host_tag": "textarea",
+      "component": "PromptInput",
+      "placement_via": "self",
+      "binding": null,
+      "handlers": [
+        "onChange",
+        "onKeyDown",
+        "onPaste",
+        "onFocus",
+        "onBlur"
+      ],
+      "source": "<textarea id={PROMPT_INPUT_ID} ref={textareaRef} ",
+      "verified": true,
+      "problems": []
+    },
+    {
+      "element_key": "p_25511dc1202f:6108-6564#n1",
+      "acted_on": true,
+      "file": "frontend/src/components/Sidebar/SearchBox/index.jsx",
+      "line": 196,
+      "start": 6108,
+      "end": 6564,
+      "tag": "button",
+      "host_tag": "button",
+      "component": "ShortWidthNewWorkspaceButton",
+      "placement_via": "self",
+      "binding": null,
+      "handlers": [
+        "onClick"
+      ],
+      "source": "<button data-tooltip-id=\"new-workspace-tooltip\" data-tooltip-content={t(\"n",
+      "verified": true,
+      "problems": []
+    },
+    {
+      "element_key": "p_ed834b44909a:8620-8805#n1",
+      "acted_on": true,
+      "file": "frontend/src/components/lib/Modal/index.jsx",
+      "line": 228,
+      "start": 8620,
+      "end": 8805,
+      "tag": "input",
+      "host_tag": "input",
+      "component": "ModalInput",
+      "placement_via": "self",
+      "binding": null,
+      "handlers": [],
+      "source": "<input id={inputId} name={name} className={`${FIELD_BA",
+      "verified": true,
+      "problems": []
+    },
+    {
+      "element_key": "p_ed834b44909a:10547-10746#n1",
+      "acted_on": true,
+      "file": "frontend/src/components/lib/Modal/index.jsx",
+      "line": 293,
+      "start": 10547,
+      "end": 10746,
+      "tag": "button",
+      "host_tag": "button",
+      "component": "ModalPrimaryButton",
+      "placement_via": "self",
+      "binding": null,
+      "handlers": [],
+      "source": "<button {...props} className={`${BUTTON_BASE} border-none bg-zinc-50 light:bg-",
+      "verified": true,
+      "problems": []
+    },
+    {
+      "element_key": "p_05d69e9db9b7:6979-8151#n1",
+      "acted_on": true,
+      "file": "frontend/src/components/Sidebar/ActiveWorkspaces/ThreadContainer/index.jsx",
+      "line": 214,
+      "start": 6979,
+      "end": 8151,
+      "tag": "button",
+      "host_tag": "button",
+      "component": "NewThreadButton",
+      "placement_via": "self",
+      "binding": {
+        "file": "frontend/src/components/Sidebar/ActiveWorkspaces/ThreadContainer/index.jsx",
+        "line": 183,
+        "component": "NewThreadButton",
+        "verified": true,
+        "source": "<NewThreadButton workspace={workspace} onNewThread={(t"
+      },
+      "handlers": [
+        "onClick",
+        "onNewThread"
+      ],
+      "source": "<button onClick={onClick} className=\"w-full relative flex h-[40px] items-cente",
+      "verified": true,
+      "problems": []
+    },
+    {
+      "element_key": "p_adf13beff628:4816-5262#n1",
+      "acted_on": true,
+      "file": "frontend/src/components/Sidebar/ActiveWorkspaces/ThreadContainer/ThreadItem/index.jsx",
+      "line": 136,
+      "start": 4816,
+      "end": 5262,
+      "tag": "button",
+      "host_tag": "button",
+      "component": "ThreadItem",
+      "placement_via": "self",
+      "binding": null,
+      "handlers": [
+        "onClick"
+      ],
+      "source": "<button type=\"button\" className=\"border-none\" ",
+      "verified": true,
+      "problems": []
+    },
+    {
+      "element_key": "p_adf13beff628:8281-8577#n1",
+      "acted_on": true,
+      "file": "frontend/src/components/Sidebar/ActiveWorkspaces/ThreadContainer/ThreadItem/index.jsx",
+      "line": 264,
+      "start": 8281,
+      "end": 8577,
+      "tag": "button",
+      "host_tag": "button",
+      "component": "OptionsMenu",
+      "placement_via": "self",
+      "binding": null,
+      "handlers": [
+        "onClick"
+      ],
+      "source": "<button onClick={renameThread} type=\"button\" className=\"w-full rou",
+      "verified": true,
+      "problems": []
+    },
+    {
+      "element_key": "p_adf13beff628:8584-8897#n1",
+      "acted_on": true,
+      "file": "frontend/src/components/Sidebar/ActiveWorkspaces/ThreadContainer/ThreadItem/index.jsx",
+      "line": 272,
+      "start": 8584,
+      "end": 8897,
+      "tag": "button",
+      "host_tag": "button",
+      "component": "OptionsMenu",
+      "placement_via": "self",
+      "binding": null,
+      "handlers": [
+        "onClick"
+      ],
+      "source": "<button onClick={handleDelete} type=\"button\" className=\"w-full rou",
+      "verified": true,
+      "problems": []
+    },
+    {
+      "element_key": "p_25b364a91be9:8497-10305#n1",
+      "acted_on": true,
+      "file": "frontend/src/components/Sidebar/ActiveWorkspaces/index.jsx",
+      "line": 186,
+      "start": 8497,
+      "end": 10305,
+      "tag": "button",
+      "host_tag": "button",
+      "component": "ActiveWorkspaces",
+      "placement_via": "self",
+      "binding": null,
+      "handlers": [
+        "onClick"
+      ],
+      "source": "<button onClick={(e) => { ",
+      "verified": true,
+      "problems": []
+    },
+    {
+      "element_key": "p_97668e7566e7:526-1026#n1",
+      "acted_on": true,
+      "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/WorkspaceName/index.jsx",
+      "line": 15,
+      "start": 526,
+      "end": 1026,
+      "tag": "input",
+      "host_tag": "input",
+      "component": "WorkspaceName",
+      "placement_via": "self",
+      "binding": null,
+      "handlers": [
+        "onChange"
+      ],
+      "source": "<input name=\"name\" type=\"text\" minLength={2} maxLength={80",
+      "verified": true,
+      "problems": []
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+ "errors": [],
+ "received": [
+  "POST /api/analytics?tag=BUTTON",
+  "POST /api/real",
+  "POST /api/analytics?tag=BUTTON"
+ ],
+ "marks": [
+  {
+   "name": "o-real",
+   "seq": 1790294373556
+  },
+  {
+   "name": "o-state",
+   "seq": 1790294374098
+  },
+  {
+   "name": "end",
+   "seq": 1790294374541
+  }
+ ],
+ "actions": [
+  {
+   "mark": "o-real",
+   "action_id": "action:mug71nn0:12",
+   "event": "click",
+   "target": "L16:<button type=\"button\" onClick={onSaveReal}>Real sa",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:() => { setN(x => x + 1); fetch('/api/real', ",
+     "prop": "onClick",
+     "native": "click",
+     "holder": "host:button@0",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container"
+    }
+   ],
+   "enters": [
+    "main.jsx:function track(event) { fetch(`/api/analytics",
+    "main.jsx:() => { setN(x => x + 1); fetch('/api/real', ",
+    "main.jsx:() => { setN(x => x + 1); fetch('/api/real', ",
+    "main.jsx:x => x + 1"
+   ],
+   "reqs": [
+    "/api/analytics?tag=BUTTON",
+    "/api/real"
+   ],
+   "credited": "main.jsx:() => { setN(x => x + 1); fetch('/api/real', ",
+   "stopped_at": "network",
+   "because": "backend not instrumented",
+   "text": "click action:mug71nn0:12 (mouse pointer 1, button 0, buttons 0; phase activation on <button type=\"button\">) → handler <unnamed> client/src/main.jsx@612-695 [bound: onClick on click (React)] → 2 requests: (1) <unnamed> client/src/main.jsx@273-388 → POST /api/analytics?tag=BUTTON [stopped at network]; (2) POST /api/real [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented\nObserved bound to this dispatch: <unnamed> client/src/main.jsx@612-695 as onClick on click (React)\nRequests issued by a frame not bound to this element (a global listener or library-called code), not by the credited handler: <unnamed> client/src/main.jsx@273-388 (1 request(s))\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@273-388\n  - request (1) POST /api/analytics?tag=B"
+  },
+  {
+   "mark": "o-state",
+   "action_id": "action:mug71o1e:28",
+   "event": "click",
+   "target": "L16:<button type=\"button\" onClick={onStateOnly}>State ",
+   "rows": [
+    {
+     "kind": "handler.binding",
+     "fn": "main.jsx:() => setN(x => x + 1)",
+     "prop": "onClick",
+     "native": "click",
+     "holder": "host:button@0",
+     "via": "prop_value",
+     "ran": "during_dispatch",
+     "invoked_by": "react_event_system",
+     "listener_on": "react_container"
+    }
+   ],
+   "enters": [
+    "main.jsx:function track(event) { fetch(`/api/analytics",
+    "main.jsx:() => setN(x => x + 1)"
+   ],
+   "reqs": [
+    "/api/analytics?tag=BUTTON"
+   ],
+   "credited": "main.jsx:() => setN(x => x + 1)",
+   "stopped_at": "network",
+   "because": "backend not instrumented",
+   "text": "click action:mug71o1e:28 (mouse pointer 1, button 0, buttons 0; phase activation on <button type=\"button\">) → handler <unnamed> client/src/main.jsx@719-741 [bound: onClick on click (React)] → 1 request: (1) <unnamed> client/src/main.jsx@273-388 → POST /api/analytics?tag=BUTTON [stopped at network] [outcome stopped at network]: reached request / stopped at network / because backend not instrumented\nObserved bound to this dispatch: <unnamed> client/src/main.jsx@719-741 as onClick on click (React)\nRequests issued by a frame not bound to this element (a global listener or library-called code), not by the credited handler: <unnamed> client/src/main.jsx@273-388 (1 request(s))\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@273-388\n  - request (1) POST /api/analytics?tag=BUTTON [stopped at network]\n- <unnamed> cli"
+  }
+ ],
+ "requests": [
+  {
+   "url": "/api/analytics?tag=BUTTON",
+   "action_id": "action:mug71nn0:12",
+   "action_event": "click",
+   "action_target": "L16:<button type=\"button\" onClick={onSaveReal}>Real sa",
+   "owner": "continuation:action:mug71nn0:12:function:17",
+   "keys": [
+    "terminal_owner_continuation_id=\"continuation:action:mug71nn0:12:function:17\""
+   ]
+  },
+  {
+   "url": "/api/real",
+   "action_id": "action:mug71nn0:12",
+   "action_event": "click",
+   "action_target": "L16:<button type=\"button\" onClick={onSaveReal}>Real sa",
+   "owner": "continuation:action:mug71nn0:12:function:18",
+   "keys": [
+    "terminal_owner_continuation_id=\"continuation:action:mug71nn0:12:function:18\""
+   ]
+  },
+  {
+   "url": "/api/analytics?tag=BUTTON",
+   "action_id": "action:mug71o1e:28",
+   "action_event": "click",
+   "action_target": "L16:<button type=\"button\" onClick={onStateOnly}>State ",
+   "owner": "continuation:action:mug71o1e:28:function:40",
+   "keys": [
+    "terminal_owner_continuation_id=\"continuation:action:mug71o1e:28:function:40\""
+   ]
+  }
+ ],
+ "page_requests_text": "3 request(s): 3 attributed to a user action, 0 with no action\n- POST /api/analytics ×2 (2 action, 0 none; statuses stopped×2); interval median 517 ms (min 517, max 517, 1 gaps, each within one page)\n- POST /api/real ×1 (1 action, 0 none; statuses stopped×1)\nRequests (all, oldest first):\n- 23:59:33.613 POST /api/analytics?tag=BUTTON [action action:mug71nn0:12 (click, request (1) of its chain)] [stopped at network]\n- 23:59:33.614 POST /api/real [action action:mug71nn0:12 (click, request (2) of its chain)] [stopped at network]\n- 23:59:34.130 POST /api/analytics?tag=BUTTON [action action:mug71o1e:28 (click, request (1) of its chain)] [stopped at network]"
+}

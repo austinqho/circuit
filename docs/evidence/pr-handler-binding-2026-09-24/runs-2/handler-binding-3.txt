@@ -1,0 +1,300 @@
+[producttrace] first-party: 89 functions instrumented; excluded functions by rule: **/vendor/** 5, outside repository 1664; excluded modules by rule: **/vendor/** 2; include=[] exclude=["**/node_modules/**","**/vendor/**","**/dist/**","**/build/**","**/.git/**"]
+[33m[PLUGIN_TIMINGS] [0mYour build spent 98% of 10.6s inside plugin hooks (10.4s).
+Measured inside the callback, so queue time is excluded and time the callback itself awaited is not:
+  - producttrace-runtime-attribution generateBundle (96%, 10.1s, 1 call)
+See https://rolldown.rs/reference/InputOptions.checks#plugintimings for more details.
+
+PASS B0 the pages ran without errors
+PASS run 1 B1 the backend received every request the session makes (the store's rows are compared below)
+PASS run 1 B2 capture.page states handler bindings are observed
+PASS run 1 C1 checkbox (state only): both clicks (mouse, and the click Space causes) carry a binding of its onChange to "click", run by React, held by the <input> host fiber
+PASS run 1 C2 the native change events on that checkbox ran no handler (no binding), and the keydown/keyup of Space none either
+PASS run 1 C3 checkbox chain: credited handler = its onChange (not the audit listener that ran first); no abstention; bound phrase in the text
+PASS run 1 C4 checkbox and radio with requests: owned by their click, whose binding is onChange on click
+PASS run 1 C5 text input: each keystroke's request is owned by its input event, bound onChange on input; its keydowns bind nothing
+PASS run 1 C6 <select>: onChange bound on change; range: onChange bound on input, and the range's later change event ran nothing
+PASS run 1 C7 onDoubleClick is bound on dblclick and credited (no abstention)
+PASS run 1 C8 the two clicks of that double-click ran no element handler: each abstains "no element-bound handler ran" and names the audit listener
+PASS run 1 C9 Enter: onKeyDown bound on keydown; the implicit submit's onSubmit bound on submit and owns the request
+PASS run 1 C10 Radix Select: onValueChange (a prop of the Select root component, reached through the portal) bound on pointerup for the mouse choice and on keydown for the keyboard choice, run by React
+PASS run 1 C11 Radix Dialog: onOpenChange bound on click for both opens (React), on keydown for Escape and on pointerdown for the overlay (Radix's document listeners)
+PASS run 1 C12 zustand: the store-writing onClick is bound on click and credited; the subscriber effect's request is owned (reported, not asserted)
+PASS run 1 C13 onContextMenu is declared (in the click's declared list) but never observed: no binding, invocation or function.enter for it
+PASS run 1 C14 .focus() in a click handler: onFocus is an invocation by app code (dispatched by React on the caused focusin), caused by that click; never a binding
+PASS run 1 C15 .focus() from a mount timer: onFocus is an invocation by app code with the cause abstained (no action on the timer); never a binding
+PASS run 1 C16 a prop a component calls from a timer (onTick) is neither a binding nor an invocation
+PASS run 1 C17 contenteditable: onInput bound on input for each typed character
+PASS run 1 C18 Ping: the audit listener entered first at depth zero, yet the credit is Ping's onClick (the handler observed bound, which issued the request)
+PASS run 1 C19 form library: the callback written inside onSubmit, called from a promise continuation the submit created, is bound to the submit (ran: dispatch_continuation, via written_in_prop) and credited
+PASS run 1 C20 onKeyDown={h} onClick={h}, h takes no event: the click's binding is ambiguous (prop_name null, holders onKeyDown and onClick), never "onKeyDown on click"
+PASS run 1 C21 the same with an event parameter: the mouse click binds onClick, Enter's keydown binds onKeyDown (holder_resolution synthetic_event)
+PASS run 1 C22 onPointerDown={s} onClick={s} with a request: the click owns it and credits s; its binding is ambiguous, never "[bound: onPointerDown on click"
+PASS run 1 C23 target onMouseDown={h}, ancestor onClick={h}: the click binds the ancestor div's onClick; the mousedown binds the button's onMouseDown
+PASS run 1 C24 target and ancestor both onClick={h}: React ran h twice, two bindings (button, then div)
+PASS run 1 C25 analytics listener: Save real credits onSaveReal and State only credits onStateOnly, never track; track's analytics requests (owned by the same clicks) are listed as issued by an unbound frame
+PASS run 1 C26 react-hook-form with a named onValid (state only): "ran through library code … [onValid]", onValid never a global listener
+PASS run 1 C27 vendor component calling a callback prop: "ran through library code … [viaCallback]", never a global listener
+PASS run 1 C28 el.click() from a timer a click armed: handler.invocation (untrusted, app_code) caused by that click; from a mount timer: cause abstained; the click's chain lists it
+PASS run 1 R1 every binding is on a user's dispatch (not gesture:false) of the kind it names, for a function that entered at depth zero on that action; audit and onTick never bind
+PASS run 1 R2 every trusted invocation is on a caused dispatch (gesture:false); untrusted ones carry untrusted:true
+PASS run 1 R3 prop/event pairs observed, none declared: onChange@click, onChange@input, onChange@change, onDoubleClick@dblclick, onKeyDown@keydown, onSubmit@submit, onValueChange@pointerup, onValueChange@keydown, onOpenChange@click, onOpenChange@keydown, onOpenChange@pointerdown, onInput@input, onClick@click
+PASS run 1 R6 an ambiguous binding lists at least two distinct (prop, holder) pairs; the inline single-prop handlers (onDoubleClick, Ping, Archive) are resolved, not ambiguous
+PASS run 1 R4 one binding row per (action, function, prop, holder): no duplicates
+PASS run 1 R5 the store holds a row for every request the backend received (same paths)
+PASS run 1 M1 resolve_element(Notify): observed bindings listed before the declared handlers; onChange on click ×6 (the raw store-wide count), handlers_basis declared; the summary says "observed:" first
+PASS run 1 M2 resolve_element(Archive): observed only onClick; onContextMenu named "declared, never observed running"
+PASS run 1 M3 element_history(Notify): the summary prints the observed binding before the newest chain
+PASS run 1 M4 action_chain(Notify click): bound_handlers.observed lists onChange on click; declared list present; entry_handler stop carries the binding
+PASS run 1 M5 action_chain(caused focusin): the handler is listed as run for a dispatch app code caused, not as a binding
+PASS run 1 M6 action_chain(the second click of the double-click): stopped at entry_handler "no element-bound handler ran", no observed binding
+PASS run 2 B1 the backend received every request the session makes (the store's rows are compared below)
+PASS run 2 B2 capture.page states handler bindings are observed
+PASS run 2 C1 checkbox (state only): both clicks (mouse, and the click Space causes) carry a binding of its onChange to "click", run by React, held by the <input> host fiber
+PASS run 2 C2 the native change events on that checkbox ran no handler (no binding), and the keydown/keyup of Space none either
+PASS run 2 C3 checkbox chain: credited handler = its onChange (not the audit listener that ran first); no abstention; bound phrase in the text
+PASS run 2 C4 checkbox and radio with requests: owned by their click, whose binding is onChange on click
+PASS run 2 C5 text input: each keystroke's request is owned by its input event, bound onChange on input; its keydowns bind nothing
+PASS run 2 C6 <select>: onChange bound on change; range: onChange bound on input, and the range's later change event ran nothing
+PASS run 2 C7 onDoubleClick is bound on dblclick and credited (no abstention)
+PASS run 2 C8 the two clicks of that double-click ran no element handler: each abstains "no element-bound handler ran" and names the audit listener
+PASS run 2 C9 Enter: onKeyDown bound on keydown; the implicit submit's onSubmit bound on submit and owns the request
+PASS run 2 C10 Radix Select: onValueChange (a prop of the Select root component, reached through the portal) bound on pointerup for the mouse choice and on keydown for the keyboard choice, run by React
+PASS run 2 C11 Radix Dialog: onOpenChange bound on click for both opens (React), on keydown for Escape and on pointerdown for the overlay (Radix's document listeners)
+PASS run 2 C12 zustand: the store-writing onClick is bound on click and credited; the subscriber effect's request is owned (reported, not asserted)
+PASS run 2 C13 onContextMenu is declared (in the click's declared list) but never observed: no binding, invocation or function.enter for it
+PASS run 2 C14 .focus() in a click handler: onFocus is an invocation by app code (dispatched by React on the caused focusin), caused by that click; never a binding
+PASS run 2 C15 .focus() from a mount timer: onFocus is an invocation by app code with the cause abstained (no action on the timer); never a binding
+PASS run 2 C16 a prop a component calls from a timer (onTick) is neither a binding nor an invocation
+PASS run 2 C17 contenteditable: onInput bound on input for each typed character
+PASS run 2 C18 Ping: the audit listener entered first at depth zero, yet the credit is Ping's onClick (the handler observed bound, which issued the request)
+PASS run 2 C19 form library: the callback written inside onSubmit, called from a promise continuation the submit created, is bound to the submit (ran: dispatch_continuation, via written_in_prop) and credited
+PASS run 2 C20 onKeyDown={h} onClick={h}, h takes no event: the click's binding is ambiguous (prop_name null, holders onKeyDown and onClick), never "onKeyDown on click"
+PASS run 2 C21 the same with an event parameter: the mouse click binds onClick, Enter's keydown binds onKeyDown (holder_resolution synthetic_event)
+PASS run 2 C22 onPointerDown={s} onClick={s} with a request: the click owns it and credits s; its binding is ambiguous, never "[bound: onPointerDown on click"
+PASS run 2 C23 target onMouseDown={h}, ancestor onClick={h}: the click binds the ancestor div's onClick; the mousedown binds the button's onMouseDown
+PASS run 2 C24 target and ancestor both onClick={h}: React ran h twice, two bindings (button, then div)
+PASS run 2 C25 analytics listener: Save real credits onSaveReal and State only credits onStateOnly, never track; track's analytics requests (owned by the same clicks) are listed as issued by an unbound frame
+PASS run 2 C26 react-hook-form with a named onValid (state only): "ran through library code … [onValid]", onValid never a global listener
+PASS run 2 C27 vendor component calling a callback prop: "ran through library code … [viaCallback]", never a global listener
+PASS run 2 C28 el.click() from a timer a click armed: handler.invocation (untrusted, app_code) caused by that click; from a mount timer: cause abstained; the click's chain lists it
+PASS run 2 R1 every binding is on a user's dispatch (not gesture:false) of the kind it names, for a function that entered at depth zero on that action; audit and onTick never bind
+PASS run 2 R2 every trusted invocation is on a caused dispatch (gesture:false); untrusted ones carry untrusted:true
+PASS run 2 R3 prop/event pairs observed, none declared: onChange@click, onChange@input, onChange@change, onDoubleClick@dblclick, onKeyDown@keydown, onSubmit@submit, onValueChange@pointerup, onValueChange@keydown, onOpenChange@click, onOpenChange@keydown, onOpenChange@pointerdown, onInput@input, onClick@click
+PASS run 2 R6 an ambiguous binding lists at least two distinct (prop, holder) pairs; the inline single-prop handlers (onDoubleClick, Ping, Archive) are resolved, not ambiguous
+PASS run 2 R4 one binding row per (action, function, prop, holder): no duplicates
+PASS run 2 R5 the store holds a row for every request the backend received (same paths)
+PASS run 2 M1 resolve_element(Notify): observed bindings listed before the declared handlers; onChange on click ×6 (the raw store-wide count), handlers_basis declared; the summary says "observed:" first
+PASS run 2 M2 resolve_element(Archive): observed only onClick; onContextMenu named "declared, never observed running"
+PASS run 2 M3 element_history(Notify): the summary prints the observed binding before the newest chain
+PASS run 2 M4 action_chain(Notify click): bound_handlers.observed lists onChange on click; declared list present; entry_handler stop carries the binding
+PASS run 2 M5 action_chain(caused focusin): the handler is listed as run for a dispatch app code caused, not as a binding
+PASS run 2 M6 action_chain(the second click of the double-click): stopped at entry_handler "no element-bound handler ran", no observed binding
+PASS run 3 B1 the backend received every request the session makes (the store's rows are compared below)
+PASS run 3 B2 capture.page states handler bindings are observed
+PASS run 3 C1 checkbox (state only): both clicks (mouse, and the click Space causes) carry a binding of its onChange to "click", run by React, held by the <input> host fiber
+PASS run 3 C2 the native change events on that checkbox ran no handler (no binding), and the keydown/keyup of Space none either
+PASS run 3 C3 checkbox chain: credited handler = its onChange (not the audit listener that ran first); no abstention; bound phrase in the text
+PASS run 3 C4 checkbox and radio with requests: owned by their click, whose binding is onChange on click
+PASS run 3 C5 text input: each keystroke's request is owned by its input event, bound onChange on input; its keydowns bind nothing
+PASS run 3 C6 <select>: onChange bound on change; range: onChange bound on input, and the range's later change event ran nothing
+PASS run 3 C7 onDoubleClick is bound on dblclick and credited (no abstention)
+PASS run 3 C8 the two clicks of that double-click ran no element handler: each abstains "no element-bound handler ran" and names the audit listener
+PASS run 3 C9 Enter: onKeyDown bound on keydown; the implicit submit's onSubmit bound on submit and owns the request
+PASS run 3 C10 Radix Select: onValueChange (a prop of the Select root component, reached through the portal) bound on pointerup for the mouse choice and on keydown for the keyboard choice, run by React
+PASS run 3 C11 Radix Dialog: onOpenChange bound on click for both opens (React), on keydown for Escape and on pointerdown for the overlay (Radix's document listeners)
+PASS run 3 C12 zustand: the store-writing onClick is bound on click and credited; the subscriber effect's request is owned (reported, not asserted)
+PASS run 3 C13 onContextMenu is declared (in the click's declared list) but never observed: no binding, invocation or function.enter for it
+PASS run 3 C14 .focus() in a click handler: onFocus is an invocation by app code (dispatched by React on the caused focusin), caused by that click; never a binding
+PASS run 3 C15 .focus() from a mount timer: onFocus is an invocation by app code with the cause abstained (no action on the timer); never a binding
+PASS run 3 C16 a prop a component calls from a timer (onTick) is neither a binding nor an invocation
+PASS run 3 C17 contenteditable: onInput bound on input for each typed character
+PASS run 3 C18 Ping: the audit listener entered first at depth zero, yet the credit is Ping's onClick (the handler observed bound, which issued the request)
+PASS run 3 C19 form library: the callback written inside onSubmit, called from a promise continuation the submit created, is bound to the submit (ran: dispatch_continuation, via written_in_prop) and credited
+PASS run 3 C20 onKeyDown={h} onClick={h}, h takes no event: the click's binding is ambiguous (prop_name null, holders onKeyDown and onClick), never "onKeyDown on click"
+PASS run 3 C21 the same with an event parameter: the mouse click binds onClick, Enter's keydown binds onKeyDown (holder_resolution synthetic_event)
+PASS run 3 C22 onPointerDown={s} onClick={s} with a request: the click owns it and credits s; its binding is ambiguous, never "[bound: onPointerDown on click"
+PASS run 3 C23 target onMouseDown={h}, ancestor onClick={h}: the click binds the ancestor div's onClick; the mousedown binds the button's onMouseDown
+PASS run 3 C24 target and ancestor both onClick={h}: React ran h twice, two bindings (button, then div)
+PASS run 3 C25 analytics listener: Save real credits onSaveReal and State only credits onStateOnly, never track; track's analytics requests (owned by the same clicks) are listed as issued by an unbound frame
+PASS run 3 C26 react-hook-form with a named onValid (state only): "ran through library code … [onValid]", onValid never a global listener
+PASS run 3 C27 vendor component calling a callback prop: "ran through library code … [viaCallback]", never a global listener
+PASS run 3 C28 el.click() from a timer a click armed: handler.invocation (untrusted, app_code) caused by that click; from a mount timer: cause abstained; the click's chain lists it
+PASS run 3 R1 every binding is on a user's dispatch (not gesture:false) of the kind it names, for a function that entered at depth zero on that action; audit and onTick never bind
+PASS run 3 R2 every trusted invocation is on a caused dispatch (gesture:false); untrusted ones carry untrusted:true
+PASS run 3 R3 prop/event pairs observed, none declared: onChange@click, onChange@input, onChange@change, onDoubleClick@dblclick, onKeyDown@keydown, onSubmit@submit, onValueChange@pointerup, onValueChange@keydown, onOpenChange@click, onOpenChange@keydown, onOpenChange@pointerdown, onInput@input, onClick@click
+PASS run 3 R6 an ambiguous binding lists at least two distinct (prop, holder) pairs; the inline single-prop handlers (onDoubleClick, Ping, Archive) are resolved, not ambiguous
+PASS run 3 R4 one binding row per (action, function, prop, holder): no duplicates
+PASS run 3 R5 the store holds a row for every request the backend received (same paths)
+PASS run 3 M1 resolve_element(Notify): observed bindings listed before the declared handlers; onChange on click ×6 (the raw store-wide count), handlers_basis declared; the summary says "observed:" first
+PASS run 3 M2 resolve_element(Archive): observed only onClick; onContextMenu named "declared, never observed running"
+PASS run 3 M3 element_history(Notify): the summary prints the observed binding before the newest chain
+PASS run 3 M4 action_chain(Notify click): bound_handlers.observed lists onChange on click; declared list present; entry_handler stop carries the binding
+PASS run 3 M5 action_chain(caused focusin): the handler is listed as run for a dispatch app code caused, not as a binding
+PASS run 3 M6 action_chain(the second click of the double-click): stopped at entry_handler "no element-bound handler ran", no observed binding
+FACTS
+{"run":1,"case":"checkbox onChange (state only), mouse click","event":"click","credited":"notifyChange","stopped_at":"browser","observed":["notifyChange as onChange on click (react_event_system)"]}
+{"run":1,"case":"checkbox onChange (state only), Space key","event":"click","credited":"notifyChange","stopped_at":"browser","observed":["notifyChange as onChange on click (react_event_system)"]}
+{"run":1,"case":"checkbox onChange (request)","event":"click","credited":"onSubscribe","stopped_at":"network","observed":["onSubscribe as onChange on click (react_event_system)"]}
+{"run":1,"case":"radio onChange (request)","event":"click","credited":"onPlan","stopped_at":"network","observed":["onPlan as onChange on click (react_event_system)"]}
+{"run":1,"case":"text onChange","event":"input","credited":"onTitle","stopped_at":"network","observed":["onTitle as onChange on input (react_event_system)"]}
+{"run":1,"case":"select onChange","event":"change","credited":"onColor","stopped_at":"network","observed":["onColor as onChange on change (react_event_system)"]}
+{"run":1,"case":"range onChange","event":"input","credited":"onVolume","stopped_at":"network","observed":["onVolume as onChange on input (react_event_system)"]}
+{"run":1,"case":"onDoubleClick (state only)","event":"dblclick","credited":"onDoubleClick","stopped_at":"browser","observed":["onDoubleClick as onDoubleClick on dblclick (react_event_system)"]}
+{"run":1,"case":"click before the double-click (no element handler)","event":"click","credited":null,"stopped_at":"entry_handler","because":"no element-bound handler ran: no instrumented function held by the target's element chain (an on* prop, or a listener on the element) was invoked for this dispatch (uninstrumented and third-party handlers are not seen); global listeners: [function:17838db26b6e3a8d2a1d82cfc6da447a74bd5f062c022b0cca146ce55b69561b:11463:11609, function:17838db26b6e3a8d2a1d82cfc6da447a74bd5f062c022b0cca146ce55b69561b:1337:1406]","observed":[]}
+{"run":1,"case":"onKeyDown Enter in a form","event":"keydown","credited":"onKeyDown","stopped_at":"browser","observed":["onKeyDown as onKeyDown on keydown (react_event_system)"]}
+{"run":1,"case":"onSubmit","event":"submit","credited":"onSubmit","stopped_at":"network","observed":["onSubmit as onSubmit on submit (react_event_system)"]}
+{"run":1,"case":"Radix Select onValueChange (pointer)","event":"pointerup","credited":"onValueChange","stopped_at":"network","observed":["onValueChange as onValueChange on pointerup (react_event_system)"]}
+{"run":1,"case":"Radix Select onValueChange (keyboard)","event":"keydown","credited":"onValueChange","stopped_at":"network","observed":["onValueChange as onValueChange on keydown (react_event_system)"]}
+{"run":1,"case":"Radix Dialog onOpenChange (Escape)","event":"keydown","credited":"onOpenChange","stopped_at":"network","observed":["onOpenChange as onOpenChange on keydown (native_listener)"]}
+{"run":1,"case":"Radix Dialog onOpenChange (overlay)","event":"pointerdown","credited":"onOpenChange","stopped_at":"network","observed":["onOpenChange as onOpenChange on pointerdown (native_listener)"]}
+{"run":1,"case":"zustand store write (onClick)","event":"click","credited":"cartClick","stopped_at":"network","observed":["cartClick as onClick on click (react_event_system)"],"cart_sync_owner":"click"}
+{"run":1,"case":"Archive onClick (onContextMenu declared, never run)","event":"click","credited":"archiveClick","stopped_at":"network","observed":["archiveClick as onClick on click (react_event_system)"]}
+{"run":1,"case":"onFocus from .focus() in a click handler","invocation":{"action_event":"focusin","invoked_by":"app_code","caused_by_is_click":true},"request_owner":"focusin"}
+{"run":1,"case":"onFocus from .focus() in a mount timer","invocation":{"action_event":"focusin","invoked_by":"app_code","cause_abstained":"no_action_on_frame"},"request_owner":"focusin"}
+{"run":1,"case":"contenteditable onInput","event":"input","credited":"scratchInput","stopped_at":"network","observed":["scratchInput as onInput on input (react_event_system)"]}
+{"run":1,"case":"Ping onClick (audit capture listener ran first)","event":"click","credited":"pingClick","stopped_at":"network","observed":["pingClick as onClick on click (react_event_system)"]}
+{"run":1,"case":"callback written inside onSubmit, called by a form library in a promise continuation","event":"submit","credited":"profileSaved","stopped_at":"browser","observed":["profileSaved as onSubmit on submit (dispatch_continuation)"]}
+{"run":1,"case":"one no-argument function on onKeyDown and onClick (click)","event":"click","credited":"handleDual","stopped_at":"browser","observed":["handleDual as null on click (react_event_system)"]}
+{"run":1,"case":"one function with an event parameter on onKeyDown and onClick (mouse click)","event":"click","credited":"handleDualEvent","stopped_at":"browser","observed":["handleDualEvent as onClick on click (react_event_system)"]}
+{"run":1,"case":"onPointerDown={s} onClick={s}, s sends (click)","event":"click","credited":"sendDual","stopped_at":"network","observed":["sendDual as null on click (react_event_system)"]}
+{"run":1,"case":"target onMouseDown={h}, ancestor onClick={h} (click)","event":"click","credited":"handleNested","stopped_at":"browser","observed":["handleNested as onClick on click (react_event_system)"]}
+{"run":1,"case":"bound onClick beside a sending document capture listener","event":"click","credited":"onSaveReal","stopped_at":"network","observed":["onSaveReal as onClick on click (react_event_system)"]}
+{"run":1,"case":"state-only onClick beside a sending document capture listener","event":"click","credited":"onStateOnly","stopped_at":"network","observed":["onStateOnly as onClick on click (react_event_system)"]}
+{"run":1,"case":"react-hook-form handleSubmit(onValid), onValid named, state only","event":"submit","credited":null,"stopped_at":"entry_handler","because":"no element-bound handler of instrumented code ran; ran through library code on the element chain (not bound to an element prop Tracer can see): [function:17838db26b6e3a8d2a1d82cfc6da447a74bd5f062c022b0cca146ce55b69561b:12283:12315]; global listeners: []","observed":[]}
+{"run":1,"case":"vendor component calling a non-on* callback prop","event":"click","credited":null,"stopped_at":"entry_handler","because":"no element-bound handler of instrumented code ran; ran through library code on the element chain (not bound to an element prop Tracer can see): [function:17838db26b6e3a8d2a1d82cfc6da447a74bd5f062c022b0cca146ce55b69561b:12711:12736]; global listeners: [function:17838db26b6e3a8d2a1d82cfc6da447a74bd5f062c022b0cca146ce55b69561b:11463:11609, function:17838db26b6e3a8d2a1d82cfc6da447a74bd5f062c022b0cca146ce55b69561b:1337:1406]","observed":[]}
+{"run":2,"case":"checkbox onChange (state only), mouse click","event":"click","credited":"notifyChange","stopped_at":"browser","observed":["notifyChange as onChange on click (react_event_system)"]}
+{"run":2,"case":"checkbox onChange (state only), Space key","event":"click","credited":"notifyChange","stopped_at":"browser","observed":["notifyChange as onChange on click (react_event_system)"]}
+{"run":2,"case":"checkbox onChange (request)","event":"click","credited":"onSubscribe","stopped_at":"network","observed":["onSubscribe as onChange on click (react_event_system)"]}
+{"run":2,"case":"radio onChange (request)","event":"click","credited":"onPlan","stopped_at":"network","observed":["onPlan as onChange on click (react_event_system)"]}
+{"run":2,"case":"text onChange","event":"input","credited":"onTitle","stopped_at":"network","observed":["onTitle as onChange on input (react_event_system)"]}
+{"run":2,"case":"select onChange","event":"change","credited":"onColor","stopped_at":"network","observed":["onColor as onChange on change (react_event_system)"]}
+{"run":2,"case":"range onChange","event":"input","credited":"onVolume","stopped_at":"network","observed":["onVolume as onChange on input (react_event_system)"]}
+{"run":2,"case":"onDoubleClick (state only)","event":"dblclick","credited":"onDoubleClick","stopped_at":"browser","observed":["onDoubleClick as onDoubleClick on dblclick (react_event_system)"]}
+{"run":2,"case":"click before the double-click (no element handler)","event":"click","credited":null,"stopped_at":"entry_handler","because":"no element-bound handler ran: no instrumented function held by the target's element chain (an on* prop, or a listener on the element) was invoked for this dispatch (uninstrumented and third-party handlers are not seen); global listeners: [function:17838db26b6e3a8d2a1d82cfc6da447a74bd5f062c022b0cca146ce55b69561b:11463:11609, function:17838db26b6e3a8d2a1d82cfc6da447a74bd5f062c022b0cca146ce55b69561b:1337:1406]","observed":[]}
+{"run":2,"case":"onKeyDown Enter in a form","event":"keydown","credited":"onKeyDown","stopped_at":"browser","observed":["onKeyDown as onKeyDown on keydown (react_event_system)"]}
+{"run":2,"case":"onSubmit","event":"submit","credited":"onSubmit","stopped_at":"network","observed":["onSubmit as onSubmit on submit (react_event_system)"]}
+{"run":2,"case":"Radix Select onValueChange (pointer)","event":"pointerup","credited":"onValueChange","stopped_at":"network","observed":["onValueChange as onValueChange on pointerup (react_event_system)"]}
+{"run":2,"case":"Radix Select onValueChange (keyboard)","event":"keydown","credited":"onValueChange","stopped_at":"network","observed":["onValueChange as onValueChange on keydown (react_event_system)"]}
+{"run":2,"case":"Radix Dialog onOpenChange (Escape)","event":"keydown","credited":"onOpenChange","stopped_at":"network","observed":["onOpenChange as onOpenChange on keydown (native_listener)"]}
+{"run":2,"case":"Radix Dialog onOpenChange (overlay)","event":"pointerdown","credited":"onOpenChange","stopped_at":"network","observed":["onOpenChange as onOpenChange on pointerdown (native_listener)"]}
+{"run":2,"case":"zustand store write (onClick)","event":"click","credited":"cartClick","stopped_at":"network","observed":["cartClick as onClick on click (react_event_system)"],"cart_sync_owner":"click"}
+{"run":2,"case":"Archive onClick (onContextMenu declared, never run)","event":"click","credited":"archiveClick","stopped_at":"network","observed":["archiveClick as onClick on click (react_event_system)"]}
+{"run":2,"case":"onFocus from .focus() in a click handler","invocation":{"action_event":"focusin","invoked_by":"app_code","caused_by_is_click":true},"request_owner":"focusin"}
+{"run":2,"case":"onFocus from .focus() in a mount timer","invocation":{"action_event":"focusin","invoked_by":"app_code","cause_abstained":"no_action_on_frame"},"request_owner":"focusin"}
+{"run":2,"case":"contenteditable onInput","event":"input","credited":"scratchInput","stopped_at":"network","observed":["scratchInput as onInput on input (react_event_system)"]}
+{"run":2,"case":"Ping onClick (audit capture listener ran first)","event":"click","credited":"pingClick","stopped_at":"network","observed":["pingClick as onClick on click (react_event_system)"]}
+{"run":2,"case":"callback written inside onSubmit, called by a form library in a promise continuation","event":"submit","credited":"profileSaved","stopped_at":"browser","observed":["profileSaved as onSubmit on submit (dispatch_continuation)"]}
+{"run":2,"case":"one no-argument function on onKeyDown and onClick (click)","event":"click","credited":"handleDual","stopped_at":"browser","observed":["handleDual as null on click (react_event_system)"]}
+{"run":2,"case":"one function with an event parameter on onKeyDown and onClick (mouse click)","event":"click","credited":"handleDualEvent","stopped_at":"browser","observed":["handleDualEvent as onClick on click (react_event_system)"]}
+{"run":2,"case":"onPointerDown={s} onClick={s}, s sends (click)","event":"click","credited":"sendDual","stopped_at":"network","observed":["sendDual as null on click (react_event_system)"]}
+{"run":2,"case":"target onMouseDown={h}, ancestor onClick={h} (click)","event":"click","credited":"handleNested","stopped_at":"browser","observed":["handleNested as onClick on click (react_event_system)"]}
+{"run":2,"case":"bound onClick beside a sending document capture listener","event":"click","credited":"onSaveReal","stopped_at":"network","observed":["onSaveReal as onClick on click (react_event_system)"]}
+{"run":2,"case":"state-only onClick beside a sending document capture listener","event":"click","credited":"onStateOnly","stopped_at":"network","observed":["onStateOnly as onClick on click (react_event_system)"]}
+{"run":2,"case":"react-hook-form handleSubmit(onValid), onValid named, state only","event":"submit","credited":null,"stopped_at":"entry_handler","because":"no element-bound handler of instrumented code ran; ran through library code on the element chain (not bound to an element prop Tracer can see): [function:17838db26b6e3a8d2a1d82cfc6da447a74bd5f062c022b0cca146ce55b69561b:12283:12315]; global listeners: []","observed":[]}
+{"run":2,"case":"vendor component calling a non-on* callback prop","event":"click","credited":null,"stopped_at":"entry_handler","because":"no element-bound handler of instrumented code ran; ran through library code on the element chain (not bound to an element prop Tracer can see): [function:17838db26b6e3a8d2a1d82cfc6da447a74bd5f062c022b0cca146ce55b69561b:12711:12736]; global listeners: [function:17838db26b6e3a8d2a1d82cfc6da447a74bd5f062c022b0cca146ce55b69561b:11463:11609, function:17838db26b6e3a8d2a1d82cfc6da447a74bd5f062c022b0cca146ce55b69561b:1337:1406]","observed":[]}
+{"run":3,"case":"checkbox onChange (state only), mouse click","event":"click","credited":"notifyChange","stopped_at":"browser","observed":["notifyChange as onChange on click (react_event_system)"]}
+{"run":3,"case":"checkbox onChange (state only), Space key","event":"click","credited":"notifyChange","stopped_at":"browser","observed":["notifyChange as onChange on click (react_event_system)"]}
+{"run":3,"case":"checkbox onChange (request)","event":"click","credited":"onSubscribe","stopped_at":"network","observed":["onSubscribe as onChange on click (react_event_system)"]}
+{"run":3,"case":"radio onChange (request)","event":"click","credited":"onPlan","stopped_at":"network","observed":["onPlan as onChange on click (react_event_system)"]}
+{"run":3,"case":"text onChange","event":"input","credited":"onTitle","stopped_at":"network","observed":["onTitle as onChange on input (react_event_system)"]}
+{"run":3,"case":"select onChange","event":"change","credited":"onColor","stopped_at":"network","observed":["onColor as onChange on change (react_event_system)"]}
+{"run":3,"case":"range onChange","event":"input","credited":"onVolume","stopped_at":"network","observed":["onVolume as onChange on input (react_event_system)"]}
+{"run":3,"case":"onDoubleClick (state only)","event":"dblclick","credited":"onDoubleClick","stopped_at":"browser","observed":["onDoubleClick as onDoubleClick on dblclick (react_event_system)"]}
+{"run":3,"case":"click before the double-click (no element handler)","event":"click","credited":null,"stopped_at":"entry_handler","because":"no element-bound handler ran: no instrumented function held by the target's element chain (an on* prop, or a listener on the element) was invoked for this dispatch (uninstrumented and third-party handlers are not seen); global listeners: [function:17838db26b6e3a8d2a1d82cfc6da447a74bd5f062c022b0cca146ce55b69561b:11463:11609, function:17838db26b6e3a8d2a1d82cfc6da447a74bd5f062c022b0cca146ce55b69561b:1337:1406]","observed":[]}
+{"run":3,"case":"onKeyDown Enter in a form","event":"keydown","credited":"onKeyDown","stopped_at":"browser","observed":["onKeyDown as onKeyDown on keydown (react_event_system)"]}
+{"run":3,"case":"onSubmit","event":"submit","credited":"onSubmit","stopped_at":"network","observed":["onSubmit as onSubmit on submit (react_event_system)"]}
+{"run":3,"case":"Radix Select onValueChange (pointer)","event":"pointerup","credited":"onValueChange","stopped_at":"network","observed":["onValueChange as onValueChange on pointerup (react_event_system)"]}
+{"run":3,"case":"Radix Select onValueChange (keyboard)","event":"keydown","credited":"onValueChange","stopped_at":"network","observed":["onValueChange as onValueChange on keydown (react_event_system)"]}
+{"run":3,"case":"Radix Dialog onOpenChange (Escape)","event":"keydown","credited":"onOpenChange","stopped_at":"network","observed":["onOpenChange as onOpenChange on keydown (native_listener)"]}
+{"run":3,"case":"Radix Dialog onOpenChange (overlay)","event":"pointerdown","credited":"onOpenChange","stopped_at":"network","observed":["onOpenChange as onOpenChange on pointerdown (native_listener)"]}
+{"run":3,"case":"zustand store write (onClick)","event":"click","credited":"cartClick","stopped_at":"network","observed":["cartClick as onClick on click (react_event_system)"],"cart_sync_owner":"click"}
+{"run":3,"case":"Archive onClick (onContextMenu declared, never run)","event":"click","credited":"archiveClick","stopped_at":"network","observed":["archiveClick as onClick on click (react_event_system)"]}
+{"run":3,"case":"onFocus from .focus() in a click handler","invocation":{"action_event":"focusin","invoked_by":"app_code","caused_by_is_click":true},"request_owner":"focusin"}
+{"run":3,"case":"onFocus from .focus() in a mount timer","invocation":{"action_event":"focusin","invoked_by":"app_code","cause_abstained":"no_action_on_frame"},"request_owner":"focusin"}
+{"run":3,"case":"contenteditable onInput","event":"input","credited":"scratchInput","stopped_at":"network","observed":["scratchInput as onInput on input (react_event_system)"]}
+{"run":3,"case":"Ping onClick (audit capture listener ran first)","event":"click","credited":"pingClick","stopped_at":"network","observed":["pingClick as onClick on click (react_event_system)"]}
+{"run":3,"case":"callback written inside onSubmit, called by a form library in a promise continuation","event":"submit","credited":"profileSaved","stopped_at":"browser","observed":["profileSaved as onSubmit on submit (dispatch_continuation)"]}
+{"run":3,"case":"one no-argument function on onKeyDown and onClick (click)","event":"click","credited":"handleDual","stopped_at":"browser","observed":["handleDual as null on click (react_event_system)"]}
+{"run":3,"case":"one function with an event parameter on onKeyDown and onClick (mouse click)","event":"click","credited":"handleDualEvent","stopped_at":"browser","observed":["handleDualEvent as onClick on click (react_event_system)"]}
+{"run":3,"case":"onPointerDown={s} onClick={s}, s sends (click)","event":"click","credited":"sendDual","stopped_at":"network","observed":["sendDual as null on click (react_event_system)"]}
+{"run":3,"case":"target onMouseDown={h}, ancestor onClick={h} (click)","event":"click","credited":"handleNested","stopped_at":"browser","observed":["handleNested as onClick on click (react_event_system)"]}
+{"run":3,"case":"bound onClick beside a sending document capture listener","event":"click","credited":"onSaveReal","stopped_at":"network","observed":["onSaveReal as onClick on click (react_event_system)"]}
+{"run":3,"case":"state-only onClick beside a sending document capture listener","event":"click","credited":"onStateOnly","stopped_at":"network","observed":["onStateOnly as onClick on click (react_event_system)"]}
+{"run":3,"case":"react-hook-form handleSubmit(onValid), onValid named, state only","event":"submit","credited":null,"stopped_at":"entry_handler","because":"no element-bound handler of instrumented code ran; ran through library code on the element chain (not bound to an element prop Tracer can see): [function:17838db26b6e3a8d2a1d82cfc6da447a74bd5f062c022b0cca146ce55b69561b:12283:12315]; global listeners: []","observed":[]}
+{"run":3,"case":"vendor component calling a non-on* callback prop","event":"click","credited":null,"stopped_at":"entry_handler","because":"no element-bound handler of instrumented code ran; ran through library code on the element chain (not bound to an element prop Tracer can see): [function:17838db26b6e3a8d2a1d82cfc6da447a74bd5f062c022b0cca146ce55b69561b:12711:12736]; global listeners: [function:17838db26b6e3a8d2a1d82cfc6da447a74bd5f062c022b0cca146ce55b69561b:11463:11609, function:17838db26b6e3a8d2a1d82cfc6da447a74bd5f062c022b0cca146ce55b69561b:1337:1406]","observed":[]}
+[
+  {
+    "session": "s_86d5d2d5",
+    "actions": 573,
+    "bindings": 38,
+    "invocations": 4,
+    "pairs": [
+      "null@click",
+      "null@pointerdown",
+      "onChange@change",
+      "onChange@click",
+      "onChange@input",
+      "onClick@click",
+      "onDoubleClick@dblclick",
+      "onInput@input",
+      "onKeyDown@keydown",
+      "onMouseDown@mousedown",
+      "onOpenChange@click",
+      "onOpenChange@keydown",
+      "onOpenChange@pointerdown",
+      "onSubmit@submit",
+      "onValueChange@keydown",
+      "onValueChange@pointerup"
+    ]
+  },
+  {
+    "session": "s_4787a96b",
+    "actions": 572,
+    "bindings": 38,
+    "invocations": 4,
+    "pairs": [
+      "null@click",
+      "null@pointerdown",
+      "onChange@change",
+      "onChange@click",
+      "onChange@input",
+      "onClick@click",
+      "onDoubleClick@dblclick",
+      "onInput@input",
+      "onKeyDown@keydown",
+      "onMouseDown@mousedown",
+      "onOpenChange@click",
+      "onOpenChange@keydown",
+      "onOpenChange@pointerdown",
+      "onSubmit@submit",
+      "onValueChange@keydown",
+      "onValueChange@pointerup"
+    ]
+  },
+  {
+    "session": "s_c0ecf845",
+    "actions": 575,
+    "bindings": 38,
+    "invocations": 4,
+    "pairs": [
+      "null@click",
+      "null@pointerdown",
+      "onChange@change",
+      "onChange@click",
+      "onChange@input",
+      "onClick@click",
+      "onDoubleClick@dblclick",
+      "onInput@input",
+      "onKeyDown@keydown",
+      "onMouseDown@mousedown",
+      "onOpenChange@click",
+      "onOpenChange@keydown",
+      "onOpenChange@pointerdown",
+      "onSubmit@submit",
+      "onValueChange@keydown",
+      "onValueChange@pointerup"
+    ]
+  }
+]
+127/127 checks pass over 3 page loads; store /var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/tracer-handler-binding-store-ACxG4t
+kept store /var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/tracer-handler-binding-store-ACxG4t and fixture /private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-handler-binding-vh6U2L

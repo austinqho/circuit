@@ -1,0 +1,878 @@
+{
+  "schema": "producttrace.runtime-attribution-manifest.v1",
+  "first_party": {
+    "include": [],
+    "exclude": [
+      "**/node_modules/**",
+      "**/vendor/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/.git/**"
+    ],
+    "excluded_functions": {
+      "outside repository": 571
+    },
+    "excluded_modules": {}
+  },
+  "build": "e5d53039c2b3",
+  "functions": [
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:261:369",
+      "index": 0,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 261,
+        "end": 369
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 12526,
+        "end": 12902
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:371:9057",
+      "index": 1,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 371,
+        "end": 9057
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 12973,
+        "end": 34211
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:529:631",
+      "index": 2,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 529,
+        "end": 631
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 13320,
+        "end": 13772
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:566:630",
+      "index": 3,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 566,
+        "end": 630
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 13398,
+        "end": 13753
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:648:774",
+      "index": 4,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 648,
+        "end": 774
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 13849,
+        "end": 13986
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:798:847",
+      "index": 5,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 798,
+        "end": 847
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 14069,
+        "end": 14408
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:864:892",
+      "index": 6,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 864,
+        "end": 892
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 14485,
+        "end": 14803
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:914:951",
+      "index": 7,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 914,
+        "end": 951
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 14885,
+        "end": 15212
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:975:1010",
+      "index": 8,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 975,
+        "end": 1010
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 15296,
+        "end": 15621
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:1034:1065",
+      "index": 9,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1034,
+        "end": 1065
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 15705,
+        "end": 16026
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:1086:1118",
+      "index": 10,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1086,
+        "end": 1118
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 16107,
+        "end": 16430
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:1144:1209",
+      "index": 11,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1144,
+        "end": 1209
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 16517,
+        "end": 16877
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:1228:1273",
+      "index": 12,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1228,
+        "end": 1273
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 16957,
+        "end": 17296
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:1295:1324",
+      "index": 13,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1295,
+        "end": 1324
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 17379,
+        "end": 17702
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:1444:1760",
+      "index": 14,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1444,
+        "end": 1760
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 17788,
+        "end": 18529
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:1673:1707",
+      "index": 15,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1673,
+        "end": 1707
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 18175,
+        "end": 18209
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:1725:1749",
+      "index": 16,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1725,
+        "end": 1749
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 18287,
+        "end": 18311
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:1870:1939",
+      "index": 17,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1870,
+        "end": 1939
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 18612,
+        "end": 18981
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:1960:2017",
+      "index": 18,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1960,
+        "end": 2017
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 19063,
+        "end": 19420
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:2237:2290",
+      "index": 19,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 2237,
+        "end": 2290
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 19656,
+        "end": 20009
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:2322:2384",
+      "index": 20,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 2322,
+        "end": 2384
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 20102,
+        "end": 20464
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:2485:2736",
+      "index": 21,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 2485,
+        "end": 2736
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 20546,
+        "end": 21101
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:2757:2830",
+      "index": 22,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 2757,
+        "end": 2830
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 21183,
+        "end": 21521
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:2854:2944",
+      "index": 23,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 2854,
+        "end": 2944
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 21606,
+        "end": 21984
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:2968:3048",
+      "index": 24,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 2968,
+        "end": 3048
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 22069,
+        "end": 22455
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:3074:3214",
+      "index": 25,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 3074,
+        "end": 3214
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 22542,
+        "end": 22986
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:3236:3313",
+      "index": 26,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 3236,
+        "end": 3313
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 23069,
+        "end": 23446
+      }
+    },
+    {
+      "id": "function:1b13a00f528e0020742a611369df46c55c89237da8172ce623708834580f0b6f:6784:6820",
+      "index": 27,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 6784,
+        "end": 6820
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-outcome-labels-3m5Olo/client/dist/assets/index-DTe55FDJ.js",
+        "start": 29307,
+        "end": 29345
+      }
+    }
+  ],
+  "placements": [
+    {
+      "index": 0,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:3331:6271",
+      "key": "p_9f451aa8e178:3331-6271",
+      "file": "client/src/main.jsx",
+      "line": 70,
+      "tag": "main",
+      "component": "App",
+      "start": 3331,
+      "end": 6271
+    },
+    {
+      "index": 1,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:3344:3428",
+      "key": "p_9f451aa8e178:3344-3428",
+      "file": "client/src/main.jsx",
+      "line": 71,
+      "tag": "button",
+      "component": "App",
+      "start": 3344,
+      "end": 3428
+    },
+    {
+      "index": 2,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:3435:3504",
+      "key": "p_9f451aa8e178:3435-3504",
+      "file": "client/src/main.jsx",
+      "line": 72,
+      "tag": "button",
+      "component": "App",
+      "start": 3435,
+      "end": 3504
+    },
+    {
+      "index": 3,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:3511:3594",
+      "key": "p_9f451aa8e178:3511-3594",
+      "file": "client/src/main.jsx",
+      "line": 73,
+      "tag": "button",
+      "component": "App",
+      "start": 3511,
+      "end": 3594
+    },
+    {
+      "index": 4,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:3601:3688",
+      "key": "p_9f451aa8e178:3601-3688",
+      "file": "client/src/main.jsx",
+      "line": 74,
+      "tag": "button",
+      "component": "App",
+      "start": 3601,
+      "end": 3688
+    },
+    {
+      "index": 5,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:3695:3781",
+      "key": "p_9f451aa8e178:3695-3781",
+      "file": "client/src/main.jsx",
+      "line": 75,
+      "tag": "button",
+      "component": "App",
+      "start": 3695,
+      "end": 3781
+    },
+    {
+      "index": 6,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:3788:3869",
+      "key": "p_9f451aa8e178:3788-3869",
+      "file": "client/src/main.jsx",
+      "line": 76,
+      "tag": "button",
+      "component": "App",
+      "start": 3788,
+      "end": 3869
+    },
+    {
+      "index": 7,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:3876:3976",
+      "key": "p_9f451aa8e178:3876-3976",
+      "file": "client/src/main.jsx",
+      "line": 77,
+      "tag": "button",
+      "component": "App",
+      "start": 3876,
+      "end": 3976
+    },
+    {
+      "index": 8,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:3983:4064",
+      "key": "p_9f451aa8e178:3983-4064",
+      "file": "client/src/main.jsx",
+      "line": 78,
+      "tag": "button",
+      "component": "App",
+      "start": 3983,
+      "end": 4064
+    },
+    {
+      "index": 9,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:4071:4157",
+      "key": "p_9f451aa8e178:4071-4157",
+      "file": "client/src/main.jsx",
+      "line": 79,
+      "tag": "button",
+      "component": "App",
+      "start": 4071,
+      "end": 4157
+    },
+    {
+      "index": 10,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:4164:4258",
+      "key": "p_9f451aa8e178:4164-4258",
+      "file": "client/src/main.jsx",
+      "line": 80,
+      "tag": "button",
+      "component": "App",
+      "start": 4164,
+      "end": 4258
+    },
+    {
+      "index": 11,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:4265:4411",
+      "key": "p_9f451aa8e178:4265-4411",
+      "file": "client/src/main.jsx",
+      "line": 81,
+      "tag": "div",
+      "component": "App",
+      "start": 4265,
+      "end": 4411
+    },
+    {
+      "index": 12,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:4349:4398",
+      "key": "p_9f451aa8e178:4349-4398",
+      "file": "client/src/main.jsx",
+      "line": 82,
+      "tag": "span",
+      "component": "App",
+      "start": 4349,
+      "end": 4398
+    },
+    {
+      "index": 13,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:4418:4493",
+      "key": "p_9f451aa8e178:4418-4493",
+      "file": "client/src/main.jsx",
+      "line": 84,
+      "tag": "button",
+      "component": "App",
+      "start": 4418,
+      "end": 4493
+    },
+    {
+      "index": 14,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:4500:4580",
+      "key": "p_9f451aa8e178:4500-4580",
+      "file": "client/src/main.jsx",
+      "line": 85,
+      "tag": "button",
+      "component": "App",
+      "start": 4500,
+      "end": 4580
+    },
+    {
+      "index": 15,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:4587:4667",
+      "key": "p_9f451aa8e178:4587-4667",
+      "file": "client/src/main.jsx",
+      "line": 86,
+      "tag": "button",
+      "component": "App",
+      "start": 4587,
+      "end": 4667
+    },
+    {
+      "index": 16,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:4674:4993",
+      "key": "p_9f451aa8e178:4674-4993",
+      "file": "client/src/main.jsx",
+      "line": 87,
+      "tag": "form",
+      "component": "App",
+      "start": 4674,
+      "end": 4993
+    },
+    {
+      "index": 17,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:4746:4843",
+      "key": "p_9f451aa8e178:4746-4843",
+      "file": "client/src/main.jsx",
+      "line": 88,
+      "tag": "input",
+      "component": "App",
+      "start": 4746,
+      "end": 4843,
+      "bound": {
+        "onChange": [
+          27
+        ]
+      }
+    },
+    {
+      "index": 18,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:4852:4926",
+      "key": "p_9f451aa8e178:4852-4926",
+      "file": "client/src/main.jsx",
+      "line": 89,
+      "tag": "button",
+      "component": "App",
+      "start": 4852,
+      "end": 4926
+    },
+    {
+      "index": 19,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:4944:4971",
+      "key": "p_9f451aa8e178:4944-4971",
+      "file": "client/src/main.jsx",
+      "line": 90,
+      "tag": "p",
+      "component": "App",
+      "start": 4944,
+      "end": 4971
+    },
+    {
+      "index": 20,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:5000:5196",
+      "key": "p_9f451aa8e178:5000-5196",
+      "file": "client/src/main.jsx",
+      "line": 92,
+      "tag": "form",
+      "component": "App",
+      "start": 5000,
+      "end": 5196
+    },
+    {
+      "index": 21,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:5059:5109",
+      "key": "p_9f451aa8e178:5059-5109",
+      "file": "client/src/main.jsx",
+      "line": 93,
+      "tag": "input",
+      "component": "App",
+      "start": 5059,
+      "end": 5109
+    },
+    {
+      "index": 22,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:5118:5182",
+      "key": "p_9f451aa8e178:5118-5182",
+      "file": "client/src/main.jsx",
+      "line": 94,
+      "tag": "button",
+      "component": "App",
+      "start": 5118,
+      "end": 5182
+    },
+    {
+      "index": 23,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:5203:5399",
+      "key": "p_9f451aa8e178:5203-5399",
+      "file": "client/src/main.jsx",
+      "line": 96,
+      "tag": "form",
+      "component": "App",
+      "start": 5203,
+      "end": 5399
+    },
+    {
+      "index": 24,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:5258:5295",
+      "key": "p_9f451aa8e178:5258-5295",
+      "file": "client/src/main.jsx",
+      "line": 97,
+      "tag": "input",
+      "component": "App",
+      "start": 5258,
+      "end": 5295
+    },
+    {
+      "index": 25,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:5304:5385",
+      "key": "p_9f451aa8e178:5304-5385",
+      "file": "client/src/main.jsx",
+      "line": 98,
+      "tag": "button",
+      "component": "App",
+      "start": 5304,
+      "end": 5385
+    },
+    {
+      "index": 26,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:5406:5599",
+      "key": "p_9f451aa8e178:5406-5599",
+      "file": "client/src/main.jsx",
+      "line": 100,
+      "tag": "form",
+      "component": "App",
+      "start": 5406,
+      "end": 5599
+    },
+    {
+      "index": 27,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:5472:5515",
+      "key": "p_9f451aa8e178:5472-5515",
+      "file": "client/src/main.jsx",
+      "line": 101,
+      "tag": "input",
+      "component": "App",
+      "start": 5472,
+      "end": 5515
+    },
+    {
+      "index": 28,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:5524:5585",
+      "key": "p_9f451aa8e178:5524-5585",
+      "file": "client/src/main.jsx",
+      "line": 102,
+      "tag": "button",
+      "component": "App",
+      "start": 5524,
+      "end": 5585
+    },
+    {
+      "index": 29,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:5606:5897",
+      "key": "p_9f451aa8e178:5606-5897",
+      "file": "client/src/main.jsx",
+      "line": 104,
+      "tag": "form",
+      "component": "App",
+      "start": 5606,
+      "end": 5897
+    },
+    {
+      "index": 30,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:5680:5734",
+      "key": "p_9f451aa8e178:5680-5734",
+      "file": "client/src/main.jsx",
+      "line": 105,
+      "tag": "input",
+      "component": "App",
+      "start": 5680,
+      "end": 5734
+    },
+    {
+      "index": 31,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:5762:5799",
+      "key": "p_9f451aa8e178:5762-5799",
+      "file": "client/src/main.jsx",
+      "line": 106,
+      "tag": "input",
+      "component": "App",
+      "start": 5762,
+      "end": 5799
+    },
+    {
+      "index": 32,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:5816:5883",
+      "key": "p_9f451aa8e178:5816-5883",
+      "file": "client/src/main.jsx",
+      "line": 107,
+      "tag": "button",
+      "component": "App",
+      "start": 5816,
+      "end": 5883
+    },
+    {
+      "index": 33,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:5904:6223",
+      "key": "p_9f451aa8e178:5904-6223",
+      "file": "client/src/main.jsx",
+      "line": 109,
+      "tag": "form",
+      "component": "App",
+      "start": 5904,
+      "end": 6223
+    },
+    {
+      "index": 34,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:5986:6050",
+      "key": "p_9f451aa8e178:5986-6050",
+      "file": "client/src/main.jsx",
+      "line": 110,
+      "tag": "input",
+      "component": "App",
+      "start": 5986,
+      "end": 6050
+    },
+    {
+      "index": 35,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:6087:6105",
+      "key": "p_9f451aa8e178:6087-6105",
+      "file": "client/src/main.jsx",
+      "line": 111,
+      "tag": "p",
+      "component": "App",
+      "start": 6087,
+      "end": 6105
+    },
+    {
+      "index": 36,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:6122:6209",
+      "key": "p_9f451aa8e178:6122-6209",
+      "file": "client/src/main.jsx",
+      "line": 112,
+      "tag": "button",
+      "component": "App",
+      "start": 6122,
+      "end": 6209
+    },
+    {
+      "index": 37,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:6230:6259",
+      "key": "p_9f451aa8e178:6230-6259",
+      "file": "client/src/main.jsx",
+      "line": 114,
+      "tag": "p",
+      "component": "App",
+      "start": 6230,
+      "end": 6259
+    },
+    {
+      "index": 38,
+      "id": "placement:9f451aa8e17814389beac9a58ee03a07a89321afd6862f663e326cffcb971d12:6331:6338",
+      "key": "p_9f451aa8e178:6331-6338",
+      "file": "client/src/main.jsx",
+      "line": 119,
+      "tag": "App",
+      "component": "App",
+      "start": 6331,
+      "end": 6338
+    }
+  ],
+  "placement_short_key_collisions": 0,
+  "library_boundaries": []
+}

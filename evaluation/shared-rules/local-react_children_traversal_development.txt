@@ -1,0 +1,1 @@
+{"passed":true,"mode":"development","api_versions":6,"wrong_rules_rejected":18,"model_requests":0}

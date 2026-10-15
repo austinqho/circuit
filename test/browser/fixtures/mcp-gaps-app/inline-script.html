@@ -1,0 +1,18 @@
+<script>
+  // Uninstrumented inline script (never transformed): its own interval, armed
+  // at load, watches a flag the app renders. When the flag turns on it sends
+  // one fetch (the runtime's wrapper sees it, outside every action) and one
+  // beacon (unwrapped: the server sees it, the page records nothing).
+  (function () {
+    var last = null;
+    setInterval(function () {
+      var node = document.querySelector('[data-sync-flag]');
+      var value = node ? node.getAttribute('data-sync-flag') : null;
+      if (last !== null && value !== last && value === 'on') {
+        fetch('/api/audit?flag=' + value);
+        navigator.sendBeacon('/api/sync?flag=' + value, 'x');
+      }
+      last = value;
+    }, 50);
+  })();
+</script>

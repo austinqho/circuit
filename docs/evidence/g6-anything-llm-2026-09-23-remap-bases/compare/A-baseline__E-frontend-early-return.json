@@ -1,0 +1,199 @@
+{
+  "pair": {
+    "before": {
+      "label": "A-baseline",
+      "run_id": "run-20260923t130550436z-c45798",
+      "build": "b-2dc9ecff4d63b25e",
+      "commit": "ad97bc8dfcb6919f34f7d6d0c722efdda64d66d9",
+      "step": "rename-workspace",
+      "event": "submit",
+      "action_id": "action:mue48zaw:65",
+      "rule": "the unique dom.action with event \"submit\", tracer_run run-20260923t130550436z-c45798, timestamp within step \"rename-workspace\" [1790168743881, 1790168745631]"
+    },
+    "after": {
+      "label": "E-frontend-early-return",
+      "run_id": "run-20260923t131912210z-854780",
+      "build": "b-492209beb3a2e901",
+      "commit": "879685d1bf9974b4d90b8cd6d79588136228c2c1",
+      "step": "rename-workspace",
+      "event": "submit",
+      "action_id": "action:mue4q5xu:65",
+      "rule": "the unique dom.action with event \"submit\", tracer_run run-20260923t131912210z-854780, timestamp within step \"rename-workspace\" [1790169545636, 1790169547380]"
+    }
+  },
+  "server_args": [
+    "--store",
+    "/private/tmp/claude-501/-Users-austinho-Library-Application-Support-Claude-scratch-workspaces-1c21c045-4b72-40dc-b405-1b676c72d16a-1c1f33c0-1d92-43f7-a0a5-29d7681ec526-scratch-2026-09-23-235d37/3e0813a9-6037-4f56-b509-bc507e2c34d5/scratchpad/st2",
+    "--source-root",
+    "/Users/austinho/dev/fixtures/anything-llm"
+  ],
+  "compare_chains": {
+    "status": "ok",
+    "tool": "compare_chains",
+    "store": {
+      "records": 40391,
+      "actions": 408,
+      "sessions": 12,
+      "episodes": 60,
+      "spans": 6924,
+      "backend_instrumented": true,
+      "stamps": false,
+      "builds": [],
+      "manifest_functions": 5109,
+      "source_root": "/Users/austinho/dev/fixtures/anything-llm",
+      "manifest_builds": [
+        "b-2dc9ecff4d63b25e",
+        "b-492209beb3a2e901",
+        "b-a33d446fe91e8701"
+      ],
+      "runs": 6,
+      "malformed_records": 0,
+      "malformed_spans": 0
+    },
+    "before": {
+      "action_id": "action:mue48zaw:65",
+      "episode_id": "episode:form:mue48ri8-i08v197j3fa:object%3A48",
+      "reached": "handler",
+      "stopped_at": "handler",
+      "because": "no database span descends from the admitted handler span"
+    },
+    "after": {
+      "action_id": "action:mue4q5xu:65",
+      "episode_id": "episode:form:mue4py6g-f0loorm0svg:object%3A48",
+      "reached": "validation",
+      "stopped_at": "validation",
+      "because": "the submit produced no request and the same form mutated (validation)"
+    },
+    "same_episode": false,
+    "stops": [
+      {
+        "stop": "entry_handler",
+        "key": "entry_handler",
+        "status": "changed",
+        "change_kind": "source_revision",
+        "before": {
+          "function_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488",
+          "event": "submit",
+          "source": {
+            "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx",
+            "start": 931,
+            "end": 1488,
+            "line": 26,
+            "line_status": "ok"
+          }
+        },
+        "after": {
+          "function_id": "function:7aef3dca1bd344bd5de62a8414dd535299acf351ceac6871111d144d76ca99a4:931:1540",
+          "event": "submit",
+          "source": {
+            "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx",
+            "start": 931,
+            "end": 1540,
+            "line": null,
+            "line_status": "stale_build"
+          }
+        },
+        "change_basis": "name_match",
+        "remap": {
+          "from_build": "b-2dc9ecff4d63b25e",
+          "to_build": "b-492209beb3a2e901",
+          "status": "mapped",
+          "basis": "name_match",
+          "mapped_id": "function:7aef3dca1bd344bd5de62a8414dd535299acf351ceac6871111d144d76ca99a4:931:1540",
+          "file": "frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx",
+          "ordinal": 3,
+          "functions_in_file": 4,
+          "tried": [
+            "text_match: no function with the same normalised text"
+          ],
+          "reverse_mapped_id": "function:c85152dc1524ae6b2d024eddc34f6e1914919e20c71fe964c1a3bde8c0439099:931:1488",
+          "reverse_basis": "name_match"
+        },
+        "detail": "same function after remapping through the other build's manifest by name_match (position 4 of 4 functions in frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx); the file content changed between builds"
+      },
+      {
+        "stop": "request",
+        "key": "POST /api/workspace/tracer-g2/update",
+        "status": "removed",
+        "change_kind": null,
+        "before": "POST /api/workspace/tracer-g2/update",
+        "after": null,
+        "detail": null
+      },
+      {
+        "stop": "route",
+        "key": "/api/workspace/:slug/update",
+        "status": "removed",
+        "change_kind": null,
+        "before": "POST /api/workspace/:slug/update 200",
+        "after": null,
+        "detail": null
+      },
+      {
+        "stop": "handler",
+        "key": "/api/workspace/:slug/update#0",
+        "status": "removed",
+        "change_kind": null,
+        "before": "validatedRequest",
+        "after": null,
+        "detail": null
+      },
+      {
+        "stop": "handler",
+        "key": "/api/workspace/:slug/update#1",
+        "status": "removed",
+        "change_kind": null,
+        "before": "<anonymous>",
+        "after": null,
+        "detail": null
+      },
+      {
+        "stop": "handler",
+        "key": "/api/workspace/:slug/update#2",
+        "status": "removed",
+        "change_kind": null,
+        "before": "<anonymous>",
+        "after": null,
+        "detail": null
+      }
+    ],
+    "outcome_delta": {
+      "before": {
+        "stage": "stopped",
+        "status": "incomplete",
+        "http_status": 200,
+        "writes": [],
+        "reads": [],
+        "stop_reason": "no_database_effect_before_idle",
+        "stopped_at": "handler"
+      },
+      "after": {
+        "stage": "rejected",
+        "status": "incomplete",
+        "http_status": null,
+        "writes": [],
+        "reads": [],
+        "stop_reason": "submit_rejected_by_app",
+        "stopped_at": "validation"
+      },
+      "changed": [
+        "stage",
+        "http_status",
+        "stop_reason",
+        "stopped_at"
+      ]
+    },
+    "path_changed": true,
+    "path_change_reasons": [
+      "request",
+      "route",
+      "handler",
+      "outcome"
+    ],
+    "summary": "runtime path changed (request, route, handler, outcome): 1 changed, 5 removed; entry_handler changed (source_revision); outcome stage \"stopped\" → \"rejected\", http_status 200 → null, stop_reason \"no_database_effect_before_idle\" → \"submit_rejected_by_app\", stopped_at \"handler\" → \"validation\". Before: submit action:mue48zaw:65 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g2/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span. After: submit action:mue4q5xu:65 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx@931-1540: reached validation / stopped at validation / because the submit produced no request and the same form mutated (validation)"
+  },
+  "action_chain_summaries": {
+    "before": "submit action:mue48zaw:65 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx:26 → POST /api/workspace/tracer-g2/update → route /api/workspace/:slug/update 200 → server validatedRequest,<anonymous>,<anonymous>: reached handler / stopped at handler / because no database span descends from the admitted handler span",
+    "after": "submit action:mue4q5xu:65 → handler frontend/src/pages/WorkspaceSettings/GeneralAppearance/index.jsx@931-1540: reached validation / stopped at validation / because the submit produced no request and the same form mutated (validation)"
+  }
+}

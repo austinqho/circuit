@@ -1,0 +1,103 @@
+[producttrace] first-party: 25 functions instrumented; excluded functions by rule: none; excluded modules by rule: none; include=[] exclude=["**/node_modules/**","**/vendor/**","**/dist/**","**/build/**","**/.git/**"]
+{
+  "status": "ok",
+  "headless": true,
+  "summary": {
+    "/api/poll": [
+      {
+        "action_id": null,
+        "linkage_kind": null,
+        "parent": null
+      },
+      {
+        "action_id": null,
+        "linkage_kind": null,
+        "parent": null
+      },
+      {
+        "action_id": null,
+        "linkage_kind": null,
+        "parent": null
+      },
+      {
+        "action_id": null,
+        "linkage_kind": null,
+        "parent": null
+      },
+      {
+        "action_id": null,
+        "linkage_kind": null,
+        "parent": null
+      },
+      {
+        "action_id": null,
+        "linkage_kind": null,
+        "parent": null
+      }
+    ],
+    "/api/unrelated": [
+      {
+        "action_id": null,
+        "linkage_kind": null,
+        "parent": null
+      },
+      {
+        "action_id": null,
+        "linkage_kind": null,
+        "parent": null
+      }
+    ],
+    "/api/state-effect": [
+      {
+        "action_id": "action:mue4gul9:2",
+        "linkage_kind": "state_effect",
+        "parent": "continuation:action:mue4gul9:2:function:38"
+      }
+    ],
+    "/api/submit": [
+      {
+        "action_id": "action:mue4gux0:4",
+        "linkage_kind": "state_effect",
+        "parent": "continuation:action:mue4gux0:4:await:58"
+      }
+    ],
+    "/api/after-await": [
+      {
+        "action_id": "action:mue4gv8j:6",
+        "linkage_kind": "direct",
+        "parent": "continuation:action:mue4gv8j:6:await:67"
+      }
+    ]
+  },
+  "stats": {
+    "commits": 5,
+    "hosts_checked": 41,
+    "stamped_nodes": 7,
+    "stamp_rows": 7,
+    "unplaced_nodes": 0,
+    "invalid_keys": 0,
+    "annotation_written": 0,
+    "annotation_rejected": 0,
+    "errors": 0,
+    "state_receipts_recorded": 4,
+    "state_receipts_applied": 2,
+    "await_resumptions": 5,
+    "build": "61750344fba2",
+    "placements": 14
+  },
+  "global_listener_abstention": {
+    "stopped_at": "handler",
+    "because": "no element-bound handler ran; global listeners: [function:6e77b18689cf723aa2ab44aae1f4d0ae7b32272945f7ed4f91ff4571445b46ca:2541:2638]",
+    "global_listeners": [
+      "function:6e77b18689cf723aa2ab44aae1f4d0ae7b32272945f7ed4f91ff4571445b46ca:2541:2638"
+    ],
+    "bound_handlers": [],
+    "library_bound": 0
+  },
+  "receipts_off_state_effect": [
+    null
+  ],
+  "await_off_after_await": [
+    null
+  ]
+}

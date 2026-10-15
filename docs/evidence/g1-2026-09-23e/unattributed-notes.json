@@ -1,0 +1,8 @@
+[
+ {"url": "^GET /api/(roles|user$)", "step": 1, "note": "post-login: queries mounted by the route change after the login response; their observers subscribe in passive effects flushed on React's scheduler with no receipt reaching those fibers (abstention)"},
+ {"url": "^GET /api/", "step": 1, "note": "post-login batch: react-query observers of the newly routed chat view, subscribed in effects flushed on React's scheduler message (a 'scheduler' lineage) without a receipt on their fibers (abstention)"},
+ {"url": "^GET /health", "note": "periodic health poll from a timer armed before any action (correctly unowned)"},
+ {"url": "^GET /api/messages/", "note": "react-query refetch of the conversation after the stream finished: created by the stream's end handler through query invalidation flushed on the scheduler without a receipt (abstention)"},
+ {"url": "^GET /api/agents/chat/status/", "note": "stream status poll created after the stream ended, from an effect flushed on the scheduler without a receipt (abstention)"},
+ {"url": "^GET /api/(agents|permissions)/", "step": 8, "note": "after agent create: queries for the newly selected agent mounted by the panel re-render; observers subscribed in scheduler-flushed effects whose fibers carry no receipt (abstention)"}
+]

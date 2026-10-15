@@ -1,0 +1,448 @@
+{
+  "source_revision": "9f76161d",
+  "source_file": "analysis/react-semantics.mjs",
+  "source_sha256": "7b9af9edb6d0ac97152c6130036469d2751624eefce5517b8165c9c2daa97af5",
+  "scope": "Public inventory only. This carries no bank programs or pass assertions.",
+  "rows": [
+    {
+      "id": "react/useCallback/18.3.1",
+      "surface": "react",
+      "export_name": "useCallback",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/useMemo/18.3.1",
+      "surface": "react",
+      "export_name": "useMemo",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/useTransition/18.3.1",
+      "surface": "react",
+      "export_name": "useTransition",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/useDeferredValue/18.3.1",
+      "surface": "react",
+      "export_name": "useDeferredValue",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/useState/18.3.1",
+      "surface": "react",
+      "export_name": "useState",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/useReducer/18.3.1",
+      "surface": "react",
+      "export_name": "useReducer",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/createContext/18.3.1",
+      "surface": "react",
+      "export_name": "createContext",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/useContext/18.3.1",
+      "surface": "react",
+      "export_name": "useContext",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/createRef/18.3.1",
+      "surface": "react",
+      "export_name": "createRef",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/useRef/18.3.1",
+      "surface": "react",
+      "export_name": "useRef",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/forwardRef/18.3.1",
+      "surface": "react",
+      "export_name": "forwardRef",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/memo/18.3.1",
+      "surface": "react",
+      "export_name": "memo",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/Component/18.3.1",
+      "surface": "react",
+      "export_name": "Component",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/PureComponent/18.3.1",
+      "surface": "react",
+      "export_name": "PureComponent",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/startTransition/18.3.1",
+      "surface": "react",
+      "export_name": "startTransition",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react-dom/flushSync/18.3.1",
+      "surface": "react-dom",
+      "export_name": "flushSync",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react-dom/unstable_batchedUpdates/18.3.1",
+      "surface": "react-dom",
+      "export_name": "unstable_batchedUpdates",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/useDebugValue/18.3.1",
+      "surface": "react",
+      "export_name": "useDebugValue",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/version/18.3.1",
+      "surface": "react",
+      "export_name": "version",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/Children/18.3.1",
+      "surface": "react",
+      "export_name": "Children",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/Fragment/18.3.1",
+      "surface": "react",
+      "export_name": "Fragment",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/Profiler/18.3.1",
+      "surface": "react",
+      "export_name": "Profiler",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/StrictMode/18.3.1",
+      "surface": "react",
+      "export_name": "StrictMode",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/Suspense/18.3.1",
+      "surface": "react",
+      "export_name": "Suspense",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/act/18.3.1",
+      "surface": "react",
+      "export_name": "act",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/cloneElement/18.3.1",
+      "surface": "react",
+      "export_name": "cloneElement",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/createElement/18.3.1",
+      "surface": "react",
+      "export_name": "createElement",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/createFactory/18.3.1",
+      "surface": "react",
+      "export_name": "createFactory",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/isValidElement/18.3.1",
+      "surface": "react",
+      "export_name": "isValidElement",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/lazy/18.3.1",
+      "surface": "react",
+      "export_name": "lazy",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/useEffect/18.3.1",
+      "surface": "react",
+      "export_name": "useEffect",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/useId/18.3.1",
+      "surface": "react",
+      "export_name": "useId",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/useImperativeHandle/18.3.1",
+      "surface": "react",
+      "export_name": "useImperativeHandle",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/useInsertionEffect/18.3.1",
+      "surface": "react",
+      "export_name": "useInsertionEffect",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/useLayoutEffect/18.3.1",
+      "surface": "react",
+      "export_name": "useLayoutEffect",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/useSyncExternalStore/18.3.1",
+      "surface": "react",
+      "export_name": "useSyncExternalStore",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react/unstable_act/18.3.1",
+      "surface": "react",
+      "export_name": "unstable_act",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react-dom/version/18.3.1",
+      "surface": "react-dom",
+      "export_name": "version",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react-dom/createPortal/18.3.1",
+      "surface": "react-dom",
+      "export_name": "createPortal",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react-dom/findDOMNode/18.3.1",
+      "surface": "react-dom",
+      "export_name": "findDOMNode",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react-dom/hydrate/18.3.1",
+      "surface": "react-dom",
+      "export_name": "hydrate",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react-dom/render/18.3.1",
+      "surface": "react-dom",
+      "export_name": "render",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react-dom/unmountComponentAtNode/18.3.1",
+      "surface": "react-dom",
+      "export_name": "unmountComponentAtNode",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react-dom/unstable_renderSubtreeIntoContainer/18.3.1",
+      "surface": "react-dom",
+      "export_name": "unstable_renderSubtreeIntoContainer",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react-dom/createRoot/18.3.1",
+      "surface": "react-dom",
+      "export_name": "createRoot",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react-dom/hydrateRoot/18.3.1",
+      "surface": "react-dom",
+      "export_name": "hydrateRoot",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react-dom/client/createRoot/18.3.1",
+      "surface": "react-dom/client",
+      "export_name": "createRoot",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react-dom/client/hydrateRoot/18.3.1",
+      "surface": "react-dom/client",
+      "export_name": "hydrateRoot",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react-dom/server/version/18.3.1",
+      "surface": "react-dom/server",
+      "export_name": "version",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react-dom/server/renderToNodeStream/18.3.1",
+      "surface": "react-dom/server",
+      "export_name": "renderToNodeStream",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react-dom/server/renderToStaticMarkup/18.3.1",
+      "surface": "react-dom/server",
+      "export_name": "renderToStaticMarkup",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react-dom/server/renderToStaticNodeStream/18.3.1",
+      "surface": "react-dom/server",
+      "export_name": "renderToStaticNodeStream",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react-dom/server/renderToString/18.3.1",
+      "surface": "react-dom/server",
+      "export_name": "renderToString",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react-dom/server/renderToPipeableStream/18.3.1",
+      "surface": "react-dom/server",
+      "export_name": "renderToPipeableStream",
+      "versions": [
+        "18.3.1"
+      ]
+    },
+    {
+      "id": "react-dom/server/renderToReadableStream/18.3.1",
+      "surface": "react-dom/server",
+      "export_name": "renderToReadableStream",
+      "versions": [
+        "18.3.1"
+      ]
+    }
+  ]
+}

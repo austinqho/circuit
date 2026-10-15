@@ -1,0 +1,957 @@
+{
+  "dev": [
+    {
+      "route": "POST /api/projects/p_42/rename",
+      "bytes": 135,
+      "written": 0,
+      "closed": true,
+      "start": 1790276115347,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/report",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276115656,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/notes",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276115936,
+      "written_at_close": 0,
+      "open_ms": 1
+    },
+    {
+      "route": "GET /api/avatar",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276116236,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/stream",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276116526,
+      "written_at_close": 0,
+      "open_ms": 306
+    },
+    {
+      "route": "POST /api/items/i_9",
+      "bytes": 67,
+      "written": 0,
+      "closed": true,
+      "start": 1790276117587,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "POST /api/upload",
+      "bytes": 1300,
+      "written": 0,
+      "closed": true,
+      "start": 1790276117889,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "POST /api/notes",
+      "bytes": 57,
+      "written": 0,
+      "closed": true,
+      "start": 1790276118175,
+      "written_at_close": 0,
+      "open_ms": 1
+    },
+    {
+      "route": "POST /api/keys",
+      "bytes": 931,
+      "written": 0,
+      "closed": true,
+      "start": 1790276118467,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/ticker",
+      "bytes": 0,
+      "written": 200,
+      "closed": true,
+      "start": 1790276118770,
+      "written_at_close": 200,
+      "open_ms": 57
+    },
+    {
+      "route": "GET /api/longtext",
+      "bytes": 0,
+      "written": 20480,
+      "closed": true,
+      "start": 1790276120370,
+      "written_at_close": 20480,
+      "open_ms": 155
+    },
+    {
+      "route": "DELETE /api/entries/e_1",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276120817,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/untyped",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276121110,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "PUT /api/blob",
+      "bytes": 11,
+      "written": 0,
+      "closed": true,
+      "start": 1790276121411,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/pipe-text",
+      "bytes": 0,
+      "written": 200,
+      "closed": true,
+      "start": 1790276121700,
+      "written_at_close": 200,
+      "open_ms": 53
+    },
+    {
+      "route": "GET /api/pipe-json",
+      "bytes": 0,
+      "written": 203,
+      "closed": true,
+      "start": 1790276123303,
+      "written_at_close": 203,
+      "open_ms": 55
+    },
+    {
+      "route": "GET /api/quick",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276124903,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/quick",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276124906,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/quick",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276125119,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "POST /api/slow",
+      "bytes": 2,
+      "written": 0,
+      "closed": true,
+      "start": 1790276125133,
+      "written_at_close": 0,
+      "open_ms": 1
+    },
+    {
+      "route": "GET /api/quick",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276125461,
+      "written_at_close": 0,
+      "open_ms": 0
+    }
+  ],
+  "dev_off": [
+    {
+      "route": "POST /api/projects/p_42/rename",
+      "bytes": 135,
+      "written": 0,
+      "closed": true,
+      "start": 1790276129254,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/report",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276129572,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/notes",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276129845,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/avatar",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276130144,
+      "written_at_close": 0,
+      "open_ms": 1
+    },
+    {
+      "route": "GET /api/stream",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276130444,
+      "written_at_close": 0,
+      "open_ms": 304
+    },
+    {
+      "route": "POST /api/items/i_9",
+      "bytes": 67,
+      "written": 0,
+      "closed": true,
+      "start": 1790276131503,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "POST /api/upload",
+      "bytes": 1300,
+      "written": 0,
+      "closed": true,
+      "start": 1790276131806,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "POST /api/notes",
+      "bytes": 57,
+      "written": 0,
+      "closed": true,
+      "start": 1790276132077,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "POST /api/keys",
+      "bytes": 931,
+      "written": 0,
+      "closed": true,
+      "start": 1790276132376,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/ticker",
+      "bytes": 0,
+      "written": 200,
+      "closed": true,
+      "start": 1790276132669,
+      "written_at_close": 200,
+      "open_ms": 53
+    },
+    {
+      "route": "GET /api/longtext",
+      "bytes": 0,
+      "written": 20480,
+      "closed": true,
+      "start": 1790276134271,
+      "written_at_close": 20480,
+      "open_ms": 154
+    },
+    {
+      "route": "DELETE /api/entries/e_1",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276134719,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/untyped",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276135018,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "PUT /api/blob",
+      "bytes": 11,
+      "written": 0,
+      "closed": true,
+      "start": 1790276135312,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/pipe-text",
+      "bytes": 0,
+      "written": 200,
+      "closed": true,
+      "start": 1790276135619,
+      "written_at_close": 200,
+      "open_ms": 55
+    },
+    {
+      "route": "GET /api/pipe-json",
+      "bytes": 0,
+      "written": 203,
+      "closed": true,
+      "start": 1790276137208,
+      "written_at_close": 203,
+      "open_ms": 52
+    },
+    {
+      "route": "GET /api/quick",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276138800,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/quick",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276138806,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/quick",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276139020,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "POST /api/slow",
+      "bytes": 2,
+      "written": 0,
+      "closed": true,
+      "start": 1790276139034,
+      "written_at_close": 0,
+      "open_ms": 1
+    },
+    {
+      "route": "GET /api/quick",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276139353,
+      "written_at_close": 0,
+      "open_ms": 0
+    }
+  ],
+  "prod": [
+    {
+      "route": "POST /api/projects/p_42/rename",
+      "bytes": 135,
+      "written": 0,
+      "closed": true,
+      "start": 1790276143155,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/report",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276143434,
+      "written_at_close": 0,
+      "open_ms": 1
+    },
+    {
+      "route": "GET /api/notes",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276143733,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/avatar",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276144025,
+      "written_at_close": 0,
+      "open_ms": 1
+    },
+    {
+      "route": "GET /api/stream",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276144320,
+      "written_at_close": 0,
+      "open_ms": 305
+    },
+    {
+      "route": "POST /api/items/i_9",
+      "bytes": 67,
+      "written": 0,
+      "closed": true,
+      "start": 1790276145386,
+      "written_at_close": 0,
+      "open_ms": 1
+    },
+    {
+      "route": "POST /api/upload",
+      "bytes": 1300,
+      "written": 0,
+      "closed": true,
+      "start": 1790276145688,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "POST /api/notes",
+      "bytes": 57,
+      "written": 0,
+      "closed": true,
+      "start": 1790276145961,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "POST /api/keys",
+      "bytes": 931,
+      "written": 0,
+      "closed": true,
+      "start": 1790276146263,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/ticker",
+      "bytes": 0,
+      "written": 200,
+      "closed": true,
+      "start": 1790276146535,
+      "written_at_close": 200,
+      "open_ms": 56
+    },
+    {
+      "route": "GET /api/longtext",
+      "bytes": 0,
+      "written": 20480,
+      "closed": true,
+      "start": 1790276148135,
+      "written_at_close": 20480,
+      "open_ms": 154
+    },
+    {
+      "route": "DELETE /api/entries/e_1",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276148583,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/untyped",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276148878,
+      "written_at_close": 0,
+      "open_ms": 1
+    },
+    {
+      "route": "PUT /api/blob",
+      "bytes": 11,
+      "written": 0,
+      "closed": true,
+      "start": 1790276149166,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/pipe-text",
+      "bytes": 0,
+      "written": 200,
+      "closed": true,
+      "start": 1790276149458,
+      "written_at_close": 200,
+      "open_ms": 52
+    },
+    {
+      "route": "GET /api/pipe-json",
+      "bytes": 0,
+      "written": 203,
+      "closed": true,
+      "start": 1790276151050,
+      "written_at_close": 203,
+      "open_ms": 51
+    },
+    {
+      "route": "GET /api/quick",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276152643,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/quick",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276152648,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/quick",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276152861,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "POST /api/slow",
+      "bytes": 2,
+      "written": 0,
+      "closed": true,
+      "start": 1790276152875,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/quick",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276153203,
+      "written_at_close": 0,
+      "open_ms": 0
+    }
+  ],
+  "prod_always": [
+    {
+      "route": "POST /api/projects/p_42/rename",
+      "bytes": 135,
+      "written": 0,
+      "closed": true,
+      "start": 1790276156985,
+      "written_at_close": 0,
+      "open_ms": 1
+    },
+    {
+      "route": "GET /api/report",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276157305,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/notes",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276157611,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/avatar",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276157911,
+      "written_at_close": 0,
+      "open_ms": 1
+    },
+    {
+      "route": "GET /api/stream",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276158211,
+      "written_at_close": 0,
+      "open_ms": 308
+    },
+    {
+      "route": "POST /api/items/i_9",
+      "bytes": 67,
+      "written": 0,
+      "closed": true,
+      "start": 1790276159270,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "POST /api/upload",
+      "bytes": 1300,
+      "written": 0,
+      "closed": true,
+      "start": 1790276159568,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "POST /api/notes",
+      "bytes": 57,
+      "written": 0,
+      "closed": true,
+      "start": 1790276159868,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "POST /api/keys",
+      "bytes": 931,
+      "written": 0,
+      "closed": true,
+      "start": 1790276160166,
+      "written_at_close": 0,
+      "open_ms": 1
+    },
+    {
+      "route": "GET /api/ticker",
+      "bytes": 0,
+      "written": 200,
+      "closed": true,
+      "start": 1790276160444,
+      "written_at_close": 200,
+      "open_ms": 53
+    },
+    {
+      "route": "GET /api/longtext",
+      "bytes": 0,
+      "written": 20480,
+      "closed": true,
+      "start": 1790276162042,
+      "written_at_close": 20480,
+      "open_ms": 156
+    },
+    {
+      "route": "DELETE /api/entries/e_1",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276162483,
+      "written_at_close": 0,
+      "open_ms": 1
+    },
+    {
+      "route": "GET /api/untyped",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276162773,
+      "written_at_close": 0,
+      "open_ms": 1
+    },
+    {
+      "route": "PUT /api/blob",
+      "bytes": 11,
+      "written": 0,
+      "closed": true,
+      "start": 1790276163070,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/pipe-text",
+      "bytes": 0,
+      "written": 200,
+      "closed": true,
+      "start": 1790276163369,
+      "written_at_close": 200,
+      "open_ms": 56
+    },
+    {
+      "route": "GET /api/pipe-json",
+      "bytes": 0,
+      "written": 203,
+      "closed": true,
+      "start": 1790276164972,
+      "written_at_close": 203,
+      "open_ms": 51
+    },
+    {
+      "route": "GET /api/quick",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276166570,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/quick",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276166573,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/quick",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276166786,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "POST /api/slow",
+      "bytes": 2,
+      "written": 0,
+      "closed": true,
+      "start": 1790276166800,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/quick",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276167129,
+      "written_at_close": 0,
+      "open_ms": 0
+    }
+  ],
+  "plain": [
+    {
+      "route": "POST /api/projects/p_42/rename",
+      "bytes": 135,
+      "written": 0,
+      "closed": true,
+      "start": 1790276170633,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/report",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276170934,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/notes",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276171226,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/avatar",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276171518,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/stream",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276171809,
+      "written_at_close": 0,
+      "open_ms": 306
+    },
+    {
+      "route": "POST /api/items/i_9",
+      "bytes": 67,
+      "written": 0,
+      "closed": true,
+      "start": 1790276172859,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "POST /api/upload",
+      "bytes": 1300,
+      "written": 0,
+      "closed": true,
+      "start": 1790276173152,
+      "written_at_close": 0,
+      "open_ms": 1
+    },
+    {
+      "route": "POST /api/notes",
+      "bytes": 57,
+      "written": 0,
+      "closed": true,
+      "start": 1790276173451,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "POST /api/keys",
+      "bytes": 931,
+      "written": 0,
+      "closed": true,
+      "start": 1790276173753,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/ticker",
+      "bytes": 0,
+      "written": 200,
+      "closed": true,
+      "start": 1790276174052,
+      "written_at_close": 200,
+      "open_ms": 55
+    },
+    {
+      "route": "GET /api/longtext",
+      "bytes": 0,
+      "written": 20480,
+      "closed": true,
+      "start": 1790276175652,
+      "written_at_close": 20480,
+      "open_ms": 156
+    },
+    {
+      "route": "DELETE /api/entries/e_1",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276176100,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/untyped",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276176396,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "PUT /api/blob",
+      "bytes": 11,
+      "written": 0,
+      "closed": true,
+      "start": 1790276176670,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/pipe-text",
+      "bytes": 0,
+      "written": 200,
+      "closed": true,
+      "start": 1790276176970,
+      "written_at_close": 200,
+      "open_ms": 54
+    },
+    {
+      "route": "GET /api/pipe-json",
+      "bytes": 0,
+      "written": 203,
+      "closed": true,
+      "start": 1790276178571,
+      "written_at_close": 203,
+      "open_ms": 53
+    },
+    {
+      "route": "GET /api/quick",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276180168,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/quick",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276180173,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "GET /api/quick",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276180386,
+      "written_at_close": 0,
+      "open_ms": 0
+    },
+    {
+      "route": "POST /api/slow",
+      "bytes": 2,
+      "written": 0,
+      "closed": true,
+      "start": 1790276180399,
+      "written_at_close": 0,
+      "open_ms": 1
+    },
+    {
+      "route": "GET /api/quick",
+      "bytes": 0,
+      "written": 0,
+      "closed": true,
+      "start": 1790276180719,
+      "written_at_close": 0,
+      "open_ms": 0
+    }
+  ]
+}

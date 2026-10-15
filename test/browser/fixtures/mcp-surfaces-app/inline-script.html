@@ -1,0 +1,19 @@
+<script>
+  // Uninstrumented inline script (never transformed): its own interval, armed
+  // at load, watches a flag the app sets. When the flag turns on it saves
+  // preferences with one fetch whose JSON body holds a checkbox value, an
+  // order and a count (the runtime's wrapper records it outside every action).
+  (function () {
+    var sent = false;
+    setInterval(function () {
+      if (sent || document.body.getAttribute('data-star') !== 'on') return;
+      sent = true;
+      fetch('/api/prefs', { method: 'PUT', headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ done: true, order: ['t2', 't1', 't3'], stars: 42 }) });
+      // A burst of 140 logged snapshots (~4 KB each): more stored bodies than one reply's budget.
+      var filler = new Array(4000).join('s');
+      for (var index = 0; index < 140; index += 1) fetch('/api/prefs/log', { method: 'PUT', headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ index: index, snapshot: filler }) });
+    }, 50);
+  })();
+</script>

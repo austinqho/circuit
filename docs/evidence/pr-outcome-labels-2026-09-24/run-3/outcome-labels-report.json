@@ -1,0 +1,2619 @@
+{
+  "store": "/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/tracer-outcome-labels-store-IB7eie",
+  "session": "s_f9e7cc6e",
+  "observed": {
+    "page_errors": [
+      "TypeError: Cannot read properties of null (reading 'length')",
+      "RangeError: rejected later"
+    ],
+    "dom": {
+      "seat_status": "Seat B is taken",
+      "profile_alert": "Name is required",
+      "subscribe_valid": false,
+      "draft_status": "draft kept locally",
+      "wizard_status": "step 2",
+      "inner_step_two": 1,
+      "inner_validated_step_two": 1
+    },
+    "responses": {
+      "/api/items": [
+        201,
+        201
+      ],
+      "/api/ping": [
+        200
+      ],
+      "/api/seats/A/claim": [
+        409
+      ],
+      "/api/profile": [
+        422
+      ],
+      "/api/reports": [
+        500,
+        500
+      ],
+      "/api/untraced": [
+        200
+      ],
+      "/api/lookup": [
+        200
+      ],
+      "/api/seats": [
+        200
+      ]
+    }
+  },
+  "checks": [
+    {
+      "name": "2xx with a DB-like effect span: every surface prints completed",
+      "pass": true,
+      "detail": {
+        "action_chain": "completed",
+        "display_status": "completed",
+        "chain_display": "completed",
+        "chain_outcome": "completed",
+        "recent_actions": "completed",
+        "element_history": "completed",
+        "attempt": "completed",
+        "compare_before": "completed",
+        "compare_after": "completed",
+        "live_viewer": "completed"
+      }
+    },
+    {
+      "name": "2xx with a DB-like effect span: status is in the documented label set",
+      "pass": true,
+      "detail": "completed"
+    },
+    {
+      "name": "2xx with a DB-like effect span: live viewer label = MCP label",
+      "pass": true,
+      "detail": [
+        "Completed 201: insert items",
+        "Completed 201: insert items"
+      ]
+    },
+    {
+      "name": "2xx with a DB-like effect span: summary lines carry [outcome completed 201]",
+      "pass": true,
+      "detail": "click action:mufuf0ba:2 → handler <unnamed> client/src/main.jsx@798-847 → 1 request: (1) <unnamed> client/src/main.jsx@648-774 → <unnamed> client/src/main.jsx@529-631 → POST /api/items → route /api/items 201 → server createItem → db insert items [completed 201] [outcome completed 201]: reached db / stopped at none (terminal effect observed) / because database write insert items joined by exact span parentage"
+    },
+    {
+      "name": "2xx with a DB-like effect span: exported action chain says completed",
+      "pass": true,
+      "detail": {
+        "status": "completed",
+        "http_status": 201,
+        "label": "Completed 201: insert items",
+        "sentence": "server responded 201 to POST /api/items; database write insert items joined under the request"
+      }
+    },
+    {
+      "name": "2xx with a DB-like effect span: http_status 201 on the outcome and the export",
+      "pass": true,
+      "detail": [
+        201,
+        201
+      ]
+    },
+    {
+      "name": "2xx with a DB-like effect span: never \"incomplete\"",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "2xx with effect: the label names the joined write",
+      "pass": true,
+      "detail": "Completed 201: insert items"
+    },
+    {
+      "name": "2xx without effect evidence: every surface prints responded",
+      "pass": true,
+      "detail": {
+        "action_chain": "responded",
+        "display_status": "responded",
+        "chain_display": "responded",
+        "chain_outcome": "responded",
+        "recent_actions": "responded",
+        "element_history": "responded",
+        "attempt": "responded",
+        "compare_before": "responded",
+        "compare_after": "responded",
+        "live_viewer": "responded"
+      }
+    },
+    {
+      "name": "2xx without effect evidence: status is in the documented label set",
+      "pass": true,
+      "detail": "responded"
+    },
+    {
+      "name": "2xx without effect evidence: live viewer label = MCP label",
+      "pass": true,
+      "detail": [
+        "Responded 200: no effect evidence",
+        "Responded 200: no effect evidence"
+      ]
+    },
+    {
+      "name": "2xx without effect evidence: summary lines carry [outcome responded 200; no effect evidence]",
+      "pass": true,
+      "detail": "click action:mufuf0t6:4 → handler <unnamed> client/src/main.jsx@864-892 → 1 request: (1) <unnamed> client/src/main.jsx@529-631 → GET /api/ping → route /api/ping 200 → server ping [responded 200; no effect evidence] [outcome responded 200; no effect evidence]: reached handler / stopped at handler / because no database span descends from the admitted handler span"
+    },
+    {
+      "name": "2xx without effect evidence: exported action chain says responded",
+      "pass": true,
+      "detail": {
+        "status": "responded",
+        "http_status": 200,
+        "note": "no effect evidence",
+        "label": "Responded 200: no effect evidence",
+        "sentence": "server responded 200 to GET /api/ping; no database span joined under the request (no effect evidence)"
+      }
+    },
+    {
+      "name": "2xx without effect evidence: http_status 200 on the outcome and the export",
+      "pass": true,
+      "detail": [
+        200,
+        200
+      ]
+    },
+    {
+      "name": "2xx without effect evidence: never \"incomplete\"",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "2xx without effect: note \"no effect evidence\"",
+      "pass": true,
+      "detail": [
+        "no effect evidence",
+        "handler"
+      ]
+    },
+    {
+      "name": "409 after a database read: every surface prints failed",
+      "pass": true,
+      "detail": {
+        "action_chain": "failed",
+        "display_status": "failed",
+        "chain_display": "failed",
+        "chain_outcome": "failed",
+        "recent_actions": "failed",
+        "element_history": "failed",
+        "attempt": "failed",
+        "compare_before": "failed",
+        "compare_after": "failed",
+        "live_viewer": "failed"
+      }
+    },
+    {
+      "name": "409 after a database read: status is in the documented label set",
+      "pass": true,
+      "detail": "failed"
+    },
+    {
+      "name": "409 after a database read: live viewer label = MCP label",
+      "pass": true,
+      "detail": [
+        "Failed 409: POST /api/seats/A/claim",
+        "Failed 409: POST /api/seats/A/claim"
+      ]
+    },
+    {
+      "name": "409 after a database read: summary lines carry [outcome failed 409]",
+      "pass": true,
+      "detail": "click action:mufuf1ad:6 → handler <unnamed> client/src/main.jsx@914-951 → 1 request (1 failed): (1) <unnamed> client/src/main.jsx@648-774 → <unnamed> client/src/main.jsx@529-631 → POST /api/seats/A/claim → route /api/seats/:seat/claim 409 → server claimSeat → db find seats [failed 409] [outcome failed 409]: reached db / stopped at none (terminal effect observed) / because server responded 409; database read find seats joined by exact span parentage; no write"
+    },
+    {
+      "name": "409 after a database read: exported action chain says failed",
+      "pass": true,
+      "detail": {
+        "status": "failed",
+        "http_status": 409,
+        "label": "Failed 409: POST /api/seats/A/claim",
+        "sentence": "server responded 409 to POST /api/seats/A/claim"
+      }
+    },
+    {
+      "name": "409 after a database read: http_status 409 on the outcome and the export",
+      "pass": true,
+      "detail": [
+        409,
+        409
+      ]
+    },
+    {
+      "name": "409 after a database read: no \"completed\" anywhere (JSON, display, summaries, export, viewer)",
+      "pass": true
+    },
+    {
+      "name": "409 after a database read: never \"incomplete\"",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "409: the engine did join the read (the old \"Effect: find seats\" / completed case)",
+      "pass": true,
+      "detail": [
+        {
+          "stop": "db",
+          "span_id": "90f1d0a778bd2a49",
+          "operation": "find",
+          "collection": "seats",
+          "write": false
+        }
+      ]
+    },
+    {
+      "name": "409: label and frontier state the status",
+      "pass": true,
+      "detail": [
+        "Failed 409: POST /api/seats/A/claim",
+        "server responded 409; database read find seats joined by exact span parentage; no write"
+      ]
+    },
+    {
+      "name": "422: every surface prints failed",
+      "pass": true,
+      "detail": {
+        "action_chain": "failed",
+        "display_status": "failed",
+        "chain_display": "failed",
+        "chain_outcome": "failed",
+        "recent_actions": "failed",
+        "element_history": "failed",
+        "attempt": "failed",
+        "compare_before": "failed",
+        "compare_after": "failed",
+        "live_viewer": "failed"
+      }
+    },
+    {
+      "name": "422: status is in the documented label set",
+      "pass": true,
+      "detail": "failed"
+    },
+    {
+      "name": "422: live viewer label = MCP label",
+      "pass": true,
+      "detail": [
+        "Failed 422: POST /api/profile",
+        "Failed 422: POST /api/profile"
+      ]
+    },
+    {
+      "name": "422: summary lines carry [outcome failed 422]",
+      "pass": true,
+      "detail": "click action:mufuf1rl:8 → handler <unnamed> client/src/main.jsx@975-1010 → 1 request (1 failed): (1) <unnamed> client/src/main.jsx@648-774 → <unnamed> client/src/main.jsx@529-631 → POST /api/profile → route /api/profile 422 → server saveProfile [failed 422] [outcome failed 422]: reached handler / stopped at handler / because server responded 422; no database span descends from the admitted handler span"
+    },
+    {
+      "name": "422: exported action chain says failed",
+      "pass": true,
+      "detail": {
+        "status": "failed",
+        "http_status": 422,
+        "label": "Failed 422: POST /api/profile",
+        "sentence": "server responded 422 to POST /api/profile"
+      }
+    },
+    {
+      "name": "422: http_status 422 on the outcome and the export",
+      "pass": true,
+      "detail": [
+        422,
+        422
+      ]
+    },
+    {
+      "name": "422: no \"completed\" anywhere (JSON, display, summaries, export, viewer)",
+      "pass": true
+    },
+    {
+      "name": "422: never \"incomplete\"",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "500: every surface prints failed",
+      "pass": true,
+      "detail": {
+        "action_chain": "failed",
+        "display_status": "failed",
+        "chain_display": "failed",
+        "chain_outcome": "failed",
+        "recent_actions": "failed",
+        "element_history": "failed",
+        "attempt": "failed",
+        "compare_before": "failed",
+        "compare_after": "failed",
+        "live_viewer": "failed"
+      }
+    },
+    {
+      "name": "500: status is in the documented label set",
+      "pass": true,
+      "detail": "failed"
+    },
+    {
+      "name": "500: live viewer label = MCP label",
+      "pass": true,
+      "detail": [
+        "Failed 500: POST /api/reports",
+        "Failed 500: POST /api/reports"
+      ]
+    },
+    {
+      "name": "500: summary lines carry [outcome failed 500]",
+      "pass": true,
+      "detail": "click action:mufuf28x:10 → handler <unnamed> client/src/main.jsx@1034-1065 → 1 request (1 failed): (1) <unnamed> client/src/main.jsx@648-774 → <unnamed> client/src/main.jsx@529-631 → POST /api/reports → route /api/reports 500 → server buildReport [failed 500] [outcome failed 500]: reached handler / stopped at handler / because server responded 500; no database span descends from the admitted handler span"
+    },
+    {
+      "name": "500: exported action chain says failed",
+      "pass": true,
+      "detail": {
+        "status": "failed",
+        "http_status": 500,
+        "label": "Failed 500: POST /api/reports",
+        "sentence": "server responded 500 to POST /api/reports"
+      }
+    },
+    {
+      "name": "500: http_status 500 on the outcome and the export",
+      "pass": true,
+      "detail": [
+        500,
+        500
+      ]
+    },
+    {
+      "name": "500: no \"completed\" anywhere (JSON, display, summaries, export, viewer)",
+      "pass": true
+    },
+    {
+      "name": "500: never \"incomplete\"",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "request that stops at a frontier (no server span): every surface prints stopped",
+      "pass": true,
+      "detail": {
+        "action_chain": "stopped",
+        "display_status": "stopped",
+        "chain_display": "stopped",
+        "chain_outcome": "stopped",
+        "recent_actions": "stopped",
+        "element_history": "stopped",
+        "attempt": "stopped",
+        "compare_before": "stopped",
+        "compare_after": "stopped",
+        "live_viewer": "stopped"
+      }
+    },
+    {
+      "name": "request that stops at a frontier (no server span): status is in the documented label set",
+      "pass": true,
+      "detail": "stopped"
+    },
+    {
+      "name": "request that stops at a frontier (no server span): live viewer label = MCP label",
+      "pass": true,
+      "detail": [
+        "Stopped at network: no server span with the exact parent span id arrived in the same trace",
+        "Stopped at network: no server span with the exact parent span id arrived in the same trace"
+      ]
+    },
+    {
+      "name": "request that stops at a frontier (no server span): summary lines carry [outcome stopped at network]",
+      "pass": true,
+      "detail": "click action:mufuf2qa:12 → handler <unnamed> client/src/main.jsx@1086-1118 → 1 request: (1) <unnamed> client/src/main.jsx@529-631 → GET /api/untraced → no server span (no_exact_parent_server) [stopped at network] [outcome stopped at network]: reached request / stopped at network / because no server span with the exact parent span id arrived in the same trace"
+    },
+    {
+      "name": "request that stops at a frontier (no server span): exported action chain says stopped",
+      "pass": true,
+      "detail": {
+        "status": "stopped",
+        "http_status": null,
+        "stopped_at": "network",
+        "because": "no server span with the exact parent span id arrived in the same trace",
+        "label": "Stopped at network: no server span with the exact parent span id arrived in the same trace",
+        "sentence": "stopped at network: no server span with the exact parent span id arrived in the same trace"
+      }
+    },
+    {
+      "name": "request that stops at a frontier (no server span): never \"incomplete\"",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frontier: stopped_at network with the frontier sentence",
+      "pass": true,
+      "detail": {
+        "stage": "stopped",
+        "status": "stopped",
+        "display_status": "stopped",
+        "http_status": null,
+        "writes": [],
+        "reads": [],
+        "stop_reason": "no_exact_parent_server",
+        "stopped_at": "network",
+        "reached": "request",
+        "label": "Stopped at network: no server span with the exact parent span id arrived in the same trace",
+        "sentence": "stopped at network: no server span with the exact parent span id arrived in the same trace",
+        "because": "no server span with the exact parent span id arrived in the same trace",
+        "requests": 1,
+        "failed_requests": 0
+      }
+    },
+    {
+      "name": "responses the browser saw match the backend statuses",
+      "pass": true,
+      "detail": {
+        "/api/items": [
+          201,
+          201
+        ],
+        "/api/ping": [
+          200
+        ],
+        "/api/seats/A/claim": [
+          409
+        ],
+        "/api/profile": [
+          422
+        ],
+        "/api/reports": [
+          500,
+          500
+        ],
+        "/api/untraced": [
+          200
+        ],
+        "/api/lookup": [
+          200
+        ],
+        "/api/seats": [
+          200
+        ]
+      }
+    },
+    {
+      "name": "hit-test returns early (seat taken): every surface prints no_request",
+      "pass": true,
+      "detail": {
+        "action_chain": "no_request",
+        "display_status": "no_request",
+        "chain_display": "no_request",
+        "chain_outcome": "no_request",
+        "recent_actions": "no_request",
+        "element_history": "no_request",
+        "attempt": "no_request",
+        "compare_before": "no_request",
+        "compare_after": "no_request",
+        "live_viewer": "no_request"
+      }
+    },
+    {
+      "name": "hit-test returns early (seat taken): status is in the documented label set",
+      "pass": true,
+      "detail": "no_request"
+    },
+    {
+      "name": "hit-test returns early (seat taken): live viewer label = MCP label",
+      "pass": true,
+      "detail": [
+        "No request: the handler ran and issued no request from instrumented code",
+        "No request: the handler ran and issued no request from instrumented code"
+      ]
+    },
+    {
+      "name": "hit-test returns early (seat taken): summary lines carry [outcome no_request; the handler ran and issued no request from instrumented code (",
+      "pass": true,
+      "detail": "click action:mufuf4mr:19 → handler <unnamed> client/src/main.jsx@2049-2300 [outcome no_request; the handler ran and issued no request from instrumented code (2 functions entered, 1 DOM mutation, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+    },
+    {
+      "name": "hit-test returns early (seat taken): exported action chain says no_request",
+      "pass": true,
+      "detail": {
+        "status": "no_request",
+        "http_status": null,
+        "did": {
+          "functions_entered": 2,
+          "dom_mutations": 1,
+          "state_effects": 0
+        },
+        "clause": "the handler ran and issued no request from instrumented code (2 functions entered, 1 DOM mutation, 0 state effects)",
+        "label": "No request: the handler ran and issued no request from instrumented code",
+        "sentence": "the handler ran and issued no request from instrumented code (2 functions entered, 1 DOM mutation, 0 state effects); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+      }
+    },
+    {
+      "name": "hit-test returns early (seat taken): never \"incomplete\"",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "hit-test: the DOM shows the app's status message",
+      "pass": true,
+      "detail": "Seat B is taken"
+    },
+    {
+      "name": "hit-test: counts of what the handler did (functions entered, DOM mutations) and the scoped sentence",
+      "pass": true,
+      "detail": {
+        "stage": "stopped",
+        "status": "no_request",
+        "display_status": "no_request",
+        "http_status": null,
+        "writes": [],
+        "reads": [],
+        "stop_reason": "no_effect_after_dispatch",
+        "stopped_at": "browser",
+        "reached": "dom_mutation",
+        "label": "No request: the handler ran and issued no request from instrumented code",
+        "sentence": "the handler ran and issued no request from instrumented code (2 functions entered, 1 DOM mutation, 0 state effects); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+        "did": {
+          "functions_entered": 2,
+          "dom_mutations": 1,
+          "state_effects": 0
+        },
+        "clause": "the handler ran and issued no request from instrumented code (2 functions entered, 1 DOM mutation, 0 state effects)",
+        "requests": 0,
+        "failed_requests": 0
+      }
+    },
+    {
+      "name": "hit-test: frontier unchanged (browser, scoped absence)",
+      "pass": true,
+      "detail": [
+        "browser"
+      ]
+    },
+    {
+      "name": "handler throws: every surface prints rejected_client_side",
+      "pass": true,
+      "detail": {
+        "action_chain": "rejected_client_side",
+        "display_status": "rejected_client_side",
+        "chain_display": "rejected_client_side",
+        "chain_outcome": "rejected_client_side",
+        "recent_actions": "rejected_client_side",
+        "element_history": "rejected_client_side",
+        "attempt": "rejected_client_side",
+        "compare_before": "rejected_client_side",
+        "compare_after": "rejected_client_side",
+        "live_viewer": "rejected_client_side"
+      }
+    },
+    {
+      "name": "handler throws: status is in the documented label set",
+      "pass": true,
+      "detail": "rejected_client_side"
+    },
+    {
+      "name": "handler throws: live viewer label = MCP label",
+      "pass": true,
+      "detail": [
+        "Rejected by the app: handler_threw (TypeError); no request",
+        "Rejected by the app: handler_threw (TypeError); no request"
+      ]
+    },
+    {
+      "name": "handler throws: summary lines carry [outcome rejected_client_side; handler_threw (TypeError)]",
+      "pass": true,
+      "detail": "click action:mufuf547:21 → handler <unnamed> client/src/main.jsx@2321-2394 [outcome rejected_client_side; handler_threw (TypeError)]: reached entry_handler / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+    },
+    {
+      "name": "handler throws: exported action chain says rejected_client_side",
+      "pass": true,
+      "detail": {
+        "status": "rejected_client_side",
+        "reason": "handler_threw",
+        "signals": [
+          {
+            "reason": "handler_threw",
+            "via": "uncaught_exception",
+            "action_id": "action:mufuf547:21",
+            "error_type": "TypeError",
+            "function_id": "function:bb76535834eb31be955015304315d3472a381069e06c3c6de1042e2ed6f9bc8a:2321:2394",
+            "sequence": 152
+          }
+        ],
+        "http_status": null,
+        "label": "Rejected by the app: handler_threw (TypeError); no request",
+        "sentence": "rejected by the app (handler_threw): TypeError thrown by action-owned code escaped uncaught; no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+      }
+    },
+    {
+      "name": "handler throws: no \"completed\" anywhere (JSON, display, summaries, export, viewer)",
+      "pass": true
+    },
+    {
+      "name": "handler throws: never \"incomplete\"",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "throw: signal recorded (action.uncaught_error via uncaught_exception, TypeError) and reason handler_threw",
+      "pass": true,
+      "detail": [
+        {
+          "schema": "producttrace.runtime-evidence.v1",
+          "sequence": 152,
+          "timestamp": 1790273167783,
+          "parent_continuation_id": "continuation:action:mufuf547:21:action:109",
+          "kind": "action.uncaught_error",
+          "action_id": "action:mufuf547:21",
+          "via": "uncaught_exception",
+          "error_type": "TypeError",
+          "function_id": "function:bb76535834eb31be955015304315d3472a381069e06c3c6de1042e2ed6f9bc8a:2321:2394",
+          "continuation_id": "continuation:action:mufuf547:21:function:110",
+          "capture_page_id": "s_f9e7cc6e",
+          "tracer_run": "run-20260924t180559775z-3fc538",
+          "tracer_build": "unknown"
+        }
+      ]
+    },
+    {
+      "name": "throw: function.exit carries threw + error_type, never the message",
+      "pass": true,
+      "detail": [
+        [
+          true,
+          "TypeError"
+        ],
+        [
+          true,
+          "TypeError"
+        ]
+      ]
+    },
+    {
+      "name": "async handler rejects: every surface prints rejected_client_side",
+      "pass": true,
+      "detail": {
+        "action_chain": "rejected_client_side",
+        "display_status": "rejected_client_side",
+        "chain_display": "rejected_client_side",
+        "chain_outcome": "rejected_client_side",
+        "recent_actions": "rejected_client_side",
+        "element_history": "rejected_client_side",
+        "attempt": "rejected_client_side",
+        "compare_before": "rejected_client_side",
+        "compare_after": "rejected_client_side",
+        "live_viewer": "rejected_client_side"
+      }
+    },
+    {
+      "name": "async handler rejects: status is in the documented label set",
+      "pass": true,
+      "detail": "rejected_client_side"
+    },
+    {
+      "name": "async handler rejects: live viewer label = MCP label",
+      "pass": true,
+      "detail": [
+        "Rejected by the app: promise_rejected (RangeError); no request",
+        "Rejected by the app: promise_rejected (RangeError); no request"
+      ]
+    },
+    {
+      "name": "async handler rejects: summary lines carry [outcome rejected_client_side; promise_rejected (RangeError)]",
+      "pass": true,
+      "detail": "click action:mufuf5l9:23 → handler <unnamed> client/src/main.jsx@2418-2508 [outcome rejected_client_side; promise_rejected (RangeError)]: reached entry_handler / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+    },
+    {
+      "name": "async handler rejects: exported action chain says rejected_client_side",
+      "pass": true,
+      "detail": {
+        "status": "rejected_client_side",
+        "reason": "promise_rejected",
+        "signals": [
+          {
+            "reason": "promise_rejected",
+            "via": "unhandled_rejection",
+            "action_id": "action:mufuf5l9:23",
+            "error_type": "RangeError",
+            "function_id": "function:bb76535834eb31be955015304315d3472a381069e06c3c6de1042e2ed6f9bc8a:2418:2508",
+            "sequence": 159
+          }
+        ],
+        "http_status": null,
+        "label": "Rejected by the app: promise_rejected (RangeError); no request",
+        "sentence": "rejected by the app (promise_rejected): a promise of action-owned code rejected with RangeError, unhandled; no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+      }
+    },
+    {
+      "name": "async handler rejects: no \"completed\" anywhere (JSON, display, summaries, export, viewer)",
+      "pass": true
+    },
+    {
+      "name": "async handler rejects: never \"incomplete\"",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "reject: signal recorded via unhandled_rejection (RangeError), reason promise_rejected",
+      "pass": true,
+      "detail": {
+        "stage": "stopped",
+        "status": "rejected_client_side",
+        "display_status": "rejected_client_side",
+        "http_status": null,
+        "writes": [],
+        "reads": [],
+        "stop_reason": "no_effect_after_dispatch",
+        "stopped_at": "browser",
+        "reached": "entry_handler",
+        "label": "Rejected by the app: promise_rejected (RangeError); no request",
+        "sentence": "rejected by the app (promise_rejected): a promise of action-owned code rejected with RangeError, unhandled; no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+        "reason": "promise_rejected",
+        "signals": [
+          {
+            "reason": "promise_rejected",
+            "via": "unhandled_rejection",
+            "action_id": "action:mufuf5l9:23",
+            "error_type": "RangeError",
+            "function_id": "function:bb76535834eb31be955015304315d3472a381069e06c3c6de1042e2ed6f9bc8a:2418:2508",
+            "sequence": 159
+          }
+        ],
+        "requests": 0,
+        "failed_requests": 0
+      }
+    },
+    {
+      "name": "error caught by the app itself: every surface prints no_request",
+      "pass": true,
+      "detail": {
+        "action_chain": "no_request",
+        "display_status": "no_request",
+        "chain_display": "no_request",
+        "chain_outcome": "no_request",
+        "recent_actions": "no_request",
+        "element_history": "no_request",
+        "attempt": "no_request",
+        "compare_before": "no_request",
+        "compare_after": "no_request",
+        "live_viewer": "no_request"
+      }
+    },
+    {
+      "name": "error caught by the app itself: status is in the documented label set",
+      "pass": true,
+      "detail": "no_request"
+    },
+    {
+      "name": "error caught by the app itself: live viewer label = MCP label",
+      "pass": true,
+      "detail": [
+        "No request: the handler ran and issued no request from instrumented code",
+        "No request: the handler ran and issued no request from instrumented code"
+      ]
+    },
+    {
+      "name": "error caught by the app itself: summary lines carry [outcome no_request; the handler ran and issued no request from instrumented code (",
+      "pass": true,
+      "detail": "click action:mufuf62f:25 → handler <unnamed> client/src/main.jsx@2532-2612 [outcome no_request; the handler ran and issued no request from instrumented code (4 functions entered, 2 DOM mutations, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+    },
+    {
+      "name": "error caught by the app itself: exported action chain says no_request",
+      "pass": true,
+      "detail": {
+        "status": "no_request",
+        "http_status": null,
+        "did": {
+          "functions_entered": 4,
+          "dom_mutations": 2,
+          "state_effects": 0
+        },
+        "clause": "the handler ran and issued no request from instrumented code (4 functions entered, 2 DOM mutations, 0 state effects)",
+        "label": "No request: the handler ran and issued no request from instrumented code",
+        "sentence": "the handler ran and issued no request from instrumented code (4 functions entered, 2 DOM mutations, 0 state effects); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+      }
+    },
+    {
+      "name": "error caught by the app itself: never \"incomplete\"",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "caught: a frame threw (SyntaxError) but nothing escaped, so no reject is claimed",
+      "pass": true,
+      "detail": {
+        "stage": "stopped",
+        "status": "no_request",
+        "display_status": "no_request",
+        "http_status": null,
+        "writes": [],
+        "reads": [],
+        "stop_reason": "no_effect_after_dispatch",
+        "stopped_at": "browser",
+        "reached": "dom_mutation",
+        "label": "No request: the handler ran and issued no request from instrumented code",
+        "sentence": "the handler ran and issued no request from instrumented code (4 functions entered, 2 DOM mutations, 0 state effects); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+        "did": {
+          "functions_entered": 4,
+          "dom_mutations": 2,
+          "state_effects": 0
+        },
+        "clause": "the handler ran and issued no request from instrumented code (4 functions entered, 2 DOM mutations, 0 state effects)",
+        "requests": 0,
+        "failed_requests": 0
+      }
+    },
+    {
+      "name": "form submit stopped by the app's validation: every surface prints rejected_client_side",
+      "pass": true,
+      "detail": {
+        "action_chain": "rejected_client_side",
+        "display_status": "rejected_client_side",
+        "chain_display": "rejected_client_side",
+        "chain_outcome": "rejected_client_side",
+        "recent_actions": "rejected_client_side",
+        "element_history": "rejected_client_side",
+        "attempt": "rejected_client_side",
+        "compare_before": "rejected_client_side",
+        "compare_after": "rejected_client_side",
+        "live_viewer": "rejected_client_side"
+      }
+    },
+    {
+      "name": "form submit stopped by the app's validation: status is in the documented label set",
+      "pass": true,
+      "detail": "rejected_client_side"
+    },
+    {
+      "name": "form submit stopped by the app's validation: live viewer label = MCP label",
+      "pass": true,
+      "detail": [
+        "Rejected by the app: form_validation; no request",
+        "Rejected by the app: form_validation; no request"
+      ]
+    },
+    {
+      "name": "form submit stopped by the app's validation: summary lines carry [outcome rejected_client_side; form_validation]",
+      "pass": true,
+      "detail": "submit action:mufuf6ji:28 → handler <unnamed> client/src/main.jsx@2638-2778 → no request; the same form mutated [outcome rejected_client_side; form_validation]: reached validation / stopped at validation / because the same form mutated after the submit (validation); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+    },
+    {
+      "name": "form submit stopped by the app's validation: exported action chain says rejected_client_side",
+      "pass": true,
+      "detail": {
+        "status": "rejected_client_side",
+        "reason": "form_validation",
+        "signals": [
+          {
+            "reason": "form_validation",
+            "via": "submit_rejected",
+            "action_id": "action:mufuf6ji:28",
+            "evidence_ids": [
+              174,
+              187
+            ]
+          }
+        ],
+        "http_status": null,
+        "label": "Rejected by the app: form_validation; no request",
+        "sentence": "rejected by the app (form_validation): the same form mutated after the submit; no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+      }
+    },
+    {
+      "name": "form submit stopped by the app's validation: no \"completed\" anywhere (JSON, display, summaries, export, viewer)",
+      "pass": true
+    },
+    {
+      "name": "form submit stopped by the app's validation: never \"incomplete\"",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "app validation (novalidate form): the DOM shows the app's message; the only signal is the same-form mutation (never form_invalid: the browser did not validate)",
+      "pass": true,
+      "detail": [
+        "Name is required",
+        [
+          {
+            "reason": "form_validation",
+            "via": "submit_rejected",
+            "action_id": "action:mufuf6ji:28",
+            "evidence_ids": [
+              174,
+              187
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "name": "submit blocked by the form's declared constraints (required): every surface prints rejected_client_side",
+      "pass": true,
+      "detail": {
+        "action_chain": "rejected_client_side",
+        "display_status": "rejected_client_side",
+        "chain_display": "rejected_client_side",
+        "chain_outcome": "rejected_client_side",
+        "recent_actions": "rejected_client_side",
+        "element_history": "rejected_client_side",
+        "attempt": "rejected_client_side",
+        "compare_before": "rejected_client_side",
+        "compare_after": "rejected_client_side",
+        "live_viewer": "rejected_client_side"
+      }
+    },
+    {
+      "name": "submit blocked by the form's declared constraints (required): status is in the documented label set",
+      "pass": true,
+      "detail": "rejected_client_side"
+    },
+    {
+      "name": "submit blocked by the form's declared constraints (required): live viewer label = MCP label",
+      "pass": true,
+      "detail": [
+        "Rejected by the app: form_validation; no request",
+        "Rejected by the app: form_validation; no request"
+      ]
+    },
+    {
+      "name": "submit blocked by the form's declared constraints (required): summary lines carry [outcome rejected_client_side; form_validation]",
+      "pass": true,
+      "detail": "click action:mufuf70n:30 [outcome rejected_client_side; form_validation]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+    },
+    {
+      "name": "submit blocked by the form's declared constraints (required): exported action chain says rejected_client_side",
+      "pass": true,
+      "detail": {
+        "status": "rejected_client_side",
+        "reason": "form_validation",
+        "signals": [
+          {
+            "reason": "form_validation",
+            "via": "form_invalid_at_dispatch",
+            "action_id": "action:mufuf70n:30",
+            "event": "click",
+            "sequence": 182
+          }
+        ],
+        "http_status": null,
+        "label": "Rejected by the app: form_validation; no request",
+        "sentence": "rejected by the app (form_validation): the browser validated the form and found it invalid (:invalid, no novalidate/formnovalidate) and no submit followed; no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+      }
+    },
+    {
+      "name": "submit blocked by the form's declared constraints (required): no \"completed\" anywhere (JSON, display, summaries, export, viewer)",
+      "pass": true
+    },
+    {
+      "name": "submit blocked by the form's declared constraints (required): never \"incomplete\"",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "native validation: no submit dispatched, the click carries form_invalid, no request",
+      "pass": true,
+      "detail": {
+        "valid": false,
+        "form_invalid": true
+      }
+    },
+    {
+      "name": "formnovalidate \"Save draft\" (submit, nothing sent): every surface prints no_request",
+      "pass": true,
+      "detail": {
+        "action_chain": "no_request",
+        "display_status": "no_request",
+        "chain_display": "no_request",
+        "chain_outcome": "no_request",
+        "recent_actions": "no_request",
+        "element_history": "no_request",
+        "attempt": "no_request",
+        "compare_before": "no_request",
+        "compare_after": "no_request",
+        "live_viewer": "no_request"
+      }
+    },
+    {
+      "name": "formnovalidate \"Save draft\" (submit, nothing sent): status is in the documented label set",
+      "pass": true,
+      "detail": "no_request"
+    },
+    {
+      "name": "formnovalidate \"Save draft\" (submit, nothing sent): live viewer label = MCP label",
+      "pass": true,
+      "detail": [
+        "No request: the handler ran and issued no request from instrumented code",
+        "No request: the handler ran and issued no request from instrumented code"
+      ]
+    },
+    {
+      "name": "formnovalidate \"Save draft\" (submit, nothing sent): summary lines carry [outcome no_request; the handler ran and issued no request from instrumented code (",
+      "pass": true,
+      "detail": "submit action:mufuf7i1:34 [outcome no_request; the handler ran and issued no request from instrumented code (2 functions entered, 5 DOM mutations, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+    },
+    {
+      "name": "formnovalidate \"Save draft\" (submit, nothing sent): exported action chain says no_request",
+      "pass": true,
+      "detail": {
+        "status": "no_request",
+        "http_status": null,
+        "did": {
+          "functions_entered": 2,
+          "dom_mutations": 5,
+          "state_effects": 0
+        },
+        "clause": "the handler ran and issued no request from instrumented code (2 functions entered, 5 DOM mutations, 0 state effects)",
+        "label": "No request: the handler ran and issued no request from instrumented code",
+        "sentence": "the handler ran and issued no request from instrumented code (2 functions entered, 5 DOM mutations, 0 state effects); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+      }
+    },
+    {
+      "name": "formnovalidate \"Save draft\" (submit, nothing sent): never \"incomplete\"",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "formnovalidate: no form_invalid on the click or the submit, and the click is no_request too",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "noValidate multi-step \"Next\" (submit, nothing sent): every surface prints no_request",
+      "pass": true,
+      "detail": {
+        "action_chain": "no_request",
+        "display_status": "no_request",
+        "chain_display": "no_request",
+        "chain_outcome": "no_request",
+        "recent_actions": "no_request",
+        "element_history": "no_request",
+        "attempt": "no_request",
+        "compare_before": "no_request",
+        "compare_after": "no_request",
+        "live_viewer": "no_request"
+      }
+    },
+    {
+      "name": "noValidate multi-step \"Next\" (submit, nothing sent): status is in the documented label set",
+      "pass": true,
+      "detail": "no_request"
+    },
+    {
+      "name": "noValidate multi-step \"Next\" (submit, nothing sent): live viewer label = MCP label",
+      "pass": true,
+      "detail": [
+        "No request: the handler ran and issued no request from instrumented code",
+        "No request: the handler ran and issued no request from instrumented code"
+      ]
+    },
+    {
+      "name": "noValidate multi-step \"Next\" (submit, nothing sent): summary lines carry [outcome no_request; the handler ran and issued no request from instrumented code (",
+      "pass": true,
+      "detail": "submit action:mufuf7z6:37 → handler <unnamed> client/src/main.jsx@1524-1581 [outcome no_request; the handler ran and issued no request from instrumented code (2 functions entered, 4 DOM mutations, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+    },
+    {
+      "name": "noValidate multi-step \"Next\" (submit, nothing sent): exported action chain says no_request",
+      "pass": true,
+      "detail": {
+        "status": "no_request",
+        "http_status": null,
+        "did": {
+          "functions_entered": 2,
+          "dom_mutations": 4,
+          "state_effects": 0
+        },
+        "clause": "the handler ran and issued no request from instrumented code (2 functions entered, 4 DOM mutations, 0 state effects)",
+        "label": "No request: the handler ran and issued no request from instrumented code",
+        "sentence": "the handler ran and issued no request from instrumented code (2 functions entered, 4 DOM mutations, 0 state effects); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+      }
+    },
+    {
+      "name": "noValidate multi-step \"Next\" (submit, nothing sent): never \"incomplete\"",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "noValidate: no form_invalid, click and submit are no_request",
+      "pass": true,
+      "detail": {}
+    },
+    {
+      "name": "inner-step \"Next inside\" (noValidate, step 2 input rendered in the form): every surface prints no_request",
+      "pass": true,
+      "detail": {
+        "action_chain": "no_request",
+        "display_status": "no_request",
+        "chain_display": "no_request",
+        "chain_outcome": "no_request",
+        "recent_actions": "no_request",
+        "element_history": "no_request",
+        "attempt": "no_request",
+        "compare_before": "no_request",
+        "compare_after": "no_request",
+        "live_viewer": "no_request"
+      }
+    },
+    {
+      "name": "inner-step \"Next inside\" (noValidate, step 2 input rendered in the form): status is in the documented label set",
+      "pass": true,
+      "detail": "no_request"
+    },
+    {
+      "name": "inner-step \"Next inside\" (noValidate, step 2 input rendered in the form): live viewer label = MCP label",
+      "pass": true,
+      "detail": [
+        "No request: the handler ran and issued no request from instrumented code",
+        "No request: the handler ran and issued no request from instrumented code"
+      ]
+    },
+    {
+      "name": "inner-step \"Next inside\" (noValidate, step 2 input rendered in the form): summary lines carry [outcome no_request; the handler ran and issued no request from instrumented code (",
+      "pass": true,
+      "detail": "submit action:mufuf8g9:40 → handler <unnamed> client/src/main.jsx@1801-1854 [outcome no_request; the handler ran and issued no request from instrumented code (2 functions entered, 4 DOM mutations, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+    },
+    {
+      "name": "inner-step \"Next inside\" (noValidate, step 2 input rendered in the form): exported action chain says no_request",
+      "pass": true,
+      "detail": {
+        "status": "no_request",
+        "http_status": null,
+        "did": {
+          "functions_entered": 2,
+          "dom_mutations": 4,
+          "state_effects": 0
+        },
+        "clause": "the handler ran and issued no request from instrumented code (2 functions entered, 4 DOM mutations, 0 state effects)",
+        "label": "No request: the handler ran and issued no request from instrumented code",
+        "sentence": "the handler ran and issued no request from instrumented code (2 functions entered, 4 DOM mutations, 0 state effects); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+      }
+    },
+    {
+      "name": "inner-step \"Next inside\" (noValidate, step 2 input rendered in the form): never \"incomplete\"",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "inner-step \"Next inside\" (noValidate, step 2 input rendered in the form): the step rendered, the receipt is a bare same-form mutation (no feedback), and nothing is called rejected",
+      "pass": true,
+      "detail": {
+        "dom": 1,
+        "validation": {
+          "same_form": true,
+          "aria_invalid_changed": false,
+          "focus_moved_to_invalid_field": false,
+          "feedback_mutations": 0
+        },
+        "stopped_at": "browser"
+      }
+    },
+    {
+      "name": "inner-step \"Next inside validated\" (valid form, \"Step 2 of 3\" rendered in the form): every surface prints no_request",
+      "pass": true,
+      "detail": {
+        "action_chain": "no_request",
+        "display_status": "no_request",
+        "chain_display": "no_request",
+        "chain_outcome": "no_request",
+        "recent_actions": "no_request",
+        "element_history": "no_request",
+        "attempt": "no_request",
+        "compare_before": "no_request",
+        "compare_after": "no_request",
+        "live_viewer": "no_request"
+      }
+    },
+    {
+      "name": "inner-step \"Next inside validated\" (valid form, \"Step 2 of 3\" rendered in the form): status is in the documented label set",
+      "pass": true,
+      "detail": "no_request"
+    },
+    {
+      "name": "inner-step \"Next inside validated\" (valid form, \"Step 2 of 3\" rendered in the form): live viewer label = MCP label",
+      "pass": true,
+      "detail": [
+        "No request: the handler ran and issued no request from instrumented code",
+        "No request: the handler ran and issued no request from instrumented code"
+      ]
+    },
+    {
+      "name": "inner-step \"Next inside validated\" (valid form, \"Step 2 of 3\" rendered in the form): summary lines carry [outcome no_request; the handler ran and issued no request from instrumented code (",
+      "pass": true,
+      "detail": "submit action:mufuf8xe:43 → handler <unnamed> client/src/main.jsx@1886-1948 [outcome no_request; the handler ran and issued no request from instrumented code (2 functions entered, 3 DOM mutations, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+    },
+    {
+      "name": "inner-step \"Next inside validated\" (valid form, \"Step 2 of 3\" rendered in the form): exported action chain says no_request",
+      "pass": true,
+      "detail": {
+        "status": "no_request",
+        "http_status": null,
+        "did": {
+          "functions_entered": 2,
+          "dom_mutations": 3,
+          "state_effects": 0
+        },
+        "clause": "the handler ran and issued no request from instrumented code (2 functions entered, 3 DOM mutations, 0 state effects)",
+        "label": "No request: the handler ran and issued no request from instrumented code",
+        "sentence": "the handler ran and issued no request from instrumented code (2 functions entered, 3 DOM mutations, 0 state effects); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+      }
+    },
+    {
+      "name": "inner-step \"Next inside validated\" (valid form, \"Step 2 of 3\" rendered in the form): never \"incomplete\"",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "inner-step \"Next inside validated\" (valid form, \"Step 2 of 3\" rendered in the form): the step rendered, the receipt is a bare same-form mutation (no feedback), and nothing is called rejected",
+      "pass": true,
+      "detail": {
+        "dom": 1,
+        "validation": {
+          "same_form": true,
+          "aria_invalid_changed": false,
+          "focus_moved_to_invalid_field": false,
+          "feedback_mutations": 0
+        },
+        "stopped_at": "browser"
+      }
+    },
+    {
+      "name": "app validation keeps its reject: the submit's own receipt shows validation feedback",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "write then a 500 in the same action: every surface prints completed",
+      "pass": true,
+      "detail": {
+        "action_chain": "completed",
+        "display_status": "completed",
+        "chain_display": "completed",
+        "chain_outcome": "completed",
+        "recent_actions": "completed",
+        "element_history": "completed",
+        "attempt": "completed",
+        "compare_before": "completed",
+        "compare_after": "completed",
+        "live_viewer": "completed"
+      }
+    },
+    {
+      "name": "write then a 500 in the same action: status is in the documented label set",
+      "pass": true,
+      "detail": "completed"
+    },
+    {
+      "name": "write then a 500 in the same action: live viewer label = MCP label",
+      "pass": true,
+      "detail": [
+        "Completed 201: insert items; also failed 500 POST /api/reports",
+        "Completed 201: insert items; also failed 500 POST /api/reports"
+      ]
+    },
+    {
+      "name": "write then a 500 in the same action: summary lines carry [outcome completed 201; also failed 500 POST /api/reports]",
+      "pass": true,
+      "detail": "click action:mufuf37d:14 → handler <unnamed> client/src/main.jsx@1144-1209 → 2 requests (1 failed): (1) <unnamed> client/src/main.jsx@648-774 → <unnamed> client/src/main.jsx@529-631 → POST /api/items → route /api/items 201 → server createItem → db insert items [completed 201]; (2) <unnamed> client/src/main.jsx@648-774 → <unnamed> client/src/main.jsx@529-631 → POST /api/reports → route /api/reports 500 → server buildReport [failed 500] [outcome completed 201; also failed 500 POST /api/reports]: reached db / stopped at none (terminal effect observed) / because database write insert items joined by exact span parentage"
+    },
+    {
+      "name": "write then a 500 in the same action: exported action chain says completed",
+      "pass": true,
+      "detail": {
+        "status": "completed",
+        "http_status": 201,
+        "label": "Completed 201: insert items; also failed 500 POST /api/reports",
+        "sentence": "server responded 201 to POST /api/items; database write insert items joined under the request; also failed 500 POST /api/reports",
+        "other_requests": [
+          {
+            "status": "failed",
+            "http_status": 500,
+            "method": "POST",
+            "path": "/api/reports",
+            "count": 1,
+            "request_occurrence_ids": [
+              "action:mufuf37d:14:request:8"
+            ],
+            "text": "failed 500 POST /api/reports"
+          }
+        ],
+        "also_text": "; also failed 500 POST /api/reports"
+      }
+    },
+    {
+      "name": "write then a 500 in the same action: http_status 201 on the outcome and the export",
+      "pass": true,
+      "detail": [
+        201,
+        201
+      ]
+    },
+    {
+      "name": "write then a 500 in the same action: never \"incomplete\"",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "mixed: the credited request (latest with a write) decides; the 500 is stated on the label, display, terminal label, viewer and export",
+      "pass": true,
+      "detail": [
+        "Completed 201: insert items; also failed 500 POST /api/reports",
+        "Completed 201: insert items; also failed 500 POST /api/reports",
+        "Completed 201: insert items; also failed 500 POST /api/reports"
+      ]
+    },
+    {
+      "name": "POST that only read (2xx, unsafe method): every surface prints responded",
+      "pass": true,
+      "detail": {
+        "action_chain": "responded",
+        "display_status": "responded",
+        "chain_display": "responded",
+        "chain_outcome": "responded",
+        "recent_actions": "responded",
+        "element_history": "responded",
+        "attempt": "responded",
+        "compare_before": "responded",
+        "compare_after": "responded",
+        "live_viewer": "responded"
+      }
+    },
+    {
+      "name": "POST that only read (2xx, unsafe method): status is in the documented label set",
+      "pass": true,
+      "detail": "responded"
+    },
+    {
+      "name": "POST that only read (2xx, unsafe method): live viewer label = MCP label",
+      "pass": true,
+      "detail": [
+        "Responded 200: no write observed",
+        "Responded 200: no write observed"
+      ]
+    },
+    {
+      "name": "POST that only read (2xx, unsafe method): summary lines carry [outcome responded 200; no write observed]",
+      "pass": true,
+      "detail": "click action:mufuf3oi:16 → handler <unnamed> client/src/main.jsx@1228-1273 → 1 request: (1) <unnamed> client/src/main.jsx@648-774 → <unnamed> client/src/main.jsx@529-631 → POST /api/lookup → route /api/lookup 200 → server lookupSeat → db find seats [responded 200; no write observed] [outcome responded 200; no write observed]: reached db / stopped at none (terminal effect observed) / because database read find seats joined by exact span parentage; no write"
+    },
+    {
+      "name": "POST that only read (2xx, unsafe method): exported action chain says responded",
+      "pass": true,
+      "detail": {
+        "status": "responded",
+        "http_status": 200,
+        "note": "no write observed",
+        "label": "Responded 200: no write observed",
+        "sentence": "server responded 200 to POST /api/lookup; only database reads joined under the request (no write observed)"
+      }
+    },
+    {
+      "name": "POST that only read (2xx, unsafe method): http_status 200 on the outcome and the export",
+      "pass": true,
+      "detail": [
+        200,
+        200
+      ]
+    },
+    {
+      "name": "POST that only read (2xx, unsafe method): never \"incomplete\"",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "POST read only: responded, note \"no write observed\", never completed",
+      "pass": true,
+      "detail": {
+        "stage": "effect",
+        "status": "responded",
+        "display_status": "responded",
+        "http_status": 200,
+        "writes": [],
+        "reads": [
+          "find seats"
+        ],
+        "stop_reason": null,
+        "stopped_at": null,
+        "reached": "db",
+        "label": "Responded 200: no write observed",
+        "sentence": "server responded 200 to POST /api/lookup; only database reads joined under the request (no write observed)",
+        "note": "no write observed",
+        "requests": 1,
+        "failed_requests": 0
+      }
+    },
+    {
+      "name": "GET with a read (2xx, safe method): every surface prints completed",
+      "pass": true,
+      "detail": {
+        "action_chain": "completed",
+        "display_status": "completed",
+        "chain_display": "completed",
+        "chain_outcome": "completed",
+        "recent_actions": "completed",
+        "element_history": "completed",
+        "attempt": "completed",
+        "compare_before": "completed",
+        "compare_after": "completed",
+        "live_viewer": "completed"
+      }
+    },
+    {
+      "name": "GET with a read (2xx, safe method): status is in the documented label set",
+      "pass": true,
+      "detail": "completed"
+    },
+    {
+      "name": "GET with a read (2xx, safe method): live viewer label = MCP label",
+      "pass": true,
+      "detail": [
+        "Completed 200: find seats",
+        "Completed 200: find seats"
+      ]
+    },
+    {
+      "name": "GET with a read (2xx, safe method): summary lines carry [outcome completed 200]",
+      "pass": true,
+      "detail": "click action:mufuf45n:18 → handler <unnamed> client/src/main.jsx@1295-1324 → 1 request: (1) <unnamed> client/src/main.jsx@529-631 → GET /api/seats → route /api/seats 200 → server listSeats → db find seats [completed 200] [outcome completed 200]: reached db / stopped at none (terminal effect observed) / because database read find seats joined by exact span parentage; no write"
+    },
+    {
+      "name": "GET with a read (2xx, safe method): exported action chain says completed",
+      "pass": true,
+      "detail": {
+        "status": "completed",
+        "http_status": 200,
+        "label": "Completed 200: find seats",
+        "sentence": "server responded 200 to GET /api/seats; database read find seats joined under the request"
+      }
+    },
+    {
+      "name": "GET with a read (2xx, safe method): http_status 200 on the outcome and the export",
+      "pass": true,
+      "detail": [
+        200,
+        200
+      ]
+    },
+    {
+      "name": "GET with a read (2xx, safe method): never \"incomplete\"",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "GET read: completed with the read named",
+      "pass": true,
+      "detail": "Completed 200: find seats"
+    },
+    {
+      "name": "compare_chains: no_request → rejected_client_side is an outcome change (status and reason in changed), never \"outcome unchanged\"",
+      "pass": true,
+      "detail": [
+        "status",
+        "reason",
+        "reached"
+      ]
+    },
+    {
+      "name": "every action (46: focusin 20, click 19, submit 5, keydown 1, input 1) prints one status and one label on every surface, export included",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "every rejected_client_side has a recorded signal from its own rows",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "every >= 400 is failed with its status, on the action and on each segment",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "no action anywhere prints \"incomplete\"",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "display_status never disagrees with status",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "page errors are exactly the two uncaught ones",
+      "pass": true,
+      "detail": [
+        "TypeError: Cannot read properties of null (reading 'length')",
+        "RangeError: rejected later"
+      ]
+    },
+    {
+      "name": "frontend-only store: every request-bearing action is stopped at network / backend not instrumented, never completed/responded/failed",
+      "pass": true,
+      "detail": [
+        [
+          "action:mufuf0b9:1",
+          "stopped",
+          "backend not instrumented"
+        ],
+        [
+          "action:mufuf0ba:2",
+          "stopped",
+          "backend not instrumented"
+        ],
+        [
+          "action:mufuf0t6:3",
+          "stopped",
+          "backend not instrumented"
+        ],
+        [
+          "action:mufuf0t6:4",
+          "stopped",
+          "backend not instrumented"
+        ],
+        [
+          "action:mufuf1ad:5",
+          "stopped",
+          "backend not instrumented"
+        ],
+        [
+          "action:mufuf1ad:6",
+          "stopped",
+          "backend not instrumented"
+        ],
+        [
+          "action:mufuf1rl:7",
+          "stopped",
+          "backend not instrumented"
+        ],
+        [
+          "action:mufuf1rl:8",
+          "stopped",
+          "backend not instrumented"
+        ],
+        [
+          "action:mufuf28w:9",
+          "stopped",
+          "backend not instrumented"
+        ],
+        [
+          "action:mufuf28x:10",
+          "stopped",
+          "backend not instrumented"
+        ],
+        [
+          "action:mufuf2qa:11",
+          "stopped",
+          "backend not instrumented"
+        ],
+        [
+          "action:mufuf2qa:12",
+          "stopped",
+          "backend not instrumented"
+        ],
+        [
+          "action:mufuf37d:13",
+          "stopped",
+          "backend not instrumented"
+        ],
+        [
+          "action:mufuf37d:14",
+          "stopped",
+          "backend not instrumented"
+        ],
+        [
+          "action:mufuf3oi:15",
+          "stopped",
+          "backend not instrumented"
+        ],
+        [
+          "action:mufuf3oi:16",
+          "stopped",
+          "backend not instrumented"
+        ],
+        [
+          "action:mufuf45n:17",
+          "stopped",
+          "backend not instrumented"
+        ],
+        [
+          "action:mufuf45n:18",
+          "stopped",
+          "backend not instrumented"
+        ]
+      ]
+    }
+  ],
+  "cases": {
+    "422": {
+      "action_id": "action:mufuf1rl:8",
+      "statuses": {
+        "action_chain": "failed",
+        "display_status": "failed",
+        "chain_display": "failed",
+        "chain_outcome": "failed",
+        "recent_actions": "failed",
+        "element_history": "failed",
+        "attempt": "failed",
+        "compare_before": "failed",
+        "compare_after": "failed",
+        "live_viewer": "failed"
+      },
+      "outcome": {
+        "stage": "stopped",
+        "status": "failed",
+        "display_status": "failed",
+        "http_status": 422,
+        "writes": [],
+        "reads": [],
+        "stop_reason": "no_database_effect_before_idle",
+        "stopped_at": "handler",
+        "reached": "handler",
+        "label": "Failed 422: POST /api/profile",
+        "sentence": "server responded 422 to POST /api/profile",
+        "requests": 1,
+        "failed_requests": 1
+      },
+      "export_outcome": {
+        "status": "failed",
+        "http_status": 422,
+        "label": "Failed 422: POST /api/profile",
+        "sentence": "server responded 422 to POST /api/profile"
+      },
+      "summary": "click action:mufuf1rl:8 → handler <unnamed> client/src/main.jsx@975-1010 → 1 request (1 failed): (1) <unnamed> client/src/main.jsx@648-774 → <unnamed> client/src/main.jsx@529-631 → POST /api/profile → route /api/profile 422 → server saveProfile [failed 422] [outcome failed 422]: reached handler / stopped at handler / because server responded 422; no database span descends from the admitted handler span",
+      "live_label": "Failed 422: POST /api/profile",
+      "reached": "handler",
+      "stopped_at": "handler",
+      "because": "server responded 422; no database span descends from the admitted handler span"
+    },
+    "500": {
+      "action_id": "action:mufuf28x:10",
+      "statuses": {
+        "action_chain": "failed",
+        "display_status": "failed",
+        "chain_display": "failed",
+        "chain_outcome": "failed",
+        "recent_actions": "failed",
+        "element_history": "failed",
+        "attempt": "failed",
+        "compare_before": "failed",
+        "compare_after": "failed",
+        "live_viewer": "failed"
+      },
+      "outcome": {
+        "stage": "stopped",
+        "status": "failed",
+        "display_status": "failed",
+        "http_status": 500,
+        "writes": [],
+        "reads": [],
+        "stop_reason": "no_database_effect_before_idle",
+        "stopped_at": "handler",
+        "reached": "handler",
+        "label": "Failed 500: POST /api/reports",
+        "sentence": "server responded 500 to POST /api/reports",
+        "requests": 1,
+        "failed_requests": 1
+      },
+      "export_outcome": {
+        "status": "failed",
+        "http_status": 500,
+        "label": "Failed 500: POST /api/reports",
+        "sentence": "server responded 500 to POST /api/reports"
+      },
+      "summary": "click action:mufuf28x:10 → handler <unnamed> client/src/main.jsx@1034-1065 → 1 request (1 failed): (1) <unnamed> client/src/main.jsx@648-774 → <unnamed> client/src/main.jsx@529-631 → POST /api/reports → route /api/reports 500 → server buildReport [failed 500] [outcome failed 500]: reached handler / stopped at handler / because server responded 500; no database span descends from the admitted handler span",
+      "live_label": "Failed 500: POST /api/reports",
+      "reached": "handler",
+      "stopped_at": "handler",
+      "because": "server responded 500; no database span descends from the admitted handler span"
+    },
+    "2xx with a DB-like effect span": {
+      "action_id": "action:mufuf0ba:2",
+      "statuses": {
+        "action_chain": "completed",
+        "display_status": "completed",
+        "chain_display": "completed",
+        "chain_outcome": "completed",
+        "recent_actions": "completed",
+        "element_history": "completed",
+        "attempt": "completed",
+        "compare_before": "completed",
+        "compare_after": "completed",
+        "live_viewer": "completed"
+      },
+      "outcome": {
+        "stage": "effect",
+        "status": "completed",
+        "display_status": "completed",
+        "http_status": 201,
+        "writes": [
+          "insert items"
+        ],
+        "reads": [],
+        "stop_reason": null,
+        "stopped_at": null,
+        "reached": "db",
+        "label": "Completed 201: insert items",
+        "sentence": "server responded 201 to POST /api/items; database write insert items joined under the request",
+        "requests": 1,
+        "failed_requests": 0
+      },
+      "export_outcome": {
+        "status": "completed",
+        "http_status": 201,
+        "label": "Completed 201: insert items",
+        "sentence": "server responded 201 to POST /api/items; database write insert items joined under the request"
+      },
+      "summary": "click action:mufuf0ba:2 → handler <unnamed> client/src/main.jsx@798-847 → 1 request: (1) <unnamed> client/src/main.jsx@648-774 → <unnamed> client/src/main.jsx@529-631 → POST /api/items → route /api/items 201 → server createItem → db insert items [completed 201] [outcome completed 201]: reached db / stopped at none (terminal effect observed) / because database write insert items joined by exact span parentage",
+      "live_label": "Completed 201: insert items",
+      "reached": "db",
+      "stopped_at": null,
+      "because": "database write insert items joined by exact span parentage"
+    },
+    "2xx without effect evidence": {
+      "action_id": "action:mufuf0t6:4",
+      "statuses": {
+        "action_chain": "responded",
+        "display_status": "responded",
+        "chain_display": "responded",
+        "chain_outcome": "responded",
+        "recent_actions": "responded",
+        "element_history": "responded",
+        "attempt": "responded",
+        "compare_before": "responded",
+        "compare_after": "responded",
+        "live_viewer": "responded"
+      },
+      "outcome": {
+        "stage": "stopped",
+        "status": "responded",
+        "display_status": "responded",
+        "http_status": 200,
+        "writes": [],
+        "reads": [],
+        "stop_reason": "no_database_effect_before_idle",
+        "stopped_at": "handler",
+        "reached": "handler",
+        "label": "Responded 200: no effect evidence",
+        "sentence": "server responded 200 to GET /api/ping; no database span joined under the request (no effect evidence)",
+        "note": "no effect evidence",
+        "requests": 1,
+        "failed_requests": 0
+      },
+      "export_outcome": {
+        "status": "responded",
+        "http_status": 200,
+        "note": "no effect evidence",
+        "label": "Responded 200: no effect evidence",
+        "sentence": "server responded 200 to GET /api/ping; no database span joined under the request (no effect evidence)"
+      },
+      "summary": "click action:mufuf0t6:4 → handler <unnamed> client/src/main.jsx@864-892 → 1 request: (1) <unnamed> client/src/main.jsx@529-631 → GET /api/ping → route /api/ping 200 → server ping [responded 200; no effect evidence] [outcome responded 200; no effect evidence]: reached handler / stopped at handler / because no database span descends from the admitted handler span",
+      "live_label": "Responded 200: no effect evidence",
+      "reached": "handler",
+      "stopped_at": "handler",
+      "because": "no database span descends from the admitted handler span"
+    },
+    "409 after a database read": {
+      "action_id": "action:mufuf1ad:6",
+      "statuses": {
+        "action_chain": "failed",
+        "display_status": "failed",
+        "chain_display": "failed",
+        "chain_outcome": "failed",
+        "recent_actions": "failed",
+        "element_history": "failed",
+        "attempt": "failed",
+        "compare_before": "failed",
+        "compare_after": "failed",
+        "live_viewer": "failed"
+      },
+      "outcome": {
+        "stage": "effect",
+        "status": "failed",
+        "display_status": "failed",
+        "http_status": 409,
+        "writes": [],
+        "reads": [
+          "find seats"
+        ],
+        "stop_reason": null,
+        "stopped_at": null,
+        "reached": "db",
+        "label": "Failed 409: POST /api/seats/A/claim",
+        "sentence": "server responded 409 to POST /api/seats/A/claim",
+        "requests": 1,
+        "failed_requests": 1
+      },
+      "export_outcome": {
+        "status": "failed",
+        "http_status": 409,
+        "label": "Failed 409: POST /api/seats/A/claim",
+        "sentence": "server responded 409 to POST /api/seats/A/claim"
+      },
+      "summary": "click action:mufuf1ad:6 → handler <unnamed> client/src/main.jsx@914-951 → 1 request (1 failed): (1) <unnamed> client/src/main.jsx@648-774 → <unnamed> client/src/main.jsx@529-631 → POST /api/seats/A/claim → route /api/seats/:seat/claim 409 → server claimSeat → db find seats [failed 409] [outcome failed 409]: reached db / stopped at none (terminal effect observed) / because server responded 409; database read find seats joined by exact span parentage; no write",
+      "live_label": "Failed 409: POST /api/seats/A/claim",
+      "reached": "db",
+      "stopped_at": null,
+      "because": "server responded 409; database read find seats joined by exact span parentage; no write"
+    },
+    "request that stops at a frontier (no server span)": {
+      "action_id": "action:mufuf2qa:12",
+      "statuses": {
+        "action_chain": "stopped",
+        "display_status": "stopped",
+        "chain_display": "stopped",
+        "chain_outcome": "stopped",
+        "recent_actions": "stopped",
+        "element_history": "stopped",
+        "attempt": "stopped",
+        "compare_before": "stopped",
+        "compare_after": "stopped",
+        "live_viewer": "stopped"
+      },
+      "outcome": {
+        "stage": "stopped",
+        "status": "stopped",
+        "display_status": "stopped",
+        "http_status": null,
+        "writes": [],
+        "reads": [],
+        "stop_reason": "no_exact_parent_server",
+        "stopped_at": "network",
+        "reached": "request",
+        "label": "Stopped at network: no server span with the exact parent span id arrived in the same trace",
+        "sentence": "stopped at network: no server span with the exact parent span id arrived in the same trace",
+        "because": "no server span with the exact parent span id arrived in the same trace",
+        "requests": 1,
+        "failed_requests": 0
+      },
+      "export_outcome": {
+        "status": "stopped",
+        "http_status": null,
+        "stopped_at": "network",
+        "because": "no server span with the exact parent span id arrived in the same trace",
+        "label": "Stopped at network: no server span with the exact parent span id arrived in the same trace",
+        "sentence": "stopped at network: no server span with the exact parent span id arrived in the same trace"
+      },
+      "summary": "click action:mufuf2qa:12 → handler <unnamed> client/src/main.jsx@1086-1118 → 1 request: (1) <unnamed> client/src/main.jsx@529-631 → GET /api/untraced → no server span (no_exact_parent_server) [stopped at network] [outcome stopped at network]: reached request / stopped at network / because no server span with the exact parent span id arrived in the same trace",
+      "live_label": "Stopped at network: no server span with the exact parent span id arrived in the same trace",
+      "reached": "request",
+      "stopped_at": "network",
+      "because": "no server span with the exact parent span id arrived in the same trace"
+    },
+    "hit-test returns early (seat taken)": {
+      "action_id": "action:mufuf4mr:19",
+      "statuses": {
+        "action_chain": "no_request",
+        "display_status": "no_request",
+        "chain_display": "no_request",
+        "chain_outcome": "no_request",
+        "recent_actions": "no_request",
+        "element_history": "no_request",
+        "attempt": "no_request",
+        "compare_before": "no_request",
+        "compare_after": "no_request",
+        "live_viewer": "no_request"
+      },
+      "outcome": {
+        "stage": "stopped",
+        "status": "no_request",
+        "display_status": "no_request",
+        "http_status": null,
+        "writes": [],
+        "reads": [],
+        "stop_reason": "no_effect_after_dispatch",
+        "stopped_at": "browser",
+        "reached": "dom_mutation",
+        "label": "No request: the handler ran and issued no request from instrumented code",
+        "sentence": "the handler ran and issued no request from instrumented code (2 functions entered, 1 DOM mutation, 0 state effects); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+        "did": {
+          "functions_entered": 2,
+          "dom_mutations": 1,
+          "state_effects": 0
+        },
+        "clause": "the handler ran and issued no request from instrumented code (2 functions entered, 1 DOM mutation, 0 state effects)",
+        "requests": 0,
+        "failed_requests": 0
+      },
+      "export_outcome": {
+        "status": "no_request",
+        "http_status": null,
+        "did": {
+          "functions_entered": 2,
+          "dom_mutations": 1,
+          "state_effects": 0
+        },
+        "clause": "the handler ran and issued no request from instrumented code (2 functions entered, 1 DOM mutation, 0 state effects)",
+        "label": "No request: the handler ran and issued no request from instrumented code",
+        "sentence": "the handler ran and issued no request from instrumented code (2 functions entered, 1 DOM mutation, 0 state effects); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+      },
+      "summary": "click action:mufuf4mr:19 → handler <unnamed> client/src/main.jsx@2049-2300 [outcome no_request; the handler ran and issued no request from instrumented code (2 functions entered, 1 DOM mutation, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+      "live_label": "No request: the handler ran and issued no request from instrumented code",
+      "reached": "dom_mutation",
+      "stopped_at": "browser",
+      "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+    },
+    "handler throws": {
+      "action_id": "action:mufuf547:21",
+      "statuses": {
+        "action_chain": "rejected_client_side",
+        "display_status": "rejected_client_side",
+        "chain_display": "rejected_client_side",
+        "chain_outcome": "rejected_client_side",
+        "recent_actions": "rejected_client_side",
+        "element_history": "rejected_client_side",
+        "attempt": "rejected_client_side",
+        "compare_before": "rejected_client_side",
+        "compare_after": "rejected_client_side",
+        "live_viewer": "rejected_client_side"
+      },
+      "outcome": {
+        "stage": "stopped",
+        "status": "rejected_client_side",
+        "display_status": "rejected_client_side",
+        "http_status": null,
+        "writes": [],
+        "reads": [],
+        "stop_reason": "no_effect_after_dispatch",
+        "stopped_at": "browser",
+        "reached": "entry_handler",
+        "label": "Rejected by the app: handler_threw (TypeError); no request",
+        "sentence": "rejected by the app (handler_threw): TypeError thrown by action-owned code escaped uncaught; no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+        "reason": "handler_threw",
+        "signals": [
+          {
+            "reason": "handler_threw",
+            "via": "uncaught_exception",
+            "action_id": "action:mufuf547:21",
+            "error_type": "TypeError",
+            "function_id": "function:bb76535834eb31be955015304315d3472a381069e06c3c6de1042e2ed6f9bc8a:2321:2394",
+            "sequence": 152
+          }
+        ],
+        "requests": 0,
+        "failed_requests": 0
+      },
+      "export_outcome": {
+        "status": "rejected_client_side",
+        "reason": "handler_threw",
+        "signals": [
+          {
+            "reason": "handler_threw",
+            "via": "uncaught_exception",
+            "action_id": "action:mufuf547:21",
+            "error_type": "TypeError",
+            "function_id": "function:bb76535834eb31be955015304315d3472a381069e06c3c6de1042e2ed6f9bc8a:2321:2394",
+            "sequence": 152
+          }
+        ],
+        "http_status": null,
+        "label": "Rejected by the app: handler_threw (TypeError); no request",
+        "sentence": "rejected by the app (handler_threw): TypeError thrown by action-owned code escaped uncaught; no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+      },
+      "summary": "click action:mufuf547:21 → handler <unnamed> client/src/main.jsx@2321-2394 [outcome rejected_client_side; handler_threw (TypeError)]: reached entry_handler / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+      "live_label": "Rejected by the app: handler_threw (TypeError); no request",
+      "reached": "entry_handler",
+      "stopped_at": "browser",
+      "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+    },
+    "async handler rejects": {
+      "action_id": "action:mufuf5l9:23",
+      "statuses": {
+        "action_chain": "rejected_client_side",
+        "display_status": "rejected_client_side",
+        "chain_display": "rejected_client_side",
+        "chain_outcome": "rejected_client_side",
+        "recent_actions": "rejected_client_side",
+        "element_history": "rejected_client_side",
+        "attempt": "rejected_client_side",
+        "compare_before": "rejected_client_side",
+        "compare_after": "rejected_client_side",
+        "live_viewer": "rejected_client_side"
+      },
+      "outcome": {
+        "stage": "stopped",
+        "status": "rejected_client_side",
+        "display_status": "rejected_client_side",
+        "http_status": null,
+        "writes": [],
+        "reads": [],
+        "stop_reason": "no_effect_after_dispatch",
+        "stopped_at": "browser",
+        "reached": "entry_handler",
+        "label": "Rejected by the app: promise_rejected (RangeError); no request",
+        "sentence": "rejected by the app (promise_rejected): a promise of action-owned code rejected with RangeError, unhandled; no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+        "reason": "promise_rejected",
+        "signals": [
+          {
+            "reason": "promise_rejected",
+            "via": "unhandled_rejection",
+            "action_id": "action:mufuf5l9:23",
+            "error_type": "RangeError",
+            "function_id": "function:bb76535834eb31be955015304315d3472a381069e06c3c6de1042e2ed6f9bc8a:2418:2508",
+            "sequence": 159
+          }
+        ],
+        "requests": 0,
+        "failed_requests": 0
+      },
+      "export_outcome": {
+        "status": "rejected_client_side",
+        "reason": "promise_rejected",
+        "signals": [
+          {
+            "reason": "promise_rejected",
+            "via": "unhandled_rejection",
+            "action_id": "action:mufuf5l9:23",
+            "error_type": "RangeError",
+            "function_id": "function:bb76535834eb31be955015304315d3472a381069e06c3c6de1042e2ed6f9bc8a:2418:2508",
+            "sequence": 159
+          }
+        ],
+        "http_status": null,
+        "label": "Rejected by the app: promise_rejected (RangeError); no request",
+        "sentence": "rejected by the app (promise_rejected): a promise of action-owned code rejected with RangeError, unhandled; no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+      },
+      "summary": "click action:mufuf5l9:23 → handler <unnamed> client/src/main.jsx@2418-2508 [outcome rejected_client_side; promise_rejected (RangeError)]: reached entry_handler / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+      "live_label": "Rejected by the app: promise_rejected (RangeError); no request",
+      "reached": "entry_handler",
+      "stopped_at": "browser",
+      "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+    },
+    "error caught by the app itself": {
+      "action_id": "action:mufuf62f:25",
+      "statuses": {
+        "action_chain": "no_request",
+        "display_status": "no_request",
+        "chain_display": "no_request",
+        "chain_outcome": "no_request",
+        "recent_actions": "no_request",
+        "element_history": "no_request",
+        "attempt": "no_request",
+        "compare_before": "no_request",
+        "compare_after": "no_request",
+        "live_viewer": "no_request"
+      },
+      "outcome": {
+        "stage": "stopped",
+        "status": "no_request",
+        "display_status": "no_request",
+        "http_status": null,
+        "writes": [],
+        "reads": [],
+        "stop_reason": "no_effect_after_dispatch",
+        "stopped_at": "browser",
+        "reached": "dom_mutation",
+        "label": "No request: the handler ran and issued no request from instrumented code",
+        "sentence": "the handler ran and issued no request from instrumented code (4 functions entered, 2 DOM mutations, 0 state effects); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+        "did": {
+          "functions_entered": 4,
+          "dom_mutations": 2,
+          "state_effects": 0
+        },
+        "clause": "the handler ran and issued no request from instrumented code (4 functions entered, 2 DOM mutations, 0 state effects)",
+        "requests": 0,
+        "failed_requests": 0
+      },
+      "export_outcome": {
+        "status": "no_request",
+        "http_status": null,
+        "did": {
+          "functions_entered": 4,
+          "dom_mutations": 2,
+          "state_effects": 0
+        },
+        "clause": "the handler ran and issued no request from instrumented code (4 functions entered, 2 DOM mutations, 0 state effects)",
+        "label": "No request: the handler ran and issued no request from instrumented code",
+        "sentence": "the handler ran and issued no request from instrumented code (4 functions entered, 2 DOM mutations, 0 state effects); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+      },
+      "summary": "click action:mufuf62f:25 → handler <unnamed> client/src/main.jsx@2532-2612 [outcome no_request; the handler ran and issued no request from instrumented code (4 functions entered, 2 DOM mutations, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+      "live_label": "No request: the handler ran and issued no request from instrumented code",
+      "reached": "dom_mutation",
+      "stopped_at": "browser",
+      "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+    },
+    "form submit stopped by the app's validation": {
+      "action_id": "action:mufuf6ji:28",
+      "statuses": {
+        "action_chain": "rejected_client_side",
+        "display_status": "rejected_client_side",
+        "chain_display": "rejected_client_side",
+        "chain_outcome": "rejected_client_side",
+        "recent_actions": "rejected_client_side",
+        "element_history": "rejected_client_side",
+        "attempt": "rejected_client_side",
+        "compare_before": "rejected_client_side",
+        "compare_after": "rejected_client_side",
+        "live_viewer": "rejected_client_side"
+      },
+      "outcome": {
+        "stage": "rejected",
+        "status": "rejected_client_side",
+        "display_status": "rejected_client_side",
+        "http_status": null,
+        "writes": [],
+        "reads": [],
+        "stop_reason": "submit_rejected_by_app",
+        "stopped_at": "validation",
+        "reached": "validation",
+        "label": "Rejected by the app: form_validation; no request",
+        "sentence": "rejected by the app (form_validation): the same form mutated after the submit; no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+        "reason": "form_validation",
+        "signals": [
+          {
+            "reason": "form_validation",
+            "via": "submit_rejected",
+            "action_id": "action:mufuf6ji:28",
+            "evidence_ids": [
+              174,
+              187
+            ]
+          }
+        ],
+        "requests": 0,
+        "failed_requests": 0
+      },
+      "export_outcome": {
+        "status": "rejected_client_side",
+        "reason": "form_validation",
+        "signals": [
+          {
+            "reason": "form_validation",
+            "via": "submit_rejected",
+            "action_id": "action:mufuf6ji:28",
+            "evidence_ids": [
+              174,
+              187
+            ]
+          }
+        ],
+        "http_status": null,
+        "label": "Rejected by the app: form_validation; no request",
+        "sentence": "rejected by the app (form_validation): the same form mutated after the submit; no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+      },
+      "summary": "submit action:mufuf6ji:28 → handler <unnamed> client/src/main.jsx@2638-2778 → no request; the same form mutated [outcome rejected_client_side; form_validation]: reached validation / stopped at validation / because the same form mutated after the submit (validation); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+      "live_label": "Rejected by the app: form_validation; no request",
+      "reached": "validation",
+      "stopped_at": "validation",
+      "because": "the same form mutated after the submit (validation); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+    },
+    "submit blocked by the form's declared constraints (required)": {
+      "action_id": "action:mufuf70n:30",
+      "statuses": {
+        "action_chain": "rejected_client_side",
+        "display_status": "rejected_client_side",
+        "chain_display": "rejected_client_side",
+        "chain_outcome": "rejected_client_side",
+        "recent_actions": "rejected_client_side",
+        "element_history": "rejected_client_side",
+        "attempt": "rejected_client_side",
+        "compare_before": "rejected_client_side",
+        "compare_after": "rejected_client_side",
+        "live_viewer": "rejected_client_side"
+      },
+      "outcome": {
+        "stage": "stopped",
+        "status": "rejected_client_side",
+        "display_status": "rejected_client_side",
+        "http_status": null,
+        "writes": [],
+        "reads": [],
+        "stop_reason": "no_effect_after_dispatch",
+        "stopped_at": "browser",
+        "reached": "dom_mutation",
+        "label": "Rejected by the app: form_validation; no request",
+        "sentence": "rejected by the app (form_validation): the browser validated the form and found it invalid (:invalid, no novalidate/formnovalidate) and no submit followed; no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+        "reason": "form_validation",
+        "signals": [
+          {
+            "reason": "form_validation",
+            "via": "form_invalid_at_dispatch",
+            "action_id": "action:mufuf70n:30",
+            "event": "click",
+            "sequence": 182
+          }
+        ],
+        "requests": 0,
+        "failed_requests": 0
+      },
+      "export_outcome": {
+        "status": "rejected_client_side",
+        "reason": "form_validation",
+        "signals": [
+          {
+            "reason": "form_validation",
+            "via": "form_invalid_at_dispatch",
+            "action_id": "action:mufuf70n:30",
+            "event": "click",
+            "sequence": 182
+          }
+        ],
+        "http_status": null,
+        "label": "Rejected by the app: form_validation; no request",
+        "sentence": "rejected by the app (form_validation): the browser validated the form and found it invalid (:invalid, no novalidate/formnovalidate) and no submit followed; no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+      },
+      "summary": "click action:mufuf70n:30 [outcome rejected_client_side; form_validation]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+      "live_label": "Rejected by the app: form_validation; no request",
+      "reached": "dom_mutation",
+      "stopped_at": "browser",
+      "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+    },
+    "formnovalidate \"Save draft\" (submit, nothing sent)": {
+      "action_id": "action:mufuf7i1:34",
+      "statuses": {
+        "action_chain": "no_request",
+        "display_status": "no_request",
+        "chain_display": "no_request",
+        "chain_outcome": "no_request",
+        "recent_actions": "no_request",
+        "element_history": "no_request",
+        "attempt": "no_request",
+        "compare_before": "no_request",
+        "compare_after": "no_request",
+        "live_viewer": "no_request"
+      },
+      "outcome": {
+        "stage": "stopped",
+        "status": "no_request",
+        "display_status": "no_request",
+        "http_status": null,
+        "writes": [],
+        "reads": [],
+        "stop_reason": "no_effect_after_dispatch",
+        "stopped_at": "browser",
+        "reached": "dom_mutation",
+        "label": "No request: the handler ran and issued no request from instrumented code",
+        "sentence": "the handler ran and issued no request from instrumented code (2 functions entered, 5 DOM mutations, 0 state effects); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+        "did": {
+          "functions_entered": 2,
+          "dom_mutations": 5,
+          "state_effects": 0
+        },
+        "clause": "the handler ran and issued no request from instrumented code (2 functions entered, 5 DOM mutations, 0 state effects)",
+        "requests": 0,
+        "failed_requests": 0
+      },
+      "export_outcome": {
+        "status": "no_request",
+        "http_status": null,
+        "did": {
+          "functions_entered": 2,
+          "dom_mutations": 5,
+          "state_effects": 0
+        },
+        "clause": "the handler ran and issued no request from instrumented code (2 functions entered, 5 DOM mutations, 0 state effects)",
+        "label": "No request: the handler ran and issued no request from instrumented code",
+        "sentence": "the handler ran and issued no request from instrumented code (2 functions entered, 5 DOM mutations, 0 state effects); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+      },
+      "summary": "submit action:mufuf7i1:34 [outcome no_request; the handler ran and issued no request from instrumented code (2 functions entered, 5 DOM mutations, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+      "live_label": "No request: the handler ran and issued no request from instrumented code",
+      "reached": "dom_mutation",
+      "stopped_at": "browser",
+      "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+    },
+    "noValidate multi-step \"Next\" (submit, nothing sent)": {
+      "action_id": "action:mufuf7z6:37",
+      "statuses": {
+        "action_chain": "no_request",
+        "display_status": "no_request",
+        "chain_display": "no_request",
+        "chain_outcome": "no_request",
+        "recent_actions": "no_request",
+        "element_history": "no_request",
+        "attempt": "no_request",
+        "compare_before": "no_request",
+        "compare_after": "no_request",
+        "live_viewer": "no_request"
+      },
+      "outcome": {
+        "stage": "stopped",
+        "status": "no_request",
+        "display_status": "no_request",
+        "http_status": null,
+        "writes": [],
+        "reads": [],
+        "stop_reason": "no_request_or_validation_effect_after_submit",
+        "stopped_at": "browser",
+        "reached": "dom_mutation",
+        "label": "No request: the handler ran and issued no request from instrumented code",
+        "sentence": "the handler ran and issued no request from instrumented code (2 functions entered, 4 DOM mutations, 0 state effects); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+        "did": {
+          "functions_entered": 2,
+          "dom_mutations": 4,
+          "state_effects": 0
+        },
+        "clause": "the handler ran and issued no request from instrumented code (2 functions entered, 4 DOM mutations, 0 state effects)",
+        "requests": 0,
+        "failed_requests": 0
+      },
+      "export_outcome": {
+        "status": "no_request",
+        "http_status": null,
+        "did": {
+          "functions_entered": 2,
+          "dom_mutations": 4,
+          "state_effects": 0
+        },
+        "clause": "the handler ran and issued no request from instrumented code (2 functions entered, 4 DOM mutations, 0 state effects)",
+        "label": "No request: the handler ran and issued no request from instrumented code",
+        "sentence": "the handler ran and issued no request from instrumented code (2 functions entered, 4 DOM mutations, 0 state effects); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+      },
+      "summary": "submit action:mufuf7z6:37 → handler <unnamed> client/src/main.jsx@1524-1581 [outcome no_request; the handler ran and issued no request from instrumented code (2 functions entered, 4 DOM mutations, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+      "live_label": "No request: the handler ran and issued no request from instrumented code",
+      "reached": "dom_mutation",
+      "stopped_at": "browser",
+      "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+    },
+    "inner-step \"Next inside\" (noValidate, step 2 input rendered in the form)": {
+      "action_id": "action:mufuf8g9:40",
+      "statuses": {
+        "action_chain": "no_request",
+        "display_status": "no_request",
+        "chain_display": "no_request",
+        "chain_outcome": "no_request",
+        "recent_actions": "no_request",
+        "element_history": "no_request",
+        "attempt": "no_request",
+        "compare_before": "no_request",
+        "compare_after": "no_request",
+        "live_viewer": "no_request"
+      },
+      "outcome": {
+        "stage": "stopped",
+        "status": "no_request",
+        "display_status": "no_request",
+        "http_status": null,
+        "writes": [],
+        "reads": [],
+        "stop_reason": "no_request_or_validation_effect_after_submit",
+        "stopped_at": "browser",
+        "reached": "dom_mutation",
+        "label": "No request: the handler ran and issued no request from instrumented code",
+        "sentence": "the handler ran and issued no request from instrumented code (2 functions entered, 4 DOM mutations, 0 state effects); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+        "did": {
+          "functions_entered": 2,
+          "dom_mutations": 4,
+          "state_effects": 0
+        },
+        "clause": "the handler ran and issued no request from instrumented code (2 functions entered, 4 DOM mutations, 0 state effects)",
+        "requests": 0,
+        "failed_requests": 0
+      },
+      "export_outcome": {
+        "status": "no_request",
+        "http_status": null,
+        "did": {
+          "functions_entered": 2,
+          "dom_mutations": 4,
+          "state_effects": 0
+        },
+        "clause": "the handler ran and issued no request from instrumented code (2 functions entered, 4 DOM mutations, 0 state effects)",
+        "label": "No request: the handler ran and issued no request from instrumented code",
+        "sentence": "the handler ran and issued no request from instrumented code (2 functions entered, 4 DOM mutations, 0 state effects); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+      },
+      "summary": "submit action:mufuf8g9:40 → handler <unnamed> client/src/main.jsx@1801-1854 [outcome no_request; the handler ran and issued no request from instrumented code (2 functions entered, 4 DOM mutations, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+      "live_label": "No request: the handler ran and issued no request from instrumented code",
+      "reached": "dom_mutation",
+      "stopped_at": "browser",
+      "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+    },
+    "inner-step \"Next inside validated\" (valid form, \"Step 2 of 3\" rendered in the form)": {
+      "action_id": "action:mufuf8xe:43",
+      "statuses": {
+        "action_chain": "no_request",
+        "display_status": "no_request",
+        "chain_display": "no_request",
+        "chain_outcome": "no_request",
+        "recent_actions": "no_request",
+        "element_history": "no_request",
+        "attempt": "no_request",
+        "compare_before": "no_request",
+        "compare_after": "no_request",
+        "live_viewer": "no_request"
+      },
+      "outcome": {
+        "stage": "stopped",
+        "status": "no_request",
+        "display_status": "no_request",
+        "http_status": null,
+        "writes": [],
+        "reads": [],
+        "stop_reason": "no_request_or_validation_effect_after_submit",
+        "stopped_at": "browser",
+        "reached": "dom_mutation",
+        "label": "No request: the handler ran and issued no request from instrumented code",
+        "sentence": "the handler ran and issued no request from instrumented code (2 functions entered, 3 DOM mutations, 0 state effects); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+        "did": {
+          "functions_entered": 2,
+          "dom_mutations": 3,
+          "state_effects": 0
+        },
+        "clause": "the handler ran and issued no request from instrumented code (2 functions entered, 3 DOM mutations, 0 state effects)",
+        "requests": 0,
+        "failed_requests": 0
+      },
+      "export_outcome": {
+        "status": "no_request",
+        "http_status": null,
+        "did": {
+          "functions_entered": 2,
+          "dom_mutations": 3,
+          "state_effects": 0
+        },
+        "clause": "the handler ran and issued no request from instrumented code (2 functions entered, 3 DOM mutations, 0 state effects)",
+        "label": "No request: the handler ran and issued no request from instrumented code",
+        "sentence": "the handler ran and issued no request from instrumented code (2 functions entered, 3 DOM mutations, 0 state effects); no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+      },
+      "summary": "submit action:mufuf8xe:43 → handler <unnamed> client/src/main.jsx@1886-1948 [outcome no_request; the handler ran and issued no request from instrumented code (2 functions entered, 3 DOM mutations, 0 state effects)]: reached dom_mutation / stopped at browser / because no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)",
+      "live_label": "No request: the handler ran and issued no request from instrumented code",
+      "reached": "dom_mutation",
+      "stopped_at": "browser",
+      "because": "no request could be attributed to this action from instrumented code (requests from uninstrumented scripts, workers and third-party code cannot be linked; any seen in this window are listed below as unlinked)"
+    },
+    "write then a 500 in the same action": {
+      "action_id": "action:mufuf37d:14",
+      "statuses": {
+        "action_chain": "completed",
+        "display_status": "completed",
+        "chain_display": "completed",
+        "chain_outcome": "completed",
+        "recent_actions": "completed",
+        "element_history": "completed",
+        "attempt": "completed",
+        "compare_before": "completed",
+        "compare_after": "completed",
+        "live_viewer": "completed"
+      },
+      "outcome": {
+        "stage": "effect",
+        "status": "completed",
+        "display_status": "completed",
+        "http_status": 201,
+        "writes": [
+          "insert items"
+        ],
+        "reads": [],
+        "stop_reason": null,
+        "stopped_at": null,
+        "reached": "db",
+        "label": "Completed 201: insert items; also failed 500 POST /api/reports",
+        "sentence": "server responded 201 to POST /api/items; database write insert items joined under the request; also failed 500 POST /api/reports",
+        "other_requests": [
+          {
+            "status": "failed",
+            "http_status": 500,
+            "method": "POST",
+            "path": "/api/reports",
+            "count": 1,
+            "request_occurrence_ids": [
+              "action:mufuf37d:14:request:8"
+            ],
+            "text": "failed 500 POST /api/reports"
+          }
+        ],
+        "also_text": "; also failed 500 POST /api/reports",
+        "requests": 2,
+        "failed_requests": 1
+      },
+      "export_outcome": {
+        "status": "completed",
+        "http_status": 201,
+        "label": "Completed 201: insert items; also failed 500 POST /api/reports",
+        "sentence": "server responded 201 to POST /api/items; database write insert items joined under the request; also failed 500 POST /api/reports",
+        "other_requests": [
+          {
+            "status": "failed",
+            "http_status": 500,
+            "method": "POST",
+            "path": "/api/reports",
+            "count": 1,
+            "request_occurrence_ids": [
+              "action:mufuf37d:14:request:8"
+            ],
+            "text": "failed 500 POST /api/reports"
+          }
+        ],
+        "also_text": "; also failed 500 POST /api/reports"
+      },
+      "summary": "click action:mufuf37d:14 → handler <unnamed> client/src/main.jsx@1144-1209 → 2 requests (1 failed): (1) <unnamed> client/src/main.jsx@648-774 → <unnamed> client/src/main.jsx@529-631 → POST /api/items → route /api/items 201 → server createItem → db insert items [completed 201]; (2) <unnamed> client/src/main.jsx@648-774 → <unnamed> client/src/main.jsx@529-631 → POST /api/reports → route /api/reports 500 → server buildReport [failed 500] [outcome completed 201; also failed 500 POST /api/reports]: reached db / stopped at none (terminal effect observed) / because database write insert items joined by exact span parentage",
+      "live_label": "Completed 201: insert items; also failed 500 POST /api/reports",
+      "reached": "db",
+      "stopped_at": null,
+      "because": "database write insert items joined by exact span parentage"
+    },
+    "POST that only read (2xx, unsafe method)": {
+      "action_id": "action:mufuf3oi:16",
+      "statuses": {
+        "action_chain": "responded",
+        "display_status": "responded",
+        "chain_display": "responded",
+        "chain_outcome": "responded",
+        "recent_actions": "responded",
+        "element_history": "responded",
+        "attempt": "responded",
+        "compare_before": "responded",
+        "compare_after": "responded",
+        "live_viewer": "responded"
+      },
+      "outcome": {
+        "stage": "effect",
+        "status": "responded",
+        "display_status": "responded",
+        "http_status": 200,
+        "writes": [],
+        "reads": [
+          "find seats"
+        ],
+        "stop_reason": null,
+        "stopped_at": null,
+        "reached": "db",
+        "label": "Responded 200: no write observed",
+        "sentence": "server responded 200 to POST /api/lookup; only database reads joined under the request (no write observed)",
+        "note": "no write observed",
+        "requests": 1,
+        "failed_requests": 0
+      },
+      "export_outcome": {
+        "status": "responded",
+        "http_status": 200,
+        "note": "no write observed",
+        "label": "Responded 200: no write observed",
+        "sentence": "server responded 200 to POST /api/lookup; only database reads joined under the request (no write observed)"
+      },
+      "summary": "click action:mufuf3oi:16 → handler <unnamed> client/src/main.jsx@1228-1273 → 1 request: (1) <unnamed> client/src/main.jsx@648-774 → <unnamed> client/src/main.jsx@529-631 → POST /api/lookup → route /api/lookup 200 → server lookupSeat → db find seats [responded 200; no write observed] [outcome responded 200; no write observed]: reached db / stopped at none (terminal effect observed) / because database read find seats joined by exact span parentage; no write",
+      "live_label": "Responded 200: no write observed",
+      "reached": "db",
+      "stopped_at": null,
+      "because": "database read find seats joined by exact span parentage; no write"
+    },
+    "GET with a read (2xx, safe method)": {
+      "action_id": "action:mufuf45n:18",
+      "statuses": {
+        "action_chain": "completed",
+        "display_status": "completed",
+        "chain_display": "completed",
+        "chain_outcome": "completed",
+        "recent_actions": "completed",
+        "element_history": "completed",
+        "attempt": "completed",
+        "compare_before": "completed",
+        "compare_after": "completed",
+        "live_viewer": "completed"
+      },
+      "outcome": {
+        "stage": "effect",
+        "status": "completed",
+        "display_status": "completed",
+        "http_status": 200,
+        "writes": [],
+        "reads": [
+          "find seats"
+        ],
+        "stop_reason": null,
+        "stopped_at": null,
+        "reached": "db",
+        "label": "Completed 200: find seats",
+        "sentence": "server responded 200 to GET /api/seats; database read find seats joined under the request",
+        "requests": 1,
+        "failed_requests": 0
+      },
+      "export_outcome": {
+        "status": "completed",
+        "http_status": 200,
+        "label": "Completed 200: find seats",
+        "sentence": "server responded 200 to GET /api/seats; database read find seats joined under the request"
+      },
+      "summary": "click action:mufuf45n:18 → handler <unnamed> client/src/main.jsx@1295-1324 → 1 request: (1) <unnamed> client/src/main.jsx@529-631 → GET /api/seats → route /api/seats 200 → server listSeats → db find seats [completed 200] [outcome completed 200]: reached db / stopped at none (terminal effect observed) / because database read find seats joined by exact span parentage; no write",
+      "live_label": "Completed 200: find seats",
+      "reached": "db",
+      "stopped_at": null,
+      "because": "database read find seats joined by exact span parentage; no write"
+    }
+  },
+  "action_kinds": {
+    "focusin": 20,
+    "click": 19,
+    "submit": 5,
+    "keydown": 1,
+    "input": 1
+  }
+}

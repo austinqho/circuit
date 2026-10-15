@@ -1,0 +1,36 @@
+PASS R0 the page ran without errors and the tools list page_requests
+PASS W1 raw: the like POST got a 409 by exact parent; the .catch arrow and rollbackLike carry response_of = that request (an identifier)
+PASS W2 MCP work: the .catch continuation is marked after response 409 and rollbackLike sits under it
+PASS W3 MCP summary renders "after response 409: … → rollbackLike file:line"
+PASS W1b raw: the sibling noteDelay (wait(250).then) ran after the response, on a promise continuation of onLike, with no response_of
+PASS W2b MCP: the sibling continuation is not marked after response (no identifier ties it to the request)
+PASS W4 the 409 request hangs off onLike in the work listing
+PASS W5 raw: the canvas click entered hitTest 5 times and sent no request
+PASS W6 MCP: work lists hitTest ×5 (calls = raw enter rows) under a request-less chain
+PASS W10 raw: factorial wrote 10 enter rows (a chunk-pass and a module-pass frame per call), 5 calls
+PASS W11 MCP: factorial ×5 (recursive), not a single call
+PASS W12 raw: after `await (await fetch(u)).json()`, bodyLoaded carries response_of = that request
+PASS W13 MCP: bodyLoaded is marked "after response 200"
+PASS W7 raw: the empty submit entered validateForm and showErrors and sent no request
+PASS W8 MCP: rejected_client_side at validation, and the work names validateForm and showErrors (not "the handler did nothing")
+PASS W14 member chains: the work lists only the member's own frames (raw enter rows of that action)
+PASS W9 element_history carries the same work listing per action and attempt
+PASS U1 raw: the inline script's fetch is unattributed (issuer: no first-party frame, a setInterval armed at load) and joins its server span exactly; its beacon left only a server span
+PASS U2 MCP: the unlinked request carries its exact server span with handler and DB spans (equal to the raw descendants)
+PASS U3 MCP: the unlinked server span carries its handler and DB spans (equal to the raw descendants)
+PASS U4 MCP summary renders both, marked unlinked
+PASS P1 raw: every poll row is unattributed, issued by pollStatus inside a setInterval armed before the first action
+PASS P2 MCP page_requests: count equals the raw poll rows and each says who issued it
+PASS P3 MCP page_requests: the poll interval equals the raw timestamps' median gap (~300 ms)
+PASS P4 MCP page_requests: each poll carries its server span, handler and DB ops from the raw spans
+PASS P7 raw: the page-load poll that awaits before fetching keeps its frame and task across the await
+PASS P8 MCP: it is named (never "uninstrumented"), and a doubled frame never reads "called from" itself
+PASS P5 MCP page_requests: page totals equal the raw rows; attributed ones name their action
+PASS P6 MCP page_requests summary reads "GET /api/status ×N … interval median"
+PASS Q1 raw: the runtime recorded path + query and dropped the fragment
+PASS Q2 MCP: the segment keeps the query and the summary prints it
+PASS E1 role+name: top 5 with scores; best is the like button's key; still ambiguous, never exact
+PASS E2 name = visible text: the stamp content_sig singles out the button; best is its key
+PASS E3 two buttons share role+name: no best, both listed
+PASS E4 role only: at most 5 candidates of more, no best
+35/35 checks pass; store /var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/tracer-mcp-gaps-store-AN4cAJ

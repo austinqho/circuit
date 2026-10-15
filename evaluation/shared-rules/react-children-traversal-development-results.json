@@ -1,0 +1,1592 @@
+{
+  "passed": true,
+  "mode": "development",
+  "model_requests": 0,
+  "results": [
+    {
+      "version": "18.2.0",
+      "export_name": "Children.count",
+      "passed": true,
+      "wrong_rules_rejected": 3,
+      "admission": {
+        "status": "admitted",
+        "id": "library-program:8e86038d835e1087a426793d40b6808dd0a15a31fe1276088889c7eb6da097d4",
+        "program_sha256": "a6634571871694e8eddcf0638d72fd750ca077c41c923bfb6d0f618b4d356865",
+        "implementation_sha256": "a6b53e8294c49ecf840dd41184a6683e476bc02af6c826b82b46f4e3ee4f6d14",
+        "scope": {
+          "callbackArguments": [],
+          "resultPaths": null,
+          "accessorObservation": "opaque_descriptors",
+          "description": "Input children may be null, undefined, booleans, strings, numbers (including NaN and signed zero), bigint, symbols, functions, finite acyclic arrays (including holes), or ordinary React element/fragment/portal data with scalar keys. Observe count or the complete forEach callback argument/index/receiver sequence, return identity and throws. Iterator/thenable/lazy protocols, library-read getters, nonprimitive key coercion, symbol keys, owner Fiber graphs, aliased callback arguments and input mutations require separate evidence. Unaccessed element warning descriptors remain opaque."
+        },
+        "report": {
+          "status": "passed",
+          "stage": "behavior_and_integration",
+          "behavior": {
+            "status": "passed",
+            "reason": null,
+            "samples": 16,
+            "callbacks": 0,
+            "report": {
+              "status": "observed_agreement",
+              "scope": "observations_through_checkpoint",
+              "observation_mode": "invocations",
+              "error_observation": "identity",
+              "accessor_observation": "opaque_descriptors",
+              "calls": 16,
+              "failures": [],
+              "evidence": []
+            },
+            "domainChecks": [
+              {
+                "kind": "key_getter",
+                "status": "frontier",
+                "reason": "accessor_requires_host_evidence",
+                "actual_effect_count": 3
+              },
+              {
+                "kind": "key_coercion",
+                "status": "frontier",
+                "reason": "string_coercion_requires_host_evidence",
+                "actual_effect_count": 2
+              },
+              {
+                "kind": "iterator",
+                "status": "frontier",
+                "reason": "hidden_input_state_requires_host_evidence",
+                "actual_effect_count": 0
+              }
+            ],
+            "failures": []
+          },
+          "integration": {
+            "status": "passed",
+            "reports": [
+              {
+                "binding": "44ddbb2277d0924d5c43c2efae527871383edab9e04d20188b182219d154885a:call:85",
+                "rule": "library-program:8e86038d835e1087a426793d40b6808dd0a15a31fe1276088889c7eb6da097d4",
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "opaque_descriptors",
+                "calls": 1,
+                "failures": [],
+                "evidence": []
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "version": "18.2.0",
+      "export_name": "Children.forEach",
+      "passed": true,
+      "wrong_rules_rejected": 3,
+      "admission": {
+        "status": "admitted",
+        "id": "library-program:5f3a925a465c47bf5544ab845a850e1452030e172b760425c83095149cf54826",
+        "program_sha256": "e00cf73422d971c14b260f2e6c0714d91530790bb923c9e073f163da6342dd23",
+        "implementation_sha256": "bd86eb990a4c8b9c029fbcd78d084a566de22a171d6db6eaedf90a6a2a7c38b5",
+        "scope": {
+          "callbackArguments": [
+            1
+          ],
+          "resultPaths": null,
+          "accessorObservation": "opaque_descriptors",
+          "description": "Input children may be null, undefined, booleans, strings, numbers (including NaN and signed zero), bigint, symbols, functions, finite acyclic arrays (including holes), or ordinary React element/fragment/portal data with scalar keys. Observe count or the complete forEach callback argument/index/receiver sequence, return identity and throws. Iterator/thenable/lazy protocols, library-read getters, nonprimitive key coercion, symbol keys, owner Fiber graphs, aliased callback arguments and input mutations require separate evidence. Unaccessed element warning descriptors remain opaque."
+        },
+        "report": {
+          "status": "passed",
+          "stage": "behavior_and_integration",
+          "behavior": {
+            "status": "passed",
+            "reason": null,
+            "samples": 16,
+            "callbacks": 22,
+            "report": {
+              "status": "observed_agreement",
+              "scope": "observations_through_checkpoint",
+              "observation_mode": "invocations",
+              "error_observation": "identity",
+              "accessor_observation": "opaque_descriptors",
+              "calls": 17,
+              "failures": [],
+              "evidence": [
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:3",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:4",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:5",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:6",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:7",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:8",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:10",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:10",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:10",
+                  "callback": "producer:argument:1",
+                  "ordinal": 2,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:10",
+                  "callback": "producer:argument:1",
+                  "ordinal": 3,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:11",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:11",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:11",
+                  "callback": "producer:argument:1",
+                  "ordinal": 2,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:12",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:12",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:12",
+                  "callback": "producer:argument:1",
+                  "ordinal": 2,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:13",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:13",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:13",
+                  "callback": "producer:argument:1",
+                  "ordinal": 2,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:15",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:16",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:16",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:17",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:17",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "throw",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                }
+              ]
+            },
+            "domainChecks": [
+              {
+                "kind": "key_getter",
+                "status": "frontier",
+                "reason": "accessor_requires_host_evidence",
+                "actual_effect_count": 3
+              },
+              {
+                "kind": "key_coercion",
+                "status": "frontier",
+                "reason": "string_coercion_requires_host_evidence",
+                "actual_effect_count": 2
+              },
+              {
+                "kind": "iterator",
+                "status": "frontier",
+                "reason": "hidden_input_state_requires_host_evidence",
+                "actual_effect_count": 0
+              }
+            ],
+            "failures": []
+          },
+          "integration": {
+            "status": "passed",
+            "reports": [
+              {
+                "binding": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85",
+                "rule": "library-program:5f3a925a465c47bf5544ab845a850e1452030e172b760425c83095149cf54826",
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "opaque_descriptors",
+                "calls": 1,
+                "failures": [],
+                "evidence": [
+                  {
+                    "schema": "producttrace.library-boundary-evidence.v1",
+                    "kind": "callback_invocation",
+                    "occurrence": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:1",
+                    "execution_id": "library-execution:7877924a-ac81-43d9-aa50-c78fbbf410a0:2",
+                    "callback": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:argument:1",
+                    "ordinal": 0,
+                    "parent_ordinal": null,
+                    "parent_relation": null,
+                    "timing": "synchronous",
+                    "status": "observed_agreement",
+                    "outcome": "return",
+                    "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                  },
+                  {
+                    "schema": "producttrace.library-boundary-evidence.v1",
+                    "kind": "callback_invocation",
+                    "occurrence": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:1",
+                    "execution_id": "library-execution:7877924a-ac81-43d9-aa50-c78fbbf410a0:3",
+                    "callback": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:argument:1",
+                    "ordinal": 1,
+                    "parent_ordinal": null,
+                    "parent_relation": null,
+                    "timing": "synchronous",
+                    "status": "observed_agreement",
+                    "outcome": "return",
+                    "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                  },
+                  {
+                    "schema": "producttrace.library-boundary-evidence.v1",
+                    "kind": "callback_invocation",
+                    "occurrence": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:1",
+                    "execution_id": "library-execution:7877924a-ac81-43d9-aa50-c78fbbf410a0:4",
+                    "callback": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:argument:1",
+                    "ordinal": 2,
+                    "parent_ordinal": null,
+                    "parent_relation": null,
+                    "timing": "synchronous",
+                    "status": "observed_agreement",
+                    "outcome": "return",
+                    "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                  },
+                  {
+                    "schema": "producttrace.library-boundary-evidence.v1",
+                    "kind": "callback_invocation",
+                    "occurrence": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:1",
+                    "execution_id": "library-execution:7877924a-ac81-43d9-aa50-c78fbbf410a0:5",
+                    "callback": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:argument:1",
+                    "ordinal": 3,
+                    "parent_ordinal": null,
+                    "parent_relation": null,
+                    "timing": "synchronous",
+                    "status": "observed_agreement",
+                    "outcome": "return",
+                    "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "version": "18.3.1",
+      "export_name": "Children.count",
+      "passed": true,
+      "wrong_rules_rejected": 3,
+      "admission": {
+        "status": "admitted",
+        "id": "library-program:63c9da854cf18b0524aa9ba57f270ecb2b5e109a9f768e6e5ef30f5aae57de93",
+        "program_sha256": "a6634571871694e8eddcf0638d72fd750ca077c41c923bfb6d0f618b4d356865",
+        "implementation_sha256": "9dc2a52757d1eb7d2298a0b6a78d9a64413b5a8572350ff473e13a93ed871cfd",
+        "scope": {
+          "callbackArguments": [],
+          "resultPaths": null,
+          "accessorObservation": "opaque_descriptors",
+          "description": "Input children may be null, undefined, booleans, strings, numbers (including NaN and signed zero), bigint, symbols, functions, finite acyclic arrays (including holes), or ordinary React element/fragment/portal data with scalar keys. Observe count or the complete forEach callback argument/index/receiver sequence, return identity and throws. Iterator/thenable/lazy protocols, library-read getters, nonprimitive key coercion, symbol keys, owner Fiber graphs, aliased callback arguments and input mutations require separate evidence. Unaccessed element warning descriptors remain opaque."
+        },
+        "report": {
+          "status": "passed",
+          "stage": "behavior_and_integration",
+          "behavior": {
+            "status": "passed",
+            "reason": null,
+            "samples": 16,
+            "callbacks": 0,
+            "report": {
+              "status": "observed_agreement",
+              "scope": "observations_through_checkpoint",
+              "observation_mode": "invocations",
+              "error_observation": "identity",
+              "accessor_observation": "opaque_descriptors",
+              "calls": 16,
+              "failures": [],
+              "evidence": []
+            },
+            "domainChecks": [
+              {
+                "kind": "key_getter",
+                "status": "frontier",
+                "reason": "accessor_requires_host_evidence",
+                "actual_effect_count": 3
+              },
+              {
+                "kind": "key_coercion",
+                "status": "frontier",
+                "reason": "string_coercion_requires_host_evidence",
+                "actual_effect_count": 2
+              },
+              {
+                "kind": "iterator",
+                "status": "frontier",
+                "reason": "hidden_input_state_requires_host_evidence",
+                "actual_effect_count": 0
+              }
+            ],
+            "failures": []
+          },
+          "integration": {
+            "status": "passed",
+            "reports": [
+              {
+                "binding": "44ddbb2277d0924d5c43c2efae527871383edab9e04d20188b182219d154885a:call:85",
+                "rule": "library-program:63c9da854cf18b0524aa9ba57f270ecb2b5e109a9f768e6e5ef30f5aae57de93",
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "opaque_descriptors",
+                "calls": 1,
+                "failures": [],
+                "evidence": []
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "version": "18.3.1",
+      "export_name": "Children.forEach",
+      "passed": true,
+      "wrong_rules_rejected": 3,
+      "admission": {
+        "status": "admitted",
+        "id": "library-program:7560168eb084ef2ed4a58bade4a66c927fd5b78ccc850a443ba958b211837d69",
+        "program_sha256": "e00cf73422d971c14b260f2e6c0714d91530790bb923c9e073f163da6342dd23",
+        "implementation_sha256": "42c23eee50bec1d35a5ee5f95c6749787680897c7d7d83ff4710cd93dd3ff5af",
+        "scope": {
+          "callbackArguments": [
+            1
+          ],
+          "resultPaths": null,
+          "accessorObservation": "opaque_descriptors",
+          "description": "Input children may be null, undefined, booleans, strings, numbers (including NaN and signed zero), bigint, symbols, functions, finite acyclic arrays (including holes), or ordinary React element/fragment/portal data with scalar keys. Observe count or the complete forEach callback argument/index/receiver sequence, return identity and throws. Iterator/thenable/lazy protocols, library-read getters, nonprimitive key coercion, symbol keys, owner Fiber graphs, aliased callback arguments and input mutations require separate evidence. Unaccessed element warning descriptors remain opaque."
+        },
+        "report": {
+          "status": "passed",
+          "stage": "behavior_and_integration",
+          "behavior": {
+            "status": "passed",
+            "reason": null,
+            "samples": 16,
+            "callbacks": 22,
+            "report": {
+              "status": "observed_agreement",
+              "scope": "observations_through_checkpoint",
+              "observation_mode": "invocations",
+              "error_observation": "identity",
+              "accessor_observation": "opaque_descriptors",
+              "calls": 17,
+              "failures": [],
+              "evidence": [
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:3",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:4",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:5",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:6",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:7",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:8",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:10",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:10",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:10",
+                  "callback": "producer:argument:1",
+                  "ordinal": 2,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:10",
+                  "callback": "producer:argument:1",
+                  "ordinal": 3,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:11",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:11",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:11",
+                  "callback": "producer:argument:1",
+                  "ordinal": 2,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:12",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:12",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:12",
+                  "callback": "producer:argument:1",
+                  "ordinal": 2,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:13",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:13",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:13",
+                  "callback": "producer:argument:1",
+                  "ordinal": 2,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:15",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:16",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:16",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:17",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:17",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "throw",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                }
+              ]
+            },
+            "domainChecks": [
+              {
+                "kind": "key_getter",
+                "status": "frontier",
+                "reason": "accessor_requires_host_evidence",
+                "actual_effect_count": 3
+              },
+              {
+                "kind": "key_coercion",
+                "status": "frontier",
+                "reason": "string_coercion_requires_host_evidence",
+                "actual_effect_count": 2
+              },
+              {
+                "kind": "iterator",
+                "status": "frontier",
+                "reason": "hidden_input_state_requires_host_evidence",
+                "actual_effect_count": 0
+              }
+            ],
+            "failures": []
+          },
+          "integration": {
+            "status": "passed",
+            "reports": [
+              {
+                "binding": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85",
+                "rule": "library-program:7560168eb084ef2ed4a58bade4a66c927fd5b78ccc850a443ba958b211837d69",
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "opaque_descriptors",
+                "calls": 1,
+                "failures": [],
+                "evidence": [
+                  {
+                    "schema": "producttrace.library-boundary-evidence.v1",
+                    "kind": "callback_invocation",
+                    "occurrence": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:1",
+                    "execution_id": "library-execution:9114e639-24a8-4e8b-abb9-3af6f6739a48:2",
+                    "callback": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:argument:1",
+                    "ordinal": 0,
+                    "parent_ordinal": null,
+                    "parent_relation": null,
+                    "timing": "synchronous",
+                    "status": "observed_agreement",
+                    "outcome": "return",
+                    "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                  },
+                  {
+                    "schema": "producttrace.library-boundary-evidence.v1",
+                    "kind": "callback_invocation",
+                    "occurrence": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:1",
+                    "execution_id": "library-execution:9114e639-24a8-4e8b-abb9-3af6f6739a48:3",
+                    "callback": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:argument:1",
+                    "ordinal": 1,
+                    "parent_ordinal": null,
+                    "parent_relation": null,
+                    "timing": "synchronous",
+                    "status": "observed_agreement",
+                    "outcome": "return",
+                    "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                  },
+                  {
+                    "schema": "producttrace.library-boundary-evidence.v1",
+                    "kind": "callback_invocation",
+                    "occurrence": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:1",
+                    "execution_id": "library-execution:9114e639-24a8-4e8b-abb9-3af6f6739a48:4",
+                    "callback": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:argument:1",
+                    "ordinal": 2,
+                    "parent_ordinal": null,
+                    "parent_relation": null,
+                    "timing": "synchronous",
+                    "status": "observed_agreement",
+                    "outcome": "return",
+                    "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                  },
+                  {
+                    "schema": "producttrace.library-boundary-evidence.v1",
+                    "kind": "callback_invocation",
+                    "occurrence": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:1",
+                    "execution_id": "library-execution:9114e639-24a8-4e8b-abb9-3af6f6739a48:5",
+                    "callback": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:argument:1",
+                    "ordinal": 3,
+                    "parent_ordinal": null,
+                    "parent_relation": null,
+                    "timing": "synchronous",
+                    "status": "observed_agreement",
+                    "outcome": "return",
+                    "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "version": "19.1.1",
+      "export_name": "Children.count",
+      "passed": true,
+      "wrong_rules_rejected": 3,
+      "admission": {
+        "status": "admitted",
+        "id": "library-program:24ac687f9c731eafbca131b9fa2d1911add5460c4b0e324309242a9445975e30",
+        "program_sha256": "d5ae5db9c8402a060e0e5cec7cd4a5c6f5774e206796e4282da2df067780b038",
+        "implementation_sha256": "8a5704230b64e5babee8eb80cf76e772ccbce71da89b53fbd262a987e4775bbf",
+        "scope": {
+          "callbackArguments": [],
+          "resultPaths": null,
+          "accessorObservation": "opaque_descriptors",
+          "description": "Input children may be null, undefined, booleans, strings, numbers (including NaN and signed zero), bigint, symbols, functions, finite acyclic arrays (including holes), or ordinary React element/fragment/portal data with scalar keys. Observe count or the complete forEach callback argument/index/receiver sequence, return identity and throws. Iterator/thenable/lazy protocols, library-read getters, nonprimitive key coercion, symbol keys, owner Fiber graphs, aliased callback arguments and input mutations require separate evidence. Unaccessed element warning descriptors remain opaque."
+        },
+        "report": {
+          "status": "passed",
+          "stage": "behavior_and_integration",
+          "behavior": {
+            "status": "passed",
+            "reason": null,
+            "samples": 16,
+            "callbacks": 0,
+            "report": {
+              "status": "observed_agreement",
+              "scope": "observations_through_checkpoint",
+              "observation_mode": "invocations",
+              "error_observation": "identity",
+              "accessor_observation": "opaque_descriptors",
+              "calls": 16,
+              "failures": [],
+              "evidence": []
+            },
+            "domainChecks": [
+              {
+                "kind": "key_getter",
+                "status": "frontier",
+                "reason": "accessor_requires_host_evidence",
+                "actual_effect_count": 3
+              },
+              {
+                "kind": "key_coercion",
+                "status": "frontier",
+                "reason": "string_coercion_requires_host_evidence",
+                "actual_effect_count": 2
+              },
+              {
+                "kind": "iterator",
+                "status": "frontier",
+                "reason": "hidden_input_state_requires_host_evidence",
+                "actual_effect_count": 0
+              }
+            ],
+            "failures": []
+          },
+          "integration": {
+            "status": "passed",
+            "reports": [
+              {
+                "binding": "44ddbb2277d0924d5c43c2efae527871383edab9e04d20188b182219d154885a:call:85",
+                "rule": "library-program:24ac687f9c731eafbca131b9fa2d1911add5460c4b0e324309242a9445975e30",
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "opaque_descriptors",
+                "calls": 1,
+                "failures": [],
+                "evidence": []
+              }
+            ]
+          }
+        }
+      }
+    },
+    {
+      "version": "19.1.1",
+      "export_name": "Children.forEach",
+      "passed": true,
+      "wrong_rules_rejected": 3,
+      "admission": {
+        "status": "admitted",
+        "id": "library-program:c6b646bed38f8a93200790e6de6e2cebc330ffa49119fdd42448a90dec1f276c",
+        "program_sha256": "41e82256275124f54ce3a1e52ccf4c3d15f11c50662c414767df695fe283940a",
+        "implementation_sha256": "2501b782e7b8d1c7cf24440d7a268ba6606dbb1823dfd4fa68a2bf938440d9c8",
+        "scope": {
+          "callbackArguments": [
+            1
+          ],
+          "resultPaths": null,
+          "accessorObservation": "opaque_descriptors",
+          "description": "Input children may be null, undefined, booleans, strings, numbers (including NaN and signed zero), bigint, symbols, functions, finite acyclic arrays (including holes), or ordinary React element/fragment/portal data with scalar keys. Observe count or the complete forEach callback argument/index/receiver sequence, return identity and throws. Iterator/thenable/lazy protocols, library-read getters, nonprimitive key coercion, symbol keys, owner Fiber graphs, aliased callback arguments and input mutations require separate evidence. Unaccessed element warning descriptors remain opaque."
+        },
+        "report": {
+          "status": "passed",
+          "stage": "behavior_and_integration",
+          "behavior": {
+            "status": "passed",
+            "reason": null,
+            "samples": 16,
+            "callbacks": 23,
+            "report": {
+              "status": "observed_agreement",
+              "scope": "observations_through_checkpoint",
+              "observation_mode": "invocations",
+              "error_observation": "identity",
+              "accessor_observation": "opaque_descriptors",
+              "calls": 17,
+              "failures": [],
+              "evidence": [
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:3",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:4",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:5",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:6",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:7",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:8",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:10",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:10",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:10",
+                  "callback": "producer:argument:1",
+                  "ordinal": 2,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:10",
+                  "callback": "producer:argument:1",
+                  "ordinal": 3,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:11",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:11",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:11",
+                  "callback": "producer:argument:1",
+                  "ordinal": 2,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:12",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:12",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:12",
+                  "callback": "producer:argument:1",
+                  "ordinal": 2,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:13",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:13",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:13",
+                  "callback": "producer:argument:1",
+                  "ordinal": 2,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:14",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:15",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:16",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:16",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:17",
+                  "callback": "producer:argument:1",
+                  "ordinal": 0,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "return",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                },
+                {
+                  "schema": "producttrace.library-boundary-evidence.v1",
+                  "kind": "callback_invocation",
+                  "occurrence": "library-call:17",
+                  "callback": "producer:argument:1",
+                  "ordinal": 1,
+                  "parent_ordinal": null,
+                  "parent_relation": null,
+                  "timing": "synchronous",
+                  "status": "observed_agreement",
+                  "outcome": "throw",
+                  "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                }
+              ]
+            },
+            "domainChecks": [
+              {
+                "kind": "key_getter",
+                "status": "frontier",
+                "reason": "accessor_requires_host_evidence",
+                "actual_effect_count": 3
+              },
+              {
+                "kind": "key_coercion",
+                "status": "frontier",
+                "reason": "string_coercion_requires_host_evidence",
+                "actual_effect_count": 2
+              },
+              {
+                "kind": "iterator",
+                "status": "frontier",
+                "reason": "hidden_input_state_requires_host_evidence",
+                "actual_effect_count": 0
+              }
+            ],
+            "failures": []
+          },
+          "integration": {
+            "status": "passed",
+            "reports": [
+              {
+                "binding": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85",
+                "rule": "library-program:c6b646bed38f8a93200790e6de6e2cebc330ffa49119fdd42448a90dec1f276c",
+                "status": "observed_agreement",
+                "scope": "observations_through_checkpoint",
+                "observation_mode": "invocations",
+                "error_observation": "identity",
+                "accessor_observation": "opaque_descriptors",
+                "calls": 1,
+                "failures": [],
+                "evidence": [
+                  {
+                    "schema": "producttrace.library-boundary-evidence.v1",
+                    "kind": "callback_invocation",
+                    "occurrence": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:1",
+                    "execution_id": "library-execution:08edc3de-bf77-45d6-a599-9371e118cb0b:2",
+                    "callback": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:argument:1",
+                    "ordinal": 0,
+                    "parent_ordinal": null,
+                    "parent_relation": null,
+                    "timing": "synchronous",
+                    "status": "observed_agreement",
+                    "outcome": "return",
+                    "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                  },
+                  {
+                    "schema": "producttrace.library-boundary-evidence.v1",
+                    "kind": "callback_invocation",
+                    "occurrence": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:1",
+                    "execution_id": "library-execution:08edc3de-bf77-45d6-a599-9371e118cb0b:3",
+                    "callback": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:argument:1",
+                    "ordinal": 1,
+                    "parent_ordinal": null,
+                    "parent_relation": null,
+                    "timing": "synchronous",
+                    "status": "observed_agreement",
+                    "outcome": "return",
+                    "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                  },
+                  {
+                    "schema": "producttrace.library-boundary-evidence.v1",
+                    "kind": "callback_invocation",
+                    "occurrence": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:1",
+                    "execution_id": "library-execution:08edc3de-bf77-45d6-a599-9371e118cb0b:4",
+                    "callback": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:argument:1",
+                    "ordinal": 2,
+                    "parent_ordinal": null,
+                    "parent_relation": null,
+                    "timing": "synchronous",
+                    "status": "observed_agreement",
+                    "outcome": "return",
+                    "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                  },
+                  {
+                    "schema": "producttrace.library-boundary-evidence.v1",
+                    "kind": "callback_invocation",
+                    "occurrence": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:1",
+                    "execution_id": "library-execution:08edc3de-bf77-45d6-a599-9371e118cb0b:5",
+                    "callback": "5f82dacc2050c95f7a9fc9f3b479b3912936d55b77bda9b48f0efb306602e4b2:call:85:argument:1",
+                    "ordinal": 3,
+                    "parent_ordinal": null,
+                    "parent_relation": null,
+                    "timing": "synchronous",
+                    "status": "observed_agreement",
+                    "outcome": "return",
+                    "reason": "Observed the real callback inside this exact library call; program replay uses its recorded outcome."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      }
+    }
+  ]
+}

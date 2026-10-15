@@ -1,0 +1,8 @@
+{
+  "reader_commit": "d02517e0",
+  "package": "@tanstack/query-core",
+  "version": "5.90.16",
+  "export": "shouldThrowError",
+  "before": "export_requires_own_data_property",
+  "model_requests": 0
+}

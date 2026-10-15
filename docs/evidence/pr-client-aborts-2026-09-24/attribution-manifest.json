@@ -1,0 +1,656 @@
+{
+  "schema": "producttrace.runtime-attribution-manifest.v1",
+  "first_party": {
+    "include": [],
+    "exclude": [
+      "**/node_modules/**",
+      "**/vendor/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/.git/**"
+    ],
+    "excluded_functions": {
+      "outside repository": 935
+    },
+    "excluded_modules": {}
+  },
+  "build": "a26b03c3aabd",
+  "functions": [
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:1111:1164",
+      "index": 0,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1111,
+        "end": 1164
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 8307,
+        "end": 8424
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:1129:1163",
+      "index": 1,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1129,
+        "end": 1163
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 8368,
+        "end": 8404
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:1203:1377",
+      "index": 2,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1203,
+        "end": 1377
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 8488,
+        "end": 8903
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:1379:2049",
+      "index": 3,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1379,
+        "end": 2049
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 8974,
+        "end": 10329
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:1678:1714",
+      "index": 4,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 1678,
+        "end": 1714
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 9652,
+        "end": 9690
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:2051:2177",
+      "index": 5,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 2051,
+        "end": 2177
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 10398,
+        "end": 10765
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:2179:3045",
+      "index": 6,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 2179,
+        "end": 3045
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 10835,
+        "end": 12609
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:2480:2501",
+      "index": 7,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 2480,
+        "end": 2501
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 11517,
+        "end": 11538
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:2721:2773",
+      "index": 8,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 2721,
+        "end": 2773
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 11956,
+        "end": 12008
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:3047:7845",
+      "index": 9,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 3047,
+        "end": 7845
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 12675,
+        "end": 22365
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:3150:3506",
+      "index": 10,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 3150,
+        "end": 3506
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 12907,
+        "end": 13524
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:3509:3559",
+      "index": 11,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 3509,
+        "end": 3559
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 13599,
+        "end": 13940
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:3563:3915",
+      "index": 12,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 3563,
+        "end": 3915
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 14016,
+        "end": 14676
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:3919:4342",
+      "index": 13,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 3919,
+        "end": 4342
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 14757,
+        "end": 15548
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:4108:4170",
+      "index": 14,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 4108,
+        "end": 4170
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 15086,
+        "end": 15148
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:4346:4624",
+      "index": 15,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 4346,
+        "end": 4624
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 15630,
+        "end": 16164
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:4628:4995",
+      "index": 16,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 4628,
+        "end": 4995
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 16242,
+        "end": 16980
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:4722:4786",
+      "index": 17,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 4722,
+        "end": 4786
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 16477,
+        "end": 16541
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:4999:5577",
+      "index": 18,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 4999,
+        "end": 5577
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 17058,
+        "end": 17974
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:5254:5267",
+      "index": 19,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 5254,
+        "end": 5267
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 17471,
+        "end": 17484
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:5581:5886",
+      "index": 20,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 5581,
+        "end": 5886
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 18052,
+        "end": 18825
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:5722:5752",
+      "index": 21,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 5722,
+        "end": 5752
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 18334,
+        "end": 18364
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:5788:5824",
+      "index": 22,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 5788,
+        "end": 5824
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 18460,
+        "end": 18496
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:5858:5875",
+      "index": 23,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 5858,
+        "end": 5875
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 18590,
+        "end": 18607
+      }
+    },
+    {
+      "id": "function:b38aa6a66b4426e6c00b0f9635c2cb9a875fd35844f1342affb6732235008b90:7847:7977",
+      "index": 24,
+      "kind": "function",
+      "source": {
+        "file": "client/src/main.jsx",
+        "start": 7847,
+        "end": 7977
+      },
+      "generated": {
+        "file": "/private/var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/producttrace-client-aborts-B70Oe4/client/dist/assets/index-CkOIL1oE.js",
+        "start": 22433,
+        "end": 23229
+      }
+    }
+  ],
+  "placements": [
+    {
+      "index": 0,
+      "id": "placement:fec47669a71321fc0b6b15d05771e17075248f22d20fc01282fbd990c4726f02:1565:1909",
+      "key": "p_fec47669a713:1565-1909",
+      "file": "client/src/main.jsx",
+      "line": 30,
+      "tag": "section",
+      "component": "SearchBox",
+      "start": 1565,
+      "end": 1909
+    },
+    {
+      "index": 1,
+      "id": "placement:fec47669a71321fc0b6b15d05771e17075248f22d20fc01282fbd990c4726f02:1601:1718",
+      "key": "p_fec47669a713:1601-1718",
+      "file": "client/src/main.jsx",
+      "line": 31,
+      "tag": "input",
+      "component": "SearchBox",
+      "start": 1601,
+      "end": 1718,
+      "bound": {
+        "onChange": [
+          4
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "id": "placement:fec47669a71321fc0b6b15d05771e17075248f22d20fc01282fbd990c4726f02:1725:1894",
+      "key": "p_fec47669a713:1725-1894",
+      "file": "client/src/main.jsx",
+      "line": 32,
+      "tag": "output",
+      "component": "SearchBox",
+      "start": 1725,
+      "end": 1894
+    },
+    {
+      "index": 3,
+      "id": "placement:fec47669a71321fc0b6b15d05771e17075248f22d20fc01282fbd990c4726f02:2254:2641",
+      "key": "p_fec47669a713:2254-2641",
+      "file": "client/src/main.jsx",
+      "line": 47,
+      "tag": "section",
+      "component": "Report",
+      "start": 2254,
+      "end": 2641
+    },
+    {
+      "index": 4,
+      "id": "placement:fec47669a71321fc0b6b15d05771e17075248f22d20fc01282fbd990c4726f02:2290:2390",
+      "key": "p_fec47669a713:2290-2390",
+      "file": "client/src/main.jsx",
+      "line": 48,
+      "tag": "button",
+      "component": "Report",
+      "start": 2290,
+      "end": 2390,
+      "bound": {
+        "onClick": [
+          7
+        ]
+      }
+    },
+    {
+      "index": 5,
+      "id": "placement:fec47669a71321fc0b6b15d05771e17075248f22d20fc01282fbd990c4726f02:2397:2532",
+      "key": "p_fec47669a713:2397-2532",
+      "file": "client/src/main.jsx",
+      "line": 49,
+      "tag": "button",
+      "component": "Report",
+      "start": 2397,
+      "end": 2532,
+      "bound": {
+        "onClick": [
+          8
+        ]
+      }
+    },
+    {
+      "index": 6,
+      "id": "placement:fec47669a71321fc0b6b15d05771e17075248f22d20fc01282fbd990c4726f02:2539:2626",
+      "key": "p_fec47669a713:2539-2626",
+      "file": "client/src/main.jsx",
+      "line": 50,
+      "tag": "output",
+      "component": "Report",
+      "start": 2539,
+      "end": 2626
+    },
+    {
+      "index": 7,
+      "id": "placement:fec47669a71321fc0b6b15d05771e17075248f22d20fc01282fbd990c4726f02:5506:6385",
+      "key": "p_fec47669a713:5506-6385",
+      "file": "client/src/main.jsx",
+      "line": 122,
+      "tag": "section",
+      "component": "Requests",
+      "start": 5506,
+      "end": 6385
+    },
+    {
+      "index": 8,
+      "id": "placement:fec47669a71321fc0b6b15d05771e17075248f22d20fc01282fbd990c4726f02:5544:5627",
+      "key": "p_fec47669a713:5544-5627",
+      "file": "client/src/main.jsx",
+      "line": 123,
+      "tag": "button",
+      "component": "Requests",
+      "start": 5544,
+      "end": 5627
+    },
+    {
+      "index": 9,
+      "id": "placement:fec47669a71321fc0b6b15d05771e17075248f22d20fc01282fbd990c4726f02:5634:5720",
+      "key": "p_fec47669a713:5634-5720",
+      "file": "client/src/main.jsx",
+      "line": 124,
+      "tag": "button",
+      "component": "Requests",
+      "start": 5634,
+      "end": 5720
+    },
+    {
+      "index": 10,
+      "id": "placement:fec47669a71321fc0b6b15d05771e17075248f22d20fc01282fbd990c4726f02:5727:5822",
+      "key": "p_fec47669a713:5727-5822",
+      "file": "client/src/main.jsx",
+      "line": 125,
+      "tag": "button",
+      "component": "Requests",
+      "start": 5727,
+      "end": 5822
+    },
+    {
+      "index": 11,
+      "id": "placement:fec47669a71321fc0b6b15d05771e17075248f22d20fc01282fbd990c4726f02:5829:5934",
+      "key": "p_fec47669a713:5829-5934",
+      "file": "client/src/main.jsx",
+      "line": 126,
+      "tag": "button",
+      "component": "Requests",
+      "start": 5829,
+      "end": 5934
+    },
+    {
+      "index": 12,
+      "id": "placement:fec47669a71321fc0b6b15d05771e17075248f22d20fc01282fbd990c4726f02:5941:6034",
+      "key": "p_fec47669a713:5941-6034",
+      "file": "client/src/main.jsx",
+      "line": 127,
+      "tag": "button",
+      "component": "Requests",
+      "start": 5941,
+      "end": 6034
+    },
+    {
+      "index": 13,
+      "id": "placement:fec47669a71321fc0b6b15d05771e17075248f22d20fc01282fbd990c4726f02:6041:6132",
+      "key": "p_fec47669a713:6041-6132",
+      "file": "client/src/main.jsx",
+      "line": 128,
+      "tag": "button",
+      "component": "Requests",
+      "start": 6041,
+      "end": 6132
+    },
+    {
+      "index": 14,
+      "id": "placement:fec47669a71321fc0b6b15d05771e17075248f22d20fc01282fbd990c4726f02:6139:6235",
+      "key": "p_fec47669a713:6139-6235",
+      "file": "client/src/main.jsx",
+      "line": 129,
+      "tag": "button",
+      "component": "Requests",
+      "start": 6139,
+      "end": 6235
+    },
+    {
+      "index": 15,
+      "id": "placement:fec47669a71321fc0b6b15d05771e17075248f22d20fc01282fbd990c4726f02:6242:6317",
+      "key": "p_fec47669a713:6242-6317",
+      "file": "client/src/main.jsx",
+      "line": 130,
+      "tag": "button",
+      "component": "Requests",
+      "start": 6242,
+      "end": 6317
+    },
+    {
+      "index": 16,
+      "id": "placement:fec47669a71321fc0b6b15d05771e17075248f22d20fc01282fbd990c4726f02:6324:6370",
+      "key": "p_fec47669a713:6324-6370",
+      "file": "client/src/main.jsx",
+      "line": 131,
+      "tag": "output",
+      "component": "Requests",
+      "start": 6324,
+      "end": 6370
+    },
+    {
+      "index": 17,
+      "id": "placement:fec47669a71321fc0b6b15d05771e17075248f22d20fc01282fbd990c4726f02:6421:6520",
+      "key": "p_fec47669a713:6421-6520",
+      "file": "client/src/main.jsx",
+      "line": 137,
+      "tag": "QueryClientProvider",
+      "component": "QueryClientProvider",
+      "start": 6421,
+      "end": 6520
+    },
+    {
+      "index": 18,
+      "id": "placement:fec47669a71321fc0b6b15d05771e17075248f22d20fc01282fbd990c4726f02:6463:6476",
+      "key": "p_fec47669a713:6463-6476",
+      "file": "client/src/main.jsx",
+      "line": 137,
+      "tag": "SearchBox",
+      "component": "SearchBox",
+      "start": 6463,
+      "end": 6476
+    },
+    {
+      "index": 19,
+      "id": "placement:fec47669a71321fc0b6b15d05771e17075248f22d20fc01282fbd990c4726f02:6476:6486",
+      "key": "p_fec47669a713:6476-6486",
+      "file": "client/src/main.jsx",
+      "line": 137,
+      "tag": "Report",
+      "component": "Report",
+      "start": 6476,
+      "end": 6486
+    },
+    {
+      "index": 20,
+      "id": "placement:fec47669a71321fc0b6b15d05771e17075248f22d20fc01282fbd990c4726f02:6486:6498",
+      "key": "p_fec47669a713:6486-6498",
+      "file": "client/src/main.jsx",
+      "line": 137,
+      "tag": "Requests",
+      "component": "Requests",
+      "start": 6486,
+      "end": 6498
+    },
+    {
+      "index": 21,
+      "id": "placement:fec47669a71321fc0b6b15d05771e17075248f22d20fc01282fbd990c4726f02:6577:6584",
+      "key": "p_fec47669a713:6577-6584",
+      "file": "client/src/main.jsx",
+      "line": 140,
+      "tag": "App",
+      "component": "App",
+      "start": 6577,
+      "end": 6584
+    }
+  ],
+  "placement_short_key_collisions": 0,
+  "library_boundaries": []
+}

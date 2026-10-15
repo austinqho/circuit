@@ -1,0 +1,8 @@
+{
+  "classification": "wrong_model_proposal",
+  "contributing_cause": "Author instructions incorrectly restricted fn to returned functions, conflicting with private recursive helpers supported by the interpreter. The model claimed array-fold/map was missing, although private array writes plus bounded iteration/recursion pass the frozen actual-library cases.",
+  "failed_report": "paid-table8new-flattenBy-1789074522595.json",
+  "correction": "Document existing private helper, append and iteration composition semantics; do not add function-specific source or grading answers to the prompt.",
+  "calibration": "Frozen forest behavior and TypeScript integration pass; deliberate visit-holes and skip-all rules reject.",
+  "manual_model_rule_edits": false
+}

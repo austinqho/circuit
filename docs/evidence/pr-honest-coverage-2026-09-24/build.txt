@@ -1,0 +1,6 @@
+
+> producttrace@0.1.0 build
+> node scripts/build.mjs
+
+built byte-identical runtime (304724 bytes)
+cmp: identical

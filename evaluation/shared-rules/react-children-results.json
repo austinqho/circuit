@@ -1,0 +1,103 @@
+{
+  "passed": true,
+  "origin": "manual_composition",
+  "model_requests": 0,
+  "model_spend_usd": 0,
+  "scope": "React.Children.only selects the exact element or throws its standard Error. Includes primitives, arrays, real elements, and own-data symbol tags. Non-read accessors such as React 19 debug stacks are opaque descriptor identities, never evaluated by the checker. Error type/message/properties are checked except stack; proxies, accessor reads, inherited tags and renderer ownership are outside this boundary.",
+  "reports": [
+    {
+      "version": "18.3.1",
+      "passed": true,
+      "wrong_rules_rejected": 4,
+      "behavior": {
+        "status": "passed",
+        "report": {
+          "status": "observed_agreement",
+          "scope": "observations_through_checkpoint",
+          "observation_mode": "invocations",
+          "error_observation": "standard_error_without_stack",
+          "accessor_observation": "opaque_descriptors",
+          "calls": 18,
+          "failures": [],
+          "evidence": []
+        },
+        "returns": 4,
+        "throws": 14
+      },
+      "integration": [
+        {
+          "binding": "846477802e3b66e1b140297078abdb337548ad1721e7f62933ad78f7b37e5ae1:call:70",
+          "rule": "library-program:94a4f1c2165eef10320c8332818028d8579d7b5b1603591bdc8c3bb7955e0952",
+          "status": "observed_agreement",
+          "scope": "observations_through_checkpoint",
+          "observation_mode": "invocations",
+          "error_observation": "standard_error_without_stack",
+          "accessor_observation": "opaque_descriptors",
+          "calls": 1,
+          "failures": [],
+          "evidence": []
+        },
+        {
+          "binding": "846477802e3b66e1b140297078abdb337548ad1721e7f62933ad78f7b37e5ae1:call:130",
+          "rule": "library-program:94a4f1c2165eef10320c8332818028d8579d7b5b1603591bdc8c3bb7955e0952",
+          "status": "observed_agreement",
+          "scope": "observations_through_checkpoint",
+          "observation_mode": "invocations",
+          "error_observation": "standard_error_without_stack",
+          "accessor_observation": "opaque_descriptors",
+          "calls": 1,
+          "failures": [],
+          "evidence": []
+        }
+      ],
+      "implementation_source": "function onlyChild(children) {\n  if (!isValidElement(children)) {\n    throw new Error('React.Children.only expected to receive a single React element child.');\n  }\n\n  return children;\n}"
+    },
+    {
+      "version": "19.1.1",
+      "passed": true,
+      "wrong_rules_rejected": 4,
+      "behavior": {
+        "status": "passed",
+        "report": {
+          "status": "observed_agreement",
+          "scope": "observations_through_checkpoint",
+          "observation_mode": "invocations",
+          "error_observation": "standard_error_without_stack",
+          "accessor_observation": "opaque_descriptors",
+          "calls": 18,
+          "failures": [],
+          "evidence": []
+        },
+        "returns": 4,
+        "throws": 14
+      },
+      "integration": [
+        {
+          "binding": "2f584eb142129d6736c3f1f612f414797e6eda4add755a2ec42ade8ae5d7beb5:call:70",
+          "rule": "library-program:e56e62be5daf6d1ac9489835712c083c68f002d9b24a943fa10ec5003e550a75",
+          "status": "observed_agreement",
+          "scope": "observations_through_checkpoint",
+          "observation_mode": "invocations",
+          "error_observation": "standard_error_without_stack",
+          "accessor_observation": "opaque_descriptors",
+          "calls": 1,
+          "failures": [],
+          "evidence": []
+        },
+        {
+          "binding": "2f584eb142129d6736c3f1f612f414797e6eda4add755a2ec42ade8ae5d7beb5:call:130",
+          "rule": "library-program:e56e62be5daf6d1ac9489835712c083c68f002d9b24a943fa10ec5003e550a75",
+          "status": "observed_agreement",
+          "scope": "observations_through_checkpoint",
+          "observation_mode": "invocations",
+          "error_observation": "standard_error_without_stack",
+          "accessor_observation": "opaque_descriptors",
+          "calls": 1,
+          "failures": [],
+          "evidence": []
+        }
+      ],
+      "implementation_source": "function (children) {\n        if (!isValidElement(children))\n          throw Error(\n            \"React.Children.only expected to receive a single React element child.\"\n          );\n        return children;\n      }"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "schema": "producttrace.shared-rule-freeze.v1",
+  "files": {
+    "analysis/library-execution-context.mjs": "5c969015edfe916281df5dfc56ed9386bd49cd06970b0ef2f6f3af5708bb22f7",
+    "analysis/library-program.mjs": "d47d4c9d10c8f6307628aab78e7316a8372881f7ed9372af348bdebd4e49b1af",
+    "analysis/library-boundary.mjs": "7b3de0cf542f0e50c8e052d41c71348c2191333f5f990dde5f365def3b94f9d8",
+    "analysis/library-program-bank.mjs": "3051034e980001e19799518f0c464424b4f9bc02bd2e758d8d27d5be47541086",
+    "analysis/library-program-integration.mjs": "df8fe960b297acf0e6ecf8cb2397c9c6ad8347cca1b561102919b6f4e7e61070",
+    "authoring/library-implementation.mjs": "702abf551475038b31f7c580ec76c294a45d49b2f13983e732d36fda9c65f1ec",
+    "authoring/library-export-getter.mjs": "0f98bd85ff1fb6c26918b3c2fdf76805260b9f81e7ce5843d594ed63e2eacab2",
+    "analysis/library-owned-reference.mjs": "daa29c4047a3b80a6b3a3c89396596700209614b9105540fe5624cb905c66af7",
+    "analysis/library-owned-value.mjs": "9dad684280d3714ba7f232b87de52b6504069a799f661345b8147221b540cd00",
+    "authoring/library-program-catalog.mjs": "f5e7c89c32bbcbde85fb7d870bf482bd5d6a3e5e4bf8b7c8b1696357b3ad032d",
+    "authoring/library-program-verifier.mjs": "bc379149d0f858a9b2e8fbe4163d5dae3941768098227bbabdd2ccb91144de03",
+    "authoring/library-program-resolver.mjs": "6875b9d503b4459aca901f432d16e7c34a262b892f9c3785c5ba5b4f986e78e2",
+    "authoring/library-program-compatibility.mjs": "7ee2f11e4e53e841c8fabc85d485afe9898aa11946f9f3349b00a75e32c9a5e4",
+    "authoring/library-program-normalize.mjs": "6c5bcb1cdd5ba970c910830d43cfbc97dd8fbf428cb71aa99aea4bd623eb6e12",
+    "analysis/library-program-syntax.mjs": "96baeca597d56af5cc206495eb27d2fba66708f5ca076e96772cb2b32f0b124e",
+    "authoring/library-program-author.mjs": "94a37c21b48768596e9f328dca8c66d7750d5be592b521fb29d6e87f63c4cd9e",
+    "authoring/library-program-format.mjs": "d184dab9225d4ab0f7e6820c8009293096a4d95673444633a6061608e2ba40c5",
+    "evaluation/shared-rules/cases.mjs": "902b06aece38cd033666a74f4df768a7ba5d5f1390f875738a266a88234a14b1",
+    "evaluation/shared-rules/check-case.mjs": "9b659215b774dc08da81bc93466198739f4bf955d3bfb5949f55f1f3e0a42105",
+    "evaluation/shared-rules/run.mjs": "9fab6a40a62622575cd9a73c073d9ac7bed5c0c1bf317485de9ece6dbd617f12",
+    "evaluation/shared-rules/children-traversal-check.mjs": "d00b3c389c177a5c3d766a52ef24e5bf9877c30e1f072bd91c4f38c06fea6562",
+    "evaluation/shared-rules/children-traversal-scope.mjs": "10ff05d6721820b6c997f928f9c4d8d2a3a77dfa7b33b56cab146987245a8c93"
+  },
+  "cases": [
+    {
+      "id": "lodash417-negate",
+      "implementation_sha256": "5441c7e3d74b7f5b617d3914b48a5cdaec94d8acb016c245bc923d4f1264eea2",
+      "source_status": "ready_for_scoped_proposal",
+      "source_reason": null,
+      "specifier": "lodash417/negate",
+      "exportName": "default",
+      "scope": {
+        "callbackArguments": [
+          0
+        ],
+        "resultPaths": null,
+        "errorObservation": "standard_error_without_stack",
+        "description": "A supplied predicate function with no custom properties, or finite primitive/plain-data non-function inputs. Invoke the returned function repeatedly with finite argument lists including 0, 1, 2, 3 and more arguments; use plain-object, undefined and null receivers. Predicate results include all primitive truthiness classes and object/function values; include throws, repeated calls and distinct instances. Preserve actual argument identities. Excludes primitive receiver boxing, returned-function properties, proxies, getters and external callback-identity comparisons."
+      }
+    }
+  ]
+}

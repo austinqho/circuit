@@ -1,0 +1,87 @@
+PASS run 1: R0 the page ran without errors; page_requests and recent_actions take include_bodies
+PASS run 1: B1 raw: the route's two mount GETs are unattributed and their response body rows hold the entity labels
+PASS run 1: B2 MCP page_requests: each mount GET carries its response body summary (fields = the raw body's top-level keys, ids first) and, with include_bodies, the stored body
+PASS run 1: B3 MCP page_requests: every poll row (TanStack refetchInterval) is listed with its own response body, and its text states the field that differs between polls (count)
+PASS run 1: B4 raw: the inline script's PUT is unattributed (no first-party frame) and its request body row holds a checkbox value, an order and a count
+PASS run 1: B5 MCP action_chain: the Star click's unlinked PUT carries the body summary, the stored body (include_bodies) and its request fields in text
+PASS run 1: B6 MCP recent_actions include_bodies: the newest action lists the unattributed PUT with its stored body (and without the option, counts only)
+PASS run 1: B7 MCP page_requests: the PUT from an unrecorded cause carries its body summary and fields; no body text without include_bodies
+PASS run 1: I1 raw: the mount GET's issuer holds three first-party frames, outermost first (queryFn → loadProject → getJson, proxy + body repeats)
+PASS run 1: I2 MCP: the issuer lists every frame innermost first (never the outermost alone); issuer_frames agrees
+PASS run 1: D1 raw: the DELETE belongs to the Archive click and its code ran on a timer continuation of that click (continuation ids), ~3 s after the dispatch
+PASS run 1: D2 MCP action_chain: deferred = { ms_after_dispatch, via: timer } from the rows, never null; the text says "sent N s after the click via a timer"
+PASS run 1: D3 MCP page_requests: the attributed DELETE carries the same deferred and text
+PASS run 1: D4 raw and MCP: the two POSTs sent synchronously in the click handler walk to the dispatch; deferred is null and no "sent … after" clause
+PASS run 1: T1 raw: one click, two POSTs to one URL whose request bodies differ only in type (and whose responses differ in kind)
+PASS run 1: T2 MCP: each POST's line states its own type (the differing field first) and its answer; the two lines differ in text
+PASS run 1: T3 raw+MCP: the 409 answer's error field is in the text ("answered error: locked"), with the status
+PASS run 1: T4 raw+MCP: the revision answer reads "answered revision: 4, status: done" (status-like keys, the body's order)
+PASS run 1: T5 MCP element_history: the same fields in its JSON (request_fields / response_fields) as in its text
+PASS run 1: S1 raw: the second config GET was answered 304 by the server (ETag) while the page's response reported 200
+PASS run 1: S2 MCP: the 304/200 request states both with the reason; the 200/200 request states nothing
+PASS run 1: E0 raw: the img, canvas, row and the row's Open button were clicked and stamped (row keys carry the React key path)
+PASS run 1: E1 an img by its alt text: best is the clicked element's key; status and confidence stay ambiguous
+PASS run 1: E2 an img by role img and alt: best is the clicked element's key; status and confidence stay ambiguous
+PASS run 1: E3 a canvas by its aria-label: best is the clicked element's key; status and confidence stay ambiguous
+PASS run 1: E4 a list row by role listitem and its label: best is the clicked element's key; status and confidence stay ambiguous
+PASS run 1: E5 a button inside a row, by its text and the row's label as nearby text: best is the clicked element's key; status and confidence stay ambiguous
+PASS run 1: J1 every segment's text states its request_fields, response_fields, status_mismatch and deferral (JSON and text agree)
+PASS run 2: R0 the page ran without errors; page_requests and recent_actions take include_bodies
+PASS run 2: B1 raw: the route's two mount GETs are unattributed and their response body rows hold the entity labels
+PASS run 2: B2 MCP page_requests: each mount GET carries its response body summary (fields = the raw body's top-level keys, ids first) and, with include_bodies, the stored body
+PASS run 2: B3 MCP page_requests: every poll row (TanStack refetchInterval) is listed with its own response body, and its text states the field that differs between polls (count)
+PASS run 2: B4 raw: the inline script's PUT is unattributed (no first-party frame) and its request body row holds a checkbox value, an order and a count
+PASS run 2: B5 MCP action_chain: the Star click's unlinked PUT carries the body summary, the stored body (include_bodies) and its request fields in text
+PASS run 2: B6 MCP recent_actions include_bodies: the newest action lists the unattributed PUT with its stored body (and without the option, counts only)
+PASS run 2: B7 MCP page_requests: the PUT from an unrecorded cause carries its body summary and fields; no body text without include_bodies
+PASS run 2: I1 raw: the mount GET's issuer holds three first-party frames, outermost first (queryFn → loadProject → getJson, proxy + body repeats)
+PASS run 2: I2 MCP: the issuer lists every frame innermost first (never the outermost alone); issuer_frames agrees
+PASS run 2: D1 raw: the DELETE belongs to the Archive click and its code ran on a timer continuation of that click (continuation ids), ~3 s after the dispatch
+PASS run 2: D2 MCP action_chain: deferred = { ms_after_dispatch, via: timer } from the rows, never null; the text says "sent N s after the click via a timer"
+PASS run 2: D3 MCP page_requests: the attributed DELETE carries the same deferred and text
+PASS run 2: D4 raw and MCP: the two POSTs sent synchronously in the click handler walk to the dispatch; deferred is null and no "sent … after" clause
+PASS run 2: T1 raw: one click, two POSTs to one URL whose request bodies differ only in type (and whose responses differ in kind)
+PASS run 2: T2 MCP: each POST's line states its own type (the differing field first) and its answer; the two lines differ in text
+PASS run 2: T3 raw+MCP: the 409 answer's error field is in the text ("answered error: locked"), with the status
+PASS run 2: T4 raw+MCP: the revision answer reads "answered revision: 4, status: done" (status-like keys, the body's order)
+PASS run 2: T5 MCP element_history: the same fields in its JSON (request_fields / response_fields) as in its text
+PASS run 2: S1 raw: the second config GET was answered 304 by the server (ETag) while the page's response reported 200
+PASS run 2: S2 MCP: the 304/200 request states both with the reason; the 200/200 request states nothing
+PASS run 2: E0 raw: the img, canvas, row and the row's Open button were clicked and stamped (row keys carry the React key path)
+PASS run 2: E1 an img by its alt text: best is the clicked element's key; status and confidence stay ambiguous
+PASS run 2: E2 an img by role img and alt: best is the clicked element's key; status and confidence stay ambiguous
+PASS run 2: E3 a canvas by its aria-label: best is the clicked element's key; status and confidence stay ambiguous
+PASS run 2: E4 a list row by role listitem and its label: best is the clicked element's key; status and confidence stay ambiguous
+PASS run 2: E5 a button inside a row, by its text and the row's label as nearby text: best is the clicked element's key; status and confidence stay ambiguous
+PASS run 2: J1 every segment's text states its request_fields, response_fields, status_mismatch and deferral (JSON and text agree)
+PASS run 2: S0 the per-request texts equal run 1's (stable)
+PASS run 3: R0 the page ran without errors; page_requests and recent_actions take include_bodies
+PASS run 3: B1 raw: the route's two mount GETs are unattributed and their response body rows hold the entity labels
+PASS run 3: B2 MCP page_requests: each mount GET carries its response body summary (fields = the raw body's top-level keys, ids first) and, with include_bodies, the stored body
+PASS run 3: B3 MCP page_requests: every poll row (TanStack refetchInterval) is listed with its own response body, and its text states the field that differs between polls (count)
+PASS run 3: B4 raw: the inline script's PUT is unattributed (no first-party frame) and its request body row holds a checkbox value, an order and a count
+PASS run 3: B5 MCP action_chain: the Star click's unlinked PUT carries the body summary, the stored body (include_bodies) and its request fields in text
+PASS run 3: B6 MCP recent_actions include_bodies: the newest action lists the unattributed PUT with its stored body (and without the option, counts only)
+PASS run 3: B7 MCP page_requests: the PUT from an unrecorded cause carries its body summary and fields; no body text without include_bodies
+PASS run 3: I1 raw: the mount GET's issuer holds three first-party frames, outermost first (queryFn → loadProject → getJson, proxy + body repeats)
+PASS run 3: I2 MCP: the issuer lists every frame innermost first (never the outermost alone); issuer_frames agrees
+PASS run 3: D1 raw: the DELETE belongs to the Archive click and its code ran on a timer continuation of that click (continuation ids), ~3 s after the dispatch
+PASS run 3: D2 MCP action_chain: deferred = { ms_after_dispatch, via: timer } from the rows, never null; the text says "sent N s after the click via a timer"
+PASS run 3: D3 MCP page_requests: the attributed DELETE carries the same deferred and text
+PASS run 3: D4 raw and MCP: the two POSTs sent synchronously in the click handler walk to the dispatch; deferred is null and no "sent … after" clause
+PASS run 3: T1 raw: one click, two POSTs to one URL whose request bodies differ only in type (and whose responses differ in kind)
+PASS run 3: T2 MCP: each POST's line states its own type (the differing field first) and its answer; the two lines differ in text
+PASS run 3: T3 raw+MCP: the 409 answer's error field is in the text ("answered error: locked"), with the status
+PASS run 3: T4 raw+MCP: the revision answer reads "answered revision: 4, status: done" (status-like keys, the body's order)
+PASS run 3: T5 MCP element_history: the same fields in its JSON (request_fields / response_fields) as in its text
+PASS run 3: S1 raw: the second config GET was answered 304 by the server (ETag) while the page's response reported 200
+PASS run 3: S2 MCP: the 304/200 request states both with the reason; the 200/200 request states nothing
+PASS run 3: E0 raw: the img, canvas, row and the row's Open button were clicked and stamped (row keys carry the React key path)
+PASS run 3: E1 an img by its alt text: best is the clicked element's key; status and confidence stay ambiguous
+PASS run 3: E2 an img by role img and alt: best is the clicked element's key; status and confidence stay ambiguous
+PASS run 3: E3 a canvas by its aria-label: best is the clicked element's key; status and confidence stay ambiguous
+PASS run 3: E4 a list row by role listitem and its label: best is the clicked element's key; status and confidence stay ambiguous
+PASS run 3: E5 a button inside a row, by its text and the row's label as nearby text: best is the clicked element's key; status and confidence stay ambiguous
+PASS run 3: J1 every segment's text states its request_fields, response_fields, status_mismatch and deferral (JSON and text agree)
+PASS run 3: S0 the per-request texts equal run 1's (stable)
+86/86 checks pass over 3 run(s) (wouter 3.11.0, TanStack Query 5.103.2, React 18.3.1)

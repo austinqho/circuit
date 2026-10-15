@@ -1,0 +1,112 @@
+{
+  "pass": false,
+  "actions": 346,
+  "mismatches": 0,
+  "terminal_counts": {
+    "browser | no request observed": 220,
+    "entry_handler | no element-bound handler ran; global listeners: [function:f607e3900a9d4f60b7811dba6cd08cc15e1c9973b71c9541599db447d14af3c3:789:951]": 37,
+    "reached_db | -": 12,
+    "entry_handler | no element-bound handler ran; global listeners: [function:c3157a7c2c41cf7836df40621b7304393c56cbd1b99632f5f2577a7f2940253c:3442:3600]": 1,
+    "entry_handler | no element-bound handler ran; global listeners: [function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:15018:15139, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:22658:22879]": 71,
+    "handler | no db span under handler": 1,
+    "entry_handler | no element-bound handler ran; global listeners: [function:289ebfafc16db6ab1b7c43f3ad92ef1ef1bbc05f52d4aaad5105283f68e4ab40:4818:4898]": 1,
+    "entry_handler | no element-bound handler ran; global listeners: [function:55cdfa4e9b9cd76a31a8abb6ec207cca6b3a91d5252491d7cc409c80c6eb2272:2699:3019]": 2,
+    "entry_handler | no element-bound handler ran; global listeners: [function:8535bff87ea3c3f5bdeedf1ed964e0c4b059dd66bd32012506fecb5c72760e29:961:985, function:8535bff87ea3c3f5bdeedf1ed964e0c4b059dd66bd32012506fecb5c72760e29:1037:1063, function:7d7d3edbaa4cb1a0eb5df4463027e94da404cb4a5f38a27f9ce8475bdaafc43f:7558:8045, function:efd4db58ab25eb920f086652b7f8e3575d8f120ef36e1c8a9b3889997d9b349d:4405:4550, function:e3d53985ef814592c727c93367885669824b43b4eec3d8bedb5b0388900702b4:487:821]": 1
+  },
+  "chains_with_backend_steps": 13,
+  "flows": {
+    "login": {
+      "handler_reproduced": true,
+      "writes": 1,
+      "frontiers": [
+        "browser | no request observed",
+        "entry_handler | no element-bound handler ran; global listeners: [function:f607e3900a9d4f60b7811dba6cd08cc15e1c9973b71c9541599db447d14af3c3:789:951]",
+        "reached_db | -"
+      ]
+    },
+    "send": {
+      "handler_reproduced": true,
+      "writes": 10,
+      "frontiers": [
+        "browser | no request observed",
+        "entry_handler | no element-bound handler ran; global listeners: [function:c3157a7c2c41cf7836df40621b7304393c56cbd1b99632f5f2577a7f2940253c:3442:3600]",
+        "entry_handler | no element-bound handler ran; global listeners: [function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:15018:15139, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:22658:22879]",
+        "reached_db | -"
+      ]
+    },
+    "feedback": {
+      "handler_reproduced": true,
+      "writes": 0,
+      "frontiers": [
+        "browser | no request observed",
+        "handler | no db span under handler"
+      ]
+    },
+    "regenerate": {
+      "handler_reproduced": true,
+      "writes": 8,
+      "frontiers": [
+        "browser | no request observed",
+        "reached_db | -"
+      ]
+    },
+    "edit-resubmit": {
+      "handler_reproduced": true,
+      "writes": 8,
+      "frontiers": [
+        "browser | no request observed",
+        "entry_handler | no element-bound handler ran; global listeners: [function:289ebfafc16db6ab1b7c43f3ad92ef1ef1bbc05f52d4aaad5105283f68e4ab40:4818:4898]",
+        "reached_db | -"
+      ]
+    },
+    "rename": {
+      "handler_reproduced": true,
+      "writes": 1,
+      "frontiers": [
+        "browser | no request observed",
+        "reached_db | -"
+      ]
+    },
+    "agent-create": {
+      "handler_reproduced": true,
+      "writes": 11,
+      "frontiers": [
+        "browser | no request observed",
+        "reached_db | -",
+        "entry_handler | no element-bound handler ran; global listeners: [function:55cdfa4e9b9cd76a31a8abb6ec207cca6b3a91d5252491d7cc409c80c6eb2272:2699:3019]"
+      ]
+    },
+    "agent-chat": {
+      "handler_reproduced": true,
+      "writes": 10,
+      "frontiers": [
+        "browser | no request observed",
+        "reached_db | -",
+        "entry_handler | no element-bound handler ran; global listeners: [function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:15018:15139, function:5bffa2fdd4c733f29915e45df0c96db29349642d734d468587e001d45b4495ac:22658:22879]"
+      ]
+    },
+    "delete": {
+      "handler_reproduced": true,
+      "writes": 6,
+      "frontiers": [
+        "browser | no request observed",
+        "reached_db | -"
+      ]
+    }
+  },
+  "mongo": {
+    "window": {
+      "start": "2026-09-23T20:26:25.675Z",
+      "end": "2026-09-23T20:28:27.236Z"
+    },
+    "user": "6ab22101ea8eb81e46408375",
+    "collections": {
+      "sessions": 0,
+      "messages": 7,
+      "transactions": 14,
+      "conversations": 1,
+      "agents": 1,
+      "aclentries": 0
+    }
+  }
+}

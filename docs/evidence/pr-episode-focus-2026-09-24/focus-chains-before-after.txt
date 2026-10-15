@@ -1,0 +1,23 @@
+## main (fixes-2026-09-24) analysis on run-1 rows
+action:mufstm37:1 gesture mentions: -
+action:mufstm38:3 caused mentions: /api/items/auto
+action:mufstmtj:5 gesture mentions: -
+action:mufstmtk:7 caused mentions: /api/items/effect
+action:mufstnj8:9 gesture mentions: -
+action:mufstnj8:11 caused mentions: /api/notes
+action:mufstob9:13 gesture mentions: -
+action:mufstogw:15 gesture mentions: /api/search
+action:mufstp6d:17 gesture mentions: -
+action:mufstp6k:19 caused mentions: DELETE /api/items/later
+
+## this branch
+action:mufstm37:1 gesture mentions: -
+action:mufstm38:3 caused mentions: -
+action:mufstmtj:5 gesture mentions: -
+action:mufstmtk:7 caused mentions: -
+action:mufstnj8:9 gesture mentions: -
+action:mufstnj8:11 caused mentions: -
+action:mufstob9:13 gesture mentions: -
+action:mufstogw:15 gesture mentions: -
+action:mufstp6d:17 gesture mentions: -
+action:mufstp6k:19 caused mentions: -

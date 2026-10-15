@@ -1,0 +1,100 @@
+{
+  "schema": "producttrace.g2-build-gates.v1",
+  "repository": "/Users/austinho/dev/fixtures/anything-llm",
+  "session": "anything-llm",
+  "source": {
+    "commit": "3a8fcfb5e38e40397804457f2db119f87dea9f0e",
+    "status_before": "",
+    "status_after": "",
+    "pass": true
+  },
+  "package": {
+    "tarball": "producttrace-0.1.0.tgz",
+    "integrity": "sha512-j2wFSzkLV8sncEotH/9BovWqjb63BBMuyor1tuaSBjq5K2mL8Z8Cj1kfANFZXoJJaLgMqdRLFUjBlsqsMukpZw==",
+    "files": 147
+  },
+  "install": {
+    "original_config": "frontend/vite.config.js",
+    "wrapper": "/Users/austinho/dev/fixtures/.g2-work/anything-llm-muen3pbs/install/vite.g2.config.mjs",
+    "plugin_line": "...(process.env.G2_PRODUCTTRACE === \"0\" ? [] : producttrace({\"requestBridge\":false,\"stamps\":true})),",
+    "plugin_options": {
+      "requestBridge": false,
+      "stamps": true
+    }
+  },
+  "builds": {
+    "vite": "4.5.3",
+    "disabled": {
+      "label": "disabled",
+      "dir": "/Users/austinho/dev/fixtures/.g2-work/anything-llm-muen3pbs/dist-disabled",
+      "ms": 22028
+    },
+    "enabled": {
+      "label": "enabled",
+      "dir": "/Users/austinho/dev/fixtures/.g2-work/anything-llm-muen3pbs/dist-enabled",
+      "ms": 196613
+    }
+  },
+  "markers": {
+    "manifest_functions": 5101,
+    "indexes_with_executable_site": 5101,
+    "indexes_with_enter_site": 4934,
+    "indexes_with_proxy_only": 167,
+    "indexes_registration_only": 0,
+    "enter_sites": 6746,
+    "proxy_sites": 1001,
+    "register_sites": 7837,
+    "indexes_with_multiple_enter_sites": 1799,
+    "register_manifest_prefixes": 57,
+    "missing": [],
+    "missing_count": 0,
+    "unmanifested": [],
+    "unmanifested_count": 0,
+    "pass": true
+  },
+  "manifest_spans": {
+    "functions": 5101,
+    "exact_function_boundary": 5101,
+    "inexact": 0,
+    "inexact_sample": []
+  },
+  "markers_disabled_build_sites": 0,
+  "served_transport": {
+    "bridge_assets": [],
+    "index_references_bridge": false,
+    "index_inlines_runtime_wrappers": true,
+    "runtime_asset": true
+  },
+  "playwright": {
+    "version": "1.62.1",
+    "from": "/Users/austinho/dev/trace-consolidated/.live-demo/librechat-m1",
+    "headless": true
+  },
+  "parity": {
+    "landing": "/",
+    "url_disabled": "/",
+    "url_enabled": "/",
+    "lines": 115,
+    "identical": true,
+    "control_identical": true,
+    "diff": [],
+    "control_diff": [],
+    "enabled_stamped_elements": 49,
+    "errors": {
+      "disabled": [],
+      "enabled": []
+    },
+    "pass": true
+  },
+  "smoke": {
+    "status": "ok",
+    "headless": true,
+    "function_id": "function:4990e9b08348617d740eb9591279d8a1923ddb02e18a4b551d71a761de1decf2:2314:2432",
+    "enters": 1,
+    "network_requests": 3,
+    "same_action": true,
+    "poll_unattributed": true,
+    "caused_attributed": true,
+    "stream_attributed": true
+  }
+}

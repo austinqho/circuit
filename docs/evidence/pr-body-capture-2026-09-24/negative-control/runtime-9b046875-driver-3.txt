@@ -1,0 +1,77 @@
+PASS B0 builds inject the body mode the option rules say
+PASS B1 warnings: bodies:true in production says disabled; on in any mode but development says ON (production, staging); dev and defaults silent
+PASS D0 dev: 15 clicks, no page errors but the fire-and-forget fetch failure, capture.page declares bodies "on"
+PASS D1 rename request body: JSON, ids kept, password and nested apiToken redacted, full size, not truncated
+PASS D2 rename response body: _id recorded, session redacted, sessionId (an identifier) kept, status 200
+PASS D3 large JSON response: bytes = full size, truncated, text = the first 4096 bytes of the redacted serialization
+PASS D4 text/plain response recorded as text
+PASS D5 binary response: type and size only
+PASS D6 streamed response: captured false (streaming), content type recorded
+PASS D7 the app read the streamed body intact with bodies on
+PASS D8 XHR POST: request body redacted (secretKey), response read on load
+PASS D9 FormData body: type and size only (parts total)
+PASS D10 JSON posted as text/plain is parsed and redacted
+FAIL D11 no secret value, Authorization or Cookie header appears anywhere in records.jsonl
+  ["4111111111111111"]
+PASS D12 the server did receive the Authorization header and the cookie (the capture, not the app, drops them)
+PASS D13 every body row links to a network.request row on the same page; no action_id, no sequence, contiguous body_sequence
+PASS D14 first 8 actions: request bodies only for requests with a body; one response row per response with a body
+FAIL D15 capture.summary counts body rows, truncations and pending reads; coverage complete and declares bodies on
+  {"summary":{"bodies":"on","emitted":24,"truncations":3,"not_captured":6},"coverage":{"page":"s_e64c626f","complete":false,"reasons":["1 body read(s) still in flight at the last capture.summary: their network.body rows were not recorded"],"scope":"delivery of the rows this page's runtime emitted; not what uninstrumented scripts, workers or third-party code did","unobserved":["beacon"],"runtime_version":"0.1.0+coverage.1","build":"8512a40379e8","wrappers":{"fetch":true,"xhr":true,"eventsource":true,"websocket":true,"worker":true,"beacon":false},"bodies":"on","body_rows":{"emitted":24,"truncated":3,"not_captured":6,"pending":1},"emitted":207,"received":207}}
+FAIL K1 key segments: secrets redacted (apiKey, x-api-key, privateKey, session, cvv, otp, pin, jwt, bearer, accesstoken, nested and in arrays; numeric pin/otp/cvv/card/secret); ids, author, scorecard, cardinality, quantities and booleans kept
+  {"author":"Ada","authorId":"u_author","sessionId":"sess_123","session":"[redacted]","apiKey":"[redacted]","x-api-key":"[redacted]","privateKey":"[redacted]","Password":"[redacted]","access_token":"[redacted]","accesstoken":"[redacted]","cardNumber":"[redacted]","cardId":"card_7","scorecard":"A+","cardinality":"high","cvv":"[redacted]","otp":"[redacted]","pin":"[redacted]","jwt":"[redacted]","bearer":"[redacted]","maxTokenLimit":4096,"requiresAuth":true,"tokenCount":12,"credentials":"[redacted]","items":[{"itemId":"it_1","token":"[redacted]"},[{"password":"[redacted]"}]],"payload":"{\"orderId\":\"o_inner\"}","note":"plain note","numeric":{"pin":1234,"otp":482913,"cvv":123,"cardNumber":4111111111111111,"secretAnswer":42,"passwordLength":12,"maxTokenLimit":4096,"tokenCount":7,"cardId":7,"requiresPin":false}}
+PASS T1 the app cancels a text/plain stream: the server sees the close as without Tracer (bytes written by the close within 3 ticks of uninstrumented and bodies off)
+PASS T2 the cancelled stream has a row: captured false, cancelled_by_app, bytes null, bytes_read
+PASS L1 text/plain of unknown length: first 4096 bytes kept, then Tracer lets go; bytes null, bytes_read, truncated
+PASS L2 the app read the whole unknown-length text
+PASS N1 204: no response row (no content)
+PASS U1 response with no content-type: captured false, unknown_type, exact size, never read
+PASS R1 a Request object with a typeless Blob body: type and size only, not read, no invented content type
+FAIL P1 pipeTo into a destination aborted by its signal (text/plain): bytes written and time to close as without Tracer
+  {"dev":{"closed":true,"written":4100,"open_ms":2048},"dev_off":{"closed":true,"written":200,"open_ms":56},"plain":{"closed":true,"written":200,"open_ms":53},"prod_always":{"closed":true,"written":4100,"open_ms":2040}}
+FAIL P2 pipeTo into a destination that errors (JSON of unknown length): bytes written and time to close as without Tracer
+  {"dev":{"closed":true,"written":7055,"open_ms":3668},"dev_off":{"closed":true,"written":203,"open_ms":53},"plain":{"closed":true,"written":203,"open_ms":52},"prod_always":{"closed":true,"written":7153,"open_ms":3668}}
+FAIL P3 the piped JSON has a row (cancelled_by_app); no body read is pending at page close
+  {"stats":{"mode":"on","rows":24,"truncated":3,"not_captured":6,"redactions":22,"bytes_recorded":24116,"errors":0,"pending":1,"last_body_sequence":24}}
+FAIL P4 the wrapped stream prototypes look native: same name/length as uninstrumented, [Symbol.asyncIterator] === values
+  {"dev":{"cancel":"/0","getReader":"/0","pipeThrough":"/0","pipeTo":"pipeTo/1","values":"/0","asyncIterator":"/0","iterator_is_values":false,"reader_cancel":"/0","byob_cancel":"/0"},"plain":{"cancel":"cancel/0","getReader":"getReader/0","pipeThrough":"pipeThrough/1","pipeTo":"pipeTo/1","values":"values/0","asyncIterator":"values/0","iterator_is_values":true,"reader_cancel":"cancel/0","byob_cancel":"cancel/0"}}
+PASS P5 microtask order on the fulfilment path is unchanged with bodies on
+PASS P6 documented difference: on the abort path the rejection reaction runs one microtask later with bodies on (listener-micro,b,fetch-rejected vs listener-micro,fetch-rejected,b)
+PASS F1 a fire-and-forget fetch failure raises unhandledrejection and a page error exactly as without Tracer (bodies on, off, production, uninstrumented)
+PASS O1 dev_off: capture.page bodies "off", no body rows, coverage complete
+PASS O2 parity: the page output is identical with bodies on, off and without Tracer
+PASS O3 the attributed rows have the same kinds, order, requests and ownership with bodies on and off
+PASS O4 prod (default): capture.page bodies "production_off", no body rows
+PASS O5 prod with bodies:"always": capture.page bodies "on", body rows present, same output
+PASS M0 action_chain publishes include_bodies (boolean)
+PASS M1 rename segment: request body summary with the entity id and the redacted value rendered as a plain string
+PASS M2 rename segment: response body summary names the _id and the sessionId; session is "[redacted]"
+PASS M3 the one-line summary names the request and response ids
+PASS M4 include_bodies: true returns the stored JSON in full
+PASS M5 truncated JSON: summary from the cut text, truncated true, top-level ids kept, rows as [n+ items]
+PASS M6 binary response rendered as captured false with its reason and size
+PASS M7 element_history attempts show only the id-shaped fields
+PASS M8 include_bodies must be a boolean
+PASS M9 bodies off: segments carry body: null and the chain declares bodies "off"
+PASS M10 the frontier line is otherwise identical with bodies on and off
+42/49 checks pass; store /var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/tracer-body-store-9Al5EN
+  "sizes": {
+    "requests": 21,
+    "body_rows": 24,
+    "body_row_bytes": 25772,
+    "bytes_per_request": 1227,
+    "largest_body_row": 5380,
+    "all_rows_bytes_dev": 215115,
+    "all_rows_bytes_dev_off": 189323
+  },
+  "body_stats": {
+    "mode": "on",
+    "rows": 24,
+    "truncated": 3,
+    "not_captured": 6,
+    "redactions": 22,
+    "bytes_recorded": 24116,
+    "errors": 0,
+    "pending": 1,
+    "last_body_sequence": 24
+  }
