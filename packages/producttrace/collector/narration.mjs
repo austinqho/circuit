@@ -2,7 +2,8 @@
  * Narration: the levels of the story above one action line.
  *
  *   valuesOf(bodies, …)      the non-secret values a request or response carried
- *   segmentsOf(lines, …)     lines grouped into goals ("Registered as …"), each with a title
+ *   segmentsOf(lines, …)     lines grouped into goals, each titled as an observation
+ *                            ("In Discussions, the user is creating a new discussion, “Q3 plan”.")
  *   narrativeOf(segments)    the visit in a sentence or two
  *
  * Deterministic. Lines join a segment only through an identifier they share
@@ -98,12 +99,20 @@ export function entitiesOfValues(values, { type, from }) {
 }
 
 /** A list a response carried: `[...]` or `{ data: [...] }`, with the total the server gave. */
-export function listOf(json, { type, truncated }) {
+export function listOf(json, { type, truncated, show = {} }) {
   const items = Array.isArray(json) ? json : Array.isArray(json?.data) ? json.data : Array.isArray(json?.items) ? json.items : Array.isArray(json?.results) ? json.results : null;
   if (!items) return null;
   const total = [json?.meta?.total, json?.total, json?.count, json?.meta?.count].find(Number.isFinite);
-  return { type, count: items.length, ...(Number.isFinite(total) ? { total } : {}), ...(truncated ? { at_least: true } : {}) };
+  // What the list called its items, so a later delete or open can name one ("the discussion “Gamma topic”").
+  const names = {};
+  if ((show.content ?? 'show') === 'show') for (const item of items.slice(0, LIST_NAMES)) {
+    const id = item && (typeof item.id === 'string' || typeof item.id === 'number') ? String(item.id) : null;
+    const name = id ? ['title', 'name', 'subject', 'label'].map(key => item[key]).find(value => typeof value === 'string' && value.trim() && value.length <= LONG_TEXT) : null;
+    if (name) names[id] = name;
+  }
+  return { type, count: items.length, ...(Number.isFinite(total) ? { total } : {}), ...(truncated ? { at_least: true } : {}), ...(Object.keys(names).length ? { names } : {}) };
 }
+const LIST_NAMES = 100;
 
 const ok = request => request.state === 'done' && request.status >= 200 && request.status < 400;
 const failed = request => request.state === 'no_response' || request.state === 'aborted' || (request.state === 'done' && request.status >= 400);
@@ -112,6 +121,7 @@ const formOf = line => line.form ?? null;
 const idsOf = line => new Set((line.entities || []).map(entity => `${entity.type}:${entity.id}`));
 // Where the person is after a line: the last page it reached, else where it happened.
 const placeAfter = line => line.navigations?.at(-1)?.to?.split('?')[0] ?? line.page ?? null;
+const CLICK = new Set(['click', 'auxclick', 'dblclick']);
 const effectful = line => (line.requests?.length || 0) > 0 || (line.navigations?.length || 0) > 0;
 
 /**
@@ -124,25 +134,48 @@ const effectful = line => (line.requests?.length || 0) > 0 || (line.navigations?
 export function groupLines(lines) {
   const groups = [];
   let open = null;
-  const start = line => { open = { lines: [line], forms: new Set(), ids: new Set(), place: placeAfter(line), wrote: false, scrolled: false, session: line.session }; note(line); groups.push(open); };
+  const start = line => {
+    // The click that opened what comes next (a form, a confirm dialog) leads the goal it opened, not the one before.
+    const previous = open?.lines;
+    const opener = previous?.at(-1);
+    const leads = open && open.session === line.session && previous.length > 1 && line.kind !== 'open' && opener.kind === 'act' && CLICK.has(opener.event)
+      && !effectful(opener) && !formOf(opener) && opener.page === line.page
+      // It opened the form being filled in, or its control is keyed by the entity the next line acts on (a row's "Delete", then its confirm).
+      && (formOf(line) !== null || (line.entities || []).some(entity => String(entity.id).length > 3 && opener.element?.key?.includes(String(entity.id))));
+    if (leads) previous.pop();
+    open = { lines: [], forms: new Set(), unsent: new Set(), ids: new Set(), place: placeAfter(line), wrote: false, scrolledOn: null, session: line.session };
+    if (leads) { open.lines.push(opener); note(opener); }
+    open.lines.push(line); note(line); groups.push(open);
+  };
   const note = line => {
     if (formOf(line)) open.forms.add(formOf(line));
+    if (line.kind === 'type' && formOf(line)) open.unsent.add(formOf(line));
+    if (line.kind === 'submit' || writesOf(line).length) open.unsent.delete(formOf(line));
     for (const id of idsOf(line)) open.ids.add(id);
     open.place = placeAfter(line) ?? open.place;
     // A write that was answered, accepted or not, ends the goal; a retry in the same form still joins.
     if (writesOf(line).some(request => ok(request) || failed(request))) open.wrote = true;
-    if (line.kind === 'scroll') open.scrolled = true;
+    if (line.kind === 'scroll') open.scrolledOn = line.page;
   };
   for (const line of lines) {
     if (!open || open.session !== line.session || line.kind === 'open' || open.lines[0].kind === 'open') { start(line); continue; }
     const sameForm = formOf(line) !== null && open.forms.has(formOf(line));
     const sharesId = [...idsOf(line)].some(id => open.ids.has(id));
     const writesSame = writesOf(line).some(request => request.entities?.some(entity => !entity.created && open.ids.has(`${entity.type}:${entity.id}`)));
-    // A form that starts after the segment has been browsing (scrolling) is a new goal.
-    const otherForm = formOf(line) !== null && (open.forms.size > 0 || open.scrolled) && !sameForm;
+    // A form that starts on a page the segment has been browsing (scrolling) is a new goal.
+    const otherForm = formOf(line) !== null && (open.forms.size > 0 || (open.scrolledOn !== null && open.scrolledOn === line.page)) && !sameForm;
     const here = line.kind !== 'navigate' && line.page !== null && line.page === open.place;
+    // Where a write left the person: a navigation of its own that leaves the very page the write was sent from,
+    // with nothing in between (the redirect after signing up, when the app makes it from an effect).
+    const previous = open.lines.at(-1);
+    const landing = line.kind === 'navigate' && writesOf(previous).some(request => ok(request)) && !previous.navigations?.length
+      && line.navigations?.[0]?.via !== 'popstate' && pathKey(line.navigations?.[0]?.from ?? '') === pathKey(previous.page ?? '\u0000');
+    // A form typed in and not sent ends when the person does something outside it (the draft was left).
+    const leaves = open.unsent.size > 0 && effectful(line) && !(formOf(line) && open.unsent.has(formOf(line)));
     let joins;
-    if (open.wrote) joins = sameForm || writesSame || (!effectful(line) && here && !otherForm);
+    if (landing) joins = true;
+    else if (leaves) joins = false;
+    else if (open.wrote) joins = sameForm || writesSame || (!effectful(line) && here && !otherForm);
     else joins = !otherForm && (sameForm || sharesId || here);
     if (joins) { open.lines.push(line); note(line); } else start(line);
   }
@@ -161,11 +194,15 @@ const AUTH_VERBS = new Set(['registered', 'logged_in', 'logged_out']);
 export function namesOf(lines, { looksLikeId }) {
   const titles = new Map();
   const pages = new Map();
+  // What each entity's fields were as the server returned them, line by line (for "renaming it to …").
+  const fields = [];
   let person = null;
   let personLine = null;
-  for (const line of lines) {
+  lines.forEach((line, index) => {
     for (const request of line.requests || []) {
       const values = request.values || [];
+      for (const [id, name] of Object.entries(request.list?.names || {})) if (request.list.type && !titles.has(`${request.list.type}:${id}`)) titles.set(`${request.list.type}:${id}`, name);
+      if (ok(request)) for (const [key, entity] of fieldsOf(values.filter(entry => entry.from === 'response_body'))) fields.push({ index, key, fields: entity });
       for (const entry of values) {
         if (entry.class !== 'content' || !entry.value || !/(?:^|\.)(?:title|name|subject|label)$/u.test(entry.key)) continue;
         const prefix = entry.key.split('.').slice(0, -1).join('.');
@@ -184,8 +221,31 @@ export function namesOf(lines, { looksLikeId }) {
       }
     }
     for (const nav of line.navigations || []) if (line.element?.tag === 'a' && line.element.label && !pages.has(pathKey(nav.to))) pages.set(pathKey(nav.to), line.element.label);
+  });
+  const order = new Map(lines.map((line, index) => [line.id, index]));
+  /** An entity's fields as last returned before a line. */
+  const knownBefore = (key, lineId) => {
+    const until = order.get(lineId) ?? Infinity;
+    const known = {};
+    for (const entry of fields) if (entry.key === key && entry.index < until) Object.assign(known, entry.fields);
+    return known;
+  };
+  return { titles, pages, person, personLine, knownBefore };
+}
+
+/** Fields per entity in one body: `{ id, title }` → discussion:id → { title }; nested owners by their own id. */
+function fieldsOf(values) {
+  const out = new Map();
+  for (const id of values.filter(entry => entry.class === 'id' && /(?:^|\.)id$/u.test(entry.key) && entry.owner)) {
+    const prefix = id.key.split('.').slice(0, -1).join('.');
+    const entity = {};
+    for (const entry of values) {
+      if (entry.class === 'id' || entry.key.split('.').slice(0, -1).join('.') !== prefix) continue;
+      entity[entry.key.split('.').at(-1)] = entry.value ?? `#${entry.length}`;
+    }
+    out.set(`${id.owner}:${id.value}`, entity);
   }
-  return { titles, pages, person, personLine };
+  return out;
 }
 
 /** "In Discussions", "In “Notes on the engine”", "On the Register page", "On /app". */
@@ -196,7 +256,15 @@ function placePhrase(path, { names, looksLikeId, auth = false }) {
   if (resource.id && names.titles.has(`${resource.type}:${resource.id}`)) return `In ${quote(names.titles.get(`${resource.type}:${resource.id}`))}`;
   const label = names.pages.get(key);
   if (label) return auth ? `On the ${label} page` : `In ${label}`;
-  return key === '/' ? 'On the home page' : `On ${key}`;
+  return `On ${pageName(key, looksLikeId)}`;
+}
+
+/** A page with no link label: "the home page", "/auth/register" → "the Register page". */
+function pageName(path, looksLikeId) {
+  const key = pathKey(path);
+  if (key === '/' || !key) return 'the home page';
+  const named = key.split('/').filter(part => part && !looksLikeId(part)).at(-1);
+  return named ? `the ${upper(named.replace(/[-_]+/gu, ' '))} page` : key;
 }
 
 const thing = (type, id, title) => (title ? `the ${type} ${quote(title)}` : id ? `${type} ${id}` : `a ${type}`);
@@ -210,8 +278,10 @@ export function stepOf(line, { sent = [], names, looksLikeId }) {
   for (const request of line.requests || []) {
     const created = request.entities?.find(entity => entity.created);
     const resource = resourceOf(request.path, looksLikeId);
-    if (failed(request)) effects.push(request.state === 'done' ? `the server says ${request.status} to ${request.method} ${pathKey(request.path)}` : `${request.method} ${pathKey(request.path)} gets no response`);
+    if (failed(request)) effects.push(request.state === 'done' ? `the server says ${request.status}` : 'the server never answers');
     else if (created) effects.push(`the server creates ${created.type} ${created.id}`);
+    else if (request.method === 'DELETE' && resource.id) effects.push(`the server deletes ${resource.type} ${resource.id}`);
+    else if ((request.method === 'PUT' || request.method === 'PATCH') && resource.id) effects.push(`the server saves ${resource.type} ${resource.id}`);
     else if (WRITE.has(request.method)) {
       const returned = (request.entities || []).filter(entity => entity.from === 'response_body');
       effects.push(returned.length ? `the server returns ${returned.map(entity => `${entity.type} ${entity.id}`).join(' and ')}` : `the server accepts ${request.method} ${pathKey(request.path)}`);
@@ -219,7 +289,11 @@ export function stepOf(line, { sent = [], names, looksLikeId }) {
       const count = request.list.total ?? request.list.count;
       effects.push(count ? `${request.list.at_least ? 'at least ' : ''}${plural(count, request.list.type)} load${count === 1 && !request.list.at_least ? 's' : ''}` : `the ${request.list.type} list loads empty`);
     }
-    else if (resource.id) effects.push(`${thing(resource.type, resource.id, names.titles.get(`${resource.type}:${resource.id}`))} loads`);
+    else if (resource.id) {
+      // The title this response carried (after a rename, the new one), else the one known for the session.
+      const own = (request.values || []).find(entry => entry.class === 'content' && /^(?:data\.)?(?:title|name|subject)$/u.test(entry.key) && entry.value);
+      effects.push(`${thing(resource.type, resource.id, own?.value ?? names.titles.get(`${resource.type}:${resource.id}`))} loads`);
+    } else if (resource.verb === 'me') effects.push('the app checks who is signed in');
     else effects.push(`the app loads ${pathKey(request.path)}`);
   }
   for (const nav of line.navigations || []) if (line.kind !== 'type') effects.push(`the app moves to ${pathKey(nav.to)}`);
@@ -280,13 +354,23 @@ export function factsOf(lines, { looksLikeId, names = { titles: new Map(), pages
       facts.object = { type, id: id ?? null, title: type && id ? names.titles.get(`${type}:${id}`) ?? null : null, created: Boolean(made) };
       const parent = (target.entities || []).find(entity => entity.reference && entity.from === 'request_body' && entity.type !== type);
       if (parent) facts.qualifiers.push({ kind: 'on', type: parent.type, id: parent.id, title: names.titles.get(`${parent.type}:${parent.id}`) ?? null });
-      if (facts.verb === 'edited') facts.fields = sent.filter(entry => entry.class !== 'id').map(entry => entry.key.split('.').at(-1));
+      if (facts.verb === 'edited' && id) {
+        // Only fields that differ from what the server last returned for this entity; none known, none claimed.
+        const known = names.knownBefore ? names.knownBefore(`${type}:${id}`, main.id) : {};
+        const changed = sent.filter(entry => entry.class !== 'id' && !entry.key.includes('.')).filter(entry => entry.key in known && known[entry.key] !== (entry.value ?? `#${entry.length}`));
+        facts.fields = changed.map(entry => entry.key);
+        const renamed = changed.find(entry => /^(?:title|name|subject)$/u.test(entry.key) && entry.value);
+        if (renamed) facts.renamed_to = renamed.value;
+      }
       // "its first comment": the list of that type, read in this segment before the write, was empty.
       const before = lines.slice(0, lines.indexOf(main)).flatMap(line => line.requests || []).filter(request => request.list?.type === type);
-      if (made && before.length && before.every(request => (request.list.total ?? request.list.count) === 0 && !request.list.at_least)) facts.first = true;
+      if (made && before.length && before.every(request => (request.list.total ?? request.list.count) === 0 && !request.list.at_least)) {
+        facts.first = true;
+        facts.first_evidence = lines.filter(line => line.requests?.some(request => before.includes(request))).map(line => line.id);
+      }
     }
-    const after = lines.slice(lines.indexOf(main)).flatMap(line => line.navigations || []);
-    if (after.length && !facts.failed) facts.lands = pathKey(after.at(-1).to);
+    const after = lines.slice(lines.indexOf(main)).flatMap(line => line.navigations || []).filter(nav => nav.via !== 'popstate');
+    if (after.length && !facts.failed) facts.lands = placeName(pathKey(after.at(-1).to), names, looksLikeId);
   }
   // Opened: a page or a single entity reached by a click or a hover.
   const openedEntity = lines.flatMap(line => (line.navigations || []).flatMap(nav => idsOfPath(nav.to, looksLikeId)))[0]
@@ -311,11 +395,13 @@ export function factsOf(lines, { looksLikeId, names = { titles: new Map(), pages
   }
   // Where it happens: the page of the main action, else where the segment ends up (a list), else where it started.
   const auth = AUTH_VERBS.has(facts.verb);
-  const page = main?.page ?? (facts.verb === 'opened' ? (lines.find(line => line.navigations?.length || line.kind === 'hover')?.page ?? lines[0].page)
-    : ['browsed', 'scrolled', 'drafting'].includes(facts.verb) ? placeAfter(lines.at(-1)) : facts.verb === 'opened_app' ? lines[0].page : lines[0].page);
+  // A navigation of its own (back/forward, a redirect) happened where it started from.
+  const start = lines[0].kind === 'navigate' ? lines[0].navigations?.[0]?.from ?? lines[0].page : lines[0].page;
+  const page = main?.page ?? (facts.verb === 'opened' ? (lines.find(line => line.navigations?.length || line.kind === 'hover')?.page ?? start)
+    : ['browsed', 'scrolled', 'drafting'].includes(facts.verb) ? placeAfter(lines.at(-1)) : start);
   facts.page = page ? pathKey(page) : null;
   facts.place = placePhrase(page, { names, looksLikeId, auth });
-  if (facts.verb === 'navigated') facts.destination = placeName(pathKey(navigated.at(-1).to), names);
+  if (facts.verb === 'navigated') { facts.destination = placeName(pathKey(navigated.at(-1).to), names, looksLikeId); facts.history = navigated.every(nav => nav.via === 'popstate'); }
   return facts;
 }
 
@@ -323,7 +409,11 @@ function idsOfPath(url, looksLikeId) {
   const resource = resourceOf(pathKey(url), looksLikeId);
   return resource.id && resource.type ? [{ type: resource.type, id: resource.id }] : [];
 }
-const placeName = (path, names) => names.pages.get(path) ?? path;
+const placeName = (path, names, looksLikeId) => {
+  const resource = resourceOf(path, looksLikeId);
+  if (resource.id && names.titles.has(`${resource.type}:${resource.id}`)) return quote(names.titles.get(`${resource.type}:${resource.id}`));
+  return names.pages.get(path) ?? pageName(path, looksLikeId);
+};
 
 /**
  * The deterministic title, in GUM's observation voice: the place first, then
@@ -337,8 +427,11 @@ export function defaultTitle(facts, { open = false } = {}) {
   const said = entry => entry.id && (facts.opened?.id === entry.id || (entry.title && facts.place?.includes(quote(entry.title))));
   const qualifiers = facts.qualifiers.map(entry => (entry.kind === 'for' ? ` for the ${entry.type} ${quote(entry.value)}` : entry.kind === 'on' && !said(entry) ? ` on ${thing(entry.type, entry.id, entry.title)}` : '')).join('');
   const as = facts.who ? ` as ${facts.who}` : '';
+  // Acting on what was just opened: "it".
+  const onOpened = object?.id && facts.opened?.id === object.id;
   const objectPhrase = () => {
     if (!object?.type) return 'something';
+    if (onOpened) return 'it';
     if (!object.created) return thing(object.type, object.id, object.title);
     // "its first comment" when it belongs to what was just opened.
     const parent = facts.qualifiers.find(entry => entry.kind === 'on');
@@ -349,10 +442,12 @@ export function defaultTitle(facts, { open = false } = {}) {
     registered: ['signing up', 'sign up'], logged_in: ['logging in', 'log in'], logged_out: ['logging out', 'log out'],
     created: [`creating ${objectPhrase()}`, `create ${objectPhrase()}`],
     deleted: [`deleting ${objectPhrase()}`, `delete ${objectPhrase()}`],
-    edited: [`editing ${facts.fields.length ? `the ${facts.fields.join(' and ')} of ` : ''}${objectPhrase()}`, `edit ${objectPhrase()}`],
+    edited: facts.renamed_to ? [`renaming ${objectPhrase()} to ${quote(facts.renamed_to)}`, `rename ${objectPhrase()}`]
+      : [`editing ${facts.fields.length ? `${onOpened ? 'its' : 'the'} ${facts.fields.join(' and ')}${onOpened ? '' : ` of ${objectPhrase()}`}` : objectPhrase()}`, `edit ${objectPhrase()}`],
     sent: [`sending ${objectPhrase()}`, `send ${objectPhrase()}`],
   }[facts.verb];
-  const opening = facts.opened ? `opening ${facts.opened.just_created ? `the ${facts.opened.type} they just created` : thing(facts.opened.type, facts.opened.id, facts.opened.title)}` : null;
+  const placeSays = facts.opened?.title && facts.place?.includes(quote(facts.opened.title));
+  const opening = facts.opened ? `opening ${facts.opened.just_created ? `the ${facts.opened.type} they just created` : placeSays ? `the ${facts.opened.type}` : thing(facts.opened.type, facts.opened.id, facts.opened.title)}` : null;
   let doing;
   if (action) {
     const [progressive, infinitive] = action;
@@ -365,7 +460,7 @@ export function defaultTitle(facts, { open = false } = {}) {
       case 'drafting': doing = open ? `filling in ${facts.typed.map(quote).join(' and ')}` : `filling in ${facts.typed.map(quote).join(' and ')} but leaves without sending it`; break;
       case 'scrolled': doing = `scrolling through ${facts.list ? `the list of ${facts.list.at_least ? 'at least ' : ''}${plural(facts.list.total ?? facts.list.count, facts.list.type)}` : 'the page'}${facts.scrolled.screens > 1 ? `, about ${facts.scrolled.screens} screens` : ''}`; break;
       case 'browsed': doing = facts.list.count || facts.list.total ? `browsing ${plural(facts.list.total ?? facts.list.count, facts.list.type)}${facts.list.at_least ? ' (at least)' : ''}` : `looking at an empty list of ${facts.list.type}s`; break;
-      case 'navigated': doing = `going to ${facts.destination}`; break;
+      case 'navigated': doing = `${facts.history ? 'going back or forward to' : 'going to'} ${facts.destination}`; break;
       default: return null;
     }
   }
@@ -438,8 +533,8 @@ export function narrativeOf(segments) {
   return [...bySession.entries()].map(([session, list]) => {
     const kept = list.filter((segment, index) => {
       if (segment.verb === 'opened_app') return list.length === 1;
-      // "Went to X" is said again by the next segment's place.
-      return !(segment.verb === 'navigated' && list[index + 1]);
+      // Going somewhere is said by the next goal's place; on its own it is not a goal worth a sentence.
+      return segment.verb !== 'navigated' || list.length === 1;
     });
     return { session, observations: kept.map(segment => ({ text: segment.title, cites: [segment.id], confidence: segment.confidence })), source: 'template' };
   });

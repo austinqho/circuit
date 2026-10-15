@@ -15,32 +15,31 @@ The first run clones the app at a pinned commit into `~/.cache/producttrace-exam
 Click around the app and reload `/story`. A session reads as goals, each with the steps under it (`segments` in the JSON, `event: segment` on the stream):
 
 ```
-On the Register page, Maya Chen is signing up as maya+1792106807428@example.com for the team “Acme”.
+On the Register page, Maya Chen is signing up as maya+1792108092876@example.com for the team “Acme”, and lands on the App page.
     · Opens “Get started”; the app moves to /auth/login
     · Opens “Register”; the app moves to /auth/register
     · Enters “Maya” as the first name
     · Enters “Chen” as the last name
-    · Enters maya+1792106807428@example.com as the email address
+    · Enters maya+1792108092876@example.com as the email address
     · Sets a password
     · Enters “Acme” as the team name
-    · Submits “Register”; the server returns user VoI4PU3GcboDdMYXhc6WJ and team QFlPa_4TBSW4vGEkuzT_V
-In Discussions, Maya Chen is creating the first discussion, “Pricing page feedback”.
+    · Submits “Register”; the server returns user C2QefmDEePJBQNxLoUmdJ and team RqdkoGxxR223x3Nnn689K
     · The app moves to /app
+In Discussions, Maya Chen is creating the first discussion, “Pricing page feedback”.
     · Opens “Discussions”; the discussion list loads empty, the app moves to /app/discussions
     · Clicks “Create Discussion”
     · Enters “Pricing page feedback” as the title
     · Writes a body (30 characters)
-    · Submits “Submit”; the server creates discussion mHEnPMuNQZAuxqqd3sKEb, 1 discussion loads
+    · Submits “Submit”; the server creates discussion 32IBVKkidnmnItW7FQ5KB, 1 discussion loads
     · Clicks “Close”
 In “Pricing page feedback”, Maya Chen is opening the discussion they just created and creating its first comment.
-    · Hovers “View”; the discussion “Pricing page feedback” loads, the comment list loads empty
-    · Opens “View”; the app moves to /app/discussions/mHEnPMuNQZAuxqqd3sKEb
+    · Opens “View”; the discussion “Pricing page feedback” loads, the comment list loads empty, the app moves to /app/discussions/32IBVKkidnmnItW7FQ5KB
     · Clicks “Create Comment”
     · Writes a body (19 characters)
-    · Submits “Submit”; the server creates comment gePCDjQiQP5-NQJrs-Q2C, 1 comment loads
+    · Submits “Submit”; the server creates comment N3AYsbNVKyi3NSYIGaPNR, 1 comment loads
 ```
 
-Steps join a goal only through something they share: the same form, an entity id, or the page a navigation reached. Values (“Acme”, the email, the name) come from the request and response bodies, never from keystrokes; passwords are never read, and long text shows only its length. Each step is also a line in `lines`, with the requests and IDs behind it.
+Steps join a goal only through something they share: the same form, an entity id, or the page a navigation reached. A redirect the app makes on its own straight after a write, away from the page the write was sent from, is where that goal lands. "First" is said only when the list of that type, read in the same goal, was empty. A hover that prefetched for a link is part of the click on it, a form typed in and left is its own goal ("…filling in “Title” and “Body” but leaves without sending it"), and an edit names only the fields that differ from what the server last returned. Values (“Acme”, the email, the name) come from the request and response bodies, never from keystrokes; passwords are never read, and long text shows only its length. Each step is also a line in `lines`, with the requests and IDs behind it.
 
 With the demo running, `npm run drive -w examples/bulletproof-react` clicks through that session headless and fails if an expected line or goal is missing. It needs a Chromium: `CHROMIUM_PATH=/path/to/chrome`, Playwright's (`npx playwright install chromium`), or your installed Chrome.
 
@@ -51,5 +50,5 @@ The app's files are not edited. `demo.mjs` writes a wrapper Vite config that imp
 ## Known limits
 
 - The instrumented build (`--build`) is slow: about 6–7 minutes for this app. The dev server needs no build.
-- On the dev server, a navigation that a React effect makes after a state change (the redirect to `/app` once registration logs the user in) is its own step ("The app moves to /app"), not part of the Register step as in a build.
+- On the dev server, a navigation that a React effect makes after a state change (the redirect to `/app` once registration logs the user in) is its own step ("The app moves to /app") after the Register step, not part of it as in a build.
 - The backend is a mock service worker, so every request stops at the network: "200" is the status the browser saw, with no server or database stops.

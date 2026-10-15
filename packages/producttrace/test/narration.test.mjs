@@ -71,7 +71,7 @@ test('a session groups into goals, titled in GUM\'s observation voice with groun
   const titles = story.segments.map(segment => segment.title);
   assert.deepEqual(titles, [
     'On the home page, the user is opening the app.',
-    'On the Register page, Ada Lovelace is signing up as ada@example.test for the team “Analytical Engines”, and lands on /app.',
+    'On the Register page, Ada Lovelace is signing up as ada@example.test for the team “Analytical Engines”, and lands on the App page.',
     'In Discussions, Ada Lovelace is creating the first discussion, “Notes on the engine”.',
     'In “Notes on the engine”, Ada Lovelace is opening the discussion they just created and creating its first comment.',
   ]);
@@ -102,7 +102,7 @@ test('a session groups into goals, titled in GUM\'s observation voice with groun
 
 test('personal values can be masked, and then the person is "the user"', () => {
   const story = storyOf(createStore({ records: signUpSession() }), { values: { personal: 'mask' } });
-  assert.equal(story.segments[1].title, 'On the Register page, the user is signing up as a•••@example.test for the team “Analytical Engines”, and lands on /app.');
+  assert.equal(story.segments[1].title, 'On the Register page, the user is signing up as a•••@example.test for the team “Analytical Engines”, and lands on the App page.');
   assert.ok(!JSON.stringify(story).includes('ada@example.test'));
   assert.ok(!JSON.stringify(story).includes('Lovelace'));
 });
@@ -139,8 +139,8 @@ test('a failed write, an unsent draft, and a long scroll each read as what happe
   assert.equal(scroll.text, 'Scrolled down the page (≈3 screens)');
   assert.equal(story.lines.filter(line => line.kind === 'scroll').length, 1, 'consecutive scrolls of one target are one line');
   assert.deepEqual(story.segments.map(segment => segment.title), [
-    'On /auth/login, the user is opening the app.',
-    'On /auth/login, the user is trying to log in as ada@example.test, but the server says 401.',
+    'On the Login page, the user is opening the app.',
+    'On the Login page, the user is trying to log in as ada@example.test, but the server says 401.',
     'In Discussions, the user is scrolling through the list of 24 discussions, about 3 screens.',
     'In Discussions, the user is filling in “Title”.',
   ]);
@@ -157,4 +157,98 @@ test('values: secrets never read, long text only as a length, ids and nested own
   ]);
   const masked = valuesOf({ email: 'ada@example.test', firstName: 'Ada' }, { from: 'request_body', type: 'register', show: { personal: 'mask' } });
   assert.deepEqual(masked.map(entry => entry.value), ['a•••@example.test', 'A.']);
+});
+
+test('a redirect the app makes on its own right after a write is where that goal lands; "first" cites the empty list it rests on', () => {
+  const rows = signUpSession().map(row => (row.kind === 'page.navigate' && row.to === '/app' ? { ...row, action_id: null, via: 'replaceState' } : row));
+  const story = storyOf(createStore({ records: rows }));
+  const [, signUp, start] = story.segments;
+  assert.equal(signUp.title, 'On the Register page, Ada Lovelace is signing up as ada@example.test for the team “Analytical Engines”, and lands on the App page.');
+  assert.equal(signUp.steps.at(-1).text, 'The app moves to /app');
+  assert.equal(start.title, 'In Discussions, Ada Lovelace is creating the first discussion, “Notes on the engine”.');
+  assert.deepEqual(start.facts.first_evidence, ['a3']);
+  assert.match(start.steps.find(step => step.line === 'a3').text, /the discussion list loads empty/u);
+  // A navigation that does not leave the page the write was sent from is not its landing.
+  const elsewhere = signUpSession().map(row => (row.kind === 'page.navigate' && row.to === '/app' ? { ...row, action_id: null, from: '/somewhere' } : row));
+  assert.doesNotMatch(storyOf(createStore({ records: elsewhere })).segments[1].title, /lands on/u);
+});
+
+// Review cases: a reload, a rename, a left draft, a delete, back/forward.
+function secondVisit() {
+  sequence = 0;
+  const draft = 'object:70', edit = 'object:71';
+  const d1 = 'eXA7Ncb2ENlZ2_b27sGVS', d3 = '9H0CDBYAGgCuk5f9hUvzD';
+  return [
+    open('http://localhost:4173/app/discussions'),
+    // The pointer resting on the page is an action row, but not a told one: the page's own requests still belong to the load.
+    action('p0', 'pointerover', button('Open user menu'), { page: '/app/discussions' }),
+    request('boot', 'GET', 'https://api.example.com/auth/me', 1, null),
+    body('boot', 1, 'response', { data: { id: 'U5kYWbCNE3f8v-xNcc62Y', firstName: 'Ada', lastName: 'Lovelace', email: 'ada@example.test' } }),
+    request('boot', 'GET', 'https://api.example.com/discussions?page=1', 2, null),
+    body('boot', 2, 'response', { data: [{ id: d1, title: 'Beta topic' }, { id: d3, title: 'Gamma topic' }], meta: { total: 6 } }),
+    { kind: 'dom.action.range', action_id: 'r1', event: 'scroll', target_ref: 'object:7', scroll: { first: [0, 0], last: [0, 900], viewport: 420, page: true }, ...at() },
+    // Hovering "View" prefetches; the hover's own element had no key, the click names the same discussion.
+    action('h1', 'mouseout', button('Open user menu'), { page: '/app/discussions', related_target: { tag: 'a', attributes: {}, label: 'View' } }), enter('h1'),
+    request('h1', 'GET', `https://api.example.com/discussions/${d1}`, 1), body('h1', 1, 'response', { data: { id: d1, title: 'Beta topic', body: 'Body of Beta topic' } }),
+    action('v1', 'click', { tag: 'a', attributes: {}, element_key: 'k_view_d1', label: 'View' }, { page: '/app/discussions' }), enter('v1'), navigate('v1', '/app/discussions', `/app/discussions/${d1}`),
+    action('u1', 'click', button('Update Discussion'), { page: `/app/discussions/${d1}` }), enter('u1'),
+    ...typing('t1', field('title', 'Title', edit), edit, `/app/discussions/${d1}`),
+    action('c1', 'change', field('title', 'Title', edit), { page: `/app/discussions/${d1}`, form_ref: edit }),
+    action('s1', 'submit', button('Submit', { type: 'submit' }), { page: `/app/discussions/${d1}`, form_ref: edit }), enter('s1'),
+    request('s1', 'PATCH', `https://api.example.com/discussions/${d1}`, 1),
+    // The form sends every field; only the title differs from what the server returned.
+    body('s1', 1, 'request', { title: 'Beta topic (renamed)', body: 'Body of Beta topic' }),
+    body('s1', 1, 'response', { id: d1, title: 'Beta topic (renamed)', body: 'Body of Beta topic', authorId: 'U5kYWbCNE3f8v-xNcc62Y', teamId: 'ruRH1N19jRfQTU87Zqy-Q' }),
+    { kind: 'page.navigate', action_id: null, via: 'popstate', from: `/app/discussions/${d1}`, to: '/app/discussions', ...at() },
+    action('a1', 'click', button('Create Discussion'), { page: '/app/discussions' }), enter('a1'),
+    ...typing('t2', field('title', 'Title', draft), draft, '/app/discussions'),
+    ...typing('t3', { tag: 'textarea', attributes: { name: 'body' }, element_key: 'k_body_d', label: 'Body' }, draft, '/app/discussions'),
+    action('x1', 'click', { tag: 'button', attributes: {}, element_key: `k_delete_${d3}`, label: 'Delete Discussion' }, { page: '/app/discussions' }), enter('x1'),
+    action('x2', 'click', { tag: 'button', attributes: {}, element_key: 'k_confirm', label: 'Delete Discussion' }, { page: '/app/discussions' }), enter('x2'),
+    request('x2', 'DELETE', `https://api.example.com/discussions/${d3}`, 1), body('x2', 1, 'response', { id: d3, authorId: 'U5kYWbCNE3f8v-xNcc62Y', teamId: 'ruRH1N19jRfQTU87Zqy-Q' }),
+    { kind: 'page.navigate', action_id: null, via: 'popstate', from: '/app/discussions', to: '/app', ...at() },
+    { kind: 'capture.summary', page_id: page, capture_page_id: page, ...at() },
+  ];
+}
+
+test('a second visit: reload, rename, a left draft, a delete and Back each read as the goal they were', () => {
+  const story = storyOf(createStore({ records: secondVisit() }));
+  const open = story.lines[0];
+  assert.equal(open.text, 'Opened /app/discussions → GET /auth/me (200), GET /discussions?page=1 (200)');
+  assert.deepEqual(story.segments.map(segment => segment.title), [
+    'On the Discussions page, Ada Lovelace is opening the app.',
+    'In “Beta topic”, Ada Lovelace is opening the discussion and renaming it to “Beta topic (renamed)”.',
+    'On the Discussions page, Ada Lovelace is filling in “Title” and “Body” but leaves without sending it.',
+    'On the Discussions page, Ada Lovelace is deleting the discussion “Gamma topic”.',
+    'On the Discussions page, Ada Lovelace is going back or forward to the App page.',
+  ]);
+  const steps = story.segments.map(segment => segment.steps.map(step => step.text));
+  assert.deepEqual(steps[0], ['Opens /app/discussions; the app checks who is signed in, 6 discussions load']);
+  // Scrolling the list, then opening one from it: one goal, the scroll leading. The hover's prefetch is part of
+  // the click; the change that ends typing is part of the typing.
+  assert.deepEqual(steps[1], [
+    'Scrolls down about 2 screens',
+    'Opens “View”; the discussion “Beta topic” loads, the app moves to /app/discussions/eXA7Ncb2ENlZ2_b27sGVS',
+    'Clicks “Update Discussion”',
+    'Enters “Beta topic (renamed)” as the title',
+    'Submits “Submit”; the server saves discussion eXA7Ncb2ENlZ2_b27sGVS',
+  ]);
+  assert.equal(story.lines.find(line => line.id === 'v1').prefetched_on_hover, 'h1');
+  // The click that opened the form leads the draft; the one that opened the confirm leads the delete.
+  assert.deepEqual(story.segments[2].lines.slice(1), ['a1', 't2', 't3']);
+  assert.equal(story.lines.find(line => line.id === story.segments[2].lines[0]).kind, 'navigate');
+  assert.deepEqual(steps[3], ['Clicks “Delete Discussion”', 'Clicks “Delete Discussion”; the server deletes discussion 9H0CDBYAGgCuk5f9hUvzD']);
+  assert.ok(!JSON.stringify(steps).includes('returns author'));
+  // Going somewhere on its own is not a sentence of the summary.
+  assert.ok(!story.narrative[0].observations.some(entry => /going back/u.test(entry.text)));
+});
+
+test('a rename that only re-sends unchanged fields claims no field; a failed write names only its status', () => {
+  const rows = secondVisit().filter(row => !(row.kind === 'network.body' && row.request_occurrence_id === 's1:request:1'));
+  rows.push(body('s1', 1, 'request', { title: 'Beta topic', body: 'Body of Beta topic' }), body('s1', 1, 'response', { id: 'eXA7Ncb2ENlZ2_b27sGVS', title: 'Beta topic' }));
+  assert.equal(storyOf(createStore({ records: rows })).segments.find(entry => entry.verb === 'edited').title, 'In “Beta topic”, Ada Lovelace is opening the discussion and editing it.');
+  const failing = secondVisit().map(row => (row.kind === 'network.body' && row.request_occurrence_id === 's1:request:1' && row.direction === 'response' ? { ...row, status: 500, json: { message: 'boom' } } : row));
+  const segment = storyOf(createStore({ records: failing })).segments.find(entry => entry.verb === 'edited');
+  assert.equal(segment.steps.at(-1).text, 'Submits “Submit”; the server says 500');
+  assert.match(segment.title, /trying to rename it, but the server says 500\.$/u);
 });
