@@ -34,7 +34,10 @@ await page.getByRole('button', { name: 'Get started' }).click();
 await page.getByRole('link', { name: 'Register' }).click();
 await page.getByLabel('First Name').fill('Maya');
 await page.getByLabel('Last Name').fill('Chen');
-await page.getByLabel('Email Address').fill(`maya+${sessionStart}@example.com`);
+// Key by key, like a person: one line per field however many events it takes.
+await page
+  .getByLabel('Email Address')
+  .pressSequentially(`maya+${sessionStart}@example.com`, { delay: 10 });
 await page.getByLabel('Password').fill('password123');
 await page.getByLabel('Team Name').fill('Acme');
 await page.getByRole('button', { name: 'Register' }).click();
@@ -59,13 +62,16 @@ const lines = story.lines.filter((line) => line.at >= sessionStart);
 for (const line of lines) console.log(new Date(line.at).toLocaleTimeString(), line.text);
 
 const expected = [
-  /^Clicked the “Get started” button/u,
+  /^Clicked the “Get started” button → .*went to \/auth\/login/u,
   /^Submitted the form with the “Register” button → .*POST \/auth\/register \(200/u,
   /^Submitted the form with the “Submit” button → .*POST \/discussions \(200, created discussion \S+\)/u,
-  /^Went to \/app\/discussions\/\S+ \(discussion \S+\)/u,
+  /^Clicked the “View” link → .*went to \/app\/discussions\/\S+ \(discussion \S+\)/u,
+  /^Typed in the “Email Address” field$/u,
   /^Submitted the form with the “Submit” button → .*POST \/comments \(200, created comment \S+\)/u,
 ];
 const missing = expected.filter((pattern) => !lines.some((line) => pattern.test(line.text)));
+const emailLines = lines.filter((line) => line.text.includes('“Email Address”')).length;
+if (emailLines !== 1) missing.push(`one line for the Email Address field (got ${emailLines})`);
 if (missing.length) {
   console.error(`\nmissing ${missing.length} expected sentence(s):\n${missing.join('\n')}`);
   process.exit(1);

@@ -19,7 +19,10 @@ const NOISE = new Set(['focus', 'blur', 'focusin', 'focusout', 'DOMFocusIn', 'DO
   'pointerenter', 'pointerleave', 'mousedown', 'mouseup', 'mousemove', 'keyup', 'scroll', 'scrollend', 'wheel', 'select', 'selectionchange', 'touchstart', 'touchend', 'touchmove',
   'compositionstart', 'compositionupdate', 'compositionend', 'beforeinput', 'animationend', 'animationstart', 'transitionend', 'transitionrun', 'transitionstart', 'gotpointercapture', 'lostpointercapture']);
 const HOVER = new Set(['mouseover', 'mouseout', 'mouseenter', 'mouseleave']);
-const TYPING = new Set(['input', 'change', 'keydown', 'keypress', 'paste', 'cut']);
+// Text entry: one line per field however the text arrived (fill, key by key, paste).
+const TEXT_ENTRY = new Set(['input', 'paste', 'cut', 'drop']);
+// Key and change events around text entry say nothing new unless they caused something.
+const KEYS = new Set(['keydown', 'keypress', 'keyup', 'textInput', 'beforeinput', 'change', 'compositionend']);
 const FIELD_TAGS = new Set(['input', 'textarea', 'select']);
 
 // Engine ids (hex, uuid, numeric, prefix_…) plus opaque random ids such as
@@ -80,7 +83,7 @@ function verbFor(row) {
   if (HOVER.has(row.event)) return 'Hovered';
   // The runtime writes the key under `key` (printable keys fold to "Printable" unless inputText is on).
   if (row.event === 'keydown') return `Pressed ${row.key?.key && row.key.key !== 'Printable' ? row.key.key : 'a key'} on`;
-  if (TYPING.has(row.event)) return 'Typed in';
+  if (TEXT_ENTRY.has(row.event)) return 'Typed in';
   return `${row.event[0].toUpperCase()}${row.event.slice(1)} on`;
 }
 
@@ -126,38 +129,58 @@ export function storyOf(store, { session } = {}) {
   // Pages that have closed (capture.summary on pagehide): a request still without a status there never got one.
   const closed = new Set(store.records.filter(row => row?.kind === 'capture.summary').map(row => row.page_id || pageOf(row)));
   const requestRows = new Map(store.records.filter(row => row?.kind === 'network.request' && row.request_occurrence_id).map(row => [row.request_occurrence_id, row]));
+  // Client-side navigations (page.navigate rows): owned by the action whose
+  // continuation called pushState/replaceState, or by none (back/forward, timers).
+  const navigations = store.records.filter(row => row?.kind === 'page.navigate' && (session === undefined || pageOf(row) === session));
+  const navsByAction = new Map();
+  for (const nav of navigations) if (nav.action_id) navsByAction.set(nav.action_id, [...(navsByAction.get(nav.action_id) || []), nav]);
+  const recordsNavigation = new Set(navigations.map(pageOf));
   const sessions = new Map();
   const lines = [];
   const lastPage = new Map();
   let typing = null;
-  const rows = store.actionRows.filter(row => session === undefined || pageOf(row) === session);
-  for (const row of rows) {
+  const navLine = (nav, at) => {
+    const ids = idsInUrl(nav.to, 'page_url');
+    return { schema: STORY_SCHEMA, id: `nav:${nav.action_id || 'none'}:${nav.sequence ?? nav.to}`, kind: 'navigate', session: pageOf(nav), at, page: nav.to,
+      text: `${nav.via === 'popstate' ? 'Went back/forward to' : 'Went to'} ${nav.to}${ids.length ? ` (${ids.map(entity => `${entity.type} ${entity.id}`).join(', ')})` : ''}`, entities: ids };
+  };
+  const unowned = navigations.filter(nav => !nav.action_id);
+  const actions = store.actionRows.filter(row => session === undefined || pageOf(row) === session);
+  // Sequence numbers are per page load: order within a page by sequence, pages by when they started.
+  const pageStart = new Map();
+  for (const entry of [...actions, ...unowned]) { const key = pageOf(entry); pageStart.set(key, Math.min(pageStart.get(key) ?? Infinity, entry.timestamp ?? Infinity)); }
+  const timeline = [...actions.map(row => ({ row })), ...unowned.map(nav => ({ nav }))].sort((a, b) => {
+    const x = a.row || a.nav, y = b.row || b.nav;
+    const byPage = (pageStart.get(pageOf(x)) - pageStart.get(pageOf(y))) || (pageOf(x) < pageOf(y) ? -1 : pageOf(x) > pageOf(y) ? 1 : 0);
+    return byPage || (x.sequence ?? 0) - (y.sequence ?? 0);
+  });
+  for (const { row, nav } of timeline) {
+    if (nav) { lines.push(navLine(nav, nav.timestamp ?? null)); typing = null; continue; }
     const page = pageOf(row);
     if (!sessions.has(page)) sessions.set(page, { session: page, started_at: row.timestamp ?? null, actions: 0, first_page: row.page ?? null });
     const info = sessions.get(page);
     info.ended_at = row.timestamp ?? info.ended_at;
-    if (typeof store.contextOnly === 'function' && store.contextOnly(row.action_id)) continue;
+    const owned = navsByAction.get(row.action_id) || [];
+    if (!owned.length && typeof store.contextOnly === 'function' && store.contextOnly(row.action_id)) continue;
     let chain;
     try { chain = chainStops(store, row.action_id); } catch { continue; }
     const requests = (chain.requests || []).map(request => requestFacts(store, request, requestRows, closed));
-    const caused = requests.length > 0 || (chain.outcome?.stage && !['no_request', 'dispatch'].includes(chain.outcome.stage) && chain.stops.some(stop => stop.stop === 'entry_handler'));
-    if (NOISE.has(row.event) && !requests.length) continue;
-    if (HOVER.has(row.event) && !requests.length) continue;
+    const effect = requests.length > 0 || owned.length > 0;
+    const caused = effect || (chain.outcome?.stage && !['no_request', 'dispatch'].includes(chain.outcome.stage) && chain.stops.some(stop => stop.stop === 'entry_handler'));
+    if (!effect && (NOISE.has(row.event) || HOVER.has(row.event) || KEYS.has(row.event))) continue;
     // A click on a submit button that did nothing itself is told by its submit.
     if (row.event === 'click' && !caused && row.target?.attributes?.type === 'submit') continue;
-    // Navigation between actions on the same page load (client-side routing).
-    if (row.page && lastPage.get(page) && lastPage.get(page) !== row.page) {
-      const ids = idsInUrl(row.page, 'page_url');
-      lines.push({ schema: STORY_SCHEMA, id: `nav:${row.action_id}`, kind: 'navigate', session: page, at: row.timestamp ?? null, page: row.page,
-        text: `Went to ${row.page}${ids.length ? ` (${ids.map(entity => `${entity.type} ${entity.id}`).join(', ')})` : ''}`, entities: ids });
+    // Runtimes without page.navigate rows: a page change between two actions is its own line.
+    if (!recordsNavigation.has(page) && row.page && lastPage.get(page) && lastPage.get(page) !== row.page) {
+      lines.push(navLine({ to: row.page, action_id: null, sequence: row.sequence, capture_page_id: page }, row.timestamp ?? null));
+      typing = null;
     }
     if (row.page) lastPage.set(page, row.page);
-    // Consecutive typing in one field with no effect is one line.
-    if (TYPING.has(row.event) && !requests.length) {
+    // Text entry into one field with no effect is one line, however many events it took.
+    if (TEXT_ENTRY.has(row.event) && !effect) {
       // Without a key, two fields cannot be told apart: never merge.
       const key = row.target?.element_key || row.target?.ref || row.target?.attributes?.name || null;
       if (key !== null && typing && typing.key === key && typing.session === page) { typing.line.at_end = row.timestamp ?? null; typing.line.count += 1; continue; }
-      if (row.event === 'change' && typing?.key === key) continue;
       const secret = row.input?.credential_field === true || row.target?.attributes?.type === 'password';
       const line = { schema: STORY_SCHEMA, id: row.action_id, kind: 'type', session: page, at: row.timestamp ?? null, page: row.page ?? null, count: 1,
         text: secret ? `Typed a password in ${elementPhrase(row.target)}` : `Typed in ${elementPhrase(row.target)}`,
@@ -168,18 +191,24 @@ export function storyOf(store, { session } = {}) {
     }
     typing = null;
     const handler = handlerOf(chain);
-    const entities = requests.flatMap(request => request.entities);
+    const pageIds = owned.flatMap(entry => idsInUrl(entry.to, 'page_url'));
+    const entities = [...requests.flatMap(request => request.entities), ...pageIds];
     // Leaving one element is entering another: a mouseout's hover is on its related target.
     const subject = (row.event === 'mouseout' || row.event === 'mouseleave') && row.related_target ? row.related_target : row.target;
     const parts = [`${verbFor(row)} ${elementPhrase(subject)}`];
     if (handler?.name) parts.push(handler.name);
     if (requests.length) parts.push(requests.map(requestPhrase).join(', '));
+    for (const entry of owned) {
+      const ids = idsInUrl(entry.to, 'page_url');
+      parts.push(`went to ${entry.to}${ids.length ? ` (${ids.map(entity => `${entity.type} ${entity.id}`).join(', ')})` : ''}`);
+    }
     // Only what was observed: no request (an uninstrumented handler could still have done something).
-    else if (!caused && row.target?.tag !== 'a') parts.push('no request');
+    // Without page.navigate rows a link's navigation is not seen, so its absence says nothing.
+    if (!caused && !(row.target?.tag === 'a' && !recordsNavigation.has(page))) parts.push('no request');
     lines.push({ schema: STORY_SCHEMA, id: row.action_id, kind: row.event === 'submit' ? 'submit' : HOVER.has(row.event) ? 'hover' : 'act', session: page, at: row.timestamp ?? null, page: row.page ?? null,
       text: parts.join(' → '), event: row.event,
       element: { tag: subject?.tag ?? null, label: subject?.label ?? null, key: subject?.element_key ?? null },
-      handler, requests, entities, outcome: chain.outcome?.sentence ?? null, action_id: row.action_id });
+      handler, requests, navigations: owned.map(entry => ({ to: entry.to, from: entry.from ?? null, via: entry.via ?? null })), entities, outcome: chain.outcome?.sentence ?? null, action_id: row.action_id });
     info.actions += 1;
   }
   return { schema: STORY_SCHEMA, sessions: [...sessions.values()], lines };

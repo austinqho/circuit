@@ -2740,6 +2740,28 @@
   // current when send() is called, like a worker post; outside every action
   // it carries `issuer`). A message carries no trace context, so what it
   // causes on a server can never be joined: chains state that as a frontier.
+  // Client-side navigation (history.pushState / replaceState, back and
+  // forward) as page.navigate rows. A router calls pushState inside the
+  // continuation of the action that caused it, so the row carries that
+  // action's id; a navigation outside every action carries none.
+  try {
+    const history = global.history;
+    if (history && !history.__productTraceNavigation) {
+      let lastPath = pagePath();
+      const navigated = (via, active) => {
+        const to = pagePath(); if (to === lastPath) return;
+        const from = lastPath; lastPath = to;
+        emit({ kind: 'page.navigate', action_id: active?.action_id || null, via, from, to, ...(active?.continuation_id ? { parent_continuation_id: active.continuation_id } : {}) });
+      };
+      for (const method of ['pushState', 'replaceState']) {
+        const native = history[method];
+        if (typeof native !== 'function') continue;
+        history[method] = function productTraceHistory(...args) { const result = native.apply(this, args); try { const owner = captureOwner(); navigated(method, owner && !owner.stale_owner ? owner : null); } catch {} return result; };
+      }
+      global.addEventListener?.('popstate', () => { try { navigated('popstate', null); } catch {} }, true);
+      Object.defineProperty(history, '__productTraceNavigation', { value: true });
+    }
+  } catch {}
   const socketInfo = new WeakMap(); let socketSendWrapper = null;
   if (global.WebSocket) { const NativeWebSocket = global.WebSocket;
     global.WebSocket = function ProductTraceWebSocket(url, ...args) { const context = traceContext(); const active = captureOwner();

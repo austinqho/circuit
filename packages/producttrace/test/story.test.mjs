@@ -74,3 +74,26 @@ test('two fields without any key stay two lines; Enter is named; a request with 
   const closed = storyOf(createStore({ records: [...rows, { kind: 'capture.summary', page_id: page, capture_page_id: page, ...at() }] }));
   assert.match(closed.lines[2].text, /GET \/search\?q=1 \(no response recorded\)$/u);
 });
+
+test('a navigation the router made inside an action is told on that action; key-by-key typing is one line', () => {
+  sequence = 0;
+  const email = { tag: 'input', attributes: { name: 'email', type: 'email' }, element_key: 'k_email', label: 'Email Address' };
+  const start = { tag: 'button', attributes: {}, element_key: 'k_start', label: 'Get started' };
+  const key = (id, event) => action(id, event, email, { page: '/auth/login' });
+  const rows = [
+    action('b1', 'click', start, { page: '/' }),
+    enter('b1', 'fn:handleStart'),
+    { kind: 'page.navigate', action_id: 'b1', via: 'pushState', from: '/', to: '/auth/login', parent_continuation_id: 'f:b1', ...at() },
+    // pressSequentially: keydown, keypress, textInput, input, keyup per character.
+    ...['k1', 'k2'].flatMap(id => ['keydown', 'keypress', 'textInput', 'input', 'keyup'].map((event, index) => key(`${id}${index}`, event))),
+    action('b9', 'change', email, { page: '/auth/login' }),
+    { kind: 'page.navigate', action_id: null, via: 'popstate', from: '/auth/login', to: '/', ...at() },
+  ];
+  const { lines } = storyOf(createStore({ records: rows }));
+  assert.deepEqual(lines.map(line => line.text), [
+    'Clicked the “Get started” button → went to /auth/login',
+    'Typed in the “Email Address” field',
+    'Went back/forward to /',
+  ]);
+  assert.equal(lines[1].count, 2);
+});
