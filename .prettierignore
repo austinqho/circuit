@@ -4,10 +4,9 @@ package-lock.json
 **/test/fixtures/
 **/test/browser/
 
-# producttrace's engine code predates the formatter and is written densely on
-# purpose. Reformatting it would bury every open branch in conflicts, so it is
-# exempt until the engine freeze lifts. New code (examples/, apps/, new files
-# at the package root) is formatted.
+# producttrace's engine code is written densely on purpose and isn't run
+# through prettier; reformatting it would conflict with every branch touching
+# it. New code (examples/, apps/, new files at the package root) is formatted.
 packages/producttrace/analysis/
 packages/producttrace/backend/
 packages/producttrace/collector/

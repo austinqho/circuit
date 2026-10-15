@@ -407,7 +407,7 @@ strings are recorded as sent on the `network.request` row (path + query,
 tokens included; never the fragment); body rows carry no URL. Other
 body content, including secrets under other key names, inside string values or
 in plain-text bodies, is recorded as sent: this is a development tool whose rows
-stay on the loopback collector. Rows and MCP fields: [G4-mcp.md](https://github.com/austinqho/tracer/blob/main/docs/gates/G4-mcp.md) (archived in austinqho/tracer) §3.3.
+stay on the loopback collector.
 
 Client aborts are recorded in **every build, production included**. A request
 the page aborted (an `AbortController`, TanStack Query cancelling a superseded
@@ -425,8 +425,7 @@ every read of that response's body (the body methods, `reader.read()`,
 `pipeTo`, async iteration) settles one microtask later (the same difference as (b) above, no longer
 limited to builds with bodies on). The fetch's own fulfilment path is unchanged. Such
 fetches also add `network.abort` rows when aborted and `network.response_read`
-rows when the app finishes reading a body. Rows and MCP fields:
-[G4-mcp.md](https://github.com/austinqho/tracer/blob/main/docs/gates/G4-mcp.md) (archived in austinqho/tracer) §3.4.
+rows when the app finishes reading a body.
 
 ## Development
 
