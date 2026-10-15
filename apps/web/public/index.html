@@ -835,7 +835,13 @@
         const reqs = line.requests || [];
         if (reqs.some((r) => r.aborted || (r.status ?? 0) >= 400)) return 'failed';
         if (reqs.some((r) => r.status == null)) return 'pending';
-        if (reqs.length || line.kind === 'navigate' || line.kind === 'submit') return 'completed';
+        if (
+          reqs.length ||
+          line.navigations?.length ||
+          line.kind === 'navigate' ||
+          line.kind === 'submit'
+        )
+          return 'completed';
         return 'action';
       }
 
@@ -864,6 +870,8 @@
                 : `status ${r.status}`,
             cls: r.aborted || r.status >= 400 ? 'bad' : r.status == null ? 'wait' : '',
           });
+        for (const n of line.navigations || [])
+          steps.push({ t: `Went to ${n.to}`, s: n.from ? `from ${n.from}` : 'navigation' });
         for (const e of line.entities || [])
           steps.push({
             t: `${e.type} ${e.id}`,
