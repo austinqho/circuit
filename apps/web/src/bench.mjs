@@ -220,7 +220,6 @@ export function createBench({
   async function remember(app, running) {
     const story = await readStory({
       collectorUrl: `http://127.0.0.1:${app.ports.collector}`,
-      tools: running.tools,
     });
     for (const line of story.lines) running.seenLines.set(line.id, line);
     return story;
@@ -341,7 +340,6 @@ export function createBench({
       const { app, running } = await ready(id);
       return readStory({
         collectorUrl: `http://127.0.0.1:${app.ports.collector}`,
-        tools: running.tools,
         session,
       });
     },

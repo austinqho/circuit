@@ -71,7 +71,7 @@ Everything the tools do is plain HTTP on the same server; see the header of `src
 - Frontend only. Apps that need their own backend work when they mock it (bulletproof-react uses MSW); running a repo's backend with `producttrace/backend/register` is not wired up yet.
 - Dependencies install with lifecycle scripts off. The only file changed in the throwaway clone is the lockfile's registry host (mirrors such as npmmirror are pointed at registry.npmjs.org).
 - The headless browser only loads the app's own origin and localhost. External fonts and analytics are blocked, because they hang in sandboxes.
-- When the package has no `/story` endpoint, the live view falls back to `recent_actions` and says so above the feed.
+- When the package build has no `/story` endpoint, the Activity panel shows one line saying sentences are unavailable for that build; rebuild with a package that has it.
 
 ## Layout
 

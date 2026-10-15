@@ -52,11 +52,10 @@ export class TracerTools {
 }
 
 /**
- * The story lines for one store. Prefers the collector's /story endpoint; when
- * the package in use has none yet, falls back to recent_actions, marked
- * `source: "recent_actions"` so nobody mistakes it for the package's sentences.
+ * The story lines for one store, from the collector's /story endpoint. A build
+ * whose package has no story answers `source: "unavailable"` with no lines.
  */
-export async function readStory({ collectorUrl, tools, session = null }) {
+export async function readStory({ collectorUrl, session = null }) {
   try {
     const response = await fetch(
       `${collectorUrl}/story${session ? `?session=${encodeURIComponent(session)}` : ''}`,
@@ -67,52 +66,9 @@ export async function readStory({ collectorUrl, tools, session = null }) {
       return { source: 'story', sessions: story.sessions || [], lines: story.lines || [] };
     }
   } catch {}
-  const recent = await tools
-    .call('recent_actions', { n: 100, ...(session ? { session } : {}) })
-    .catch((error) => ({ status: 'error', error: error.message }));
-  if (recent.status !== 'ok')
-    return {
-      source: 'recent_actions',
-      sessions: [],
-      lines: [],
-      note: recent.summary || recent.error || recent.status,
-    };
-  // Readability only: focus and raw keydown rows are dropped and runs of input on one
-  // element become one line. The package's own /story replaces all of this.
-  const actions = [];
-  for (const action of (recent.actions || []).slice().reverse()) {
-    if (action.event === 'focusin' || action.event === 'keydown') continue;
-    const last = actions.at(-1);
-    if (
-      action.event === 'input' &&
-      last?.event === 'input' &&
-      last.element_key === action.element_key
-    ) {
-      last.count = (last.count || 1) + 1;
-      continue;
-    }
-    actions.push({ ...action });
-  }
-  const lines = actions.map((action) => ({
-    id: action.action_id,
-    kind: action.event,
-    session: action.session,
-    at: action.timestamp,
-    text: `${action.event}${action.count ? ` x${action.count}` : ''} on <${action.target?.tag || '?'}>: ${action.outcome?.sentence || action.summary || ''}`,
-    count: action.count,
-    event: action.event,
-    element: { tag: action.target?.tag ?? null, label: null, key: action.element_key ?? null },
-    handler: null,
-    requests: [],
-    entities: [],
-    outcome: action.outcome?.status ?? null,
-    action_id: action.action_id,
-  }));
-  const sessions = [...new Set(lines.map((line) => line.session))].map((id) => ({
-    session: id,
-    actions: lines.filter((l) => l.session === id).length,
-  }));
-  return { source: 'recent_actions', sessions, lines };
+  // No sentences from this package build. Raw engine rows are not a substitute:
+  // the page says so in one line, and circuit_tracer still reaches the raw tools.
+  return { source: 'unavailable', sessions: [], lines: [] };
 }
 
 const SILENT_ACTIONS = new Set(['goto', 'wait', 'back']);

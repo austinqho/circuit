@@ -433,6 +433,12 @@
       .event-card[open] .chev {
         transform: rotate(180deg);
       }
+      .event-detail {
+        margin: 0 0 8px 34px;
+        color: var(--muted, #9aa0a6);
+        font-size: 13px;
+        line-height: 1.45;
+      }
       .journey-steps {
         margin: 0;
         padding: 0 14px 10px 38px;
@@ -837,7 +843,7 @@
         const steps = [];
         if (line.element?.label || line.element?.tag)
           steps.push({
-            t: `${line.element.label ? `“${line.element.label}”` : ''} ${line.element.tag ? `&lt;${esc(line.element.tag)}&gt;` : ''}`,
+            t: `${line.element.label ? `“${esc(line.element.label)}”` : ''} ${line.element.tag ? `&lt;${esc(line.element.tag)}&gt;` : ''}`,
             s: line.kind === 'type' ? 'field' : 'element',
             raw: true,
           });
@@ -865,8 +871,9 @@
           });
         const fresh = !seen.has(line.id + ':' + (line.count || 0) + ':' + line.text);
         seen.add(line.id + ':' + (line.count || 0) + ':' + line.text);
-        return `<details class="event-card ${stateOf(line)} ${fresh ? 'fresh' : ''}" ${steps.length > 1 ? 'open' : ''}>
+        return `<details class="event-card ${stateOf(line)} ${fresh ? 'fresh' : ''}" >
           <summary><i class="journey-state" aria-hidden="true"></i><div><strong class="caption">${esc(line.text)}</strong><span class="event-subtitle">${time(line.at)}${line.page ? ` · ${esc(line.page)}` : ''}${line.count > 1 ? ` · ${line.count}×` : ''}</span></div>${CHEV}</summary>
+          ${line.detail ? `<p class="event-detail">${esc(line.detail)}</p>` : ''}
           ${steps.length ? `<ol class="journey-steps">${steps.map((s) => `<li class="journey-step ${s.cls || ''}"><strong>${s.raw ? s.t : esc(s.t)}</strong><small>${esc(s.s)}</small></li>`).join('')}</ol>` : ''}
         </details>`;
       }
@@ -875,8 +882,11 @@
         const el = $('#eventStream');
         const lines = (story?.lines || []).slice().sort((a, b) => a.at - b.at);
         $('#eventCount').textContent = `${lines.length} action${lines.length === 1 ? '' : 's'}`;
-        $('#sourceNote').textContent =
-          story && story.source !== 'story' ? 'raw engine output (no story in this package)' : '';
+        $('#sourceNote').textContent = '';
+        if (story?.source === 'unavailable') {
+          el.innerHTML = `<div class="empty-state"><p>Sentences unavailable for this build. Rebuild to enable.</p></div>`;
+          return;
+        }
         if (!lines.length) {
           el.innerHTML = `<div class="empty-state">${CURSOR}<strong>Use the app</strong><p>Click and type in the app on the left. Each thing you do appears here as a sentence.</p></div>`;
           return;
