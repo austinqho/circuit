@@ -462,7 +462,7 @@ function placementForCall(node, source, { map, code, id, repository, firstParty 
 const firstArgMeta = node => { const parameter = node?.parameters?.[0]; return parameter && !parameter.dotDotDotToken && ts.isIdentifier(parameter.name) ? `,a0:${parameter.name.text}` : ''; };
 const THREW_CATCH = name => `catch(__ptErr){globalThis.__productTraceRuntime?.threw?.(${name},__ptErr);throw __ptErr;}`;
 
-function instrumentPostTransformedSource(code, id, { repository, map, indexForId = idValue => idValue, register = true, instrument = true, instrumentLeafOnly = false, prefix = null, composeWith = null, moduleRows = null, firstParty = defaultFirstPartyRule, onExcluded = null, indexForPlacement = null, awaitContinuations = false, placementFallback = '__ptIdentity', framePass = null, registerClasses = false }) {
+function instrumentPostTransformedSource(code, id, { repository, map, indexForId = idValue => idValue, register = true, instrument = true, instrumentLeafOnly = false, prefix = null, composeWith = null, moduleRows = null, firstParty = defaultFirstPartyRule, onExcluded = null, indexForPlacement = null, awaitContinuations = false, placementFallback = '__ptIdentity', framePass = null, registerClasses = false, frameLeafArrows = false }) {
   // The chunk pass frames leaf bodies the module pass may already have framed; its
   // enter says so (`pass: "chunk"`) so a reader can count one call, not two.
   const passMeta = framePass ? `,pass:${JSON.stringify(framePass)}` : '';
@@ -604,13 +604,17 @@ function instrumentPostTransformedSource(code, id, { repository, map, indexForId
           functions.push({ id: idValue, index, kind: 'function', source: { file: span.file, start: span.start, end: span.end }, ...span.names, generated: { file: id, start: generatedStart, end: generatedEnd } });
           // The module pass is registration-only. The emitted-chunk leaf pass
           // may additionally frame the exact expression below.
-          const proxyEntry = Boolean(instrument && instrumentLeafOnly && hasNestedFunction(node));
+          // A concise arrow with functions inside is entered through a proxy
+          // (its body cannot be rewritten around their own edits).
+          const proxyEntry = Boolean(instrument && (instrumentLeafOnly || frameLeafArrows) && hasNestedFunction(node));
           const entryHint = embeddedEntryHint(node) ?? isEntryCallback(node);
           if (register) {
             edits.push({ kind: 'insert', index: generatedStart, content: ' globalThis.__productTraceRuntime?.tag?.((' });
-            edits.push({ kind: 'insert', index: generatedEnd, after: true, content: `),${index},${proxyEntry},${entryHint})` });
+            edits.push({ kind: 'insert', index: generatedEnd, after: true, content: `),${index},${proxyEntry},${entryHint}${inferredNameArg(node)})` });
           }
-          if (instrument && instrumentLeafOnly && !proxyEntry) {
+          // Under `vite dev` the module output is what runs: leaf concise
+          // arrows (inline handlers) are framed here, as the chunk pass would.
+          if (instrument && (instrumentLeafOnly || frameLeafArrows) && !proxyEntry) {
             const name = `__ptFrame${frame++}`;
             const bodyStart = node.body.getStart(source);
             const bodyEnd = node.body.getEnd();
@@ -652,7 +656,7 @@ function instrumentPostTransformedSource(code, id, { repository, map, indexForId
         }
         if (register && (ts.isFunctionExpression(node) || ts.isArrowFunction(node))) {
           edits.push({ kind: 'insert', index: generatedStart, content: ' globalThis.__productTraceRuntime?.tag?.((' });
-          edits.push({ kind: 'insert', index: generatedEnd, after: true, content: `),${index},${proxyEntry},${entryHint})` });
+          edits.push({ kind: 'insert', index: generatedEnd, after: true, content: `),${index},${proxyEntry},${entryHint}${inferredNameArg(node)})` });
         }
         if (register && ts.isFunctionDeclaration(node) && node.name) {
           edits.push({ kind: 'insert', index: generatedEnd, after: true,
@@ -780,6 +784,19 @@ function insidePlacementWrapper(node) {
   if (!parent || !ts.isCallExpression(parent) || parent.arguments[0] !== child) return false;
   let callee = parent.expression; while (ts.isParenthesizedExpression(callee)) callee = callee.expression;
   return ts.isBinaryExpression(callee) && ts.isPropertyAccessExpression(callee.left) && callee.left.name.text === '__productTracePlace';
+}
+
+// Wrapping `const Card = () => …` in tag(…) loses the name JavaScript would
+// have inferred ("Card"), which React Fast Refresh needs to see a component.
+// The name goes to tag(), which puts it back.
+function inferredNameArg(node) {
+  let child = node; let parent = node.parent;
+  while (parent && ts.isParenthesizedExpression(parent)) { child = parent; parent = parent.parent; }
+  if (!parent || node.name) return '';
+  const named = (ts.isVariableDeclaration(parent) && parent.initializer === child) || (ts.isPropertyAssignment(parent) && parent.initializer === child)
+    || (ts.isBinaryExpression(parent) && parent.right === child && parent.operatorToken.kind === ts.SyntaxKind.EqualsToken)
+    ? (ts.isBinaryExpression(parent) ? parent.left : parent.name) : null;
+  return named && ts.isIdentifier(named) ? `,${JSON.stringify(named.text)}` : '';
 }
 
 function isPlainAsync(fn) {
@@ -930,7 +947,8 @@ export function runtimeAttributionPlugin({ repository, manifestPath, firstParty 
   return {
     name: 'producttrace-runtime-attribution',
     enforce: 'post',
-    configResolved(config) { serving = config.command === 'serve'; },
+    // The dev server (not vitest, which also "serves": its modules keep the build's behaviour).
+    configResolved(config) { serving = config.command === 'serve' && !process.env.VITEST; },
     config(userConfig) {
       if (userConfig?.build?.sourcemap) return null;
       ownsSourcemaps = true;
@@ -951,10 +969,11 @@ export function runtimeAttributionPlugin({ repository, manifestPath, firstParty 
         // awaits); each placement is kept only if it maps to a first-party file.
         // `vite dev` serves libraries unbundled (Vite's prebundled deps): the
         // build's chunk pass would carry continuations through their awaits.
-        if (serving && !awaitsDisabled && real.split(path.sep).includes('node_modules') && /\.[cm]?js$/u.test(real)) return rewriteLibraryAwaits(code, real);
+        // Vite's own client is not app code: left alone.
+        if (serving && !awaitsDisabled && real.split(path.sep).includes('node_modules') && /\.[cm]?js$/u.test(real) && !/[\\/]vite[\\/]dist[\\/]client[\\/]/u.test(real)) return rewriteLibraryAwaits(code, real);
         // Installed libraries (including Vite's prebundled deps under
         // node_modules/.vite, which carry maps) are never first-party JSX.
-        if (reason === 'outside repository' || reason === 'not a JS/TS source' || stampsDisabled || real.split(path.sep).includes('node_modules') || !fs.existsSync(`${real}.map`)) return null;
+        if (reason === 'outside repository' || reason === 'not a JS/TS source' || stampsDisabled || (serving && real.split(path.sep).includes('node_modules')) || !fs.existsSync(`${real}.map`)) return null;
         const placed = instrumentPostTransformedSource(code, real, { repository, map: generatedMapFromContext(this), indexForId: () => null,
           register: false, instrument: false, firstParty: firstPartyRule, indexForPlacement, placementFallback: 'Object',
           prefix: (functions, embedded, placements = []) => placements.length
@@ -981,7 +1000,7 @@ export function runtimeAttributionPlugin({ repository, manifestPath, firstParty 
       };
       const result = instrumentPostTransformedSource(code, real, { repository, map, indexForId, firstParty: firstPartyRule,
         indexForPlacement: stampsDisabled ? null : indexForPlacement, placementFallback: 'Object', prefix, registerClasses: true,
-        ...(serving && !awaitsDisabled ? { awaitContinuations: true } : {}) });
+        ...(serving ? { frameLeafArrows: true, ...(awaitsDisabled ? {} : { awaitContinuations: 'all' }) } : {}) });
       if (result.classes?.length) classesByModule.set(real, result.classes);
       if (!result.manifest.length && !result.placements.length && !result.classes?.length) return null;
       for (const row of result.placements) if (row.bound && !placementRows.get(row.index).bound) placementRows.get(row.index).bound = row.bound;

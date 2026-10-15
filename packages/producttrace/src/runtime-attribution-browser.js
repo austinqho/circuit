@@ -29,7 +29,8 @@
   const stampStats = { commits: 0, hosts_checked: 0, stamped_nodes: 0, stamp_rows: 0, unplaced_nodes: 0, invalid_keys: 0, annotation_written: 0, annotation_rejected: 0, errors: 0, state_receipts_recorded: 0, state_receipts_applied: 0, state_receipts_refused: 0, state_receipts_consumed: 0, mount_effects_applied: 0, await_resumptions: 0, unreceipted_effects: 0, owned_listeners: 0, owned_messages: 0, task_ambient_cleared: 0, worker_posts_unowned: 0, shadow_listeners_bound: 0, shadow_stamped_nodes: 0, owned_listeners_dispatch_won: 0, owned_listeners_dispatcher: 0, owned_listeners_ui_unowned: 0 };
   const resolveFunctionId = value => typeof value === 'number' ? (functionManifest.get(value) || `function-index:${value}`) : value;
   const registerFunction = (fn, index) => { if (typeof fn === 'function' && Number.isInteger(index)) registeredFunctions.set(fn, resolveFunctionId(index)); return fn; };
-  const tag = (fn, index, proxyEntry = false, entryHint = proxyEntry) => {
+  const tag = (fn, index, proxyEntry = false, entryHint = proxyEntry, name = null) => {
+    if (name && typeof fn === 'function' && !fn.name) try { Object.defineProperty(fn, 'name', { value: name, configurable: true }); } catch {}
     registerFunction(fn, index);
     if (!proxyEntry || typeof fn !== 'function' || typeof Proxy !== 'function') return fn;
     let proxy = tracedFunctionProxies.get(fn);

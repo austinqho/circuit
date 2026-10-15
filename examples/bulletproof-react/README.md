@@ -37,4 +37,5 @@ The app's files are not edited. `demo.mjs` writes a wrapper Vite config that imp
 ## Known limits
 
 - The instrumented build (`--build`) is slow: about 6–7 minutes for this app. The dev server needs no build.
+- On the dev server, a navigation that a React effect makes after a state change (the redirect to `/app` once registration logs the user in) is its own "Went to /app" line, not part of the Register line as in a build.
 - The backend is a mock service worker, so every request stops at the network: "200" is the status the browser saw, with no server or database stops.
