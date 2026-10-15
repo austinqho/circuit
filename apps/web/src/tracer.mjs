@@ -3,7 +3,7 @@
 // tools (raw evidence). Nothing here interprets the store's files directly.
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
-import { segmentsOf } from './segments.mjs';
+import { segmentsOf, ungroundedTokens } from './segments.mjs';
 
 /** One MCP client per store, started on first use. */
 export class TracerTools {
@@ -82,38 +82,80 @@ const SILENT_ACTIONS = new Set(['goto', 'wait', 'back']);
 const requestKey = (r) => `${r.method} ${r.path}`;
 
 /**
- * How Claude judges the narration (segment titles). Each title is scored 0-2 on
- * each criterion, with the segment's grounded lines as the only evidence.
+ * How Claude judges the narration (segment titles), aligned with the narration
+ * spec (circuit-narration/narration-spec.md): its target sentences are the bar,
+ * its verb table the vocabulary. Each title is scored 0-2 per criterion with the
+ * segment's cited lines as the only evidence.
  */
 export const NARRATION_RUBRIC = {
   instructions:
-    'Read each segment title as if a person were annotating what the user did, then score it against its evidence lines only. 0 = no, 1 = partly, 2 = yes. Call circuit_score_narration with one score object per segment, in order.',
+    "Read each segment title as a person annotating what the user did, and score it against its evidence only. 0 = no, 1 = partly, 2 = yes. A title that cites an email, ID or quoted title its evidence lacks scores 0 on everything (the bench enforces this; see each segment's ungrounded list). Call circuit_score_narration with one score object per segment, in order.",
+  bar: [
+    'Registered as ada@example.test for the team "Analytical Engines" and landed on the dashboard.',
+    'Went to Discussions and started one called "Notes on the engine".',
+    'Opened it and left the first comment.',
+  ],
+  verbs: [
+    'registered / signed up',
+    'logged in',
+    'logged out',
+    'created / started',
+    'edited',
+    'deleted',
+    'opened',
+    'browsed',
+    'scrolled through',
+    'searched',
+    'filtered / sorted',
+    'paged',
+    'went to',
+    'abandoned / left without',
+    'tried … but',
+  ],
   criteria: {
     high_level:
-      'Says what the person did in their terms, not the UI mechanics: "Signed up as Ada Lovelace" or "Started a discussion about the engine", not "Submitted the form".',
+      'Names the goal with a verb from the vocabulary, the way the person would say it ("Registered as …", "Started a discussion called …"), not the UI operation ("Submitted the form").',
     grounded:
-      'Every claim is supported by the evidence lines (requests, IDs, labels, pages). Anything invented scores 0.',
+      'Every claim is in the evidence: requests, IDs, values, labels, pages. Nothing inferred about why.',
     specific:
-      'Names the concrete object the evidence carries: which discussion, which page, which account.',
+      'Carries the qualifiers the evidence has: who (email or name from a body), what (the entity title or type and ID), where (the page name from the link that led there), and the outcome.',
     joined:
-      'Related actions are one intent (typing into fields and submitting them is one step), and nothing unrelated is merged in.',
+      'One goal per title: lines joined by a shared form, entity or navigation lead-in ("Went to Discussions and started one"), nothing unrelated merged in, and no navigation left alone when the next part names its destination.',
   },
 };
+
+const lineEvidence = (line) => [
+  line.text,
+  ...(line.values || []).map((v) => `${v.field || v.key}: ${v.value}`),
+  ...(line.entities || []).map((e) => `${e.type} ${e.id}`),
+];
 
 export function narrationOf(story, lines) {
   return {
     rubric: NARRATION_RUBRIC,
-    segments: segmentsOf(story, lines).map((segment, index) => ({
-      index,
-      title: segment.title,
-      source: segment.source,
-      page: segment.page,
-      evidence: segment.lines.map((line) => line.text),
-    })),
+    segments: segmentsOf(story, lines).map((segment, index) => {
+      const evidence = [
+        ...segment.lines.flatMap(lineEvidence),
+        ...(segment.values ? Object.entries(segment.values).map(([k, v]) => `${k}: ${v}`) : []),
+        ...(segment.entities || []).map((e) => `${e.type} ${e.id}`),
+      ];
+      return {
+        index,
+        title: segment.title,
+        source: segment.source,
+        page: segment.page,
+        ...(segment.confidence != null ? { confidence: segment.confidence } : {}),
+        evidence,
+        ungrounded: ungroundedTokens(segment.title, evidence),
+      };
+    }),
   };
 }
 
-/** Folds Claude's per-segment scores into one "reads like a person" percentage. */
+/**
+ * Folds Claude's per-segment scores into one "reads like a person" percentage.
+ * A segment whose title cites something its evidence lacks counts as zero.
+ */
 export function narrationScore(segments, scores) {
   const keys = Object.keys(NARRATION_RUBRIC.criteria);
   if (!Array.isArray(scores) || scores.length !== segments.length)
@@ -121,15 +163,15 @@ export function narrationScore(segments, scores) {
       status: 400,
     });
   let total = 0;
-  for (const score of scores)
-    for (const key of keys) {
-      const value = score?.[key];
-      if (![0, 1, 2].includes(value))
+  scores.forEach((score, i) => {
+    for (const key of keys)
+      if (![0, 1, 2].includes(score?.[key]))
         throw Object.assign(new Error(`each score needs ${keys.join(', ')} as 0, 1 or 2`), {
           status: 400,
         });
-      total += value;
-    }
+    if (segments[i].ungrounded?.length) return;
+    for (const key of keys) total += score[key];
+  });
   return Math.round((100 * total) / (2 * keys.length * scores.length));
 }
 

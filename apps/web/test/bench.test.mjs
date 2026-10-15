@@ -13,7 +13,7 @@ import {
   rewriteLockfileRegistry,
   wrapperConfig,
 } from '../src/target.mjs';
-import { buildReport, narrationScore } from '../src/tracer.mjs';
+import { buildReport, narrationOf, narrationScore } from '../src/tracer.mjs';
 import { segmentsOf } from '../src/segments.mjs';
 
 const tmp = () => fs.mkdtempSync(path.join(os.tmpdir(), 'circuit-web-'));
@@ -199,4 +199,17 @@ test('narration score folds rubric scores and rejects bad input', () => {
   assert.equal(narrationScore(segments, [full, { ...full, high_level: 0, specific: 0 }]), 75);
   assert.throws(() => narrationScore(segments, [full]), /one score per segment/u);
   assert.throws(() => narrationScore(segments, [full, { ...full, joined: 3 }]), /0, 1 or 2/u);
+});
+
+test('a title citing what its evidence lacks scores zero', () => {
+  const story = {
+    segments: [{ title: 'Registered as ada@example.test', cites: ['a'] }],
+    lines: [],
+  };
+  const { segments } = narrationOf(story, [
+    { id: 'a', text: 'Submitted the form → POST /auth/register (200)' },
+  ]);
+  assert.deepEqual(segments[0].ungrounded, ['ada@example.test']);
+  const full = { high_level: 2, grounded: 2, specific: 2, joined: 2 };
+  assert.equal(narrationScore(segments, [full]), 0);
 });

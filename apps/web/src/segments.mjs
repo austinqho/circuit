@@ -68,11 +68,36 @@ export function segmentsOf(story, lines) {
     .map((s) => ({
       title: s.title ?? s.text ?? '',
       page: s.page ?? '',
-      lines: (s.lines ?? s.line_ids ?? s.children ?? [])
+      // The feed cites the lines each title rests on; those lines are the segment.
+      lines: (s.cites ?? s.lines ?? s.line_ids ?? s.children ?? [])
         .map((l) => byId.get(typeof l === 'string' ? l : l?.id))
         .filter(Boolean),
       source: 'feed',
+      ...(s.confidence != null ? { confidence: s.confidence } : {}),
+      ...(s.verb !== undefined ? { verb: s.verb } : {}),
+      ...(s.entities ? { entities: s.entities } : {}),
+      ...(s.values ? { values: s.values } : {}),
     }))
     .filter((s) => s.lines.length);
   return segments.length ? segments : groupLines(lines);
+}
+
+// Tokens a title may only use when its evidence carries them: quoted strings,
+// emails, and ID-shaped tokens (8+ characters mixing letters with digits, - or _).
+const CITED = [
+  /"([^"]+)"|“([^”]+)”/gu,
+  /[\w.+-]+@[\w-]+(?:\.[\w-]+)+/gu,
+  /\b(?=[\w-]*\d)[A-Za-z0-9_-]{8,}\b/gu,
+];
+
+/** What a title claims that its evidence doesn't contain (empty when grounded). */
+export function ungroundedTokens(title, evidence) {
+  const haystack = evidence.join('\n').toLowerCase();
+  const tokens = new Set();
+  for (const pattern of CITED)
+    for (const match of String(title).matchAll(pattern)) {
+      const token = (match[1] ?? match[2] ?? match[0]).replace(/…$/u, '');
+      if (token && !haystack.includes(token.toLowerCase())) tokens.add(token);
+    }
+  return [...tokens];
 }
