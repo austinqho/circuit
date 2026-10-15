@@ -7,7 +7,7 @@ npm install                                  # at the repo root
 npm run demo -w examples/bulletproof-react   # clone, install, build, serve
 ```
 
-The first run clones the app at a pinned commit into `~/.cache/producttrace-examples/bulletproof-react`, installs it and builds it (about 6 minutes; later runs reuse the build, `-- --rebuild` forces one). Then:
+The first run clones the app at a pinned commit into `~/.cache/producttrace-examples/bulletproof-react`, installs it and builds it (about 6–7 minutes; later runs reuse the build, `-- --rebuild` forces one). Then:
 
 - app: http://127.0.0.1:4173/
 - story: http://127.0.0.1:8787/story (JSON), live at http://127.0.0.1:8787/story/stream (server-sent events)
@@ -37,5 +37,5 @@ The app's files are not edited. `demo.mjs` writes a wrapper Vite config that imp
 ## Known limits
 
 - `vite dev` is not supported yet: functions are instrumented when the bundle is generated, so the app is built and served with `vite preview`.
-- The build is slow (about 6 minutes here against well under a minute without producttrace).
+- The instrumented build is slow: about 6–7 minutes for this app.
 - The backend is a mock service worker, so every request stops at the network: "200" is the status the browser saw, with no server or database stops.

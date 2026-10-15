@@ -43,6 +43,11 @@ export function createCollector(options = {}) {
       return;
     }
     if (story && request.method === 'GET' && (request.url === '/story' || request.url.startsWith('/story?') || request.url.startsWith('/story/stream'))) {
+      // Reads expose every session's paths, IDs and labels: only pages served
+      // from this machine may read them cross-origin (the write routes stay open).
+      response.removeHeader('access-control-allow-origin');
+      const origin = request.headers.origin;
+      if (origin && /^https?:\/\/(?:localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/u.test(origin)) { response.setHeader('access-control-allow-origin', origin); response.setHeader('vary', 'origin'); }
       const url = new URL(request.url, 'http://collector.invalid');
       const session = url.searchParams.get('session') || undefined;
       if (url.pathname === '/story') {
@@ -158,4 +163,4 @@ export function createCollector(options = {}) {
     },
   };
 }
-export { storyOf, createStoryFeed, idsInUrl, STORY_SCHEMA } from './story.mjs';
+export { createStoryFeed } from './story.mjs';

@@ -78,12 +78,13 @@ function verbFor(row) {
   if (row.event === 'click' || row.event === 'auxclick' || row.event === 'dblclick') return row.event === 'dblclick' ? 'Double-clicked' : 'Clicked';
   if (row.event === 'contextmenu') return 'Right-clicked';
   if (HOVER.has(row.event)) return 'Hovered';
-  if (row.event === 'keydown') return `Pressed ${row.keyboard?.key && row.keyboard.key !== 'Printable' ? row.keyboard.key : 'a key'} on`;
+  // The runtime writes the key under `key` (printable keys fold to "Printable" unless inputText is on).
+  if (row.event === 'keydown') return `Pressed ${row.key?.key && row.key.key !== 'Printable' ? row.key.key : 'a key'} on`;
   if (TYPING.has(row.event)) return 'Typed in';
   return `${row.event[0].toUpperCase()}${row.event.slice(1)} on`;
 }
 
-function requestFacts(store, request, requestRows) {
+function requestFacts(store, request, requestRows, closed) {
   const row = requestRows.get(request.request_occurrence_id) || request;
   const bodies = typeof store.bodiesFor === 'function' ? store.bodiesFor(row) : null;
   const status = Number.isFinite(Number(bodies?.response?.status)) ? Number(bodies.response.status) : (Number.isFinite(Number(row.status)) ? Number(row.status) : null);
@@ -91,23 +92,29 @@ function requestFacts(store, request, requestRows) {
   const entities = idsInUrl(request.url, 'request_url');
   const method = String(request.method || 'GET').toUpperCase();
   if (method === 'POST') {
-    const type = singular(new URL(request.url, 'http://local.invalid').pathname.split('/').filter(Boolean).filter(part => !looksLikeId(part)).pop() || '');
+    let pathname = ''; try { pathname = new URL(request.url, 'http://local.invalid').pathname; } catch {}
+    const type = singular(pathname.split('/').filter(Boolean).filter(part => !looksLikeId(part)).pop() || '');
     const id = returnedId(bodies?.response?.json, type);
     if (id && type) entities.push({ type, id, from: 'response_body', created: true });
   }
-  return { method, path, status, aborted: Boolean(row.aborted), entities, request_occurrence_id: request.request_occurrence_id };
+  // No status yet: still in flight while its page is open (when bodies, and so statuses, are recorded).
+  const bodiesOn = typeof store.coverageFor === 'function' ? store.coverageFor(pageOf(row))?.bodies === 'on' : false;
+  const state = row.aborted ? 'aborted' : status !== null ? 'done' : !bodiesOn ? 'not_recorded' : closed.has(pageOf(row)) ? 'no_response' : 'pending';
+  return { method, path, status, state, aborted: Boolean(row.aborted), entities, request_occurrence_id: request.request_occurrence_id };
 }
 
 function requestPhrase(facts) {
   const created = facts.entities.find(entity => entity.created);
-  const status = facts.aborted ? 'aborted' : facts.status ?? 'no response recorded';
+  const status = { done: facts.status, aborted: 'aborted', pending: 'pending', no_response: 'no response recorded', not_recorded: 'status not recorded' }[facts.state];
   return `${facts.method} ${facts.path} (${status}${created ? `, created ${created.type} ${created.id}` : ''})`;
 }
 
 function handlerOf(chain) {
   const stop = chain.stops.find(entry => entry.stop === 'entry_handler');
   if (!stop) return null;
-  return { name: stop.display_name || stop.name || null, file: stop.source?.file ?? null, line: stop.source?.line ?? null };
+  // `<not in manifest>` and similar placeholders are not names.
+  const name = [stop.display_name, stop.name].find(value => typeof value === 'string' && value && !/^<not /u.test(value)) || null;
+  return { name, file: stop.source?.file ?? null, line: stop.source?.line ?? null };
 }
 
 /**
@@ -116,6 +123,8 @@ function handlerOf(chain) {
  * `nav:<action id>` for a navigation), so a live reader can append only new ones.
  */
 export function storyOf(store, { session } = {}) {
+  // Pages that have closed (capture.summary on pagehide): a request still without a status there never got one.
+  const closed = new Set(store.records.filter(row => row?.kind === 'capture.summary').map(row => row.page_id || pageOf(row)));
   const requestRows = new Map(store.records.filter(row => row?.kind === 'network.request' && row.request_occurrence_id).map(row => [row.request_occurrence_id, row]));
   const sessions = new Map();
   const lines = [];
@@ -130,7 +139,7 @@ export function storyOf(store, { session } = {}) {
     if (typeof store.contextOnly === 'function' && store.contextOnly(row.action_id)) continue;
     let chain;
     try { chain = chainStops(store, row.action_id); } catch { continue; }
-    const requests = (chain.requests || []).map(request => requestFacts(store, request, requestRows));
+    const requests = (chain.requests || []).map(request => requestFacts(store, request, requestRows, closed));
     const caused = requests.length > 0 || (chain.outcome?.stage && !['no_request', 'dispatch'].includes(chain.outcome.stage) && chain.stops.some(stop => stop.stop === 'entry_handler'));
     if (NOISE.has(row.event) && !requests.length) continue;
     if (HOVER.has(row.event) && !requests.length) continue;
@@ -145,8 +154,9 @@ export function storyOf(store, { session } = {}) {
     if (row.page) lastPage.set(page, row.page);
     // Consecutive typing in one field with no effect is one line.
     if (TYPING.has(row.event) && !requests.length) {
+      // Without a key, two fields cannot be told apart: never merge.
       const key = row.target?.element_key || row.target?.ref || row.target?.attributes?.name || null;
-      if (typing && typing.key === key && typing.session === page) { typing.line.at_end = row.timestamp ?? null; typing.line.count += 1; continue; }
+      if (key !== null && typing && typing.key === key && typing.session === page) { typing.line.at_end = row.timestamp ?? null; typing.line.count += 1; continue; }
       if (row.event === 'change' && typing?.key === key) continue;
       const secret = row.input?.credential_field === true || row.target?.attributes?.type === 'password';
       const line = { schema: STORY_SCHEMA, id: row.action_id, kind: 'type', session: page, at: row.timestamp ?? null, page: row.page ?? null, count: 1,
@@ -164,7 +174,8 @@ export function storyOf(store, { session } = {}) {
     const parts = [`${verbFor(row)} ${elementPhrase(subject)}`];
     if (handler?.name) parts.push(handler.name);
     if (requests.length) parts.push(requests.map(requestPhrase).join(', '));
-    else if (!caused && row.target?.tag !== 'a') parts.push('nothing else happened');
+    // Only what was observed: no request (an uninstrumented handler could still have done something).
+    else if (!caused && row.target?.tag !== 'a') parts.push('no request');
     lines.push({ schema: STORY_SCHEMA, id: row.action_id, kind: row.event === 'submit' ? 'submit' : HOVER.has(row.event) ? 'hover' : 'act', session: page, at: row.timestamp ?? null, page: row.page ?? null,
       text: parts.join(' → '), event: row.event,
       element: { tag: subject?.tag ?? null, label: subject?.label ?? null, key: subject?.element_key ?? null },
@@ -181,14 +192,18 @@ export function storyOf(store, { session } = {}) {
 export function createStoryFeed({ dir, sourceRoot = null }) {
   let cached = null;
   let key = null;
+  let loading = null;
+  // One load at a time, shared by every caller (several open streams tick together).
+  const load = fingerprint => {
+    if (!loading) loading = loadStore({ dir, sourceRoot }).then(store => { cached = store; key = fingerprint; cached.__story = new Map(); }).finally(() => { loading = null; });
+    return loading;
+  };
   return async function current({ session } = {}) {
     const paths = storePaths({ dir });
     let fingerprint;
     try { fingerprint = fileFingerprint(paths); } catch { fingerprint = null; }
     if (!cached || fingerprint === null || fingerprint !== key) {
-      try { cached = await loadStore({ dir, sourceRoot }); } catch (error) { if (error.code === 'STORE_NOT_FOUND') return { schema: STORY_SCHEMA, sessions: [], lines: [] }; throw error; }
-      key = fingerprint;
-      cached.__story = new Map();
+      try { await load(fingerprint); } catch (error) { if (error.code === 'STORE_NOT_FOUND') return { schema: STORY_SCHEMA, sessions: [], lines: [] }; throw error; }
     }
     const memo = session ?? '\u0000all';
     if (!cached.__story.has(memo)) cached.__story.set(memo, storyOf(cached, { session }));

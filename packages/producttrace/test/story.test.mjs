@@ -51,3 +51,26 @@ test('a session reads as sentences: noise dropped, typing coalesced, writes name
   // Nothing in the story is typed text.
   assert.ok(!JSON.stringify(lines).includes('Pricing page feedback'));
 });
+
+test('two fields without any key stay two lines; Enter is named; a request with no status yet is pending', () => {
+  sequence = 0;
+  const field = label => ({ tag: 'input', attributes: {}, label });
+  const capturePage = { kind: 'capture.page', page_id: page, capture_page_id: page, bodies: 'on', ...at() };
+  const rows = [
+    capturePage,
+    action('c1', 'input', field('First Name'), { input: { inputType: 'insertText', data_length: 1, credential_field: false } }),
+    action('c2', 'input', field('Last Name'), { input: { inputType: 'insertText', data_length: 1, credential_field: false } }),
+    action('c3', 'keydown', field('Search'), { key: { key: 'Enter', code: 'Enter' } }),
+    enter('c3', 'fn:search'),
+    request('c3', 'GET', 'https://api.example.com/search?q=1', 7),
+  ];
+  const { lines } = storyOf(createStore({ records: rows }));
+  assert.deepEqual(lines.map(line => line.text), [
+    'Typed in the “First Name” field',
+    'Typed in the “Last Name” field',
+    'Pressed Enter on the “Search” field → GET /search?q=1 (pending)',
+  ]);
+  // Once the page has closed, a request that never got a status says so.
+  const closed = storyOf(createStore({ records: [...rows, { kind: 'capture.summary', page_id: page, capture_page_id: page, ...at() }] }));
+  assert.match(closed.lines[2].text, /GET \/search\?q=1 \(no response recorded\)$/u);
+});

@@ -661,18 +661,21 @@
       const tag = String(node.tagName || '').toLowerCase();
       if (tag === 'input' || tag === 'textarea' || tag === 'select') {
         if (tag === 'input' && ['button', 'submit', 'reset'].includes(String(node.type))) return squash(node.value);
-        const own = node.labels && node.labels[0] ? node.labels[0].textContent : null;
+        const labelNode = node.labels && node.labels[0] ? node.labels[0] : null;
+        const own = labelNode ? Array.from(labelNode.childNodes || []).filter(child => child.nodeType === 3).map(child => child.textContent).join(' ') || labelNode.textContent : null;
         return squash(own) || squash(node.getAttribute('placeholder')) || null;
       }
       // Only controls get a text label: a container's text is page content, and reading it is not free.
       const role = node.getAttribute('role');
-      if (!['button', 'a', 'summary', 'label', 'option'].includes(tag) && !['button', 'link', 'menuitem', 'menuitemcheckbox', 'menuitemradio', 'option', 'tab', 'checkbox', 'radio', 'switch', 'treeitem'].includes(role)) return null;
+      if (!['button', 'a', 'summary', 'label'].includes(tag) && !['button', 'link', 'menuitem', 'menuitemcheckbox', 'menuitemradio', 'tab', 'checkbox', 'radio', 'switch', 'treeitem'].includes(role)) return null;
       if (node.isContentEditable) return null;
       return squash(node.textContent) || squash(node.getAttribute('title')) || squash(node.querySelector?.('img[alt]')?.getAttribute('alt'));
     } catch { return null; }
   };
   const pagePath = () => { try { return `${global.location.pathname}${global.location.search}`; } catch { return null; } };
-  const describeControl = node => { const description = describe(node); if (!description) return description; const ref = identity(node)?.handle || null; const label = controlLabel(node); return { ...description, ...(ref ? { ref } : {}), ...(label ? { label } : {}) }; };
+  const describeControl = node => { const description = describe(node); const ref = identity(node)?.handle || null; return description && ref ? { ...description, ref } : description; };
+  // The control a user acted on (an action's target, a hover's related target): with its label.
+  const describeActed = node => { const description = describeControl(node); const label = description ? controlLabel(node) : null; return label ? { ...description, label } : description; };
   const interactiveFor = node => { try { return node?.closest?.('button,input,textarea,select,a[href],[role="button"],[role="menuitem"],[role="option"],[role="checkbox"],[role="radio"],[role="switch"],[tabindex]') || node; } catch { return node; } };
   // closest() that continues from a shadow root to its host.
   const composedClosest = (node, selector) => {
@@ -807,7 +810,7 @@
       else if (is(event, 'ClipboardEvent')) out.clipboard = { types: listOf(event.clipboardData?.types) };
       else if (is(event, 'ToggleEvent')) out.toggle = { oldState: event.oldState ?? null, newState: event.newState ?? null };
       // The element focus or the pointer came from or went to.
-      if (is(event, 'FocusEvent') || (is(event, 'MouseEvent') && 'relatedTarget' in event && /(?:over|out|enter|leave)$/u.test(event.type))) out.related_target = event.relatedTarget ? describeControl(event.relatedTarget) : null;
+      if (is(event, 'FocusEvent') || (is(event, 'MouseEvent') && 'relatedTarget' in event && /(?:over|out|enter|leave)$/u.test(event.type))) out.related_target = event.relatedTarget ? describeActed(event.relatedTarget) : null;
       // A file input: how many files and their types, never names or contents.
       if (String(target?.tagName || '').toLowerCase() === 'input' && String(target.type || '').toLowerCase() === 'file' && target.files) out.files = { count: target.files.length, types: listOf(Array.from(target.files, file => file.type || '')) };
     } catch {}
@@ -888,9 +891,10 @@
   const materialize = pending => {
     if (pending.materialized) return; pending.materialized = true; pendingActions.delete(pending.action_id);
     const target = describeLight(pending.node);
+    if (target) { const label = controlLabel(pending.node); if (label) target.label = label; }
     // The event object keeps its fields after dispatch: described only now.
     const detail = describeEvent(pending.source, pending.node);
-    emit({ kind: 'dom.action', action_id: pending.action_id, timestamp: pending.timestamp, event: pending.event, target, ...(target?.ref ? { target_ref: target.ref } : {}),
+    emit({ kind: 'dom.action', action_id: pending.action_id, timestamp: pending.timestamp, ...(pending.page !== undefined ? { page: pending.page } : {}), event: pending.event, target, ...(target?.ref ? { target_ref: target.ref } : {}),
       interface: pending.interface, phase: 'continuous', gesture_id: pending.gesture_id, coalesced: true, hover_segment_action_id: pending.segment.action_id, ...detail,
       source_ref: null, parent_continuation_id: null, continuation_id: null, spine: { action_id: pending.action_id, function_ids: [] }, evidence_ids: [] });
   };
@@ -983,7 +987,7 @@
           && !submitter.hasAttribute?.('formnovalidate') && form.matches?.(':invalid') === true;
       } catch {}
     }
-    const target = describeControl(actionTarget);
+    const target = describeActed(actionTarget);
     let boundHandlers = null;
     try { boundHandlers = typeof boundHandlersFor === 'function' ? boundHandlersFor(dispatchTarget, event.type) : null; } catch {}
     // Lookup key only: read from the DOM for external agents, never used to
@@ -1170,7 +1174,7 @@
       pending = segment.pending.get(pendingKey);
       if (!pending) {
         pending = { action_id: newActionId(), event: event.type, node: actionTarget, target_ref: handle, interface: userEventModel.interfaceOf(event), gesture_id: meta.gesture_id,
-          source: event, timestamp: Date.now(), count: 0, materialized: false, keep: false, segment, continuation_id: null };
+          source: event, timestamp: Date.now(), page: pagePath(), count: 0, materialized: false, keep: false, segment, continuation_id: null };
         segment.pending.set(pendingKey, pending); pendingActions.set(pending.action_id, pending);
       }
       segment.controls.add(handle); segment.last_node = actionTarget;
