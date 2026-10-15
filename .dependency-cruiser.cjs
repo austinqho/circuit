@@ -17,65 +17,77 @@
 // may reach internals. New packages should put tests in `tests/` and go
 // through the entry points.
 
-const R = "packages";
+const R = 'packages';
 const PACKAGE_INTERNALS = `^${R}/[^/]+/[^/]+/`;
 
 /** @type {import('dependency-cruiser').IConfiguration} */
 module.exports = {
   forbidden: [
     {
-      name: "entrypoint-boundary-from-app",
+      name: 'entrypoint-boundary-from-app',
       comment:
         "examples/ and apps/ may import a package's entry points (its root files), never anything inside its subfolders.",
-      severity: "error",
+      severity: 'error',
       from: { pathNot: `^${R}/` },
       to: { path: PACKAGE_INTERNALS },
     },
     {
-      name: "entrypoint-boundary-across-packages",
+      name: 'entrypoint-boundary-across-packages',
       comment:
         "A package's own files import each other freely, but reach OTHER packages only through their entry points.",
-      severity: "error",
+      severity: 'error',
       from: { path: `^${R}/([^/]+)/`, pathNot: `^${R}/[^/]+/tests/` },
       to: { path: PACKAGE_INTERNALS, pathNot: `^${R}/$1/` },
     },
     {
-      name: "tests-through-entrypoints",
+      name: 'tests-through-entrypoints',
       comment:
         "Files in a package's tests/ folder use entry points like everyone else, plus their own tests/ fixtures.",
-      severity: "error",
+      severity: 'error',
       from: { path: `^${R}/([^/]+)/tests/` },
       to: { path: PACKAGE_INTERNALS, pathNot: `^${R}/$1/tests/` },
     },
     {
-      name: "tests-folder-is-private",
+      name: 'tests-folder-is-private',
       comment: "Only tests may import a package's tests/ fixtures.",
-      severity: "error",
+      severity: 'error',
       from: { pathNot: `^${R}/[^/]+/tests?/` },
       to: { path: `^${R}/[^/]+/tests?/` },
     },
     {
-      name: "no-circular",
-      comment: "No dependency cycles.",
-      severity: "error",
+      name: 'no-circular',
+      comment: 'No dependency cycles.',
+      severity: 'error',
       from: {},
       to: { circular: true },
     },
   ],
   options: {
-    doNotFollow: { path: "node_modules" },
+    includeOnly: '^(packages|examples|apps)/',
+    doNotFollow: { path: 'node_modules' },
     exclude: {
       path: [
-        "node_modules",
-        "/dist/",
+        'node_modules',
+        '/dist/',
         // Inline app sources written to temp dirs by fixtures, not real modules.
         `^${R}/[^/]+/test/(fixtures|browser/fixtures|browser/palmier-sample)/`,
       ],
     },
     enhancedResolveOptions: {
-      extensions: [".mjs", ".js", ".cjs", ".ts", ".tsx", ".jsx", ".mts", ".d.mts", ".d.ts", ".json"],
-      exportsFields: ["exports"],
-      conditionNames: ["import", "require", "node", "default", "types"],
+      extensions: [
+        '.mjs',
+        '.js',
+        '.cjs',
+        '.ts',
+        '.tsx',
+        '.jsx',
+        '.mts',
+        '.d.mts',
+        '.d.ts',
+        '.json',
+      ],
+      exportsFields: ['exports'],
+      conditionNames: ['import', 'require', 'node', 'default', 'types'],
     },
   },
 };

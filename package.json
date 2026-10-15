@@ -17,7 +17,7 @@
     "test": "npm run test --workspaces --if-present",
     "typecheck": "npm run typecheck --workspaces --if-present",
     "lint": "npm run lint:boundaries && npm run format:check",
-    "lint:boundaries": "depcruise packages examples apps --config .dependency-cruiser.cjs",
+    "lint:boundaries": "depcruise . --config .dependency-cruiser.cjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check": "npm run lint && npm run typecheck && npm run test",
