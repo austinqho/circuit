@@ -2,7 +2,7 @@
 
 A local website plus tools for Claude that answer one question fast: **does producttrace work on a real React app it has never seen?**
 
-Give it an open-source repo. It clones it, installs its dependencies, builds it with producttrace's one plugin line (the repo's source is never edited), serves it, and starts a collector. Then:
+Give it an open-source repo. It clones it, installs its dependencies, attaches producttrace's one plugin line in a wrapper config (the repo's source is never edited), runs it on the Vite dev server, and starts a collector. Then:
 
 - **you** click around the app inside the page and watch the package's sentences appear next to it, live;
 - **Claude** drives the same app with a headless browser through MCP tools, reads back what the package said about each step, and gets a scorecard to hillclimb on.
@@ -16,7 +16,9 @@ npm install
 npm start      # http://127.0.0.1:4500
 ```
 
-On first start the bench puts bulletproof-react on itself (set `CIRCUIT_DEFAULT_REPO` to another repo, or to an empty string for none). The first build takes several minutes (cloning, installing, then a producttrace build, which is the slow part); the page shows its progress. Playwright's Chromium is downloaded on first use if the machine has none, and yarn or pnpm are fetched through npx when they are not installed. Add more repos from the **Bench** button. After that, **Rebuild with current package** reuses the clone and install, so testing a package change costs one build.
+On first start the bench puts bulletproof-react on itself (set `CIRCUIT_DEFAULT_REPO` to another repo, or to an empty string for none). The first start takes as long as cloning and installing; after that the app is up in seconds. The page shows the progress. Playwright's Chromium is downloaded on first use if the machine has none, and yarn or pnpm are fetched through npx when they are not installed. Add more repos from the **Bench** button. After that, **Rebuild with current package** reuses the clone and install and restarts the dev server, so testing a package change takes seconds.
+
+To score the app as users get it, add it with `mode: "build"` (or `circuit_rebuild` with `mode: "build"`). That makes a production build and serves the files; for bulletproof-react the build takes about 4 minutes.
 
 ## Give Claude the tools
 
@@ -35,7 +37,7 @@ The MCP server talks to the website's server and starts it if it is not running,
 | `circuit_report`                          | Each step next to the package's sentences and the requests the browser really sent, plus a scorecard.                                                                                                               |
 | `circuit_story`                           | The package's own session story for the current build.                                                                                                                                                              |
 | `circuit_tracer`                          | Any of the package's own MCP tools (`action_chain`, `recent_actions`, ...) against this app's store.                                                                                                                |
-| `circuit_rebuild`                         | Rebuild with the package as it is on disk now. Each build gets a fresh store.                                                                                                                                       |
+| `circuit_rebuild`                         | Restart with the package as it is on disk now; `mode` switches between `dev` and `build`. Each build gets a fresh store.                                                                                            |
 | `circuit_reset`                           | End the browser's page session and clear the steps.                                                                                                                                                                 |
 
 Targets for `circuit_act` are visible text (`"Get started"`), `{ role, name }`, `{ label }`, `{ placeholder }`, `{ text }`, `{ testid }`, or any Playwright selector.
@@ -71,6 +73,7 @@ Everything the tools do is plain HTTP on the same server; see the header of `src
 - Frontend only. Apps that need their own backend work when they mock it (bulletproof-react uses MSW); running a repo's backend with `producttrace/backend/register` is not wired up yet.
 - Dependencies install with lifecycle scripts off. The only file changed in the throwaway clone is the lockfile's registry host (mirrors such as npmmirror are pointed at registry.npmjs.org).
 - The headless browser only loads the app's own origin and localhost. External fonts and analytics are blocked, because they hang in sandboxes.
+- Dev mode: the collector reads the package's attribution manifest once when it starts, and the dev server writes that manifest as modules load. A fresh dev app therefore names no handlers until the app restarts with the manifest in place. Build mode doesn't have this problem.
 - When the package build has no `/story` endpoint, the Activity panel shows one line saying sentences are unavailable for that build; rebuild with a package that has it.
 
 ## Layout

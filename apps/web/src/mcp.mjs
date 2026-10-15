@@ -77,6 +77,12 @@ const TARGET = {
     },
   ],
 };
+const MODE = {
+  type: 'string',
+  enum: ['dev', 'build'],
+  description:
+    'dev (default): the Vite dev server, ready in seconds. build: a production build served as static files, the app as users get it.',
+};
 const APP = { type: 'string', description: 'App id from circuit_add_app or circuit_list_apps.' };
 
 const TOOLS = [
@@ -89,7 +95,7 @@ const TOOLS = [
   {
     name: 'circuit_add_app',
     description:
-      'Install producttrace into an open-source Vite + React repo: clone it, install its dependencies, build it with the one plugin line (its source is never edited), serve it and start a collector. Returns at once; the first build takes several minutes, so follow with circuit_app_status wait_seconds and call it again while the status is building.',
+      'Install producttrace into an open-source Vite + React repo: clone it, install its dependencies, attach the one plugin line in a wrapper config (its source is never edited), run it and start a collector. By default the app runs on the Vite dev server (ready once installed); mode "build" makes a production build instead, which takes minutes. Returns at once; follow with circuit_app_status wait_seconds and call it again while the status is building.',
     inputSchema: {
       type: 'object',
       required: ['repo'],
@@ -115,6 +121,7 @@ const TOOLS = [
           type: 'object',
           description: 'Extra options for producttrace() in the wrapper config.',
         },
+        mode: MODE,
       },
     },
     run: (args) => api('POST', '/api/apps', args),
@@ -133,9 +140,9 @@ const TOOLS = [
   {
     name: 'circuit_rebuild',
     description:
-      'Rebuild an app with the package as it is now on disk (after you change the package). Skips clone and install. A new build gets a fresh store, so its report starts clean.',
-    inputSchema: { type: 'object', required: ['app'], properties: { app: APP } },
-    run: ({ app }) => api('POST', `/api/apps/${app}/rebuild`),
+      'Restart an app with the package as it is now on disk (after you change the package). Skips clone and install; in dev mode it takes seconds, in build mode it rebuilds. mode switches between the two. A new build gets a fresh store, so its report starts clean.',
+    inputSchema: { type: 'object', required: ['app'], properties: { app: APP, mode: MODE } },
+    run: ({ app, mode }) => api('POST', `/api/apps/${app}/rebuild`, mode ? { mode } : {}),
   },
   {
     name: 'circuit_act',

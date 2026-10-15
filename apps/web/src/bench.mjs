@@ -15,7 +15,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { BrowserSession, closeBrowser } from './browser.mjs';
 import { findPackageDir, packageBin } from './package.mjs';
-import { buildTarget, parseRepo, serveStatic, waitForHttp } from './target.mjs';
+import { buildTarget, parseRepo, serveDev, serveStatic, waitForHttp } from './target.mjs';
 import { TracerTools, buildReport, readStory } from './tracer.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -45,6 +45,8 @@ export function createBench({
       app.status = 'failed';
       app.error = 'interrupted by a restart; rebuild';
     }
+    // Apps registered before dev mode existed were production builds.
+    app.mode ??= 'build';
     apps.set(app.id, app);
   }
   const save = () => fs.writeFileSync(registryFile, JSON.stringify([...apps.values()], null, 2));
@@ -59,6 +61,7 @@ export function createBench({
     ref: app.ref ?? null,
     app_dir: app.appDir ?? null,
     status: app.status,
+    mode: app.mode,
     phase: app.phase ?? null,
     error: app.error ?? null,
     url: app.status === 'ready' ? `http://127.0.0.1:${app.ports.app}/` : null,
@@ -114,9 +117,20 @@ export function createBench({
     running.collector?.kill('SIGTERM');
   }
 
-  /** Serve the built app and start its collector (idempotent). */
-  async function start(app) {
-    if (live.has(app.id)) return live.get(app.id);
+  // Callers race to start an app (a build finishing, the page's live feed); one start runs.
+  const starting = new Map();
+  function start(app) {
+    if (live.has(app.id)) return Promise.resolve(live.get(app.id));
+    if (!starting.has(app.id))
+      starting.set(
+        app.id,
+        launch(app).finally(() => starting.delete(app.id)),
+      );
+    return starting.get(app.id);
+  }
+
+  /** Serve the app (dev server or built files) and start its collector. */
+  async function launch(app) {
     const store = storeDir(app);
     fs.mkdirSync(store, { recursive: true });
     const appRoot = path.join(app.work, 'src', app.appDir);
@@ -136,6 +150,8 @@ export function createBench({
         String(app.ports.collector),
         '--source-root',
         appRoot,
+        // The collector reads the manifest once, at start. Under the dev server it is
+        // written as modules load, so a fresh dev app starts without one.
         ...(fs.existsSync(manifest) ? ['--manifest', manifest] : []),
         '--label',
         `circuit-${app.id}-build-${app.build}`,
@@ -148,7 +164,10 @@ export function createBench({
         ],
       },
     );
-    const server = await serveStatic(path.join(app.work, 'dist'), app.ports.app);
+    const server =
+      app.mode === 'build'
+        ? await serveStatic(path.join(app.work, 'dist'), app.ports.app)
+        : await serveDev(app.serve, app.ports.app, path.join(app.work, 'build.log'));
     if (!(await waitForHttp(`http://127.0.0.1:${app.ports.collector}/`, 15000)))
       throw new Error('collector did not start; see collector.log');
     const running = {
@@ -246,7 +265,9 @@ export function createBench({
     list: () => [...apps.values()].map(summary),
 
     /** Clone, install and build a repo with the package attached. Returns at once; the build runs in the background. */
-    async add({ repo, ref, app_dir: appDir, env, plugin_options: pluginOptions } = {}) {
+    async add({ repo, ref, app_dir: appDir, env, plugin_options: pluginOptions, mode } = {}) {
+      if (mode !== undefined && !['dev', 'build'].includes(mode))
+        throw Object.assign(new Error('mode is "dev" or "build"'), { status: 400 });
       const parsed = parseRepo(repo);
       const id = `${parsed.name.toLowerCase().replace(/[^a-z0-9]+/gu, '-')}-${crypto
         .createHash('sha1')
@@ -259,6 +280,7 @@ export function createBench({
           Object.assign(existing, {
             env: env ?? existing.env,
             pluginOptions: pluginOptions ?? existing.pluginOptions,
+            mode: mode ?? existing.mode,
           });
           runBuild(existing, { rebuild: false });
         }
@@ -275,6 +297,7 @@ export function createBench({
         appDir: appDir ?? parsed.appDir,
         env,
         pluginOptions,
+        mode: mode ?? 'dev',
         work: path.join(workRoot, id),
         ports: { app: port, collector: port + 1 },
         status: 'queued',
@@ -286,9 +309,12 @@ export function createBench({
     },
 
     /** Rebuild with the current package (after a change to it). Skips clone and install. */
-    async rebuild(id) {
+    async rebuild(id, { mode } = {}) {
       const app = get(id);
       if (app.status === 'building') return summary(app);
+      if (mode !== undefined && !['dev', 'build'].includes(mode))
+        throw Object.assign(new Error('mode is "dev" or "build"'), { status: 400 });
+      if (mode) app.mode = mode;
       runBuild(app, { rebuild: true });
       return summary(app);
     },

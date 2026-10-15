@@ -244,6 +244,31 @@ const TYPES = {
   '.txt': 'text/plain',
 };
 
+/** The app on the Vite dev server with the wrapper config; resolves once it answers. */
+export async function serveDev({ viteBin, wrapper, appRoot, env }, port, logFile) {
+  const out = fs.openSync(logFile, 'a');
+  const child = spawn(
+    process.execPath,
+    [viteBin, '--config', wrapper, '--host', '127.0.0.1', '--port', String(port), '--strictPort'],
+    {
+      cwd: appRoot,
+      env: { ...process.env, NODE_ENV: 'development', ...env },
+      stdio: ['ignore', out, out],
+    },
+  );
+  fs.closeSync(out);
+  const exited = new Promise((resolve) => child.once('exit', resolve));
+  const up = await Promise.race([
+    waitForHttp(`http://127.0.0.1:${port}/`, 60000),
+    exited.then(() => false),
+  ]);
+  if (!up) {
+    child.kill('SIGTERM');
+    throw new Error('the Vite dev server did not start; see the build log');
+  }
+  return { close: () => child.kill('SIGTERM') };
+}
+
 /** Static server with SPA fallback to index.html. */
 export function serveStatic(root, port) {
   const server = http.createServer((req, res) => {
@@ -349,7 +374,7 @@ export async function buildTarget(app, { packageDir, log, rebuild = false }) {
     });
   }
 
-  step('building with producttrace');
+  step(app.mode === 'build' ? 'building with producttrace' : 'attaching producttrace');
   const appRoot = path.join(src, app.appDir);
   const consumer = path.join(work, 'consumer');
   fs.mkdirSync(path.join(consumer, 'node_modules'), { recursive: true });
@@ -361,8 +386,8 @@ export async function buildTarget(app, { packageDir, log, rebuild = false }) {
   fs.rmSync(link, { force: true, recursive: true });
   fs.symlinkSync(packageDir, link);
   const outDir = path.join(work, 'dist');
-  // The bench builds in production mode (the app as users get it), where the
-  // package turns control labels and bodies off by default; a test bench wants both.
+  // A production build turns control labels and bodies off by default; a test
+  // bench wants both, in either mode.
   const pluginOptions = {
     requestBridge: false,
     bodies: 'always',
@@ -380,6 +405,14 @@ export async function buildTarget(app, { packageDir, log, rebuild = false }) {
     .map((dir) => path.join(dir, 'node_modules', 'vite', 'bin', 'vite.js'))
     .find((file) => fs.existsSync(file));
   if (!viteBin) throw new Error('vite is not installed in the target app');
+  const env = { ...exampleEnv(appRoot), ...(app.env || {}) };
+  if (app.mode !== 'build') {
+    // Dev mode: nothing to build; start() runs the Vite dev server with the wrapper.
+    app.serve = { viteBin, wrapper, appRoot, env };
+    app.buildMs = 0;
+    app.builtAt = new Date().toISOString();
+    return;
+  }
   const started = Date.now();
   await run(process.execPath, [viteBin, 'build', '--config', wrapper], {
     cwd: appRoot,
@@ -387,8 +420,7 @@ export async function buildTarget(app, { packageDir, log, rebuild = false }) {
     env: {
       NODE_ENV: 'production',
       NODE_OPTIONS: '--max-old-space-size=8192',
-      ...exampleEnv(appRoot),
-      ...(app.env || {}),
+      ...env,
     },
   });
   app.buildMs = Date.now() - started;

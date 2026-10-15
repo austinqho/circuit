@@ -98,7 +98,11 @@ const routes = [
     async (req, [id], url) =>
       bench.status(id, { waitSeconds: Number(url.searchParams.get('wait') || 0) }),
   ],
-  ['POST', /^\/api\/apps\/([\w-]+)\/rebuild$/u, async (req, [id]) => bench.rebuild(id)],
+  [
+    'POST',
+    /^\/api\/apps\/([\w-]+)\/rebuild$/u,
+    async (req, [id]) => bench.rebuild(id, await readJson(req)),
+  ],
   [
     'POST',
     /^\/api\/apps\/([\w-]+)\/act$/u,
