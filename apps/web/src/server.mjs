@@ -173,6 +173,15 @@ const server = http.createServer(async (req, res) => {
 server.listen(port, '127.0.0.1', () => {
   console.log(`circuit-web: http://127.0.0.1:${port}/`);
   console.log(`  package under test: ${bench.packageDir}`);
+  // First start: put an example app on the bench so the page has something to show.
+  const example = process.env.CIRCUIT_DEFAULT_REPO ?? 'alan2207/bulletproof-react';
+  if (example && !bench.list().length) {
+    bench.add({ repo: example }).then(
+      (app) =>
+        console.log(`  building ${app.id} (first build takes a few minutes; watch it on the page)`),
+      (error) => console.error(`  could not add ${example}: ${error.message}`),
+    );
+  }
 });
 for (const signal of ['SIGINT', 'SIGTERM'])
   process.once(signal, async () => {

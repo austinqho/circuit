@@ -142,6 +142,13 @@ export function detectInstall(root, appDir) {
   };
 }
 
+/** Whether a command is on PATH. */
+export function onPath(command) {
+  return (process.env.PATH || '')
+    .split(path.delimiter)
+    .some((dir) => dir && fs.existsSync(path.join(dir, command)));
+}
+
 const MIRRORS =
   /https:\/\/(registry\.npmmirror\.com|registry\.yarnpkg\.com|registry\.npm\.taobao\.org|r\.cnpmjs\.org)\//gu;
 export function rewriteLockfileRegistry(file) {
@@ -327,7 +334,11 @@ export async function buildTarget(app, { packageDir, log, rebuild = false }) {
       dir: path.relative(src, install.dir) || '.',
       command: [install.command, ...install.args].join(' '),
     };
-    await run(install.command, install.args, {
+    const [command, args] = onPath(install.command)
+      ? [install.command, install.args]
+      : // A machine without yarn or pnpm still installs: npx fetches the tool once.
+        ['npx', ['--yes', install.command === 'pnpm' ? 'pnpm@9' : 'yarn@1', ...install.args]];
+    await run(command, args, {
       cwd: install.dir,
       logFile,
       env: { PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1', CYPRESS_INSTALL_BINARY: '0', HUSKY: '0' },

@@ -13,10 +13,10 @@ From the repo root:
 
 ```sh
 npm install
-npm start --workspace apps/web      # http://127.0.0.1:4500
+npm start      # http://127.0.0.1:4500
 ```
 
-Paste `alan2207/bulletproof-react` into the box and press the button. The first build takes several minutes (cloning, installing, then a producttrace build, which is the slow part). After that, **Rebuild with current package** reuses the clone and install, so testing a package change costs one build.
+On first start the bench puts bulletproof-react on itself (set `CIRCUIT_DEFAULT_REPO` to another repo, or to an empty string for none). The first build takes several minutes (cloning, installing, then a producttrace build, which is the slow part); the page shows its progress. Playwright's Chromium is downloaded on first use if the machine has none, and yarn or pnpm are fetched through npx when they are not installed. Add more repos from the **Bench** button. After that, **Rebuild with current package** reuses the clone and install, so testing a package change costs one build.
 
 ## Give Claude the tools
 

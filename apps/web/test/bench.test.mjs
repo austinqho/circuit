@@ -6,6 +6,7 @@ import test from 'node:test';
 import { describe } from '../src/browser.mjs';
 import {
   detectInstall,
+  onPath,
   exampleEnv,
   findViteApps,
   parseRepo,
@@ -163,4 +164,9 @@ test('buildReport pairs lines with steps by window and scores them', () => {
   assert.equal(report.scorecard.request_recall_pct, 50);
   assert.equal(report.scorecard.lines, 1); // the line before any step is another session's
   assert.equal(report.scorecard.lines_naming_the_element_pct, 100);
+});
+
+test('onPath finds node and not a made-up command', () => {
+  assert.equal(onPath('node'), true);
+  assert.equal(onPath('definitely-not-a-command-xyz'), false);
 });
