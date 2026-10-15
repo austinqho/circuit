@@ -196,17 +196,17 @@ frontier (`escaped_hops`). Global `fetch` capture needs Node >= 20.6 (or
 server spans carry `producttrace.capture_limit.feature: "outbound_fetch"`.
 
 Two consequences to know. Every outbound request a handler sends, including to
-third parties, now carries a `traceparent` header (Tracer's trace and span ids);
+third parties, now carries a `traceparent` header (producttrace's trace and span ids);
 a request on which the app already set `traceparent` or `tracestate` is left
 exactly as the app set it. Outbound URLs are recorded as sent, query strings
 included (API keys passed in a query end up in `spans.jsonl` and in the MCP's
 text).
 
 A handler that forwards the traceparent it received (a proxy passing
-`req.headers` on) gets Tracer's own value instead, so the downstream is a hop of
+`req.headers` on) gets producttrace's own value instead, so the downstream is a hop of
 the same request. Two cases are known and not handled: an app that sets
 `traceparent` with `req.setHeader` after the request was created overwrites
-Tracer's value (the receiver then shows as an unlinked root and the hop reads
+producttrace's value (the receiver then shows as an unlinked root and the hop reads
 "no incoming span for this traceparent (not instrumented, or not reached)");
 and an app that runs its own OpenTelemetry SDK with undici instrumentation
 sends two `traceparent` headers per `fetch` (the receiver starts a new trace and
@@ -319,15 +319,14 @@ npm run demo:build:librechat-autonomous
 
 The acceptance script creates a detached checkout at the pinned revision,
 installs its frozen lockfile, builds its workspace packages, attaches the plugin,
-and checks that Tracer changed no tracked application source. Its output includes
+and checks that producttrace changed no tracked application source. Its output includes
 the number of discovered and instrumented request nodes and action handlers, plus
 an empty `supplied_path_hints` list.
 
 Browser action context is limited to the synchronous callback scope. For an
-accepted Axios call, Tracer carries an occurrence-specific trace header through
+accepted Axios call, producttrace carries an occurrence-specific trace header through
 that call's configuration, including asynchronous interceptors, and only joins
 the transport presenting that header. Other deferred callbacks remain a frontier.
-The old bundle-string installer is retired.
 
 Run the pinned LibreChat gate with:
 
@@ -381,20 +380,20 @@ Every grounded record retains how its attachment was proven. Unmatched interacti
 
 ProductTrace does not capture clipboard contents, printable key values, DOM nodes, or live React Fiber objects. It does not capture typed input values as such, but with body capture on (the default in dev builds; see the next paragraph) the values an app sends in JSON or text request bodies are recorded as sent, with secret-named keys redacted; credentials in `Authorization` or `Cookie` headers are never recorded. Records leave memory only through an `endpoint` or `onRecord` sink supplied to `start()`.
 
-Request and response bodies (Vite plugin, 2026-09-24). A dev build made with
+Request and response bodies (Vite plugin). A dev build made with
 `producttrace()` (Vite mode other than `production`) records each request body
 and response body as a `network.body` row, so an agent can see which entity an
 action acted on. A `production`-mode build records none unless
 `producttrace({ bodies: 'always' })`; `bodies: false` turns them off; any mode
 other than `development` with bodies on is warned at build time. Only JSON and
 `text/*` bodies are read, up to 4 KB kept (text of unknown length: the first
-4 KB, then Tracer stops reading); binary, streaming, multipart, untyped and blob
-bodies are recorded only as type and size. The app behaves as without Tracer
+4 KB, then producttrace stops reading); binary, streaming, multipart, untyped and blob
+bodies are recorded only as type and size. The app behaves as without producttrace
 (same output, same unhandled rejections, and a stream it cancels, pipes into an
 aborting or erroring destination, or stops iterating closes as it would), with
 two observable differences: (a) connection lifetime: none known; the residual
 paths are a JSON response of unknown length the app abandons without cancelling
-(Tracer reads it up to 1 MiB) and `pipeTo(…, { preventCancel: true })`; (b) a
+(producttrace reads it up to 1 MiB) and `pipeTo(…, { preventCancel: true })`; (b) a
 fetch *rejection* reaches the app's reactions one microtask later, so after an
 `abort()` a microtask the app queued in the same turn can run before its
 `catch`. Before a row leaves the page, JSON values are redacted by key segment
@@ -422,8 +421,8 @@ and `XMLHttpRequest.prototype.abort` in every build (the stream wrappers act
 only on the body of such a fetch; other streams pass straight through). The observable difference, in every build: for those fetches,
 a *rejection* of the fetch reaches the app's reactions one microtask later, and
 every read of that response's body (the body methods, `reader.read()`,
-`pipeTo`, async iteration) settles one microtask later (the same difference as (b) above, no longer
-limited to builds with bodies on). The fetch's own fulfilment path is unchanged. Such
+`pipeTo`, async iteration) settles one microtask later (the same difference as (b) above, in every
+build). The fetch's own fulfilment path is unchanged. Such
 fetches also add `network.abort` rows when aborted and `network.response_read`
 rows when the app finishes reading a body.
 
