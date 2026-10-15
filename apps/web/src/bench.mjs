@@ -136,7 +136,11 @@ export function createBench({
     const running = {
       server,
       collector,
-      browser: new BrowserSession(`http://127.0.0.1:${app.ports.app}/`),
+      browser: new BrowserSession(`http://127.0.0.1:${app.ports.app}/`, {
+        // The package's own traffic to its collector is not app traffic.
+        ignoreOrigins: [`http://127.0.0.1:${app.ports.collector}`],
+      }),
+      seenLines: new Map(),
       tools: new TracerTools({
         mcpBin: packageBin(packageDir, 'producttrace-mcp'),
         storeDir: store,
@@ -164,6 +168,16 @@ export function createBench({
       app.error = String(error.message).slice(0, 1000);
       emit(app);
     }
+  }
+
+  /** Reads the story and remembers every line by id (newest version wins). */
+  async function remember(app, running) {
+    const story = await readStory({
+      collectorUrl: `http://127.0.0.1:${app.ports.collector}`,
+      tools: running.tools,
+    });
+    for (const line of story.lines) running.seenLines.set(line.id, line);
+    return story;
   }
 
   const ready = async (id) => {
@@ -250,13 +264,10 @@ export function createBench({
     },
 
     async act(id, step) {
-      const { running } = await ready(id);
+      const { app, running } = await ready(id);
       const result = await running.browser.act(step);
       const snap = await running.browser.snapshot({ maxChars: 6000 });
-      const story = await readStory({
-        collectorUrl: `http://127.0.0.1:${get(id).ports.collector}`,
-        tools: running.tools,
-      });
+      const story = await remember(app, running);
       const said = story.lines
         .filter((line) => line.at >= result.started_at - 150)
         .map((line) => line.text);
@@ -276,6 +287,7 @@ export function createBench({
     async reset(id) {
       const { running } = await ready(id);
       await running.browser.reset();
+      running.seenLines.clear();
       return { ok: true };
     },
 
@@ -290,10 +302,9 @@ export function createBench({
 
     async report(id) {
       const { app, running } = await ready(id);
-      const story = await readStory({
-        collectorUrl: `http://127.0.0.1:${app.ports.collector}`,
-        tools: running.tools,
-      });
+      const latest = await remember(app, running);
+      // Lines seen at earlier steps stay in the report even when a short feed no longer returns them.
+      const story = { ...latest, lines: [...running.seenLines.values()] };
       return {
         app: summary(app),
         ...buildReport({

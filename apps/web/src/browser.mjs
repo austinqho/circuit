@@ -128,8 +128,9 @@ export function describe(action, target, value) {
 }
 
 export class BrowserSession {
-  constructor(baseUrl) {
+  constructor(baseUrl, { ignoreOrigins = [] } = {}) {
     this.baseUrl = baseUrl;
+    this.ignoreOrigins = ignoreOrigins;
     this.steps = [];
     this.page = null;
     this.context = null;
@@ -157,6 +158,7 @@ export class BrowserSession {
     this.page.on('requestfinished', (request) => {
       if (!['fetch', 'xhr'].includes(request.resourceType())) return;
       const url = new URL(request.url());
+      if (this.ignoreOrigins.includes(url.origin)) return;
       request.response().then(
         (response) =>
           this.requests.push({

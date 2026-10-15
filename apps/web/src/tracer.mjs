@@ -32,12 +32,17 @@ export class TracerTools {
 
   async call(name, args = {}) {
     const result = await (await this.connect()).callTool({ name, arguments: args });
-    const text = result.content?.find((part) => part.type === 'text')?.text ?? '';
-    try {
-      return JSON.parse(text);
-    } catch {
-      return { text };
+    // producttrace-mcp returns the full result as structuredContent (and a summary as text).
+    if (result.structuredContent) return result.structuredContent;
+    const texts = (result.content || [])
+      .filter((part) => part.type === 'text')
+      .map((part) => part.text);
+    for (const text of texts.reverse()) {
+      try {
+        return JSON.parse(text);
+      } catch {}
     }
+    return { text: texts.join('\n') };
   }
 
   async close() {
@@ -56,8 +61,9 @@ export async function readStory({ collectorUrl, tools, session = null }) {
     const response = await fetch(
       `${collectorUrl}/story${session ? `?session=${encodeURIComponent(session)}` : ''}`,
     );
-    if (response.ok) {
-      const story = await response.json();
+    const story = response.ok ? await response.json().catch(() => null) : null;
+    // Older collectors answer any GET; only a real story counts.
+    if (story?.schema === 'producttrace.story.v1') {
       return { source: 'story', sessions: story.sessions || [], lines: story.lines || [] };
     }
   } catch {}
@@ -71,23 +77,37 @@ export async function readStory({ collectorUrl, tools, session = null }) {
       lines: [],
       note: recent.summary || recent.error || recent.status,
     };
-  const lines = (recent.actions || [])
-    .slice()
-    .reverse()
-    .map((action) => ({
-      id: action.action_id,
-      kind: action.event,
-      session: action.session,
-      at: action.timestamp,
-      text: `${action.event} on <${action.target?.tag || '?'}>: ${action.outcome?.sentence || action.summary || ''}`,
-      event: action.event,
-      element: { tag: action.target?.tag ?? null, label: null, key: action.element_key ?? null },
-      handler: null,
-      requests: [],
-      entities: [],
-      outcome: action.outcome?.status ?? null,
-      action_id: action.action_id,
-    }));
+  // Readability only: focus and raw keydown rows are dropped and runs of input on one
+  // element become one line. The package's own /story replaces all of this.
+  const actions = [];
+  for (const action of (recent.actions || []).slice().reverse()) {
+    if (action.event === 'focusin' || action.event === 'keydown') continue;
+    const last = actions.at(-1);
+    if (
+      action.event === 'input' &&
+      last?.event === 'input' &&
+      last.element_key === action.element_key
+    ) {
+      last.count = (last.count || 1) + 1;
+      continue;
+    }
+    actions.push({ ...action });
+  }
+  const lines = actions.map((action) => ({
+    id: action.action_id,
+    kind: action.event,
+    session: action.session,
+    at: action.timestamp,
+    text: `${action.event}${action.count ? ` x${action.count}` : ''} on <${action.target?.tag || '?'}>: ${action.outcome?.sentence || action.summary || ''}`,
+    count: action.count,
+    event: action.event,
+    element: { tag: action.target?.tag ?? null, label: null, key: action.element_key ?? null },
+    handler: null,
+    requests: [],
+    entities: [],
+    outcome: action.outcome?.status ?? null,
+    action_id: action.action_id,
+  }));
   const sessions = [...new Set(lines.map((line) => line.session))].map((id) => ({
     session: id,
     actions: lines.filter((l) => l.session === id).length,
