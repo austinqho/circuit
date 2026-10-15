@@ -1,0 +1,14 @@
+{
+  "name": "example-bulletproof-react",
+  "private": true,
+  "type": "module",
+  "description": "producttrace on bulletproof-react: click through the app, read the session as sentences.",
+  "scripts": {
+    "demo": "node demo.mjs",
+    "drive": "node drive.mjs"
+  },
+  "dependencies": {
+    "playwright-core": "^1.56.0",
+    "producttrace": "*"
+  }
+}
