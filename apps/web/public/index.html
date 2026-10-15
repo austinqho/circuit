@@ -3,389 +3,707 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Circuit Bench</title>
+    <title>Tracer Live Activity</title>
     <style>
+      @font-face {
+        font-family: Inter;
+        src: url('/assets/Inter-Regular.woff2') format('woff2');
+        font-weight: 400 599;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: Inter;
+        src: url('/assets/Inter-SemiBold.woff2') format('woff2');
+        font-weight: 600 800;
+        font-display: swap;
+      }
       :root {
-        --bg: #f6f6f3;
-        --panel: #ffffff;
-        --ink: #1d1d1b;
-        --muted: #6b6b66;
-        --line: #e3e2dc;
+        --ink: #171715;
+        --muted: #8b8b86;
+        --line: #dededb;
+        --paper: rgba(255, 255, 255, 0.98);
+        --page: #fafafa;
+        --canvas: #eeeeee;
+        --card: #fff;
+        --orange: #d18600;
+        --green: #219653;
+        --red: #c0392b;
+        --grey: #7e8791;
+        --chip: #eeeeeb;
         --accent: #2f5bea;
-        --ok: #1f8a4c;
-        --warn: #b7791f;
-        --bad: #c0392b;
-        --chip: #f0efe9;
-        --code: #f3f2ec;
+        color-scheme: light;
       }
       @media (prefers-color-scheme: dark) {
-        :root {
-          --bg: #151514;
-          --panel: #1d1d1b;
+        :root:not([data-theme='light']) {
           --ink: #ecebe6;
           --muted: #9b9a93;
-          --line: #2f2f2c;
+          --line: #34342f;
+          --paper: rgba(30, 30, 28, 0.98);
+          --page: #141413;
+          --canvas: #1b1b19;
+          --card: #22221f;
+          --chip: #2c2c29;
           --accent: #7c9bff;
-          --ok: #4cc27f;
-          --warn: #e0a84a;
-          --bad: #ef6b5b;
-          --chip: #2a2a27;
-          --code: #232320;
+          color-scheme: dark;
         }
       }
       * {
         box-sizing: border-box;
       }
+      html,
+      body {
+        min-width: 320px;
+        min-height: 100%;
+      }
       body {
         margin: 0;
-        background: var(--bg);
+        background: var(--page);
         color: var(--ink);
-        font:
-          14px/1.45 ui-sans-serif,
-          system-ui,
+        font-family:
+          Inter,
           -apple-system,
-          'Segoe UI',
+          BlinkMacSystemFont,
+          'Helvetica Neue',
           sans-serif;
       }
-      header {
+      button,
+      input {
+        color: inherit;
+        font: inherit;
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+      }
+
+      .topbar {
+        width: min(1480px, calc(100% - 32px));
+        height: 72px;
+        margin: 0 auto;
         display: flex;
-        align-items: baseline;
-        gap: 12px;
-        padding: 12px 16px;
-        border-bottom: 1px solid var(--line);
-        background: var(--panel);
+        align-items: center;
+        justify-content: space-between;
       }
-      header h1 {
-        font-size: 16px;
+      .wordmark {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 22px;
+        font-weight: 650;
+        letter-spacing: -0.035em;
+      }
+      .wordmark span {
+        font-size: 24px;
+      }
+      .top-button {
+        min-height: 38px;
+        padding: 0 13px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border: 0;
+        border-radius: 8px;
+        background: transparent;
+        font-size: 14px;
+        font-weight: 560;
+        cursor: pointer;
+      }
+      .top-button:hover,
+      .top-button[aria-expanded='true'] {
+        background: var(--ink);
+        color: var(--page);
+      }
+
+      main {
+        padding: 8px 16px 22px;
+      }
+      .hero-copy {
+        max-width: 1000px;
+        margin: 36px auto 34px;
+        text-align: center;
+      }
+      .hero-copy h1 {
         margin: 0;
+        font-size: clamp(38px, 5.3vw, 76px);
+        font-weight: 470;
+        line-height: 0.98;
+        letter-spacing: -0.06em;
       }
-      header .sub {
+      .hero-copy p {
+        max-width: 720px;
+        margin: 22px auto 0;
+        color: var(--muted);
+        font-size: clamp(15px, 1.5vw, 19px);
+        line-height: 1.45;
+      }
+
+      .preview-selector {
+        margin: 0 auto 24px;
+        display: grid;
+        justify-items: center;
+        gap: 9px;
+      }
+      .preview-label {
         color: var(--muted);
         font-size: 12px;
+      }
+      .repo-pills {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+      }
+      .repo-pill {
+        min-height: 32px;
+        padding: 0 12px;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        background: var(--chip);
+        font-size: 12px;
+        font-weight: 570;
+        cursor: pointer;
+      }
+      .repo-pill.on {
+        border-color: var(--ink);
+      }
+      .repo-pill svg {
+        width: 15px;
+        height: 15px;
+      }
+      .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--grey);
+      }
+      .dot.ready {
+        background: var(--green);
+      }
+      .dot.building,
+      .dot.queued {
+        background: var(--orange);
+      }
+      .dot.failed {
+        background: var(--red);
+      }
+
+      .demo-canvas {
+        width: min(1500px, 100%);
+        height: min(820px, calc(100vh - 60px));
+        min-height: 620px;
+        margin: 0 auto;
+        overflow: clip;
+        position: relative;
+        border: 1px solid var(--line);
+        border-radius: 25px;
+        background-color: var(--canvas);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Crect x='2' y='2' width='2' height='2' rx='.4' fill='%23b8b8b4' fill-opacity='.5'/%3E%3C/svg%3E");
+      }
+      .demo-grid {
+        height: 100%;
+        padding: 15px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(310px, 380px);
+        gap: 15px;
+      }
+      .product-widget,
+      .activity-widget {
+        min-width: 0;
+        min-height: 0;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: var(--paper);
+        box-shadow: 0 12px 30px rgba(34, 34, 31, 0.09);
+      }
+      .product-widget {
+        display: grid;
+        border-radius: 15px;
+        position: relative;
+        background: #fff;
+      }
+      #productFrame {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        background: #fff;
+      }
+      .loading {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-content: center;
+        justify-items: center;
+        gap: 10px;
+        background: var(--card);
+        color: var(--muted);
+        font-size: 13px;
+        text-align: center;
+        padding: 24px;
+      }
+      .loading[hidden] {
+        display: none;
+      }
+      .loading pre {
+        max-width: 640px;
+        max-height: 280px;
+        overflow: auto;
+        margin: 0;
+        padding: 10px;
+        border-radius: 8px;
+        background: var(--chip);
+        text-align: left;
+        font-size: 11px;
+        white-space: pre-wrap;
+      }
+
+      .activity-widget {
+        display: grid;
+        grid-template-rows: 56px 32px minmax(0, 1fr);
+        border-radius: 19px;
+      }
+      .activity-head {
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--line);
+      }
+      .activity-title {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+      }
+      .activity-title svg {
+        width: 20px;
+        height: 20px;
+      }
+      .activity-head h2 {
+        margin: 0;
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+      }
+      .pill-button {
+        min-height: 28px;
+        padding: 0 9px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--chip);
+        font-size: 11px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .activity-summary {
+        padding: 0 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 11px;
+      }
+      .activity-summary button {
+        border: 0;
+        background: transparent;
+        color: var(--muted);
+        cursor: pointer;
+      }
+      .event-stream {
+        min-height: 0;
+        overflow: auto;
+        padding: 5px 12px 15px;
+      }
+      .empty-state {
+        height: 100%;
+        display: grid;
+        place-content: center;
+        justify-items: center;
+        text-align: center;
+        color: var(--muted);
+      }
+      .empty-state svg {
+        width: 26px;
+        height: 26px;
+        margin-bottom: 12px;
+        opacity: 0.6;
+      }
+      .empty-state strong {
+        color: var(--ink);
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .empty-state p {
+        max-width: 240px;
+        margin: 7px 0 0;
+        font-size: 12px;
+        line-height: 1.45;
+      }
+      .session-label {
+        margin: 10px 2px 6px;
+        color: var(--muted);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .event-card {
+        margin-bottom: 8px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 13px;
+        background: var(--card);
+        box-shadow: 0 3px 10px rgba(34, 34, 31, 0.065);
+      }
+      .event-card.fresh {
+        animation: arrive 0.9s ease-out;
+      }
+      @keyframes arrive {
+        from {
+          transform: translateY(6px);
+          opacity: 0;
+        }
+      }
+      .event-card > summary {
+        min-height: 58px;
+        padding: 11px 12px;
+        display: grid;
+        grid-template-columns: 15px 1fr 10px;
+        gap: 10px;
+        align-items: center;
+        list-style: none;
+        cursor: pointer;
+      }
+      .event-card > summary::-webkit-details-marker {
+        display: none;
+      }
+      .journey-state {
+        width: 12px;
+        height: 12px;
+        border: 3px solid var(--grey);
+        border-radius: 50%;
+      }
+      .completed .journey-state {
+        border-color: var(--green);
+        background: var(--green);
+      }
+      .pending .journey-state {
+        border-color: var(--orange);
+        animation: pulse 1.7s ease-out infinite;
+      }
+      .failed .journey-state {
+        border-color: var(--red);
+      }
+      @keyframes pulse {
+        0%,
+        45% {
+          box-shadow: 0 0 0 1px rgba(209, 134, 0, 0.2);
+        }
+        100% {
+          box-shadow: 0 0 0 7px rgba(209, 134, 0, 0);
+        }
+      }
+      .caption {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.3;
+        letter-spacing: -0.015em;
+        overflow-wrap: anywhere;
+      }
+      .event-subtitle {
+        display: block;
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 10px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
       }
-      .layout {
-        display: grid;
-        grid-template-columns: 260px 1fr;
-        min-height: calc(100vh - 49px);
+      .chev {
+        width: 10px;
+        height: 10px;
+        opacity: 0.5;
+        transition: transform 0.16s;
       }
-      aside {
-        border-right: 1px solid var(--line);
-        padding: 12px;
-        background: var(--panel);
+      .event-card[open] .chev {
+        transform: rotate(180deg);
       }
-      aside h2,
-      main h2 {
-        font-size: 12px;
-        text-transform: uppercase;
-        letter-spacing: 0.04em;
+      .journey-steps {
+        margin: 0;
+        padding: 0 14px 10px 38px;
+        list-style: none;
+      }
+      .journey-step {
+        position: relative;
+        padding: 1px 0 11px 6px;
+      }
+      .journey-step::before {
+        content: '';
+        position: absolute;
+        top: 4px;
+        left: -20px;
+        width: 8px;
+        height: 8px;
+        border: 2px solid var(--green);
+        border-radius: 50%;
+        background: var(--green);
+      }
+      .journey-step.bad::before {
+        border-color: var(--red);
+        background: var(--card);
+      }
+      .journey-step.wait::before {
+        border-color: var(--orange);
+        background: var(--card);
+      }
+      .journey-step:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 14px;
+        bottom: -2px;
+        left: -16px;
+        width: 1px;
+        background: var(--line);
+      }
+      .journey-step strong {
+        display: block;
+        font-size: 11.5px;
+        font-weight: 560;
+        line-height: 1.35;
+        overflow-wrap: anywhere;
+      }
+      .journey-step small {
+        display: block;
+        margin-top: 2px;
         color: var(--muted);
-        margin: 8px 0;
+        font-size: 9.5px;
       }
-      form {
+
+      /* Bench drawer: add repos, build status, Claude's runs. */
+      .drawer {
+        position: fixed;
+        inset: 0 0 0 auto;
+        z-index: 10;
+        width: min(560px, 100%);
+        overflow: auto;
+        padding: 18px;
+        border-left: 1px solid var(--line);
+        background: var(--page);
+        box-shadow: -20px 0 40px rgba(0, 0, 0, 0.12);
+      }
+      .drawer[hidden] {
+        display: none;
+      }
+      .drawer h3 {
+        margin: 18px 0 8px;
+        color: var(--muted);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .drawer form {
         display: grid;
         gap: 6px;
-        margin-bottom: 14px;
       }
-      input {
+      .drawer input {
         width: 100%;
-        padding: 7px 9px;
+        padding: 8px 10px;
         border: 1px solid var(--line);
-        border-radius: 6px;
-        background: var(--bg);
-        color: var(--ink);
-        font: inherit;
+        border-radius: 8px;
+        background: var(--card);
       }
-      button {
-        padding: 6px 10px;
-        border: 1px solid var(--line);
-        border-radius: 6px;
-        background: var(--panel);
-        color: var(--ink);
-        font: inherit;
+      .primary {
+        padding: 8px 12px;
+        border: 0;
+        border-radius: 8px;
+        background: var(--ink);
+        color: var(--page);
+        font-weight: 600;
         cursor: pointer;
-      }
-      button.primary {
-        background: var(--accent);
-        border-color: var(--accent);
-        color: #fff;
-      }
-      button:disabled {
-        opacity: 0.5;
-        cursor: default;
       }
       .hint {
         color: var(--muted);
         font-size: 12px;
       }
+      .drawer a {
+        color: inherit;
+        text-decoration: none;
+      }
       .hint a {
         color: var(--accent);
         cursor: pointer;
       }
-      .apps {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: grid;
-        gap: 4px;
-      }
-      .apps li {
-        padding: 8px;
-        border-radius: 6px;
-        cursor: pointer;
-        border: 1px solid transparent;
-      }
-      .apps li.sel {
-        border-color: var(--line);
-        background: var(--bg);
-      }
-      .apps .name {
-        font-weight: 600;
-      }
-      .dot {
-        display: inline-block;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        margin-right: 6px;
-        background: var(--muted);
-      }
-      .dot.ready {
-        background: var(--ok);
-      }
-      .dot.building,
-      .dot.queued {
-        background: var(--warn);
-      }
-      .dot.failed {
-        background: var(--bad);
-      }
-      main {
-        padding: 12px 16px;
-        min-width: 0;
-      }
-      .toolbar {
+      .row {
         display: flex;
         flex-wrap: wrap;
-        gap: 8px;
+        gap: 6px;
         align-items: center;
-        margin-bottom: 10px;
-      }
-      .toolbar .title {
-        font-weight: 600;
-        font-size: 15px;
-        margin-right: auto;
-      }
-      .split {
-        display: grid;
-        grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-        gap: 12px;
-      }
-      .card {
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: 8px;
-        overflow: hidden;
-      }
-      .card > .head {
-        padding: 8px 10px;
-        border-bottom: 1px solid var(--line);
-        display: flex;
-        gap: 8px;
-        align-items: center;
-        font-size: 12px;
-        color: var(--muted);
-      }
-      iframe {
-        width: 100%;
-        height: calc(100vh - 150px);
-        border: 0;
-        background: #fff;
-        display: block;
-      }
-      .feed {
-        height: calc(100vh - 150px);
-        overflow: auto;
-        padding: 4px 0;
-      }
-      .tabs button {
-        border: 0;
-        background: none;
-        padding: 2px 6px;
-        color: var(--muted);
-      }
-      .tabs button.on {
-        color: var(--ink);
-        font-weight: 600;
-        border-bottom: 2px solid var(--accent);
-        border-radius: 0;
-      }
-      .session {
-        padding: 6px 10px;
-        font-size: 12px;
-        color: var(--muted);
-        border-top: 1px solid var(--line);
-        background: var(--bg);
-        position: sticky;
-        top: 0;
-      }
-      .line {
-        padding: 7px 10px;
-        border-bottom: 1px solid var(--line);
-      }
-      .line .t {
-        color: var(--muted);
-        font-variant-numeric: tabular-nums;
-        font-size: 12px;
-        margin-right: 6px;
-      }
-      .line .kind {
-        font-size: 11px;
-        padding: 1px 6px;
-        border-radius: 10px;
-        background: var(--chip);
-        color: var(--muted);
-        margin-right: 6px;
-      }
-      .chips {
-        margin-top: 4px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 4px;
-      }
-      .chip {
-        font:
-          11px ui-monospace,
-          SFMono-Regular,
-          Menlo,
-          monospace;
-        background: var(--chip);
-        border-radius: 4px;
-        padding: 1px 6px;
-      }
-      .chip.ok {
-        color: var(--ok);
-      }
-      .chip.bad {
-        color: var(--bad);
-      }
-      .chip.ent {
-        color: var(--accent);
-      }
-      .line.new {
-        animation: flash 1.2s ease-out;
-      }
-      @keyframes flash {
-        from {
-          background: color-mix(in srgb, var(--accent) 18%, transparent);
-        }
-        to {
-          background: transparent;
-        }
-      }
-      pre {
-        margin: 0;
-        padding: 10px;
-        background: var(--code);
-        font:
-          12px/1.4 ui-monospace,
-          SFMono-Regular,
-          Menlo,
-          monospace;
-        white-space: pre-wrap;
-        word-break: break-word;
-        max-height: calc(100vh - 220px);
-        overflow: auto;
       }
       .score {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 8px;
-        padding: 10px;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
       }
       .score div {
-        background: var(--bg);
-        border-radius: 6px;
         padding: 8px;
+        border-radius: 8px;
+        background: var(--card);
+        border: 1px solid var(--line);
       }
       .score b {
         display: block;
-        font-size: 20px;
+        font-size: 19px;
       }
       .score span {
         color: var(--muted);
-        font-size: 12px;
+        font-size: 11px;
       }
       table {
         width: 100%;
         border-collapse: collapse;
-        font-size: 13px;
+        font-size: 12px;
+        margin-top: 8px;
       }
       td,
       th {
+        padding: 6px 8px;
+        border-top: 1px solid var(--line);
         text-align: left;
         vertical-align: top;
-        padding: 6px 10px;
-        border-top: 1px solid var(--line);
       }
       th {
         color: var(--muted);
         font-weight: 500;
-        font-size: 12px;
-      }
-      .empty {
-        padding: 24px;
-        color: var(--muted);
       }
       .fail {
-        color: var(--bad);
+        color: var(--red);
       }
-      @media (max-width: 900px) {
-        .layout {
+      .drawer pre {
+        max-height: 260px;
+        overflow: auto;
+        margin: 0;
+        padding: 10px;
+        border-radius: 8px;
+        background: var(--chip);
+        font-size: 11px;
+        white-space: pre-wrap;
+      }
+
+      @media (max-width: 800px) {
+        .demo-canvas {
+          height: auto;
+          min-height: 0;
+          overflow: visible;
+        }
+        .demo-grid {
           grid-template-columns: 1fr;
+          padding: 8px;
+          gap: 8px;
         }
-        aside {
-          border-right: 0;
-          border-bottom: 1px solid var(--line);
+        .product-widget {
+          height: 620px;
         }
-        .split {
-          grid-template-columns: 1fr;
+        .activity-widget {
+          height: 540px;
         }
-        iframe,
-        .feed {
-          height: 60vh;
+        .hero-copy {
+          margin: 26px auto 26px;
         }
       }
     </style>
   </head>
   <body>
-    <header>
-      <h1>Circuit Bench</h1>
-      <span class="sub" id="pkg"></span>
+    <header class="topbar">
+      <div class="wordmark"><span aria-hidden="true">🏎️</span> Tracer</div>
+      <button
+        class="top-button"
+        id="benchButton"
+        type="button"
+        aria-expanded="false"
+        aria-controls="drawer"
+      >
+        Bench
+      </button>
     </header>
-    <div class="layout">
-      <aside>
-        <h2>Add an open-source React app</h2>
-        <form id="add">
-          <input id="repo" placeholder="owner/repo or GitHub URL" autocomplete="off" required />
-          <input
-            id="appdir"
-            placeholder="app folder (optional, auto-detected)"
-            autocomplete="off"
-          />
-          <button class="primary" type="submit">Install producttrace and build</button>
-          <div class="hint">
-            Try <a data-repo="alan2207/bulletproof-react">bulletproof-react</a>. The first build
-            takes a few minutes.
-          </div>
-        </form>
-        <h2>Apps</h2>
-        <ul class="apps" id="apps"></ul>
-      </aside>
-      <main id="main"><div class="empty">Add a repo, or pick an app on the left.</div></main>
-    </div>
+
+    <main>
+      <section class="hero-copy">
+        <h1>Make Your Product Announce Itself</h1>
+        <p>
+          Read-only. One line in your Vite config. Click through the app below and read what your
+          user is doing, in plain language.
+        </p>
+      </section>
+
+      <section class="preview-selector" aria-label="Repository preview selector">
+        <span class="preview-label">Now Previewing:</span>
+        <div class="repo-pills" id="pills"></div>
+      </section>
+
+      <section class="demo-canvas" aria-label="Live demo">
+        <div class="demo-grid">
+          <section class="product-widget" aria-label="Application">
+            <iframe id="productFrame" title="Application with producttrace installed"></iframe>
+            <div class="loading" id="productLoading">Starting…</div>
+          </section>
+
+          <aside class="activity-widget" aria-labelledby="activityHeading">
+            <header class="activity-head">
+              <div class="activity-title">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  aria-hidden="true"
+                >
+                  <path d="M3 12h2M7 8v8M11 5v14M15 9v6M19 11v2M21 12h0" />
+                </svg>
+                <h2 id="activityHeading">Activity</h2>
+              </div>
+              <button
+                class="pill-button"
+                id="reloadApp"
+                type="button"
+                title="Start a fresh session"
+              >
+                New session
+              </button>
+            </header>
+            <div class="activity-summary">
+              <span id="eventCount">0 actions</span>
+              <span id="sourceNote"></span>
+            </div>
+            <div class="event-stream" id="eventStream" aria-live="polite"></div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <aside class="drawer" id="drawer" hidden aria-label="Bench">
+      <div class="row" style="justify-content: space-between">
+        <strong>Bench</strong>
+        <button class="pill-button" id="closeDrawer" type="button">Close</button>
+      </div>
+      <h3>Add an open-source React app</h3>
+      <form id="add">
+        <input id="repo" placeholder="owner/repo or GitHub URL" autocomplete="off" required />
+        <input id="appdir" placeholder="app folder (optional, auto-detected)" autocomplete="off" />
+        <button class="primary" type="submit">Install producttrace and build</button>
+        <div class="hint">
+          Try <a data-repo="alan2207/bulletproof-react">bulletproof-react</a>. The first build takes
+          a few minutes.
+        </div>
+      </form>
+      <div id="appPanel"></div>
+    </aside>
+
     <script>
       const $ = (sel, el = document) => el.querySelector(sel);
       const esc = (s) =>
@@ -399,15 +717,22 @@
           minute: '2-digit',
           second: '2-digit',
         });
-      let apps = new Map(),
-        selected = null,
-        tab = 'live',
-        storyStream = null,
-        seen = new Set(),
-        logTimer = null;
+      const GH =
+        '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .7a11.5 11.5 0 0 0-3.64 22.41c.58.11.79-.25.79-.56v-2.24c-3.22.7-3.9-1.37-3.9-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.57-.29-5.27-1.29-5.27-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.16 1.18A10.96 10.96 0 0 1 12 6.11c.98 0 1.94.13 2.84.38 2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.4-2.71 5.38-5.29 5.67.42.36.79 1.06.79 2.14v3.29c0 .31.21.68.8.56A11.5 11.5 0 0 0 12 .7Z"/></svg>';
+      const CHEV =
+        '<svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>';
+      const CURSOR =
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 3l14 7-6 2-2 6z"/></svg>';
+
+      let apps = new Map();
+      let selected = null;
+      let stream = null;
+      let story = null;
+      let seen = new Set();
+      let sessionStart = 0;
+      let logTimer = null;
       try {
         selected = localStorage.getItem('circuit.app');
-        tab = localStorage.getItem('circuit.tab') || 'live';
       } catch {}
 
       async function api(method, url, body) {
@@ -420,194 +745,214 @@
         if (!r.ok) throw new Error(v.error || r.statusText);
         return v;
       }
+      const prettyName = (a) => a.repo.split('/').pop();
 
-      function renderApps() {
-        const list = $('#apps');
-        list.innerHTML =
+      function renderPills() {
+        $('#pills').innerHTML =
           [...apps.values()]
             .map(
-              (a) => `<li data-id="${a.id}" class="${a.id === selected ? 'sel' : ''}">
-    <div class="name"><span class="dot ${a.status}"></span>${esc(a.id)}</div>
-    <div class="hint">${esc(a.status)}${a.phase ? ` · ${esc(a.phase)}` : ''}${a.build ? ` · build ${a.build}` : ''}</div></li>`,
+              (a) =>
+                `<button class="repo-pill ${a.id === selected ? 'on' : ''}" data-id="${a.id}" title="${esc(a.repo)}">${GH}<span>${esc(prettyName(a))}</span><i class="dot ${a.status}"></i></button>`,
             )
-            .join('') || '<li class="hint">None yet.</li>';
-        list
-          .querySelectorAll('li[data-id]')
-          .forEach((li) => (li.onclick = () => select(li.dataset.id)));
+            .join('') || '<span class="hint">No app yet. Open Bench to add one.</span>';
+        $('#pills')
+          .querySelectorAll('[data-id]')
+          .forEach((b) => (b.onclick = () => select(b.dataset.id)));
       }
 
       function select(id) {
         selected = id;
-        seen = new Set();
         try {
           localStorage.setItem('circuit.app', id);
         } catch {}
-        renderApps();
-        renderMain(true);
+        seen = new Set();
+        story = null;
+        renderPills();
+        renderApp(true);
+        renderPanel();
       }
 
-      function renderMain(fresh) {
+      function renderApp(fresh) {
         const a = apps.get(selected);
-        const main = $('#main');
+        const frame = $('#productFrame');
+        const loading = $('#productLoading');
         clearInterval(logTimer);
         if (!a) {
-          main.innerHTML = '<div class="empty">Add a repo, or pick an app on the left.</div>';
+          loading.hidden = false;
+          loading.innerHTML =
+            '<strong>No app yet</strong><span>Open Bench (top right) and add an open-source React repo.</span>';
+          frame.removeAttribute('src');
+          closeStream();
+          renderStory();
           return;
         }
         if (a.status !== 'ready') {
-          main.innerHTML = `<div class="toolbar"><span class="title"><span class="dot ${a.status}"></span>${esc(a.id)}</span>
-      <button id="rebuild" ${a.status === 'building' ? 'disabled' : ''}>Rebuild</button></div>
-      <div class="card"><div class="head">${esc(a.status)}${a.phase ? ` · ${esc(a.phase)}` : ''} · ${esc(a.repo)}${a.app_dir ? ` / ${esc(a.app_dir)}` : ''}</div>
-      ${a.error ? `<div class="line fail">${esc(a.error)}</div>` : ''}<pre id="log">loading log…</pre></div>`;
-          $('#rebuild').onclick = () => api('POST', `/api/apps/${a.id}/rebuild`);
+          loading.hidden = false;
+          loading.innerHTML = `<strong>${esc(prettyName(a))} is ${esc(a.status)}${a.phase ? `: ${esc(a.phase)}` : ''}</strong>${a.error ? `<span class="fail">${esc(a.error)}</span>` : '<span>The first build takes a few minutes.</span>'}<pre id="buildLog"></pre>`;
+          frame.removeAttribute('src');
           const pull = async () => {
-            const r = await fetch(`/api/apps/${a.id}/log`);
-            const text = await r.text();
-            const pre = $('#log');
+            const text = await (await fetch(`/api/apps/${a.id}/log`)).text();
+            const pre = $('#buildLog');
             if (pre) {
-              pre.textContent = text.split('\n').slice(-80).join('\n') || '(no output yet)';
+              pre.textContent = text.split('\n').slice(-30).join('\n');
               pre.scrollTop = pre.scrollHeight;
             }
           };
           pull();
-          logTimer = setInterval(pull, 2000);
+          logTimer = setInterval(pull, 2500);
           closeStream();
+          renderStory();
           return;
         }
-        if (!fresh && $('#frame')) return; // keep the iframe alive across status pings
-        main.innerHTML = `<div class="toolbar"><span class="title"><span class="dot ready"></span>${esc(a.id)}</span>
-      <span class="hint">build ${a.build}${a.build_ms ? ` · ${Math.round(a.build_ms / 1000)} s` : ''}</span>
-      <a href="${a.url}" target="_blank"><button>Open app in a tab</button></a>
-      <button id="reload">Reload app</button><button id="rebuild">Rebuild with current package</button></div>
-    <div class="split">
-      <div class="card"><div class="head">The app with producttrace installed. Click around; what it records appears on the right.</div>
-        <iframe id="frame" src="${a.url}"></iframe></div>
-      <div class="card"><div class="head tabs">
-          <button data-tab="live">Live story</button><button data-tab="report">Claude's run</button><button data-tab="raw">Raw</button>
-          <span id="src" style="margin-left:auto"></span></div>
-        <div class="feed" id="feed"></div></div>
-    </div>`;
-        $('#reload').onclick = () => {
-          $('#frame').src = a.url;
-        };
-        $('#rebuild').onclick = () => api('POST', `/api/apps/${a.id}/rebuild`);
-        main.querySelectorAll('[data-tab]').forEach(
-          (b) =>
-            (b.onclick = () => {
-              tab = b.dataset.tab;
-              try {
-                localStorage.setItem('circuit.tab', tab);
-              } catch {}
-              showTab();
-            }),
-        );
-        openStream(a.id);
-        showTab();
+        loading.hidden = true;
+        if (fresh || !frame.getAttribute('src')) {
+          sessionStart = Date.now();
+          frame.src = a.url;
+          openStream(a.id);
+        }
       }
 
-      let lastStory = null;
       function closeStream() {
-        storyStream?.close();
-        storyStream = null;
+        stream?.close();
+        stream = null;
       }
       function openStream(id) {
         closeStream();
-        storyStream = new EventSource(`/api/apps/${id}/stream`);
-        storyStream.addEventListener('story', (e) => {
-          lastStory = JSON.parse(e.data);
-          if (tab !== 'report') showTab();
+        stream = new EventSource(`/api/apps/${id}/stream`);
+        stream.addEventListener('story', (e) => {
+          story = JSON.parse(e.data);
+          renderStory();
         });
       }
 
-      function showTab() {
-        document
-          .querySelectorAll('[data-tab]')
-          .forEach((b) => b.classList.toggle('on', b.dataset.tab === tab));
-        const feed = $('#feed');
-        if (!feed) return;
-        if (tab === 'live') return renderStory(feed);
-        if (tab === 'raw') {
-          feed.innerHTML = `<pre>${esc(JSON.stringify(lastStory, null, 2))}</pre>`;
-          return;
-        }
-        renderReport(feed);
+      function stateOf(line) {
+        const reqs = line.requests || [];
+        if (reqs.some((r) => r.aborted || (r.status ?? 0) >= 400)) return 'failed';
+        if (reqs.some((r) => r.status == null)) return 'pending';
+        if (reqs.length || line.kind === 'navigate' || line.kind === 'submit') return 'completed';
+        return 'action';
       }
 
-      function renderStory(feed) {
-        const s = lastStory;
-        $('#src').textContent = s
-          ? s.source === 'story'
-            ? "from the package's /story"
-            : 'fallback: recent_actions (package has no /story yet)'
-          : '';
-        if (!s || !s.lines.length) {
-          feed.innerHTML = `<div class="empty">No actions recorded yet. Click something in the app.${s?.note ? `<br>${esc(s.note)}` : ''}</div>`;
+      function cardHtml(line) {
+        const steps = [];
+        if (line.element?.label || line.element?.tag)
+          steps.push({
+            t: `${line.element.label ? `“${line.element.label}”` : ''} ${line.element.tag ? `&lt;${esc(line.element.tag)}&gt;` : ''}`,
+            s: line.kind === 'type' ? 'field' : 'element',
+            raw: true,
+          });
+        if (line.handler?.name)
+          steps.push({
+            t: line.handler.name,
+            s: line.handler.file
+              ? `${line.handler.file}${line.handler.line != null ? `:${line.handler.line}` : ''}`
+              : 'handler',
+          });
+        for (const r of line.requests || [])
+          steps.push({
+            t: `${r.method} ${r.path}`,
+            s: r.aborted
+              ? 'aborted'
+              : r.status == null
+                ? 'waiting for response'
+                : `status ${r.status}`,
+            cls: r.aborted || r.status >= 400 ? 'bad' : r.status == null ? 'wait' : '',
+          });
+        for (const e of line.entities || [])
+          steps.push({
+            t: `${e.type} ${e.id}`,
+            s: `${e.created ? 'created · ' : ''}from ${String(e.from || '').replace(/_/g, ' ')}`,
+          });
+        const fresh = !seen.has(line.id + ':' + (line.count || 0) + ':' + line.text);
+        seen.add(line.id + ':' + (line.count || 0) + ':' + line.text);
+        return `<details class="event-card ${stateOf(line)} ${fresh ? 'fresh' : ''}" ${steps.length > 1 ? 'open' : ''}>
+          <summary><i class="journey-state" aria-hidden="true"></i><div><strong class="caption">${esc(line.text)}</strong><span class="event-subtitle">${time(line.at)}${line.page ? ` · ${esc(line.page)}` : ''}${line.count > 1 ? ` · ${line.count}×` : ''}</span></div>${CHEV}</summary>
+          ${steps.length ? `<ol class="journey-steps">${steps.map((s) => `<li class="journey-step ${s.cls || ''}"><strong>${s.raw ? s.t : esc(s.t)}</strong><small>${esc(s.s)}</small></li>`).join('')}</ol>` : ''}
+        </details>`;
+      }
+
+      function renderStory() {
+        const el = $('#eventStream');
+        const lines = (story?.lines || []).slice().sort((a, b) => a.at - b.at);
+        $('#eventCount').textContent = `${lines.length} action${lines.length === 1 ? '' : 's'}`;
+        $('#sourceNote').textContent =
+          story && story.source !== 'story' ? 'raw engine output (no story in this package)' : '';
+        if (!lines.length) {
+          el.innerHTML = `<div class="empty-state">${CURSOR}<strong>Use the app</strong><p>Click and type in the app on the left. Each thing you do appears here as a sentence.</p></div>`;
           return;
         }
+        const stick = el.scrollTop + el.clientHeight >= el.scrollHeight - 40;
         const bySession = new Map();
-        for (const line of s.lines) {
+        for (const line of lines) {
           if (!bySession.has(line.session)) bySession.set(line.session, []);
           bySession.get(line.session).push(line);
         }
-        const stick = feed.scrollTop + feed.clientHeight >= feed.scrollHeight - 30;
-        feed.innerHTML = [...bySession]
+        el.innerHTML = [...bySession]
           .map(
-            ([session, lines]) =>
-              `<div class="session">Session ${esc(session)} · ${lines.length} line${lines.length === 1 ? '' : 's'}</div>` +
-              lines
-                .map((line) => {
-                  const fresh = !seen.has(line.id + (line.count || ''));
-                  seen.add(line.id + (line.count || ''));
-                  const chips = [
-                    line.handler?.name
-                      ? `<span class="chip">${esc(line.handler.name)}${line.handler.file ? ` · ${esc(line.handler.file)}:${line.handler.line}` : ''}</span>`
-                      : '',
-                    ...(line.requests || []).map(
-                      (r) =>
-                        `<span class="chip ${r.status >= 400 || r.aborted ? 'bad' : 'ok'}">${esc(r.method)} ${esc(r.path)} ${r.aborted ? 'aborted' : esc(r.status ?? '')}</span>`,
-                    ),
-                    ...(line.entities || []).map(
-                      (e) => `<span class="chip ent">${esc(e.type)} ${esc(e.id)}</span>`,
-                    ),
-                  ].join('');
-                  return `<div class="line ${fresh ? 'new' : ''}"><span class="t">${time(line.at)}</span><span class="kind">${esc(line.kind)}</span>${esc(line.text)}${line.page ? ` <span class="hint">on ${esc(line.page)}</span>` : ''}${chips ? `<div class="chips">${chips}</div>` : ''}</div>`;
-                })
-                .join(''),
+            ([session, ls], i) =>
+              `<div class="session-label">Session ${i + 1} · started ${time(ls[0].at)}</div>${ls.map(cardHtml).join('')}`,
           )
           .join('');
-        if (stick) feed.scrollTop = feed.scrollHeight;
+        if (stick) el.scrollTop = el.scrollHeight;
       }
 
-      async function renderReport(feed) {
-        feed.innerHTML = '<div class="empty">Loading…</div>';
-        try {
-          const r = await api('GET', `/api/apps/${selected}/report`);
-          const sc = r.scorecard;
-          const cell = (v, label) =>
-            `<div><b>${v ?? '–'}${typeof v === 'number' && label.includes('%') ? '%' : ''}</b><span>${label.replace(' %', '')}</span></div>`;
-          feed.innerHTML = `<div class="score">${cell(sc.steps_acted, 'steps Claude took')}${cell(sc.steps_with_a_line_pct, 'steps with a sentence %')}${cell(sc.lines_naming_the_element_pct, 'sentences naming the element %')}${cell(sc.lines_naming_a_handler_pct, 'naming a handler %')}${cell(sc.lines_with_entity_ids_pct, 'with entity ids %')}${cell(sc.request_recall_pct, 'request recall %')}</div>
-      ${
-        r.history && r.history.length > 1
-          ? `<table><tr><th>Same steps, by build</th>${r.history.map((h) => `<th>build ${h.build}${h.package ? `<br>${esc(h.package)}` : ''}</th>`).join('')}</tr>${Object.keys(
-              sc,
-            )
-              .map(
-                (k) =>
-                  `<tr><td>${esc(k.replace(/_/g, ' '))}</td>${r.history.map((h) => `<td>${esc(h.scorecard[k] ?? '–')}</td>`).join('')}</tr>`,
-              )
-              .join('')}</table>`
-          : ''
-      }
-      ${
-        r.steps.length
-          ? `<table><tr><th>What was done</th><th>What the package said</th></tr>${r.steps.map((s) => `<tr><td>${esc(s.did)}${s.ok ? '' : `<div class="fail">${esc(s.error)}</div>`}${s.browser_requests.length ? `<div class="chips">${s.browser_requests.map((x) => `<span class="chip">${esc(x)}</span>`).join('')}</div>` : ''}</td><td>${s.package_said.map(esc).join('<br>') || '<span class="hint">nothing</span>'}</td></tr>`).join('')}</table>`
-          : '<div class="empty">No steps from Claude on this build yet. Claude drives the app with the circuit_act tool; its steps and the package\'s sentences line up here.</div>'
-      }`;
-        } catch (e) {
-          feed.innerHTML = `<div class="empty fail">${esc(e.message)}</div>`;
+      // ---------- bench drawer
+      async function renderPanel() {
+        const a = apps.get(selected);
+        const panel = $('#appPanel');
+        if (!a || $('#drawer').hidden) return;
+        let html = `<h3>${esc(a.id)}</h3><div class="row"><i class="dot ${a.status}"></i><span>${esc(a.status)}${a.phase ? ` · ${esc(a.phase)}` : ''}</span>
+          <span class="hint">build ${a.build}${a.build_ms ? ` · ${Math.round(a.build_ms / 1000)} s` : ''}${a.package_commit ? ` · package ${esc(a.package_commit)}` : ''}</span></div>
+          <div class="row" style="margin-top:8px">${a.url ? `<a href="${a.url}" target="_blank"><button class="pill-button" type="button">Open app in a tab</button></a>` : ''}
+          <button class="pill-button" id="rebuild" type="button" ${a.status === 'building' ? 'disabled' : ''}>Rebuild with current package</button>
+          <a href="/api/apps/${a.id}/log" target="_blank"><button class="pill-button" type="button">Build log</button></a></div>`;
+        if (a.status === 'ready') {
+          try {
+            const r = await api('GET', `/api/apps/${a.id}/report`);
+            const sc = r.scorecard;
+            const cell = (v, label, pct) =>
+              `<div><b>${v ?? '–'}${pct && v != null ? '%' : ''}</b><span>${label}</span></div>`;
+            html += `<h3>Claude's last run</h3>`;
+            if (r.steps.length) {
+              html += `<div class="score">${cell(sc.steps_acted, 'steps taken')}${cell(sc.steps_with_a_line_pct, 'steps with a sentence', 1)}${cell(sc.lines_naming_the_element_pct, 'name the element', 1)}${cell(sc.lines_naming_a_handler_pct, 'name the code', 1)}${cell(sc.lines_with_entity_ids_pct, 'carry real IDs', 1)}${cell(sc.request_recall_pct, 'requests caught', 1)}</div>`;
+              if (r.history?.length > 1)
+                html += `<table><tr><th>Same steps, by build</th>${r.history.map((h) => `<th>build ${h.build}${h.package ? `<br>${esc(h.package)}` : ''}</th>`).join('')}</tr>${Object.keys(
+                  sc,
+                )
+                  .map(
+                    (k) =>
+                      `<tr><td>${esc(k.replace(/_/g, ' '))}</td>${r.history.map((h) => `<td>${esc(h.scorecard[k] ?? '–')}</td>`).join('')}</tr>`,
+                  )
+                  .join('')}</table>`;
+              html += `<table><tr><th>What Claude did</th><th>What the package said</th></tr>${r.steps
+                .map(
+                  (s) =>
+                    `<tr><td>${esc(s.did)}${s.ok ? '' : `<div class="fail">${esc(s.error)}</div>`}</td><td>${s.package_said.map(esc).join('<br>') || '<span class="hint">nothing</span>'}</td></tr>`,
+                )
+                .join('')}</table>`;
+            } else
+              html += `<p class="hint">No steps from Claude on this build yet. Claude drives the app with the circuit_act tool.</p>`;
+          } catch (e) {
+            html += `<p class="fail">${esc(e.message)}</p>`;
+          }
         }
+        panel.innerHTML = html;
+        const rb = $('#rebuild');
+        if (rb) rb.onclick = () => api('POST', `/api/apps/${a.id}/rebuild`);
       }
 
+      $('#benchButton').onclick = () => {
+        const d = $('#drawer');
+        d.hidden = !d.hidden;
+        $('#benchButton').setAttribute('aria-expanded', String(!d.hidden));
+        renderPanel();
+      };
+      $('#closeDrawer').onclick = () => $('#benchButton').click();
+      $('#reloadApp').onclick = () => {
+        // A fresh page load is a new session in the story.
+        const a = apps.get(selected);
+        if (a?.url) $('#productFrame').src = a.url;
+      };
       $('#add').onsubmit = async (e) => {
         e.preventDefault();
         const body = { repo: $('#repo').value.trim() };
@@ -622,29 +967,30 @@
           alert(err.message);
         }
       };
-      document.querySelectorAll('[data-repo]').forEach(
-        (a) =>
-          (a.onclick = () => {
-            $('#repo').value = a.dataset.repo;
-          }),
-      );
+      document
+        .querySelectorAll('[data-repo]')
+        .forEach((a) => (a.onclick = () => ($('#repo').value = a.dataset.repo)));
 
       const events = new EventSource('/api/events');
       events.addEventListener('apps', (e) => {
         apps = new Map(JSON.parse(e.data).map((a) => [a.id, a]));
-        if (apps.size)
-          $('#pkg').textContent = `package under test: ${[...apps.values()][0].package}`;
-        if (!apps.has(selected)) selected = [...apps.keys()][0] || null;
-        renderApps();
-        renderMain(true);
+        if (!apps.has(selected))
+          selected =
+            [...apps.values()].find((a) => a.status === 'ready')?.id || [...apps.keys()][0] || null;
+        renderPills();
+        renderApp(true);
+        renderPanel();
       });
       events.addEventListener('app', (e) => {
         const a = JSON.parse(e.data);
         const before = apps.get(a.id);
         apps.set(a.id, a);
-        renderApps();
-        if (a.id === selected)
-          renderMain(!before || before.status !== a.status || before.build !== a.build);
+        renderPills();
+        if (a.id === selected) {
+          const changed = !before || before.status !== a.status || before.build !== a.build;
+          if (changed || a.status !== 'ready') renderApp(changed);
+          renderPanel();
+        }
       });
     </script>
   </body>

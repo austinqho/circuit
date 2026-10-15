@@ -147,6 +147,16 @@ const server = http.createServer(async (req, res) => {
       const m = req.method === method && url.pathname.match(pattern);
       if (m) return send(res, 200, await handler(req, m.slice(1), url));
     }
+    const asset = url.pathname.match(/^\/assets\/([\w.-]+)$/u);
+    if (asset) {
+      const file = path.join(here, '..', 'public', 'assets', asset[1]);
+      if (!fs.existsSync(file)) return send(res, 404, { error: 'no such asset' });
+      res.writeHead(200, {
+        'content-type': file.endsWith('.woff2') ? 'font/woff2' : 'application/octet-stream',
+        'cache-control': 'max-age=86400',
+      });
+      return res.end(fs.readFileSync(file));
+    }
     if (req.method === 'GET' && !url.pathname.startsWith('/api/')) {
       res.writeHead(200, {
         'content-type': 'text/html; charset=utf-8',
