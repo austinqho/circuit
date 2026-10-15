@@ -490,6 +490,179 @@
         font-size: 9.5px;
       }
 
+      /* Itinerary: one rail per part of the visit, like a transit line; stops are actions. */
+      .itinerary {
+        padding: 4px 2px 8px;
+      }
+      .earlier > summary {
+        margin: 4px 2px 10px;
+        color: var(--muted);
+        font-size: 11px;
+        cursor: pointer;
+      }
+      .seg {
+        position: relative;
+        padding-bottom: 14px;
+      }
+      .seg::before {
+        content: '';
+        position: absolute;
+        top: 16px;
+        bottom: 6px;
+        left: 13px;
+        width: 8px;
+        border-radius: 4px;
+        background: var(--rail);
+      }
+      .seg:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 16px;
+        height: 14px;
+        border-left: 2px dotted var(--muted);
+        opacity: 0.6;
+      }
+      .seg-box > summary {
+        list-style: none;
+        cursor: pointer;
+      }
+      .seg-box > summary::-webkit-details-marker,
+      .stop > summary::-webkit-details-marker {
+        display: none;
+      }
+      .seg-head {
+        display: grid;
+        grid-template-columns: 34px 1fr auto;
+        grid-template-areas: 'dot title time' '. count count';
+        row-gap: 6px;
+        align-items: start;
+        padding: 6px 4px 0 0;
+      }
+      .seg-dot {
+        grid-area: dot;
+        width: 18px;
+        height: 18px;
+        margin: 1px 0 0 8px;
+        position: relative;
+        z-index: 1;
+        border: 4px solid var(--rail);
+        border-radius: 50%;
+        background: #fff;
+      }
+      .seg-title {
+        grid-area: title;
+        min-width: 0;
+      }
+      .seg-title strong {
+        display: block;
+        font-size: 14px;
+        font-weight: 650;
+        line-height: 1.3;
+        letter-spacing: -0.015em;
+      }
+      .seg-title small,
+      .seg-head time,
+      .stop time {
+        color: var(--muted);
+        font-size: 10.5px;
+        font-variant-numeric: tabular-nums;
+      }
+      .seg-title small {
+        display: block;
+        margin-top: 2px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .seg-head time {
+        grid-area: time;
+        padding-top: 2px;
+      }
+      .seg-count {
+        grid-area: count;
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+        color: var(--ink);
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .seg-count .chev {
+        transform: rotate(-90deg);
+      }
+      .seg-box[open] .seg-count .chev {
+        transform: none;
+      }
+      .seg.failed .seg-count {
+        color: var(--red);
+      }
+      .seg-stops {
+        padding: 4px 0 0;
+      }
+      .stop > summary {
+        display: grid;
+        grid-template-columns: 34px 1fr auto;
+        align-items: center;
+        min-height: 34px;
+        list-style: none;
+        cursor: pointer;
+      }
+      .stop-dot {
+        position: relative;
+        z-index: 1;
+        width: 6px;
+        height: 6px;
+        margin-left: 14px;
+        border-radius: 50%;
+        background: #fff;
+      }
+      .stop.failed .stop-dot {
+        background: var(--red);
+        box-shadow: 0 0 0 2px #fff;
+      }
+      .stop.pending .stop-dot {
+        animation: pulse 1.7s ease-out infinite;
+      }
+      .stop-text {
+        min-width: 0;
+        color: var(--muted);
+        font-size: 12.5px;
+        line-height: 1.35;
+        overflow-wrap: anywhere;
+      }
+      .stop[open] .stop-text,
+      .stop > summary:hover .stop-text {
+        color: var(--ink);
+      }
+      .stop-text em {
+        font-style: normal;
+        font-size: 10.5px;
+      }
+      .stop.fresh {
+        animation: arrive 0.9s ease-out;
+      }
+      .stop-body {
+        margin: 2px 0 8px 34px;
+        padding: 10px 10px 2px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--card);
+      }
+      .stop-full {
+        margin: 0 0 8px;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.4;
+        overflow-wrap: anywhere;
+      }
+      .stop-body .event-detail {
+        margin: 0 0 10px;
+        font-size: 12px;
+      }
+      .stop-body .journey-steps {
+        padding: 0 4px 6px 20px;
+      }
       /* Bench drawer: add repos, build status, Claude's runs. */
       .drawer {
         position: fixed;
@@ -735,6 +908,7 @@
       let stream = null;
       let story = null;
       let seen = new Set();
+      const openKeys = new Set();
       let sessionStart = 0;
       let logTimer = null;
       try {
@@ -772,6 +946,7 @@
           localStorage.setItem('circuit.app', id);
         } catch {}
         seen = new Set();
+        openKeys.clear();
         story = null;
         renderPills();
         renderApp(true);
@@ -845,7 +1020,7 @@
         return 'action';
       }
 
-      function cardHtml(line) {
+      function lineFacts(line) {
         const steps = [];
         if (line.element?.label || line.element?.tag)
           steps.push({
@@ -877,26 +1052,137 @@
             t: `${e.type} ${e.id}`,
             s: `${e.created ? 'created · ' : ''}from ${String(e.from || '').replace(/_/g, ' ')}`,
           });
+        return steps;
+      }
+
+      // ---------- itinerary: segments (what the person was doing) > stops (each action) > facts
+      // The package may send segments with the story; until then they are grouped here:
+      // a segment ends at a form submit or when the page changes, and runs of plain
+      // navigation clicks fold into one "went to" segment.
+      const RAILS = ['#e5483d', '#2f7df6', '#f2b705', '#21a366', '#9b5de5', '#f07c2a'];
+      const short = (id) => (String(id).length > 10 ? `${String(id).slice(0, 8)}…` : String(id));
+      const lead = (text) => String(text || '').split(' → ')[0];
+      const duration = (ms) =>
+        ms < 1000
+          ? '0 s'
+          : ms < 60000
+            ? `${Math.round(ms / 1000)} s`
+            : `${Math.round(ms / 60000)} min`;
+
+      function groupLines(lines) {
+        const raw = [];
+        let cur = null;
+        for (const line of lines) {
+          if (!cur || cur.closed || cur.page !== (line.page || '')) {
+            cur = { page: line.page || '', lines: [] };
+            raw.push(cur);
+          }
+          cur.lines.push(line);
+          if (line.kind === 'submit' || line.navigations?.length) cur.closed = true;
+        }
+        const isNav = (s) =>
+          s.lines.every((l) => l.kind !== 'submit' && l.kind !== 'type') &&
+          s.lines.some((l) => l.navigations?.length);
+        const merged = [];
+        for (const s of raw) {
+          const prev = merged[merged.length - 1];
+          if (prev && isNav(prev) && isNav(s)) prev.lines.push(...s.lines);
+          else merged.push(s);
+        }
+        return merged.map((s) => ({ ...s, title: segmentTitle(s.lines, isNav(s)) }));
+      }
+
+      function segmentTitle(lines, nav) {
+        const submit = lines.find((l) => l.kind === 'submit');
+        if (submit) {
+          const made = lines
+            .flatMap((l) => l.entities || [])
+            .find((e) => e.created && e.from === 'response_body');
+          if (made) return `Created a ${made.type}`;
+          const label = submit.element?.label;
+          return label ? `Submitted the ${label} form` : 'Submitted a form';
+        }
+        if (nav) {
+          const last = lines[lines.length - 1];
+          const opened = (last.entities || []).find((e) => e.from === 'page_url');
+          if (opened) return `Opened ${opened.type} ${short(opened.id)}`;
+          const to = last.navigations?.[last.navigations.length - 1]?.to;
+          return to ? `Went to ${to}` : lead(last.text);
+        }
+        return lines.length === 1 ? lead(lines[0].text) : `${lead(lines[0].text)} and more`;
+      }
+
+      function segmentsOf(lines) {
+        if (!Array.isArray(story?.segments) || !story.segments.length) return groupLines(lines);
+        const byId = new Map(lines.map((l) => [l.id, l]));
+        return story.segments.map((s) => ({
+          title: s.title,
+          page: s.page || '',
+          lines: (s.lines || [])
+            .map((l) => (typeof l === 'string' ? byId.get(l) : l))
+            .filter(Boolean),
+        }));
+      }
+
+      const keep = (key) => (openKeys.has(key) ? 'open' : '');
+
+      function stopHtml(line, start) {
+        const facts = lineFacts(line);
+        const key = `l:${line.id}`;
         const fresh = !seen.has(line.id + ':' + (line.count || 0) + ':' + line.text);
         seen.add(line.id + ':' + (line.count || 0) + ':' + line.text);
-        return `<details class="event-card ${stateOf(line)} ${fresh ? 'fresh' : ''}" >
-          <summary><i class="journey-state" aria-hidden="true"></i><div><strong class="caption">${esc(line.text)}</strong><span class="event-subtitle">${time(line.at)}${line.page ? ` · ${esc(line.page)}` : ''}${line.count > 1 ? ` · ${line.count}×` : ''}</span></div>${CHEV}</summary>
-          ${line.detail ? `<p class="event-detail">${esc(line.detail)}</p>` : ''}
-          ${steps.length ? `<ol class="journey-steps">${steps.map((s) => `<li class="journey-step ${s.cls || ''}"><strong>${s.raw ? s.t : esc(s.t)}</strong><small>${esc(s.s)}</small></li>`).join('')}</ol>` : ''}
+        return `<details class="stop ${stateOf(line)} ${fresh ? 'fresh' : ''}" data-key="${esc(key)}" ${keep(key)}>
+          <summary><i class="stop-dot" aria-hidden="true"></i><span class="stop-text">${esc(lead(line.text))}${line.count > 1 && line.kind !== 'type' ? ` <em>${line.count}×</em>` : ''}</span><time>+${duration(line.at - start)}</time></summary>
+          <div class="stop-body">
+            ${line.text.includes(' → ') ? `<p class="stop-full">${esc(line.text)}</p>` : ''}
+            ${line.detail ? `<p class="event-detail">${esc(line.detail)}</p>` : ''}
+            ${facts.length ? `<ol class="journey-steps">${facts.map((s) => `<li class="journey-step ${s.cls || ''}"><strong>${s.raw ? s.t : esc(s.t)}</strong><small>${esc(s.s)}</small></li>`).join('')}</ol>` : ''}
+          </div>
         </details>`;
       }
+
+      function segmentHtml(seg, i) {
+        const first = seg.lines[0];
+        const last = seg.lines[seg.lines.length - 1];
+        const key = `s:${first.id}`;
+        const n = seg.lines.length;
+        const failed = seg.lines.some((l) => stateOf(l) === 'failed');
+        return `<section class="seg ${failed ? 'failed' : ''}" style="--rail:${RAILS[i % RAILS.length]}">
+          <details class="seg-box" data-key="${esc(key)}" ${keep(key)}>
+            <summary class="seg-head">
+              <i class="seg-dot" aria-hidden="true"></i>
+              <span class="seg-title"><strong>${esc(seg.title)}</strong><small>${esc(seg.page || '/')}</small></span>
+              <time>${time(first.at)}</time>
+              <span class="seg-count">${CHEV} ${n} step${n === 1 ? '' : 's'} · ${duration(last.at - first.at)}</span>
+            </summary>
+            <div class="seg-stops">${seg.lines.map((l) => stopHtml(l, first.at)).join('')}</div>
+          </details>
+        </section>`;
+      }
+
+      $('#eventStream').addEventListener(
+        'toggle',
+        (event) => {
+          const key = event.target.dataset?.key;
+          if (!key) return;
+          if (event.target.open) openKeys.add(key);
+          else openKeys.delete(key);
+        },
+        true,
+      );
 
       function renderStory() {
         const el = $('#eventStream');
         const lines = (story?.lines || []).slice().sort((a, b) => a.at - b.at);
-        $('#eventCount').textContent = `${lines.length} action${lines.length === 1 ? '' : 's'}`;
         $('#sourceNote').textContent = '';
         if (story?.source === 'unavailable') {
+          $('#eventCount').textContent = '';
           el.innerHTML = `<div class="empty-state"><p>Sentences unavailable for this build. Rebuild to enable.</p></div>`;
           return;
         }
         if (!lines.length) {
-          el.innerHTML = `<div class="empty-state">${CURSOR}<strong>Use the app</strong><p>Click and type in the app on the left. Each thing you do appears here as a sentence.</p></div>`;
+          $('#eventCount').textContent = '0 actions';
+          el.innerHTML = `<div class="empty-state">${CURSOR}<strong>Use the app</strong><p>Click and type in the app on the left. What you do appears here, step by step.</p></div>`;
           return;
         }
         const stick = el.scrollTop + el.clientHeight >= el.scrollHeight - 40;
@@ -905,12 +1191,21 @@
           if (!bySession.has(line.session)) bySession.set(line.session, []);
           bySession.get(line.session).push(line);
         }
-        el.innerHTML = [...bySession]
-          .map(
-            ([session, ls], i) =>
-              `<div class="session-label">Session ${i + 1} · started ${time(ls[0].at)}</div>${ls.map(cardHtml).join('')}`,
-          )
-          .join('');
+        // The latest session is the itinerary; earlier ones fold away under one line.
+        const sessions = [...bySession.values()];
+        const latest = sessions.pop();
+        const segs = segmentsOf(latest);
+        const earlier = sessions.length
+          ? `<details class="earlier" data-key="earlier" ${keep('earlier')}><summary>${sessions.length} earlier session${sessions.length === 1 ? '' : 's'}</summary>${sessions
+              .map(
+                (ls) =>
+                  `<div class="session-label">Started ${time(ls[0].at)}</div><div class="itinerary">${segmentsOf(ls).map(segmentHtml).join('')}</div>`,
+              )
+              .join('')}</details>`
+          : '';
+        el.innerHTML = `${earlier}<div class="itinerary">${segs.map(segmentHtml).join('')}</div>`;
+        $('#eventCount').textContent =
+          `${segs.length} part${segs.length === 1 ? '' : 's'} · ${latest.length} action${latest.length === 1 ? '' : 's'}`;
         if (stick) el.scrollTop = el.scrollHeight;
       }
 
