@@ -13,7 +13,8 @@ import {
   rewriteLockfileRegistry,
   wrapperConfig,
 } from '../src/target.mjs';
-import { buildReport } from '../src/tracer.mjs';
+import { buildReport, narrationScore } from '../src/tracer.mjs';
+import { segmentsOf } from '../src/segments.mjs';
 
 const tmp = () => fs.mkdtempSync(path.join(os.tmpdir(), 'circuit-web-'));
 const write = (root, file, text) => {
@@ -170,4 +171,32 @@ test('buildReport pairs lines with steps by window and scores them', () => {
 test('onPath finds node and not a made-up command', () => {
   assert.equal(onPath('node'), true);
   assert.equal(onPath('definitely-not-a-command-xyz'), false);
+});
+
+test('segments group by page and submit, and the feed overrides them', () => {
+  const line = (id, page, kind, extra = {}) => ({ id, page, kind, text: id, ...extra });
+  const lines = [
+    line('a', '/', 'act', { navigations: [{ to: '/login' }] }),
+    line('b', '/login', 'act', { navigations: [{ to: '/register' }] }),
+    line('c', '/register', 'type'),
+    line('d', '/register', 'submit', { element: { label: 'Register' } }),
+  ];
+  const bench = segmentsOf(null, lines);
+  assert.deepEqual(
+    bench.map((s) => [s.title, s.lines.length, s.source]),
+    [
+      ['Went to /register', 2, 'bench'],
+      ['Submitted the Register form', 2, 'bench'],
+    ],
+  );
+  const feed = segmentsOf({ segments: [{ title: 'Signed up', lines: ['c', 'd'] }] }, lines);
+  assert.deepEqual(feed, [{ title: 'Signed up', page: '', lines: lines.slice(2), source: 'feed' }]);
+});
+
+test('narration score folds rubric scores and rejects bad input', () => {
+  const segments = [{}, {}];
+  const full = { high_level: 2, grounded: 2, specific: 2, joined: 2 };
+  assert.equal(narrationScore(segments, [full, { ...full, high_level: 0, specific: 0 }]), 75);
+  assert.throws(() => narrationScore(segments, [full]), /one score per segment/u);
+  assert.throws(() => narrationScore(segments, [full, { ...full, joined: 3 }]), /0, 1 or 2/u);
 });

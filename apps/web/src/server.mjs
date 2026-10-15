@@ -13,6 +13,7 @@
 //   POST /api/apps/:id/reset               end the browser's page session
 //   GET  /api/apps/:id/story               the package's session story
 //   GET  /api/apps/:id/report              steps vs what the package said, plus a scorecard
+//   POST /api/apps/:id/narration {scores}  Claude's rubric scores for the report's segment titles
 //   GET  /api/apps/:id/tools               the package's MCP tools
 //   POST /api/apps/:id/tools/:name {args}  call one
 //   GET  /api/events                       server-sent events: app status changes
@@ -116,6 +117,11 @@ const routes = [
     async (req, [id], url) => bench.story(id, { session: url.searchParams.get('session') }),
   ],
   ['GET', /^\/api\/apps\/([\w-]+)\/report$/u, async (req, [id]) => bench.report(id)],
+  [
+    'POST',
+    /^\/api\/apps\/([\w-]+)\/narration$/u,
+    async (req, [id]) => bench.scoreNarration(id, (await readJson(req)).scores),
+  ],
   ['GET', /^\/api\/apps\/([\w-]+)\/tools$/u, async (req, [id]) => bench.tools(id)],
   [
     'POST',
@@ -170,6 +176,10 @@ const server = http.createServer(async (req, res) => {
     for (const [method, pattern, handler] of routes) {
       const m = req.method === method && url.pathname.match(pattern);
       if (m) return send(res, 200, await handler(req, m.slice(1), url));
+    }
+    if (url.pathname === '/segments.mjs') {
+      res.writeHead(200, { 'content-type': 'text/javascript', 'cache-control': 'no-store' });
+      return res.end(fs.readFileSync(path.join(here, 'segments.mjs')));
     }
     const asset = url.pathname.match(/^\/assets\/([\w.-]+)$/u);
     if (asset) {

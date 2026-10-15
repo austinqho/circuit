@@ -1056,11 +1056,13 @@
       }
 
       // ---------- itinerary: segments (what the person was doing) > stops (each action) > facts
-      // The package may send segments with the story; until then they are grouped here:
-      // a segment ends at a form submit or when the page changes, and runs of plain
-      // navigation clicks fold into one "went to" segment.
+      // Segments come from /segments.mjs, the same module the report scores.
+      let segmentsOf = null;
+      import('/segments.mjs').then((m) => {
+        segmentsOf = (lines) => m.segmentsOf(story, lines);
+        renderStory();
+      });
       const RAILS = ['#e5483d', '#2f7df6', '#f2b705', '#21a366', '#9b5de5', '#f07c2a'];
-      const short = (id) => (String(id).length > 10 ? `${String(id).slice(0, 8)}…` : String(id));
       const lead = (text) => String(text || '').split(' → ')[0];
       const duration = (ms) =>
         ms < 1000
@@ -1068,61 +1070,6 @@
           : ms < 60000
             ? `${Math.round(ms / 1000)} s`
             : `${Math.round(ms / 60000)} min`;
-
-      function groupLines(lines) {
-        const raw = [];
-        let cur = null;
-        for (const line of lines) {
-          if (!cur || cur.closed || cur.page !== (line.page || '')) {
-            cur = { page: line.page || '', lines: [] };
-            raw.push(cur);
-          }
-          cur.lines.push(line);
-          if (line.kind === 'submit' || line.navigations?.length) cur.closed = true;
-        }
-        const isNav = (s) =>
-          s.lines.every((l) => l.kind !== 'submit' && l.kind !== 'type') &&
-          s.lines.some((l) => l.navigations?.length);
-        const merged = [];
-        for (const s of raw) {
-          const prev = merged[merged.length - 1];
-          if (prev && isNav(prev) && isNav(s)) prev.lines.push(...s.lines);
-          else merged.push(s);
-        }
-        return merged.map((s) => ({ ...s, title: segmentTitle(s.lines, isNav(s)) }));
-      }
-
-      function segmentTitle(lines, nav) {
-        const submit = lines.find((l) => l.kind === 'submit');
-        if (submit) {
-          const made = lines
-            .flatMap((l) => l.entities || [])
-            .find((e) => e.created && e.from === 'response_body');
-          if (made) return `Created a ${made.type}`;
-          const label = submit.element?.label;
-          return label ? `Submitted the ${label} form` : 'Submitted a form';
-        }
-        if (nav) {
-          const last = lines[lines.length - 1];
-          const opened = (last.entities || []).find((e) => e.from === 'page_url');
-          if (opened) return `Opened ${opened.type} ${short(opened.id)}`;
-          const to = last.navigations?.[last.navigations.length - 1]?.to;
-          return to ? `Went to ${to}` : lead(last.text);
-        }
-        return lines.length === 1 ? lead(lines[0].text) : `${lead(lines[0].text)} and more`;
-      }
-
-      function segmentsOf(lines) {
-        if (!Array.isArray(story?.segments) || !story.segments.length) return groupLines(lines);
-        const byId = new Map(lines.map((l) => [l.id, l]));
-        return story.segments.map((s) => ({
-          title: s.title,
-          page: s.page || '',
-          lines: (s.lines || [])
-            .map((l) => (typeof l === 'string' ? byId.get(l) : l))
-            .filter(Boolean),
-        }));
-      }
 
       const keep = (key) => (openKeys.has(key) ? 'open' : '');
 
@@ -1185,6 +1132,7 @@
           el.innerHTML = `<div class="empty-state">${CURSOR}<strong>Use the app</strong><p>Click and type in the app on the left. What you do appears here, step by step.</p></div>`;
           return;
         }
+        if (!segmentsOf) return;
         const stick = el.scrollTop + el.clientHeight >= el.scrollHeight - 40;
         const bySession = new Map();
         for (const line of lines) {
@@ -1227,7 +1175,7 @@
               `<div><b>${v ?? '–'}${pct && v != null ? '%' : ''}</b><span>${label}</span></div>`;
             html += `<h3>Claude's last run</h3>`;
             if (r.steps.length) {
-              html += `<div class="score">${cell(sc.steps_acted, 'steps taken')}${cell(sc.steps_with_a_line_pct, 'steps with a sentence', 1)}${cell(sc.lines_naming_the_element_pct, 'name the element', 1)}${cell(sc.lines_naming_a_handler_pct, 'name the code', 1)}${cell(sc.lines_with_entity_ids_pct, 'carry real IDs', 1)}${cell(sc.request_recall_pct, 'requests caught', 1)}</div>`;
+              html += `<div class="score">${cell(sc.steps_acted, 'steps taken')}${cell(sc.steps_with_a_line_pct, 'steps with a sentence', 1)}${cell(sc.lines_naming_the_element_pct, 'name the element', 1)}${cell(sc.lines_naming_a_handler_pct, 'name the code', 1)}${cell(sc.lines_with_entity_ids_pct, 'carry real IDs', 1)}${cell(sc.request_recall_pct, 'requests caught', 1)}${cell(sc.reads_like_a_person_pct, 'reads like a person', 1)}</div>`;
               if (r.history?.length > 1)
                 html += `<table><tr><th>Same steps, by build</th>${r.history.map((h) => `<th>build ${h.build}${h.package ? `<br>${esc(h.package)}` : ''}</th>`).join('')}</tr>${Object.keys(
                   sc,

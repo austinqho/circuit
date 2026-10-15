@@ -35,6 +35,7 @@ The MCP server talks to the website's server and starts it if it is not running,
 | `circuit_act`                             | One user action in a headless browser: `goto`, `click`, `fill`, `type`, `press`, `select`, `check`, `hover`, `wait`, `back`. Returns what the package wrote since the step began and the page's accessibility tree. |
 | `circuit_snapshot` / `circuit_screenshot` | The current page as an accessibility tree or a PNG.                                                                                                                                                                 |
 | `circuit_report`                          | Each step next to the package's sentences and the requests the browser really sent, plus a scorecard.                                                                                                               |
+| `circuit_score_narration`                 | Your 0–2 rubric scores for each part title in `report.narration`; recorded as `reads_like_a_person_pct`.                                                                                                            |
 | `circuit_story`                           | The package's own session story for the current build.                                                                                                                                                              |
 | `circuit_tracer`                          | Any of the package's own MCP tools (`action_chain`, `recent_actions`, ...) against this app's store.                                                                                                                |
 | `circuit_rebuild`                         | Restart with the package as it is on disk now; `mode` switches between `dev` and `build`. Each build gets a fresh store.                                                                                            |
@@ -48,6 +49,7 @@ Targets for `circuit_act` are visible text (`"Get started"`), `{ role, name }`, 
 2. Click through a real flow with `circuit_act`.
 3. `circuit_report`: read where the package said nothing, named no element, missed a request or got an ID wrong.
 4. Change the package, `circuit_rebuild`, rerun the same steps, compare scorecards.
+5. To hillclimb the wording too, read `report.narration` (each part's title with its evidence lines and a rubric) and send your 0–2 scores per criterion with `circuit_score_narration`. They become `reads_like_a_person_pct` in that build's scorecard and history.
 
 `node apps/web/scripts/example-run.mjs` does steps 1 to 3 on bulletproof-react over MCP, the same way Claude does.
 

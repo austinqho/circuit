@@ -3,6 +3,7 @@
 // tools (raw evidence). Nothing here interprets the store's files directly.
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
+import { segmentsOf } from './segments.mjs';
 
 /** One MCP client per store, started on first use. */
 export class TracerTools {
@@ -80,6 +81,58 @@ const SILENT_ACTIONS = new Set(['goto', 'wait', 'back']);
  */
 const requestKey = (r) => `${r.method} ${r.path}`;
 
+/**
+ * How Claude judges the narration (segment titles). Each title is scored 0-2 on
+ * each criterion, with the segment's grounded lines as the only evidence.
+ */
+export const NARRATION_RUBRIC = {
+  instructions:
+    'Read each segment title as if a person were annotating what the user did, then score it against its evidence lines only. 0 = no, 1 = partly, 2 = yes. Call circuit_score_narration with one score object per segment, in order.',
+  criteria: {
+    high_level:
+      'Says what the person did in their terms, not the UI mechanics: "Signed up as Ada Lovelace" or "Started a discussion about the engine", not "Submitted the form".',
+    grounded:
+      'Every claim is supported by the evidence lines (requests, IDs, labels, pages). Anything invented scores 0.',
+    specific:
+      'Names the concrete object the evidence carries: which discussion, which page, which account.',
+    joined:
+      'Related actions are one intent (typing into fields and submitting them is one step), and nothing unrelated is merged in.',
+  },
+};
+
+export function narrationOf(story, lines) {
+  return {
+    rubric: NARRATION_RUBRIC,
+    segments: segmentsOf(story, lines).map((segment, index) => ({
+      index,
+      title: segment.title,
+      source: segment.source,
+      page: segment.page,
+      evidence: segment.lines.map((line) => line.text),
+    })),
+  };
+}
+
+/** Folds Claude's per-segment scores into one "reads like a person" percentage. */
+export function narrationScore(segments, scores) {
+  const keys = Object.keys(NARRATION_RUBRIC.criteria);
+  if (!Array.isArray(scores) || scores.length !== segments.length)
+    throw Object.assign(new Error(`send one score per segment (${segments.length}), in order`), {
+      status: 400,
+    });
+  let total = 0;
+  for (const score of scores)
+    for (const key of keys) {
+      const value = score?.[key];
+      if (![0, 1, 2].includes(value))
+        throw Object.assign(new Error(`each score needs ${keys.join(', ')} as 0, 1 or 2`), {
+          status: 400,
+        });
+      total += value;
+    }
+  return Math.round((100 * total) / (2 * keys.length * scores.length));
+}
+
 export function buildReport({ steps = [], browserRequests = [], story }) {
   const lines = (story?.lines || []).slice().sort((a, b) => a.at - b.at);
   const windows = steps.map((step, i) => ({
@@ -146,6 +199,7 @@ export function buildReport({ steps = [], browserRequests = [], story }) {
       package_requests: packageTotal,
     },
     steps: rows,
+    narration: narrationOf(story, paired),
     // What to fix next: requests the package never reported, lines without a handler.
     missed_requests: missed,
     lines_without_a_handler: paired.filter((line) => !line.handler?.name).map((line) => line.text),

@@ -16,7 +16,7 @@ import { fileURLToPath } from 'node:url';
 import { BrowserSession, closeBrowser } from './browser.mjs';
 import { findPackageDir, packageBin } from './package.mjs';
 import { buildTarget, parseRepo, serveDev, serveStatic, waitForHttp } from './target.mjs';
-import { TracerTools, buildReport, readStory } from './tracer.mjs';
+import { TracerTools, buildReport, narrationScore, readStory } from './tracer.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 // One wait stays under MCP clients' 60 s request timeout; callers poll while building.
@@ -213,13 +213,16 @@ export function createBench({
    * Keeps one scorecard per build for each distinct list of steps, so the same
    * session run on build after build lines up side by side (oldest first).
    */
-  function recordScore(app, steps, scorecard) {
-    if (!steps.length) return [];
-    const signature = crypto
+  const stepsSignature = (steps) =>
+    crypto
       .createHash('sha1')
       .update(JSON.stringify(steps.map((s) => [s.action, s.target, s.value])))
       .digest('hex')
       .slice(0, 12);
+
+  function recordScore(app, steps, scorecard) {
+    if (!steps.length) return [];
+    const signature = stepsSignature(steps);
     const file = path.join(app.work, 'scores.json');
     let rows = [];
     try {
@@ -383,6 +386,12 @@ export function createBench({
         browserRequests: running.browser.requests,
         story,
       });
+      // Claude's judgment of the narration, once given for these steps on this build.
+      const judged = app.narration?.[`${stepsSignature(running.browser.steps)}:${app.build}`];
+      if (judged) {
+        report.scorecard.reads_like_a_person_pct = judged.pct;
+        report.narration.judged = judged;
+      }
       const history = recordScore(app, running.browser.steps, report.scorecard);
       return {
         app: summary(app),
@@ -390,6 +399,24 @@ export function createBench({
         history,
         page_errors: running.browser.errors.slice(-10),
       };
+    },
+
+    /** Records Claude's rubric scores for the current report's segments (see report.narration). */
+    async scoreNarration(id, scores) {
+      const { app, running } = await ready(id);
+      const { narration } = await this.report(id);
+      const pct = narrationScore(narration.segments, scores);
+      app.narration = {
+        ...app.narration,
+        [`${stepsSignature(running.browser.steps)}:${app.build}`]: {
+          pct,
+          titles: narration.segments.map((s) => s.title),
+          scores,
+          at: new Date().toISOString(),
+        },
+      };
+      save();
+      return this.report(id);
     },
 
     async tools(id) {

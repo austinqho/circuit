@@ -192,9 +192,37 @@ const TOOLS = [
   {
     name: 'circuit_report',
     description:
-      'The judge view: every step you took next to the sentences the package wrote for it and the requests the browser really sent vs the ones the package recorded, plus a scorecard (steps with a line, lines naming the element, naming a handler, carrying entity ids, request recall), and `history`: the scorecard of every build that ran exactly these steps, oldest first. Use it to decide what to improve in the package, then circuit_rebuild and run the same steps again.',
+      'The judge view: every step you took next to the sentences the package wrote for it and the requests the browser really sent vs the ones the package recorded, plus a scorecard (steps with a line, lines naming the element, naming a handler, carrying entity ids, request recall, and reads_like_a_person once you have scored the narration with circuit_score_narration), `narration` (segment titles with their evidence and the rubric), and `history`: the scorecard of every build that ran exactly these steps, oldest first. Use it to decide what to improve in the package, then circuit_rebuild and run the same steps again.',
     inputSchema: { type: 'object', required: ['app'], properties: { app: APP } },
     run: ({ app }) => api('GET', `/api/apps/${app}/report`),
+  },
+  {
+    name: 'circuit_score_narration',
+    description:
+      "Judge whether the narration reads like a person annotating the user's actions. Take report.narration (each segment's title and its evidence lines) and score every title 0-2 on each rubric criterion (high_level, grounded, specific, joined), using only the evidence. The scores become reads_like_a_person_pct in this build's scorecard and history, so narration can be hillclimbed like the other numbers.",
+    inputSchema: {
+      type: 'object',
+      required: ['app', 'scores'],
+      properties: {
+        app: APP,
+        scores: {
+          type: 'array',
+          description: 'One per segment, in report.narration order.',
+          items: {
+            type: 'object',
+            required: ['high_level', 'grounded', 'specific', 'joined'],
+            properties: {
+              high_level: { type: 'integer', minimum: 0, maximum: 2 },
+              grounded: { type: 'integer', minimum: 0, maximum: 2 },
+              specific: { type: 'integer', minimum: 0, maximum: 2 },
+              joined: { type: 'integer', minimum: 0, maximum: 2 },
+              note: { type: 'string', description: 'Why, and a better title if you have one.' },
+            },
+          },
+        },
+      },
+    },
+    run: ({ app, scores }) => api('POST', `/api/apps/${app}/narration`, { scores }),
   },
   {
     name: 'circuit_story',
