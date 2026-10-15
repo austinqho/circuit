@@ -137,7 +137,7 @@ export const NARRATION_RUBRIC = {
 
 const lineEvidence = (line) => [
   line.text,
-  ...(line.values || []).map((v) => `${v.field || v.key}: ${v.value}`),
+  ...(line.values || []).map((v) => `${v.field || v.key}: ${v.value ?? `${v.length} characters`}`),
   ...(line.entities || []).map((e) => `${e.type} ${e.id}`),
 ];
 

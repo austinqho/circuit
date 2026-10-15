@@ -1102,7 +1102,7 @@
           <details class="seg-box" data-key="${esc(key)}" ${keep(key)}>
             <summary class="seg-head">
               <i class="seg-dot" aria-hidden="true"></i>
-              <span class="seg-title"><strong>${esc(seg.title)}</strong><small>${esc(seg.page || '/')}${seg.confidence != null ? ` · <span class="conf" title="How sure the package is of this title, 1 to 10">${esc(seg.confidence)}/10 sure</span>` : ''}</small></span>
+              <span class="seg-title"><strong>${esc(seg.title)}</strong><small>${esc(seg.page || '/')}${seg.confidence != null && seg.confidence < 8 ? ` · <span class="conf" title="How sure the package is of this title, 1 to 10">${esc(seg.confidence)}/10 sure</span>` : ''}</small></span>
               <time>${time(first.at)}</time>
               <span class="seg-count">${CHEV} ${n} step${n === 1 ? '' : 's'} · ${duration(last.at - first.at)}</span>
             </summary>
