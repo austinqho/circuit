@@ -327,6 +327,7 @@
   const actionTerminalOwner = new Map();
   let materializeFor = null;
   const emit = row => {
+    if (row?.kind === 'dom.action' && row.page === undefined) row = { ...row, page: pagePath() };
     if (materializeFor && row?.action_id && row.kind !== 'dom.action') materializeFor(row.action_id);
     if (row?.kind === 'dom.mutation' && row.action_id && !row.parent_continuation_id) row = { ...row, parent_continuation_id: actionTerminalOwner.get(row.action_id)?.continuation_id || null };
     // Transports may be observed by the separately installed request bridge.
@@ -645,7 +646,33 @@
     };
   }
   const describe = node => { if (!node || typeof node !== 'object') return null; const attrs = {}; try { for (const attr of Array.from(node.attributes || [])) if (/^(?:id|role|name|type|data-testid|aria-)/u.test(attr.name)) attrs[attr.name] = attr.value; } catch {} return { tag: String(node.tagName || '').toLowerCase() || null, attributes: attrs }; };
-  const describeControl = node => { const description = describe(node); const ref = identity(node)?.handle || null; return description && ref ? { ...description, ref } : description; };
+  // Control labels (dev builds, `labels` plugin option): the visible name of
+  // the control the user acted on, never what they typed. aria-label, else the
+  // text of a button/link/menu item, else the <label> or placeholder of a field.
+  const LABELS_ON = global.__PRODUCTTRACE_LABELS__ === 'on';
+  const LABEL_MAX = 80;
+  const squash = text => { const value = String(text || '').replace(/\s+/gu, ' ').trim(); return value ? (value.length > LABEL_MAX ? `${value.slice(0, LABEL_MAX - 1)}…` : value) : null; };
+  const controlLabel = node => {
+    if (!LABELS_ON || !node || node.nodeType !== 1) return null;
+    try {
+      const aria = node.getAttribute('aria-label'); if (aria) return squash(aria);
+      const labelledBy = node.getAttribute('aria-labelledby');
+      if (labelledBy) { const text = labelledBy.split(/\s+/u).map(id => global.document.getElementById(id)?.textContent || '').join(' '); if (squash(text)) return squash(text); }
+      const tag = String(node.tagName || '').toLowerCase();
+      if (tag === 'input' || tag === 'textarea' || tag === 'select') {
+        if (tag === 'input' && ['button', 'submit', 'reset'].includes(String(node.type))) return squash(node.value);
+        const own = node.labels && node.labels[0] ? node.labels[0].textContent : null;
+        return squash(own) || squash(node.getAttribute('placeholder')) || null;
+      }
+      // Only controls get a text label: a container's text is page content, and reading it is not free.
+      const role = node.getAttribute('role');
+      if (!['button', 'a', 'summary', 'label', 'option'].includes(tag) && !['button', 'link', 'menuitem', 'menuitemcheckbox', 'menuitemradio', 'option', 'tab', 'checkbox', 'radio', 'switch', 'treeitem'].includes(role)) return null;
+      if (node.isContentEditable) return null;
+      return squash(node.textContent) || squash(node.getAttribute('title')) || squash(node.querySelector?.('img[alt]')?.getAttribute('alt'));
+    } catch { return null; }
+  };
+  const pagePath = () => { try { return `${global.location.pathname}${global.location.search}`; } catch { return null; } };
+  const describeControl = node => { const description = describe(node); if (!description) return description; const ref = identity(node)?.handle || null; const label = controlLabel(node); return { ...description, ...(ref ? { ref } : {}), ...(label ? { label } : {}) }; };
   const interactiveFor = node => { try { return node?.closest?.('button,input,textarea,select,a[href],[role="button"],[role="menuitem"],[role="option"],[role="checkbox"],[role="radio"],[role="switch"],[tabindex]') || node; } catch { return node; } };
   // closest() that continues from a shadow root to its host.
   const composedClosest = (node, selector) => {
