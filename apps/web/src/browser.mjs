@@ -155,6 +155,10 @@ export class BrowserSession {
     });
     this.page = await this.context.newPage();
     // Ground truth for request recall: what the browser actually sent (fetch/XHR only).
+    const sentAt = (request) => {
+      const { startTime } = request.timing();
+      return startTime > 0 ? Math.round(startTime) : Date.now();
+    };
     this.page.on('requestfinished', (request) => {
       if (!['fetch', 'xhr'].includes(request.resourceType())) return;
       const url = new URL(request.url());
@@ -162,7 +166,8 @@ export class BrowserSession {
       request.response().then(
         (response) =>
           this.requests.push({
-            at: Date.now(),
+            // When the browser sent it, so it lands in the step that caused it.
+            at: sentAt(request),
             method: request.method(),
             path: url.pathname + url.search,
             status: response?.status() ?? null,

@@ -7,12 +7,13 @@
 //   claude mcp add circuit -- node apps/web/src/mcp.mjs
 import { spawn } from 'node:child_process';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import { CallToolRequestSchema, ListToolsRequestSchema } from '@modelcontextprotocol/sdk/types.js';
 
 const BASE = (process.env.CIRCUIT_URL || 'http://127.0.0.1:4500').replace(/\/$/u, '');
-const here = path.dirname(new URL(import.meta.url).pathname);
+const here = path.dirname(fileURLToPath(import.meta.url));
 
 async function ensureServer() {
   try {
@@ -88,7 +89,7 @@ const TOOLS = [
   {
     name: 'circuit_add_app',
     description:
-      'Install producttrace into an open-source Vite + React repo: clone it, install its dependencies, build it with the one plugin line (its source is never edited), serve it and start a collector. Returns at once; the first build takes several minutes, so follow with circuit_app_status wait_seconds.',
+      'Install producttrace into an open-source Vite + React repo: clone it, install its dependencies, build it with the one plugin line (its source is never edited), serve it and start a collector. Returns at once; the first build takes several minutes, so follow with circuit_app_status wait_seconds and call it again while the status is building.',
     inputSchema: {
       type: 'object',
       required: ['repo'],
@@ -121,11 +122,11 @@ const TOOLS = [
   {
     name: 'circuit_app_status',
     description:
-      'Status of one app (queued, building, ready, failed) with the build log tail when not ready. wait_seconds blocks while it builds (max 900).',
+      'Status of one app (queued, building, ready, failed) with the build log tail when not ready. wait_seconds blocks while it builds (max 50); call again while the status is building.',
     inputSchema: {
       type: 'object',
       required: ['app'],
-      properties: { app: APP, wait_seconds: { type: 'integer', minimum: 0, maximum: 900 } },
+      properties: { app: APP, wait_seconds: { type: 'integer', minimum: 0, maximum: 50 } },
     },
     run: ({ app, wait_seconds: wait = 0 }) => api('GET', `/api/apps/${app}?wait=${wait}`),
   },

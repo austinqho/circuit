@@ -20,9 +20,10 @@
 import fs from 'node:fs';
 import http from 'node:http';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { createBench } from './bench.mjs';
 
-const here = path.dirname(new URL(import.meta.url).pathname);
+const here = path.dirname(fileURLToPath(import.meta.url));
 const port = Number(process.env.PORT || process.argv[2] || 4500);
 const bench = createBench();
 
@@ -43,7 +44,7 @@ const readJson = (req) =>
     });
   });
 const send = (res, status, value) => {
-  res.writeHead(status, { 'content-type': 'application/json', 'access-control-allow-origin': '*' });
+  res.writeHead(status, { 'content-type': 'application/json' });
   res.end(JSON.stringify(value, null, 2));
 };
 
@@ -52,7 +53,6 @@ function sse(req, res) {
     'content-type': 'text/event-stream',
     'cache-control': 'no-store',
     connection: 'keep-alive',
-    'access-control-allow-origin': '*',
   });
   const keepAlive = setInterval(() => res.write(': ping\n\n'), 15000);
   const cleanups = [() => clearInterval(keepAlive)];
@@ -61,6 +61,32 @@ function sse(req, res) {
     write: (event, data) => res.write(`event: ${event}\ndata: ${JSON.stringify(data)}\n\n`),
     onClose: (fn) => cleanups.push(fn),
   };
+}
+
+// The bench clones and builds whatever repo it is given, and a build runs that
+// repo's code. So only this machine's own page and local tools may drive it:
+// no CORS, no other origins or sites, a loopback Host (blocks DNS rebinding),
+// and JSON bodies only (a cross-site form can't send that without a preflight).
+const LOOPBACK = new Set(['127.0.0.1', 'localhost', '[::1]']);
+const hostOk = (host) => {
+  try {
+    const url = new URL(`http://${host}`);
+    return LOOPBACK.has(url.hostname) && Number(url.port || 80) === port;
+  } catch {
+    return false;
+  }
+};
+function refusal(req) {
+  if (!hostOk(req.headers.host || '')) return 'host is not this machine';
+  const origin = req.headers.origin;
+  if (origin !== undefined && !(origin.startsWith('http://') && hostOk(origin.slice(7))))
+    return 'requests from other sites are refused';
+  const site = req.headers['sec-fetch-site'];
+  if (site && site !== 'same-origin' && site !== 'none')
+    return 'requests from other sites are refused';
+  if (req.method !== 'GET' && !/^application\/json\b/u.test(req.headers['content-type'] || ''))
+    return 'send JSON with content-type: application/json';
+  return null;
 }
 
 const routes = [
@@ -97,14 +123,8 @@ const routes = [
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://local');
   try {
-    if (req.method === 'OPTIONS') {
-      res.writeHead(204, {
-        'access-control-allow-origin': '*',
-        'access-control-allow-headers': 'content-type',
-        'access-control-allow-methods': 'GET,POST',
-      });
-      return res.end();
-    }
+    const refused = refusal(req);
+    if (refused) return send(res, 403, { error: refused });
     if (url.pathname === '/api/events') {
       const stream = sse(req, res);
       stream.write('apps', bench.list());

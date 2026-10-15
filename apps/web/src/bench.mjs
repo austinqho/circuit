@@ -2,7 +2,7 @@
 //
 //   const bench = createBench();
 //   const app = await bench.add({ repo: 'alan2207/bulletproof-react' });   // clone, install, build (async)
-//   await bench.status(app.id, { waitSeconds: 600 });                       // until ready or failed
+//   await bench.status(app.id, { waitSeconds: 50 });                        // until ready, failed or 50 s
 //   await bench.act(app.id, { action: 'click', target: 'Get started' });    // drive it
 //   await bench.report(app.id);                                             // what the package said, step by step
 //
@@ -12,12 +12,15 @@ import { execFileSync, spawn } from 'node:child_process';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { BrowserSession, closeBrowser } from './browser.mjs';
 import { findPackageDir, packageBin } from './package.mjs';
 import { buildTarget, parseRepo, serveStatic, waitForHttp } from './target.mjs';
 import { TracerTools, buildReport, readStory } from './tracer.mjs';
 
-const here = path.dirname(new URL(import.meta.url).pathname);
+const here = path.dirname(fileURLToPath(import.meta.url));
+// One wait stays under MCP clients' 60 s request timeout; callers poll while building.
+export const MAX_WAIT_SECONDS = 50;
 
 export function createBench({
   workRoot = process.env.CIRCUIT_WORK || path.join(here, '..', '.work'),
@@ -292,7 +295,7 @@ export function createBench({
 
     async status(id, { waitSeconds = 0 } = {}) {
       const app = get(id);
-      const deadline = Date.now() + Math.min(waitSeconds, 900) * 1000;
+      const deadline = Date.now() + Math.min(waitSeconds, MAX_WAIT_SECONDS) * 1000;
       while (['queued', 'building'].includes(app.status) && Date.now() < deadline)
         await new Promise((r) => setTimeout(r, 1000));
       if (app.status === 'ready') await start(app);

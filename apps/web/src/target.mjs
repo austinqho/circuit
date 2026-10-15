@@ -248,7 +248,11 @@ const TYPES = {
 export function serveStatic(root, port) {
   const server = http.createServer((req, res) => {
     let file = path.join(root, decodeURIComponent(new URL(req.url, 'http://local').pathname));
-    if (!file.startsWith(root) || !fs.existsSync(file) || fs.statSync(file).isDirectory())
+    if (
+      !file.startsWith(root + path.sep) ||
+      !fs.existsSync(file) ||
+      fs.statSync(file).isDirectory()
+    )
       file = path.join(root, 'index.html');
     res.writeHead(200, {
       'content-type': TYPES[path.extname(file)] || 'application/octet-stream',

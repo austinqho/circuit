@@ -2,13 +2,13 @@
 // points (from its package.json "bin" map, so no internal path is assumed).
 //
 // Order: PRODUCTTRACE_DIR, then normal resolution by name (a workspace
-// dependency), then the nearest ancestor directory whose package.json is named
-// producttrace (the repository layout before the package moved into packages/).
+// dependency), then packages/producttrace in an ancestor directory.
 import fs from 'node:fs';
 import path from 'node:path';
 import { createRequire } from 'node:module';
+import { fileURLToPath } from 'node:url';
 
-const here = path.dirname(new URL(import.meta.url).pathname);
+const here = path.dirname(fileURLToPath(import.meta.url));
 
 function isProducttrace(dir) {
   try {
@@ -35,7 +35,6 @@ export function findPackageDir({ env = process.env, from = here } = {}) {
     if (isProducttrace(dir)) return fs.realpathSync(dir);
   } catch {}
   for (let dir = from; dir !== path.dirname(dir); dir = path.dirname(dir)) {
-    if (isProducttrace(dir)) return fs.realpathSync(dir);
     const nested = path.join(dir, 'packages', 'producttrace');
     if (isProducttrace(nested)) return fs.realpathSync(nested);
   }

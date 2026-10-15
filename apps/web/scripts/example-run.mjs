@@ -6,10 +6,11 @@
 //   node apps/web/scripts/example-run.mjs [--out report.json]
 import fs from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js';
 
-const here = path.dirname(new URL(import.meta.url).pathname);
+const here = path.dirname(fileURLToPath(import.meta.url));
 const out = process.argv.includes('--out') ? process.argv[process.argv.indexOf('--out') + 1] : null;
 const client = new Client({ name: 'example-run', version: '0.1.0' });
 await client.connect(
@@ -28,7 +29,9 @@ const call = async (name, args) => {
 
 const { id } = await call('circuit_add_app', { repo: 'alan2207/bulletproof-react' });
 console.error(`app ${id}: building (first build takes several minutes)…`);
-const status = await call('circuit_app_status', { app: id, wait_seconds: 900 });
+let status = await call('circuit_app_status', { app: id, wait_seconds: 50 });
+while (['queued', 'building'].includes(status.status))
+  status = await call('circuit_app_status', { app: id, wait_seconds: 50 });
 if (status.status !== 'ready') {
   console.error(status.log_tail);
   throw new Error(`app is ${status.status}: ${status.error}`);

@@ -162,6 +162,7 @@ test('buildReport pairs lines with steps by window and scores them', () => {
   assert.equal(report.scorecard.steps_acted, 2);
   assert.equal(report.scorecard.steps_with_a_line_pct, 50);
   assert.equal(report.scorecard.request_recall_pct, 50);
+  assert.deepEqual(report.missed_requests, ['GET /y']);
   assert.equal(report.scorecard.lines, 1); // the line before any step is another session's
   assert.equal(report.scorecard.lines_naming_the_element_pct, 100);
 });

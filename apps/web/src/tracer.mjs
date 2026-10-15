@@ -78,6 +78,8 @@ const SILENT_ACTIONS = new Set(['goto', 'wait', 'back']);
  * a scorecard to hillclimb on. Pairing uses each step's time window; that is
  * the bench's own bookkeeping, not a claim the package makes.
  */
+const requestKey = (r) => `${r.method} ${r.path}`;
+
 export function buildReport({ steps = [], browserRequests = [], story }) {
   const lines = (story?.lines || []).slice().sort((a, b) => a.at - b.at);
   const windows = steps.map((step, i) => ({
@@ -118,6 +120,15 @@ export function buildReport({ steps = [], browserRequests = [], story }) {
   const browserTotal = rows.reduce((n, row) => n + row.browser_requests.length, 0);
   const packageTotal = rows.reduce((n, row) => n + row.package_requests.length, 0);
   const entityLines = paired.filter((line) => (line.entities || []).length).length;
+  // Recall matches requests by method and path over the whole run, not by step:
+  // the browser and the package stamp a request at slightly different moments.
+  const unmatched = paired.flatMap((line) => line.requests || []).map(requestKey);
+  const missed = [];
+  for (const r of browserRequests.filter((r) => r.at >= (windows[0]?.step.started_at ?? 0))) {
+    const i = unmatched.indexOf(requestKey(r));
+    if (i === -1) missed.push(`${r.method} ${r.path}`);
+    else unmatched.splice(i, 1);
+  }
   return {
     source: story?.source ?? null,
     scorecard: {
@@ -130,11 +141,14 @@ export function buildReport({ steps = [], browserRequests = [], story }) {
       lines_naming_the_element_pct: pct(labeled, paired.length),
       lines_naming_a_handler_pct: pct(handled, paired.length),
       lines_with_entity_ids_pct: pct(entityLines, paired.length),
-      request_recall_pct: pct(Math.min(packageTotal, browserTotal), browserTotal),
+      request_recall_pct: pct(browserTotal - missed.length, browserTotal),
       browser_requests: browserTotal,
       package_requests: packageTotal,
     },
     steps: rows,
+    // What to fix next: requests the package never reported, lines without a handler.
+    missed_requests: missed,
+    lines_without_a_handler: paired.filter((line) => !line.handler?.name).map((line) => line.text),
     unpaired_lines: unpaired.map((line) => ({ at: line.at, text: line.text })),
   };
 }
