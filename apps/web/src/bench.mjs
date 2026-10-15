@@ -152,10 +152,11 @@ export function createBench({
   }
 
   async function runBuild(app, { rebuild }) {
-    await stop(app.id);
+    // Status flips before the first await so callers see "building" at once.
     app.status = 'building';
     app.error = null;
     app.build = (app.build ?? 0) + 1;
+    await stop(app.id);
     emit(app);
     try {
       await buildTarget(app, { packageDir, rebuild, log: () => emit(app) });
