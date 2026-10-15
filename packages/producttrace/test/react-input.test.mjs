@@ -20,7 +20,11 @@ async function file(directory, relative, content = source) {
   await writeFile(path.join(directory, relative), content);
 }
 function run(command, args, cwd) {
-  const result = spawnSync(command, args, { cwd, encoding: 'utf8', timeout: 60000 });
+  // When the suite runs under `npm test` in the workspace, npm exports
+  // npm_config_local_prefix=<repo root>. A child npm would then treat the temp
+  // consumer as part of this workspace (npm 10 crashes on it), so drop it.
+  const env = Object.fromEntries(Object.entries(process.env).filter(([key]) => !/^npm_config_(local_prefix|workspaces?|include_workspace_root)$/i.test(key)));
+  const result = spawnSync(command, args, { cwd, env, encoding: 'utf8', timeout: 60000 });
   assert.equal(result.status, 0, `${command} failed: ${result.stderr || result.stdout || result.error}`);
   return result.stdout;
 }
