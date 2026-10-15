@@ -49,7 +49,7 @@ Targets for `circuit_act` are visible text (`"Get started"`), `{ role, name }`, 
 2. Click through a real flow with `circuit_act`.
 3. `circuit_report`: read where the package said nothing, named no element, missed a request or got an ID wrong.
 4. Change the package, `circuit_rebuild`, rerun the same steps, compare scorecards.
-5. To hillclimb the wording too, read `report.narration` (each part's title with its evidence lines and a rubric) and send your 0–2 scores per criterion with `circuit_score_narration`. They become `reads_like_a_person_pct` in that build's scorecard and history.
+5. To hillclimb the wording too, read `report.narration` (each part's title with its evidence lines and a rubric in GUM's observation voice) and send your 0–2 scores per criterion with `circuit_score_narration`. They become `reads_like_a_person_pct` in that build's scorecard and history.
 
 `node apps/web/scripts/example-run.mjs` does steps 1 to 3 on bulletproof-react over MCP, the same way Claude does.
 

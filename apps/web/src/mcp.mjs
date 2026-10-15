@@ -199,7 +199,7 @@ const TOOLS = [
   {
     name: 'circuit_score_narration',
     description:
-      "Judge whether the narration reads like a person annotating the user's actions. Take report.narration (each segment's title and its evidence lines) and score every title 0-2 on each rubric criterion (high_level, grounded, specific, joined), using only the evidence. The scores become reads_like_a_person_pct in this build's scorecard and history, so narration can be hillclimbed like the other numbers.",
+      "Judge whether the narration reads like a person annotating the user's actions. Take report.narration (each segment's title and its evidence lines) and score every title 0-2 on each rubric criterion (voice, high_level, grounded, specific, joined), using only the evidence. The scores become reads_like_a_person_pct in this build's scorecard and history, so narration can be hillclimbed like the other numbers.",
     inputSchema: {
       type: 'object',
       required: ['app', 'scores'],
@@ -210,8 +210,9 @@ const TOOLS = [
           description: 'One per segment, in report.narration order.',
           items: {
             type: 'object',
-            required: ['high_level', 'grounded', 'specific', 'joined'],
+            required: ['voice', 'high_level', 'grounded', 'specific', 'joined'],
             properties: {
+              voice: { type: 'integer', minimum: 0, maximum: 2 },
               high_level: { type: 'integer', minimum: 0, maximum: 2 },
               grounded: { type: 'integer', minimum: 0, maximum: 2 },
               specific: { type: 'integer', minimum: 0, maximum: 2 },

@@ -195,8 +195,8 @@ test('segments group by page and submit, and the feed overrides them', () => {
 
 test('narration score folds rubric scores and rejects bad input', () => {
   const segments = [{}, {}];
-  const full = { high_level: 2, grounded: 2, specific: 2, joined: 2 };
-  assert.equal(narrationScore(segments, [full, { ...full, high_level: 0, specific: 0 }]), 75);
+  const full = { voice: 2, high_level: 2, grounded: 2, specific: 2, joined: 2 };
+  assert.equal(narrationScore(segments, [full, { ...full, high_level: 0, specific: 0 }]), 80);
   assert.throws(() => narrationScore(segments, [full]), /one score per segment/u);
   assert.throws(() => narrationScore(segments, [full, { ...full, joined: 3 }]), /0, 1 or 2/u);
 });
@@ -210,6 +210,6 @@ test('a title citing what its evidence lacks scores zero', () => {
     { id: 'a', text: 'Submitted the form → POST /auth/register (200)' },
   ]);
   assert.deepEqual(segments[0].ungrounded, ['ada@example.test']);
-  const full = { high_level: 2, grounded: 2, specific: 2, joined: 2 };
+  const full = { voice: 2, high_level: 2, grounded: 2, specific: 2, joined: 2 };
   assert.equal(narrationScore(segments, [full]), 0);
 });

@@ -82,45 +82,49 @@ const SILENT_ACTIONS = new Set(['goto', 'wait', 'back']);
 const requestKey = (r) => `${r.method} ${r.path}`;
 
 /**
- * How Claude judges the narration (segment titles), aligned with the narration
- * spec (circuit-narration/narration-spec.md): its target sentences are the bar,
- * its verb table the vocabulary. Each title is scored 0-2 per criterion with the
- * segment's cited lines as the only evidence.
+ * How Claude judges the narration (segment titles), aligned with §7 of the
+ * narration spec (circuit-narration/narration-spec.md): GUM's observation voice,
+ * its target sentences as the bar, its verb table as the vocabulary. Each title is
+ * scored 0-2 per criterion with the segment's cited lines as the only evidence.
  */
 export const NARRATION_RUBRIC = {
   instructions:
-    "Read each segment title as a person annotating what the user did, and score it against its evidence only. 0 = no, 1 = partly, 2 = yes. A title that cites an email, ID or quoted title its evidence lacks scores 0 on everything (the bench enforces this; see each segment's ungrounded list). Call circuit_score_narration with one score object per segment, in order.",
+    "Read each segment title as an observation of what the user is doing, and score it against its evidence only. 0 = no, 1 = partly, 2 = yes. A title that cites an email, ID or quoted title its evidence lacks scores 0 on everything (the bench enforces this; see each segment's ungrounded list). Call circuit_score_narration with one score object per segment, in order.",
+  voice:
+    'On/In <page name>, <subject> is <verb-ing> <object> <qualifiers>. Third person, present progressive, place first, named things quoted. The subject is the person\'s name when the evidence has it, else "the user".',
   bar: [
-    'Registered as ada@example.test for the team "Analytical Engines" and landed on the dashboard.',
-    'Went to Discussions and started one called "Notes on the engine".',
-    'Opened it and left the first comment.',
+    'On the Register page, Ada Lovelace is signing up as ada@example.test, creating the team "Analytical Engines", and lands on the dashboard.',
+    'In Discussions, the user is starting a new discussion, "Notes on the engine".',
+    'In "Notes on the engine", the user is opening the discussion they just created and posting its first comment.',
   ],
   verbs: [
-    'registered / signed up',
-    'logged in',
-    'logged out',
-    'created / started',
-    'edited',
-    'deleted',
-    'opened',
-    'browsed',
-    'scrolled through',
-    'searched',
-    'filtered / sorted',
-    'paged',
-    'went to',
-    'abandoned / left without',
-    'tried … but',
+    'signing up',
+    'logging in',
+    'logging out',
+    'creating / starting',
+    'editing',
+    'deleting',
+    'opening',
+    'browsing',
+    'scrolling through',
+    'searching',
+    'filtering / sorting',
+    'paging through',
+    'going to',
+    'drafting … but leaves without',
+    'trying … but',
   ],
   criteria: {
+    voice:
+      'Reads as a GUM observation: the place first ("On the Register page", "In Discussions"), then a subject and a present-progressive verb ("the user is starting …"). A bare past-tense fragment ("Created a discussion") scores 0.',
     high_level:
-      'Names the goal with a verb from the vocabulary, the way the person would say it ("Registered as …", "Started a discussion called …"), not the UI operation ("Submitted the form").',
+      'Names the goal with a verb from the vocabulary, the way the person would say it (signing up, starting a discussion), not the UI operation ("Submitted the form").',
     grounded:
       'Every claim is in the evidence: requests, IDs, values, labels, pages. Nothing inferred about why.',
     specific:
-      'Carries the qualifiers the evidence has: who (email or name from a body), what (the entity title or type and ID), where (the page name from the link that led there), and the outcome.',
+      'Carries the qualifiers the evidence has: who (email or name from a body), what (the entity title, or type and ID), where (the page name from the link that led there), and the outcome.',
     joined:
-      'One goal per title: lines joined by a shared form, entity or navigation lead-in ("Went to Discussions and started one"), nothing unrelated merged in, and no navigation left alone when the next part names its destination.',
+      'One goal per title: lines joined by a shared form, entity or navigation lead-in, nothing unrelated merged in, and no navigation left alone when the next part names its destination.',
   },
 };
 
