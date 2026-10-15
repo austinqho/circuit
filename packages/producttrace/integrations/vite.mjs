@@ -326,7 +326,7 @@ export function producttrace(options = {}) {
 }
 
 function ensureHead(html) {
-  if (/<head[\s>]/iu.test(html)) return html;
+  if (/<head[\s>]/iu.test(html.replace(/<!--[\s\S]*?-->/gu, ''))) return html;
   if (/<html[\s>]/iu.test(html)) return html.replace(/<html\b[^>]*>/iu, tag => `${tag}<head></head>`);
   if (/<!doctype[^>]*>/iu.test(html)) return html.replace(/<!doctype[^>]*>/iu, tag => `${tag}<head></head>`);
   return `<head></head>${html}`;

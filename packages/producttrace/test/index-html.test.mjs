@@ -31,6 +31,7 @@ function inlineScripts(html) {
 for (const [name, html] of [
   ['with <head>', '<!doctype html><html><head><title>t</title></head><body><script type="module" src="/main.js"></script></body></html>'],
   ['without <head>', '<!doctype html><html><body><script type="module" src="/main.js"></script></body></html>'],
+  ['with <head> only inside a comment', '<!doctype html><html><body><!-- put <head> tags here --><script type="module" src="/main.js"></script></body></html>'],
   ['without <html> or <head>', '<!doctype html><body><script type="module" src="/main.js"></script></body>'],
 ]) {
   test(`built index.html ${name} keeps the inline runtime intact and first`, async () => {
@@ -38,6 +39,7 @@ for (const [name, html] of [
     const scripts = inlineScripts(out);
     assert.equal(scripts.length, 1, out.slice(0, 400));
     assert.match(scripts[0], /installProductTraceRuntimeAttribution/u);
+    assert.match(out.replace(/<!--[\s\S]*?-->/gu, ''), /installProductTraceRuntimeAttribution/u, 'the runtime is not inside an HTML comment');
     assert.doesNotThrow(() => new Function(scripts[0]));
     assert.equal((out.match(/src="\/main\.js"|src="\/assets\/[^"]+\.js"/g) || []).length, 1, 'the app entry appears once');
     assert.ok(out.indexOf('installProductTraceRuntimeAttribution') < out.search(/<script[^>]*type="module"/u), 'runtime runs before the app');
