@@ -1,6 +1,6 @@
 # 2. Identifiers attach; timestamps only order
 
-Date: 2026-07 (NAP era), restated 2026-09. Status: accepted.
+Status: accepted.
 
 Joining two events because they happened close together produces confident wrong answers: background polling hits the same URL, one click sends several requests, a timer fires during another action.
 

@@ -11,19 +11,19 @@ circuit is an npm workspace. The publishable package is `packages/producttrace`;
 ## Rules that CI enforces
 
 - **Packages are deep modules.** A package's public surface is the files at its root; everything in a subfolder is private. Outside code imports `producttrace/vite`, never `../packages/producttrace/integrations/vite.mjs`. `npm run lint:boundaries` (dependency-cruiser, config in `.dependency-cruiser.cjs`) fails on deep imports and on import cycles. To expose something new, add a small root entry file and an `exports` entry in the package's `package.json`; don't build a barrel that re-exports a whole folder.
-- **New code is formatted** by prettier (the pre-commit hook does it). The older engine folders are exempt; see `.prettierignore`.
+- **New code is formatted** by prettier (the pre-commit hook does it). The dense engine folders are exempt; see `.prettierignore`.
 
 ## How the engine must behave
 
-These come from months of graded runs; the reasons are in `docs/adr/`.
+The reasons are in `docs/adr/`.
 
 - Read-only to the app's source: at most one or two lines in one config file.
 - Identifiers attach; timestamps only order. Never join two events because they happened close together.
 - Abstain over guess. Say what was reached, where it stopped, and because of what. Never claim "mapped".
 - No model in the runtime path, and no app-specific rules in the package.
-- Do not build another crawler.
+- Don't build a crawler or path enumerator.
 
-The engine is frozen until v1 ships: don't add new correctness claims unless a v1 step's exit test fails because of the engine.
+Until v1 ships, keep engine changes to what a v1 feature needs.
 
 ## Pull requests
 

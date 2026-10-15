@@ -146,7 +146,7 @@ test('packed Node analysis API and TypeScript declarations work in an isolated c
   const consumer = path.join(directory, 'consumer');
   await mkdir(consumer);
   await file(consumer, 'package.json', '{"name":"react-analysis-consumer","private":true,"type":"module"}');
-  run('npm', ['install', '--offline', '--ignore-scripts', '--no-audit', '--no-fund', path.join(directory, packed.filename)], consumer);
+  run('npm', ['install', '--prefer-offline', '--ignore-scripts', '--no-audit', '--no-fund', path.join(directory, packed.filename)], consumer);
   await file(consumer, 'inspect.mjs', `import { analyzeReact, createReactRuntimeIntegration } from 'producttrace/analysis';\nconst result = analyzeReact({files:{'App.tsx':${JSON.stringify(source)}}});\nconst integration = createReactRuntimeIntegration(result);\nconsole.log(JSON.stringify({schema:result.schema,controls:result.controls.length,observed:result.claims.runtime_observed,bindings:integration.bindings.actions.length}));`);
   const result = JSON.parse(run(process.execPath, ['inspect.mjs'], consumer));
   assert.equal(result.schema, 'producttrace.react-map.v1');

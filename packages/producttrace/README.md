@@ -82,4 +82,3 @@ The package's public surface is the set of files at its root. Everything in a su
 
 - [docs/reference.md](docs/reference.md): the full option and data reference (runtime modes, bodies capture, redaction, backend details).
 - [analysis/README.md](analysis/README.md): the source analysis contract.
-- Project history (design gates, graded runs, handoffs) lives in the archived repo [austinqho/tracer](https://github.com/austinqho/tracer).
