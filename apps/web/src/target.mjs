@@ -203,13 +203,17 @@ export default async env => {
 `;
 }
 
+// A package.json above the clone (say ~/package.json) can pin a package manager
+// through corepack, which then refuses to run the app's own; the clone decides.
+const TOOL_ENV = { COREPACK_ENABLE_STRICT: '0' };
+
 function run(command, args, { cwd, env, logFile, timeoutMs = 20 * 60 * 1000 }) {
   return new Promise((resolve, reject) => {
     fs.appendFileSync(logFile, `\n$ ${command} ${args.join(' ')}   (in ${cwd})\n`);
     const out = fs.openSync(logFile, 'a');
     const child = spawn(command, args, {
       cwd,
-      env: { ...process.env, ...env },
+      env: { ...process.env, ...TOOL_ENV, ...env },
       stdio: ['ignore', out, out],
     });
     const timer = setTimeout(() => child.kill('SIGKILL'), timeoutMs);
@@ -252,7 +256,7 @@ export async function serveDev({ viteBin, wrapper, appRoot, env }, port, logFile
     [viteBin, '--config', wrapper, '--host', '127.0.0.1', '--port', String(port), '--strictPort'],
     {
       cwd: appRoot,
-      env: { ...process.env, NODE_ENV: 'development', ...env },
+      env: { ...process.env, ...TOOL_ENV, NODE_ENV: 'development', ...env },
       stdio: ['ignore', out, out],
     },
   );
