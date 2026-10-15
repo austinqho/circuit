@@ -8,7 +8,7 @@
 //
 // Everything else (where the package lives, ports, processes, the collector,
 // the MCP client, the wrapper config) stays inside.
-import { spawn } from 'node:child_process';
+import { execFileSync, spawn } from 'node:child_process';
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -65,6 +65,7 @@ export function createBench({
     built_at: app.builtAt ?? null,
     candidates: app.candidates ?? [],
     package: packageDir,
+    package_commit: app.packageCommit ?? null,
   });
 
   const get = (id) => {
@@ -72,6 +73,20 @@ export function createBench({
     if (!app)
       throw Object.assign(new Error(`no app "${id}"; call list or add first`), { status: 404 });
     return app;
+  };
+  // Which package went into a build: its git commit, marked dirty when it has local edits.
+  const packageCommit = () => {
+    try {
+      const sha = execFileSync('git', ['-C', packageDir, 'rev-parse', '--short', 'HEAD'], {
+        encoding: 'utf8',
+      }).trim();
+      const dirty = execFileSync('git', ['-C', packageDir, 'status', '--porcelain', '--', '.'], {
+        encoding: 'utf8',
+      }).trim();
+      return dirty ? `${sha}+edits` : sha;
+    } catch {
+      return null;
+    }
   };
   const storeDir = (app) => path.join(app.work, 'store', `build-${app.build}`);
   const logTail = (app, lines = 40) => {
@@ -157,6 +172,7 @@ export function createBench({
     app.error = null;
     app.build = (app.build ?? 0) + 1;
     await stop(app.id);
+    app.packageCommit = packageCommit();
     emit(app);
     try {
       await buildTarget(app, { packageDir, rebuild, log: () => emit(app) });
@@ -169,6 +185,35 @@ export function createBench({
       app.error = String(error.message).slice(0, 1000);
       emit(app);
     }
+  }
+
+  /**
+   * Keeps one scorecard per build for each distinct list of steps, so the same
+   * session run on build after build lines up side by side (oldest first).
+   */
+  function recordScore(app, steps, scorecard) {
+    if (!steps.length) return [];
+    const signature = crypto
+      .createHash('sha1')
+      .update(JSON.stringify(steps.map((s) => [s.action, s.target, s.value])))
+      .digest('hex')
+      .slice(0, 12);
+    const file = path.join(app.work, 'scores.json');
+    let rows = [];
+    try {
+      rows = JSON.parse(fs.readFileSync(file, 'utf8'));
+    } catch {}
+    rows = rows.filter((row) => !(row.signature === signature && row.build === app.build));
+    rows.push({
+      signature,
+      build: app.build,
+      built_at: app.builtAt,
+      package: app.packageCommit ?? null,
+      at: new Date().toISOString(),
+      scorecard,
+    });
+    fs.writeFileSync(file, JSON.stringify(rows, null, 2));
+    return rows.filter((row) => row.signature === signature).sort((a, b) => a.build - b.build);
   }
 
   /** Reads the story and remembers every line by id (newest version wins). */
@@ -306,13 +351,16 @@ export function createBench({
       const latest = await remember(app, running);
       // Lines seen at earlier steps stay in the report even when a short feed no longer returns them.
       const story = { ...latest, lines: [...running.seenLines.values()] };
+      const report = buildReport({
+        steps: running.browser.steps,
+        browserRequests: running.browser.requests,
+        story,
+      });
+      const history = recordScore(app, running.browser.steps, report.scorecard);
       return {
         app: summary(app),
-        ...buildReport({
-          steps: running.browser.steps,
-          browserRequests: running.browser.requests,
-          story,
-        }),
+        ...report,
+        history,
         page_errors: running.browser.errors.slice(-10),
       };
     },

@@ -587,6 +587,18 @@
             `<div><b>${v ?? '–'}${typeof v === 'number' && label.includes('%') ? '%' : ''}</b><span>${label.replace(' %', '')}</span></div>`;
           feed.innerHTML = `<div class="score">${cell(sc.steps_acted, 'steps Claude took')}${cell(sc.steps_with_a_line_pct, 'steps with a sentence %')}${cell(sc.lines_naming_the_element_pct, 'sentences naming the element %')}${cell(sc.lines_naming_a_handler_pct, 'naming a handler %')}${cell(sc.lines_with_entity_ids_pct, 'with entity ids %')}${cell(sc.request_recall_pct, 'request recall %')}</div>
       ${
+        r.history && r.history.length > 1
+          ? `<table><tr><th>Same steps, by build</th>${r.history.map((h) => `<th>build ${h.build}${h.package ? `<br>${esc(h.package)}` : ''}</th>`).join('')}</tr>${Object.keys(
+              sc,
+            )
+              .map(
+                (k) =>
+                  `<tr><td>${esc(k.replace(/_/g, ' '))}</td>${r.history.map((h) => `<td>${esc(h.scorecard[k] ?? '–')}</td>`).join('')}</tr>`,
+              )
+              .join('')}</table>`
+          : ''
+      }
+      ${
         r.steps.length
           ? `<table><tr><th>What was done</th><th>What the package said</th></tr>${r.steps.map((s) => `<tr><td>${esc(s.did)}${s.ok ? '' : `<div class="fail">${esc(s.error)}</div>`}${s.browser_requests.length ? `<div class="chips">${s.browser_requests.map((x) => `<span class="chip">${esc(x)}</span>`).join('')}</div>` : ''}</td><td>${s.package_said.map(esc).join('<br>') || '<span class="hint">nothing</span>'}</td></tr>`).join('')}</table>`
           : '<div class="empty">No steps from Claude on this build yet. Claude drives the app with the circuit_act tool; its steps and the package\'s sentences line up here.</div>'

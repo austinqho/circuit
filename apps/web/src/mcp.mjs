@@ -184,7 +184,7 @@ const TOOLS = [
   {
     name: 'circuit_report',
     description:
-      'The judge view: every step you took next to the sentences the package wrote for it and the requests the browser really sent vs the ones the package recorded, plus a scorecard (steps with a line, lines naming the element, naming a handler, carrying entity ids, request recall). Use it to decide what to improve in the package, then circuit_rebuild and run the same steps again.',
+      'The judge view: every step you took next to the sentences the package wrote for it and the requests the browser really sent vs the ones the package recorded, plus a scorecard (steps with a line, lines naming the element, naming a handler, carrying entity ids, request recall), and `history`: the scorecard of every build that ran exactly these steps, oldest first. Use it to decide what to improve in the package, then circuit_rebuild and run the same steps again.',
     inputSchema: { type: 'object', required: ['app'], properties: { app: APP } },
     run: ({ app }) => api('GET', `/api/apps/${app}/report`),
   },

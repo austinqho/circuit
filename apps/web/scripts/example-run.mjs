@@ -67,6 +67,13 @@ for (const step of steps) {
 }
 
 const report = await call('circuit_report', { app: id });
-console.log(JSON.stringify(report.scorecard, null, 2));
+// The same steps on every build so far, side by side: the hillclimb signal.
+const keys = Object.keys(report.scorecard);
+const cols = report.history.map(
+  (row) => `build ${row.build}${row.package ? ` (${row.package})` : ''}`,
+);
+console.log(['', ...cols].join('\t'));
+for (const key of keys)
+  console.log([key, ...report.history.map((row) => row.scorecard[key] ?? '-')].join('\t'));
 if (out) fs.writeFileSync(out, JSON.stringify(report, null, 2));
 await client.close();

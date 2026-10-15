@@ -346,9 +346,12 @@ export async function buildTarget(app, { packageDir, log, rebuild = false }) {
   fs.rmSync(link, { force: true, recursive: true });
   fs.symlinkSync(packageDir, link);
   const outDir = path.join(work, 'dist');
+  // The bench builds in production mode (the app as users get it), where the
+  // package turns control labels and bodies off by default; a test bench wants both.
   const pluginOptions = {
     requestBridge: false,
     bodies: 'always',
+    labels: 'always',
     collector: { url: `http://127.0.0.1:${app.ports.collector}`, force: true },
     ...(app.pluginOptions || {}),
   };

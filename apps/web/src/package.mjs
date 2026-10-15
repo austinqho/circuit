@@ -28,9 +28,10 @@ export function findPackageDir({ env = process.env, from = here } = {}) {
     return fs.realpathSync(dir);
   }
   try {
-    const entry = createRequire(path.join(from, 'noop.js')).resolve('producttrace');
-    let dir = path.dirname(entry);
-    while (!isProducttrace(dir) && dir !== path.dirname(dir)) dir = path.dirname(dir);
+    // package.json is an exported subpath; "." has only an import condition.
+    const dir = path.dirname(
+      createRequire(path.join(from, 'noop.js')).resolve('producttrace/package.json'),
+    );
     if (isProducttrace(dir)) return fs.realpathSync(dir);
   } catch {}
   for (let dir = from; dir !== path.dirname(dir); dir = path.dirname(dir)) {
