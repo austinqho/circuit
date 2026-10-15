@@ -1,4 +1,0 @@
-final7 members 0 {} sentence ends with pointer 0
-g5c members 142 {"no_request":129,"stopped":13} sentence ends with pointer 142
-g5partB members 68 {"no_request":49,"stopped":19} sentence ends with pointer 68
-g6 members 318 {"no_request":318} sentence ends with pointer 318

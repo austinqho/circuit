@@ -133,7 +133,7 @@ test('workspace Button forwardRef redirects separate source placements to their 
   assert.notEqual(controls[0].id, controls[1].id);
 });
 
-test('packed Node analysis API, CLI, and TypeScript declarations work in an isolated consumer', async t => {
+test('packed Node analysis API and TypeScript declarations work in an isolated consumer', async t => {
   const directory = await temporary(t);
   const packed = JSON.parse(run('npm', ['pack', '--ignore-scripts', '--json', '--pack-destination', directory], root))[0];
   assert.ok(packed.files.some(entry => entry.path === 'analysis/index.mjs'));
@@ -153,19 +153,6 @@ test('packed Node analysis API, CLI, and TypeScript declarations work in an isol
   assert.ok(result.controls > 0);
   assert.equal(result.observed, false);
   assert.equal(result.bindings, 1);
-  const cli = path.join(consumer, 'node_modules/.bin/producttrace-analyze');
-  assert.match(run(cli, ['--help'], consumer), /source-only|source.only|source relationships/i);
-  await file(consumer, 'app/App.tsx');
-  const cliResult = JSON.parse(run(cli, ['app'], consumer));
-  assert.ok(cliResult.controls.length > 0);
-  const strictResult = spawnSync(cli, ['app', '--strict'], { cwd: consumer, encoding: 'utf8', timeout: 10000 });
-  assert.equal(strictResult.status, 2, 'native submission uncertainty must survive strict CLI mode');
-  assert.ok(JSON.parse(strictResult.stdout).diagnostics.length > 0);
-  run(cli, ['app', '--out', 'map.json'], consumer);
-  const saved = await readFile(path.join(consumer, 'map.json'), 'utf8');
-  const overwrite = spawnSync(cli, ['app', '--out', 'map.json'], { cwd: consumer, encoding: 'utf8', timeout: 10000 });
-  assert.equal(overwrite.status, 1);
-  assert.equal(await readFile(path.join(consumer, 'map.json'), 'utf8'), saved, 'existing map must not be overwritten');
   await file(consumer, 'check.ts', `import { start } from 'producttrace';\nimport { analyzeReact, analyzeBackendRoutes, createReactRuntimeIntegration, connectRequestToHandler, matchRequestToRoute, type ReactAnalysis, type ReactMap, type ReactRuntimeIntegration, type BackendRouteAnalysis, type HttpRequestObservation } from 'producttrace/analysis';\nconst map: ReactAnalysis = analyzeReact({files:{'App.tsx':''}});\nconst core: ReactMap = map;\nconst integration: ReactRuntimeIntegration = createReactRuntimeIntegration(map);\nconst backend: BackendRouteAnalysis = analyzeBackendRoutes({files:{'server.js':"const express = require('express'); const app = express();"}});\nconst observed = {} as HttpRequestObservation;\nconst routeJoin = matchRequestToRoute({method:'GET',url:'/items'}, backend);\nif (routeJoin.match) console.log(routeJoin.match.application_id, routeJoin.match.handler_resolution?.status);\nvoid connectRequestToHandler; void observed;\nstart(integration.bindings, { onRecord: integration.onRecord });\nconst runtime = integration.createApiRuntime({onObservation(record) { if (record.kind === 'react_host') integration.joinHost(record); else if (record.kind === 'react_server') integration.joinServer(record); else if (record.kind === 'react_root') integration.joinRoot(record); else if (record.kind === 'react_element') integration.joinElement(record); }});\nconst factory = runtime.elementTarget('factory', (value: number) => value);\nconst result: number = factory(1);\nconst handle = runtime.rootCall('root', () => runtime.rootArgument('root', 0, {render() {}, unmount() {}}));\nruntime.rootMethod('root', handle, 'render')(null);\nconsole.log(core.fingerprint, map.input.complete, integration.map_fingerprint, result);`);
   run(process.execPath, [path.join(consumer, 'node_modules/typescript/bin/tsc'), '--noEmit', '--strict', '--module', 'NodeNext', '--moduleResolution', 'NodeNext', '--target', 'ES2022', 'check.ts'], consumer);
 });

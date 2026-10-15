@@ -1,5 +1,0 @@
-8bc8ae75a6e6014d93a603aa7115cd49d7b8108c G6 seed: update handler rejects names containing whitespace with 422 (seeded bug)
-719f17689ebe6ef7b9c543b84ced0ed082c2b758 Revert "G6 seed: update handler rejects names containing whitespace with 422 (seeded bug)"
-857ab3609dd79e1f5cc18bf1c1578d8c4b3ee3b6 G6 no-op refactor: rename local data -> payload in handleUpdate
-8e11b8f116564c98ded8ceaacd0eea70f163e873 Revert "G6 no-op refactor: rename local data -> payload in handleUpdate"
-879685d1bf9974b4d90b8cd6d79588136228c2c1 G6 seed (frontend): handleUpdate returns early for names containing whitespace

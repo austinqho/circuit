@@ -24,10 +24,6 @@
       "types": "./analysis/index.d.ts",
       "import": "./analysis/index.mjs"
     },
-    "./authoring": {
-      "types": "./authoring/index.d.mts",
-      "import": "./authoring/index.mjs"
-    },
     "./backend": {
       "types": "./backend/index.d.ts",
       "import": "./backend/index.js"
@@ -55,12 +51,10 @@
   },
   "bin": {
     "producttrace-collector": "./collector/cli.mjs",
-    "producttrace-analyze": "./analysis/cli.mjs",
     "producttrace-mcp": "./mcp/server.mjs"
   },
   "files": [
     "analysis",
-    "authoring",
     "backend",
     "collector",
     "dist",
@@ -77,8 +71,6 @@
     "build": "node scripts/build.mjs",
     "prepack": "npm run build",
     "test": "node --test test/*.test.mjs",
-    "test:library-programs": "node evaluation/shared-rules/run.mjs offline",
-    "test:library-programs:http": "node test/acceptance/shared-library-http.mjs",
     "test:browser": "node test/browser/server.mjs",
     "demo:install": "node test/browser/install-real-app.mjs",
     "demo:install:librechat-bridge": "node test/browser/install-librechat-request-bridge.mjs",

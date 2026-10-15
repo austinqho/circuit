@@ -67,7 +67,11 @@ test('different context objects never borrow a Provider value and exact Consumer
     export function App(){return <A.Provider value="wrong"><Child/></A.Provider>}
     export function Legacy(){return <A.Consumer>{value=><button onClick={()=>use(value)}>A</button>}</A.Consumer>}
   `}, {packages});
-  assert.equal(targetCalls(map, 'use')[0].arguments[0].value, 'b');
+  // Edge order is not part of the contract: find the B consumer's call by value,
+  // and check that A's Provider value never leaks into it.
+  const calls = targetCalls(map, 'use');
+  assert.ok(calls.some(call => call.arguments[0]?.value === 'b'));
+  assert.equal(calls.some(call => call.arguments[0]?.value === 'wrong'), false);
   assert.ok(targetCalls(map, 'use').some(call => call.arguments[0]?.value === 'a'
     && call.arguments[0]?.react_context_id));
   assert.ok(map.react_protocols.some(row => row.member === 'Consumer'

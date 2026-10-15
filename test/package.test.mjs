@@ -9,7 +9,7 @@ test('install allowlist excludes source, build tooling, and developer tests', as
   const packageRoot = resolve(import.meta.dirname, '..');
   const manifest = JSON.parse(await readFile(resolve(packageRoot, 'package.json'), 'utf8'));
   assert.deepEqual(manifest.files, [
-    'analysis', 'authoring', 'backend', 'collector', 'dist', 'integrations', 'mcp', 'index.d.ts', 'index.js', 'LICENSE', 'README.md',
+    'analysis', 'backend', 'collector', 'dist', 'integrations', 'mcp', 'index.d.ts', 'index.js', 'LICENSE', 'README.md',
     'plugin', '.agents',
   ]);
   assert.equal(manifest.files.some((entry) => /^(src|scripts|test)(\/|$)/.test(entry)), false);
@@ -23,15 +23,12 @@ test('install allowlist excludes source, build tooling, and developer tests', as
     manifest.exports['./collector'].types,
     manifest.exports['./analysis'].import,
     manifest.exports['./analysis'].types,
-    manifest.exports['./authoring'].import,
-    manifest.exports['./authoring'].types,
     manifest.exports['./backend'].import,
     manifest.exports['./backend'].types,
     manifest.exports['./vite'].import,
     manifest.exports['./vite'].types,
     manifest.exports['./runtime-attribution'].import,
     manifest.exports['./runtime-attribution'].types,
-    manifest.bin['producttrace-analyze'],
     manifest.bin['producttrace-mcp'],
     manifest.exports['./mcp'].import,
   ];

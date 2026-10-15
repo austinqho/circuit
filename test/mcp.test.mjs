@@ -14,8 +14,8 @@ import { gradeRequestJoin, readFlowActions, readHandlerKey } from './g4-grader.m
 import { BUTTON, KEYED_ROW, PLAIN_ROW, runRootsAndIndexScenario, runStableKeysScenario } from './helpers/stable-keys-scenario.mjs';
 
 const root = path.resolve(import.meta.dirname, '..');
-const final7 = path.join(root, 'docs/evidence/m1-2026-09-22-final7');
-const manifestPath = path.join(root, 'docs/evidence/g4-mcp-2026-09-23/manifest.json');
+const final7 = path.join(root, 'test/fixtures/evidence/m1-final7');
+const manifestPath = path.join(root, 'test/fixtures/evidence/m1-final7/g4-manifest.json');
 const fixture = '/Users/austinho/dev/trace-consolidated/.live-demo/librechat-m1';
 const SEND = 'action:mud8sc1x:9', AGENT_CHAT = 'action:mud8tqrr:34', RENAME = 'action:mud8sw9p:16';
 const REGENERATE = 'action:mud8smva:4', OVERLAP_REGENERATE = 'action:mud8sys4:17';
@@ -606,7 +606,7 @@ test('client aborts (synthetic): an aborted request is aborted_by_client with se
 });
 
 test('rendering (G6 store): every 422 is failed with its status; deferred server work is measured from the server span end', async () => {
-  const dir = path.join(root, 'docs/evidence/g6-anything-llm-2026-09-23/store');
+  const dir = path.join(root, 'test/fixtures/evidence/g6-anything-llm/store');
   const { readJsonl } = await import('../collector/store.mjs');
   const zlib = await import('node:zlib');
   const manifests = new Map(fs.readdirSync(path.join(dir, 'manifests')).map(name => {

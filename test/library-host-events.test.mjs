@@ -1,8 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHostEventBoundary} from '../analysis/library-host-events.mjs';
-import {effectProgram} from '../evaluation/shared-rules/react-effect-program.mjs';
-import {imperativeCallbackProgram,imperativeCallbackLayout} from '../evaluation/shared-rules/react-imperative-program.mjs';
+import {effectProgram} from './fixtures/programs/react-effect-program.mjs';
+import {imperativeCallbackProgram,imperativeCallbackLayout} from './fixtures/programs/react-imperative-program.mjs';
 
 test('host events check callback order, values and cleanup without replaying application effects',()=>{
   const boundary=createHostEventBoundary({program:effectProgram}),owner={};let setup,cleanup,runs=0,cleans=0;
