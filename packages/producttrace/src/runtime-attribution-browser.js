@@ -1181,6 +1181,9 @@
       segment.lastByType[event.type] = { target, pending };
     }
     pending.count += 1; segment.by_kind[event.type] = (segment.by_kind[event.type] || 0) + 1;
+    // Until work runs under it, the latest event is the one to describe: the
+    // element it entered is the one whose handler is about to run.
+    if (!pending.materialized) { pending.source = event; pending.page = pagePath(); }
     extendRange(segment, event, target);
     // One dispatch frame per event (its liveness is the event's), sharing the
     // (kind, control)'s continuation id.

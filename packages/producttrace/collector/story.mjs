@@ -26,6 +26,8 @@ const HOVER = new Set(['mouseover', 'mouseout', 'mouseenter', 'mouseleave']);
 const TEXT_ENTRY = new Set(['input', 'paste', 'cut', 'drop']);
 // Key and change events around text entry say nothing new unless they caused something.
 const KEYS = new Set(['keydown', 'keypress', 'keyup', 'textInput', 'beforeinput', 'change', 'compositionend']);
+// How long a request without a status reads as pending before it reads as never answered.
+export const PENDING_MS = 30_000;
 const FIELD_TAGS = new Set(['input', 'textarea', 'select']);
 
 // Engine ids (hex, uuid, numeric, prefix_…) plus opaque random ids such as
@@ -90,7 +92,7 @@ function verbFor(row) {
   return `${row.event[0].toUpperCase()}${row.event.slice(1)} on`;
 }
 
-function requestFacts(store, request, requestRows, closed) {
+function requestFacts(store, request, requestRows, closed, now) {
   const row = requestRows.get(request.request_occurrence_id) || request;
   const bodies = typeof store.bodiesFor === 'function' ? store.bodiesFor(row) : null;
   const status = Number.isFinite(Number(bodies?.response?.status)) ? Number(bodies.response.status) : (Number.isFinite(Number(row.status)) ? Number(row.status) : null);
@@ -104,8 +106,10 @@ function requestFacts(store, request, requestRows, closed) {
     if (id && type) entities.push({ type, id, from: 'response_body', created: true });
   }
   // No status yet: still in flight while its page is open (when bodies, and so statuses, are recorded).
+  // A page that died without closing (crashed tab, killed browser) never says so: past PENDING_MS, stop waiting.
   const bodiesOn = typeof store.coverageFor === 'function' ? store.coverageFor(pageOf(row))?.bodies === 'on' : false;
-  const state = row.aborted ? 'aborted' : status !== null ? 'done' : !bodiesOn ? 'not_recorded' : closed.has(pageOf(row)) ? 'no_response' : 'pending';
+  const waited = Number.isFinite(row.timestamp) && now - row.timestamp > PENDING_MS;
+  const state = row.aborted ? 'aborted' : status !== null ? 'done' : !bodiesOn ? 'not_recorded' : closed.has(pageOf(row)) || waited ? 'no_response' : 'pending';
   return { method, path, status, state, aborted: Boolean(row.aborted), entities, request_occurrence_id: request.request_occurrence_id };
 }
 
@@ -148,7 +152,7 @@ function handlerOf(chain) {
  * given, oldest first. `lines[].id` is stable across calls (the action id, or
  * `nav:<action id>` for a navigation), so a live reader can append only new ones.
  */
-export function storyOf(store, { session } = {}) {
+export function storyOf(store, { session, now = Date.now() } = {}) {
   // Pages that have closed (capture.summary on pagehide): a request still without a status there never got one.
   const closed = new Set(store.records.filter(row => row?.kind === 'capture.summary').map(row => row.page_id || pageOf(row)));
   const requestRows = new Map(store.records.filter(row => row?.kind === 'network.request' && row.request_occurrence_id).map(row => [row.request_occurrence_id, row]));
@@ -188,7 +192,7 @@ export function storyOf(store, { session } = {}) {
     if (!owned.length && typeof store.contextOnly === 'function' && store.contextOnly(row.action_id)) continue;
     let chain;
     try { chain = chainStops(store, row.action_id); } catch { continue; }
-    const requests = (chain.requests || []).map(request => requestFacts(store, request, requestRows, closed));
+    const requests = (chain.requests || []).map(request => requestFacts(store, request, requestRows, closed, now));
     const effect = requests.length > 0 || owned.length > 0;
     const caused = effect || (chain.outcome?.stage && !['no_request', 'dispatch'].includes(chain.outcome.stage) && chain.stops.some(stop => stop.stop === 'entry_handler'));
     if (!effect && (NOISE.has(row.event) || HOVER.has(row.event) || KEYS.has(row.event))) continue;
@@ -255,7 +259,11 @@ export function createStoryFeed({ dir, sourceRoot = null }) {
       try { await load(fingerprint); } catch (error) { if (error.code === 'STORE_NOT_FOUND') return { schema: STORY_SCHEMA, sessions: [], lines: [] }; throw error; }
     }
     const memo = session ?? '\u0000all';
-    if (!cached.__story.has(memo)) cached.__story.set(memo, storyOf(cached, { session }));
-    return cached.__story.get(memo);
+    // A story with pending requests changes as time passes (pending becomes "no response"), so re-tell it each second.
+    const hit = cached.__story.get(memo);
+    if (hit && (!hit.pending || Date.now() - hit.at < 1000)) return hit.story;
+    const story = storyOf(cached, { session });
+    cached.__story.set(memo, { story, at: Date.now(), pending: story.lines.some(line => line.requests?.some(request => request.state === 'pending')) });
+    return story;
   };
 }

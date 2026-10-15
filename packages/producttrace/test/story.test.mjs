@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createStore } from '../collector/store.mjs';
-import { idsInUrl, storyOf } from '../collector/story.mjs';
+import { idsInUrl, PENDING_MS, storyOf } from '../collector/story.mjs';
 
 const page = 's_1';
 let sequence = 0;
@@ -64,15 +64,18 @@ test('two fields without any key stay two lines; Enter is named; a request with 
     enter('c3', 'fn:search'),
     request('c3', 'GET', 'https://api.example.com/search?q=1', 7),
   ];
-  const { lines } = storyOf(createStore({ records: rows }));
+  const { lines } = storyOf(createStore({ records: rows }), { now: 2_000 });
   assert.deepEqual(lines.map(line => line.text), [
     'Typed in the “First Name” field',
     'Typed in the “Last Name” field',
     'Pressed Enter on the “Search” field → GET /search?q=1 (pending)',
   ]);
   // Once the page has closed, a request that never got a status says so.
-  const closed = storyOf(createStore({ records: [...rows, { kind: 'capture.summary', page_id: page, capture_page_id: page, ...at() }] }));
+  const closed = storyOf(createStore({ records: [...rows, { kind: 'capture.summary', page_id: page, capture_page_id: page, ...at() }] }), { now: 2_000 });
   assert.match(closed.lines[2].text, /GET \/search\?q=1 \(no response recorded\)$/u);
+  // A tab that dies never closes: after PENDING_MS the request stops reading as pending.
+  const later = storyOf(createStore({ records: rows }), { now: 2_000 + PENDING_MS });
+  assert.match(later.lines[2].text, /GET \/search\?q=1 \(no response recorded\)$/u);
 });
 
 test('a navigation the router made inside an action is told on that action; key-by-key typing is one line', () => {
@@ -113,3 +116,4 @@ test('focus moves are never lines; a click that sent nothing is just the click, 
   assert.deepEqual(lines.map(line => line.text), ['Clicked the “Close” button']);
   assert.doesNotMatch(lines[0].detail || '', /instrumented|attributed|DOM mutation/u);
 });
+
