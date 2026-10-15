@@ -252,3 +252,17 @@ test('a rename that only re-sends unchanged fields claims no field; a failed wri
   assert.equal(segment.steps.at(-1).text, 'Submits “Submit”; the server says 500');
   assert.match(segment.title, /trying to rename it, but the server says 500\.$/u);
 });
+
+test('scrolling a list and then leaving by a menu link: the scroll stays on its page, the link is its own goal', () => {
+  const rows = secondVisit();
+  const cut = rows.findIndex(row => row.action_id === 'h1');
+  const records = [
+    ...rows.slice(0, cut),
+    action('m1', 'click', link('Dashboard'), { page: '/app/discussions' }), enter('m1'), navigate('m1', '/app/discussions', '/app'),
+    { kind: 'capture.summary', page_id: page, capture_page_id: page, ...at() },
+  ];
+  const story = storyOf(createStore({ records }));
+  assert.deepEqual(story.segments.map(segment => segment.lines), [['open:s_n'], ['r1'], ['m1']]);
+  assert.equal(story.segments[1].title, 'On the Discussions page, Ada Lovelace is scrolling through the page, about 2 screens.');
+  assert.equal(story.segments[2].title, 'On the Discussions page, Ada Lovelace is going to Dashboard.');
+});

@@ -172,8 +172,12 @@ export function groupLines(lines) {
       && line.navigations?.[0]?.via !== 'popstate' && pathKey(line.navigations?.[0]?.from ?? '') === pathKey(previous.page ?? '\u0000');
     // A form typed in and not sent ends when the person does something outside it (the draft was left).
     const leaves = open.unsent.size > 0 && effectful(line) && !(formOf(line) && open.unsent.has(formOf(line)));
+    // Leaving the page that was being scrolled, for a page about nothing the segment showed (a menu link), is a goal of its own.
+    const leavesBrowsing = open.scrolledOn !== null && !open.forms.size && !open.wrote && CLICK.has(line.event) && !(line.entities || []).length
+      && line.navigations?.length && pathKey(line.navigations.at(-1).to) !== pathKey(open.scrolledOn);
     let joins;
     if (landing) joins = true;
+    else if (leavesBrowsing) joins = false;
     else if (leaves) joins = false;
     else if (open.wrote) joins = sameForm || writesSame || (!effectful(line) && here && !otherForm);
     else joins = !otherForm && (sameForm || sharesId || here);
@@ -398,7 +402,8 @@ export function factsOf(lines, { looksLikeId, names = { titles: new Map(), pages
   // A navigation of its own (back/forward, a redirect) happened where it started from.
   const start = lines[0].kind === 'navigate' ? lines[0].navigations?.[0]?.from ?? lines[0].page : lines[0].page;
   const page = main?.page ?? (facts.verb === 'opened' ? (lines.find(line => line.navigations?.length || line.kind === 'hover')?.page ?? start)
-    : ['browsed', 'scrolled', 'drafting'].includes(facts.verb) ? placeAfter(lines.at(-1)) : start);
+    : facts.verb === 'scrolled' ? scrolls.at(-1).page
+    : ['browsed', 'drafting'].includes(facts.verb) ? placeAfter(lines.at(-1)) : start);
   facts.page = page ? pathKey(page) : null;
   facts.place = placePhrase(page, { names, looksLikeId, auth });
   if (facts.verb === 'navigated') { facts.destination = placeName(pathKey(navigated.at(-1).to), names, looksLikeId); facts.history = navigated.every(nav => nav.via === 'popstate'); }
