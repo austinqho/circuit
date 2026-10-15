@@ -56,13 +56,15 @@ test('the collector serves the story as JSON and as a live stream, readable only
   assert.equal(story.lines.length, 1);
   assert.match(story.lines[0].text, /^Clicked the “Save” button → .*PATCH \/projects\/p_81Kx92aa/u);
   assert.deepEqual(story.lines[0].entities, [{ type: 'project', id: 'p_81Kx92aa', from: 'request_url' }]);
+  assert.deepEqual(story.segments.map(segment => segment.lines), [['a1']]);
+  assert.equal(story.segments[0].title, 'On /app, the user is editing project p_81Kx92aa.');
 
   const foreign = await fetch(`${base}/story`, { headers: { origin: 'https://example.com' } });
   assert.equal(foreign.headers.get('access-control-allow-origin'), null);
   await foreign.arrayBuffer();
 
   // The stream sends what exists, then each new line as the store grows.
-  const streamed = readEvents(`${base}/story/stream`, events => events.filter(entry => entry.event === 'line').length >= 2);
+  const streamed = readEvents(`${base}/story/stream`, events => events.filter(entry => entry.event === 'segment').length >= 2);
   await new Promise(resolve => setTimeout(resolve, 200));
   await post(base, [click('a2', 'Delete'), enter('a2'), request('a2', 'DELETE', 'https://api.example.com/projects/p_81Kx92aa')]);
   const events = await streamed;
@@ -70,4 +72,29 @@ test('the collector serves the story as JSON and as a live stream, readable only
   const lines = events.filter(entry => entry.event === 'line').map(entry => entry.data);
   assert.deepEqual(lines.map(line => line.id), ['a1', 'a2']);
   assert.match(lines[1].text, /^Clicked the “Delete” button → .*DELETE \/projects\/p_81Kx92aa/u);
+  // Segments follow their lines; the open segment is re-sent as it grows (both lines name project p_81Kx92aa).
+  const segments = events.filter(entry => entry.event === 'segment').map(entry => entry.data);
+  assert.deepEqual(segments.map(segment => [segment.id, segment.lines]), [['seg:a1', ['a1']], ['seg:a1', ['a1', 'a2']]]);
+  assert.ok(events.findIndex(entry => entry.event === 'segment') > events.findIndex(entry => entry.event === 'line'));
+});
+
+test('the store follows a manifest file that appears and grows after the collector starts', async (t) => {
+  const { openStoreWriter } = await import('../collector/store-writer.mjs');
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'producttrace-follow-'));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  const manifestFile = path.join(dir, 'runtime-attribution-manifest.json');
+  const writer = openStoreWriter(path.join(dir, 'store'), { manifestFile });
+  assert.equal(writer.build, 'unknown');
+  const write = ids => fs.writeFileSync(manifestFile, JSON.stringify({ schema: 'producttrace.runtime-attribution-manifest.v1', build: null, functions: ids.map((id, index) => ({ index, id })) }));
+  write(['function:a']);
+  writer.appendRecords([{ kind: 'dom.action' }]);
+  const first = writer.build;
+  assert.notEqual(first, 'unknown');
+  await new Promise(resolve => setTimeout(resolve, 20));
+  write(['function:a', 'function:b']);
+  writer.appendRecords([{ kind: 'dom.action' }]);
+  assert.notEqual(writer.build, first);
+  const builds = fs.readFileSync(path.join(dir, 'store', 'records.jsonl'), 'utf8').trim().split('\n').map(line => JSON.parse(line).tracer_build);
+  assert.deepEqual(builds, [first, writer.build]);
+  assert.equal(fs.readdirSync(path.join(dir, 'store', 'manifests')).length, 2);
 });

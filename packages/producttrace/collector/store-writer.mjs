@@ -118,38 +118,56 @@ const appendLines = (file, rows) => {
  * @param {string} [options.label]
  * @param {object} [options.source] e.g. { repository, commit, status_clean }
  * @param {string} [options.sourceRoot] checkout the build was made from; enables text/name remap keys
+ * @param {string} [options.manifestFile] a manifest file to follow instead of `manifest`: re-read whenever it
+ *   changes (a dev server writes it as modules load), each version stored as its own build. It may not exist yet.
  */
-export function openStoreWriter(dir, { manifest: rawManifest = null, label = null, source = null, sourceRoot = null, now = () => new Date() } = {}) {
-  const manifest = rawManifest && sourceRoot
-    ? enrichManifest(rawManifest, file => { const absolute = path.resolve(sourceRoot, file); return absolute.startsWith(path.resolve(sourceRoot) + path.sep) && fs.existsSync(absolute) ? fs.readFileSync(absolute, 'utf8') : null; })
-    : rawManifest;
+export function openStoreWriter(dir, { manifest: rawManifest = null, manifestFile = null, label = null, source = null, sourceRoot = null, now = () => new Date() } = {}) {
   const root = path.resolve(dir);
   fs.mkdirSync(path.join(root, 'manifests'), { recursive: true });
-  const build = manifest ? buildIdOf(manifest) : 'unknown';
-  if (!BUILD_ID.test(build)) throw new Error(`invalid build id ${JSON.stringify(build)}`);
-  if (manifest) {
-    const file = path.join(root, 'manifests', `${build}.json`);
-    const stored = storedManifest(manifest, build);
-    if (fs.existsSync(file)) {
-      const existing = JSON.parse(fs.readFileSync(file, 'utf8'));
-      const ids = value => JSON.stringify((value.functions || []).map(row => row.id).sort());
-      if (ids(existing) !== ids(stored)) throw new Error(`store already has a different manifest for build ${build}; refusing to overwrite`);
-    } else {
-      fs.writeFileSync(file, JSON.stringify(stored));
+  const enrich = raw => raw && sourceRoot
+    ? enrichManifest(raw, file => { const absolute = path.resolve(sourceRoot, file); return absolute.startsWith(path.resolve(sourceRoot) + path.sep) && fs.existsSync(absolute) ? fs.readFileSync(absolute, 'utf8') : null; })
+    : raw;
+  // The build rows are tagged with, and its manifest stored once under manifests/<build>.json.
+  const adopt = raw => {
+    const manifest = enrich(raw);
+    const build = manifest ? buildIdOf(manifest) : 'unknown';
+    if (!BUILD_ID.test(build)) throw new Error(`invalid build id ${JSON.stringify(build)}`);
+    if (manifest) {
+      const file = path.join(root, 'manifests', `${build}.json`);
+      const stored = storedManifest(manifest, build);
+      if (fs.existsSync(file)) {
+        const existing = JSON.parse(fs.readFileSync(file, 'utf8'));
+        const ids = value => JSON.stringify((value.functions || []).map(row => row.id).sort());
+        if (ids(existing) !== ids(stored)) throw new Error(`store already has a different manifest for build ${build}; refusing to overwrite`);
+      } else {
+        fs.writeFileSync(file, JSON.stringify(stored));
+      }
     }
-  }
+    return { manifest, build };
+  };
+  let current = adopt(rawManifest);
+  let followed = null;
+  const follow = () => {
+    if (!manifestFile) return;
+    let stat; try { stat = fs.statSync(manifestFile); } catch { return; }
+    const key = `${stat.mtimeMs}:${stat.size}`;
+    if (key === followed) return;
+    let raw; try { raw = JSON.parse(fs.readFileSync(manifestFile, 'utf8')); } catch { return; } // mid-write: next batch
+    followed = key; current = adopt(raw);
+  };
+  follow();
   const started = now().toISOString();
   const runId = `run-${started.replace(/[-:.]/gu, '').replace('T', 't').replace('Z', 'z')}-${randomBytes(3).toString('hex')}`;
-  const tag = row => ({ ...row, tracer_run: runId, tracer_build: build });
+  const tag = row => ({ ...row, tracer_run: runId, tracer_build: current.build });
   let records = 0; let spans = 0; let closed = false;
   return {
-    dir: root, run_id: runId, build,
-    appendRecords(rows) { if (closed) throw new Error('run closed'); const list = [...rows].filter(row => row && typeof row === 'object'); appendLines(path.join(root, 'records.jsonl'), list.map(tag)); records += list.length; return list.length; },
-    appendSpans(rows) { if (closed) throw new Error('run closed'); const list = [...rows].filter(row => row && typeof row === 'object'); appendLines(path.join(root, 'spans.jsonl'), list.map(tag)); spans += list.length; return list.length; },
+    dir: root, run_id: runId, get build() { return current.build; },
+    appendRecords(rows) { if (closed) throw new Error('run closed'); follow(); const list = [...rows].filter(row => row && typeof row === 'object'); appendLines(path.join(root, 'records.jsonl'), list.map(tag)); records += list.length; return list.length; },
+    appendSpans(rows) { if (closed) throw new Error('run closed'); follow(); const list = [...rows].filter(row => row && typeof row === 'object'); appendLines(path.join(root, 'spans.jsonl'), list.map(tag)); spans += list.length; return list.length; },
     close({ steps = [], extra = {}, source: sourceOverride = undefined } = {}) {
       if (closed) return null; closed = true;
-      const row = { schema: RUN_SCHEMA, run_id: runId, build, label, started, ended: now().toISOString(), source: sourceOverride ?? source,
-        records, spans, manifest_functions: manifest ? (manifest.functions || []).length : null, steps, ...extra };
+      const row = { schema: RUN_SCHEMA, run_id: runId, build: current.build, label, started, ended: now().toISOString(), source: sourceOverride ?? source,
+        records, spans, manifest_functions: current.manifest ? (current.manifest.functions || []).length : null, steps, ...extra };
       appendLines(path.join(root, 'runs.jsonl'), [row]);
       return row;
     },

@@ -29,7 +29,8 @@
   const stampStats = { commits: 0, hosts_checked: 0, stamped_nodes: 0, stamp_rows: 0, unplaced_nodes: 0, invalid_keys: 0, annotation_written: 0, annotation_rejected: 0, errors: 0, state_receipts_recorded: 0, state_receipts_applied: 0, state_receipts_refused: 0, state_receipts_consumed: 0, mount_effects_applied: 0, await_resumptions: 0, unreceipted_effects: 0, owned_listeners: 0, owned_messages: 0, task_ambient_cleared: 0, worker_posts_unowned: 0, shadow_listeners_bound: 0, shadow_stamped_nodes: 0, owned_listeners_dispatch_won: 0, owned_listeners_dispatcher: 0, owned_listeners_ui_unowned: 0 };
   const resolveFunctionId = value => typeof value === 'number' ? (functionManifest.get(value) || `function-index:${value}`) : value;
   const registerFunction = (fn, index) => { if (typeof fn === 'function' && Number.isInteger(index)) registeredFunctions.set(fn, resolveFunctionId(index)); return fn; };
-  const tag = (fn, index, proxyEntry = false, entryHint = proxyEntry) => {
+  const tag = (fn, index, proxyEntry = false, entryHint = proxyEntry, name = null) => {
+    if (name && typeof fn === 'function' && !fn.name) try { Object.defineProperty(fn, 'name', { value: name, configurable: true }); } catch {}
     registerFunction(fn, index);
     if (!proxyEntry || typeof fn !== 'function' || typeof Proxy !== 'function') return fn;
     let proxy = tracedFunctionProxies.get(fn);
@@ -677,6 +678,10 @@
   // The control a user acted on (an action's target, a hover's related target): with its label.
   const describeActed = node => { const description = describeControl(node); const label = description ? controlLabel(node) : null; return label ? { ...description, label } : description; };
   const interactiveFor = node => { try { return node?.closest?.('button,input,textarea,select,a[href],[role="button"],[role="menuitem"],[role="option"],[role="checkbox"],[role="radio"],[role="switch"],[tabindex]') || node; } catch { return node; } };
+  // A hover is about the control under the pointer, not the heading or icon
+  // inside it the event landed on: the nearest link/button-like ancestor.
+  const HOVER_CONTROL = 'a[href],button,summary,[role="button"],[role="link"],[role="menuitem"],[role="tab"],[role="option"]';
+  const hoverControl = node => composedClosest(node, HOVER_CONTROL) || node;
   // closest() that continues from a shadow root to its host.
   const composedClosest = (node, selector) => {
     for (let cursor = node, depth = 0; cursor && depth < 32; depth += 1) {
@@ -810,7 +815,7 @@
       else if (is(event, 'ClipboardEvent')) out.clipboard = { types: listOf(event.clipboardData?.types) };
       else if (is(event, 'ToggleEvent')) out.toggle = { oldState: event.oldState ?? null, newState: event.newState ?? null };
       // The element focus or the pointer came from or went to.
-      if (is(event, 'FocusEvent') || (is(event, 'MouseEvent') && 'relatedTarget' in event && /(?:over|out|enter|leave)$/u.test(event.type))) out.related_target = event.relatedTarget ? describeActed(event.relatedTarget) : null;
+      if (is(event, 'FocusEvent') || (is(event, 'MouseEvent') && 'relatedTarget' in event && /(?:over|out|enter|leave)$/u.test(event.type))) out.related_target = event.relatedTarget ? describeActed(is(event, 'MouseEvent') ? hoverControl(event.relatedTarget) : event.relatedTarget) : null;
       // A file input: how many files and their types, never names or contents.
       if (String(target?.tagName || '').toLowerCase() === 'input' && String(target.type || '').toLowerCase() === 'file' && target.files) out.files = { count: target.files.length, types: listOf(Array.from(target.files, file => file.type || '')) };
     } catch {}
@@ -890,15 +895,19 @@
   const armRangeIdle = () => { if (!rangeIdleTimer && hostSetTimeout) rangeIdleTimer = hostSetTimeout(checkIdleRanges, RANGE_IDLE_MS / 2); };
   const materialize = pending => {
     if (pending.materialized) return; pending.materialized = true; pendingActions.delete(pending.action_id);
-    const target = describeLight(pending.node);
-    if (target) { const label = controlLabel(pending.node); if (label) target.label = label; }
+    const subject = hoverControl(pending.node);
+    const target = describeLight(subject);
+    if (target) { const label = controlLabel(subject); if (label) target.label = label; }
     // The event object keeps its fields after dispatch: described only now.
     const detail = describeEvent(pending.source, pending.node);
     emit({ kind: 'dom.action', action_id: pending.action_id, timestamp: pending.timestamp, ...(pending.page !== undefined ? { page: pending.page } : {}), event: pending.event, target, ...(target?.ref ? { target_ref: target.ref } : {}),
       interface: pending.interface, phase: 'continuous', gesture_id: pending.gesture_id, coalesced: true, hover_segment_action_id: pending.segment.action_id, ...detail,
       source_ref: null, parent_continuation_id: null, continuation_id: null, spine: { action_id: pending.action_id, function_ids: [] }, evidence_ids: [] });
   };
-  const scrollPosition = node => { try { const element = node === global.document || node === global ? global.document?.scrollingElement : node; return element ? [round(element.scrollLeft), round(element.scrollTop)] : null; } catch { return null; } };
+  const scrollElement = node => (node === global.document || node === global ? global.document?.scrollingElement : node);
+  const scrollPosition = node => { try { const element = scrollElement(node); return element ? [round(element.scrollLeft), round(element.scrollTop)] : null; } catch { return null; } };
+  // How far one screen is, so a reader can say "about 3 screens"; and whether the page itself scrolled.
+  const scrollFrame = node => { try { const element = scrollElement(node); return element ? { viewport: round(element.clientHeight), page: element === global.document?.scrollingElement } : {}; } catch { return {}; } };
   const extendRange = (range, event, dispatchTarget) => {
     range.count += 1; range.last_timestamp = Date.now(); armRangeIdle();
     const x = round(event.clientX), y = round(event.clientY);
@@ -907,7 +916,7 @@
       else Object.assign(range.bounds, { min_x: Math.min(range.bounds.min_x, x), max_x: Math.max(range.bounds.max_x, x), min_y: Math.min(range.bounds.min_y, y), max_y: Math.max(range.bounds.max_y, y), last: [x, y] });
     }
     if (event.type === 'wheel' || userEventModel.familyOf(event) === 'WheelEvent') { range.wheel ||= { delta_x: 0, delta_y: 0, delta_mode: event.deltaMode ?? null }; range.wheel.delta_x += Number(event.deltaX) || 0; range.wheel.delta_y += Number(event.deltaY) || 0; }
-    if (event.type === 'scroll' || event.type === 'scrollend') { const position = scrollPosition(dispatchTarget); if (position) { range.scroll ||= { first: position, last: position }; range.scroll.last = position; } }
+    if (event.type === 'scroll' || event.type === 'scrollend') { const position = scrollPosition(dispatchTarget); if (position) { range.scroll ||= { first: position, last: position, ...scrollFrame(dispatchTarget) }; range.scroll.last = position; } }
   };
   // Synthetic activation (an untrusted click dispatched while an action's code
   // is live, e.g. a visible button calling hiddenFileInput.click()): the
@@ -2738,11 +2747,6 @@
       return instance; };
     global.EventSource.prototype = NativeEventSource.prototype;
   }
-  // WebSocket: the connection (CONNECT row) and every message the page sends
-  // (`network.send`: byte size only, never the content; owned by the frame
-  // current when send() is called, like a worker post; outside every action
-  // it carries `issuer`). A message carries no trace context, so what it
-  // causes on a server can never be joined: chains state that as a frontier.
   // Client-side navigation (history.pushState / replaceState, back and
   // forward) as page.navigate rows. A router calls pushState inside the
   // continuation of the action that caused it, so the row carries that
@@ -2751,20 +2755,26 @@
     const history = global.history;
     if (history && !history.__productTraceNavigation) {
       let lastPath = pagePath();
-      const navigated = (via, active) => {
-        const to = pagePath(); if (to === lastPath) return;
-        const from = lastPath; lastPath = to;
+      // `from` is read just before the call: the URL can also change through
+      // paths not hooked here (location.search=, the Navigation API).
+      const navigated = (via, active, before = lastPath) => {
+        const to = pagePath(); const from = before ?? lastPath; lastPath = to; if (to === from) return;
         emit({ kind: 'page.navigate', action_id: active?.action_id || null, via, from, to, ...(active?.continuation_id ? { parent_continuation_id: active.continuation_id } : {}) });
       };
       for (const method of ['pushState', 'replaceState']) {
         const native = history[method];
         if (typeof native !== 'function') continue;
-        history[method] = function productTraceHistory(...args) { const result = native.apply(this, args); try { const owner = captureOwner(); navigated(method, owner && !owner.stale_owner ? owner : null); } catch {} return result; };
+        history[method] = function productTraceHistory(...args) { const before = pagePath(); const result = native.apply(this, args); try { const owner = captureOwner(); navigated(method, owner && !owner.stale_owner ? owner : null, before); } catch {} return result; };
       }
       global.addEventListener?.('popstate', () => { try { navigated('popstate', null); } catch {} }, true);
       Object.defineProperty(history, '__productTraceNavigation', { value: true });
     }
   } catch {}
+  // WebSocket: the connection (CONNECT row) and every message the page sends
+  // (`network.send`: byte size only, never the content; owned by the frame
+  // current when send() is called, like a worker post; outside every action
+  // it carries `issuer`). A message carries no trace context, so what it
+  // causes on a server can never be joined: chains state that as a frontier.
   const socketInfo = new WeakMap(); let socketSendWrapper = null;
   if (global.WebSocket) { const NativeWebSocket = global.WebSocket;
     global.WebSocket = function ProductTraceWebSocket(url, ...args) { const context = traceContext(); const active = captureOwner();
