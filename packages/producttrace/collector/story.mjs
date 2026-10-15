@@ -31,6 +31,7 @@ const TEXT_ENTRY = new Set(['input', 'paste', 'cut', 'drop']);
 // How long a request without a status reads as pending before it reads as never answered.
 export const PENDING_MS = 30_000;
 const FIELD_TAGS = new Set(['input', 'textarea', 'select']);
+const HISTORY = new Set(['popstate', 'hashchange']);
 
 // Engine ids (hex, uuid, numeric, prefix_…) plus opaque random ids such as
 // nanoid/cuid: 10+ URL-safe characters mixing letters and digits, or 16+ mixing cases.
@@ -259,6 +260,8 @@ export function storyOf(store, { session, now = Date.now(), titleOf = null, valu
     // Navigations of an action that is not told still happened: each gets its own line.
     const orphan = () => { for (const entry of owned) lines.push(navLine(entry, entry.timestamp ?? row.timestamp ?? null)); if (owned.length) typing = null; };
     if (!owned.length && typeof store.contextOnly === 'function' && store.contextOnly(row.action_id)) continue;
+    // Back/forward is told by its navigation ("Went back/forward to …"), not as an event on the window.
+    if (HISTORY.has(row.event)) { orphan(); continue; }
     let chain;
     try { chain = chainStops(store, row.action_id); } catch { orphan(); continue; }
     const requests = (chain.requests || []).map(request => requestFacts(store, request, requestRows, closed, now, show));
