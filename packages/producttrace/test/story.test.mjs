@@ -48,8 +48,10 @@ test('a session reads as sentences: noise dropped, typing coalesced, writes name
   assert.deepEqual(lines[1].entities, [{ type: 'discussion', id: 'hDcSjggyAKQPCYadkDSP8', from: 'response_body', created: true }]);
   assert.equal(texts[2], 'Went to /app/discussions/hDcSjggyAKQPCYadkDSP8 (discussion hDcSjggyAKQPCYadkDSP8)');
   assert.equal(texts[3], 'Clicked the “View” link');
-  // Nothing in the story is typed text.
-  assert.ok(!JSON.stringify(lines).includes('Pricing page feedback'));
+  // No line says what was typed; the title the server returned is a value of the write, not of the typing.
+  assert.ok(!lines.some(line => line.text.includes('Pricing page feedback')));
+  assert.ok(!JSON.stringify(lines[0]).includes('Pricing page feedback'));
+  assert.deepEqual(lines[1].values.find(entry => entry.key === 'title'), { key: 'title', owner: 'discussion', class: 'content', from: 'response_body', value: 'Pricing page feedback' });
 });
 
 test('two fields without any key stay two lines; Enter is named; a request with no status yet is pending', () => {
@@ -66,16 +68,17 @@ test('two fields without any key stay two lines; Enter is named; a request with 
   ];
   const { lines } = storyOf(createStore({ records: rows }), { now: 2_000 });
   assert.deepEqual(lines.map(line => line.text), [
+    'Opened the page',
     'Typed in the “First Name” field',
     'Typed in the “Last Name” field',
     'Pressed Enter on the “Search” field → GET /search?q=1 (pending)',
   ]);
   // Once the page has closed, a request that never got a status says so.
   const closed = storyOf(createStore({ records: [...rows, { kind: 'capture.summary', page_id: page, capture_page_id: page, ...at() }] }), { now: 2_000 });
-  assert.match(closed.lines[2].text, /GET \/search\?q=1 \(no response recorded\)$/u);
+  assert.match(closed.lines.at(-1).text, /GET \/search\?q=1 \(no response recorded\)$/u);
   // A tab that dies never closes: after PENDING_MS the request stops reading as pending.
   const later = storyOf(createStore({ records: rows }), { now: 2_000 + PENDING_MS });
-  assert.match(later.lines[2].text, /GET \/search\?q=1 \(no response recorded\)$/u);
+  assert.match(later.lines.at(-1).text, /GET \/search\?q=1 \(no response recorded\)$/u);
 });
 
 test('a navigation the router made inside an action is told on that action; key-by-key typing is one line', () => {

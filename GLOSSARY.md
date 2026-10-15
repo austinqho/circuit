@@ -29,3 +29,5 @@ The words this project uses. Use them exactly in code, tests, issues and PRs.
 **Entity**: a product object an action touched, named by its real ID (`ws_12`, `t_2`), taken only from recorded URLs or bodies.
 
 **Session story**: one page session rendered as a timeline of sentences, one per episode. The v1 output.
+
+**Segment**: one goal in a session story, such as signing up or creating a discussion: consecutive lines joined by a form, an entity id or the page a navigation reached, titled as an observation ("In Discussions, the user is creating …") with each line as a step under it.

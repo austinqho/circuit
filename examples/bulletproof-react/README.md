@@ -12,23 +12,37 @@ The first run clones the app at a pinned commit into `~/.cache/producttrace-exam
 - app: http://127.0.0.1:4173/
 - story: http://127.0.0.1:8787/story (JSON), live at http://127.0.0.1:8787/story/stream (server-sent events)
 
-Click around the app and reload `/story`. A real session reads like this:
+Click around the app and reload `/story`. A session reads as goals, each with the steps under it (`segments` in the JSON, `event: segment` on the stream):
 
 ```
-Clicked the “Get started” button → handleStart
-Went to /auth/login
-Clicked the “Register” link
-Typed in the “First Name” field
-Typed a password in the “Password” field
-Submitted the form with the “Register” button → <Form onSubmit> → POST /auth/register (200)
-Clicked the “Discussions” link → lazy → GET /discussions?page=1 (200)
-Submitted the form with the “Submit” button → <Form onSubmit> → POST /discussions (200, created discussion o-i5XxHxrRNCRQmoqgFSB), GET /discussions?page=1 (200)
-Hovered the “View” link → <Link onMouseEnter> → GET /discussions/o-i5XxHxrRNCRQmoqgFSB (200), GET /comments?discussionId=o-i5XxHxrRNCRQmoqgFSB&page=1 (200)
-Went to /app/discussions/o-i5XxHxrRNCRQmoqgFSB (discussion o-i5XxHxrRNCRQmoqgFSB)
-Submitted the form with the “Submit” button → <Form onSubmit> → POST /comments (200, created comment zug8YRxVXbjXv9KhUTalV), GET /comments?discussionId=o-i5XxHxrRNCRQmoqgFSB&page=1 (200)
+On the Register page, Maya Chen is signing up as maya+1792106807428@example.com for the team “Acme”.
+    · Opens “Get started”; the app moves to /auth/login
+    · Opens “Register”; the app moves to /auth/register
+    · Enters “Maya” as the first name
+    · Enters “Chen” as the last name
+    · Enters maya+1792106807428@example.com as the email address
+    · Sets a password
+    · Enters “Acme” as the team name
+    · Submits “Register”; the server returns user VoI4PU3GcboDdMYXhc6WJ and team QFlPa_4TBSW4vGEkuzT_V
+In Discussions, Maya Chen is creating the first discussion, “Pricing page feedback”.
+    · The app moves to /app
+    · Opens “Discussions”; the discussion list loads empty, the app moves to /app/discussions
+    · Clicks “Create Discussion”
+    · Enters “Pricing page feedback” as the title
+    · Writes a body (30 characters)
+    · Submits “Submit”; the server creates discussion mHEnPMuNQZAuxqqd3sKEb, 1 discussion loads
+    · Clicks “Close”
+In “Pricing page feedback”, Maya Chen is opening the discussion they just created and creating its first comment.
+    · Hovers “View”; the discussion “Pricing page feedback” loads, the comment list loads empty
+    · Opens “View”; the app moves to /app/discussions/mHEnPMuNQZAuxqqd3sKEb
+    · Clicks “Create Comment”
+    · Writes a body (19 characters)
+    · Submits “Submit”; the server creates comment gePCDjQiQP5-NQJrs-Q2C, 1 comment loads
 ```
 
-With the demo running, `npm run drive -w examples/bulletproof-react` clicks through that session headless and fails if an expected sentence is missing. It needs a Chromium: `CHROMIUM_PATH=/path/to/chrome`, Playwright's (`npx playwright install chromium`), or your installed Chrome.
+Steps join a goal only through something they share: the same form, an entity id, or the page a navigation reached. Values (“Acme”, the email, the name) come from the request and response bodies, never from keystrokes; passwords are never read, and long text shows only its length. Each step is also a line in `lines`, with the requests and IDs behind it.
+
+With the demo running, `npm run drive -w examples/bulletproof-react` clicks through that session headless and fails if an expected line or goal is missing. It needs a Chromium: `CHROMIUM_PATH=/path/to/chrome`, Playwright's (`npx playwright install chromium`), or your installed Chrome.
 
 ## How it attaches
 
@@ -37,5 +51,5 @@ The app's files are not edited. `demo.mjs` writes a wrapper Vite config that imp
 ## Known limits
 
 - The instrumented build (`--build`) is slow: about 6–7 minutes for this app. The dev server needs no build.
-- On the dev server, a navigation that a React effect makes after a state change (the redirect to `/app` once registration logs the user in) is its own "Went to /app" line, not part of the Register line as in a build.
+- On the dev server, a navigation that a React effect makes after a state change (the redirect to `/app` once registration logs the user in) is its own step ("The app moves to /app"), not part of the Register step as in a build.
 - The backend is a mock service worker, so every request stops at the network: "200" is the status the browser saw, with no server or database stops.

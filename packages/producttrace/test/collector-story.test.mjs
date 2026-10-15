@@ -56,13 +56,15 @@ test('the collector serves the story as JSON and as a live stream, readable only
   assert.equal(story.lines.length, 1);
   assert.match(story.lines[0].text, /^Clicked the “Save” button → .*PATCH \/projects\/p_81Kx92aa/u);
   assert.deepEqual(story.lines[0].entities, [{ type: 'project', id: 'p_81Kx92aa', from: 'request_url' }]);
+  assert.deepEqual(story.segments.map(segment => segment.lines), [['a1']]);
+  assert.equal(story.segments[0].title, 'On /app, the user is editing project p_81Kx92aa.');
 
   const foreign = await fetch(`${base}/story`, { headers: { origin: 'https://example.com' } });
   assert.equal(foreign.headers.get('access-control-allow-origin'), null);
   await foreign.arrayBuffer();
 
   // The stream sends what exists, then each new line as the store grows.
-  const streamed = readEvents(`${base}/story/stream`, events => events.filter(entry => entry.event === 'line').length >= 2);
+  const streamed = readEvents(`${base}/story/stream`, events => events.filter(entry => entry.event === 'segment').length >= 2);
   await new Promise(resolve => setTimeout(resolve, 200));
   await post(base, [click('a2', 'Delete'), enter('a2'), request('a2', 'DELETE', 'https://api.example.com/projects/p_81Kx92aa')]);
   const events = await streamed;
@@ -70,6 +72,10 @@ test('the collector serves the story as JSON and as a live stream, readable only
   const lines = events.filter(entry => entry.event === 'line').map(entry => entry.data);
   assert.deepEqual(lines.map(line => line.id), ['a1', 'a2']);
   assert.match(lines[1].text, /^Clicked the “Delete” button → .*DELETE \/projects\/p_81Kx92aa/u);
+  // Segments follow their lines; the open segment is re-sent as it grows (both lines name project p_81Kx92aa).
+  const segments = events.filter(entry => entry.event === 'segment').map(entry => entry.data);
+  assert.deepEqual(segments.map(segment => [segment.id, segment.lines]), [['seg:a1', ['a1']], ['seg:a1', ['a1', 'a2']]]);
+  assert.ok(events.findIndex(entry => entry.event === 'segment') > events.findIndex(entry => entry.event === 'line'));
 });
 
 test('the store follows a manifest file that appears and grows after the collector starts', async (t) => {

@@ -31,7 +31,7 @@ export function createCollector(options = {}) {
   const tally = createReceivedTally();
   // Store mode: the session story, as JSON (GET /story) and as a live
   // server-sent event stream (GET /story/stream). See collector/story.mjs.
-  const story = store ? createStoryFeed({ dir: store.dir, sourceRoot: options.store.sourceRoot ?? null }) : null;
+  const story = store ? createStoryFeed({ dir: store.dir, sourceRoot: options.store.sourceRoot ?? null, titleOf: options.story?.titleOf ?? null, values: options.story?.values ?? {} }) : null;
   const streams = new Set();
 
   const server = http.createServer((request, response) => {
@@ -130,6 +130,15 @@ export function createCollector(options = {}) {
       client.sent.set(line.id, text); changed = true;
       client.response.write(`event: line\ndata: ${text}\n\n`);
     }
+    // Segments after their lines: an open segment is re-sent each time its title or steps change.
+    for (const segment of value.segments || []) {
+      const text = JSON.stringify(segment);
+      if (client.sent.get(segment.id) === text) continue;
+      client.sent.set(segment.id, text); changed = true;
+      client.response.write(`event: segment\ndata: ${text}\n\n`);
+    }
+    const narrative = JSON.stringify(value.narrative || []);
+    if (client.sent.get('\u0000narrative') !== narrative) { client.sent.set('\u0000narrative', narrative); client.response.write(`event: narrative\ndata: ${narrative}\n\n`); }
     if (changed && !first) client.response.write(`event: sessions\ndata: ${JSON.stringify(value.sessions)}\n\n`);
   }
   const ticker = story ? setInterval(() => { for (const client of streams) pushStory(client); }, 500) : null;
