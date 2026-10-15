@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Circuit Bench</title>
+    <style>
+      :root {
+        --bg: #f6f6f3;
+        --panel: #ffffff;
+        --ink: #1d1d1b;
+        --muted: #6b6b66;
+        --line: #e3e2dc;
+        --accent: #2f5bea;
+        --ok: #1f8a4c;
+        --warn: #b7791f;
+        --bad: #c0392b;
+        --chip: #f0efe9;
+        --code: #f3f2ec;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #151514;
+          --panel: #1d1d1b;
+          --ink: #ecebe6;
+          --muted: #9b9a93;
+          --line: #2f2f2c;
+          --accent: #7c9bff;
+          --ok: #4cc27f;
+          --warn: #e0a84a;
+          --bad: #ef6b5b;
+          --chip: #2a2a27;
+          --code: #232320;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font:
+          14px/1.45 ui-sans-serif,
+          system-ui,
+          -apple-system,
+          'Segoe UI',
+          sans-serif;
+      }
+      header {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--line);
+        background: var(--panel);
+      }
+      header h1 {
+        font-size: 16px;
+        margin: 0;
+      }
+      header .sub {
+        color: var(--muted);
+        font-size: 12px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .layout {
+        display: grid;
+        grid-template-columns: 260px 1fr;
+        min-height: calc(100vh - 49px);
+      }
+      aside {
+        border-right: 1px solid var(--line);
+        padding: 12px;
+        background: var(--panel);
+      }
+      aside h2,
+      main h2 {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: var(--muted);
+        margin: 8px 0;
+      }
+      form {
+        display: grid;
+        gap: 6px;
+        margin-bottom: 14px;
+      }
+      input {
+        width: 100%;
+        padding: 7px 9px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--bg);
+        color: var(--ink);
+        font: inherit;
+      }
+      button {
+        padding: 6px 10px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--panel);
+        color: var(--ink);
+        font: inherit;
+        cursor: pointer;
+      }
+      button.primary {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #fff;
+      }
+      button:disabled {
+        opacity: 0.5;
+        cursor: default;
+      }
+      .hint {
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .hint a {
+        color: var(--accent);
+        cursor: pointer;
+      }
+      .apps {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 4px;
+      }
+      .apps li {
+        padding: 8px;
+        border-radius: 6px;
+        cursor: pointer;
+        border: 1px solid transparent;
+      }
+      .apps li.sel {
+        border-color: var(--line);
+        background: var(--bg);
+      }
+      .apps .name {
+        font-weight: 600;
+      }
+      .dot {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        margin-right: 6px;
+        background: var(--muted);
+      }
+      .dot.ready {
+        background: var(--ok);
+      }
+      .dot.building,
+      .dot.queued {
+        background: var(--warn);
+      }
+      .dot.failed {
+        background: var(--bad);
+      }
+      main {
+        padding: 12px 16px;
+        min-width: 0;
+      }
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .toolbar .title {
+        font-weight: 600;
+        font-size: 15px;
+        margin-right: auto;
+      }
+      .split {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+        gap: 12px;
+      }
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+      .card > .head {
+        padding: 8px 10px;
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        font-size: 12px;
+        color: var(--muted);
+      }
+      iframe {
+        width: 100%;
+        height: calc(100vh - 150px);
+        border: 0;
+        background: #fff;
+        display: block;
+      }
+      .feed {
+        height: calc(100vh - 150px);
+        overflow: auto;
+        padding: 4px 0;
+      }
+      .tabs button {
+        border: 0;
+        background: none;
+        padding: 2px 6px;
+        color: var(--muted);
+      }
+      .tabs button.on {
+        color: var(--ink);
+        font-weight: 600;
+        border-bottom: 2px solid var(--accent);
+        border-radius: 0;
+      }
+      .session {
+        padding: 6px 10px;
+        font-size: 12px;
+        color: var(--muted);
+        border-top: 1px solid var(--line);
+        background: var(--bg);
+        position: sticky;
+        top: 0;
+      }
+      .line {
+        padding: 7px 10px;
+        border-bottom: 1px solid var(--line);
+      }
+      .line .t {
+        color: var(--muted);
+        font-variant-numeric: tabular-nums;
+        font-size: 12px;
+        margin-right: 6px;
+      }
+      .line .kind {
+        font-size: 11px;
+        padding: 1px 6px;
+        border-radius: 10px;
+        background: var(--chip);
+        color: var(--muted);
+        margin-right: 6px;
+      }
+      .chips {
+        margin-top: 4px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+      }
+      .chip {
+        font:
+          11px ui-monospace,
+          SFMono-Regular,
+          Menlo,
+          monospace;
+        background: var(--chip);
+        border-radius: 4px;
+        padding: 1px 6px;
+      }
+      .chip.ok {
+        color: var(--ok);
+      }
+      .chip.bad {
+        color: var(--bad);
+      }
+      .chip.ent {
+        color: var(--accent);
+      }
+      .line.new {
+        animation: flash 1.2s ease-out;
+      }
+      @keyframes flash {
+        from {
+          background: color-mix(in srgb, var(--accent) 18%, transparent);
+        }
+        to {
+          background: transparent;
+        }
+      }
+      pre {
+        margin: 0;
+        padding: 10px;
+        background: var(--code);
+        font:
+          12px/1.4 ui-monospace,
+          SFMono-Regular,
+          Menlo,
+          monospace;
+        white-space: pre-wrap;
+        word-break: break-word;
+        max-height: calc(100vh - 220px);
+        overflow: auto;
+      }
+      .score {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 8px;
+        padding: 10px;
+      }
+      .score div {
+        background: var(--bg);
+        border-radius: 6px;
+        padding: 8px;
+      }
+      .score b {
+        display: block;
+        font-size: 20px;
+      }
+      .score span {
+        color: var(--muted);
+        font-size: 12px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+      td,
+      th {
+        text-align: left;
+        vertical-align: top;
+        padding: 6px 10px;
+        border-top: 1px solid var(--line);
+      }
+      th {
+        color: var(--muted);
+        font-weight: 500;
+        font-size: 12px;
+      }
+      .empty {
+        padding: 24px;
+        color: var(--muted);
+      }
+      .fail {
+        color: var(--bad);
+      }
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+        aside {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+        .split {
+          grid-template-columns: 1fr;
+        }
+        iframe,
+        .feed {
+          height: 60vh;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Circuit Bench</h1>
+      <span class="sub" id="pkg"></span>
+    </header>
+    <div class="layout">
+      <aside>
+        <h2>Add an open-source React app</h2>
+        <form id="add">
+          <input id="repo" placeholder="owner/repo or GitHub URL" autocomplete="off" required />
+          <input
+            id="appdir"
+            placeholder="app folder (optional, auto-detected)"
+            autocomplete="off"
+          />
+          <button class="primary" type="submit">Install producttrace and build</button>
+          <div class="hint">
+            Try <a data-repo="alan2207/bulletproof-react">bulletproof-react</a>. The first build
+            takes a few minutes.
+          </div>
+        </form>
+        <h2>Apps</h2>
+        <ul class="apps" id="apps"></ul>
+      </aside>
+      <main id="main"><div class="empty">Add a repo, or pick an app on the left.</div></main>
+    </div>
+    <script>
+      const $ = (sel, el = document) => el.querySelector(sel);
+      const esc = (s) =>
+        String(s ?? '').replace(
+          /[&<>"]/g,
+          (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c],
+        );
+      const time = (ms) =>
+        new Date(ms).toLocaleTimeString([], {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+        });
+      let apps = new Map(),
+        selected = null,
+        tab = 'live',
+        storyStream = null,
+        seen = new Set(),
+        logTimer = null;
+      try {
+        selected = localStorage.getItem('circuit.app');
+        tab = localStorage.getItem('circuit.tab') || 'live';
+      } catch {}
+
+      async function api(method, url, body) {
+        const r = await fetch(url, {
+          method,
+          headers: { 'content-type': 'application/json' },
+          body: body ? JSON.stringify(body) : undefined,
+        });
+        const v = await r.json();
+        if (!r.ok) throw new Error(v.error || r.statusText);
+        return v;
+      }
+
+      function renderApps() {
+        const list = $('#apps');
+        list.innerHTML =
+          [...apps.values()]
+            .map(
+              (a) => `<li data-id="${a.id}" class="${a.id === selected ? 'sel' : ''}">
+    <div class="name"><span class="dot ${a.status}"></span>${esc(a.id)}</div>
+    <div class="hint">${esc(a.status)}${a.phase ? ` · ${esc(a.phase)}` : ''}${a.build ? ` · build ${a.build}` : ''}</div></li>`,
+            )
+            .join('') || '<li class="hint">None yet.</li>';
+        list
+          .querySelectorAll('li[data-id]')
+          .forEach((li) => (li.onclick = () => select(li.dataset.id)));
+      }
+
+      function select(id) {
+        selected = id;
+        seen = new Set();
+        try {
+          localStorage.setItem('circuit.app', id);
+        } catch {}
+        renderApps();
+        renderMain(true);
+      }
+
+      function renderMain(fresh) {
+        const a = apps.get(selected);
+        const main = $('#main');
+        clearInterval(logTimer);
+        if (!a) {
+          main.innerHTML = '<div class="empty">Add a repo, or pick an app on the left.</div>';
+          return;
+        }
+        if (a.status !== 'ready') {
+          main.innerHTML = `<div class="toolbar"><span class="title"><span class="dot ${a.status}"></span>${esc(a.id)}</span>
+      <button id="rebuild" ${a.status === 'building' ? 'disabled' : ''}>Rebuild</button></div>
+      <div class="card"><div class="head">${esc(a.status)}${a.phase ? ` · ${esc(a.phase)}` : ''} · ${esc(a.repo)}${a.app_dir ? ` / ${esc(a.app_dir)}` : ''}</div>
+      ${a.error ? `<div class="line fail">${esc(a.error)}</div>` : ''}<pre id="log">loading log…</pre></div>`;
+          $('#rebuild').onclick = () => api('POST', `/api/apps/${a.id}/rebuild`);
+          const pull = async () => {
+            const r = await fetch(`/api/apps/${a.id}/log`);
+            const text = await r.text();
+            const pre = $('#log');
+            if (pre) {
+              pre.textContent = text.split('\n').slice(-80).join('\n') || '(no output yet)';
+              pre.scrollTop = pre.scrollHeight;
+            }
+          };
+          pull();
+          logTimer = setInterval(pull, 2000);
+          closeStream();
+          return;
+        }
+        if (!fresh && $('#frame')) return; // keep the iframe alive across status pings
+        main.innerHTML = `<div class="toolbar"><span class="title"><span class="dot ready"></span>${esc(a.id)}</span>
+      <span class="hint">build ${a.build}${a.build_ms ? ` · ${Math.round(a.build_ms / 1000)} s` : ''}</span>
+      <a href="${a.url}" target="_blank"><button>Open app in a tab</button></a>
+      <button id="reload">Reload app</button><button id="rebuild">Rebuild with current package</button></div>
+    <div class="split">
+      <div class="card"><div class="head">The app with producttrace installed. Click around; what it records appears on the right.</div>
+        <iframe id="frame" src="${a.url}"></iframe></div>
+      <div class="card"><div class="head tabs">
+          <button data-tab="live">Live story</button><button data-tab="report">Claude's run</button><button data-tab="raw">Raw</button>
+          <span id="src" style="margin-left:auto"></span></div>
+        <div class="feed" id="feed"></div></div>
+    </div>`;
+        $('#reload').onclick = () => {
+          $('#frame').src = a.url;
+        };
+        $('#rebuild').onclick = () => api('POST', `/api/apps/${a.id}/rebuild`);
+        main.querySelectorAll('[data-tab]').forEach(
+          (b) =>
+            (b.onclick = () => {
+              tab = b.dataset.tab;
+              try {
+                localStorage.setItem('circuit.tab', tab);
+              } catch {}
+              showTab();
+            }),
+        );
+        openStream(a.id);
+        showTab();
+      }
+
+      let lastStory = null;
+      function closeStream() {
+        storyStream?.close();
+        storyStream = null;
+      }
+      function openStream(id) {
+        closeStream();
+        storyStream = new EventSource(`/api/apps/${id}/stream`);
+        storyStream.addEventListener('story', (e) => {
+          lastStory = JSON.parse(e.data);
+          if (tab !== 'report') showTab();
+        });
+      }
+
+      function showTab() {
+        document
+          .querySelectorAll('[data-tab]')
+          .forEach((b) => b.classList.toggle('on', b.dataset.tab === tab));
+        const feed = $('#feed');
+        if (!feed) return;
+        if (tab === 'live') return renderStory(feed);
+        if (tab === 'raw') {
+          feed.innerHTML = `<pre>${esc(JSON.stringify(lastStory, null, 2))}</pre>`;
+          return;
+        }
+        renderReport(feed);
+      }
+
+      function renderStory(feed) {
+        const s = lastStory;
+        $('#src').textContent = s
+          ? s.source === 'story'
+            ? "from the package's /story"
+            : 'fallback: recent_actions (package has no /story yet)'
+          : '';
+        if (!s || !s.lines.length) {
+          feed.innerHTML = `<div class="empty">No actions recorded yet. Click something in the app.${s?.note ? `<br>${esc(s.note)}` : ''}</div>`;
+          return;
+        }
+        const bySession = new Map();
+        for (const line of s.lines) {
+          if (!bySession.has(line.session)) bySession.set(line.session, []);
+          bySession.get(line.session).push(line);
+        }
+        const stick = feed.scrollTop + feed.clientHeight >= feed.scrollHeight - 30;
+        feed.innerHTML = [...bySession]
+          .map(
+            ([session, lines]) =>
+              `<div class="session">Session ${esc(session)} · ${lines.length} line${lines.length === 1 ? '' : 's'}</div>` +
+              lines
+                .map((line) => {
+                  const fresh = !seen.has(line.id + (line.count || ''));
+                  seen.add(line.id + (line.count || ''));
+                  const chips = [
+                    line.handler?.name
+                      ? `<span class="chip">${esc(line.handler.name)}${line.handler.file ? ` · ${esc(line.handler.file)}:${line.handler.line}` : ''}</span>`
+                      : '',
+                    ...(line.requests || []).map(
+                      (r) =>
+                        `<span class="chip ${r.status >= 400 || r.aborted ? 'bad' : 'ok'}">${esc(r.method)} ${esc(r.path)} ${r.aborted ? 'aborted' : esc(r.status ?? '')}</span>`,
+                    ),
+                    ...(line.entities || []).map(
+                      (e) => `<span class="chip ent">${esc(e.type)} ${esc(e.id)}</span>`,
+                    ),
+                  ].join('');
+                  return `<div class="line ${fresh ? 'new' : ''}"><span class="t">${time(line.at)}</span><span class="kind">${esc(line.kind)}</span>${esc(line.text)}${line.page ? ` <span class="hint">on ${esc(line.page)}</span>` : ''}${chips ? `<div class="chips">${chips}</div>` : ''}</div>`;
+                })
+                .join(''),
+          )
+          .join('');
+        if (stick) feed.scrollTop = feed.scrollHeight;
+      }
+
+      async function renderReport(feed) {
+        feed.innerHTML = '<div class="empty">Loading…</div>';
+        try {
+          const r = await api('GET', `/api/apps/${selected}/report`);
+          const sc = r.scorecard;
+          const cell = (v, label) =>
+            `<div><b>${v ?? '–'}${typeof v === 'number' && label.includes('%') ? '%' : ''}</b><span>${label.replace(' %', '')}</span></div>`;
+          feed.innerHTML = `<div class="score">${cell(sc.steps_acted, 'steps Claude took')}${cell(sc.steps_with_a_line_pct, 'steps with a sentence %')}${cell(sc.lines_naming_the_element_pct, 'sentences naming the element %')}${cell(sc.lines_naming_a_handler_pct, 'naming a handler %')}${cell(sc.lines_with_entity_ids_pct, 'with entity ids %')}${cell(sc.request_recall_pct, 'request recall %')}</div>
+      ${
+        r.steps.length
+          ? `<table><tr><th>What was done</th><th>What the package said</th></tr>${r.steps.map((s) => `<tr><td>${esc(s.did)}${s.ok ? '' : `<div class="fail">${esc(s.error)}</div>`}${s.browser_requests.length ? `<div class="chips">${s.browser_requests.map((x) => `<span class="chip">${esc(x)}</span>`).join('')}</div>` : ''}</td><td>${s.package_said.map(esc).join('<br>') || '<span class="hint">nothing</span>'}</td></tr>`).join('')}</table>`
+          : '<div class="empty">No steps from Claude on this build yet. Claude drives the app with the circuit_act tool; its steps and the package\'s sentences line up here.</div>'
+      }`;
+        } catch (e) {
+          feed.innerHTML = `<div class="empty fail">${esc(e.message)}</div>`;
+        }
+      }
+
+      $('#add').onsubmit = async (e) => {
+        e.preventDefault();
+        const body = { repo: $('#repo').value.trim() };
+        if ($('#appdir').value.trim()) body.app_dir = $('#appdir').value.trim();
+        try {
+          const a = await api('POST', '/api/apps', body);
+          apps.set(a.id, a);
+          select(a.id);
+          $('#repo').value = '';
+          $('#appdir').value = '';
+        } catch (err) {
+          alert(err.message);
+        }
+      };
+      document.querySelectorAll('[data-repo]').forEach(
+        (a) =>
+          (a.onclick = () => {
+            $('#repo').value = a.dataset.repo;
+          }),
+      );
+
+      const events = new EventSource('/api/events');
+      events.addEventListener('apps', (e) => {
+        apps = new Map(JSON.parse(e.data).map((a) => [a.id, a]));
+        if (apps.size)
+          $('#pkg').textContent = `package under test: ${[...apps.values()][0].package}`;
+        if (!apps.has(selected)) selected = [...apps.keys()][0] || null;
+        renderApps();
+        renderMain(true);
+      });
+      events.addEventListener('app', (e) => {
+        const a = JSON.parse(e.data);
+        const before = apps.get(a.id);
+        apps.set(a.id, a);
+        renderApps();
+        if (a.id === selected)
+          renderMain(!before || before.status !== a.status || before.build !== a.build);
+      });
+    </script>
+  </body>
+</html>
