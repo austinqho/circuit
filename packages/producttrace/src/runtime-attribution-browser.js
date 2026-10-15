@@ -677,6 +677,10 @@
   // The control a user acted on (an action's target, a hover's related target): with its label.
   const describeActed = node => { const description = describeControl(node); const label = description ? controlLabel(node) : null; return label ? { ...description, label } : description; };
   const interactiveFor = node => { try { return node?.closest?.('button,input,textarea,select,a[href],[role="button"],[role="menuitem"],[role="option"],[role="checkbox"],[role="radio"],[role="switch"],[tabindex]') || node; } catch { return node; } };
+  // A hover is about the control under the pointer, not the heading or icon
+  // inside it the event landed on: the nearest link/button-like ancestor.
+  const HOVER_CONTROL = 'a[href],button,summary,[role="button"],[role="link"],[role="menuitem"],[role="tab"],[role="option"]';
+  const hoverControl = node => composedClosest(node, HOVER_CONTROL) || node;
   // closest() that continues from a shadow root to its host.
   const composedClosest = (node, selector) => {
     for (let cursor = node, depth = 0; cursor && depth < 32; depth += 1) {
@@ -810,7 +814,7 @@
       else if (is(event, 'ClipboardEvent')) out.clipboard = { types: listOf(event.clipboardData?.types) };
       else if (is(event, 'ToggleEvent')) out.toggle = { oldState: event.oldState ?? null, newState: event.newState ?? null };
       // The element focus or the pointer came from or went to.
-      if (is(event, 'FocusEvent') || (is(event, 'MouseEvent') && 'relatedTarget' in event && /(?:over|out|enter|leave)$/u.test(event.type))) out.related_target = event.relatedTarget ? describeActed(event.relatedTarget) : null;
+      if (is(event, 'FocusEvent') || (is(event, 'MouseEvent') && 'relatedTarget' in event && /(?:over|out|enter|leave)$/u.test(event.type))) out.related_target = event.relatedTarget ? describeActed(is(event, 'MouseEvent') ? hoverControl(event.relatedTarget) : event.relatedTarget) : null;
       // A file input: how many files and their types, never names or contents.
       if (String(target?.tagName || '').toLowerCase() === 'input' && String(target.type || '').toLowerCase() === 'file' && target.files) out.files = { count: target.files.length, types: listOf(Array.from(target.files, file => file.type || '')) };
     } catch {}
@@ -890,8 +894,9 @@
   const armRangeIdle = () => { if (!rangeIdleTimer && hostSetTimeout) rangeIdleTimer = hostSetTimeout(checkIdleRanges, RANGE_IDLE_MS / 2); };
   const materialize = pending => {
     if (pending.materialized) return; pending.materialized = true; pendingActions.delete(pending.action_id);
-    const target = describeLight(pending.node);
-    if (target) { const label = controlLabel(pending.node); if (label) target.label = label; }
+    const subject = hoverControl(pending.node);
+    const target = describeLight(subject);
+    if (target) { const label = controlLabel(subject); if (label) target.label = label; }
     // The event object keeps its fields after dispatch: described only now.
     const detail = describeEvent(pending.source, pending.node);
     emit({ kind: 'dom.action', action_id: pending.action_id, timestamp: pending.timestamp, ...(pending.page !== undefined ? { page: pending.page } : {}), event: pending.event, target, ...(target?.ref ? { target_ref: target.ref } : {}),
@@ -2738,11 +2743,6 @@
       return instance; };
     global.EventSource.prototype = NativeEventSource.prototype;
   }
-  // WebSocket: the connection (CONNECT row) and every message the page sends
-  // (`network.send`: byte size only, never the content; owned by the frame
-  // current when send() is called, like a worker post; outside every action
-  // it carries `issuer`). A message carries no trace context, so what it
-  // causes on a server can never be joined: chains state that as a frontier.
   // Client-side navigation (history.pushState / replaceState, back and
   // forward) as page.navigate rows. A router calls pushState inside the
   // continuation of the action that caused it, so the row carries that
@@ -2751,20 +2751,26 @@
     const history = global.history;
     if (history && !history.__productTraceNavigation) {
       let lastPath = pagePath();
-      const navigated = (via, active) => {
-        const to = pagePath(); if (to === lastPath) return;
-        const from = lastPath; lastPath = to;
+      // `from` is read just before the call: the URL can also change through
+      // paths not hooked here (location.search=, the Navigation API).
+      const navigated = (via, active, before = lastPath) => {
+        const to = pagePath(); const from = before ?? lastPath; lastPath = to; if (to === from) return;
         emit({ kind: 'page.navigate', action_id: active?.action_id || null, via, from, to, ...(active?.continuation_id ? { parent_continuation_id: active.continuation_id } : {}) });
       };
       for (const method of ['pushState', 'replaceState']) {
         const native = history[method];
         if (typeof native !== 'function') continue;
-        history[method] = function productTraceHistory(...args) { const result = native.apply(this, args); try { const owner = captureOwner(); navigated(method, owner && !owner.stale_owner ? owner : null); } catch {} return result; };
+        history[method] = function productTraceHistory(...args) { const before = pagePath(); const result = native.apply(this, args); try { const owner = captureOwner(); navigated(method, owner && !owner.stale_owner ? owner : null, before); } catch {} return result; };
       }
       global.addEventListener?.('popstate', () => { try { navigated('popstate', null); } catch {} }, true);
       Object.defineProperty(history, '__productTraceNavigation', { value: true });
     }
   } catch {}
+  // WebSocket: the connection (CONNECT row) and every message the page sends
+  // (`network.send`: byte size only, never the content; owned by the frame
+  // current when send() is called, like a worker post; outside every action
+  // it carries `issuer`). A message carries no trace context, so what it
+  // causes on a server can never be joined: chains state that as a frontier.
   const socketInfo = new WeakMap(); let socketSendWrapper = null;
   if (global.WebSocket) { const NativeWebSocket = global.WebSocket;
     global.WebSocket = function ProductTraceWebSocket(url, ...args) { const context = traceContext(); const active = captureOwner();
