@@ -64,7 +64,14 @@ export async function readStory({ collectorUrl, session = null }) {
     const story = response.ok ? await response.json().catch(() => null) : null;
     // Older collectors answer any GET; only a real story counts.
     if (story?.schema === 'producttrace.story.v1') {
-      return { source: 'story', sessions: story.sessions || [], lines: story.lines || [] };
+      return {
+        source: 'story',
+        sessions: story.sessions || [],
+        lines: story.lines || [],
+        // The package's goals over those lines, when it groups them.
+        ...(Array.isArray(story.segments) ? { segments: story.segments } : {}),
+        ...(Array.isArray(story.narrative) ? { narrative: story.narrative } : {}),
+      };
     }
   } catch {}
   // No sentences from this package build. Raw engine rows are not a substitute:
@@ -140,7 +147,11 @@ export function narrationOf(story, lines) {
     segments: segmentsOf(story, lines).map((segment, index) => {
       const evidence = [
         ...segment.lines.flatMap(lineEvidence),
-        ...(segment.values ? Object.entries(segment.values).map(([k, v]) => `${k}: ${v}`) : []),
+        ...[segment.values || []]
+          .flatMap((v) =>
+            Array.isArray(v) ? v : Object.entries(v).map(([key, value]) => ({ key, value })),
+          )
+          .map((v) => `${v.field || v.key}: ${v.value ?? `${v.length} characters`}`),
         ...(segment.entities || []).map((e) => `${e.type} ${e.id}`),
       ];
       return {

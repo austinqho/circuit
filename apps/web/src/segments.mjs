@@ -77,6 +77,11 @@ export function segmentsOf(story, lines) {
       ...(s.verb !== undefined ? { verb: s.verb } : {}),
       ...(s.entities ? { entities: s.entities } : {}),
       ...(s.values ? { values: s.values } : {}),
+      // The package's own wording for each step ("Enters ada@example.test as the email").
+      ...(Array.isArray(s.steps)
+        ? { steps: new Map(s.steps.map((step) => [step.line, step.text])) }
+        : {}),
+      ...(s.open ? { open: true } : {}),
     }))
     .filter((s) => s.lines.length);
   return segments.length ? segments : groupLines(lines);

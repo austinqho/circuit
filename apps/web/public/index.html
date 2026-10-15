@@ -606,6 +606,7 @@
       .stop > summary {
         display: grid;
         grid-template-columns: 34px 1fr auto;
+        column-gap: 8px;
         align-items: center;
         min-height: 34px;
         list-style: none;
@@ -1076,15 +1077,15 @@
 
       const keep = (key) => (openKeys.has(key) ? 'open' : '');
 
-      function stopHtml(line, start) {
+      function stopHtml(line, start, steps) {
         const facts = lineFacts(line);
         const key = `l:${line.id}`;
         const fresh = !seen.has(line.id + ':' + (line.count || 0) + ':' + line.text);
         seen.add(line.id + ':' + (line.count || 0) + ':' + line.text);
         return `<details class="stop ${stateOf(line)} ${fresh ? 'fresh' : ''}" data-key="${esc(key)}" ${keep(key)}>
-          <summary><i class="stop-dot" aria-hidden="true"></i><span class="stop-text">${esc(lead(line.text))}${line.count > 1 && line.kind !== 'type' ? ` <em>${line.count}×</em>` : ''}</span><time>+${duration(line.at - start)}</time></summary>
+          <summary><i class="stop-dot" aria-hidden="true"></i><span class="stop-text">${esc(steps?.get(line.id) ?? lead(line.text))}${line.count > 1 && line.kind !== 'type' ? ` <em>${line.count}×</em>` : ''}</span><time>+${duration(line.at - start)}</time></summary>
           <div class="stop-body">
-            ${line.text.includes(' → ') ? `<p class="stop-full">${esc(line.text)}</p>` : ''}
+            ${steps?.has(line.id) || line.text.includes(' → ') ? `<p class="stop-full">${esc(line.text)}</p>` : ''}
             ${line.detail ? `<p class="event-detail">${esc(line.detail)}</p>` : ''}
             ${facts.length ? `<ol class="journey-steps">${facts.map((s) => `<li class="journey-step ${s.cls || ''}"><strong>${s.raw ? s.t : esc(s.t)}</strong><small>${esc(s.s)}</small></li>`).join('')}</ol>` : ''}
           </div>
@@ -1105,7 +1106,7 @@
               <time>${time(first.at)}</time>
               <span class="seg-count">${CHEV} ${n} step${n === 1 ? '' : 's'} · ${duration(last.at - first.at)}</span>
             </summary>
-            <div class="seg-stops">${seg.lines.map((l) => stopHtml(l, first.at)).join('')}</div>
+            <div class="seg-stops">${seg.lines.map((l) => stopHtml(l, first.at, seg.steps)).join('')}</div>
           </details>
         </section>`;
       }
@@ -1144,7 +1145,15 @@
         }
         // The latest session is the itinerary; earlier ones fold away under one line.
         const sessions = [...bySession.values()];
-        const latest = sessions.pop();
+        // A session that only opened the page (this page's own app frame, say) doesn't
+        // push the last real session out of view.
+        const acted = (ls) => ls.some((l) => l.kind !== 'open');
+        let at = sessions.length - 1;
+        if (!acted(sessions[at])) {
+          const back = sessions.findLastIndex(acted);
+          if (back !== -1) at = back;
+        }
+        const [latest] = sessions.splice(at, 1);
         const segs = segmentsOf(latest);
         const earlier = sessions.length
           ? `<details class="earlier" data-key="earlier" ${keep('earlier')}><summary>${sessions.length} earlier session${sessions.length === 1 ? '' : 's'}</summary>${sessions
