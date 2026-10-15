@@ -155,11 +155,13 @@ export function buildReport({ steps = [], browserRequests = [], story }) {
 
   const acted = rows.filter((row, i) => row.ok && !SILENT_ACTIONS.has(windows[i].step.action));
   const pct = (n, d) => (d ? Math.round((100 * n) / d) : null);
-  const labeled = lines.filter((line) => line.element?.label).length;
-  const handled = lines.filter((line) => line.handler?.name).length;
+  // Only lines written during this run's steps count; the store may hold other sessions.
+  const paired = byStep.flat();
+  const labeled = paired.filter((line) => line.element?.label).length;
+  const handled = paired.filter((line) => line.handler?.name).length;
   const browserTotal = rows.reduce((n, row) => n + row.browser_requests.length, 0);
   const packageTotal = rows.reduce((n, row) => n + row.package_requests.length, 0);
-  const entityLines = lines.filter((line) => (line.entities || []).length).length;
+  const entityLines = paired.filter((line) => (line.entities || []).length).length;
   return {
     source: story?.source ?? null,
     scorecard: {
@@ -168,10 +170,10 @@ export function buildReport({ steps = [], browserRequests = [], story }) {
         acted.filter((row) => row.package_said.length).length,
         acted.length,
       ),
-      lines: lines.length,
-      lines_naming_the_element_pct: pct(labeled, lines.length),
-      lines_naming_a_handler_pct: pct(handled, lines.length),
-      lines_with_entity_ids_pct: pct(entityLines, lines.length),
+      lines: paired.length,
+      lines_naming_the_element_pct: pct(labeled, paired.length),
+      lines_naming_a_handler_pct: pct(handled, paired.length),
+      lines_with_entity_ids_pct: pct(entityLines, paired.length),
       request_recall_pct: pct(Math.min(packageTotal, browserTotal), browserTotal),
       browser_requests: browserTotal,
       package_requests: packageTotal,
