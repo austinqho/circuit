@@ -7,15 +7,18 @@
  * Deterministic and model-free: every sentence is built from rows in the
  * store (dom.action, network.request, network.body, function spans). Labels
  * come from the control's visible name (runtime `labels`), IDs only from
- * request URLs and bodies, never from typed text. Gesture noise (focus, blur,
- * pointer moves) that caused nothing is left out.
+ * request URLs and bodies, never from typed text. A line says what the
+ * person did and what it visibly caused (requests, navigations); focus moves
+ * and gesture noise are left out, and engine diagnostics go in `detail`.
  */
 import { chainStops, isIdSegment } from '../mcp/tools.mjs';
 import { fileFingerprint, loadStore, storePaths } from './store.mjs';
 
 export const STORY_SCHEMA = 'producttrace.story.v1';
 
-const NOISE = new Set(['focus', 'blur', 'focusin', 'focusout', 'DOMFocusIn', 'DOMFocusOut', 'DOMActivate', 'pointerdown', 'pointerup', 'pointermove', 'pointerover', 'pointerout',
+// Focus moving is bookkeeping, never something the person did: no line, whatever it caused.
+const FOCUS = new Set(['focus', 'blur', 'focusin', 'focusout', 'DOMFocusIn', 'DOMFocusOut']);
+const NOISE = new Set(['DOMActivate', 'pointerdown', 'pointerup', 'pointermove', 'pointerover', 'pointerout',
   'pointerenter', 'pointerleave', 'mousedown', 'mouseup', 'mousemove', 'keyup', 'scroll', 'scrollend', 'wheel', 'select', 'selectionchange', 'touchstart', 'touchend', 'touchmove',
   'compositionstart', 'compositionupdate', 'compositionend', 'beforeinput', 'animationend', 'animationstart', 'transitionend', 'transitionrun', 'transitionstart', 'gotpointercapture', 'lostpointercapture']);
 const HOVER = new Set(['mouseover', 'mouseout', 'mouseenter', 'mouseleave']);
@@ -112,6 +115,26 @@ function requestPhrase(facts) {
   return `${facts.method} ${facts.path} (${status}${created ? `, created ${created.type} ${created.id}` : ''})`;
 }
 
+/**
+ * What else is known about an action, in plain words, for a reader who opens
+ * the line: never part of the line itself.
+ */
+function detailOf(chain, requests, navigations) {
+  const notes = [];
+  const handler = handlerOf(chain);
+  if (handler?.name) notes.push(`Handled by ${handler.name}${handler.file ? ` in ${handler.file}` : ''}.`);
+  const did = chain.outcome?.did;
+  if (!requests.length && !navigations.length && did) {
+    if (!did.functions_entered) notes.push('None of the app\'s own code ran.');
+    else {
+      const changed = [did.dom_mutations && `${did.dom_mutations} page update${did.dom_mutations === 1 ? '' : 's'}`, did.state_effects && `${did.state_effects} state change${did.state_effects === 1 ? '' : 's'}`].filter(Boolean);
+      notes.push(`The app's code ran${changed.length ? ` and made ${changed.join(' and ')}` : ''}, and sent no request.`);
+    }
+    notes.push('Requests from third-party scripts or workers are not seen.');
+  }
+  return notes.length ? notes.join(' ') : null;
+}
+
 function handlerOf(chain) {
   const stop = chain.stops.find(entry => entry.stop === 'entry_handler');
   if (!stop) return null;
@@ -160,6 +183,7 @@ export function storyOf(store, { session } = {}) {
     if (!sessions.has(page)) sessions.set(page, { session: page, started_at: row.timestamp ?? null, actions: 0, first_page: row.page ?? null });
     const info = sessions.get(page);
     info.ended_at = row.timestamp ?? info.ended_at;
+    if (FOCUS.has(row.event)) continue;
     const owned = navsByAction.get(row.action_id) || [];
     if (!owned.length && typeof store.contextOnly === 'function' && store.contextOnly(row.action_id)) continue;
     let chain;
@@ -196,19 +220,15 @@ export function storyOf(store, { session } = {}) {
     // Leaving one element is entering another: a mouseout's hover is on its related target.
     const subject = (row.event === 'mouseout' || row.event === 'mouseleave') && row.related_target ? row.related_target : row.target;
     const parts = [`${verbFor(row)} ${elementPhrase(subject)}`];
-    if (handler?.name) parts.push(handler.name);
     if (requests.length) parts.push(requests.map(requestPhrase).join(', '));
     for (const entry of owned) {
       const ids = idsInUrl(entry.to, 'page_url');
       parts.push(`went to ${entry.to}${ids.length ? ` (${ids.map(entity => `${entity.type} ${entity.id}`).join(', ')})` : ''}`);
     }
-    // Only what was observed: no request (an uninstrumented handler could still have done something).
-    // Without page.navigate rows a link's navigation is not seen, so its absence says nothing.
-    if (!caused && !(row.target?.tag === 'a' && !recordsNavigation.has(page))) parts.push('no request');
     lines.push({ schema: STORY_SCHEMA, id: row.action_id, kind: row.event === 'submit' ? 'submit' : HOVER.has(row.event) ? 'hover' : 'act', session: page, at: row.timestamp ?? null, page: row.page ?? null,
       text: parts.join(' → '), event: row.event,
       element: { tag: subject?.tag ?? null, label: subject?.label ?? null, key: subject?.element_key ?? null },
-      handler, requests, navigations: owned.map(entry => ({ to: entry.to, from: entry.from ?? null, via: entry.via ?? null })), entities, outcome: chain.outcome?.sentence ?? null, action_id: row.action_id });
+      handler, requests, navigations: owned.map(entry => ({ to: entry.to, from: entry.from ?? null, via: entry.via ?? null })), entities, detail: detailOf(chain, requests, owned), action_id: row.action_id });
     info.actions += 1;
   }
   return { schema: STORY_SCHEMA, sessions: [...sessions.values()], lines };

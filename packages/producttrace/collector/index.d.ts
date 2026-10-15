@@ -55,8 +55,11 @@ export interface StoryActLine extends StoryLineBase {
   element: StoryElement;
   handler: { name: string | null; file: string | null; line: number | null } | null;
   requests: StoryRequest[];
+  /** Client-side navigations this action made (its line says "went to …"). */
+  navigations: { to: string; from: string | null; via: string | null }[];
   entities: StoryEntity[];
-  outcome: string | null;
+  /** More about the action in plain words (handler, what ran when nothing was sent). Never in `text`. */
+  detail: string | null;
 }
 /** Text entry into one field; `count` grows while the user keeps typing there. Never the text itself. */
 export interface StoryTypeLine extends StoryLineBase { kind: 'type'; action_id: string; count: number; element: StoryElement }

@@ -97,3 +97,19 @@ test('a navigation the router made inside an action is told on that action; key-
   ]);
   assert.equal(lines[1].count, 2);
 });
+
+test('focus moves are never lines; a click that sent nothing is just the click, with the rest in detail', () => {
+  sequence = 0;
+  const close = { tag: 'button', attributes: {}, element_key: 'k_close', label: 'Close' };
+  const rows = [
+    action('d1', 'blur', close),
+    enter('d1', 'fn:validate'),
+    request('d1', 'POST', 'https://api.example.com/validate', 1),
+    action('d2', 'focusout', close),
+    action('d3', 'click', close),
+    enter('d3', 'fn:onClose'),
+  ];
+  const { lines } = storyOf(createStore({ records: rows }));
+  assert.deepEqual(lines.map(line => line.text), ['Clicked the “Close” button']);
+  assert.doesNotMatch(lines[0].detail || '', /instrumented|attributed|DOM mutation/u);
+});
