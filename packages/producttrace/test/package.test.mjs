@@ -9,8 +9,10 @@ test('install allowlist excludes source, build tooling, and developer tests', as
   const packageRoot = resolve(import.meta.dirname, '..');
   const manifest = JSON.parse(await readFile(resolve(packageRoot, 'package.json'), 'utf8'));
   assert.deepEqual(manifest.files, [
-    'analysis', 'backend', 'collector', 'dist', 'integrations', 'mcp', 'index.d.ts', 'index.js', 'LICENSE', 'README.md',
-    'plugin', '.agents',
+    'analysis', 'backend', 'collector', 'dist', 'integrations', 'mcp', 'plugin', '.agents',
+    'index.js', 'index.d.ts', 'vite.mjs', 'vite.d.mts', 'collector.js', 'collector.d.ts', 'backend.js', 'backend.d.ts',
+    'backend-register.js', 'analysis.mjs', 'analysis.d.mts', 'runtime-attribution.mjs', 'runtime-attribution.d.mts',
+    'mcp.mjs', 'mcp-tools.mjs', 'mcp-annotation-lookup.mjs', 'LICENSE', 'README.md',
   ]);
   assert.equal(manifest.files.some((entry) => /^(src|scripts|test)(\/|$)/.test(entry)), false);
 

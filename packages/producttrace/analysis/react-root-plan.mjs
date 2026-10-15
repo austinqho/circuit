@@ -1,4 +1,4 @@
-import {validateReactExecutionRule} from './react-execution-rule.mjs';
+import {validateReactExecutionRule} from './react-execution-validate.mjs';
 /** Describe root lifetime operations. A scheduled tree is not a committed tree;
  * checking the container's node kind does not validate all DOM capabilities. */
 export function planReactRootOperation(rule,{operation,state='active',args=[],containerNodeType}={}) {

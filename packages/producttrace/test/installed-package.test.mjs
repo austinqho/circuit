@@ -28,7 +28,10 @@ test('npm-packed tarball installs and exposes the Vite plugins', () => {
     for (const name of Object.keys(manifest.dependencies)) {
       const target = path.join(consumer, 'node_modules', name);
       fs.mkdirSync(path.dirname(target), { recursive: true });
-      fs.symlinkSync(fs.realpathSync(path.join(packageRoot, 'node_modules', name)), target);
+      // In the workspace, dependencies are hoisted to the repository root.
+      let dir = packageRoot;
+      while (!fs.existsSync(path.join(dir, 'node_modules', name)) && path.dirname(dir) !== dir) dir = path.dirname(dir);
+      fs.symlinkSync(fs.realpathSync(path.join(dir, 'node_modules', name)), target);
     }
     fs.writeFileSync(path.join(consumer, 'package.json'), JSON.stringify({ name: 'consumer', private: true, type: 'module' }));
     fs.writeFileSync(path.join(consumer, 'probe.mjs'), `

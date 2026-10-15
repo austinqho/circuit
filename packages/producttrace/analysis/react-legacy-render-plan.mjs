@@ -1,4 +1,4 @@
-import {validateReactExecutionRule} from './react-execution-rule.mjs';
+import {validateReactExecutionRule} from './react-execution-validate.mjs';
 /** Describe a request and its public result. A callback runs at commit, which
  * can follow the call when an existing legacy root is updated inside a batch. */
 export function planReactLegacyRender(rule,{args=[],rootState='initial',publicInstance,parentValid}={}) {

@@ -1,4 +1,4 @@
-import {validateReactExecutionRule} from './react-execution-rule.mjs';
+import {validateReactExecutionRule} from './react-execution-validate.mjs';
 /** Select the server input and execution policy without invoking a component,
  * reading its props, or interpreting returned HTML as browser execution. */
 export function planReactServerString(rule,{args=[],suspended=false,boundary=false,fatal=false}={}) {

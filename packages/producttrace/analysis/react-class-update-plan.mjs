@@ -1,4 +1,4 @@
-import {validateReactExecutionRule} from './react-execution-rule.mjs';
+import {validateReactExecutionRule} from './react-execution-validate.mjs';
 /** Describe the public class method and its queued callback protocol without
  * executing an updater, enumerating state, or claiming a queue was processed. */
 export function planReactClassUpdate(rule,{args=[],instance,updaterResult,operation='call',role,state,props}={}) {

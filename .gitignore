@@ -2,7 +2,12 @@
 node_modules/
 *.log
 *.jsonl
+!packages/*/test/fixtures/**/*.jsonl
 .m1-live/
+.tracer/
 
-# Unredacted internal notes (OpenAI surface research); never publish
+# Built by `npm run build` (and on install via `prepare`)
+packages/producttrace/dist/
+
+# Unredacted internal notes; never publish
 docs/internal/

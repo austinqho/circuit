@@ -1,4 +1,4 @@
-import {validateReactExecutionRule} from './react-execution-rule.mjs';
+import {validateReactExecutionRule} from './react-execution-validate.mjs';
 /** Interpret source/version-specific class policy from supplied facts. Equality
  * facts need their own evidence; this planner never enumerates application props
  * or state and never calls a shouldComponentUpdate method to find an answer.

@@ -1,4 +1,4 @@
-import {validateReactExecutionRule} from './react-execution-rule.mjs';
+import {validateReactExecutionRule} from './react-execution-validate.mjs';
 /** A factory stores its type now and supplies it to construction on later calls.
  * Planning does not invoke the component or read the deprecated `.type` getter. */
 export function planElementFactory(rule,{args=[],invocation}={}) {

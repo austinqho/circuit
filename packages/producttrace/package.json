@@ -1,0 +1,141 @@
+{
+  "name": "producttrace",
+  "version": "0.1.0",
+  "description": "Ground user actions in the exact product entities they affected.",
+  "license": "MIT",
+  "type": "module",
+  "main": "./index.js",
+  "module": "./index.js",
+  "browser": "./dist/producttrace-runtime.js",
+  "unpkg": "./dist/producttrace-runtime.js",
+  "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js"
+    },
+    "./iife": "./dist/producttrace-runtime.js",
+    "./dist/producttrace-runtime.js": "./dist/producttrace-runtime.js",
+    "./vite": {
+      "types": "./vite.d.mts",
+      "import": "./vite.mjs"
+    },
+    "./collector": {
+      "types": "./collector.d.ts",
+      "import": "./collector.js"
+    },
+    "./backend": {
+      "types": "./backend.d.ts",
+      "import": "./backend.js"
+    },
+    "./backend/register": {
+      "import": "./backend-register.js"
+    },
+    "./analysis": {
+      "types": "./analysis.d.mts",
+      "import": "./analysis.mjs"
+    },
+    "./runtime-attribution": {
+      "types": "./runtime-attribution.d.mts",
+      "import": "./runtime-attribution.mjs"
+    },
+    "./mcp": {
+      "import": "./mcp.mjs"
+    },
+    "./mcp/tools": {
+      "import": "./mcp-tools.mjs"
+    },
+    "./mcp/annotation-lookup": {
+      "import": "./mcp-annotation-lookup.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "producttrace-collector": "./collector/cli.mjs",
+    "producttrace-mcp": "./mcp/server.mjs"
+  },
+  "files": [
+    "analysis",
+    "backend",
+    "collector",
+    "dist",
+    "integrations",
+    "mcp",
+    "plugin",
+    ".agents",
+    "index.js",
+    "index.d.ts",
+    "vite.mjs",
+    "vite.d.mts",
+    "collector.js",
+    "collector.d.ts",
+    "backend.js",
+    "backend.d.ts",
+    "backend-register.js",
+    "analysis.mjs",
+    "analysis.d.mts",
+    "runtime-attribution.mjs",
+    "runtime-attribution.d.mts",
+    "mcp.mjs",
+    "mcp-tools.mjs",
+    "mcp-annotation-lookup.mjs",
+    "LICENSE",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "prepare": "node scripts/build.mjs",
+    "test": "node --test test/*.test.mjs",
+    "typecheck": "tsc -p tsconfig.json",
+    "test:browser": "node test/browser/server.mjs",
+    "demo:install": "node test/browser/install-real-app.mjs",
+    "test:acceptance:librechat:backend": "node test/acceptance/librechat-backend-runtime.mjs",
+    "test:acceptance:react:matrix": "node test/acceptance/react-api-integration-matrix.mjs",
+    "test:acceptance:react:rules": "node test/acceptance/react-rule-admission.mjs",
+    "demo:install:librechat-bridge": "node test/browser/install-librechat-request-bridge.mjs",
+    "demo:build:librechat-autonomous": "node test/browser/build-librechat-autonomous.mjs"
+  },
+  "engines": {
+    "node": "^18.19.0 || >=20.6.0"
+  },
+  "dependencies": {
+    "@jridgewell/sourcemap-codec": "1.6.0",
+    "@jridgewell/trace-mapping": "0.3.31",
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "@opentelemetry/api": "1.9.0",
+    "@opentelemetry/instrumentation": "0.207.0",
+    "@opentelemetry/instrumentation-express": "0.56.0",
+    "@opentelemetry/instrumentation-http": "0.207.0",
+    "@opentelemetry/instrumentation-mongodb": "0.60.0",
+    "@opentelemetry/instrumentation-mongoose": "0.54.0",
+    "@opentelemetry/instrumentation-undici": "0.19.0",
+    "@opentelemetry/sdk-trace-node": "2.10.0",
+    "magic-string": "0.30.17",
+    "typescript": "5.9.3"
+  },
+  "devDependencies": {
+    "@radix-ui/react-dialog": "^1.1.23",
+    "@radix-ui/react-select": "^2.3.7",
+    "@tanstack/react-query": "^5.103.2",
+    "@types/node": "^22.20.5",
+    "express": "5.2.1",
+    "express4": "npm:express@^4.21.2",
+    "mongodb": "6.21.0",
+    "vite": "^6.4.4",
+    "wouter": "^3.11.0",
+    "zustand": "^5.0.15"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/austinqho/circuit.git",
+    "directory": "packages/producttrace"
+  },
+  "peerDependencies": {
+    "vite": ">=5"
+  },
+  "peerDependenciesMeta": {
+    "vite": {
+      "optional": true
+    }
+  }
+}

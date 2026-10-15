@@ -1,4 +1,4 @@
-import {validateReactExecutionRule} from './react-execution-rule.mjs';
+import {validateReactExecutionRule} from './react-execution-validate.mjs';
 /** A true result reports an accepted unmount request. The flush may be deferred
  * inside a render/commit, so an empty-root commit needs separate runtime proof. */
 export function planReactLegacyUnmount(rule,{args=[],nodeType,nodeValue,rootKind}={}) {

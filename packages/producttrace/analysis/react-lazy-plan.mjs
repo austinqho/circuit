@@ -1,4 +1,4 @@
-import {validateReactExecutionRule} from './react-execution-rule.mjs';
+import {validateReactExecutionRule} from './react-execution-validate.mjs';
 /** Interpret one lazy-initializer step without calling a loader, subscribing to
  * a thenable, or reading a module getter. Those are effects to observe separately. */
 export function planReactLazyStep(rule,{state,event,value}={}) {

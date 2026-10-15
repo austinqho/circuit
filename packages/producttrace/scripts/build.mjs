@@ -68,4 +68,4 @@ if (!(await readFile(canonicalAttribution)).equals(await readFile(packagedAttrib
   throw new Error('Packaged attribution runtime differs from the canonical source');
 }
 
-console.log(`built byte-identical runtime (${built.byteLength} bytes)`);
+console.error(`built byte-identical runtime (${built.byteLength} bytes)`);

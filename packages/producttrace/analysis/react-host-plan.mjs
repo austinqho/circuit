@@ -1,4 +1,4 @@
-import {validateReactExecutionRule} from './react-execution-rule.mjs';
+import {validateReactExecutionRule} from './react-execution-validate.mjs';
 /** The renderer supplies a bounded snapshot of the current branch. This planner
  * never reads a live component, nodeType getter, or an alternate Fiber itself. */
 export function planReactHostLookup(rule,{input,args,nodeType,currentTree,providedTree,mounted}={}) {
