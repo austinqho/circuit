@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createStore } from '../collector/store.mjs';
-import { idsInUrl, storyOf } from '../collector/story.mjs';
+import { idsInUrl, PENDING_MS, storyOf } from '../collector/story.mjs';
 
 const page = 's_1';
 let sequence = 0;
@@ -64,13 +64,99 @@ test('two fields without any key stay two lines; Enter is named; a request with 
     enter('c3', 'fn:search'),
     request('c3', 'GET', 'https://api.example.com/search?q=1', 7),
   ];
-  const { lines } = storyOf(createStore({ records: rows }));
+  const { lines } = storyOf(createStore({ records: rows }), { now: 2_000 });
   assert.deepEqual(lines.map(line => line.text), [
     'Typed in the “First Name” field',
     'Typed in the “Last Name” field',
     'Pressed Enter on the “Search” field → GET /search?q=1 (pending)',
   ]);
   // Once the page has closed, a request that never got a status says so.
-  const closed = storyOf(createStore({ records: [...rows, { kind: 'capture.summary', page_id: page, capture_page_id: page, ...at() }] }));
+  const closed = storyOf(createStore({ records: [...rows, { kind: 'capture.summary', page_id: page, capture_page_id: page, ...at() }] }), { now: 2_000 });
   assert.match(closed.lines[2].text, /GET \/search\?q=1 \(no response recorded\)$/u);
+  // A tab that dies never closes: after PENDING_MS the request stops reading as pending.
+  const later = storyOf(createStore({ records: rows }), { now: 2_000 + PENDING_MS });
+  assert.match(later.lines[2].text, /GET \/search\?q=1 \(no response recorded\)$/u);
+});
+
+test('a navigation the router made inside an action is told on that action; key-by-key typing is one line', () => {
+  sequence = 0;
+  const email = { tag: 'input', attributes: { name: 'email', type: 'email' }, element_key: 'k_email', label: 'Email Address' };
+  const start = { tag: 'button', attributes: {}, element_key: 'k_start', label: 'Get started' };
+  const key = (id, event) => action(id, event, email, { page: '/auth/login' });
+  const rows = [
+    action('b1', 'click', start, { page: '/' }),
+    enter('b1', 'fn:handleStart'),
+    { kind: 'page.navigate', action_id: 'b1', via: 'pushState', from: '/', to: '/auth/login', parent_continuation_id: 'f:b1', ...at() },
+    // pressSequentially: keydown, keypress, textInput, input, keyup per character.
+    ...['k1', 'k2'].flatMap(id => ['keydown', 'keypress', 'textInput', 'input', 'keyup'].map((event, index) => key(`${id}${index}`, event))),
+    action('b9', 'change', email, { page: '/auth/login' }),
+    { kind: 'page.navigate', action_id: null, via: 'popstate', from: '/auth/login', to: '/', ...at() },
+  ];
+  const { lines } = storyOf(createStore({ records: rows }));
+  assert.deepEqual(lines.map(line => line.text), [
+    'Clicked the “Get started” button → went to /auth/login',
+    'Typed in the “Email Address” field',
+    'Went back/forward to /',
+  ]);
+  assert.equal(lines[1].count, 2);
+});
+
+test('focus moves are lines only when they caused something; a click that sent nothing is just the click', () => {
+  sequence = 0;
+  const close = { tag: 'button', attributes: {}, element_key: 'k_close', label: 'Close' };
+  const email = { tag: 'input', attributes: { name: 'email' }, element_key: 'k_email', label: 'Email' };
+  const rows = [
+    action('d1', 'blur', email),
+    enter('d1', 'fn:save'),
+    request('d1', 'PUT', 'https://api.example.com/users/u_81Kx92aa', 1),
+    action('d2', 'focusout', close),
+    action('d3', 'click', close),
+    enter('d3', 'fn:onClose'),
+    // A focusout whose handler navigated: the navigation is told on it.
+    action('d4', 'focusout', email),
+    enter('d4', 'fn:leave'),
+    { kind: 'page.navigate', action_id: 'd4', via: 'pushState', from: '/', to: '/done', ...at() },
+  ];
+  const { lines } = storyOf(createStore({ records: rows }), { now: 2_000 });
+  assert.deepEqual(lines.map(line => line.text), [
+    'Left the “Email” field → PUT /users/u_81Kx92aa (status not recorded)',
+    'Clicked the “Close” button',
+    'Left the “Email” field → went to /done',
+  ]);
+  assert.doesNotMatch(lines[1].detail || '', /instrumented|attributed|DOM mutation|third-party/u);
+  // fn:onClose was never bound to the button as a handler, so it is not named as one.
+  assert.equal(lines[1].handler, null);
+});
+
+test('a choice is a line; URL-synced typing stays one line; effects read in the order they happened', () => {
+  sequence = 0;
+  const role = { tag: 'select', attributes: { name: 'role' }, element_key: 'k_role', label: 'Role' };
+  const search = { tag: 'input', attributes: { name: 'q', type: 'search' }, element_key: 'k_q', label: 'Search' };
+  const link = { tag: 'a', attributes: { href: '/app/discussions' }, element_key: 'k_link', label: 'Discussions' };
+  const typed = (id, to, from) => [
+    action(id, 'input', search), enter(id, `fn:${id}`),
+    { kind: 'page.navigate', action_id: id, via: 'replaceState', from, to, ...at() },
+  ];
+  const rows = [
+    action('e1', 'change', role),
+    ...typed('e2', '/?q=a', '/'), ...typed('e3', '/?q=ab', '/?q=a'), ...typed('e4', '/?q=abc', '/?q=ab'),
+    action('e5', 'change', search),
+    action('e6', 'click', link), enter('e6', 'fn:navigate'),
+    { kind: 'page.navigate', action_id: 'e6', via: 'pushState', from: '/?q=abc', to: '/app/discussions', ...at() },
+    request('e6', 'GET', 'https://api.example.com/discussions?page=1', 1),
+  ];
+  const { lines } = storyOf(createStore({ records: rows }), { now: 2_000 });
+  assert.deepEqual(lines.map(line => line.text), [
+    'Changed the “Role” field',
+    'Typed in the “Search” field',
+    'Clicked the “Discussions” link → went to /app/discussions → GET /discussions?page=1 (status not recorded)',
+  ]);
+  assert.equal(lines[1].count, 3);
+  assert.equal(lines[1].navigations.at(-1).to, '/?q=abc');
+});
+
+test('navigations of two page loads have distinct ids', () => {
+  const load = (pageId, to) => ({ kind: 'page.navigate', action_id: null, via: 'popstate', from: '/', to, sequence: 1, timestamp: 1_000, capture_page_id: pageId });
+  const { lines } = storyOf(createStore({ records: [load('s_a', '/one'), load('s_b', '/two')] }), { now: 2_000 });
+  assert.equal(new Set(lines.map(line => line.id)).size, 2);
 });

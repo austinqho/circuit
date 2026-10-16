@@ -25,15 +25,18 @@ export declare function createCollector(options?: CollectorOptions): Collector;
 
 /** The session story served by GET /story and GET /story/stream in store mode (collector/story.mjs). */
 export interface StoryEntity { type: string; id: string; from: 'request_url' | 'response_body' | 'page_url'; created?: boolean }
+export interface StoryNavigation { to: string; from: string | null; via: string | null }
 export interface StoryRequest {
   method: string;
   path: string;
   status: number | null;
-  /** done: a status was recorded; pending: none yet, page still open; no_response: page closed without one; not_recorded: body capture off. */
+  /** done: a status was recorded; pending: none yet, page still open; no_response: page closed (or 30 s passed) without one; not_recorded: body capture off. */
   state: 'done' | 'pending' | 'aborted' | 'no_response' | 'not_recorded';
   aborted: boolean;
   entities: StoryEntity[];
   request_occurrence_id: string;
+  /** Order within its page load, shared with navigations. */
+  sequence: number | null;
 }
 interface StoryLineBase {
   schema: 'producttrace.story.v1';
@@ -55,11 +58,14 @@ export interface StoryActLine extends StoryLineBase {
   element: StoryElement;
   handler: { name: string | null; file: string | null; line: number | null } | null;
   requests: StoryRequest[];
+  /** Client-side navigations this action made (its line says "went to …"). */
+  navigations: StoryNavigation[];
   entities: StoryEntity[];
-  outcome: string | null;
+  /** More about the action in plain words (handler, what ran when nothing was sent). Never in `text`. */
+  detail: string | null;
 }
-/** Text entry into one field; `count` grows while the user keeps typing there. Never the text itself. */
-export interface StoryTypeLine extends StoryLineBase { kind: 'type'; action_id: string; count: number; element: StoryElement }
+/** Text entry into one field; `count` grows while the user keeps typing there. Never the text itself. `navigations`: the URL a search box synced to, last one last. */
+export interface StoryTypeLine extends StoryLineBase { kind: 'type'; action_id: string; count: number; element: StoryElement; navigations?: StoryNavigation[] }
 /** A page change between two actions. */
 export interface StoryNavigateLine extends StoryLineBase { kind: 'navigate'; entities: StoryEntity[] }
 export type StoryLine = StoryActLine | StoryTypeLine | StoryNavigateLine;
