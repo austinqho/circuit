@@ -26,7 +26,7 @@ export interface ProductTraceViteOptions {
    * unless `allowRemote: true`; no sink in a Vite `production`-mode build
    * unless `force: true`.
    */
-  collector?: string | { url: string; allowRemote?: boolean; force?: boolean };
+  collector?: string | false | { url: string; allowRemote?: boolean; force?: boolean };
   /**
    * Request/response bodies as `network.body` rows. Default (true): on in dev
    * builds (Vite mode !== 'production'), off in production-mode builds.
@@ -73,10 +73,17 @@ export interface FirstPartyOptions {
 export declare function runtimeAttributionPlugin(options: RuntimeAttributionOptions): Plugin;
 
 export interface ProductTraceOptions extends Partial<ProductTraceViteOptions> {
+  /**
+   * Left out: `vite` and `vite preview` run a collector themselves (store under
+   * `node_modules/.producttrace/store`), the page posts to it on its own origin,
+   * and the live story is at `/__producttrace/`. `requestBridge` then defaults
+   * to false. `false`: nothing leaves the page. A URL: a collector you run.
+   */
+  collector?: ProductTraceViteOptions['collector'];
   /** Install the post-transform runtime-attribution plugin (default true). */
   runtimeAttribution?: boolean;
   firstParty?: FirstPartyOptions;
 }
 
-/** One-line installation: `plugins: [...producttrace(), react()]`. */
+/** One-line installation: `plugins: [react(), producttrace()]`. */
 export declare function producttrace(options?: ProductTraceOptions): Plugin[];

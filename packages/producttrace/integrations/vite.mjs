@@ -14,6 +14,7 @@ import {
 } from './compiled-request-bridge.mjs';
 import { runtimeAttributionPlugin } from './runtime-attribution.mjs';
 import { collectorSinkSource, normalizeCollectorOption } from './collector-sink.mjs';
+import { LOCAL_COLLECTOR_BASE, localCollectorPlugin } from './local-collector.mjs';
 
 export { runtimeAttributionPlugin };
 
@@ -190,11 +191,14 @@ export function productTraceVitePlugin(options = {}) {
   };
   writeSnapshot();
 
+  let assetBase = '/';
   return {
     name: 'producttrace-autonomous-instrumentation',
     enforce: 'pre',
     configResolved(config) {
       viteMode = config?.mode ?? null;
+      // An absolute base (`/app/`) prefixes the assets; a relative one ('./') keeps them at the root.
+      assetBase = typeof config?.base === 'string' && config.base.startsWith('/') ? config.base.replace(/\/?$/u, '/') : '/';
       if (collector && viteMode === 'production' && !collector.force) {
         (config.logger?.warn || console.warn).call(config.logger || console, '[producttrace] collector sink disabled: Vite mode is "production" (pass collector: { url, force: true } to keep it in this build)');
       }
@@ -262,8 +266,8 @@ export function productTraceVitePlugin(options = {}) {
         // These precede the application's <base> element. Root-relative URLs
         // therefore keep tracing alive on deep entries such as /c/new instead
         // of resolving the assets under /c/.
-        { tag: 'script', attrs: { src: `/producttrace-runtime.js?v=${runtimeRevision}` }, injectTo: 'head-prepend' },
-        ...(loaderSource ? [{ tag: 'script', attrs: { src: `/producttrace-request-bridge.js?v=${loaderRevision}` }, injectTo: 'head-prepend' }] : []),
+        { tag: 'script', attrs: { src: `${assetBase}producttrace-runtime.js?v=${runtimeRevision}` }, injectTo: 'head-prepend' },
+        ...(loaderSource ? [{ tag: 'script', attrs: { src: `${assetBase}producttrace-request-bridge.js?v=${loaderRevision}` }, injectTo: 'head-prepend' }] : []),
       ];
       // Without a <head>, Vite injects head-prepend tags with a string-form
       // replace that reads `$'` in the inline runtime as a pattern. Give the
@@ -273,7 +277,8 @@ export function productTraceVitePlugin(options = {}) {
     // `vite dev`: serve the same assets the build emits.
     configureServer(server) {
       server.middlewares.use((request, response, next) => {
-        const pathname = (request.url || '').split('?')[0];
+        const url = (request.url || '').split('?')[0];
+        const pathname = url.startsWith(assetBase) ? `/${url.slice(assetBase.length)}` : url;
         const source = pathname === '/producttrace-runtime.js' ? runtimeSource : pathname === '/producttrace-request-bridge.js' ? loaderSource : null;
         if (!source) return next();
         response.setHeader('content-type', 'text/javascript');
@@ -300,7 +305,7 @@ function repositoryRoot(start) {
 }
 
 /**
- * One-line installation: `plugins: [...producttrace(), react()]`.
+ * One-line installation: `plugins: [react(), producttrace()]`.
  * Returns the source-stamp/request-bridge plugin and the post-transform
  * runtime-attribution plugin. Every option is optional:
  * - repository: the analyzed repository (default: nearest ancestor of the
@@ -325,9 +330,50 @@ function repositoryRoot(start) {
  *   inputType, data_length and credential_field only, and printable keys read
  *   "Printable". `true` turns it on in non-production builds only (warned);
  *   password and credential fields are always redacted.
+ * - collector: where the page sends what it records. Left out, `vite` and
+ *   `vite preview` run a collector themselves (store under
+ *   `node_modules/.producttrace/store`) and show the live story at
+ *   `/__producttrace/` on the app's own origin. `false` records nothing
+ *   outside the page; a URL sends rows to a collector you run. With the
+ *   collector left out, `requestBridge` defaults to false, and a
+ *   production-mode build is left alone.
+ * Test runs (Vitest, or Vite mode `test`) are never instrumented.
  * Set `runtimeAttribution: false` to install only the first plugin.
  */
 export function producttrace(options = {}) {
+  // Nothing is analysed until Vite says what it is running: a test run never
+  // is instrumented, and with the collector left out neither is a
+  // production-mode build (nothing would collect what it records).
+  let installed = null;
+  const active = ({ mode }) => mode !== 'test' && !process.env.VITEST
+    && (options.collector !== undefined || mode !== 'production');
+  const forward = (pick, hooks) => Object.fromEntries(hooks.map(hook => [hook, function (...args) {
+    const plugin = pick();
+    return plugin?.[hook]?.apply(this, args);
+  }]));
+  const STATIC_HOOKS = ['configResolved', 'transform', 'transformIndexHtml', 'configureServer', 'generateBundle', 'closeBundle'];
+  const staticProxy = {
+    name: 'producttrace',
+    enforce: 'pre',
+    config(_config, env) {
+      if (!installed && active(env)) installed = installPlugins(options);
+    },
+    ...forward(() => installed?.staticPlugin, STATIC_HOOKS),
+    get api() { return installed?.staticPlugin.api; },
+  };
+  const plugins = [staticProxy];
+  if (options.collector === undefined) {
+    plugins.unshift({ name: 'producttrace-local-collector',
+      ...forward(() => installed?.local, ['configureServer', 'configurePreviewServer', 'closeBundle']) });
+  }
+  if (options.runtimeAttribution !== false) {
+    plugins.push({ name: 'producttrace-runtime-attribution', enforce: 'post',
+      ...forward(() => installed?.attribution, ['config', 'configResolved', 'transform', 'generateBundle', 'closeBundle']) });
+  }
+  return plugins;
+}
+
+function installPlugins(options) {
   const repository = fs.realpathSync(options.repository || repositoryRoot(process.cwd()));
   const cacheDir = path.join(process.cwd(), 'node_modules', '.producttrace');
   const attributionManifestPath = options.attributionManifestPath
@@ -336,17 +382,25 @@ export function producttrace(options = {}) {
   fs.mkdirSync(path.dirname(attributionManifestPath), { recursive: true });
   fs.mkdirSync(path.dirname(configPath), { recursive: true });
   const { runtimeAttribution = true, firstParty, ...rest } = options;
+  // No collector named: the dev (or preview) server runs one and the page posts to it on its own origin.
+  const local = options.collector === undefined
+    ? localCollectorPlugin({ storeDir: path.join(cacheDir, 'store'), manifestFile: runtimeAttribution ? attributionManifestPath : null, sourceRoot: repository })
+    : null;
   const staticPlugin = productTraceVitePlugin({
     ...rest,
+    // ...and the page records its own requests: the static-era bridge needs a backend endpoint to post to.
+    ...(local ? { collector: LOCAL_COLLECTOR_BASE, requestBridge: options.requestBridge ?? false } : {}),
     repository,
     service: options.service || path.basename(repository),
     bridgeEndpoint: options.bridgeEndpoint || '/__producttrace/bridge',
     configPath,
     attributionManifestPath,
   });
-  return runtimeAttribution
-    ? [staticPlugin, runtimeAttributionPlugin({ repository, manifestPath: attributionManifestPath, firstParty })]
-    : [staticPlugin];
+  return {
+    local,
+    staticPlugin,
+    attribution: runtimeAttribution ? runtimeAttributionPlugin({ repository, manifestPath: attributionManifestPath, firstParty }) : null,
+  };
 }
 
 function ensureHead(html) {
