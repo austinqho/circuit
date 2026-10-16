@@ -14,6 +14,7 @@ import {
 } from './compiled-request-bridge.mjs';
 import { runtimeAttributionPlugin } from './runtime-attribution.mjs';
 import { collectorSinkSource, normalizeCollectorOption } from './collector-sink.mjs';
+import { LOCAL_COLLECTOR_BASE, localCollectorPlugin } from './local-collector.mjs';
 
 export { runtimeAttributionPlugin };
 
@@ -294,7 +295,7 @@ function repositoryRoot(start) {
 }
 
 /**
- * One-line installation: `plugins: [...producttrace(), react()]`.
+ * One-line installation: `plugins: [react(), producttrace()]`.
  * Returns the source-stamp/request-bridge plugin and the post-transform
  * runtime-attribution plugin. Every option is optional:
  * - repository: the analyzed repository (default: nearest ancestor of the
@@ -319,6 +320,11 @@ function repositoryRoot(start) {
  *   inputType, data_length and credential_field only, and printable keys read
  *   "Printable". `true` turns it on in non-production builds only (warned);
  *   password and credential fields are always redacted.
+ * - collector: where the page sends what it records. Left out, `vite` and
+ *   `vite preview` run a collector themselves (store under
+ *   `node_modules/.producttrace/store`) and show the live story at
+ *   `/__producttrace/` on the app's own origin. `false` records nothing
+ *   outside the page; a URL sends rows to a collector you run.
  * Set `runtimeAttribution: false` to install only the first plugin.
  */
 export function producttrace(options = {}) {
@@ -330,15 +336,22 @@ export function producttrace(options = {}) {
   fs.mkdirSync(path.dirname(attributionManifestPath), { recursive: true });
   fs.mkdirSync(path.dirname(configPath), { recursive: true });
   const { runtimeAttribution = true, firstParty, ...rest } = options;
+  // No collector named: the dev (or preview) server runs one and the page posts to it on its own origin.
+  const local = options.collector === undefined
+    ? localCollectorPlugin({ storeDir: path.join(cacheDir, 'store'), manifestFile: runtimeAttribution ? attributionManifestPath : null, sourceRoot: repository })
+    : null;
   const staticPlugin = productTraceVitePlugin({
     ...rest,
+    ...(local ? { collector: LOCAL_COLLECTOR_BASE } : {}),
     repository,
     service: options.service || path.basename(repository),
     bridgeEndpoint: options.bridgeEndpoint || '/__producttrace/bridge',
     configPath,
     attributionManifestPath,
   });
-  return runtimeAttribution
-    ? [staticPlugin, runtimeAttributionPlugin({ repository, manifestPath: attributionManifestPath, firstParty })]
-    : [staticPlugin];
+  return [
+    ...(local ? [local] : []),
+    staticPlugin,
+    ...(runtimeAttribution ? [runtimeAttributionPlugin({ repository, manifestPath: attributionManifestPath, firstParty })] : []),
+  ];
 }

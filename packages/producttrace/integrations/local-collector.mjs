@@ -1,0 +1,101 @@
+/**
+ * The collector a one-line install runs for itself.
+ *
+ * `producttrace()` with no `collector` option adds this plugin. When Vite
+ * serves the app (`vite` or `vite preview`) it starts a store-mode collector on
+ * a free loopback port and mounts it on the app's own origin under
+ * `/__producttrace/`:
+ *
+ * - `/__producttrace/ingest`, `/spans`, `/story`, `/story/stream`, `/status`:
+ *   the collector's routes, proxied (the page's sink posts to the first one);
+ * - `/__producttrace/`: a live view of the story, one goal per row with its
+ *   steps underneath.
+ *
+ * The store lives under `node_modules/.producttrace/store` next to Vite's own
+ * cache, so the app's source tree is never written. The collector stops when
+ * the server closes. No repository knowledge; no model.
+ */
+import fs from 'node:fs';
+import http from 'node:http';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { createCollector } from '../collector/index.js';
+
+export const LOCAL_COLLECTOR_BASE = '/__producttrace';
+
+const ROUTES = new Set(['/', '/ingest', '/spans', '/run-info', '/story', '/story/stream', '/status']);
+const viewerFile = path.join(path.dirname(fileURLToPath(import.meta.url)), 'local-viewer.html');
+
+export function localCollectorPlugin({ storeDir, manifestFile, sourceRoot }) {
+  let collector = null;
+  let starting = null;
+  const start = () => {
+    if (!starting) {
+      fs.mkdirSync(storeDir, { recursive: true });
+      collector = createCollector({ port: 0, store: { dir: storeDir, manifestFile, sourceRoot, label: 'vite' } });
+      starting = collector.ready.then(() => collector);
+    }
+    return starting;
+  };
+  const stop = async () => {
+    const running = collector;
+    collector = null;
+    starting = null;
+    if (running) await running.ready.then(() => running.close(), () => {});
+  };
+
+  const mount = (server) => {
+    const ready = start();
+    server.middlewares.use((request, response, next) => {
+      const url = request.url || '';
+      if (url !== LOCAL_COLLECTOR_BASE && !url.startsWith(`${LOCAL_COLLECTOR_BASE}/`) && !url.startsWith(`${LOCAL_COLLECTOR_BASE}?`)) return next();
+      const rest = url.slice(LOCAL_COLLECTOR_BASE.length) || '/';
+      const route = rest.split('?')[0];
+      // Only the collector's own routes: anything else under the prefix (the request bridge) is the app's.
+      if (!ROUTES.has(route)) return next();
+      if (request.method === 'GET' && route === '/') {
+        response.setHeader('content-type', 'text/html; charset=utf-8');
+        response.setHeader('cache-control', 'no-store');
+        response.end(fs.readFileSync(viewerFile, 'utf8'));
+        return;
+      }
+      ready.then((running) => proxy(running.url, route === '/status' ? '/' : rest, request, response), (error) => {
+        response.statusCode = 503;
+        response.end(`producttrace collector did not start: ${error.message}`);
+      });
+    });
+    server.httpServer?.once('close', stop);
+    // Print where the narration is, under Vite's own URLs.
+    const printUrls = server.printUrls?.bind(server);
+    if (printUrls) {
+      server.printUrls = () => {
+        printUrls();
+        const local = server.resolvedUrls?.local?.[0];
+        if (local) server.config.logger.info(`  ➜  producttrace: ${new URL(`${LOCAL_COLLECTOR_BASE}/`, local).href}`);
+      };
+    }
+  };
+
+  return {
+    name: 'producttrace-local-collector',
+    configureServer: mount,
+    configurePreviewServer: mount,
+    async closeBundle() {
+      // Dev servers close their plugin container; builds never started a collector.
+      await stop();
+    },
+  };
+}
+
+function proxy(target, pathname, request, response) {
+  const upstream = http.request(`${target}${pathname}`, { method: request.method, headers: { ...request.headers, host: new URL(target).host } }, (reply) => {
+    response.writeHead(reply.statusCode || 502, reply.headers);
+    reply.pipe(response);
+  });
+  upstream.on('error', (error) => {
+    if (!response.headersSent) response.statusCode = 502;
+    response.end(String(error.message || error));
+  });
+  response.on('close', () => upstream.destroy());
+  request.pipe(upstream);
+}
