@@ -1,5 +1,5 @@
 // Segments: the parts of a visit ("Created a discussion") that group story lines.
-// The package's story feed may carry them; until it does, the bench groups lines
+// The package's story feed may carry them; when it doesn't, the bench groups lines
 // here: a segment ends at a form submit or when the page changes, and runs of
 // plain navigation clicks fold into one "went to" segment. The page and the
 // report both use this module, so what Austin sees is what Claude scores.
@@ -77,6 +77,10 @@ export function segmentsOf(story, lines) {
       ...(s.verb !== undefined ? { verb: s.verb } : {}),
       ...(s.entities ? { entities: s.entities } : {}),
       ...(s.values ? { values: s.values } : {}),
+      // The package's own wording for each step ("Enters ada@example.test as the email").
+      ...(Array.isArray(s.steps)
+        ? { steps: new Map(s.steps.map((step) => [step.line, step.text])) }
+        : {}),
     }))
     .filter((s) => s.lines.length);
   return segments.length ? segments : groupLines(lines);

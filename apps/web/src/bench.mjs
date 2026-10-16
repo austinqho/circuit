@@ -45,8 +45,12 @@ export function createBench({
       app.status = 'failed';
       app.error = 'interrupted by a restart; rebuild';
     }
-    // Apps registered before dev mode existed were production builds.
-    app.mode ??= 'build';
+    // The dev server is the default; build mode only when someone asked for it.
+    // launch() prepares an app that was only ever built.
+    if (!app.modeChosen) app.mode = 'dev';
+    // A dev setup whose clone is gone gets prepared again.
+    if (app.serve && !fs.existsSync(app.serve.wrapper)) delete app.serve;
+    delete app.startError;
     apps.set(app.id, app);
   }
   const save = () => fs.writeFileSync(registryFile, JSON.stringify([...apps.values()], null, 2));
@@ -55,16 +59,21 @@ export function createBench({
     for (const fn of listeners) fn(summary(app));
   };
 
+  // "ready" means built; the page and tools see "starting" until the app answers.
+  const shownStatus = (app) => {
+    if (app.status !== 'ready' || live.has(app.id)) return app.status;
+    return app.startError ? 'failed' : 'starting';
+  };
   const summary = (app) => ({
     id: app.id,
     repo: app.url,
     ref: app.ref ?? null,
     app_dir: app.appDir ?? null,
-    status: app.status,
+    status: shownStatus(app),
     mode: app.mode,
     phase: app.phase ?? null,
-    error: app.error ?? null,
-    url: app.status === 'ready' ? `http://127.0.0.1:${app.ports.app}/` : null,
+    error: app.error ?? app.startError ?? null,
+    url: shownStatus(app) === 'ready' ? `http://127.0.0.1:${app.ports.app}/` : null,
     collector: `http://127.0.0.1:${app.ports.collector}`,
     build: app.build ?? 0,
     build_ms: app.buildMs ?? null,
@@ -124,13 +133,29 @@ export function createBench({
     if (!starting.has(app.id))
       starting.set(
         app.id,
-        launch(app).finally(() => starting.delete(app.id)),
+        launch(app)
+          .then(
+            (running) => {
+              delete app.startError;
+              // Saves app.serve too, so the next restart skips preparing the dev server.
+              emit(app);
+              return running;
+            },
+            (error) => {
+              app.startError = String(error.message).slice(0, 1000);
+              emit(app);
+              throw error;
+            },
+          )
+          .finally(() => starting.delete(app.id)),
       );
     return starting.get(app.id);
   }
 
   /** Serve the app (dev server or built files) and start its collector. */
   async function launch(app) {
+    if (app.mode !== 'build' && !app.serve)
+      await buildTarget(app, { packageDir, rebuild: true, log: () => emit(app) });
     const store = storeDir(app);
     fs.mkdirSync(store, { recursive: true });
     const appRoot = path.join(app.work, 'src', app.appDir);
@@ -150,9 +175,10 @@ export function createBench({
         String(app.ports.collector),
         '--source-root',
         appRoot,
-        // The collector reads the manifest once, at start. Under the dev server it is
-        // written as modules load, so a fresh dev app starts without one.
-        ...(fs.existsSync(manifest) ? ['--manifest', manifest] : []),
+        // The collector follows this file: under the dev server it may not exist yet
+        // and grows as modules load.
+        '--manifest',
+        manifest,
         '--label',
         `circuit-${app.id}-build-${app.build}`,
       ],
@@ -192,6 +218,7 @@ export function createBench({
     // Status flips before the first await so callers see "building" at once.
     app.status = 'building';
     app.error = null;
+    delete app.startError;
     app.build = (app.build ?? 0) + 1;
     await stop(app.id);
     app.packageCommit = packageCommit();
@@ -284,6 +311,7 @@ export function createBench({
             env: env ?? existing.env,
             pluginOptions: pluginOptions ?? existing.pluginOptions,
             mode: mode ?? existing.mode,
+            modeChosen: Boolean(mode) || existing.modeChosen,
           });
           runBuild(existing, { rebuild: false });
         }
@@ -301,6 +329,7 @@ export function createBench({
         env,
         pluginOptions,
         mode: mode ?? 'dev',
+        modeChosen: Boolean(mode),
         work: path.join(workRoot, id),
         ports: { app: port, collector: port + 1 },
         status: 'queued',
@@ -317,7 +346,7 @@ export function createBench({
       if (app.status === 'building') return summary(app);
       if (mode !== undefined && !['dev', 'build'].includes(mode))
         throw Object.assign(new Error('mode is "dev" or "build"'), { status: 400 });
-      if (mode) app.mode = mode;
+      if (mode) Object.assign(app, { mode, modeChosen: true });
       runBuild(app, { rebuild: true });
       return summary(app);
     },
@@ -327,7 +356,7 @@ export function createBench({
       const deadline = Date.now() + Math.min(waitSeconds, MAX_WAIT_SECONDS) * 1000;
       while (['queued', 'building'].includes(app.status) && Date.now() < deadline)
         await new Promise((r) => setTimeout(r, 1000));
-      if (app.status === 'ready') await start(app);
+      if (app.status === 'ready') await start(app).catch(() => {});
       return { ...summary(app), log_tail: app.status === 'ready' ? undefined : logTail(app) };
     },
 
