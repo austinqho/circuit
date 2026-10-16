@@ -676,7 +676,8 @@
   };
   const pagePath = () => { try { return `${global.location.pathname}${global.location.search}`; } catch { return null; } };
   // The document's title where the action happened (labels on only): a page's own name ("Dashboard | Acme").
-  const pageTitle = () => { if (!LABELS_ON) return null; try { return squash(global.document?.title); } catch { return null; } };
+  // An email in a title (an inbox, an account page) is never recorded: it becomes [email].
+  const pageTitle = () => { if (!LABELS_ON) return null; try { const title = squash(global.document?.title); return title ? title.replace(/[^\s@|·–—()<>,;:"']+@[^\s@|·–—()<>,;:"']+/gu, '[email]') : null; } catch { return null; } };
   const describeControl = node => { const description = describe(node); const ref = identity(node)?.handle || null; return description && ref ? { ...description, ref } : description; };
   // The control a user acted on (an action's target, a hover's related target): with its label.
   const describeActed = node => { const description = describeControl(node); const label = description ? controlLabel(node) : null; return label ? { ...description, label } : description; };

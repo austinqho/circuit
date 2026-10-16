@@ -380,3 +380,18 @@ test('a comment posted and then deleted in the same goal says both', () => {
   const story = storyOf(createStore({ records }));
   assert.equal(story.segments.at(-1).title, 'Opened “Notes on the engine”, the discussion they just created, and posted its first comment, then deleted it.');
 });
+
+test('an email in a page title is never quoted, and the person’s own name never names a page', () => {
+  const rows = signUpSession().filter(row => !(['a3', 'a4', 'a5', 'a6', 'a7', 's2', 's3'].includes(row.action_id) || /^t[678]$/u.test(row.action_id ?? '')));
+  const end = rows.findIndex(row => row.kind === 'capture.summary');
+  const title = (path, text) => ({ kind: 'page.title', page: path, title: text, ...at() });
+  const withTitles = titles => storyOf(createStore({ records: [...rows.slice(0, end), ...titles, ...rows.slice(end)] }));
+  const story = withTitles([title('/auth/register', 'Register | ada@example.test'), title('/app', 'Dashboard | ada@example.test')]);
+  const signUp = story.segments.find(segment => segment.verb === 'registered');
+  assert.ok(!JSON.stringify(signUp.steps.flatMap(step => step.facts)).includes('ada@example.test'));
+  assert.ok(signUp.steps.at(-1).facts.includes('Page title “Dashboard | [email]” at /app'));
+  assert.match(signUp.title, /landed on the Dashboard page\.$/u);
+  // A page titled with the person's name keeps its path name.
+  const named = withTitles([title('/auth/register', 'Register | Acme'), title('/app', 'Ada Lovelace | Acme')]);
+  assert.match(named.segments.find(segment => segment.verb === 'registered').title, /landed on the App page\.$/u);
+});
