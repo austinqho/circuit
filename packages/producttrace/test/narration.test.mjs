@@ -337,3 +337,20 @@ test('the article goes by how the length is said: an 88-, an 800-, a 111-, a 180
   };
   for (const [n, article] of [[88, 'an'], [800, 'an'], [111, 'a'], [180, 'a']]) assert.ok(lengthOf(n).startsWith(`Typed ${article} ${n}-character`), lengthOf(n));
 });
+
+test('a live click-through: a page takes its own title even when the first action there still carried the last page’s', () => {
+  const titled = (rows, forApp) => rows.flatMap(row => {
+    if (row.kind !== 'dom.action') return [row];
+    const title = { '/': 'Welcome | Acme', '/auth/login': 'Log in | Acme', '/auth/register': 'Register | Acme' }[row.page];
+    if (row.page === '/app') return forApp.map((page_title, index) => ({ ...row, ...(index ? { action_id: `${row.action_id}_${index}`, continuation_id: `c:${row.action_id}_${index}`, target: button('Help') } : {}), page_title }));
+    return [title ? { ...row, page_title: title } : row];
+  });
+  // The title had not changed yet on the first action after the redirect; it had by the next one.
+  const late = storyOf(createStore({ records: titled(signUpSession(), ['Register | Acme', 'Dashboard | Acme']) }));
+  assert.equal(late.segments[1].title, 'Registered as ada@example.test for the team “Analytical Engines” and landed on the Dashboard page.');
+  // The name is cited: the step that reaches the page carries the title it was read from.
+  assert.ok(late.segments[1].steps.at(-1).facts.includes('Page title “Dashboard | Acme” at /app'), JSON.stringify(late.segments[1].steps.at(-1)));
+  // Only the stale title: no name for the page beyond its path.
+  const stale = storyOf(createStore({ records: titled(signUpSession(), ['Register | Acme']) }));
+  assert.equal(stale.segments[1].title, 'Registered as ada@example.test for the team “Analytical Engines” and landed on the App page.');
+});

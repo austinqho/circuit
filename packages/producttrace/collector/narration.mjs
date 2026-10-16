@@ -247,7 +247,8 @@ export function namesOf(lines, { looksLikeId }) {
     const until = order.get(lineId) ?? Infinity;
     return named.filter(entry => entry.key === key && entry.index < until).at(-1)?.title ?? titles.get(key) ?? null;
   };
-  return { titles, pages, titled: pageTitles(lines), person, personLine, knownBefore, titleAt };
+  const titledPages = pageTitles(lines);
+  return { titles, pages, titled: titledPages.names, pageTitle: titledPages.raw, person, personLine, knownBefore, titleAt };
 }
 
 /**
@@ -257,18 +258,26 @@ export function namesOf(lines, { looksLikeId }) {
  * nothing about which part is the app's name, so it names no page.
  */
 function pageTitles(lines) {
+  // The last title seen on a page wins (an app may set it a moment after the route changes), and a
+  // title first seen on another page is that page's, not this one's (it had not changed yet).
+  const owner = new Map();
   const byPath = new Map();
-  for (const line of lines) if (line.page && line.page_title && !byPath.has(pathKey(line.page))) byPath.set(pathKey(line.page), line.page_title);
+  for (const line of lines) {
+    if (!line.page || !line.page_title) continue;
+    const key = pathKey(line.page);
+    if (!owner.has(line.page_title)) owner.set(line.page_title, key);
+    if (owner.get(line.page_title) === key) byPath.set(key, line.page_title);
+  }
   const parts = title => title.split(/\s+[|·–—-]\s+|\s*::\s*/u).map(part => part.trim()).filter(Boolean);
   const distinct = [...new Set(byPath.values())];
   const out = new Map();
-  if (distinct.length < 2) return out;
+  if (distinct.length < 2) return { names: out, raw: byPath };
   const shared = parts(distinct[0]).filter(part => distinct.every(title => parts(title).includes(part)));
   for (const [path, title] of byPath) {
     const name = parts(title).filter(part => !shared.includes(part)).join(' ');
     if (name && !/@/u.test(name)) out.set(path, name);
   }
-  return out;
+  return { names: out, raw: byPath };
 }
 
 /** Fields per entity in one body: `{ id, title }` → discussion:id → { title }; nested owners by their own id. */
@@ -401,6 +410,9 @@ const HOVERS = new Set(['mouseover', 'mouseout', 'mouseenter', 'mouseleave', 'po
  */
 export function stepFactsOf(line, { names, looksLikeId }) {
   const out = [];
+  // Where a page's name came from: the title the app gave the page this line reached.
+  const reached = line.kind === 'navigate' ? line.page : line.navigations?.at(-1)?.to;
+  if (reached && names.titled?.has(pathKey(reached))) out.push(`Page title ${quote(names.pageTitle.get(pathKey(reached)))} at ${pathKey(reached)}`);
   const titleOf = (type, id) => names.titleAt?.(`${type}:${id}`, line.id) ?? names.titles?.get(`${type}:${id}`) ?? null;
   for (const request of line.requests || []) {
     const resource = resourceOf(request.path, looksLikeId);

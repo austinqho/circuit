@@ -20,8 +20,10 @@ export { runtimeAttributionPlugin };
 const packageRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const runtimeSource = fs.readFileSync(path.join(packageRoot, 'dist/producttrace-runtime.js'), 'utf8');
 // Shipped as a byte-identical dist copy of src/runtime-attribution-browser.js
-// (scripts/build.mjs); `src/` is not part of the installed package.
-const attributionRuntimeSource = fs.readFileSync(path.join(packageRoot, 'dist/runtime-attribution-browser.js'), 'utf8');
+// (scripts/build.mjs); `src/` is not part of the installed package. In a
+// checkout the source is read directly, so a pull takes effect without a rebuild.
+const attributionSourcePath = path.join(packageRoot, 'src/runtime-attribution-browser.js');
+const attributionRuntimeSource = fs.readFileSync(fs.existsSync(attributionSourcePath) ? attributionSourcePath : path.join(packageRoot, 'dist/runtime-attribution-browser.js'), 'utf8');
 const assetRevision = source => createHash('sha256').update(source).digest('hex').slice(0, 16);
 const runtimeRevision = assetRevision(runtimeSource);
 
