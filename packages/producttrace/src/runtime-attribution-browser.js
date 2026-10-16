@@ -329,6 +329,7 @@
   let materializeFor = null;
   const emit = row => {
     if (row?.kind === 'dom.action' && row.page === undefined) row = { ...row, page: pagePath() };
+    if (row?.kind === 'dom.action' && row.page_title === undefined) { const title = pageTitle(); if (title) row = { ...row, page_title: title }; }
     if (materializeFor && row?.action_id && row.kind !== 'dom.action') materializeFor(row.action_id);
     if (row?.kind === 'dom.mutation' && row.action_id && !row.parent_continuation_id) row = { ...row, parent_continuation_id: actionTerminalOwner.get(row.action_id)?.continuation_id || null };
     // Transports may be observed by the separately installed request bridge.
@@ -674,6 +675,9 @@
     } catch { return null; }
   };
   const pagePath = () => { try { return `${global.location.pathname}${global.location.search}`; } catch { return null; } };
+  // The document's title where the action happened (labels on only): a page's own name ("Dashboard | Acme").
+  // An email in a title (an inbox, an account page) is never recorded: it becomes [email].
+  const pageTitle = () => { if (!LABELS_ON) return null; try { const title = squash(global.document?.title); return title ? title.replace(/[^\s@|·–—()<>,;:"']+@[^\s@|·–—()<>,;:"']+/gu, '[email]') : null; } catch { return null; } };
   const describeControl = node => { const description = describe(node); const ref = identity(node)?.handle || null; return description && ref ? { ...description, ref } : description; };
   // The control a user acted on (an action's target, a hover's related target): with its label.
   const describeActed = node => { const description = describeControl(node); const label = description ? controlLabel(node) : null; return label ? { ...description, label } : description; };
@@ -900,7 +904,7 @@
     if (target) { const label = controlLabel(subject); if (label) target.label = label; }
     // The event object keeps its fields after dispatch: described only now.
     const detail = describeEvent(pending.source, pending.node);
-    emit({ kind: 'dom.action', action_id: pending.action_id, timestamp: pending.timestamp, ...(pending.page !== undefined ? { page: pending.page } : {}), event: pending.event, target, ...(target?.ref ? { target_ref: target.ref } : {}),
+    emit({ kind: 'dom.action', action_id: pending.action_id, timestamp: pending.timestamp, ...(pending.page !== undefined ? { page: pending.page } : {}), ...(pending.page_title ? { page_title: pending.page_title } : {}), event: pending.event, target, ...(target?.ref ? { target_ref: target.ref } : {}),
       interface: pending.interface, phase: 'continuous', gesture_id: pending.gesture_id, coalesced: true, hover_segment_action_id: pending.segment.action_id, ...detail,
       source_ref: null, parent_continuation_id: null, continuation_id: null, spine: { action_id: pending.action_id, function_ids: [] }, evidence_ids: [] });
   };
@@ -1183,7 +1187,7 @@
       pending = segment.pending.get(pendingKey);
       if (!pending) {
         pending = { action_id: newActionId(), event: event.type, node: actionTarget, target_ref: handle, interface: userEventModel.interfaceOf(event), gesture_id: meta.gesture_id,
-          source: event, timestamp: Date.now(), page: pagePath(), count: 0, materialized: false, keep: false, segment, continuation_id: null };
+          source: event, timestamp: Date.now(), page: pagePath(), page_title: pageTitle(), count: 0, materialized: false, keep: false, segment, continuation_id: null };
         segment.pending.set(pendingKey, pending); pendingActions.set(pending.action_id, pending);
       }
       segment.controls.add(handle); segment.last_node = actionTarget;
@@ -1192,7 +1196,7 @@
     pending.count += 1; segment.by_kind[event.type] = (segment.by_kind[event.type] || 0) + 1;
     // Until work runs under it, the latest event is the one to describe: the
     // element it entered is the one whose handler is about to run.
-    if (!pending.materialized) { pending.source = event; pending.page = pagePath(); }
+    if (!pending.materialized) { pending.source = event; pending.page = pagePath(); pending.page_title = pageTitle(); }
     extendRange(segment, event, target);
     // One dispatch frame per event (its liveness is the event's), sharing the
     // (kind, control)'s continuation id.
@@ -2768,6 +2772,18 @@
       }
       global.addEventListener?.('popstate', () => { try { navigated('popstate', null); } catch {} }, true);
       Object.defineProperty(history, '__productTraceNavigation', { value: true });
+    }
+  } catch {}
+  // The document title as the app sets it (labels on only): a page.title row
+  // each time it changes, with the path it was set on. Apps set it a moment
+  // after the route changes, so this is the page's own name, not a guess from
+  // whichever click came next.
+  try {
+    if (LABELS_ON && global.document && typeof global.MutationObserver === 'function') {
+      let lastTitle = null;
+      const titleChanged = () => { const title = pageTitle(); if (!title || title === lastTitle) return; lastTitle = title; emit({ kind: 'page.title', page: pagePath(), title }); };
+      const watch = () => { const head = global.document.head || global.document.documentElement; if (!head) return; new global.MutationObserver(titleChanged).observe(head, { subtree: true, childList: true, characterData: true }); titleChanged(); };
+      if (global.document.readyState === 'loading') global.document.addEventListener('DOMContentLoaded', watch, { once: true }); else watch();
     }
   } catch {}
   // WebSocket: the connection (CONNECT row) and every message the page sends

@@ -93,6 +93,9 @@ const CITED = [
   /[\w.+-]+@[\w-]+(?:\.[\w-]+)+/gu,
   /\b(?=[\w-]*\d)[A-Za-z0-9_-]{8,}\b/gu,
 ];
+// A shortened ID ("U5kY…") must be the start of an ID the evidence has.
+const SHORTENED = /(?<![\w-])([A-Za-z0-9_-]{2,})…/gu;
+const escape = (text) => text.replace(/[.*+?^${}()|[\]\\]/gu, '\\$&');
 
 /** What a title claims that its evidence doesn't contain (empty when grounded). */
 export function ungroundedTokens(title, evidence) {
@@ -103,5 +106,7 @@ export function ungroundedTokens(title, evidence) {
       const token = (match[1] ?? match[2] ?? match[0]).replace(/…$/u, '');
       if (token && !haystack.includes(token.toLowerCase())) tokens.add(token);
     }
+  for (const [, prefix] of String(title).matchAll(SHORTENED))
+    if (!new RegExp(`(?<![\\w-])${escape(prefix)}`, 'iu').test(haystack)) tokens.add(`${prefix}…`);
   return [...tokens];
 }

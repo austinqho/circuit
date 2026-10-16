@@ -14,7 +14,7 @@ Listener action occurrence ───┴──> exact source-scenario join
                                evaluated learning example
 ```
 
-This package implements the source map, a conservative source-stamp join to the listener callback, an Express route inventory, and an occurrence-safe observed-request bridge. Backend execution, feedback, and learning-example evaluation remain separate evidence stages. The [React behavior bank](../docs/react-semantics-bank.md) records versioned callback/lifecycle contracts separately from source redirect support and observed execution.
+This package implements the source map, a conservative source-stamp join to the listener callback, an Express route inventory, and an occurrence-safe observed-request bridge. Backend execution, feedback, and learning-example evaluation remain separate evidence stages.
 
 ## Use
 
@@ -86,11 +86,9 @@ For the example above, the map relates the Rename binding to its inline callback
 
 `control.status: "resolved"` means its handler source was resolved. Calls downstream of that handler can still be unresolved. `input.complete` only means the selected input was read within the input limits. `claims.source_indexed` concerns source parsing; neither field is a coverage or execution certificate. `claims.runtime_observed` and `claims.source_complete` are always false in this version.
 
-`createReactLifecycleEvidenceSession(map)` validates occurrence-specific React lifecycle observations against the exact source map and attested semantic application. It requires root/instance/mount/render identity plus the exact hook slot where relevant, validates operation/phase compatibility, and rejects callback, cleanup, capture, owner, source, and fingerprint contamination. The browser action join separately carries commit-time React identity with `render_observed: false`; neither interface converts a source contract or lifecycle plan into observed execution.
-
 ## Supported slice and boundaries
 
-The initial slice covers named function/arrow components, `React.forwardRef` and `React.memo` wrappers, JSX native event bindings, direct and relative-imported handlers, workspace-package export barrels and exact tsconfig path aliases, inline callbacks, explicit and rest-prop callback forwarding, separate repeated JSX placements, imported React `useState` bindings, state readers, and basic `if`, ternary, and boolean guards. Exact source-attested React `18.3.1` imports also admit inline `useCallback` source identity without borrowing current-render captures. See [the versioned React inventory](../docs/react-semantics-bank.md). Repeated placements retain distinct captured props and callback paths. Identically named state variables in different components do not share identity. Known Radix Dialog container contracts preserve rendered children without analyzing the library implementation.
+The initial slice covers named function/arrow components, `React.forwardRef` and `React.memo` wrappers, JSX native event bindings, direct and relative-imported handlers, workspace-package export barrels and exact tsconfig path aliases, inline callbacks, explicit and rest-prop callback forwarding, separate repeated JSX placements, imported React `useState` bindings, state readers, and basic `if`, ternary, and boolean guards. Exact source-attested React `18.3.1` imports also admit inline `useCallback` source identity without borrowing current-render captures. Repeated placements retain distinct captured props and callback paths. Identically named state variables in different components do not share identity. Known Radix Dialog container contracts preserve rendered children without analyzing the library implementation.
 
 Repository analysis can apply exact-version contracts for TanStack React Query `4.36.1`, Recoil `0.7.7`, React Hook Form `7.50.0`, React Router DOM `7.18.2`, Ariakit React `0.4.29`, TanStack React Table `8.11.7`, and Axios `1.18.1`. These contracts describe specific control or data redirects: query handles to their own `queryFn`, Recoil callback factories to their returned callback, form submission to mutually exclusive valid/invalid callbacks, navigation handles to router effects, selected Ariakit component activations to their callback prop, `flexRender` to its exact source renderer, and Axios methods to HTTP request effects.
 
