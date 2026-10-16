@@ -3,6 +3,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
+import { createBench } from '../src/bench.mjs';
 import { describe } from '../src/browser.mjs';
 import {
   detectInstall,
@@ -212,4 +213,29 @@ test('a title citing what its evidence lacks scores zero', () => {
   assert.deepEqual(segments[0].ungrounded, ['ada@example.test']);
   const full = { voice: 2, high_level: 2, grounded: 2, specific: 2, joined: 2 };
   assert.equal(narrationScore(segments, [full]), 0);
+});
+
+test('after a restart a built app shows as starting, with no URL, until it answers', () => {
+  const workRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'circuit-bench-'));
+  fs.writeFileSync(
+    path.join(workRoot, 'apps.json'),
+    JSON.stringify([
+      {
+        id: 'demo',
+        url: 'https://github.com/example/demo',
+        status: 'ready',
+        mode: 'build',
+        build: 1,
+        ports: { app: 4999, collector: 4998 },
+        work: path.join(workRoot, 'demo'),
+        serve: { wrapper: path.join(workRoot, 'gone', 'vite.config.mjs') },
+      },
+    ]),
+  );
+  const [app] = createBench({ workRoot }).list();
+  assert.equal(app.status, 'starting');
+  assert.equal(app.url, null);
+  assert.equal(app.mode, 'dev');
+  const saved = JSON.parse(fs.readFileSync(path.join(workRoot, 'apps.json'), 'utf8'));
+  assert.equal(saved[0].status, 'ready');
 });

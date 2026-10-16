@@ -910,6 +910,7 @@
       let apps = new Map();
       let selected = null;
       let stream = null;
+      const startAsked = new Set();
       let story = null;
       let seen = new Set();
       const openKeys = new Set();
@@ -969,6 +970,21 @@
           frame.removeAttribute('src');
           closeStream();
           renderStory();
+          return;
+        }
+        if (a.status === 'starting') {
+          loading.hidden = false;
+          loading.innerHTML = `<strong>Starting ${esc(prettyName(a))}…</strong><span>The app appears here when its server answers.</span>`;
+          frame.removeAttribute('src');
+          closeStream();
+          renderStory();
+          // Asking for the status starts the app; the "app" event then repaints this pane.
+          if (!startAsked.has(a.id)) {
+            startAsked.add(a.id);
+            fetch(`/api/apps/${a.id}?wait=50`)
+              .catch(() => {})
+              .finally(() => startAsked.delete(a.id));
+          }
           return;
         }
         if (a.status !== 'ready') {
