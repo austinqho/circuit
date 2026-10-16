@@ -243,8 +243,8 @@ export function productTraceVitePlugin(options = {}) {
       transformedFiles.set(displayFile, [...unique.values()]);
       return { code: result.code, map: null };
     },
-    transformIndexHtml() {
-      return { tags: [
+    transformIndexHtml(html) {
+      const tags = [
         // Install transport hooks before any application module (including
         // preloaded module graphs) can retain fetch/XHR/EventSource. The
         // attribution runtime queues early rows until its normal recorder is
@@ -256,7 +256,11 @@ export function productTraceVitePlugin(options = {}) {
         // of resolving the assets under /c/.
         { tag: 'script', attrs: { src: `/producttrace-runtime.js?v=${runtimeRevision}` }, injectTo: 'head-prepend' },
         ...(loaderSource ? [{ tag: 'script', attrs: { src: `/producttrace-request-bridge.js?v=${loaderRevision}` }, injectTo: 'head-prepend' }] : []),
-      ] };
+      ];
+      // Without a <head>, Vite injects head-prepend tags with a string-form
+      // replace that reads `$'` in the inline runtime as a pattern. Give the
+      // page an empty <head> so Vite takes its normal path.
+      return typeof html === 'string' ? { html: ensureHead(html), tags } : { tags };
     },
     // `vite dev`: serve the same assets the build emits.
     configureServer(server) {
@@ -335,4 +339,11 @@ export function producttrace(options = {}) {
   return runtimeAttribution
     ? [staticPlugin, runtimeAttributionPlugin({ repository, manifestPath: attributionManifestPath, firstParty })]
     : [staticPlugin];
+}
+
+function ensureHead(html) {
+  if (/<head[\s>]/iu.test(html.replace(/<!--[\s\S]*?-->/gu, ''))) return html;
+  if (/<html[\s>]/iu.test(html)) return html.replace(/<html\b[^>]*>/iu, tag => `${tag}<head></head>`);
+  if (/<!doctype[^>]*>/iu.test(html)) return html.replace(/<!doctype[^>]*>/iu, tag => `${tag}<head></head>`);
+  return `<head></head>${html}`;
 }

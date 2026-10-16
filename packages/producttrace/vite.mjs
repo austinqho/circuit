@@ -1,2 +1,7 @@
 // Entry point: `producttrace/vite`. The Vite plugin that instruments a React app at build time.
-export * from './integrations/vite.mjs';
+// `producttrace()` is the one-line install; the other two are its parts.
+export {
+  producttrace,
+  productTraceVitePlugin,
+  runtimeAttributionPlugin,
+} from './integrations/vite.mjs';
