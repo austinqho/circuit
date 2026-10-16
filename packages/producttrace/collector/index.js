@@ -4,6 +4,7 @@ import http from 'node:http';
 import { resolve } from 'node:path';
 import { openStoreWriter } from './store-writer.mjs';
 import { createReceivedTally } from './coverage.mjs';
+import { createStoryFeed } from './story.mjs';
 
 export function createCollector(options = {}) {
   const host = options.host || '127.0.0.1';
@@ -28,6 +29,10 @@ export function createCollector(options = {}) {
   // Coverage (capture.received): per page, what this collector actually
   // received, appended as one row per page when the run closes.
   const tally = createReceivedTally();
+  // Store mode: the session story, as JSON (GET /story) and as a live
+  // server-sent event stream (GET /story/stream). See collector/story.mjs.
+  const story = store ? createStoryFeed({ dir: store.dir, sourceRoot: options.store.sourceRoot ?? null }) : null;
+  const streams = new Set();
 
   const server = http.createServer((request, response) => {
     response.setHeader('access-control-allow-origin', '*');
@@ -35,6 +40,28 @@ export function createCollector(options = {}) {
     if (request.method === 'OPTIONS') {
       response.writeHead(204);
       response.end();
+      return;
+    }
+    if (story && request.method === 'GET' && (request.url === '/story' || request.url.startsWith('/story?') || request.url.startsWith('/story/stream'))) {
+      // Reads expose every session's paths, IDs and labels: only pages served
+      // from this machine may read them cross-origin (the write routes stay open).
+      response.removeHeader('access-control-allow-origin');
+      const origin = request.headers.origin;
+      if (origin && /^https?:\/\/(?:localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/u.test(origin)) { response.setHeader('access-control-allow-origin', origin); response.setHeader('vary', 'origin'); }
+      const url = new URL(request.url, 'http://collector.invalid');
+      const session = url.searchParams.get('session') || undefined;
+      if (url.pathname === '/story') {
+        story({ session }).then(value => {
+          response.writeHead(200, { 'content-type': 'application/json' });
+          response.end(JSON.stringify(value));
+        }, error => { errors += 1; response.writeHead(500); response.end(String(error.message || error)); });
+        return;
+      }
+      response.writeHead(200, { 'content-type': 'text/event-stream', 'cache-control': 'no-cache', connection: 'keep-alive' });
+      const client = { response, session, sent: new Map() };
+      streams.add(client);
+      request.on('close', () => streams.delete(client));
+      pushStory(client, true);
       return;
     }
     if (store && request.method === 'POST' && request.url === '/run-info') {
@@ -90,6 +117,24 @@ export function createCollector(options = {}) {
     response.end(JSON.stringify({ received, errors, file: outputPath, ...(store ? { store: store.dir, run_id: store.run_id, build: store.build, spans: spansReceived } : {}) }));
   });
 
+  // Each stream gets every line once (event: line) and again when it changes
+  // (typing in one field grows one line); `sessions` carries the session list.
+  async function pushStory(client, first = false) {
+    let value;
+    try { value = await story({ session: client.session }); } catch { return; }
+    if (first) client.response.write(`event: sessions\ndata: ${JSON.stringify(value.sessions)}\n\n`);
+    let changed = false;
+    for (const line of value.lines) {
+      const text = JSON.stringify(line);
+      if (client.sent.get(line.id) === text) continue;
+      client.sent.set(line.id, text); changed = true;
+      client.response.write(`event: line\ndata: ${text}\n\n`);
+    }
+    if (changed && !first) client.response.write(`event: sessions\ndata: ${JSON.stringify(value.sessions)}\n\n`);
+  }
+  const ticker = story ? setInterval(() => { for (const client of streams) pushStory(client); }, 500) : null;
+  ticker?.unref?.();
+
   server.listen(port, host);
 
   return {
@@ -103,6 +148,9 @@ export function createCollector(options = {}) {
     ready: once(server, 'listening'),
     status() { return { received, errors, file: outputPath, ...(store ? { spans: spansReceived, run_id: store.run_id, build: store.build } : {}) }; },
     async close() {
+      if (ticker) clearInterval(ticker);
+      for (const client of streams) client.response.end();
+      streams.clear();
       if (server.listening) {
         server.close();
         await once(server, 'close');
@@ -115,3 +163,4 @@ export function createCollector(options = {}) {
     },
   };
 }
+export { createStoryFeed } from './story.mjs';

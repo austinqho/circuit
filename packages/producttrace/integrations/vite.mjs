@@ -91,7 +91,11 @@ export function productTraceVitePlugin(options = {}) {
   const inputText = options.inputText ?? false;
   if (typeof inputText !== 'boolean') throw new TypeError('inputText must be true or false');
   const inputTextMode = () => (!inputText ? 'off' : viteMode === 'production' ? 'production_off' : 'on');
-  const runtimeSettings = () => `${options.stamps === false ? 'globalThis.__PRODUCTTRACE_STAMPS__=false;' : ''}${oaiAttributes === 'detect' ? '' : `globalThis.__PRODUCTTRACE_OAI_ATTRIBUTES__=${JSON.stringify(oaiAttributes)};`}globalThis.__PRODUCTTRACE_BODIES__=${JSON.stringify(bodyMode())};globalThis.__PRODUCTTRACE_INPUT_TEXT__=${JSON.stringify(inputTextMode())};${collectorActive() ? collectorSinkSource(collector) : ''}`;
+  // Control labels (button/link text, field labels; never typed text): on in
+  // non-production builds, `labels: false` turns them off, 'always' keeps them in production.
+  if (options.labels !== undefined && ![true, false, 'always'].includes(options.labels)) throw new TypeError("labels must be true, false or 'always'");
+  const labelMode = () => (options.labels === false ? 'off' : options.labels === 'always' || viteMode !== 'production' ? 'on' : 'production_off');
+  const runtimeSettings = () => `globalThis.__PRODUCTTRACE_LABELS__=${JSON.stringify(labelMode())};${options.stamps === false ? 'globalThis.__PRODUCTTRACE_STAMPS__=false;' : ''}${oaiAttributes === 'detect' ? '' : `globalThis.__PRODUCTTRACE_OAI_ATTRIBUTES__=${JSON.stringify(oaiAttributes)};`}globalThis.__PRODUCTTRACE_BODIES__=${JSON.stringify(bodyMode())};globalThis.__PRODUCTTRACE_INPUT_TEXT__=${JSON.stringify(inputTextMode())};${collectorActive() ? collectorSinkSource(collector) : ''}`;
   const reactMap = analyzeReact({ repository,
     ...(options.maxFiles === undefined ? {} : { maxFiles: options.maxFiles }),
     ...(options.maxBytes === undefined ? {} : { maxBytes: options.maxBytes }) });
