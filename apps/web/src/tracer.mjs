@@ -96,13 +96,13 @@ const requestKey = (r) => `${r.method} ${r.path}`;
  */
 export const NARRATION_RUBRIC = {
   instructions:
-    "Read each segment title as an annotation of what the person did, and score it against its evidence only. 0 = no, 1 = partly, 2 = yes. A title that cites an email, ID or quoted label its evidence lacks scores 0 on everything (the bench enforces this; see each segment's ungrounded list). Each segment's voice_flags lists what a quick check found off-voice; use them as hints, not as the score. Call circuit_score_narration with one score object per segment, in order.",
+    "Read each segment title as an annotation of what the person did, and score it against its evidence only. 0 = no, 1 = partly, 2 = yes. A title that cites an email, ID or quoted label its evidence lacks scores 0 on everything (the bench enforces this; see each segment's ungrounded list). A title with any voice_flags scores 0 on voice (the bench enforces this too). Call circuit_score_narration with one score object per segment, in order.",
   voice:
     '<Verb>ed <object> [as/for <qualifier>] [on/in <place>] [to <purpose>][, then <next verb>]. Past tense, verb first, no subject, on-screen labels and typed values quoted, the place named, and a "to …" purpose only when the evidence shows the result. ", then" joins the steps of one goal.',
   bar: [
     'Registered as ada@example.test for the team "Analytical Engines" and landed on the dashboard.',
     'Opened Discussions and started a discussion titled "Notes on the engine".',
-    'Clicked the "Register" button to create user U5kY… and team ruRH…, then landed on /app.',
+    'Clicked the "Register" button to create user U5kYWbCNE3f8v-xNcc62Y and team ruRH1N19jRfQTU87Zqy-Q, then landed on /app.',
   ],
   verbs: [
     'Registered',
@@ -194,7 +194,8 @@ export function narrationOf(story, lines) {
 
 /**
  * Folds Claude's per-segment scores into one "reads like a person" percentage.
- * A segment whose title cites something its evidence lacks counts as zero.
+ * A segment whose title cites something its evidence lacks counts as zero, and
+ * one with voice flags gets zero for voice, whatever the judge sent.
  */
 export function narrationScore(segments, scores) {
   const keys = Object.keys(NARRATION_RUBRIC.criteria);
@@ -210,7 +211,8 @@ export function narrationScore(segments, scores) {
           status: 400,
         });
     if (segments[i].ungrounded?.length) return;
-    for (const key of keys) total += score[key];
+    for (const key of keys)
+      total += key === 'voice' && segments[i].voice_flags?.length ? 0 : score[key];
   });
   return Math.round((100 * total) / (2 * keys.length * scores.length));
 }

@@ -21,7 +21,7 @@ import {
   narrationScore,
   voiceFlags,
 } from '../src/tracer.mjs';
-import { segmentsOf } from '../src/segments.mjs';
+import { segmentsOf, ungroundedTokens } from '../src/segments.mjs';
 
 const tmp = () => fs.mkdtempSync(path.join(os.tmpdir(), 'circuit-web-'));
 const write = (root, file, text) => {
@@ -253,4 +253,23 @@ test('after a restart a built app shows as starting, with no URL, until it answe
   assert.equal(app.mode, 'dev');
   const saved = JSON.parse(fs.readFileSync(path.join(workRoot, 'apps.json'), 'utf8'));
   assert.equal(saved[0].status, 'ready');
+});
+
+test('an off-voice title gets zero for voice whatever the judge sends', () => {
+  const lines = [{ id: 'a', text: 'Submitted the form → POST /auth/register (200)' }];
+  const old = narrationOf(
+    { segments: [{ title: 'On the Register page, the user is signing up.', cites: ['a'] }] },
+    lines,
+  ).segments;
+  const fresh = narrationOf({ segments: [{ title: 'Registered.', cites: ['a'] }] }, lines).segments;
+  const full = { voice: 2, high_level: 2, grounded: 2, specific: 2, joined: 2 };
+  assert.equal(narrationScore(old, [full]), 80);
+  assert.equal(narrationScore(fresh, [full]), 100);
+});
+
+test('a shortened ID must start an ID the evidence has', () => {
+  const evidence = ['user U5kYWbCNE3f8v-xNcc62Y'];
+  assert.deepEqual(ungroundedTokens('Created user U5kY…', evidence), []);
+  assert.deepEqual(ungroundedTokens('Created user Zq9x…', evidence), ['Zq9x…']);
+  assert.deepEqual(ungroundedTokens('Created user Wb…', evidence), ['Wb…']);
 });
