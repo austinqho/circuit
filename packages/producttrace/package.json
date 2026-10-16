@@ -20,6 +20,11 @@
       "types": "./vite.d.mts",
       "import": "./vite.mjs"
     },
+    "./next": {
+      "types": "./next.d.mts",
+      "import": "./next.mjs",
+      "default": "./next.mjs"
+    },
     "./collector": {
       "types": "./collector.d.ts",
       "import": "./collector.js"
@@ -64,6 +69,8 @@
     "index.d.ts",
     "vite.mjs",
     "vite.d.mts",
+    "next.mjs",
+    "next.d.mts",
     "collector.js",
     "collector.d.ts",
     "backend.js",
@@ -127,10 +134,14 @@
     "directory": "packages/producttrace"
   },
   "peerDependencies": {
-    "vite": "^5.0.0 || ^6.0.0 || ^7.0.0"
+    "vite": "^5.0.0 || ^6.0.0 || ^7.0.0",
+    "next": ">=15.3.0"
   },
   "peerDependenciesMeta": {
     "vite": {
+      "optional": true
+    },
+    "next": {
       "optional": true
     }
   }
