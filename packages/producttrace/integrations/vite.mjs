@@ -324,7 +324,8 @@ function repositoryRoot(start) {
  *   `vite preview` run a collector themselves (store under
  *   `node_modules/.producttrace/store`) and show the live story at
  *   `/__producttrace/` on the app's own origin. `false` records nothing
- *   outside the page; a URL sends rows to a collector you run.
+ *   outside the page; a URL sends rows to a collector you run. With the
+ *   collector left out, `requestBridge` defaults to false.
  * Set `runtimeAttribution: false` to install only the first plugin.
  */
 export function producttrace(options = {}) {
@@ -342,7 +343,8 @@ export function producttrace(options = {}) {
     : null;
   const staticPlugin = productTraceVitePlugin({
     ...rest,
-    ...(local ? { collector: LOCAL_COLLECTOR_BASE } : {}),
+    // ...and the page records its own requests: the static-era bridge needs a backend endpoint to post to.
+    ...(local ? { collector: LOCAL_COLLECTOR_BASE, requestBridge: options.requestBridge ?? false } : {}),
     repository,
     service: options.service || path.basename(repository),
     bridgeEndpoint: options.bridgeEndpoint || '/__producttrace/bridge',
