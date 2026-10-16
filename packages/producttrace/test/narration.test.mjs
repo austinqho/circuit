@@ -70,28 +70,28 @@ test('a session groups into goals, titled in GUM\'s observation voice with groun
   const story = storyOf(createStore({ records: signUpSession() }));
   const titles = story.segments.map(segment => segment.title);
   assert.deepEqual(titles, [
-    'On the home page, the user is opening the app.',
-    'On the Register page, Ada Lovelace is signing up as ada@example.test for the team “Analytical Engines”, and lands on the App page.',
-    'In Discussions, Ada Lovelace is creating the first discussion, “Notes on the engine”.',
-    'In “Notes on the engine”, Ada Lovelace is opening the discussion they just created and creating its first comment.',
+    'Opened the home page.',
+    'Registered as ada@example.test for the team “Analytical Engines” and landed on the App page.',
+    'Opened the Discussions page and created the first discussion titled “Notes on the engine”.',
+    'Opened the discussion they just created and created its first comment.',
   ]);
   assert.deepEqual(story.segments.map(segment => segment.verb), ['opened_app', 'registered', 'created', 'created']);
   // Every line is in exactly one segment, in order.
   assert.deepEqual(story.segments.flatMap(segment => segment.lines), story.lines.map(line => line.id));
   const [, signUp, start, reply] = story.segments;
   assert.deepEqual(signUp.steps.map(step => step.text), [
-    'Opens “Get started”; the app moves to /auth/login',
-    'Opens “Register”; the app moves to /auth/register',
-    'Enters “Ada” as the first name',
-    'Enters “Lovelace” as the last name',
-    'Enters ada@example.test as the email address',
-    'Sets a password',
-    'Enters “Analytical Engines” as the team name',
-    'Submits “Register”; the server returns user U5kYWbCNE3f8v-xNcc62Y and team ruRH1N19jRfQTU87Zqy-Q, the app moves to /app',
+    'Clicked the “Get started” button on the home page to open the Login page.',
+    'Clicked the “Register” link to open the Register page.',
+    'Typed “Ada” into the “First Name” field.',
+    'Typed “Lovelace” into the “Last Name” field.',
+    'Typed “ada@example.test” into the “Email Address” field.',
+    'Typed a password into the “Password” field.',
+    'Typed “Analytical Engines” into the “Team Name” field.',
+    'Clicked the “Register” button to create user U5kYWbCNE3f8v-xNcc62Y and team ruRH1N19jRfQTU87Zqy-Q, then landed on the App page.',
   ]);
   assert.ok(!JSON.stringify(story).includes('[redacted]'), 'secrets are never read');
   assert.ok(signUp.entities.some(entity => entity.type === 'team' && entity.id === 'ruRH1N19jRfQTU87Zqy-Q'));
-  assert.ok(start.steps.some(step => step.text === 'Writes a body (34 characters)'));
+  assert.ok(start.steps.some(step => step.text === 'Typed a 34-character body into the “Body” field.'));
   assert.ok(start.entities.some(entity => entity.type === 'discussion' && entity.created));
   // Joined with the segment that created what it opens.
   assert.deepEqual(reply.related, [start.id]);
@@ -102,7 +102,7 @@ test('a session groups into goals, titled in GUM\'s observation voice with groun
 
 test('personal values can be masked, and then the person is "the user"', () => {
   const story = storyOf(createStore({ records: signUpSession() }), { values: { personal: 'mask' } });
-  assert.equal(story.segments[1].title, 'On the Register page, the user is signing up as a•••@example.test for the team “Analytical Engines”, and lands on the App page.');
+  assert.equal(story.segments[1].title, 'Registered as a•••@example.test for the team “Analytical Engines” and landed on the App page.');
   assert.ok(!JSON.stringify(story).includes('ada@example.test'));
   assert.ok(!JSON.stringify(story).includes('Lovelace'));
 });
@@ -139,15 +139,15 @@ test('a failed write, an unsent draft, and a long scroll each read as what happe
   assert.equal(scroll.text, 'Scrolled down the page (≈3 screens)');
   assert.equal(story.lines.filter(line => line.kind === 'scroll').length, 1, 'consecutive scrolls of one target are one line');
   assert.deepEqual(story.segments.map(segment => segment.title), [
-    'On the Login page, the user is opening the app.',
-    'On the Login page, the user is trying to log in as ada@example.test, but the server says 401.',
-    'In Discussions, the user is scrolling through the list of 24 discussions, about 3 screens.',
-    'In Discussions, the user is filling in “Title”.',
+    'Opened the Login page.',
+    'Tried to log in as ada@example.test, but the server returned 401.',
+    'Scrolled about 3 screens through the discussion list (24 discussions) without opening one.',
+    'Filled in “Title” on the Discussions page.',
   ]);
   // Still being typed while the page is open; once it closes, the draft was left.
   assert.equal(story.segments.at(-1).open, true);
   const closed = storyOf(createStore({ records: [...rows, { kind: 'capture.summary', page_id: page, capture_page_id: page, ...at() }] }));
-  assert.equal(closed.segments.at(-1).title, 'In Discussions, the user is filling in “Title” but leaves without sending it.');
+  assert.equal(closed.segments.at(-1).title, 'Filled in “Title” on the Discussions page but left without sending it.');
 });
 
 test('values: secrets never read, long text only as a length, ids and nested owners kept', () => {
@@ -163,11 +163,11 @@ test('a redirect the app makes on its own right after a write is where that goal
   const rows = signUpSession().map(row => (row.kind === 'page.navigate' && row.to === '/app' ? { ...row, action_id: null, via: 'replaceState' } : row));
   const story = storyOf(createStore({ records: rows }));
   const [, signUp, start] = story.segments;
-  assert.equal(signUp.title, 'On the Register page, Ada Lovelace is signing up as ada@example.test for the team “Analytical Engines”, and lands on the App page.');
-  assert.equal(signUp.steps.at(-1).text, 'The app moves to /app');
-  assert.equal(start.title, 'In Discussions, Ada Lovelace is creating the first discussion, “Notes on the engine”.');
+  assert.equal(signUp.title, 'Registered as ada@example.test for the team “Analytical Engines” and landed on the App page.');
+  assert.equal(signUp.steps.at(-1).text, 'Landed on the App page.');
+  assert.equal(start.title, 'Opened the Discussions page and created the first discussion titled “Notes on the engine”.');
   assert.deepEqual(start.facts.first_evidence, ['a3']);
-  assert.match(start.steps.find(step => step.line === 'a3').text, /the discussion list loads empty/u);
+  assert.match(start.steps.find(step => step.line === 'a3').text, /to view the discussion list, which was empty\.$/u);
   // A navigation that does not leave the page the write was sent from is not its landing.
   const elsewhere = signUpSession().map(row => (row.kind === 'page.navigate' && row.to === '/app' ? { ...row, action_id: null, from: '/somewhere' } : row));
   assert.doesNotMatch(storyOf(createStore({ records: elsewhere })).segments[1].title, /lands on/u);
@@ -216,28 +216,30 @@ test('a second visit: reload, rename, a left draft, a delete and Back each read 
   const open = story.lines[0];
   assert.equal(open.text, 'Opened /app/discussions → GET /auth/me (200), GET /discussions?page=1 (200)');
   assert.deepEqual(story.segments.map(segment => segment.title), [
-    'On the Discussions page, Ada Lovelace is opening the app.',
-    'In “Beta topic”, Ada Lovelace is opening the discussion and renaming it to “Beta topic (renamed)”.',
-    'On the Discussions page, Ada Lovelace is filling in “Title” and “Body” but leaves without sending it.',
-    'On the Discussions page, Ada Lovelace is deleting the discussion “Gamma topic”.',
-    'On the Discussions page, Ada Lovelace is going back or forward to the App page.',
+    'Opened the Discussions page, signed in as Ada Lovelace.',
+    'Opened the discussion “Beta topic” and renamed it to “Beta topic (renamed)”.',
+    'Started a discussion on the Discussions page but left without sending it.',
+    'Deleted the discussion “Gamma topic”.',
+    'Went back or forward to the App page.',
   ]);
   const steps = story.segments.map(segment => segment.steps.map(step => step.text));
-  assert.deepEqual(steps[0], ['Opens /app/discussions; the app checks who is signed in, 6 discussions load']);
+  assert.deepEqual(steps[0], ['Opened the Discussions page.']);
+  // What was there goes in the step's facts: who was signed in, what loaded.
+  assert.deepEqual(story.segments[0].steps[0].facts, ['Signed in as user U5kYWbCNE3f8v-xNcc62Y (Ada Lovelace)', '6 discussions: “Beta topic”, “Gamma topic”, …']);
   // Scrolling the list, then opening one from it: one goal, the scroll leading. The hover's prefetch is part of
   // the click; the change that ends typing is part of the typing.
   assert.deepEqual(steps[1], [
-    'Scrolls down about 2 screens',
-    'Opens “View”; the discussion “Beta topic” loads, the app moves to /app/discussions/eXA7Ncb2ENlZ2_b27sGVS',
-    'Clicks “Update Discussion”',
-    'Enters “Beta topic (renamed)” as the title',
-    'Submits “Submit”; the server saves discussion eXA7Ncb2ENlZ2_b27sGVS',
+    'Scrolled down about 2 screens on the Discussions page.',
+    'Clicked the “View” link to open the discussion “Beta topic”.',
+    'Clicked the “Update Discussion” button.',
+    'Typed “Beta topic (renamed)” into the “Title” field.',
+    'Clicked the “Submit” button to save the discussion “Beta topic”.',
   ]);
   assert.equal(story.lines.find(line => line.id === 'v1').prefetched_on_hover, 'h1');
   // The click that opened the form leads the draft; the one that opened the confirm leads the delete.
   assert.deepEqual(story.segments[2].lines.slice(1), ['a1', 't2', 't3']);
   assert.equal(story.lines.find(line => line.id === story.segments[2].lines[0]).kind, 'navigate');
-  assert.deepEqual(steps[3], ['Clicks “Delete Discussion”', 'Clicks “Delete Discussion”; the server deletes discussion 9H0CDBYAGgCuk5f9hUvzD']);
+  assert.deepEqual(steps[3], ['Clicked the “Delete Discussion” button on the Discussions page.', 'Clicked the “Delete Discussion” button to delete the discussion “Gamma topic”.']);
   assert.ok(!JSON.stringify(steps).includes('returns author'));
   // Going somewhere on its own is not a sentence of the summary.
   assert.ok(!story.narrative[0].observations.some(entry => /going back/u.test(entry.text)));
@@ -246,11 +248,11 @@ test('a second visit: reload, rename, a left draft, a delete and Back each read 
 test('a rename that only re-sends unchanged fields claims no field; a failed write names only its status', () => {
   const rows = secondVisit().filter(row => !(row.kind === 'network.body' && row.request_occurrence_id === 's1:request:1'));
   rows.push(body('s1', 1, 'request', { title: 'Beta topic', body: 'Body of Beta topic' }), body('s1', 1, 'response', { id: 'eXA7Ncb2ENlZ2_b27sGVS', title: 'Beta topic' }));
-  assert.equal(storyOf(createStore({ records: rows })).segments.find(entry => entry.verb === 'edited').title, 'In “Beta topic”, Ada Lovelace is opening the discussion and editing it.');
+  assert.equal(storyOf(createStore({ records: rows })).segments.find(entry => entry.verb === 'edited').title, 'Opened the discussion “Beta topic” and edited it.');
   const failing = secondVisit().map(row => (row.kind === 'network.body' && row.request_occurrence_id === 's1:request:1' && row.direction === 'response' ? { ...row, status: 500, json: { message: 'boom' } } : row));
   const segment = storyOf(createStore({ records: failing })).segments.find(entry => entry.verb === 'edited');
-  assert.equal(segment.steps.at(-1).text, 'Submits “Submit”; the server says 500');
-  assert.match(segment.title, /trying to rename it, but the server says 500\.$/u);
+  assert.equal(segment.steps.at(-1).text, 'Clicked the “Submit” button, but the server returned 500.');
+  assert.match(segment.title, /^Opened the discussion “Beta topic” and tried to rename it, but the server returned 500\.$/u);
 });
 
 test('scrolling a list and then leaving by a menu link: the scroll stays on its page, the link is its own goal', () => {
@@ -263,6 +265,27 @@ test('scrolling a list and then leaving by a menu link: the scroll stays on its 
   ];
   const story = storyOf(createStore({ records }));
   assert.deepEqual(story.segments.map(segment => segment.lines), [['open:s_n'], ['r1'], ['m1']]);
-  assert.equal(story.segments[1].title, 'On the Discussions page, Ada Lovelace is scrolling through the page, about 2 screens.');
-  assert.equal(story.segments[2].title, 'On the Discussions page, Ada Lovelace is going to Dashboard.');
+  assert.equal(story.segments[1].title, 'Scrolled about 2 screens through the Discussions page.');
+  assert.equal(story.segments[2].title, 'Went to the Dashboard page.');
+});
+
+test('a rename that also rewrites the body says both; a later comment draft is named by its button, under the new title', () => {
+  const rows = secondVisit();
+  const d1 = 'eXA7Ncb2ENlZ2_b27sGVS';
+  const back = rows.findIndex(row => row.kind === 'page.navigate' && row.via === 'popstate');
+  const comment = 'object:72';
+  const records = [
+    ...rows.slice(0, back).map(row => (row.kind === 'network.body' && row.request_occurrence_id === 's1:request:1'
+      ? { ...row, json: { ...row.json, body: 'A new body' } } : row)),
+    action('k1', 'click', button('Create Comment'), { page: `/app/discussions/${d1}` }), enter('k1'),
+    ...typing('k2', { tag: 'textarea', attributes: { name: 'body' }, element_key: 'k_body_k', label: 'Body' }, comment, `/app/discussions/${d1}`),
+    { kind: 'page.navigate', action_id: null, via: 'popstate', from: `/app/discussions/${d1}`, to: '/app/discussions', ...at() },
+    { kind: 'capture.summary', page_id: page, capture_page_id: page, ...at() },
+  ];
+  const story = storyOf(createStore({ records }));
+  const titles = story.segments.map(segment => segment.title);
+  assert.ok(titles.includes('Opened the discussion “Beta topic” and renamed it to “Beta topic (renamed)” and changed its body.'), titles.join('\n'));
+  assert.ok(titles.includes('Started a comment on “Beta topic (renamed)” but left without sending it.'), titles.join('\n'));
+  // The whole visit, joined with ", then".
+  assert.match(story.narrative[0].text, /^Opened the discussion “Beta topic” and renamed it .*, then started a comment on “Beta topic \(renamed\)” but left without sending it\.$/u);
 });

@@ -79,12 +79,13 @@ for (const segment of segments) {
   console.log(
     `${segment.title}  (${segment.lines.length} steps, ${Math.round((segment.duration_ms ?? 0) / 1000)} s)`,
   );
-  for (const step of segment.steps) console.log(`    · ${step.text}`);
+  for (const step of segment.steps)
+    console.log(`    · ${step.text}${step.facts?.length ? `  [${step.facts.join('; ')}]` : ''}`);
 }
 const goals = [
-  /^On the Register page, Maya Chen is signing up as maya\+\d+@example\.com for the team “Acme”/u,
-  /^In Discussions, Maya Chen is creating the first discussion, “Pricing page feedback”/u,
-  /^In “Pricing page feedback”, Maya Chen is opening the discussion they just created and creating its first comment/u,
+  /^Registered as maya\+\d+@example\.com for the team “Acme” and landed on the App page\.$/u,
+  /^Opened the Discussions page and created the first discussion titled “Pricing page feedback”\.$/u,
+  /^Opened the discussion they just created and created its first comment\.$/u,
 ];
 for (const pattern of goals)
   if (!segments.some((segment) => pattern.test(segment.title))) missing.push(pattern);
