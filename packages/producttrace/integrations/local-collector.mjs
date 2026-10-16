@@ -53,6 +53,13 @@ export function localCollectorPlugin({ storeDir, manifestFile, sourceRoot }) {
       const route = rest.split('?')[0];
       // Only the collector's own routes: anything else under the prefix (the request bridge) is the app's.
       if (!ROUTES.has(route)) return next();
+      // The story carries every session's pages, values and IDs: only this machine may read or write it,
+      // even when the dev server listens on the network (`server.host`).
+      if (!isLoopback(request.socket?.remoteAddress)) {
+        response.statusCode = 403;
+        response.end('producttrace: only this machine can reach /__producttrace');
+        return;
+      }
       if (request.method === 'GET' && route === '/') {
         response.setHeader('content-type', 'text/html; charset=utf-8');
         response.setHeader('cache-control', 'no-store');
@@ -85,6 +92,10 @@ export function localCollectorPlugin({ storeDir, manifestFile, sourceRoot }) {
       await stop();
     },
   };
+}
+
+function isLoopback(address) {
+  return typeof address === 'string' && (address === '::1' || /^(?:::ffff:)?127\./u.test(address));
 }
 
 function proxy(target, pathname, request, response) {

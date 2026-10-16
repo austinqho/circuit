@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { createServer } from 'vite';
+import { build, createServer } from 'vite';
 import { producttrace } from '../vite.mjs';
 
 // The one-line install: `producttrace()` with no options, served by `vite`.
@@ -57,4 +57,47 @@ test('producttrace() with a collector URL or false runs no collector of its own'
     assert.ok(!names.includes('producttrace-local-collector'), `collector: ${collector}`);
   }
   assert.ok(producttrace().some((plugin) => plugin.name === 'producttrace-local-collector'));
+});
+
+function tinyApp(t) {
+  const root = fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(), 'producttrace-inert-')));
+  fs.mkdirSync(path.join(root, '.git'));
+  fs.mkdirSync(path.join(root, 'src'));
+  fs.writeFileSync(path.join(root, 'index.html'), '<!doctype html><html><head></head><body><script type="module" src="/src/app.js"></script></body></html>');
+  fs.writeFileSync(path.join(root, 'src', 'app.js'), 'export const onClick = () => fetch("/api/items");\n');
+  const cwd = process.cwd();
+  process.chdir(root);
+  t.after(() => { process.chdir(cwd); fs.rmSync(root, { recursive: true, force: true }); });
+  return root;
+}
+
+// A test run (Vitest sets mode 'test') and a production build are left exactly as the app has them.
+test('producttrace() does nothing in a test run or a production build', async (t) => {
+  const root = tinyApp(t);
+  const server = await createServer({ root, configFile: false, logLevel: 'silent', mode: 'test', server: { middlewareMode: true }, plugins: [producttrace()] });
+  const html = await server.transformIndexHtml('/index.html', fs.readFileSync(path.join(root, 'index.html'), 'utf8'));
+  const { code } = await server.transformRequest('/src/app.js');
+  await server.close();
+  assert.doesNotMatch(html, /producttrace/u, 'no runtime in a test run');
+  assert.doesNotMatch(code, /__productTraceRuntime|registerManifest/u, 'no instrumented modules in a test run');
+
+  await build({ root, configFile: false, logLevel: 'silent', build: { outDir: path.join(root, 'dist') }, plugins: [producttrace()] });
+  const built = fs.readdirSync(path.join(root, 'dist'), { recursive: true }).map(String);
+  assert.ok(!built.some((file) => file.includes('producttrace')), `production build untouched: ${built.join(', ')}`);
+  assert.doesNotMatch(fs.readFileSync(path.join(root, 'dist', 'index.html'), 'utf8'), /producttrace/u);
+  assert.ok(!fs.existsSync(path.join(root, 'node_modules', '.producttrace', 'installation.json')), 'nothing was analysed');
+});
+
+test('the recording script follows the app\'s base path', async (t) => {
+  const root = tinyApp(t);
+  const server = await createServer({ root, configFile: false, logLevel: 'silent', base: '/free/', server: { port: 0, host: '127.0.0.1' }, plugins: [producttrace()] });
+  await server.listen();
+  const base = `http://127.0.0.1:${server.httpServer.address().port}`;
+  const html = await (await fetch(`${base}/free/`)).text();
+  const src = html.match(/src="([^"]*producttrace-runtime\.js[^"]*)"/u)?.[1];
+  assert.match(src, /^\/free\/producttrace-runtime\.js/u);
+  const script = await fetch(`${base}${src}`);
+  assert.equal(script.status, 200);
+  assert.match(script.headers.get('content-type'), /javascript/u);
+  await server.close();
 });
