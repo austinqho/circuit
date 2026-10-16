@@ -15,31 +15,33 @@ The first run clones the app at a pinned commit into `~/.cache/producttrace-exam
 Click around the app and reload `/story`. A session reads as goals, each with the steps under it (`segments` in the JSON, `event: segment` on the stream):
 
 ```
-On the Register page, Maya Chen is signing up as maya+1792108092876@example.com for the team “Acme”, and lands on the App page.
-    · Opens “Get started”; the app moves to /auth/login
-    · Opens “Register”; the app moves to /auth/register
-    · Enters “Maya” as the first name
-    · Enters “Chen” as the last name
-    · Enters maya+1792108092876@example.com as the email address
-    · Sets a password
-    · Enters “Acme” as the team name
-    · Submits “Register”; the server returns user C2QefmDEePJBQNxLoUmdJ and team RqdkoGxxR223x3Nnn689K
-    · The app moves to /app
-In Discussions, Maya Chen is creating the first discussion, “Pricing page feedback”.
-    · Opens “Discussions”; the discussion list loads empty, the app moves to /app/discussions
-    · Clicks “Create Discussion”
-    · Enters “Pricing page feedback” as the title
-    · Writes a body (30 characters)
-    · Submits “Submit”; the server creates discussion 32IBVKkidnmnItW7FQ5KB, 1 discussion loads
-    · Clicks “Close”
-In “Pricing page feedback”, Maya Chen is opening the discussion they just created and creating its first comment.
-    · Opens “View”; the discussion “Pricing page feedback” loads, the comment list loads empty, the app moves to /app/discussions/32IBVKkidnmnItW7FQ5KB
-    · Clicks “Create Comment”
-    · Writes a body (19 characters)
-    · Submits “Submit”; the server creates comment N3AYsbNVKyi3NSYIGaPNR, 1 comment loads
+Registered as maya+1792109982822@example.com for the team “Acme” and landed on the Dashboard page.
+    · Clicked the “Get started” button on the home page to open the “Log in to your account” page.
+    · Clicked the “Register” link to open the “Register your account” page.
+    · Typed “Maya” into the “First Name” field.
+    · Typed “Chen” into the “Last Name” field.
+    · Typed “maya+1792109982822@example.com” into the “Email Address” field.
+    · Typed a password into the “Password” field.
+    · Typed “Acme” into the “Team Name” field.
+    · Clicked the “Register” button to create user _kycFDESw18U5ixcM-jtJ and team V89-8dIGHKH-w5GQiIfW5.  [Signed in as user _kycFDESw18U5ixcM-jtJ (Maya Chen)]
+    · Landed on the Dashboard page.
+Opened the Discussions page and created the first discussion titled “Pricing page feedback”.
+    · Clicked the “Discussions” link on the Dashboard page to view the discussion list, which was empty.  [0 discussions]
+    · Clicked the “Create Discussion” button.
+    · Typed “Pricing page feedback” into the “Title” field.
+    · Typed a 30-character body into the “Body” field.
+    · Clicked the “Submit” button to create discussion RcGLwqSVvGQfsvG2tb-Vu.  [New discussion “Pricing page feedback” (RcGLwqSVvGQfsvG2tb-Vu); 1 discussion: “Pricing page feedback”]
+    · Clicked the “Close” button.
+Opened “Pricing page feedback”, the discussion they just created, and posted its first comment.
+    · Clicked the “View” link on the Discussions page to open the discussion “Pricing page feedback”.  [Discussion “Pricing page feedback” (RcGLwqSVvGQfsvG2tb-Vu); 0 comments]
+    · Clicked the “Create Comment” button.
+    · Typed a 19-character body into the “Body” field.
+    · Clicked the “Submit” button to create comment zJugDX8NLBgXfW-7fsGew.  [New comment (zJugDX8NLBgXfW-7fsGew); 1 comment]
 ```
 
-Steps join a goal only through something they share: the same form, an entity id, or the page a navigation reached. A redirect the app makes on its own straight after a write, away from the page the write was sent from, is where that goal lands. "First" is said only when the list of that type, read in the same goal, was empty. A hover that prefetched for a link is part of the click on it, a form typed in and left is its own goal ("…filling in “Title” and “Body” but leaves without sending it"), and an edit names only the fields that differ from what the server last returned. Values (“Acme”, the email, the name) come from the request and response bodies, never from keystrokes; passwords are never read, and long text shows only its length. Each step is also a line in `lines`, with the requests and IDs behind it.
+Goals and steps are written the way NAPsack's annotators caption a screen: past tense, verb first, the app's own labels and the sent values quoted, and "to …" only when that line's own request or navigation shows the result. A page is named by its own document title when the app gives each page one, else by the link that led there. The brackets are each step's `facts`: what was there (who was signed in, what loaded or was made), not what was done. `narrative[].text` is the whole visit, its goals joined with ", then".
+
+Steps join a goal only through something they share: the same form, an entity id, or the page a navigation reached. A redirect the app makes on its own straight after a write, away from the page the write was sent from, is where that goal lands. "First" is said only when the list of that type, read in the same goal, was empty. A hover that prefetched for a link is part of the click on it, a form typed in and left is its own goal ("Started a comment on “Pricing page feedback” but left without sending it."), and an edit names only the fields that differ from what the server last returned. Values (“Acme”, the email, the name) come from the request and response bodies, never from keystrokes; passwords are never read, and long text shows only its length. Each step is also a line in `lines`, with the requests and IDs behind it.
 
 With the demo running, `npm run drive -w examples/bulletproof-react` clicks through that session headless and fails if an expected line or goal is missing. It needs a Chromium: `CHROMIUM_PATH=/path/to/chrome`, Playwright's (`npx playwright install chromium`), or your installed Chrome.
 

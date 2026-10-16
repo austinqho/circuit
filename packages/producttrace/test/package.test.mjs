@@ -12,7 +12,7 @@ test('install allowlist excludes source, build tooling, and developer tests', as
     'analysis', 'backend', 'collector', 'dist', 'integrations', 'mcp', 'plugin', '.agents',
     'index.js', 'index.d.ts', 'vite.mjs', 'vite.d.mts', 'collector.js', 'collector.d.ts', 'backend.js', 'backend.d.ts',
     'backend-register.js', 'analysis.mjs', 'analysis.d.mts', 'runtime-attribution.mjs', 'runtime-attribution.d.mts',
-    'mcp.mjs', 'mcp-tools.mjs', 'mcp-annotation-lookup.mjs', 'LICENSE', 'README.md',
+    'mcp.mjs', 'mcp-annotation-lookup.mjs', 'LICENSE', 'README.md',
   ]);
   assert.equal(manifest.files.some((entry) => /^(src|scripts|test)(\/|$)/.test(entry)), false);
 
@@ -35,6 +35,24 @@ test('install allowlist excludes source, build tooling, and developer tests', as
     manifest.exports['./mcp'].import,
   ];
   await Promise.all(shippedEntrypoints.map((entry) => access(resolve(packageRoot, entry))));
+});
+
+// Each entry point is a deliberate interface. Adding a name here is a public API
+// change; internals belong in the package's subfolders.
+test('entry points expose exactly their intended names', async () => {
+  const expected = {
+    'vite.mjs': ['productTraceVitePlugin', 'producttrace', 'runtimeAttributionPlugin'],
+    'analysis.mjs': ['analyzeBackendRoutes', 'analyzeReact', 'confirmBackendExecution', 'connectRequestToHandler', 'createReactRuntimeIntegration', 'matchRequestToRoute'],
+    'runtime-attribution.mjs': ['runtimeAttributionPlugin'],
+    'backend.js': ['BACKEND_SPAN_SCHEMA', 'NODE_BACKEND_ADAPTERS', 'createProductTraceSpanExporter', 'normalizeOpenTelemetrySpan', 'startNodeBackendTelemetry'],
+    'mcp.mjs': ['createTracerServer', 'main'],
+    'mcp-annotation-lookup.mjs': ['lookupSnippet'],
+  };
+  const packageRoot = resolve(import.meta.dirname, '..');
+  for (const [file, names] of Object.entries(expected)) {
+    const module = await import(resolve(packageRoot, file));
+    assert.deepEqual(Object.keys(module).sort(), names, file);
+  }
 });
 
 test('packaged attribution runtime is byte-identical to its source', async () => {

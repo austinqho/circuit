@@ -42,9 +42,6 @@
     "./mcp": {
       "import": "./mcp.mjs"
     },
-    "./mcp/tools": {
-      "import": "./mcp-tools.mjs"
-    },
     "./mcp/annotation-lookup": {
       "import": "./mcp-annotation-lookup.mjs"
     },
@@ -77,7 +74,6 @@
     "runtime-attribution.mjs",
     "runtime-attribution.d.mts",
     "mcp.mjs",
-    "mcp-tools.mjs",
     "mcp-annotation-lookup.mjs",
     "LICENSE",
     "README.md"

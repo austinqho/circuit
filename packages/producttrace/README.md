@@ -53,7 +53,7 @@ Click around. Every action lands in `.tracer/records.jsonl`, and backend spans i
 ## Reading the results
 
 - **Agents** (Claude Code, Codex): `npx --no-install producttrace-mcp --store .tracer --source-root .` serves the store over MCP with tools such as `recent_actions`, `action_chain` and `element_history`. Setup for each agent is in [plugin/README.md](plugin/README.md).
-- **Code**: `producttrace/runtime-attribution` and `producttrace/collector` read the store directly.
+- **Code**: `producttrace/collector` reads the store directly.
 
 ## Entry points
 
@@ -66,9 +66,10 @@ The package's public surface is the set of files at its root. Everything in a su
 | `producttrace/collector`       | `collector.js`             | Local collector and store reader                               |
 | `producttrace/backend`         | `backend.js`               | OpenTelemetry span exporter for Node                           |
 | `producttrace/backend/register`| `backend-register.js`      | `node --import` hook for Express, http/undici, MongoDB         |
-| `producttrace/runtime-attribution` | `runtime-attribution.mjs` | Joins recorded rows into attributed actions                 |
+| `producttrace/runtime-attribution` | `runtime-attribution.mjs` | The build-time plugin that names first-party calls (included by `producttrace/vite`) |
 | `producttrace/analysis`        | `analysis.mjs`             | Build-time source analysis the plugin uses                     |
 | `producttrace/mcp`             | `mcp.mjs`                  | MCP server (also the `producttrace-mcp` bin)                   |
+| `producttrace/mcp/annotation-lookup` | `mcp-annotation-lookup.mjs` | Looks up the source snippet for an annotation      |
 
 ## Limits
 
