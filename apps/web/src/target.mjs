@@ -193,6 +193,8 @@ export default async env => {
   return {
     ...base,
     base: '/',
+    // The bench is headless: an app that opens a browser tab on start would crash without one.
+    server: { ...(base.server || {}), open: false },
     build: { ...(base.build || {}), outDir: ${JSON.stringify(outDir)}, emptyOutDir: true },
     plugins: [
       ...(process.env.CIRCUIT_PRODUCTTRACE === '0' ? [] : producttrace(${JSON.stringify(pluginOptions)})),
@@ -262,8 +264,9 @@ export async function serveDev({ viteBin, wrapper, appRoot, env }, port, logFile
   );
   fs.closeSync(out);
   const exited = new Promise((resolve) => child.once('exit', resolve));
+  // Large apps take a while: the plugin reads the whole client source before Vite listens.
   const up = await Promise.race([
-    waitForHttp(`http://127.0.0.1:${port}/`, 60000),
+    waitForHttp(`http://127.0.0.1:${port}/`, 300000),
     exited.then(() => false),
   ]);
   if (!up) {

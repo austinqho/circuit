@@ -100,12 +100,18 @@ test('wrapperConfig imports the original config and adds one producttrace line',
   assert.match(text, /import original from "\/r\/vite.config.ts"/u);
   assert.match(text, /producttrace\(\{"requestBridge":false\}\)/u);
   assert.equal(text.match(/producttrace\(/gu).length, 1);
+  // Apps like Excalidraw open a browser tab on start; the headless bench has none.
+  assert.match(text, /server: \{ \.\.\.\(base\.server \|\| \{\}\), open: false \}/u);
 });
 
 test('describe renders steps as plain sentences', () => {
   assert.equal(describe('click', 'Get started'), 'Clicked "Get started"');
   assert.equal(describe('fill', { label: 'Email' }, 'a@b.c'), 'Typed "a@b.c" into label "Email"');
   assert.equal(describe('click', { role: 'button', name: 'Save' }), 'Clicked button "Save"');
+  assert.equal(
+    describe('drag', 'css=canvas', '10,10 90,60'),
+    'Dragged across "css=canvas" (10,10 90,60)',
+  );
 });
 
 test('buildReport pairs lines with steps by window and scores them', () => {

@@ -96,9 +96,17 @@ export function productTraceVitePlugin(options = {}) {
   if (options.labels !== undefined && ![true, false, 'always'].includes(options.labels)) throw new TypeError("labels must be true, false or 'always'");
   const labelMode = () => (options.labels === false ? 'off' : options.labels === 'always' || viteMode !== 'production' ? 'on' : 'production_off');
   const runtimeSettings = () => `globalThis.__PRODUCTTRACE_LABELS__=${JSON.stringify(labelMode())};${options.stamps === false ? 'globalThis.__PRODUCTTRACE_STAMPS__=false;' : ''}${oaiAttributes === 'detect' ? '' : `globalThis.__PRODUCTTRACE_OAI_ATTRIBUTES__=${JSON.stringify(oaiAttributes)};`}globalThis.__PRODUCTTRACE_BODIES__=${JSON.stringify(bodyMode())};globalThis.__PRODUCTTRACE_INPUT_TEXT__=${JSON.stringify(inputTextMode())};${collectorActive() ? collectorSinkSource(collector) : ''}`;
-  const reactMap = analyzeReact({ repository,
-    ...(options.maxFiles === undefined ? {} : { maxFiles: options.maxFiles }),
-    ...(options.maxBytes === undefined ? {} : { maxBytes: options.maxBytes }) });
+  // Source analysis only names handlers. Code it cannot read must never stop the
+  // app from starting: abstain with an empty map and say so once.
+  let reactMap;
+  try {
+    reactMap = analyzeReact({ repository,
+      ...(options.maxFiles === undefined ? {} : { maxFiles: options.maxFiles }),
+      ...(options.maxBytes === undefined ? {} : { maxBytes: options.maxBytes }) });
+  } catch (error) {
+    console.warn(`[producttrace] source analysis stopped (${error?.message || error}); recording without handler names.`);
+    reactMap = analyzeReact({ files: {} });
+  }
   const backendMap = analyzeBackendRoutes({ repository, serviceId: service,
     ...(options.maxFiles === undefined ? {} : { maxFiles: options.maxFiles }),
     ...(options.maxBytes === undefined ? {} : { maxBytes: options.maxBytes }) });
