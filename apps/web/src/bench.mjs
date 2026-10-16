@@ -175,9 +175,10 @@ export function createBench({
         String(app.ports.collector),
         '--source-root',
         appRoot,
-        // The collector reads the manifest once, at start. Under the dev server it is
-        // written as modules load, so a fresh dev app starts without one.
-        ...(fs.existsSync(manifest) ? ['--manifest', manifest] : []),
+        // The collector follows this file: under the dev server it may not exist yet
+        // and grows as modules load.
+        '--manifest',
+        manifest,
         '--label',
         `circuit-${app.id}-build-${app.build}`,
       ],
