@@ -147,7 +147,7 @@ const TOOLS = [
   {
     name: 'circuit_act',
     description:
-      "Do one thing in the app with a headless browser, like a user would: goto (value = path), click, dblclick, hover, fill (value = text), type (key by key), press (value = key, e.g. Enter), select, check, uncheck, wait (value = ms), back. Returns whether it worked, the sentences the package wrote since the step began, and the page's accessibility tree so you can pick the next target.",
+      'Do one thing in the app with a headless browser, like a user would: goto (value = path), click, dblclick, hover, fill (value = text), type (key by key; no target types into whatever has focus), press (value = key, e.g. Enter), select, check, uncheck, drag (value = "x1,y1 x2,y2" in pixels from the target\'s top-left, for drawing on canvases), wait (value = ms), back. Returns whether it worked, the sentences the package wrote since the step began, and the page\'s accessibility tree so you can pick the next target.',
     inputSchema: {
       type: 'object',
       required: ['app', 'action'],
@@ -166,6 +166,7 @@ const TOOLS = [
             'select',
             'check',
             'uncheck',
+            'drag',
             'wait',
             'back',
           ],

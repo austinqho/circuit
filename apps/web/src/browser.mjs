@@ -118,6 +118,8 @@ export function describe(action, target, value) {
       return `Checked ${t}`;
     case 'uncheck':
       return `Unchecked ${t}`;
+    case 'drag':
+      return `Dragged across ${t} (${value})`;
     case 'wait':
       return `Waited ${value} ms`;
     case 'back':
@@ -213,8 +215,31 @@ export class BrowserSession {
           await locate(page, target).fill(String(value ?? ''), { timeout });
           break;
         case 'type':
-          await locate(page, target).pressSequentially(String(value ?? ''), { timeout, delay: 30 });
+          if (target)
+            await locate(page, target).pressSequentially(String(value ?? ''), {
+              timeout,
+              delay: 30,
+            });
+          else await page.keyboard.type(String(value ?? ''), { delay: 30 });
           break;
+        case 'drag': {
+          // value "x1,y1 x2,y2": pixels from the target's top-left corner. Canvas apps
+          // (whiteboards, editors) only draw on a pointer drag.
+          const points = String(value ?? '')
+            .trim()
+            .split(/\s+/u)
+            .map((pair) => pair.split(',').map(Number));
+          if (points.length < 2 || points.flat().some((n) => !Number.isFinite(n)))
+            throw new Error('drag needs value "x1,y1 x2,y2" (pixels from the target\'s top-left)');
+          const box = await locate(page, target).boundingBox({ timeout });
+          if (!box) throw new Error('drag target is not visible');
+          const [first, ...rest] = points;
+          await page.mouse.move(box.x + first[0], box.y + first[1]);
+          await page.mouse.down();
+          for (const [x, y] of rest) await page.mouse.move(box.x + x, box.y + y, { steps: 8 });
+          await page.mouse.up();
+          break;
+        }
         case 'press':
           if (target) await locate(page, target).press(String(value), { timeout });
           else await page.keyboard.press(String(value));
@@ -236,7 +261,7 @@ export class BrowserSession {
           break;
         default:
           throw new Error(
-            `unknown action "${action}" (goto, click, dblclick, hover, fill, type, press, select, check, uncheck, wait, back)`,
+            `unknown action "${action}" (goto, click, dblclick, hover, fill, type, press, select, check, uncheck, drag, wait, back)`,
           );
       }
       step.ok = true;

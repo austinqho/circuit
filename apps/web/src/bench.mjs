@@ -165,6 +165,10 @@ export function createBench({
       '.producttrace',
       'runtime-attribution-manifest.json',
     );
+    if (await waitForHttp(`http://127.0.0.1:${app.ports.collector}/`, 1))
+      throw new Error(
+        `port ${app.ports.collector} for the collector is taken by another process; stop it and rebuild`,
+      );
     const collector = spawn(
       process.execPath,
       [
@@ -190,12 +194,25 @@ export function createBench({
         ],
       },
     );
-    const server =
-      app.mode === 'build'
-        ? await serveStatic(path.join(app.work, 'dist'), app.ports.app)
-        : await serveDev(app.serve, app.ports.app, path.join(app.work, 'build.log'));
-    if (!(await waitForHttp(`http://127.0.0.1:${app.ports.collector}/`, 15000)))
-      throw new Error('collector did not start; see collector.log');
+    let server;
+    try {
+      server =
+        app.mode === 'build'
+          ? await serveStatic(path.join(app.work, 'dist'), app.ports.app)
+          : await serveDev(app.serve, app.ports.app, path.join(app.work, 'build.log'));
+      // Something else answering on the port (a collector left from an earlier run)
+      // must not pass for this build's collector: it would record into the wrong store.
+      if (
+        !(await waitForHttp(`http://127.0.0.1:${app.ports.collector}/`, 15000)) ||
+        collector.exitCode !== null
+      )
+        throw new Error('collector did not start; see collector.log');
+    } catch (error) {
+      // A failed start leaves nothing running that the next attempt would collide with.
+      collector.kill('SIGTERM');
+      server?.close();
+      throw error;
+    }
     const running = {
       server,
       collector,

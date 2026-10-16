@@ -69,6 +69,8 @@ module.exports = {
       path: [
         'node_modules',
         '/dist/',
+        // Throwaway clones of other people's apps that the test bench runs.
+        '/\\.work/',
         // Inline app sources written to temp dirs by fixtures, not real modules.
         `^${R}/[^/]+/test/(fixtures|browser/fixtures|browser/palmier-sample)/`,
       ],

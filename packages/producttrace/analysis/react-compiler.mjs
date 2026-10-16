@@ -2165,7 +2165,7 @@ export function compileReactSources(files, options = {}) {
             for(const attribute of attributes) {
               if(ts.isJsxSpreadAttribute(attribute)){candidate=null;spreadUnknown=true;continue;}
               if(!ts.isJsxAttribute(attribute) || attribute.name.getText()!==input)continue;
-              candidate=ts.isJsxExpression(attribute.initializer)?attribute.initializer.expression:attribute.initializer;
+              candidate=attribute.initializer&&ts.isJsxExpression(attribute.initializer)?attribute.initializer.expression:attribute.initializer;
               spreadUnknown=false;
             }
             const whitespaceAmbiguous=input==='children' && !hasExplicitChildren && explicitChildren.length>0 && (candidate || spreadUnknown);
@@ -2202,7 +2202,7 @@ export function compileReactSources(files, options = {}) {
               continue;
             }
             if (!ts.isJsxAttribute(attribute) || attribute.name.getText() !== 'value') continue;
-            const expression = ts.isJsxExpression(attribute.initializer)
+            const expression = attribute.initializer && ts.isJsxExpression(attribute.initializer)
               ? attribute.initializer.expression : attribute.initializer;
             provided = !attribute.initializer ? { kind: 'literal', value: true, node_id: node(attribute) }
               : expression ? evaluate(expression, env, placement) : unknown(attribute);
@@ -2691,7 +2691,7 @@ export function compileReactSources(files, options = {}) {
     };
     const scan=current=>{
       if(functionLike(current))return;
-      if(deferred && ts.isJsxExpression(current) && ts.isIdentifier(current.expression)
+      if(deferred && ts.isJsxExpression(current) && current.expression && ts.isIdentifier(current.expression)
         && symbol(current.expression)===binding && ts.isJsxElement(current.parent)
         && ts.isIdentifier(current.parent.openingElement.tagName) && /^[a-z]/u.test(current.parent.openingElement.tagName.text))
         uses.push({read_id:node(current.expression),property:'children'});
