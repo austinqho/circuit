@@ -197,6 +197,9 @@ export function storyOf(store, { session, now = Date.now(), titleOf = null, valu
   const navsByAction = new Map();
   for (const nav of navigations) if (nav.action_id) navsByAction.set(nav.action_id, [...(navsByAction.get(nav.action_id) || []), nav]);
   const recordsNavigation = new Set(navigations.map(pageOf));
+  // The document title each time the app set it, per session, in order.
+  const pageTitles = new Map();
+  for (const row of store.records) if (row?.kind === 'page.title' && row.title && (session === undefined || pageOf(row) === session)) pageTitles.set(pageOf(row), [...(pageTitles.get(pageOf(row)) || []), { page: row.page ?? null, title: row.title }]);
   const sessions = new Map();
   const lines = [];
   const lastPage = new Map();
@@ -371,7 +374,7 @@ export function storyOf(store, { session, now = Date.now(), titleOf = null, valu
     delete line.travel; delete line.net; delete line.whole_page; delete line.first_move;
     return true;
   });
-  const segments = segmentsOf(told, { looksLikeId, titleOf, closedSessions: closed });
+  const segments = segmentsOf(told, { looksLikeId, titleOf, closedSessions: closed, pageTitles });
   return { schema: STORY_SCHEMA, sessions: [...sessions.values()], lines: told, segments, narrative: narrativeOf(segments) };
 }
 

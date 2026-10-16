@@ -2773,6 +2773,18 @@
       Object.defineProperty(history, '__productTraceNavigation', { value: true });
     }
   } catch {}
+  // The document title as the app sets it (labels on only): a page.title row
+  // each time it changes, with the path it was set on. Apps set it a moment
+  // after the route changes, so this is the page's own name, not a guess from
+  // whichever click came next.
+  try {
+    if (LABELS_ON && global.document && typeof global.MutationObserver === 'function') {
+      let lastTitle = null;
+      const titleChanged = () => { const title = pageTitle(); if (!title || title === lastTitle) return; lastTitle = title; emit({ kind: 'page.title', page: pagePath(), title }); };
+      const watch = () => { const head = global.document.head || global.document.documentElement; if (!head) return; new global.MutationObserver(titleChanged).observe(head, { subtree: true, childList: true, characterData: true }); titleChanged(); };
+      if (global.document.readyState === 'loading') global.document.addEventListener('DOMContentLoaded', watch, { once: true }); else watch();
+    }
+  } catch {}
   // WebSocket: the connection (CONNECT row) and every message the page sends
   // (`network.send`: byte size only, never the content; owned by the frame
   // current when send() is called, like a worker post; outside every action
