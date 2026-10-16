@@ -75,6 +75,10 @@ export function transformNextModule(source, file, { repository, cacheDir, client
   }
   // Directives first (Next.js reads them), then the recorder, then the module.
   const prologue = compiled.outputText.match(PROLOGUE)?.[0].trim();
+  // The original directives now sit after the registration line; blank them in
+  // place (same length, so the map still holds) and state them once on top.
+  const at = prologue ? code.indexOf(prologue) : -1;
+  if (at >= 0) code = code.slice(0, at) + prologue.replace(/[^\n]/gu, ' ') + code.slice(at + prologue.length);
   let specifier = path.relative(path.dirname(file), clientModule).split(path.sep).join('/');
   if (!specifier.startsWith('.')) specifier = `./${specifier}`;
   const header = `${prologue ? `${prologue}\n` : ''}import ${JSON.stringify(specifier)};\n`;

@@ -124,6 +124,7 @@ export function SaveButton({ projectId }: Props) {
 
   assert.ok(result.code.startsWith(`'use client';\nimport "../../node_modules/.producttrace/next-client.js";\n`), result.code.slice(0, 120));
   assert.match(result.code, /registerManifest/u);
+  assert.equal(result.code.match(/'use client'/gu).length, 1, 'one directive, at the top (webpack rejects a late one)');
   const parsed = ts.createSourceFile('out.js', result.code, ts.ScriptTarget.Latest, true, ts.ScriptKind.JS);
   assert.equal(parsed.parseDiagnostics.length, 0, 'plain JavaScript: no TypeScript or JSX left');
   assert.equal(result.map.sources[0], file);

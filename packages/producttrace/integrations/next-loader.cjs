@@ -9,7 +9,7 @@ module.exports = function producttraceLoader(source) {
   transform
     .then(({ transformNextModule }) => transformNextModule(String(source), this.resourcePath, options))
     .then(
-      (result) => (result ? callback(null, result.code, JSON.stringify(result.map)) : callback(null, source)),
+      (result) => (result ? callback(null, result.code, result.map) : callback(null, source)),
       // Recording is never a reason for the app not to compile.
       (error) => {
         this.emitWarning?.(new Error(`producttrace left ${this.resourcePath} as it is: ${error?.message || error}`));
