@@ -13,7 +13,13 @@ import {
   rewriteLockfileRegistry,
   wrapperConfig,
 } from '../src/target.mjs';
-import { buildReport, narrationOf, narrationScore } from '../src/tracer.mjs';
+import {
+  NARRATION_RUBRIC,
+  buildReport,
+  narrationOf,
+  narrationScore,
+  voiceFlags,
+} from '../src/tracer.mjs';
 import { segmentsOf } from '../src/segments.mjs';
 
 const tmp = () => fs.mkdtempSync(path.join(os.tmpdir(), 'circuit-web-'));
@@ -212,4 +218,13 @@ test('a title citing what its evidence lacks scores zero', () => {
   assert.deepEqual(segments[0].ungrounded, ['ada@example.test']);
   const full = { voice: 2, high_level: 2, grounded: 2, specific: 2, joined: 2 };
   assert.equal(narrationScore(segments, [full]), 0);
+});
+
+test('voice flags catch the observer voice and pass the annotation voice', () => {
+  for (const sentence of NARRATION_RUBRIC.bar) assert.deepEqual(voiceFlags(sentence), [], sentence);
+  assert.deepEqual(voiceFlags('Went to /app.'), []);
+  assert.equal(voiceFlags('In Discussions, the user is starting a new discussion.').length, 1);
+  assert.equal(voiceFlags('Ada Lovelace is signing up.').length, 1);
+  assert.deepEqual(voiceFlags('Submit the form'), ['does not open with a past-tense verb']);
+  assert.ok(voiceFlags('Edited text in the form').includes('uses a vague verb'));
 });

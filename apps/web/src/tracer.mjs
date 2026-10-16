@@ -96,44 +96,68 @@ const requestKey = (r) => `${r.method} ${r.path}`;
  */
 export const NARRATION_RUBRIC = {
   instructions:
-    "Read each segment title as an observation of what the user is doing, and score it against its evidence only. 0 = no, 1 = partly, 2 = yes. A title that cites an email, ID or quoted title its evidence lacks scores 0 on everything (the bench enforces this; see each segment's ungrounded list). Call circuit_score_narration with one score object per segment, in order.",
+    "Read each segment title as an annotation of what the person did, and score it against its evidence only. 0 = no, 1 = partly, 2 = yes. A title that cites an email, ID or quoted label its evidence lacks scores 0 on everything (the bench enforces this; see each segment's ungrounded list). Each segment's voice_flags lists what a quick check found off-voice; use them as hints, not as the score. Call circuit_score_narration with one score object per segment, in order.",
   voice:
-    'On/In <page name>, <subject> is <verb-ing> <object> <qualifiers>. Third person, present progressive, place first, named things quoted. The subject is the person\'s name when the evidence has it, else "the user".',
+    '<Verb>ed <object> [as/for <qualifier>] [on/in <place>] [to <purpose>][, then <next verb>]. Past tense, verb first, no subject, on-screen labels and typed values quoted, the place named, and a "to …" purpose only when the evidence shows the result. ", then" joins the steps of one goal.',
   bar: [
-    'On the Register page, Ada Lovelace is signing up as ada@example.test, creating the team "Analytical Engines", and lands on the dashboard.',
-    'In Discussions, the user is starting a new discussion, "Notes on the engine".',
-    'In "Notes on the engine", the user is opening the discussion they just created and posting its first comment.',
+    'Registered as ada@example.test for the team "Analytical Engines" and landed on the dashboard.',
+    'Opened Discussions and started a discussion titled "Notes on the engine".',
+    'Clicked the "Register" button to create user U5kY… and team ruRH…, then landed on /app.',
   ],
   verbs: [
-    'signing up',
-    'logging in',
-    'logging out',
-    'creating / starting',
-    'editing',
-    'deleting',
-    'opening',
-    'browsing',
-    'scrolling through',
-    'searching',
-    'filtering / sorting',
-    'paging through',
-    'going to',
-    'drafting … but leaves without',
-    'trying … but',
+    'Registered',
+    'Logged in / out',
+    'Created / Started',
+    'Edited / Renamed',
+    'Deleted',
+    'Opened',
+    'Viewed',
+    'Scrolled through',
+    'Searched',
+    'Filtered / Sorted',
+    'Paged through',
+    'Typed … into',
+    'Clicked … to',
+    'Posted',
+    'Started … but left without',
   ],
   criteria: {
     voice:
-      'Reads as a GUM observation: the place first ("On the Register page", "In Discussions"), then a subject and a present-progressive verb ("the user is starting …"). A bare past-tense fragment ("Created a discussion") scores 0.',
+      'Reads like an annotation: past tense, verb first, no subject ("Opened Discussions and started …"). "The user is …", "In X, the user …", present tense, or a vague verb ("edited text", "interacted with") scores 0.',
     high_level:
-      'Names the goal with a verb from the vocabulary, the way the person would say it (signing up, starting a discussion), not the UI operation ("Submitted the form").',
+      'Names the goal the way the person would say it (registered, started a discussion), not the UI operation ("Submitted the form").',
     grounded:
-      'Every claim is in the evidence: requests, IDs, values, labels, pages. Nothing inferred about why.',
+      'Every claim is in the evidence: requests, IDs, values, labels, pages. A "to …" purpose only when a cited navigation, write or response shows that result; nothing guessed about why.',
     specific:
-      'Carries the qualifiers the evidence has: who (email or name from a body), what (the entity title, or type and ID), where (the page name from the link that led there), and the outcome.',
+      'Carries the qualifiers the evidence has: the typed value or entity title in quotes, the place, and the outcome (what was created, where the person landed).',
     joined:
-      'One goal per title: lines joined by a shared form, entity or navigation lead-in, nothing unrelated merged in, and no navigation left alone when the next part names its destination.',
+      'One goal per title: lines joined by a shared form, entity or navigation lead-in, steps chained with ", then", nothing unrelated merged in, and no navigation left alone when the next part names its destination.',
   },
 };
+
+// Opening words that are past tense without ending in -ed.
+const IRREGULAR_PAST = new Set(
+  'began chose did drew found gave got hid left lost made put ran read rewrote sent set saw shut sold spent swept took threw undid unhid went withdrew wrote'.split(
+    ' ',
+  ),
+);
+const VAGUE = /\b(edited text|interacted with|clicked on elements|did something|made changes)\b/iu;
+
+/** What a quick read finds off-voice in a title (empty when it reads as an annotation). */
+export function voiceFlags(title) {
+  const text = String(title).trim();
+  const flags = [];
+  const first = (text.match(/^[A-Za-z-]+/u)?.[0] ?? '').toLowerCase();
+  if (
+    /^(the user|a user|in |on |they |he |she )/iu.test(text) ||
+    /\b(is|are) \w+ing\b/iu.test(text)
+  )
+    flags.push('has a subject or present tense; write it verb first, past tense');
+  else if (!(first.endsWith('ed') || IRREGULAR_PAST.has(first)))
+    flags.push('does not open with a past-tense verb');
+  if (VAGUE.test(text)) flags.push('uses a vague verb');
+  return flags;
+}
 
 const lineEvidence = (line) => [
   line.text,
@@ -162,6 +186,7 @@ export function narrationOf(story, lines) {
         ...(segment.confidence != null ? { confidence: segment.confidence } : {}),
         evidence,
         ungrounded: ungroundedTokens(segment.title, evidence),
+        voice_flags: voiceFlags(segment.title),
       };
     }),
   };
