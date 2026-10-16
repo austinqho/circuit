@@ -81,7 +81,7 @@ const MODE = {
   type: 'string',
   enum: ['dev', 'build'],
   description:
-    'dev (default): the Vite dev server, ready in seconds. build: a production build served as static files, the app as users get it.',
+    'dev (default): the dev server (Vite or next dev), ready in seconds. build: a production build served as static files, the app as users get it (Vite apps only).',
 };
 const APP = { type: 'string', description: 'App id from circuit_add_app or circuit_list_apps.' };
 
@@ -95,7 +95,7 @@ const TOOLS = [
   {
     name: 'circuit_add_app',
     description:
-      'Install producttrace into an open-source Vite + React repo: clone it, install its dependencies, attach the one plugin line in a wrapper config (its source is never edited), run it and start a collector. By default the app runs on the Vite dev server (ready once installed); mode "build" makes a production build instead, which takes minutes. Returns at once; follow with circuit_app_status wait_seconds and call it again while the status is building.',
+      'Install producttrace into an open-source React repo (Vite or Next.js): clone it, install its dependencies, attach the one install line in a wrapper config (its source is never edited), run it and start a collector. By default the app runs on its dev server (ready once installed); mode "build" makes a production build instead, which takes minutes. Returns at once; follow with circuit_app_status wait_seconds and call it again while the status is building.',
     inputSchema: {
       type: 'object',
       required: ['repo'],
@@ -109,7 +109,7 @@ const TOOLS = [
         app_dir: {
           type: 'string',
           description:
-            'Folder with the Vite config in a monorepo (auto-detected; the best React candidate is picked).',
+            'Folder with the Vite or Next.js config in a monorepo (auto-detected; the best React candidate is picked).',
         },
         env: {
           type: 'object',

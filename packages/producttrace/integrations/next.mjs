@@ -72,6 +72,8 @@ async function instrumentNextConfig(config, options) {
     return resolved;
   };
   // `next dev` loads the config in its CLI process too; only the server it forks (NEXT_PRIVATE_WORKER) serves the app.
+  // A collector given by URL (say a bench's) follows the merged manifest file in the cache directory.
+  if (process.env.NEXT_PRIVATE_WORKER) followManifests(cacheDir);
   if (own && process.env.NEXT_PRIVATE_WORKER) {
     const port = await ownCollector({ cacheDir, sourceRoot: repository });
     result.rewrites = withCollectorRewrites(config.rewrites, port);
@@ -140,13 +142,25 @@ function withCollectorRewrites(rewrites, port) {
 // One collector per app directory, reused when Next.js loads the config again in this process.
 const running = (globalThis.__producttraceNextCollectors ||= new Map());
 
-function ownCollector({ cacheDir, sourceRoot }) {
-  if (running.has(cacheDir)) return running.get(cacheDir).port;
-  const manifestDir = path.join(cacheDir, 'next-manifests');
+const following = (globalThis.__producttraceNextManifests ||= new Map());
+
+/** Merge the loader workers' manifests into one file, every 500 ms, once per app directory. */
+function followManifests(cacheDir) {
   const manifestFile = path.join(cacheDir, 'runtime-attribution-manifest.json');
+  if (following.has(cacheDir)) return manifestFile;
+  const manifestDir = path.join(cacheDir, 'next-manifests');
   fs.rmSync(manifestDir, { recursive: true, force: true });
   fs.rmSync(manifestFile, { force: true });
   fs.mkdirSync(manifestDir, { recursive: true });
+  const merging = setInterval(() => mergeManifests(manifestDir, manifestFile), 500);
+  merging.unref();
+  following.set(cacheDir, () => { following.delete(cacheDir); clearInterval(merging); });
+  return manifestFile;
+}
+
+function ownCollector({ cacheDir, sourceRoot }) {
+  if (running.has(cacheDir)) return running.get(cacheDir).port;
+  const manifestFile = followManifests(cacheDir);
   const local = localCollector({ storeDir: path.join(cacheDir, 'store'), manifestFile, sourceRoot, label: 'next' });
   const server = http.createServer((request, response) => {
     if (!local.handle(request, response)) {
@@ -154,9 +168,7 @@ function ownCollector({ cacheDir, sourceRoot }) {
       response.end();
     }
   });
-  const merging = setInterval(() => mergeManifests(manifestDir, manifestFile), 500);
-  merging.unref();
-  const stop = () => { running.delete(cacheDir); clearInterval(merging); server.close(); return local.stop(); };
+  const stop = () => { running.delete(cacheDir); following.get(cacheDir)?.(); server.close(); return local.stop(); };
   for (const signal of ['SIGINT', 'SIGTERM']) process.once(signal, stop);
   const port = new Promise((resolve, reject) => {
     server.once('error', reject);

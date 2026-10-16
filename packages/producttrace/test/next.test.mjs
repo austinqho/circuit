@@ -158,3 +158,22 @@ test('one click that drives a long render loop stays bounded in the page', () =>
   const limits = runtime.records.filter((row) => row.kind === 'capture.limit' && row.feature === 'function_rows');
   assert.equal(limits.length, 1, 'said once that the rest was counted only');
 });
+
+test('next dev with a collector URL: no local collector, the manifest file is still kept for it', async (t) => {
+  const root = tempApp();
+  const cacheDir = path.join(root, 'node_modules', '.producttrace');
+  t.after(() => globalThis.__producttraceNextManifests.get(cacheDir)?.());
+  inApp(t, root);
+  const previous = process.env.NEXT_PRIVATE_WORKER;
+  process.env.NEXT_PRIVATE_WORKER = '1';
+  t.after(() => { if (previous === undefined) delete process.env.NEXT_PRIVATE_WORKER; else process.env.NEXT_PRIVATE_WORKER = previous; });
+  const config = await withProducttrace({}, { collector: 'http://127.0.0.1:9999' })(DEV, {});
+
+  assert.equal(config.rewrites, undefined);
+  assert.equal(globalThis.__producttraceNextCollectors.has(cacheDir), false);
+  assert.match(fs.readFileSync(path.join(cacheDir, 'next-client.js'), 'utf8'), /127\.0\.0\.1:9999/u);
+  fs.writeFileSync(path.join(cacheDir, 'next-manifests', '101.json'), JSON.stringify({ schema: 'producttrace.runtime-attribution-manifest.v1', functions: [{ index: 7, id: 'function:a:0:1' }], placements: [], classes: [] }));
+  const merged = path.join(cacheDir, 'runtime-attribution-manifest.json');
+  for (let attempt = 0; attempt < 40 && !fs.existsSync(merged); attempt += 1) await new Promise((resolve) => setTimeout(resolve, 50));
+  assert.deepEqual(JSON.parse(fs.readFileSync(merged, 'utf8')).functions.map((row) => row.id), ['function:a:0:1']);
+});
