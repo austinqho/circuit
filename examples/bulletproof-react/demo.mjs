@@ -2,13 +2,14 @@
 // One command: bulletproof-react (an open-source React app) with producttrace,
 // and the live session story beside it.
 //
-//   npm run demo -w examples/bulletproof-react             # first run clones, installs and builds (~6 min)
+//   npm run demo -w examples/bulletproof-react             # vite dev server (first run clones and installs)
+//   npm run demo -w examples/bulletproof-react -- --build  # instrumented build + vite preview (~6–7 min)
 //   npm run demo -w examples/bulletproof-react -- --rebuild
 //
 // The app's source is never edited. A wrapper Vite config imports the app's own
-// config and adds the one producttrace() line. Dev mode is not supported yet
-// (instrumentation runs at bundle time), so the app is built in development
-// mode and served with `vite preview`.
+// config and adds the one producttrace() line. By default the app runs on the
+// Vite dev server; `--build` builds it in development mode and serves it with
+// `vite preview`, the way a deployed build would run.
 import { spawn, spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
@@ -27,6 +28,7 @@ const app = path.join(work, 'apps', 'react-vite');
 const out = path.join(work, '.producttrace-dist');
 const store = path.join(work, '.tracer');
 const rebuild = process.argv.includes('--rebuild');
+const build = rebuild || process.argv.includes('--build');
 
 const log = (...parts) => console.log('[demo]', ...parts);
 const run = (command, args, options = {}) => {
@@ -79,7 +81,7 @@ export default async (env) => {
 `,
 );
 const vite = path.join(app, 'node_modules', 'vite', 'bin', 'vite.js');
-if (rebuild || !fs.existsSync(path.join(out, 'index.html'))) {
+if (build && (rebuild || !fs.existsSync(path.join(out, 'index.html')))) {
   log('building with producttrace (development mode; this is the slow step)');
   const started = Date.now();
   run(process.execPath, [vite, 'build', '--mode', 'development', '--config', wrapper], {
@@ -117,9 +119,7 @@ const children = [
     process.execPath,
     [
       vite,
-      'preview',
-      '--outDir',
-      out,
+      ...(build ? ['preview', '--outDir', out] : []),
       '--config',
       wrapper,
       '--host',

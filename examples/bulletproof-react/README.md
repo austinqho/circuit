@@ -7,7 +7,7 @@ npm install                                  # at the repo root
 npm run demo -w examples/bulletproof-react   # clone, install, build, serve
 ```
 
-The first run clones the app at a pinned commit into `~/.cache/producttrace-examples/bulletproof-react`, installs it and builds it (about 6–7 minutes; later runs reuse the build, `-- --rebuild` forces one). Then:
+The first run clones the app at a pinned commit into `~/.cache/producttrace-examples/bulletproof-react` and installs it. The app then runs on the Vite dev server, ready in seconds. `-- --build` runs an instrumented build and serves it with `vite preview` instead (about 6–7 minutes; later runs reuse it, `-- --rebuild` forces one). Then:
 
 - app: http://127.0.0.1:4173/
 - story: http://127.0.0.1:8787/story (JSON), live at http://127.0.0.1:8787/story/stream (server-sent events)
@@ -32,10 +32,10 @@ With the demo running, `npm run drive -w examples/bulletproof-react` clicks thro
 
 ## How it attaches
 
-The app's files are not edited. `demo.mjs` writes a wrapper Vite config that imports the app's own config and adds one line, `...producttrace({ requestBridge: false, stamps: true, collector: 'http://127.0.0.1:8787' })`. The build runs in development mode so the collector, request bodies and control labels stay on; a production build turns them off.
+The app's files are not edited. `demo.mjs` writes a wrapper Vite config that imports the app's own config and adds one line, `...producttrace({ requestBridge: false, stamps: true, collector: 'http://127.0.0.1:8787' })`. Both the dev server and `--build` run in development mode, so the collector, request bodies and control labels stay on; a production build turns them off.
 
 ## Known limits
 
-- `vite dev` is not supported yet: functions are instrumented when the bundle is generated, so the app is built and served with `vite preview`.
-- The instrumented build is slow: about 6–7 minutes for this app.
+- The instrumented build (`--build`) is slow: about 6–7 minutes for this app. The dev server needs no build.
+- On the dev server, a navigation that a React effect makes after a state change (the redirect to `/app` once registration logs the user in) is its own "Went to /app" line, not part of the Register line as in a build.
 - The backend is a mock service worker, so every request stops at the network: "200" is the status the browser saw, with no server or database stops.

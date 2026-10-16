@@ -13,7 +13,7 @@
  * sets what that row records about the run (e.g. the source commit and steps).
  * It accepts any origin, like /ingest; the listener is loopback-only (low risk).
  */
-import fs from 'node:fs';
+import path from 'node:path';
 import { parseArgs } from 'node:util';
 import { createCollector } from './index.js';
 
@@ -23,8 +23,8 @@ const { values, positionals } = parseArgs({ allowPositionals: true, options: {
 const port = Number(values.port ?? positionals[0] ?? 8787);
 let collector;
 if (values.store) {
-  const manifest = values.manifest ? JSON.parse(fs.readFileSync(values.manifest, 'utf8')) : null;
-  collector = createCollector({ port, store: { dir: values.store, manifest, label: values.label ?? null, sourceRoot: values['source-root'] ?? null } });
+  // The manifest file is followed, not read once: under a dev server it grows as modules load.
+  collector = createCollector({ port, store: { dir: values.store, manifestFile: values.manifest ? path.resolve(values.manifest) : null, label: values.label ?? null, sourceRoot: values['source-root'] ?? null } });
 } else {
   collector = createCollector({ port, outputPath: positionals[1] || 'producttrace-evidence.jsonl' });
 }

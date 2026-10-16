@@ -71,3 +71,24 @@ test('the collector serves the story as JSON and as a live stream, readable only
   assert.deepEqual(lines.map(line => line.id), ['a1', 'a2']);
   assert.match(lines[1].text, /^Clicked the “Delete” button → .*DELETE \/projects\/p_81Kx92aa/u);
 });
+
+test('the store follows a manifest file that appears and grows after the collector starts', async (t) => {
+  const { openStoreWriter } = await import('../collector/store-writer.mjs');
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'producttrace-follow-'));
+  t.after(() => fs.rmSync(dir, { recursive: true, force: true }));
+  const manifestFile = path.join(dir, 'runtime-attribution-manifest.json');
+  const writer = openStoreWriter(path.join(dir, 'store'), { manifestFile });
+  assert.equal(writer.build, 'unknown');
+  const write = ids => fs.writeFileSync(manifestFile, JSON.stringify({ schema: 'producttrace.runtime-attribution-manifest.v1', build: null, functions: ids.map((id, index) => ({ index, id })) }));
+  write(['function:a']);
+  writer.appendRecords([{ kind: 'dom.action' }]);
+  const first = writer.build;
+  assert.notEqual(first, 'unknown');
+  await new Promise(resolve => setTimeout(resolve, 20));
+  write(['function:a', 'function:b']);
+  writer.appendRecords([{ kind: 'dom.action' }]);
+  assert.notEqual(writer.build, first);
+  const builds = fs.readFileSync(path.join(dir, 'store', 'records.jsonl'), 'utf8').trim().split('\n').map(line => JSON.parse(line).tracer_build);
+  assert.deepEqual(builds, [first, writer.build]);
+  assert.equal(fs.readdirSync(path.join(dir, 'store', 'manifests')).length, 2);
+});
