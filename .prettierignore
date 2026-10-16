@@ -20,3 +20,6 @@ packages/producttrace/docs/
 packages/producttrace/index.js
 packages/producttrace/index.d.ts
 packages/producttrace/README.md
+
+# The bench clones apps here.
+apps/web/.work/

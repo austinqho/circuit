@@ -1,0 +1,1261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tracer Live Activity</title>
+    <style>
+      @font-face {
+        font-family: Inter;
+        src: url('/assets/Inter-Regular.woff2') format('woff2');
+        font-weight: 400 599;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: Inter;
+        src: url('/assets/Inter-SemiBold.woff2') format('woff2');
+        font-weight: 600 800;
+        font-display: swap;
+      }
+      :root {
+        --ink: #171715;
+        --muted: #8b8b86;
+        --line: #dededb;
+        --paper: rgba(255, 255, 255, 0.98);
+        --page: #fafafa;
+        --canvas: #eeeeee;
+        --card: #fff;
+        --orange: #d18600;
+        --green: #219653;
+        --red: #c0392b;
+        --grey: #7e8791;
+        --chip: #eeeeeb;
+        --accent: #2f5bea;
+        color-scheme: light;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme='light']) {
+          --ink: #ecebe6;
+          --muted: #9b9a93;
+          --line: #34342f;
+          --paper: rgba(30, 30, 28, 0.98);
+          --page: #141413;
+          --canvas: #1b1b19;
+          --card: #22221f;
+          --chip: #2c2c29;
+          --accent: #7c9bff;
+          color-scheme: dark;
+        }
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        min-width: 320px;
+        min-height: 100%;
+      }
+      body {
+        margin: 0;
+        background: var(--page);
+        color: var(--ink);
+        font-family:
+          Inter,
+          -apple-system,
+          BlinkMacSystemFont,
+          'Helvetica Neue',
+          sans-serif;
+      }
+      button,
+      input {
+        color: inherit;
+        font: inherit;
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+      }
+
+      .topbar {
+        width: min(1480px, calc(100% - 32px));
+        height: 72px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .wordmark {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 22px;
+        font-weight: 650;
+        letter-spacing: -0.035em;
+      }
+      .wordmark span {
+        font-size: 24px;
+      }
+      .top-button {
+        min-height: 38px;
+        padding: 0 13px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border: 0;
+        border-radius: 8px;
+        background: transparent;
+        font-size: 14px;
+        font-weight: 560;
+        cursor: pointer;
+      }
+      .top-button:hover,
+      .top-button[aria-expanded='true'] {
+        background: var(--ink);
+        color: var(--page);
+      }
+
+      main {
+        padding: 8px 16px 22px;
+      }
+      .hero-copy {
+        max-width: 1000px;
+        margin: 36px auto 34px;
+        text-align: center;
+      }
+      .hero-copy h1 {
+        margin: 0;
+        font-size: clamp(38px, 5.3vw, 76px);
+        font-weight: 470;
+        line-height: 0.98;
+        letter-spacing: -0.06em;
+      }
+      .hero-copy p {
+        max-width: 720px;
+        margin: 22px auto 0;
+        color: var(--muted);
+        font-size: clamp(15px, 1.5vw, 19px);
+        line-height: 1.45;
+      }
+
+      .preview-selector {
+        margin: 0 auto 24px;
+        display: grid;
+        justify-items: center;
+        gap: 9px;
+      }
+      .preview-label {
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .repo-pills {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 6px;
+      }
+      .repo-pill {
+        min-height: 32px;
+        padding: 0 12px;
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        background: var(--chip);
+        font-size: 12px;
+        font-weight: 570;
+        cursor: pointer;
+      }
+      .repo-pill.on {
+        border-color: var(--ink);
+      }
+      .repo-pill svg {
+        width: 15px;
+        height: 15px;
+      }
+      .dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--grey);
+      }
+      .dot.ready {
+        background: var(--green);
+      }
+      .dot.building,
+      .dot.queued {
+        background: var(--orange);
+      }
+      .dot.failed {
+        background: var(--red);
+      }
+
+      .demo-canvas {
+        width: min(1500px, 100%);
+        height: min(820px, calc(100vh - 60px));
+        min-height: 620px;
+        margin: 0 auto;
+        overflow: clip;
+        position: relative;
+        border: 1px solid var(--line);
+        border-radius: 25px;
+        background-color: var(--canvas);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Crect x='2' y='2' width='2' height='2' rx='.4' fill='%23b8b8b4' fill-opacity='.5'/%3E%3C/svg%3E");
+      }
+      .demo-grid {
+        height: 100%;
+        padding: 15px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(310px, 380px);
+        gap: 15px;
+      }
+      .product-widget,
+      .activity-widget {
+        min-width: 0;
+        min-height: 0;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        background: var(--paper);
+        box-shadow: 0 12px 30px rgba(34, 34, 31, 0.09);
+      }
+      .product-widget {
+        display: grid;
+        border-radius: 15px;
+        position: relative;
+        background: #fff;
+      }
+      #productFrame {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        background: #fff;
+      }
+      .loading {
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-content: center;
+        justify-items: center;
+        gap: 10px;
+        background: var(--card);
+        color: var(--muted);
+        font-size: 13px;
+        text-align: center;
+        padding: 24px;
+      }
+      .loading[hidden] {
+        display: none;
+      }
+      .loading pre {
+        max-width: 640px;
+        max-height: 280px;
+        overflow: auto;
+        margin: 0;
+        padding: 10px;
+        border-radius: 8px;
+        background: var(--chip);
+        text-align: left;
+        font-size: 11px;
+        white-space: pre-wrap;
+      }
+
+      .activity-widget {
+        display: grid;
+        grid-template-rows: 56px 32px minmax(0, 1fr);
+        border-radius: 19px;
+      }
+      .activity-head {
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid var(--line);
+      }
+      .activity-title {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+      }
+      .activity-title svg {
+        width: 20px;
+        height: 20px;
+      }
+      .activity-head h2 {
+        margin: 0;
+        font-size: 17px;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+      }
+      .pill-button {
+        min-height: 28px;
+        padding: 0 9px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--chip);
+        font-size: 11px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .activity-summary {
+        padding: 0 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--muted);
+        font-size: 11px;
+      }
+      .activity-summary button {
+        border: 0;
+        background: transparent;
+        color: var(--muted);
+        cursor: pointer;
+      }
+      .event-stream {
+        min-height: 0;
+        overflow: auto;
+        padding: 5px 12px 15px;
+      }
+      .empty-state {
+        height: 100%;
+        display: grid;
+        place-content: center;
+        justify-items: center;
+        text-align: center;
+        color: var(--muted);
+      }
+      .empty-state svg {
+        width: 26px;
+        height: 26px;
+        margin-bottom: 12px;
+        opacity: 0.6;
+      }
+      .empty-state strong {
+        color: var(--ink);
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .empty-state p {
+        max-width: 240px;
+        margin: 7px 0 0;
+        font-size: 12px;
+        line-height: 1.45;
+      }
+      .session-label {
+        margin: 10px 2px 6px;
+        color: var(--muted);
+        font-size: 10px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .event-card {
+        margin-bottom: 8px;
+        overflow: hidden;
+        border: 1px solid var(--line);
+        border-radius: 13px;
+        background: var(--card);
+        box-shadow: 0 3px 10px rgba(34, 34, 31, 0.065);
+      }
+      .event-card.fresh {
+        animation: arrive 0.9s ease-out;
+      }
+      @keyframes arrive {
+        from {
+          transform: translateY(6px);
+          opacity: 0;
+        }
+      }
+      .event-card > summary {
+        min-height: 58px;
+        padding: 11px 12px;
+        display: grid;
+        grid-template-columns: 15px 1fr 10px;
+        gap: 10px;
+        align-items: center;
+        list-style: none;
+        cursor: pointer;
+      }
+      .event-card > summary::-webkit-details-marker {
+        display: none;
+      }
+      .journey-state {
+        width: 12px;
+        height: 12px;
+        border: 3px solid var(--grey);
+        border-radius: 50%;
+      }
+      .completed .journey-state {
+        border-color: var(--green);
+        background: var(--green);
+      }
+      .pending .journey-state {
+        border-color: var(--orange);
+        animation: pulse 1.7s ease-out infinite;
+      }
+      .failed .journey-state {
+        border-color: var(--red);
+      }
+      @keyframes pulse {
+        0%,
+        45% {
+          box-shadow: 0 0 0 1px rgba(209, 134, 0, 0.2);
+        }
+        100% {
+          box-shadow: 0 0 0 7px rgba(209, 134, 0, 0);
+        }
+      }
+      .caption {
+        display: block;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 1.3;
+        letter-spacing: -0.015em;
+        overflow-wrap: anywhere;
+      }
+      .event-subtitle {
+        display: block;
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .chev {
+        width: 10px;
+        height: 10px;
+        opacity: 0.5;
+        transition: transform 0.16s;
+      }
+      .event-card[open] .chev {
+        transform: rotate(180deg);
+      }
+      .event-detail {
+        margin: 0 0 8px 34px;
+        color: var(--muted, #9aa0a6);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+      .journey-steps {
+        margin: 0;
+        padding: 0 14px 10px 38px;
+        list-style: none;
+      }
+      .journey-step {
+        position: relative;
+        padding: 1px 0 11px 6px;
+      }
+      .journey-step::before {
+        content: '';
+        position: absolute;
+        top: 4px;
+        left: -20px;
+        width: 8px;
+        height: 8px;
+        border: 2px solid var(--green);
+        border-radius: 50%;
+        background: var(--green);
+      }
+      .journey-step.bad::before {
+        border-color: var(--red);
+        background: var(--card);
+      }
+      .journey-step.wait::before {
+        border-color: var(--orange);
+        background: var(--card);
+      }
+      .journey-step:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 14px;
+        bottom: -2px;
+        left: -16px;
+        width: 1px;
+        background: var(--line);
+      }
+      .journey-step strong {
+        display: block;
+        font-size: 11.5px;
+        font-weight: 560;
+        line-height: 1.35;
+        overflow-wrap: anywhere;
+      }
+      .journey-step small {
+        display: block;
+        margin-top: 2px;
+        color: var(--muted);
+        font-size: 9.5px;
+      }
+
+      /* Itinerary: one rail per part of the visit, like a transit line; stops are actions. */
+      .itinerary {
+        padding: 4px 2px 8px;
+      }
+      .earlier > summary {
+        margin: 4px 2px 10px;
+        color: var(--muted);
+        font-size: 11px;
+        cursor: pointer;
+      }
+      .seg {
+        position: relative;
+        padding-bottom: 14px;
+      }
+      .seg::before {
+        content: '';
+        position: absolute;
+        top: 16px;
+        bottom: 6px;
+        left: 13px;
+        width: 8px;
+        border-radius: 4px;
+        background: var(--rail);
+      }
+      .seg:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 16px;
+        height: 14px;
+        border-left: 2px dotted var(--muted);
+        opacity: 0.6;
+      }
+      .seg-box > summary {
+        list-style: none;
+        cursor: pointer;
+      }
+      .seg-box > summary::-webkit-details-marker,
+      .stop > summary::-webkit-details-marker {
+        display: none;
+      }
+      .seg-head {
+        display: grid;
+        grid-template-columns: 34px 1fr auto;
+        grid-template-areas: 'dot title time' '. count count';
+        row-gap: 6px;
+        align-items: start;
+        padding: 6px 4px 0 0;
+      }
+      .seg-dot {
+        grid-area: dot;
+        width: 18px;
+        height: 18px;
+        margin: 1px 0 0 8px;
+        position: relative;
+        z-index: 1;
+        border: 4px solid var(--rail);
+        border-radius: 50%;
+        background: #fff;
+      }
+      .seg-title {
+        grid-area: title;
+        min-width: 0;
+      }
+      .seg-title strong {
+        display: block;
+        font-size: 14px;
+        font-weight: 650;
+        line-height: 1.3;
+        letter-spacing: -0.015em;
+      }
+      .seg-title small,
+      .seg-head time,
+      .stop time {
+        color: var(--muted);
+        font-size: 10.5px;
+        font-variant-numeric: tabular-nums;
+      }
+      .seg-title small {
+        display: block;
+        margin-top: 2px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .conf {
+        opacity: 0.75;
+      }
+      .seg-head time {
+        grid-area: time;
+        padding-top: 2px;
+      }
+      .seg-count {
+        grid-area: count;
+        display: inline-flex;
+        gap: 6px;
+        align-items: center;
+        color: var(--ink);
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .seg-count .chev {
+        transform: rotate(-90deg);
+      }
+      .seg-box[open] .seg-count .chev {
+        transform: none;
+      }
+      .seg.failed .seg-count {
+        color: var(--red);
+      }
+      .seg-stops {
+        padding: 4px 0 0;
+      }
+      .stop > summary {
+        display: grid;
+        grid-template-columns: 34px 1fr auto;
+        align-items: center;
+        min-height: 34px;
+        list-style: none;
+        cursor: pointer;
+      }
+      .stop-dot {
+        position: relative;
+        z-index: 1;
+        width: 6px;
+        height: 6px;
+        margin-left: 14px;
+        border-radius: 50%;
+        background: #fff;
+      }
+      .stop.failed .stop-dot {
+        background: var(--red);
+        box-shadow: 0 0 0 2px #fff;
+      }
+      .stop.pending .stop-dot {
+        animation: pulse 1.7s ease-out infinite;
+      }
+      .stop-text {
+        min-width: 0;
+        color: var(--muted);
+        font-size: 12.5px;
+        line-height: 1.35;
+        overflow-wrap: anywhere;
+      }
+      .stop[open] .stop-text,
+      .stop > summary:hover .stop-text {
+        color: var(--ink);
+      }
+      .stop-text em {
+        font-style: normal;
+        font-size: 10.5px;
+      }
+      .stop.fresh {
+        animation: arrive 0.9s ease-out;
+      }
+      .stop-body {
+        margin: 2px 0 8px 34px;
+        padding: 10px 10px 2px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--card);
+      }
+      .stop-full {
+        margin: 0 0 8px;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1.4;
+        overflow-wrap: anywhere;
+      }
+      .stop-body .event-detail {
+        margin: 0 0 10px;
+        font-size: 12px;
+      }
+      .stop-body .journey-steps {
+        padding: 0 4px 6px 20px;
+      }
+      /* Bench drawer: add repos, build status, Claude's runs. */
+      .drawer {
+        position: fixed;
+        inset: 0 0 0 auto;
+        z-index: 10;
+        width: min(560px, 100%);
+        overflow: auto;
+        padding: 18px;
+        border-left: 1px solid var(--line);
+        background: var(--page);
+        box-shadow: -20px 0 40px rgba(0, 0, 0, 0.12);
+      }
+      .drawer[hidden] {
+        display: none;
+      }
+      .drawer h3 {
+        margin: 18px 0 8px;
+        color: var(--muted);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .drawer form {
+        display: grid;
+        gap: 6px;
+      }
+      .drawer input {
+        width: 100%;
+        padding: 8px 10px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--card);
+      }
+      .primary {
+        padding: 8px 12px;
+        border: 0;
+        border-radius: 8px;
+        background: var(--ink);
+        color: var(--page);
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .hint {
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .drawer a {
+        color: inherit;
+        text-decoration: none;
+      }
+      .hint a {
+        color: var(--accent);
+        cursor: pointer;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        align-items: center;
+      }
+      .score {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+      }
+      .score div {
+        padding: 8px;
+        border-radius: 8px;
+        background: var(--card);
+        border: 1px solid var(--line);
+      }
+      .score b {
+        display: block;
+        font-size: 19px;
+      }
+      .score span {
+        color: var(--muted);
+        font-size: 11px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 12px;
+        margin-top: 8px;
+      }
+      td,
+      th {
+        padding: 6px 8px;
+        border-top: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+      }
+      th {
+        color: var(--muted);
+        font-weight: 500;
+      }
+      .fail {
+        color: var(--red);
+      }
+      .drawer pre {
+        max-height: 260px;
+        overflow: auto;
+        margin: 0;
+        padding: 10px;
+        border-radius: 8px;
+        background: var(--chip);
+        font-size: 11px;
+        white-space: pre-wrap;
+      }
+
+      @media (max-width: 800px) {
+        .demo-canvas {
+          height: auto;
+          min-height: 0;
+          overflow: visible;
+        }
+        .demo-grid {
+          grid-template-columns: 1fr;
+          padding: 8px;
+          gap: 8px;
+        }
+        .product-widget {
+          height: 620px;
+        }
+        .activity-widget {
+          height: 540px;
+        }
+        .hero-copy {
+          margin: 26px auto 26px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="wordmark"><span aria-hidden="true">🏎️</span> Tracer</div>
+      <button
+        class="top-button"
+        id="benchButton"
+        type="button"
+        aria-expanded="false"
+        aria-controls="drawer"
+      >
+        Bench
+      </button>
+    </header>
+
+    <main>
+      <section class="hero-copy">
+        <h1>Make Your Product Announce Itself</h1>
+        <p>
+          Read-only. One line in your Vite config. Click through the app below and read what your
+          user is doing, in plain language.
+        </p>
+      </section>
+
+      <section class="preview-selector" aria-label="Repository preview selector">
+        <span class="preview-label">Now Previewing:</span>
+        <div class="repo-pills" id="pills"></div>
+      </section>
+
+      <section class="demo-canvas" aria-label="Live demo">
+        <div class="demo-grid">
+          <section class="product-widget" aria-label="Application">
+            <iframe id="productFrame" title="Application with producttrace installed"></iframe>
+            <div class="loading" id="productLoading">Starting…</div>
+          </section>
+
+          <aside class="activity-widget" aria-labelledby="activityHeading">
+            <header class="activity-head">
+              <div class="activity-title">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  aria-hidden="true"
+                >
+                  <path d="M3 12h2M7 8v8M11 5v14M15 9v6M19 11v2M21 12h0" />
+                </svg>
+                <h2 id="activityHeading">Activity</h2>
+              </div>
+              <button
+                class="pill-button"
+                id="reloadApp"
+                type="button"
+                title="Start a fresh session"
+              >
+                New session
+              </button>
+            </header>
+            <div class="activity-summary">
+              <span id="eventCount">0 actions</span>
+              <span id="sourceNote"></span>
+            </div>
+            <div class="event-stream" id="eventStream" aria-live="polite"></div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <aside class="drawer" id="drawer" hidden aria-label="Bench">
+      <div class="row" style="justify-content: space-between">
+        <strong>Bench</strong>
+        <button class="pill-button" id="closeDrawer" type="button">Close</button>
+      </div>
+      <h3>Add an open-source React app</h3>
+      <form id="add">
+        <input id="repo" placeholder="owner/repo or GitHub URL" autocomplete="off" required />
+        <input id="appdir" placeholder="app folder (optional, auto-detected)" autocomplete="off" />
+        <button class="primary" type="submit">Install producttrace and build</button>
+        <div class="hint">
+          Try <a data-repo="alan2207/bulletproof-react">bulletproof-react</a>. The first build takes
+          a few minutes.
+        </div>
+      </form>
+      <div id="appPanel"></div>
+    </aside>
+
+    <script>
+      const $ = (sel, el = document) => el.querySelector(sel);
+      const esc = (s) =>
+        String(s ?? '').replace(
+          /[&<>"]/g,
+          (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c],
+        );
+      const time = (ms) =>
+        new Date(ms).toLocaleTimeString([], {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+        });
+      const GH =
+        '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 .7a11.5 11.5 0 0 0-3.64 22.41c.58.11.79-.25.79-.56v-2.24c-3.22.7-3.9-1.37-3.9-1.37-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.71.08-.71 1.16.08 1.78 1.2 1.78 1.2 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.57-.29-5.27-1.29-5.27-5.68 0-1.26.45-2.28 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.16 1.18A10.96 10.96 0 0 1 12 6.11c.98 0 1.94.13 2.84.38 2.2-1.49 3.16-1.18 3.16-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.83 1.19 3.09 0 4.4-2.71 5.38-5.29 5.67.42.36.79 1.06.79 2.14v3.29c0 .31.21.68.8.56A11.5 11.5 0 0 0 12 .7Z"/></svg>';
+      const CHEV =
+        '<svg class="chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 3l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>';
+      const CURSOR =
+        '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 3l14 7-6 2-2 6z"/></svg>';
+
+      let apps = new Map();
+      let selected = null;
+      let stream = null;
+      let story = null;
+      let seen = new Set();
+      const openKeys = new Set();
+      let sessionStart = 0;
+      let logTimer = null;
+      try {
+        selected = localStorage.getItem('circuit.app');
+      } catch {}
+
+      async function api(method, url, body) {
+        const r = await fetch(url, {
+          method,
+          headers: { 'content-type': 'application/json' },
+          body: body ? JSON.stringify(body) : undefined,
+        });
+        const v = await r.json();
+        if (!r.ok) throw new Error(v.error || r.statusText);
+        return v;
+      }
+      const prettyName = (a) => a.repo.split('/').pop();
+
+      function renderPills() {
+        $('#pills').innerHTML =
+          [...apps.values()]
+            .map(
+              (a) =>
+                `<button class="repo-pill ${a.id === selected ? 'on' : ''}" data-id="${a.id}" title="${esc(a.repo)}">${GH}<span>${esc(prettyName(a))}</span><i class="dot ${a.status}"></i></button>`,
+            )
+            .join('') || '<span class="hint">No app yet. Open Bench to add one.</span>';
+        $('#pills')
+          .querySelectorAll('[data-id]')
+          .forEach((b) => (b.onclick = () => select(b.dataset.id)));
+      }
+
+      function select(id) {
+        selected = id;
+        try {
+          localStorage.setItem('circuit.app', id);
+        } catch {}
+        seen = new Set();
+        openKeys.clear();
+        story = null;
+        renderPills();
+        renderApp(true);
+        renderPanel();
+      }
+
+      function renderApp(fresh) {
+        const a = apps.get(selected);
+        const frame = $('#productFrame');
+        const loading = $('#productLoading');
+        clearInterval(logTimer);
+        if (!a) {
+          loading.hidden = false;
+          loading.innerHTML =
+            '<strong>No app yet</strong><span>Open Bench (top right) and add an open-source React repo.</span>';
+          frame.removeAttribute('src');
+          closeStream();
+          renderStory();
+          return;
+        }
+        if (a.status !== 'ready') {
+          loading.hidden = false;
+          loading.innerHTML = `<strong>${esc(prettyName(a))} is ${esc(a.status)}${a.phase ? `: ${esc(a.phase)}` : ''}</strong>${a.error ? `<span class="fail">${esc(a.error)}</span>` : '<span>The first build takes a few minutes.</span>'}<pre id="buildLog"></pre>`;
+          frame.removeAttribute('src');
+          const pull = async () => {
+            const text = await (await fetch(`/api/apps/${a.id}/log`)).text();
+            const pre = $('#buildLog');
+            if (pre) {
+              pre.textContent = text.split('\n').slice(-30).join('\n');
+              pre.scrollTop = pre.scrollHeight;
+            }
+          };
+          pull();
+          logTimer = setInterval(pull, 2500);
+          closeStream();
+          renderStory();
+          return;
+        }
+        loading.hidden = true;
+        if (fresh || !frame.getAttribute('src')) {
+          sessionStart = Date.now();
+          frame.src = a.url;
+          openStream(a.id);
+        }
+      }
+
+      function closeStream() {
+        stream?.close();
+        stream = null;
+      }
+      function openStream(id) {
+        closeStream();
+        stream = new EventSource(`/api/apps/${id}/stream`);
+        stream.addEventListener('story', (e) => {
+          story = JSON.parse(e.data);
+          renderStory();
+        });
+      }
+
+      function stateOf(line) {
+        const reqs = line.requests || [];
+        if (reqs.some((r) => r.aborted || (r.status ?? 0) >= 400)) return 'failed';
+        if (reqs.some((r) => r.status == null)) return 'pending';
+        if (
+          reqs.length ||
+          line.navigations?.length ||
+          line.kind === 'navigate' ||
+          line.kind === 'submit'
+        )
+          return 'completed';
+        return 'action';
+      }
+
+      function lineFacts(line) {
+        const steps = [];
+        if (line.element?.label || line.element?.tag)
+          steps.push({
+            t: `${line.element.label ? `“${esc(line.element.label)}”` : ''} ${line.element.tag ? `&lt;${esc(line.element.tag)}&gt;` : ''}`,
+            s: line.kind === 'type' ? 'field' : 'element',
+            raw: true,
+          });
+        if (line.handler?.name)
+          steps.push({
+            t: line.handler.name,
+            s: line.handler.file
+              ? `${line.handler.file}${line.handler.line != null ? `:${line.handler.line}` : ''}`
+              : 'handler',
+          });
+        for (const r of line.requests || [])
+          steps.push({
+            t: `${r.method} ${r.path}`,
+            s: r.aborted
+              ? 'aborted'
+              : r.status == null
+                ? 'waiting for response'
+                : `status ${r.status}`,
+            cls: r.aborted || r.status >= 400 ? 'bad' : r.status == null ? 'wait' : '',
+          });
+        for (const n of line.navigations || [])
+          steps.push({ t: `Went to ${n.to}`, s: n.from ? `from ${n.from}` : 'navigation' });
+        for (const e of line.entities || [])
+          steps.push({
+            t: `${e.type} ${e.id}`,
+            s: `${e.created ? 'created · ' : ''}from ${String(e.from || '').replace(/_/g, ' ')}`,
+          });
+        return steps;
+      }
+
+      // ---------- itinerary: segments (what the person was doing) > stops (each action) > facts
+      // Segments come from /segments.mjs, the same module the report scores.
+      let segmentsOf = null;
+      import('/segments.mjs').then((m) => {
+        segmentsOf = (lines) => m.segmentsOf(story, lines);
+        renderStory();
+      });
+      const RAILS = ['#e5483d', '#2f7df6', '#f2b705', '#21a366', '#9b5de5', '#f07c2a'];
+      const lead = (text) => String(text || '').split(' → ')[0];
+      const duration = (ms) =>
+        ms < 1000
+          ? '0 s'
+          : ms < 60000
+            ? `${Math.round(ms / 1000)} s`
+            : `${Math.round(ms / 60000)} min`;
+
+      const keep = (key) => (openKeys.has(key) ? 'open' : '');
+
+      function stopHtml(line, start) {
+        const facts = lineFacts(line);
+        const key = `l:${line.id}`;
+        const fresh = !seen.has(line.id + ':' + (line.count || 0) + ':' + line.text);
+        seen.add(line.id + ':' + (line.count || 0) + ':' + line.text);
+        return `<details class="stop ${stateOf(line)} ${fresh ? 'fresh' : ''}" data-key="${esc(key)}" ${keep(key)}>
+          <summary><i class="stop-dot" aria-hidden="true"></i><span class="stop-text">${esc(lead(line.text))}${line.count > 1 && line.kind !== 'type' ? ` <em>${line.count}×</em>` : ''}</span><time>+${duration(line.at - start)}</time></summary>
+          <div class="stop-body">
+            ${line.text.includes(' → ') ? `<p class="stop-full">${esc(line.text)}</p>` : ''}
+            ${line.detail ? `<p class="event-detail">${esc(line.detail)}</p>` : ''}
+            ${facts.length ? `<ol class="journey-steps">${facts.map((s) => `<li class="journey-step ${s.cls || ''}"><strong>${s.raw ? s.t : esc(s.t)}</strong><small>${esc(s.s)}</small></li>`).join('')}</ol>` : ''}
+          </div>
+        </details>`;
+      }
+
+      function segmentHtml(seg, i) {
+        const first = seg.lines[0];
+        const last = seg.lines[seg.lines.length - 1];
+        const key = `s:${first.id}`;
+        const n = seg.lines.length;
+        const failed = seg.lines.some((l) => stateOf(l) === 'failed');
+        return `<section class="seg ${failed ? 'failed' : ''}" style="--rail:${RAILS[i % RAILS.length]}">
+          <details class="seg-box" data-key="${esc(key)}" ${keep(key)}>
+            <summary class="seg-head">
+              <i class="seg-dot" aria-hidden="true"></i>
+              <span class="seg-title"><strong>${esc(seg.title)}</strong><small>${esc(seg.page || '/')}${seg.confidence != null ? ` · <span class="conf" title="How sure the package is of this title, 1 to 10">${esc(seg.confidence)}/10 sure</span>` : ''}</small></span>
+              <time>${time(first.at)}</time>
+              <span class="seg-count">${CHEV} ${n} step${n === 1 ? '' : 's'} · ${duration(last.at - first.at)}</span>
+            </summary>
+            <div class="seg-stops">${seg.lines.map((l) => stopHtml(l, first.at)).join('')}</div>
+          </details>
+        </section>`;
+      }
+
+      $('#eventStream').addEventListener(
+        'toggle',
+        (event) => {
+          const key = event.target.dataset?.key;
+          if (!key) return;
+          if (event.target.open) openKeys.add(key);
+          else openKeys.delete(key);
+        },
+        true,
+      );
+
+      function renderStory() {
+        const el = $('#eventStream');
+        const lines = (story?.lines || []).slice().sort((a, b) => a.at - b.at);
+        $('#sourceNote').textContent = '';
+        if (story?.source === 'unavailable') {
+          $('#eventCount').textContent = '';
+          el.innerHTML = `<div class="empty-state"><p>Sentences unavailable for this build. Rebuild to enable.</p></div>`;
+          return;
+        }
+        if (!lines.length) {
+          $('#eventCount').textContent = '0 actions';
+          el.innerHTML = `<div class="empty-state">${CURSOR}<strong>Use the app</strong><p>Click and type in the app on the left. What you do appears here, step by step.</p></div>`;
+          return;
+        }
+        if (!segmentsOf) return;
+        const stick = el.scrollTop + el.clientHeight >= el.scrollHeight - 40;
+        const bySession = new Map();
+        for (const line of lines) {
+          if (!bySession.has(line.session)) bySession.set(line.session, []);
+          bySession.get(line.session).push(line);
+        }
+        // The latest session is the itinerary; earlier ones fold away under one line.
+        const sessions = [...bySession.values()];
+        const latest = sessions.pop();
+        const segs = segmentsOf(latest);
+        const earlier = sessions.length
+          ? `<details class="earlier" data-key="earlier" ${keep('earlier')}><summary>${sessions.length} earlier session${sessions.length === 1 ? '' : 's'}</summary>${sessions
+              .map(
+                (ls) =>
+                  `<div class="session-label">Started ${time(ls[0].at)}</div><div class="itinerary">${segmentsOf(ls).map(segmentHtml).join('')}</div>`,
+              )
+              .join('')}</details>`
+          : '';
+        el.innerHTML = `${earlier}<div class="itinerary">${segs.map(segmentHtml).join('')}</div>`;
+        $('#eventCount').textContent =
+          `${segs.length} part${segs.length === 1 ? '' : 's'} · ${latest.length} action${latest.length === 1 ? '' : 's'}`;
+        if (stick) el.scrollTop = el.scrollHeight;
+      }
+
+      // ---------- bench drawer
+      async function renderPanel() {
+        const a = apps.get(selected);
+        const panel = $('#appPanel');
+        if (!a || $('#drawer').hidden) return;
+        let html = `<h3>${esc(a.id)}</h3><div class="row"><i class="dot ${a.status}"></i><span>${esc(a.status)}${a.phase ? ` · ${esc(a.phase)}` : ''}</span>
+          <span class="hint">build ${a.build}${a.build_ms ? ` · ${Math.round(a.build_ms / 1000)} s` : ''}${a.package_commit ? ` · package ${esc(a.package_commit)}` : ''}</span></div>
+          <div class="row" style="margin-top:8px">${a.url ? `<a href="${a.url}" target="_blank"><button class="pill-button" type="button">Open app in a tab</button></a>` : ''}
+          <button class="pill-button" id="rebuild" type="button" ${a.status === 'building' ? 'disabled' : ''}>Rebuild with current package</button>
+          <a href="/api/apps/${a.id}/log" target="_blank"><button class="pill-button" type="button">Build log</button></a></div>`;
+        if (a.status === 'ready') {
+          try {
+            const r = await api('GET', `/api/apps/${a.id}/report`);
+            const sc = r.scorecard;
+            const cell = (v, label, pct) =>
+              `<div><b>${v ?? '–'}${pct && v != null ? '%' : ''}</b><span>${label}</span></div>`;
+            html += `<h3>Claude's last run</h3>`;
+            if (r.steps.length) {
+              html += `<div class="score">${cell(sc.steps_acted, 'steps taken')}${cell(sc.steps_with_a_line_pct, 'steps with a sentence', 1)}${cell(sc.lines_naming_the_element_pct, 'name the element', 1)}${cell(sc.lines_naming_a_handler_pct, 'name the code', 1)}${cell(sc.lines_with_entity_ids_pct, 'carry real IDs', 1)}${cell(sc.request_recall_pct, 'requests caught', 1)}${cell(sc.reads_like_a_person_pct, 'reads like a person', 1)}</div>`;
+              if (r.history?.length > 1)
+                html += `<table><tr><th>Same steps, by build</th>${r.history.map((h) => `<th>build ${h.build}${h.package ? `<br>${esc(h.package)}` : ''}</th>`).join('')}</tr>${Object.keys(
+                  sc,
+                )
+                  .map(
+                    (k) =>
+                      `<tr><td>${esc(k.replace(/_/g, ' '))}</td>${r.history.map((h) => `<td>${esc(h.scorecard[k] ?? '–')}</td>`).join('')}</tr>`,
+                  )
+                  .join('')}</table>`;
+              html += `<table><tr><th>What Claude did</th><th>What the package said</th></tr>${r.steps
+                .map(
+                  (s) =>
+                    `<tr><td>${esc(s.did)}${s.ok ? '' : `<div class="fail">${esc(s.error)}</div>`}</td><td>${s.package_said.map(esc).join('<br>') || '<span class="hint">nothing</span>'}</td></tr>`,
+                )
+                .join('')}</table>`;
+            } else
+              html += `<p class="hint">No steps from Claude on this build yet. Claude drives the app with the circuit_act tool.</p>`;
+          } catch (e) {
+            html += `<p class="fail">${esc(e.message)}</p>`;
+          }
+        }
+        panel.innerHTML = html;
+        const rb = $('#rebuild');
+        if (rb) rb.onclick = () => api('POST', `/api/apps/${a.id}/rebuild`);
+      }
+
+      $('#benchButton').onclick = () => {
+        const d = $('#drawer');
+        d.hidden = !d.hidden;
+        $('#benchButton').setAttribute('aria-expanded', String(!d.hidden));
+        renderPanel();
+      };
+      $('#closeDrawer').onclick = () => $('#benchButton').click();
+      $('#reloadApp').onclick = () => {
+        // A fresh page load is a new session in the story.
+        const a = apps.get(selected);
+        if (a?.url) $('#productFrame').src = a.url;
+      };
+      $('#add').onsubmit = async (e) => {
+        e.preventDefault();
+        const body = { repo: $('#repo').value.trim() };
+        if ($('#appdir').value.trim()) body.app_dir = $('#appdir').value.trim();
+        try {
+          const a = await api('POST', '/api/apps', body);
+          apps.set(a.id, a);
+          select(a.id);
+          $('#repo').value = '';
+          $('#appdir').value = '';
+        } catch (err) {
+          alert(err.message);
+        }
+      };
+      document
+        .querySelectorAll('[data-repo]')
+        .forEach((a) => (a.onclick = () => ($('#repo').value = a.dataset.repo)));
+
+      const events = new EventSource('/api/events');
+      events.addEventListener('apps', (e) => {
+        apps = new Map(JSON.parse(e.data).map((a) => [a.id, a]));
+        if (!apps.has(selected))
+          selected =
+            [...apps.values()].find((a) => a.status === 'ready')?.id || [...apps.keys()][0] || null;
+        renderPills();
+        renderApp(true);
+        renderPanel();
+      });
+      events.addEventListener('app', (e) => {
+        const a = JSON.parse(e.data);
+        const before = apps.get(a.id);
+        apps.set(a.id, a);
+        renderPills();
+        if (a.id === selected) {
+          const changed = !before || before.status !== a.status || before.build !== a.build;
+          if (changed || a.status !== 'ready') renderApp(changed);
+          renderPanel();
+        }
+      });
+    </script>
+  </body>
+</html>

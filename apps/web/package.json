@@ -1,0 +1,24 @@
+{
+  "name": "circuit-web",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Test bench for producttrace: install it into any open-source React repo, click through the app (you or Claude), and see what the package recorded.",
+  "type": "module",
+  "bin": {
+    "circuit-web": "./src/server.mjs",
+    "circuit-mcp": "./src/mcp.mjs"
+  },
+  "scripts": {
+    "start": "node src/server.mjs",
+    "mcp": "node src/mcp.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "engines": {
+    "node": ">=20.6.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "playwright": "1.56.1",
+    "producttrace": "*"
+  }
+}
