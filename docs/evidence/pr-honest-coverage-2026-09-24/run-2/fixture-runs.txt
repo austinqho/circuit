@@ -1,3 +1,0 @@
-run 1 exit=0 43/43 checks pass; store /var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/tracer-honest-coverage-store-ajj690
-run 2 exit=0 43/43 checks pass; store /var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/tracer-honest-coverage-store-d6vuVv
-run 3 exit=0 43/43 checks pass; store /var/folders/7x/h331nqnd54lbr0gzxbxcsp140000gn/T/tracer-honest-coverage-store-FZgPsN

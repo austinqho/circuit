@@ -1,0 +1,22 @@
+node_modules/
+package-lock.json
+**/dist/
+**/test/fixtures/
+**/test/browser/
+
+# producttrace's engine code is written densely on purpose and isn't run
+# through prettier; reformatting it would conflict with every branch touching
+# it. New code (examples/, apps/, new files at the package root) is formatted.
+packages/producttrace/analysis/
+packages/producttrace/backend/
+packages/producttrace/collector/
+packages/producttrace/integrations/
+packages/producttrace/mcp/
+packages/producttrace/plugin/
+packages/producttrace/scripts/
+packages/producttrace/src/
+packages/producttrace/test/
+packages/producttrace/docs/
+packages/producttrace/index.js
+packages/producttrace/index.d.ts
+packages/producttrace/README.md

@@ -1,6 +1,0 @@
-{
-  "chains": {
-    "archive_text": "click action:mug241s7:6 → handler <unnamed> client/src/main.jsx@825-1034 → 1 request: (1) POST /api/projects/p1/archive → route /api/projects/:id/archive 200 → server archiveProject → db update projects [completed 200] [outcome completed 200]: reached db / stopped at none (terminal effect observed) / because database write update projects joined by exact span parentage\nWork (first-party frames this action's episode entered, first-seen order; ×n = calls; depth ≤ 4):\n- <unnamed> client/src/main.jsx@825-1034\n  - request (1) POST /api/projects/p1/archive [completed 200]"
-  },
-  "page_requests": null
-}

@@ -1,5 +1,0 @@
-{
-  "head": "825280d8069dbd7d4d442f93b140ba844dd7e4a0",
-  "branch": "g5-scenario",
-  "diff_vs_upstream": "server/endpoints/workspaces.js | 6 ++++++\n 1 file changed, 6 insertions(+)"
-}

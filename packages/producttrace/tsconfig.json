@@ -1,0 +1,21 @@
+{
+  "//": "Checks the published type declarations: every entry point's .d.ts must resolve and agree with its imports. The JavaScript itself is not type-checked yet.",
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": false,
+    "allowJs": false,
+    "types": ["node"]
+  },
+  "files": [
+    "index.d.ts",
+    "vite.d.mts",
+    "collector.d.ts",
+    "backend.d.ts",
+    "analysis.d.mts",
+    "runtime-attribution.d.mts"
+  ]
+}

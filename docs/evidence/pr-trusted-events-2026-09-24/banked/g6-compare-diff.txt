@@ -1,1 +1,0 @@
-g6-compare outputs: main f9a925d7 and branch identical
