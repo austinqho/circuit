@@ -139,7 +139,9 @@ function requestFacts(store, request, requestRows, closed, now, show) {
 function requestPhrase(facts) {
   const created = facts.entities.find(entity => entity.created);
   const status = { done: facts.status, aborted: 'aborted', pending: 'pending', no_response: 'no response recorded', not_recorded: 'status not recorded' }[facts.state];
-  return `${facts.method} ${facts.path} (${status}${created ? `, created ${created.type} ${created.id}` : ''})`;
+  // A list says how many came back, so "first" and counts rest on the line itself.
+  const list = facts.list?.type && facts.state === 'done' ? `, ${facts.list.at_least ? 'at least ' : ''}${facts.list.total ?? facts.list.count} ${facts.list.type}${(facts.list.total ?? facts.list.count) === 1 && !facts.list.at_least ? '' : 's'}` : '';
+  return `${facts.method} ${facts.path} (${status}${created ? `, created ${created.type} ${created.id}` : ''}${list})`;
 }
 
 /**
@@ -298,7 +300,7 @@ export function storyOf(store, { session, now = Date.now(), titleOf = null, valu
         continue;
       }
       const secret = row.input?.credential_field === true || row.target?.attributes?.type === 'password';
-      const line = { schema: STORY_SCHEMA, id: row.action_id, kind: 'type', session: page, at: row.timestamp ?? null, page: row.page ?? null, count: 1,
+      const line = { schema: STORY_SCHEMA, id: row.action_id, kind: 'type', session: page, at: row.timestamp ?? null, page: row.page ?? null, ...(row.page_title ? { page_title: row.page_title } : {}), count: 1,
         text: secret ? `Typed a password in ${elementPhrase(row.target)}` : `Typed in ${elementPhrase(row.target)}`,
         element: { tag: row.target?.tag ?? null, label: row.target?.label ?? null, key: row.target?.element_key ?? null }, action_id: row.action_id, ...(urlNavs ? { navigations: urlNavs } : {}),
         form: row.form_ref ?? null, field: row.target?.attributes?.name ?? null, ...(secret ? { secret: true } : {}) };
@@ -337,7 +339,7 @@ export function storyOf(store, { session, now = Date.now(), titleOf = null, valu
       if (entry.request && Array.isArray(parts.at(-1))) parts.at(-1).push(requestPhrase(entry.request));
       else parts.push(entry.request ? [requestPhrase(entry.request)] : `went to ${navPhrase(entry.to)}`);
     }
-    lines.push({ schema: STORY_SCHEMA, id: row.action_id, kind: row.event === 'submit' ? 'submit' : HOVER.has(row.event) ? 'hover' : 'act', session: page, at: row.timestamp ?? null, page: row.page ?? null,
+    lines.push({ schema: STORY_SCHEMA, id: row.action_id, kind: row.event === 'submit' ? 'submit' : HOVER.has(row.event) ? 'hover' : 'act', session: page, at: row.timestamp ?? null, page: row.page ?? null, ...(row.page_title ? { page_title: row.page_title } : {}),
       text: parts.map(part => Array.isArray(part) ? part.join(', ') : part).join(' → '), event: row.event,
       element: { tag: subject?.tag ?? null, label: subject?.label ?? null, key: subject?.element_key ?? null },
       handler, requests, navigations: owned.map(entry => ({ to: entry.to, from: entry.from ?? null, via: entry.via ?? null })), entities, detail: detailOf(chain, requests, owned), action_id: row.action_id,

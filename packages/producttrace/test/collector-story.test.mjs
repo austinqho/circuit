@@ -57,7 +57,7 @@ test('the collector serves the story as JSON and as a live stream, readable only
   assert.match(story.lines[0].text, /^Clicked the “Save” button → .*PATCH \/projects\/p_81Kx92aa/u);
   assert.deepEqual(story.lines[0].entities, [{ type: 'project', id: 'p_81Kx92aa', from: 'request_url' }]);
   assert.deepEqual(story.segments.map(segment => segment.lines), [['a1']]);
-  assert.equal(story.segments[0].title, 'On the App page, the user is editing project p_81Kx92aa.');
+  assert.equal(story.segments[0].title, 'Edited project p_81Kx92aa.');
 
   const foreign = await fetch(`${base}/story`, { headers: { origin: 'https://example.com' } });
   assert.equal(foreign.headers.get('access-control-allow-origin'), null);

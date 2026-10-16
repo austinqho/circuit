@@ -59,6 +59,8 @@ interface StoryLineBase {
   at: number | null;
   /** Path + query of the page the action happened on. */
   page: string | null;
+  /** The document title where the action happened (labels on): names the page when titles differ only by page. */
+  page_title?: string;
   text: string;
 }
 export interface StoryElement { tag: string | null; label: string | null; key: string | null }
@@ -90,8 +92,9 @@ export interface StoryScrollLine extends StoryLineBase { kind: 'scroll'; at_end:
 export type StoryLine = StoryActLine | StoryTypeLine | StoryNavigateLine | StoryOpenLine | StoryScrollLine;
 /**
  * One goal: consecutive lines of a session joined by a shared form, entity id
- * or page. `title` is a GUM-style observation ("In Discussions, the user is
- * creating a new discussion, “Q3 plan”."); `steps` are its sub-actions, one per line.
+ * or page. `title` is a task caption in the voice of the narration spec §7
+ * ("Opened the Discussions page and created a discussion titled “Q3 plan”.");
+ * `steps` are its sub-actions, one per line.
  */
 export interface StorySegment {
   schema: 'producttrace.story.v1';
@@ -105,7 +108,8 @@ export interface StorySegment {
   title_source: 'template' | 'custom';
   page: string | null;
   lines: string[];
-  steps: { line: string; text: string }[];
+  /** One caption per line, past tense and verb first ("Typed “Ada” into the “First Name” field."); `facts`: what was there (who was signed in, what loaded or was made). */
+  steps: { line: string; text: string; facts: string[] }[];
   entities: { type: string; id: string; created?: boolean }[];
   values: StoryValue[];
   started_at: number | null;
@@ -121,7 +125,8 @@ export interface StorySegment {
   facts: Record<string, unknown>;
 }
 /** The session as a handful of observations, one per segment that says something. */
-export interface StoryNarrative { session: string; observations: { text: string; cites: string[]; confidence: number }[]; source: 'template' }
+/** The session: `text` is its goals joined with ", then"; `observations` one per goal that says something. */
+export interface StoryNarrative { session: string; text: string; observations: { text: string; cites: string[]; confidence: number }[]; source: 'template' }
 export interface StoryOptions {
   session?: string;
   /** Replace a segment's wording (an annotator); return null to keep the package's. Never changes grouping. */
