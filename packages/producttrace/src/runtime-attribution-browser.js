@@ -904,7 +904,10 @@
       interface: pending.interface, phase: 'continuous', gesture_id: pending.gesture_id, coalesced: true, hover_segment_action_id: pending.segment.action_id, ...detail,
       source_ref: null, parent_continuation_id: null, continuation_id: null, spine: { action_id: pending.action_id, function_ids: [] }, evidence_ids: [] });
   };
-  const scrollPosition = node => { try { const element = node === global.document || node === global ? global.document?.scrollingElement : node; return element ? [round(element.scrollLeft), round(element.scrollTop)] : null; } catch { return null; } };
+  const scrollElement = node => (node === global.document || node === global ? global.document?.scrollingElement : node);
+  const scrollPosition = node => { try { const element = scrollElement(node); return element ? [round(element.scrollLeft), round(element.scrollTop)] : null; } catch { return null; } };
+  // How far one screen is, so a reader can say "about 3 screens"; and whether the page itself scrolled.
+  const scrollFrame = node => { try { const element = scrollElement(node); return element ? { viewport: round(element.clientHeight), page: element === global.document?.scrollingElement } : {}; } catch { return {}; } };
   const extendRange = (range, event, dispatchTarget) => {
     range.count += 1; range.last_timestamp = Date.now(); armRangeIdle();
     const x = round(event.clientX), y = round(event.clientY);
@@ -913,7 +916,7 @@
       else Object.assign(range.bounds, { min_x: Math.min(range.bounds.min_x, x), max_x: Math.max(range.bounds.max_x, x), min_y: Math.min(range.bounds.min_y, y), max_y: Math.max(range.bounds.max_y, y), last: [x, y] });
     }
     if (event.type === 'wheel' || userEventModel.familyOf(event) === 'WheelEvent') { range.wheel ||= { delta_x: 0, delta_y: 0, delta_mode: event.deltaMode ?? null }; range.wheel.delta_x += Number(event.deltaX) || 0; range.wheel.delta_y += Number(event.deltaY) || 0; }
-    if (event.type === 'scroll' || event.type === 'scrollend') { const position = scrollPosition(dispatchTarget); if (position) { range.scroll ||= { first: position, last: position }; range.scroll.last = position; } }
+    if (event.type === 'scroll' || event.type === 'scrollend') { const position = scrollPosition(dispatchTarget); if (position) { range.scroll ||= { first: position, last: position, ...scrollFrame(dispatchTarget) }; range.scroll.last = position; } }
   };
   // Synthetic activation (an untrusted click dispatched while an action's code
   // is live, e.g. a visible button calling hiddenFileInput.click()): the

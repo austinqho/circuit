@@ -70,10 +70,30 @@ const expected = [
   /^Submitted the form with the “Submit” button → .*POST \/comments \(200, created comment \S+\)/u,
 ];
 const missing = expected.filter((pattern) => !lines.some((line) => pattern.test(line.text)));
+
+// The same session grouped into goals, each with its sub-actions.
+const ids = new Set(lines.map((line) => line.id));
+const segments = story.segments.filter((segment) => segment.lines.some((id) => ids.has(id)));
+console.log('');
+for (const segment of segments) {
+  console.log(
+    `${segment.title}  (${segment.lines.length} steps, ${Math.round((segment.duration_ms ?? 0) / 1000)} s)`,
+  );
+  for (const step of segment.steps) console.log(`    · ${step.text}`);
+}
+const goals = [
+  /^On the Register page, Maya Chen is signing up as maya\+\d+@example\.com for the team “Acme”/u,
+  /^In Discussions, Maya Chen is creating the first discussion, “Pricing page feedback”/u,
+  /^In “Pricing page feedback”, Maya Chen is opening the discussion they just created and creating its first comment/u,
+];
+for (const pattern of goals)
+  if (!segments.some((segment) => pattern.test(segment.title))) missing.push(pattern);
 const emailLines = lines.filter((line) => line.text.includes('“Email Address”')).length;
 if (emailLines !== 1) missing.push(`one line for the Email Address field (got ${emailLines})`);
 if (missing.length) {
   console.error(`\nmissing ${missing.length} expected sentence(s):\n${missing.join('\n')}`);
   process.exit(1);
 }
-console.log(`\nok: ${lines.length} sentences, every expected one present`);
+console.log(
+  `\nok: ${lines.length} sentences in ${segments.length} goals, every expected one present`,
+);
