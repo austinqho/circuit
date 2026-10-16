@@ -83,9 +83,9 @@ for (const segment of segments) {
     console.log(`    · ${step.text}${step.facts?.length ? `  [${step.facts.join('; ')}]` : ''}`);
 }
 const goals = [
-  /^Registered as maya\+\d+@example\.com for the team “Acme” and landed on the App page\.$/u,
+  /^Registered as maya\+\d+@example\.com for the team “Acme” and landed on the Dashboard page\.$/u,
   /^Opened the Discussions page and created the first discussion titled “Pricing page feedback”\.$/u,
-  /^Opened the discussion they just created and created its first comment\.$/u,
+  /^Opened “Pricing page feedback”, the discussion they just created, and posted its first comment\.$/u,
 ];
 for (const pattern of goals)
   if (!segments.some((segment) => pattern.test(segment.title))) missing.push(pattern);

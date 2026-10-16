@@ -59,6 +59,8 @@ interface StoryLineBase {
   at: number | null;
   /** Path + query of the page the action happened on. */
   page: string | null;
+  /** The document title where the action happened (labels on): names the page when titles differ only by page. */
+  page_title?: string;
   text: string;
 }
 export interface StoryElement { tag: string | null; label: string | null; key: string | null }

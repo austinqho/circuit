@@ -247,7 +247,28 @@ export function namesOf(lines, { looksLikeId }) {
     const until = order.get(lineId) ?? Infinity;
     return named.filter(entry => entry.key === key && entry.index < until).at(-1)?.title ?? titles.get(key) ?? null;
   };
-  return { titles, pages, person, personLine, knownBefore, titleAt };
+  return { titles, pages, titled: pageTitles(lines), person, personLine, knownBefore, titleAt };
+}
+
+/**
+ * A page's own name from the document titles the session saw: the part of
+ * each title that is not shared by all of them ("Dashboard | Acme" and
+ * "Discussions | Acme" → Dashboard, Discussions). One distinct title says
+ * nothing about which part is the app's name, so it names no page.
+ */
+function pageTitles(lines) {
+  const byPath = new Map();
+  for (const line of lines) if (line.page && line.page_title && !byPath.has(pathKey(line.page))) byPath.set(pathKey(line.page), line.page_title);
+  const parts = title => title.split(/\s+[|·–—-]\s+|\s*::\s*/u).map(part => part.trim()).filter(Boolean);
+  const distinct = [...new Set(byPath.values())];
+  const out = new Map();
+  if (distinct.length < 2) return out;
+  const shared = parts(distinct[0]).filter(part => distinct.every(title => parts(title).includes(part)));
+  for (const [path, title] of byPath) {
+    const name = parts(title).filter(part => !shared.includes(part)).join(' ');
+    if (name && !/@/u.test(name)) out.set(path, name);
+  }
+  return out;
 }
 
 /** Fields per entity in one body: `{ id, title }` → discussion:id → { title }; nested owners by their own id. */
@@ -271,7 +292,7 @@ function placePhrase(path, { names, looksLikeId, auth = false }) {
   const key = pathKey(path);
   const resource = resourceOf(key, looksLikeId);
   if (resource.id && names.titles.has(`${resource.type}:${resource.id}`)) return `In ${quote(names.titles.get(`${resource.type}:${resource.id}`))}`;
-  const label = names.pages.get(key);
+  const label = names.titled?.get(key) ?? names.pages.get(key);
   if (label) return auth ? `On the ${label} page` : `In ${label}`;
   return `On ${pageName(key, looksLikeId)}`;
 }
@@ -285,6 +306,8 @@ function pageName(path, looksLikeId) {
 }
 
 const thing = (type, id, title) => (title ? `the ${type} ${quote(title)}` : id ? `${type} ${id}` : `a ${type}`);
+// "an 8-character", "an 11-character", "a 12-character": the article by how the number is said.
+const articleFor = number => { const digits = String(number); return digits[0] === '8' || (/^1[18]/u.test(digits) && digits.length % 3 === 2) ? 'an' : 'a'; };
 const plural = (count, word) => `${count} ${word}${count === 1 ? '' : 's'}`;
 
 /** "the Discussions page", "“Notes on the engine”", "the home page": how a step or a title names a page. */
@@ -293,7 +316,10 @@ function pagePhrase(path, names, looksLikeId, lineId = null) {
   const key = pathKey(path);
   const resource = resourceOf(key, looksLikeId);
   const title = resource.id ? (lineId && names.titleAt?.(`${resource.type}:${resource.id}`, lineId)) || names.titles?.get(`${resource.type}:${resource.id}`) : null;
-  if (title) return quote(title);
+  if (title) return `the ${resource.type} ${quote(title)}`;
+  // A page's own title is quoted when it is more than a word ("the “Log in to your account” page").
+  const titled = names.titled?.get(key);
+  if (titled) return `the ${/\s/u.test(titled) ? quote(titled) : titled} page`;
   const label = names.pages?.get(key);
   return label ? `the ${label} page` : pageName(key, looksLikeId);
 }
@@ -328,7 +354,11 @@ export function stepOf(line, { sent = [], names, looksLikeId, first = false }) {
     else if (LOGIN.has(resource.verb)) purposes.push('log in');
     else if (LOGOUT.has(resource.verb)) purposes.push('log out');
     else if (request.method === 'DELETE' && resource.id) purposes.push(`delete ${thing(resource.type, resource.id, titleOf(resource.type, resource.id))}`);
-    else if ((request.method === 'PUT' || request.method === 'PATCH') && resource.id) purposes.push(`save ${thing(resource.type, resource.id, titleOf(resource.type, resource.id))}`);
+    else if ((request.method === 'PUT' || request.method === 'PATCH') && resource.id) {
+      const before = titleOf(resource.type, resource.id);
+      const renamed = (request.values || []).find(entry => entry.from === 'request_body' && entry.class === 'content' && /^(?:title|name|subject)$/u.test(entry.key) && entry.value && before && entry.value !== before);
+      purposes.push(renamed ? `rename ${thing(resource.type, resource.id, before)} to ${quote(renamed.value)}` : `save ${thing(resource.type, resource.id, before)}`);
+    }
     else purposes.push(`send ${request.method} ${pathKey(request.path)}`);
   }
   // Nothing written: what the click read (one list or one entity), else where it went.
@@ -352,7 +382,7 @@ export function stepOf(line, { sent = [], names, looksLikeId, first = false }) {
       const into = `into ${named}${where}.`;
       if (line.secret) return `Typed a password ${into}`;
       const value = sent.find(entry => line.field && entry.key === line.field);
-      if (value?.class === 'long') return `Typed a ${value.length}-character ${label ? label.toLowerCase() : 'text'} ${into}`;
+      if (value?.class === 'long') return `Typed ${articleFor(value.length)} ${value.length}-character ${label ? label.toLowerCase() : 'text'} ${into}`;
       if (value?.value !== undefined) return `Typed ${quote(value.value)} ${into}`;
       return `Typed ${into}`;
     }
@@ -454,7 +484,9 @@ export function factsOf(lines, { looksLikeId, names = { titles: new Map(), pages
   }
   // Opened: a page or a single entity reached by a click or a hover.
   const openedEntity = lines.flatMap(line => (line.navigations || []).flatMap(nav => idsOfPath(nav.to, looksLikeId)))[0]
-    || requests.filter(request => request.method === 'GET' && resourceOf(request.path, looksLikeId).id).map(request => resourceOf(request.path, looksLikeId))[0];
+    // A GET of one entity is an open only from a line that wrote nothing, before any write: the app's refetch after a save is not.
+    || lines.slice(0, main ? lines.indexOf(main) : lines.length).filter(line => !writesOf(line).length).flatMap(line => line.requests || [])
+      .filter(request => request.method === 'GET' && resourceOf(request.path, looksLikeId).id).map(request => resourceOf(request.path, looksLikeId))[0];
   if (openedEntity && !(facts.object?.created && facts.object.id === openedEntity.id) && !AUTH_VERBS.has(facts.verb)) {
     facts.opened = { type: openedEntity.type, id: openedEntity.id, title: titleAt(`${openedEntity.type}:${openedEntity.id}`), just_created: created.has(`${openedEntity.type}:${openedEntity.id}`) };
   }
@@ -524,14 +556,16 @@ export function defaultTitle(facts, { open = false } = {}) {
   const others = facts.fields.filter(key => !facts.renamed_to || !/^(?:title|name|subject)$/u.test(key));
   const action = {
     registered: ['registered', 'register'], logged_in: ['logged in', 'log in'], logged_out: ['logged out', 'log out'],
-    created: [`created ${objectPhrase()}`, `create ${objectPhrase()}`],
+    // Made under something else (a comment on a discussion): posted.
+    created: facts.qualifiers.some(entry => entry.kind === 'on') ? [`posted ${objectPhrase()}`, `post ${objectPhrase()}`] : [`created ${objectPhrase()}`, `create ${objectPhrase()}`],
     deleted: [`deleted ${objectPhrase()}`, `delete ${objectPhrase()}`],
-    edited: facts.renamed_to ? [`renamed ${objectPhrase()} to ${quote(facts.renamed_to)}${others.length ? ` and changed ${onOpened ? 'its' : 'the'} ${others.join(' and ')}` : ''}`, `rename ${objectPhrase()}`]
+    edited: facts.renamed_to ? [`renamed ${objectPhrase()} to ${quote(facts.renamed_to)}${others.length ? `, changing ${onOpened ? 'its' : 'the'} ${others.join(' and ')}` : ''}`, `rename ${objectPhrase()}`]
       : others.length ? [`changed ${onOpened ? 'its' : 'the'} ${others.join(' and ')}${onOpened ? '' : ` of ${objectPhrase()}`}`, `edit ${objectPhrase()}`]
       : [`edited ${objectPhrase()}`, `edit ${objectPhrase()}`],
     sent: [`sent ${objectPhrase()}`, `send ${objectPhrase()}`],
   }[facts.verb];
-  const opened = facts.opened ? (facts.opened.just_created ? `the ${facts.opened.type} they just created` : thing(facts.opened.type, facts.opened.id, facts.opened.title)) : null;
+  const justMade = facts.opened?.just_created;
+  const opened = facts.opened ? (justMade ? (facts.opened.title ? `${quote(facts.opened.title)}, the ${facts.opened.type} they just created,` : `the ${facts.opened.type} they just created`) : thing(facts.opened.type, facts.opened.id, facts.opened.title)) : null;
   // What the person opened on the way: the entity, else the page they went to.
   const lead = opened ? `opened ${opened} and ` : facts.entered && !AUTH_VERBS.has(facts.verb) ? `opened ${facts.entered} and ` : '';
   let text;
@@ -625,7 +659,22 @@ export function narrativeOf(segments) {
       // Going somewhere is said by the next goal; on its own it is not a goal worth a sentence.
       return segment.verb !== 'navigated' || list.length === 1;
     });
-    const text = kept.map((segment, index) => (index ? lower(segment.title) : segment.title).replace(/\.$/u, '')).join(', then ');
+    // Repeats merge (NAPsack rule 9): a run of plain creates of one type after the first reads as a count.
+    const parts = [];
+    for (let index = 0; index < kept.length; index += 1) {
+      const segment = kept[index];
+      const plain = other => other.verb === 'created' && other.title_source === 'template' && !other.facts.opened && !other.facts.entered && other.facts.object?.type === segment.facts.object?.type && !other.facts.qualifiers.length;
+      let end = index + 1;
+      if (segment.verb === 'created' && segment.title_source === 'template') while (end < kept.length && plain(kept[end])) end += 1;
+      parts.push((parts.length ? lower(segment.title) : segment.title).replace(/\.$/u, ''));
+      const more = kept.slice(index + 1, end);
+      if (more.length > 1) {
+        const named = more.map(other => other.facts.object.title).filter(Boolean);
+        parts.push(`created ${more.length} more ${segment.facts.object.type}s${named.length ? ` (${named.slice(0, 3).map(quote).join(', ')}${named.length > 3 ? ', …' : ''})` : ''}`);
+        index = end - 1;
+      }
+    }
+    const text = parts.join(', then ');
     return { session, text: text ? `${text}.` : '', observations: kept.map(segment => ({ text: segment.title, cites: [segment.id], confidence: segment.confidence })), source: 'template' };
   });
 }

@@ -15,31 +15,31 @@ The first run clones the app at a pinned commit into `~/.cache/producttrace-exam
 Click around the app and reload `/story`. A session reads as goals, each with the steps under it (`segments` in the JSON, `event: segment` on the stream):
 
 ```
-Registered as maya+1792108975818@example.com for the team “Acme” and landed on the App page.
-    · Clicked the “Get started” button on the home page to open the Login page.
-    · Clicked the “Register” link to open the Register page.
+Registered as maya+1792109982822@example.com for the team “Acme” and landed on the Dashboard page.
+    · Clicked the “Get started” button on the home page to open the “Log in to your account” page.
+    · Clicked the “Register” link to open the “Register your account” page.
     · Typed “Maya” into the “First Name” field.
     · Typed “Chen” into the “Last Name” field.
-    · Typed “maya+1792108975818@example.com” into the “Email Address” field.
+    · Typed “maya+1792109982822@example.com” into the “Email Address” field.
     · Typed a password into the “Password” field.
     · Typed “Acme” into the “Team Name” field.
-    · Clicked the “Register” button to create user yX_5jyRCkBRrIOsrOgN4y and team XXvGjxiEN4x5nos7QnewM.  [Signed in as user yX_5jyRCkBRrIOsrOgN4y (Maya Chen)]
-    · Landed on the App page.
+    · Clicked the “Register” button to create user _kycFDESw18U5ixcM-jtJ and team V89-8dIGHKH-w5GQiIfW5.  [Signed in as user _kycFDESw18U5ixcM-jtJ (Maya Chen)]
+    · Landed on the Dashboard page.
 Opened the Discussions page and created the first discussion titled “Pricing page feedback”.
-    · Clicked the “Discussions” link on the App page to view the discussion list, which was empty.  [0 discussions]
+    · Clicked the “Discussions” link on the Dashboard page to view the discussion list, which was empty.  [0 discussions]
     · Clicked the “Create Discussion” button.
     · Typed “Pricing page feedback” into the “Title” field.
     · Typed a 30-character body into the “Body” field.
-    · Clicked the “Submit” button to create discussion y_XU6gwecFyCeEdz67IZa.  [New discussion “Pricing page feedback” (y_XU6gwecFyCeEdz67IZa); 1 discussion: “Pricing page feedback”]
+    · Clicked the “Submit” button to create discussion RcGLwqSVvGQfsvG2tb-Vu.  [New discussion “Pricing page feedback” (RcGLwqSVvGQfsvG2tb-Vu); 1 discussion: “Pricing page feedback”]
     · Clicked the “Close” button.
-Opened the discussion they just created and created its first comment.
-    · Clicked the “View” link on the Discussions page to open the discussion “Pricing page feedback”.  [Discussion “Pricing page feedback” (y_XU6gwecFyCeEdz67IZa); 0 comments]
+Opened “Pricing page feedback”, the discussion they just created, and posted its first comment.
+    · Clicked the “View” link on the Discussions page to open the discussion “Pricing page feedback”.  [Discussion “Pricing page feedback” (RcGLwqSVvGQfsvG2tb-Vu); 0 comments]
     · Clicked the “Create Comment” button.
     · Typed a 19-character body into the “Body” field.
-    · Clicked the “Submit” button to create comment C-Cml8EpjPzIsi6wkWz5V.  [New comment (C-Cml8EpjPzIsi6wkWz5V); 1 comment]
+    · Clicked the “Submit” button to create comment zJugDX8NLBgXfW-7fsGew.  [New comment (zJugDX8NLBgXfW-7fsGew); 1 comment]
 ```
 
-Goals and steps are written the way NAPsack's annotators caption a screen: past tense, verb first, the app's own labels and the sent values quoted, and "to …" only when that line's own request or navigation shows the result. The brackets are each step's `facts`: what was there (who was signed in, what loaded or was made), not what was done. `narrative[].text` is the whole visit, its goals joined with ", then".
+Goals and steps are written the way NAPsack's annotators caption a screen: past tense, verb first, the app's own labels and the sent values quoted, and "to …" only when that line's own request or navigation shows the result. A page is named by its own document title when the app gives each page one, else by the link that led there. The brackets are each step's `facts`: what was there (who was signed in, what loaded or was made), not what was done. `narrative[].text` is the whole visit, its goals joined with ", then".
 
 Steps join a goal only through something they share: the same form, an entity id, or the page a navigation reached. A redirect the app makes on its own straight after a write, away from the page the write was sent from, is where that goal lands. "First" is said only when the list of that type, read in the same goal, was empty. A hover that prefetched for a link is part of the click on it, a form typed in and left is its own goal ("Started a comment on “Pricing page feedback” but left without sending it."), and an edit names only the fields that differ from what the server last returned. Values (“Acme”, the email, the name) come from the request and response bodies, never from keystrokes; passwords are never read, and long text shows only its length. Each step is also a line in `lines`, with the requests and IDs behind it.
 

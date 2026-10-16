@@ -73,7 +73,7 @@ test('a session groups into goals, titled in GUM\'s observation voice with groun
     'Opened the home page.',
     'Registered as ada@example.test for the team “Analytical Engines” and landed on the App page.',
     'Opened the Discussions page and created the first discussion titled “Notes on the engine”.',
-    'Opened the discussion they just created and created its first comment.',
+    'Opened “Notes on the engine”, the discussion they just created, and posted its first comment.',
   ]);
   assert.deepEqual(story.segments.map(segment => segment.verb), ['opened_app', 'registered', 'created', 'created']);
   // Every line is in exactly one segment, in order.
@@ -214,7 +214,7 @@ function secondVisit() {
 test('a second visit: reload, rename, a left draft, a delete and Back each read as the goal they were', () => {
   const story = storyOf(createStore({ records: secondVisit() }));
   const open = story.lines[0];
-  assert.equal(open.text, 'Opened /app/discussions → GET /auth/me (200), GET /discussions?page=1 (200)');
+  assert.equal(open.text, 'Opened /app/discussions → GET /auth/me (200), GET /discussions?page=1 (200, 6 discussions)');
   assert.deepEqual(story.segments.map(segment => segment.title), [
     'Opened the Discussions page, signed in as Ada Lovelace.',
     'Opened the discussion “Beta topic” and renamed it to “Beta topic (renamed)”.',
@@ -233,7 +233,7 @@ test('a second visit: reload, rename, a left draft, a delete and Back each read 
     'Clicked the “View” link to open the discussion “Beta topic”.',
     'Clicked the “Update Discussion” button.',
     'Typed “Beta topic (renamed)” into the “Title” field.',
-    'Clicked the “Submit” button to save the discussion “Beta topic”.',
+    'Clicked the “Submit” button to rename the discussion “Beta topic” to “Beta topic (renamed)”.',
   ]);
   assert.equal(story.lines.find(line => line.id === 'v1').prefetched_on_hover, 'h1');
   // The click that opened the form leads the draft; the one that opened the confirm leads the delete.
@@ -284,8 +284,56 @@ test('a rename that also rewrites the body says both; a later comment draft is n
   ];
   const story = storyOf(createStore({ records }));
   const titles = story.segments.map(segment => segment.title);
-  assert.ok(titles.includes('Opened the discussion “Beta topic” and renamed it to “Beta topic (renamed)” and changed its body.'), titles.join('\n'));
-  assert.ok(titles.includes('Started a comment on “Beta topic (renamed)” but left without sending it.'), titles.join('\n'));
+  assert.ok(titles.includes('Opened the discussion “Beta topic” and renamed it to “Beta topic (renamed)”, changing its body.'), titles.join('\n'));
+  assert.ok(titles.includes('Started a comment on the discussion “Beta topic (renamed)” but left without sending it.'), titles.join('\n'));
   // The whole visit, joined with ", then".
-  assert.match(story.narrative[0].text, /^Opened the discussion “Beta topic” and renamed it .*, then started a comment on “Beta topic \(renamed\)” but left without sending it\.$/u);
+  assert.match(story.narrative[0].text, /^Opened the discussion “Beta topic” and renamed it .*, then started a comment on the discussion “Beta topic \(renamed\)” but left without sending it\.$/u);
+});
+
+// Already on a discussion: rename it (the app refetches it after saving), then three discussions in a row.
+function onePage() {
+  sequence = 0;
+  const d1 = 'eXA7Ncb2ENlZ2_b27sGVS', edit = 'object:80';
+  const rows = [
+    open(`http://localhost:4173/app/discussions/${d1}`),
+    request('boot', 'GET', `https://api.example.com/discussions/${d1}`, 1, null), body('boot', 1, 'response', { data: { id: d1, title: 'Onboarding checklist', body: 'Old body' } }),
+    action('u1', 'click', button('Update Discussion'), { page: `/app/discussions/${d1}`, page_title: 'Onboarding checklist | Acme' }), enter('u1'),
+    ...typing('t1', field('title', 'Title', edit), edit, `/app/discussions/${d1}`),
+    ...typing('t2', { tag: 'textarea', attributes: { name: 'body' }, element_key: 'k_body_e', label: 'Body' }, edit, `/app/discussions/${d1}`),
+    action('s1', 'submit', button('Submit', { type: 'submit' }), { page: `/app/discussions/${d1}`, form_ref: edit }), enter('s1'),
+    request('s1', 'PATCH', `https://api.example.com/discussions/${d1}`, 1),
+    body('s1', 1, 'request', { title: 'Onboarding checklist v2', body: 'x'.repeat(108) }),
+    body('s1', 1, 'response', { id: d1, title: 'Onboarding checklist v2', body: 'x'.repeat(108) }),
+    request('s1', 'GET', `https://api.example.com/discussions/${d1}`, 2), body('s1', 2, 'response', { data: { id: d1, title: 'Onboarding checklist v2' } }),
+    action('a1', 'click', link('Discussions'), { page: `/app/discussions/${d1}` }), enter('a1'), navigate('a1', `/app/discussions/${d1}`, '/app/discussions'),
+  ];
+  ['Alpha', 'Beta', 'Gamma'].forEach((title, index) => {
+    const form = `object:9${index}`, id = `d${index}_aaaaaaaaaaaaaaaaaaa`;
+    rows.push(
+      action(`c${index}`, 'click', button('Create Discussion'), { page: '/app/discussions', page_title: 'All discussions | Acme' }), enter(`c${index}`),
+      ...typing(`n${index}`, field('title', 'Title', form), form, '/app/discussions'),
+      action(`p${index}`, 'submit', button('Submit', { type: 'submit' }), { page: '/app/discussions', form_ref: form }), enter(`p${index}`),
+      request(`p${index}`, 'POST', 'https://api.example.com/discussions', 1),
+      body(`p${index}`, 1, 'request', { title }), body(`p${index}`, 1, 'response', { id, title }),
+    );
+  });
+  rows.push({ kind: 'capture.summary', page_id: page, capture_page_id: page, ...at() });
+  return rows;
+}
+
+test('a refetch after saving is not an open; articles go by sound; repeated creates merge in the summary; pages take their title', () => {
+  const story = storyOf(createStore({ records: onePage() }));
+  const rename = story.segments.find(segment => segment.verb === 'edited');
+  assert.equal(rename.title, 'Renamed the discussion “Onboarding checklist” to “Onboarding checklist v2”, changing the body.');
+  assert.ok(rename.steps.some(step => step.text === 'Typed a 108-character body into the “Body” field.'));
+  assert.equal(story.segments.flatMap(segment => segment.steps).find(step => step.line === 'a1').text, 'Clicked the “Discussions” link on the discussion “Onboarding checklist v2” to open the “All discussions” page.');
+  assert.match(story.narrative[0].text, /, then opened the “All discussions” page and created a discussion titled “Alpha”, then created 2 more discussions \(“Beta”, “Gamma”\)\.$/u);
+});
+
+test('the article goes by how the length is said: an 88-, an 800-, a 111-, a 180-character text', () => {
+  const lengthOf = n => {
+    const rows = onePage().map(row => (row.kind === 'network.body' && row.request_occurrence_id === 's1:request:1' && row.direction === 'request' ? { ...row, json: { title: 'Onboarding checklist v2', body: 'y'.repeat(n) } } : row));
+    return storyOf(createStore({ records: rows })).segments.flatMap(segment => segment.steps).find(step => step.line === 't2').text;
+  };
+  for (const [n, article] of [[88, 'an'], [800, 'an'], [111, 'a'], [180, 'a']]) assert.ok(lengthOf(n).startsWith(`Typed ${article} ${n}-character`), lengthOf(n));
 });
