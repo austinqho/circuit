@@ -195,7 +195,7 @@ const AUTH_VERBS = new Set(['registered', 'logged_in', 'logged_out']);
  * a page's name (the label of the link that led there), and the person's
  * name (only from what the server returned for an auth write or a `/me` read).
  */
-export function namesOf(lines, { looksLikeId }) {
+export function namesOf(lines, { looksLikeId, pageTitles: titleRows = [] }) {
   const titles = new Map();
   const pages = new Map();
   // What each entity's fields were as the server returned them, line by line (for "renaming it to …").
@@ -247,7 +247,10 @@ export function namesOf(lines, { looksLikeId }) {
     const until = order.get(lineId) ?? Infinity;
     return named.filter(entry => entry.key === key && entry.index < until).at(-1)?.title ?? titles.get(key) ?? null;
   };
-  const titledPages = pageTitles(lines);
+  // The person's own name or email never names a page (spec §6: names come only from what the server said about them).
+  const personal = new Set(lines.flatMap(line => [...(line.values || []), ...(line.requests || []).flatMap(request => request.values || [])]).filter(entry => entry.class === 'personal' && entry.value).map(entry => String(entry.value).toLowerCase()));
+  if (person) personal.add(person.toLowerCase());
+  const titledPages = pageTitles(lines, titleRows, personal);
   return { titles, pages, titled: titledPages.names, pageTitle: titledPages.raw, person, personLine, knownBefore, titleAt };
 }
 
@@ -257,16 +260,24 @@ export function namesOf(lines, { looksLikeId }) {
  * "Discussions | Acme" → Dashboard, Discussions). One distinct title says
  * nothing about which part is the app's name, so it names no page.
  */
-function pageTitles(lines) {
+const EMAIL_IN_TEXT = /[^\s@|·–—()<>,;:"']+@[^\s@|·–—()<>,;:"']+/gu;
+const maskEmails = text => String(text).replace(EMAIL_IN_TEXT, '[email]');
+
+function pageTitles(lines, rows = [], personal = new Set()) {
+  // Titles the app set (page.title rows) say which page they belong to; a click's title only fills in a page they don't cover.
   // The last title seen on a page wins (an app may set it a moment after the route changes), and a
   // title first seen on another page is that page's, not this one's (it had not changed yet).
   const owner = new Map();
   const byPath = new Map();
+  // Emails are masked here too, whatever recorded the title.
+  for (const { page, title: raw } of rows) if (page && raw) { const title = maskEmails(raw); const key = pathKey(page); if (!owner.has(title)) owner.set(title, key); if (owner.get(title) === key) byPath.set(key, title); }
+  const set = new Set(byPath.keys());
   for (const line of lines) {
-    if (!line.page || !line.page_title) continue;
+    if (!line.page || !line.page_title || set.has(pathKey(line.page))) continue;
     const key = pathKey(line.page);
-    if (!owner.has(line.page_title)) owner.set(line.page_title, key);
-    if (owner.get(line.page_title) === key) byPath.set(key, line.page_title);
+    const title = maskEmails(line.page_title);
+    if (!owner.has(title)) owner.set(title, key);
+    if (owner.get(title) === key) byPath.set(key, title);
   }
   const parts = title => title.split(/\s+[|·–—-]\s+|\s*::\s*/u).map(part => part.trim()).filter(Boolean);
   const distinct = [...new Set(byPath.values())];
@@ -275,7 +286,8 @@ function pageTitles(lines) {
   const shared = parts(distinct[0]).filter(part => distinct.every(title => parts(title).includes(part)));
   for (const [path, title] of byPath) {
     const name = parts(title).filter(part => !shared.includes(part)).join(' ');
-    if (name && !/@/u.test(name)) out.set(path, name);
+    const said = name.toLowerCase();
+    if (name && !/@|\[email\]/u.test(name) && ![...personal].some(value => said === value || said.split(/\s+/u).includes(value))) out.set(path, name);
   }
   return { names: out, raw: byPath };
 }
@@ -490,6 +502,10 @@ export function factsOf(lines, { looksLikeId, names = { titles: new Map(), pages
     }
     const after = lines.slice(lines.indexOf(main)).flatMap(line => line.navigations || []).filter(nav => nav.via !== 'popstate');
     if (after.length && !facts.failed) facts.lands = pagePhrase(after.at(-1).to, names, looksLikeId);
+    // A delete later in the same goal (a comment posted, then removed) is said after it.
+    facts.then_deleted = writes.filter(request => request !== target && ok(request) && request.method === 'DELETE' && lines.findIndex(line => line.requests?.includes(request)) > lines.indexOf(main))
+      .map(request => resourceOf(request.path, looksLikeId)).filter(resource => resource.id)
+      .map(resource => ({ type: resource.type, id: resource.id, title: titleAt(`${resource.type}:${resource.id}`) }));
     // The page the person went to on the way to the write ("Opened the Discussions page and created …").
     const into = lines.slice(0, lines.indexOf(main)).flatMap(line => line.navigations || []).filter(nav => nav.via !== 'popstate');
     if (into.length) facts.entered = pagePhrase(into.at(-1).to, names, looksLikeId);
@@ -584,7 +600,7 @@ export function defaultTitle(facts, { open = false } = {}) {
   if (action) {
     const [done, infinitive] = action;
     if (facts.failed) text = `${lead}tried to ${infinitive}${as}${qualifiers}, but ${facts.failed.status ? `the server returned ${facts.failed.status}` : 'got no response'}`;
-    else text = `${lead}${done}${as}${qualifiers}${facts.lands ? ` and landed on ${facts.lands}` : ''}`;
+    else text = `${lead}${done}${as}${qualifiers}${facts.lands ? ` and landed on ${facts.lands}` : ''}${(facts.then_deleted || []).map(entry => `, then deleted ${object?.created && object.id === entry.id ? 'it' : thing(entry.type, entry.id, entry.title)}`).join('')}`;
   } else {
     const list = facts.list ? `the ${facts.list.type} list (${facts.list.at_least ? 'at least ' : ''}${plural(facts.list.total ?? facts.list.count, facts.list.type)})` : null;
     switch (facts.verb) {
@@ -612,12 +628,12 @@ const CONFIDENCE = { registered: 9, logged_in: 9, logged_out: 9, created: 9, del
  * return different wording (an annotator); null or a throw keeps the
  * deterministic title, and the grouping never changes.
  */
-export function segmentsOf(lines, { looksLikeId, titleOf = null, closedSessions = new Set() }) {
+export function segmentsOf(lines, { looksLikeId, titleOf = null, closedSessions = new Set(), pageTitles = new Map() }) {
   const segments = [];
   const groups = groupLines(lines);
   const namesBySession = new Map();
   for (const line of lines) namesBySession.set(line.session, [...(namesBySession.get(line.session) || []), line]);
-  for (const [session, list] of namesBySession) namesBySession.set(session, namesOf(list, { looksLikeId }));
+  for (const [session, list] of namesBySession) namesBySession.set(session, namesOf(list, { looksLikeId, pageTitles: pageTitles.get(session) || [] }));
   groups.forEach((group, index) => {
     const session = group[0].session;
     const names = namesBySession.get(session);

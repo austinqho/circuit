@@ -354,3 +354,44 @@ test('a live click-through: a page takes its own title even when the first actio
   const stale = storyOf(createStore({ records: titled(signUpSession(), ['Register | Acme']) }));
   assert.equal(stale.segments[1].title, 'Registered as ada@example.test for the team “Analytical Engines” and landed on the App page.');
 });
+
+test('a page the person only landed on takes the title the app set there (no click on it needed), cited on the landing step', () => {
+  const rows = signUpSession().filter(row => !(['a3', 'a4', 'a5', 'a6', 'a7', 's2', 's3'].includes(row.action_id) || /^t[678]$/u.test(row.action_id ?? '')));
+  const end = rows.findIndex(row => row.kind === 'capture.summary');
+  const title = (path, text) => ({ kind: 'page.title', page: path, title: text, ...at() });
+  const records = [title('/', 'Welcome | Acme'), ...rows.slice(0, end), title('/auth/register', 'Register | Acme'), title('/app', 'Dashboard | Acme'), ...rows.slice(end)];
+  const story = storyOf(createStore({ records }));
+  const signUp = story.segments.find(segment => segment.verb === 'registered');
+  assert.equal(signUp.title, 'Registered as ada@example.test for the team “Analytical Engines” and landed on the Dashboard page.');
+  assert.ok(signUp.steps.at(-1).facts.includes('Page title “Dashboard | Acme” at /app'), JSON.stringify(signUp.steps.at(-1)));
+});
+
+test('a comment posted and then deleted in the same goal says both', () => {
+  const rows = signUpSession();
+  const end = rows.findIndex(row => row.kind === 'capture.summary');
+  const discussion = 'ZQNutJ2l4vkATgTad4wug', comment = 'DfBo9jhOIojhJSRsNmdL2';
+  const records = [
+    ...rows.slice(0, end),
+    action('x1', 'click', { tag: 'button', attributes: {}, element_key: `k_delete_${comment}`, label: 'Delete Comment' }, { page: `/app/discussions/${discussion}` }), enter('x1'),
+    action('x2', 'click', button('Delete Comment'), { page: `/app/discussions/${discussion}` }), enter('x2'),
+    request('x2', 'DELETE', `https://api.example.com/comments/${comment}`, 1), body('x2', 1, 'response', { id: comment }),
+    ...rows.slice(end),
+  ];
+  const story = storyOf(createStore({ records }));
+  assert.equal(story.segments.at(-1).title, 'Opened “Notes on the engine”, the discussion they just created, and posted its first comment, then deleted it.');
+});
+
+test('an email in a page title is never quoted, and the person’s own name never names a page', () => {
+  const rows = signUpSession().filter(row => !(['a3', 'a4', 'a5', 'a6', 'a7', 's2', 's3'].includes(row.action_id) || /^t[678]$/u.test(row.action_id ?? '')));
+  const end = rows.findIndex(row => row.kind === 'capture.summary');
+  const title = (path, text) => ({ kind: 'page.title', page: path, title: text, ...at() });
+  const withTitles = titles => storyOf(createStore({ records: [...rows.slice(0, end), ...titles, ...rows.slice(end)] }));
+  const story = withTitles([title('/auth/register', 'Register | ada@example.test'), title('/app', 'Dashboard | ada@example.test')]);
+  const signUp = story.segments.find(segment => segment.verb === 'registered');
+  assert.ok(!JSON.stringify(signUp.steps.flatMap(step => step.facts)).includes('ada@example.test'));
+  assert.ok(signUp.steps.at(-1).facts.includes('Page title “Dashboard | [email]” at /app'));
+  assert.match(signUp.title, /landed on the Dashboard page\.$/u);
+  // A page titled with the person's name keeps its path name.
+  const named = withTitles([title('/auth/register', 'Register | Acme'), title('/app', 'Ada Lovelace | Acme')]);
+  assert.match(named.segments.find(segment => segment.verb === 'registered').title, /landed on the App page\.$/u);
+});
