@@ -6,6 +6,7 @@ import {
   normalizer,
   requestItem,
   storageRow,
+  summarizeListened,
   summarizeObserved,
   verifyReadOnly,
 } from '../src/verify.mjs';
@@ -91,6 +92,7 @@ test('compareRuns says same when the traced run matches the control', () => {
     dom_attributes: { 'data-tracer-el': 4 },
     request_headers: ['traceparent'],
     replaced_browser_apis: ['fetch'],
+    globals: [],
   });
 });
 
@@ -243,4 +245,59 @@ test('long saved values: random numbers stay noise, a real change shows, and the
   assert.ok(printed.length <= 300);
   assert.match(printed, /^localStorage excalidraw = .*… #[0-9a-f]{10}$/u);
   assert.equal(storageRow(norm, 'localStorage theme = dark'), 'localStorage theme = dark');
+});
+
+test('in listen mode anything the script leaves on the page is a divergence', () => {
+  const plain = () => ({
+    ...run({ steps: [{}] }),
+    footprint: { attributes: {}, replaced: [], globals: ['document', 'appState'] },
+  });
+  const clean = {
+    ...plain(),
+    listened: [],
+  };
+  assert.equal(compareRuns(plain(), plain(), clean).verdict, 'same');
+  const leaky = {
+    ...plain(),
+    footprint: {
+      attributes: { 'data-x': 2 },
+      replaced: ['fetch'],
+      globals: ['document', 'appState', '__listen'],
+    },
+    listened: [],
+  };
+  const result = compareRuns(plain(), plain(), leaky);
+  assert.equal(result.verdict, 'different');
+  const footprint = result.divergences.find((d) => d.kind === 'footprint');
+  assert.deepEqual(footprint.only_traced, [
+    'global __listen',
+    'replaced fetch',
+    'attribute data-x',
+  ]);
+  // Rewrite mode adds its footprint on purpose: listed, not a divergence.
+  const rewrite = { ...leaky, listened: undefined };
+  assert.equal(compareRuns(plain(), plain(), rewrite).verdict, 'same');
+});
+
+test('summarizeListened counts actions, joins and the script cost per page load', () => {
+  const batch = (page, rows, cost) => ({ page, rows, cost_ms: cost, errors: 0, bytes: 100 });
+  const click = { kind: 'action', type: 'click', start: 10, end: 12, handler: { prop: 'onClick' } };
+  const summary = summarizeListened([
+    batch('p1', [click, { kind: 'request', start: 11, server_id: 'abc' }], 1.5),
+    batch('p1', [{ kind: 'request', start: 40, server_id: null }], 3),
+    batch('p2', [{ kind: 'action', type: 'input', start: 50, end: null, handler: null }], 2),
+  ]);
+  assert.deepEqual(summary, {
+    pages: 2,
+    actions: 2,
+    action_types: { click: 1, input: 1 },
+    with_handler: 1,
+    requests: 2,
+    started_during_action: 1,
+    with_server_id: 1,
+    cost_ms: 5,
+    errors: 0,
+    bytes_sent: 300,
+    batches: 3,
+  });
 });

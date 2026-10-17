@@ -17,7 +17,7 @@ import { BrowserSession, closeBrowser } from './browser.mjs';
 import { findPackageDir, packageBin } from './package.mjs';
 import { buildTarget, parseRepo, serveDev, serveStatic, waitForHttp } from './target.mjs';
 import { TracerTools, buildReport, narrationScore, readStory } from './tracer.mjs';
-import { verifyReadOnly } from './verify.mjs';
+import { MODES as VERIFY_MODES, verifyReadOnly } from './verify.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 // One wait stays under MCP clients' 60 s request timeout; callers poll while building.
@@ -513,8 +513,10 @@ export function createBench({
         );
       if (!Array.isArray(steps) || !steps.length)
         throw Object.assign(new Error('steps must be a nonempty list'), { status: 400 });
-      if (!['rewrite', 'observe'].includes(mode))
-        throw Object.assign(new Error('mode must be "rewrite" or "observe"'), { status: 400 });
+      if (!VERIFY_MODES.includes(mode))
+        throw Object.assign(new Error(`mode must be one of ${VERIFY_MODES.join(', ')}`), {
+          status: 400,
+        });
       if (verifications.get(id)?.status === 'running') return verifications.get(id);
       const job = {
         status: 'running',

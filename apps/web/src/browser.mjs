@@ -15,9 +15,20 @@ function chromiumPath() {
   return fs.existsSync(preinstalled) ? preinstalled : undefined;
 }
 
+// CIRCUIT_BROWSER=firefox or webkit runs the bench in that engine instead
+// (listen mode and verify's comparison work there; debugger mode and script
+// timings need Chromium).
+const ENGINE = process.env.CIRCUIT_BROWSER || 'chromium';
+
 async function browser() {
   if (!browserPromise) {
-    browserPromise = import('playwright').then(async ({ chromium }) => {
+    browserPromise = import('playwright').then(async (playwright) => {
+      const { chromium } = playwright;
+      if (ENGINE !== 'chromium') {
+        if (!['firefox', 'webkit'].includes(ENGINE))
+          throw new Error(`CIRCUIT_BROWSER must be chromium, firefox or webkit, not "${ENGINE}"`);
+        return playwright[ENGINE].launch({ headless: process.env.CIRCUIT_HEADED !== '1' });
+      }
       const launch = () =>
         chromium.launch({
           executablePath: chromiumPath(),
