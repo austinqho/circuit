@@ -1,0 +1,22 @@
+# Excalidraw: draw a rectangle, an ellipse and a text label, connect them, style one, undo, zoom, open the library and the menu
+{"action":"goto","value":"/"}
+{"action":"wait","value":"3000"}
+{"action":"click","target":{"role":"button","name":"Rectangle"}}
+{"action":"drag","target":"css=canvas.interactive","value":"300,200 520,340"}
+{"action":"click","target":{"role":"button","name":"Ellipse"}}
+{"action":"drag","target":"css=canvas.interactive","value":"700,200 880,340"}
+{"action":"click","target":{"role":"button","name":"Arrow"}}
+{"action":"drag","target":"css=canvas.interactive","value":"530,270 690,270"}
+{"action":"click","target":{"role":"button","name":"Text"}}
+{"action":"click","target":"css=canvas.interactive"}
+{"action":"type","value":"Checkout flow"}
+{"action":"press","value":"Escape"}
+{"action":"click","target":{"role":"button","name":"Selection"}}
+{"action":"click","target":"css=canvas.interactive","value":null}
+{"action":"press","value":"Control+a"}
+{"action":"press","value":"Delete"}
+{"action":"click","target":{"role":"button","name":"Undo"}}
+{"action":"click","target":{"role":"button","name":"Zoom in"}}
+{"action":"click","target":{"role":"button","name":"Library"}}
+{"action":"press","value":"Escape"}
+{"action":"click","target":{"text":"Export, preferences, languages, ..."}}

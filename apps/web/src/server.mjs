@@ -16,6 +16,8 @@
 //   POST /api/apps/:id/narration {scores}  Claude's rubric scores for the report's segment titles
 //   GET  /api/apps/:id/tools               the package's MCP tools
 //   POST /api/apps/:id/tools/:name {args}  call one
+//   POST /api/apps/:id/verify {steps}      start a read-only check (plain twice vs with the package)
+//   GET  /api/apps/:id/verify?wait=<s>     the check's progress and verdict
 //   GET  /api/events                       server-sent events: app status changes
 //   GET  /api/apps/:id/stream              server-sent events: story updates
 import fs from 'node:fs';
@@ -121,6 +123,17 @@ const routes = [
     'POST',
     /^\/api\/apps\/([\w-]+)\/narration$/u,
     async (req, [id]) => bench.scoreNarration(id, (await readJson(req)).scores),
+  ],
+  [
+    'POST',
+    /^\/api\/apps\/([\w-]+)\/verify$/u,
+    async (req, [id]) => bench.verify(id, await readJson(req)),
+  ],
+  [
+    'GET',
+    /^\/api\/apps\/([\w-]+)\/verify$/u,
+    async (req, [id], url) =>
+      bench.verification(id, { waitSeconds: Number(url.searchParams.get('wait') || 0) }),
   ],
   ['GET', /^\/api\/apps\/([\w-]+)\/tools$/u, async (req, [id]) => bench.tools(id)],
   [

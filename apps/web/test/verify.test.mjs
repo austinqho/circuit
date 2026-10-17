@@ -1,0 +1,106 @@
+import assert from 'node:assert/strict';
+import test from 'node:test';
+import { compareItems, compareRuns, normalizer } from '../src/verify.mjs';
+
+test('normalizer hides run tokens, generated ids and clock times', () => {
+  const norm = normalizer('r1a2b3');
+  assert.equal(norm('ada-r1a2b3@example.test'), 'ada-{{run}}@example.test');
+  assert.equal(norm('/c/1b4e28ba-2fa1-11d2-883f-0016d3cca427'), '/c/<uuid>');
+  assert.equal(norm('/app/discussions/V1StGXR8_Z5jdHi6B'), '/app/discussions/<id>');
+  assert.equal(norm('/app/discussions/InaeLxHdhoIXXj-DVqsFh'), '/app/discussions/<id>');
+  assert.equal(norm('useDiscussionQuery'), 'useDiscussionQuery');
+  assert.equal(norm('currentItemBackgroundColor'), 'currentItemBackgroundColor');
+  assert.equal(norm('Created 2026-10-17T08:15:00Z at 8:15 AM'), 'Created <timestamp> at <clock>');
+  // Ordinary words and short numbers stay.
+  assert.equal(norm('Notes on the engine, 3 comments'), 'Notes on the engine, 3 comments');
+});
+
+test('compareItems reports what both plain runs agree on and the traced run changes', () => {
+  const a = ['GET /api/me', 'POST /api/discussions', 'GET /api/discussions'];
+  const b = ['GET /api/me', 'POST /api/discussions', 'GET /api/discussions'];
+  assert.deepEqual(compareItems(a, b, a), { extra: [], missing: [] });
+  assert.deepEqual(compareItems(a, b, ['GET /api/me', 'GET /api/discussions', 'GET /api/x']), {
+    extra: ['GET /api/x'],
+    missing: ['POST /api/discussions'],
+  });
+  // A request sent twice instead of once is a difference.
+  assert.deepEqual(compareItems(a, b, [...a, 'GET /api/me']).extra, ['GET /api/me']);
+});
+
+test('compareItems ignores what the plain runs already disagreed on', () => {
+  // Server-assigned counters differ run to run; the traced run's own value is noise too.
+  const a = ['GET /api/posts/41', 'GET /api/me'];
+  const b = ['GET /api/posts/42', 'GET /api/me'];
+  assert.deepEqual(compareItems(a, b, ['GET /api/posts/43', 'GET /api/me']), {
+    extra: [],
+    missing: [],
+  });
+  // An item only one plain run had is never "missing" from the traced run.
+  assert.deepEqual(compareItems(['x', 'y'], ['x'], ['x']), { extra: [], missing: [] });
+});
+
+const run = ({
+  steps,
+  requests = [],
+  console: errors = [],
+  storage = [],
+  script = 10,
+  replaced = [],
+  headers = [],
+}) => ({
+  steps: steps.map((step) => ({
+    description: step.description ?? 'Clicked "Save"',
+    ok: step.ok ?? true,
+    error: step.error ?? null,
+    url: step.url ?? '/',
+    lines: step.lines ?? ['- button "Save"'],
+    settle_ms: step.settle_ms ?? 0,
+    script_ms: step.script_ms ?? script,
+  })),
+  requests: requests.map((item) => ({ step: 0, item })),
+  console: errors.map((item) => ({ step: 0, item })),
+  storage,
+  headers,
+  script_ms: script * steps.length,
+  footprint: { attributes: {}, replaced },
+});
+
+test('compareRuns says same when the traced run matches the control', () => {
+  const plain = run({ steps: [{}], requests: ['POST /api/save body:abc'] });
+  const traced = run({
+    steps: [{ script_ms: 15 }],
+    requests: ['POST /api/save body:abc'],
+    script: 15,
+    replaced: ['fetch'],
+    headers: ['POST /api/save: traceparent'],
+  });
+  traced.footprint.attributes = { 'data-tracer-el': 4 };
+  const result = compareRuns(plain, plain, traced);
+  assert.equal(result.verdict, 'same');
+  assert.deepEqual(result.divergences, []);
+  assert.equal(result.overhead.ratio, 1.5);
+  assert.deepEqual(result.footprint, {
+    dom_attributes: { 'data-tracer-el': 4 },
+    request_headers: ['traceparent'],
+    replaced_browser_apis: ['fetch'],
+  });
+});
+
+test('compareRuns names each way the traced run behaved differently', () => {
+  const plain = run({
+    steps: [{}, { url: '/done', lines: ['- heading "Saved"'] }],
+    requests: ['POST /api/save body:abc'],
+    storage: ['localStorage draft = 1'],
+  });
+  const traced = run({
+    steps: [
+      { ok: false, error: 'Timeout 8000ms exceeded' },
+      { url: '/', lines: ['- button "Save"'] },
+    ],
+    requests: [],
+    console: ['uncaught: TypeError: x is not a function'],
+    storage: ['localStorage draft = 1'],
+  });
+  const kinds = compareRuns(plain, plain, traced).divergences.map((d) => d.kind);
+  assert.deepEqual(kinds, ['step_failed', 'url', 'page', 'requests', 'console_errors']);
+});

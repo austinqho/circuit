@@ -2,6 +2,7 @@
 node_modules/
 *.log
 *.jsonl
+!apps/web/flows/*.jsonl
 !packages/*/test/fixtures/**/*.jsonl
 .m1-live/
 .tracer/
