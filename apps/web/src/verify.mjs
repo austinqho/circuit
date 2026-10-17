@@ -124,10 +124,51 @@ async function metrics(cdp) {
   }
 }
 
-async function readStorage(page) {
+const hash = (text) => crypto.createHash('sha1').update(text).digest('hex').slice(0, 10);
+// Digests are added after normalizing: hex reads as a generated id to the normalizer.
+const LONG_ROW = 300;
+
+/** A request as a comparable item: method, path, and a hash of the normalized body. */
+export function requestItem(norm, method, path, body) {
+  return `${norm(`${method} ${path}`)}${body ? ` body:${hash(norm(body))}` : ''}`;
+}
+
+/** A storage row, normalized; a long one keeps its start and a hash of the whole. */
+export function storageRow(norm, raw) {
+  const row = norm(raw);
+  return row.length > LONG_ROW ? `${row.slice(0, LONG_ROW - 60)}… #${hash(row)}` : row;
+}
+
+export async function readStorage(page) {
   return page
     .evaluate(async () => {
       const rows = [];
+      const IDB_RECORDS = 500;
+      // JSON, with binary data as its size and a checksum (JSON alone drops it).
+      const checksum = (bytes) => {
+        let sum = 2166136261;
+        for (const byte of bytes) sum = Math.imul(sum ^ byte, 16777619) >>> 0;
+        return sum.toString(36);
+      };
+      const describe = (value) => {
+        try {
+          return (
+            JSON.stringify(value, (key, item) => {
+              if (item instanceof ArrayBuffer) item = new Uint8Array(item);
+              if (ArrayBuffer.isView(item)) {
+                const bytes = new Uint8Array(item.buffer, item.byteOffset, item.byteLength);
+                return `<${bytes.length} bytes ${checksum(bytes)}>`;
+              }
+              if (item instanceof Blob) return `<blob ${item.type} ${item.size} bytes>`;
+              if (item instanceof Map) return { map: [...item] };
+              if (item instanceof Set) return { set: [...item] };
+              return item;
+            }) ?? String(value)
+          ).slice(0, 20000);
+        } catch {
+          return String(value);
+        }
+      };
       const each = (store, prefix) => {
         try {
           for (let i = 0; i < store.length; i += 1) {
@@ -148,12 +189,20 @@ async function readStorage(page) {
             request.onerror = () => reject(request.error);
           });
           for (const store of Array.from(db.objectStoreNames)) {
-            const count = await new Promise((resolve) => {
-              const request = db.transaction(store).objectStore(store).count();
-              request.onsuccess = () => resolve(request.result);
-              request.onerror = () => resolve(null);
+            // Every record's key and value, so a changed value shows, not only a changed count.
+            const records = await new Promise((resolve) => {
+              const out = [];
+              const request = db.transaction(store).objectStore(store).openCursor();
+              request.onsuccess = () => {
+                const cursor = request.result;
+                if (!cursor || out.length >= IDB_RECORDS) return resolve(out);
+                out.push(`${describe(cursor.key)} = ${describe(cursor.value)}`);
+                cursor.continue();
+              };
+              request.onerror = () => resolve(out);
             });
-            rows.push(`indexedDB ${name}/${store}: ${count} records`);
+            rows.push(`indexedDB ${name}/${store}: ${records.length} records`);
+            for (const record of records) rows.push(`indexedDB ${name}/${store} ${record}`);
           }
           db.close();
         }
@@ -221,13 +270,9 @@ async function observe({
     if (!['fetch', 'xhr'].includes(request.resourceType())) return;
     const url = new URL(request.url());
     if (ignoreOrigins.includes(url.origin) || OWN_PATH.test(url.pathname)) return;
-    const body = request.postData();
-    const digest = body
-      ? ` body:${crypto.createHash('sha1').update(norm(body)).digest('hex').slice(0, 10)}`
-      : '';
     run.requests.push({
       step: stepIndex,
-      item: norm(`${request.method()} ${url.pathname}${url.search}${digest}`),
+      item: requestItem(norm, request.method(), `${url.pathname}${url.search}`, request.postData()),
     });
     // A header added to another origin's request can fail it (CORS preflight).
     const scope = url.origin === origin ? '' : 'cross-origin ';
@@ -283,7 +328,7 @@ async function observe({
   }
   for (const error of session.errors)
     run.console.push({ step: null, item: `uncaught: ${norm(error.message).slice(0, 300)}` });
-  run.storage = (await readStorage(page)).map(norm);
+  run.storage = (await readStorage(page)).map((row) => storageRow(norm, row));
   run.footprint = await readFootprint(page);
   if (watcher) {
     run.observed = { stats: watcher.stats(), records: watcher.records() };

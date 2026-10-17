@@ -77,17 +77,17 @@ node apps/web/scripts/verify.mjs --observe [--probe]   # debugger mode instead o
 
 The flow runs three times in fresh browsers on the dev server: twice without the package (the control) and once with it. Whatever both plain runs agree on and the traced run does not is reported as a divergence:
 
-| Kind              | What differed                                                                     |
-| ----------------- | --------------------------------------------------------------------------------- |
-| `step_failed`     | A step that worked without the package failed with it (or the reverse)            |
-| `url`             | The URL after a step                                                              |
-| `page`            | The accessibility tree after a step, once the page stopped changing               |
-| `requests`        | fetch/XHR requests sent: method, path and a hash of the body                      |
-| `request_headers` | Headers sent to another origin (one its server does not allow fails the request)  |
-| `console_errors`  | `console.error` messages and uncaught errors                                      |
-| `storage`         | localStorage, sessionStorage, cookie names and IndexedDB record counts at the end |
+| Kind              | What differed                                                                                    |
+| ----------------- | ------------------------------------------------------------------------------------------------ |
+| `step_failed`     | A step that worked without the package failed with it (or the reverse)                           |
+| `url`             | The URL after a step                                                                             |
+| `page`            | The accessibility tree after a step, once the page stopped changing                              |
+| `requests`        | fetch/XHR requests sent: method, path and a hash of the body                                     |
+| `request_headers` | Headers sent to another origin (one its server does not allow fails the request)                 |
+| `console_errors`  | `console.error` messages and uncaught errors                                                     |
+| `storage`         | localStorage, sessionStorage, cookie names and every IndexedDB record (key and value) at the end |
 
-Run tokens (`{{run}}` in a step value), UUIDs, timestamps, clock times and generated ids are normalized, and anything the two plain runs already disagree on is the app's own noise. A slower traced page gets up to 10 s to reach the same state before it counts as different. The result also reports the overhead (Chrome's script time with and without the package, and the worst step) and the footprint the package adds on purpose: DOM attributes, request headers and browser APIs it replaces. The script exits 1 when the app behaved differently, and the full runs are saved next to the app's work folder. These runs leave every request to the browser itself (no Playwright routing, which lets a request through that CORS would refuse); hosts other than the machine's own do not resolve.
+Run tokens (`{{run}}` in a step value), UUIDs, timestamps, clock times and generated ids are normalized, and anything the two plain runs already disagree on is the app's own noise. A slower traced page gets up to 10 s to reach the same state before it counts as different. The result also reports the overhead (Chrome's script time with and without the package, and the worst step) and the footprint the package adds on purpose: DOM attributes, request headers and browser APIs it replaces. SAME means the app behaved the same on the flow you ran: anything the flow never exercises is not checked. The script exits 1 when the app behaved differently, and the full runs are saved next to the app's work folder. These runs leave every request to the browser itself (no Playwright routing, which lets a request through that CORS would refuse); hosts other than the machine's own do not resolve.
 
 With `--observe` (or `mode: "observe"` on `circuit_verify`) the third run is the app without the package, watched by debugger mode (`producttrace/observe`), so the same comparison checks that watching through Chrome's debugger changes nothing. The result adds `observed`: the actions seen, the requests, and how each request was joined to an action (`dispatch`, `event_in_scope`, `state_effect`, `only_run_of_handler`) or left `unknown`.
 

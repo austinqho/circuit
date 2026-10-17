@@ -4,6 +4,8 @@ import {
   compareItems,
   compareRuns,
   normalizer,
+  requestItem,
+  storageRow,
   summarizeObserved,
   verifyReadOnly,
 } from '../src/verify.mjs';
@@ -180,4 +182,31 @@ test('verify refuses a mode it does not know', async () => {
     verifyReadOnly({ serve: async () => {}, steps: [{ action: 'goto', value: '/' }], mode: 'x' }),
     /unknown verify mode "x"/u,
   );
+});
+
+test('a changed request body is a requests divergence', () => {
+  const norm = normalizer('r1a2b3');
+  const plain = requestItem(norm, 'POST', '/comments', '{"body":"A first comment."}');
+  const changed = requestItem(norm, 'POST', '/comments', '{"body":"A first comment.","x":1}');
+  assert.match(plain, /^POST \/comments body:[0-9a-f]{10}$/u);
+  assert.notEqual(plain, changed);
+  // Run tokens and generated ids in a body are still normalized away.
+  assert.equal(
+    requestItem(norm, 'POST', '/users', '{"email":"ada-r1a2b3@example.test"}'),
+    requestItem(normalizer('r9z8y7'), 'POST', '/users', '{"email":"ada-r9z8y7@example.test"}'),
+  );
+  assert.deepEqual(compareItems([plain], [plain], [changed]), {
+    extra: [changed],
+    missing: [plain],
+  });
+});
+
+test('a long storage row keeps a hash of the whole value, so a change near the end shows', () => {
+  const norm = normalizer('r1a2b3');
+  const value = 'x'.repeat(400);
+  const a = storageRow(norm, `indexedDB app/projects "p1" = {"name":"${value}a"}`);
+  const b = storageRow(norm, `indexedDB app/projects "p1" = {"name":"${value}b"}`);
+  assert.ok(a.length < 300);
+  assert.notEqual(a, b);
+  assert.equal(storageRow(norm, 'localStorage theme = dark'), 'localStorage theme = dark');
 });
