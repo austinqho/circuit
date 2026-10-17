@@ -12,7 +12,7 @@ test('install allowlist excludes source, build tooling, and developer tests', as
     'analysis', 'backend', 'collector', 'dist', 'integrations', 'mcp', 'plugin', '.agents',
     'index.js', 'index.d.ts', 'vite.mjs', 'vite.d.mts', 'collector.js', 'collector.d.ts', 'backend.js', 'backend.d.ts',
     'backend-register.js', 'analysis.mjs', 'analysis.d.mts', 'runtime-attribution.mjs', 'runtime-attribution.d.mts',
-    'mcp.mjs', 'mcp-annotation-lookup.mjs', 'LICENSE', 'README.md',
+    'mcp.mjs', 'mcp-annotation-lookup.mjs', 'observe', 'observe.mjs', 'observe.d.mts', 'LICENSE', 'README.md',
   ]);
   assert.equal(manifest.files.some((entry) => /^(src|scripts|test)(\/|$)/.test(entry)), false);
 
@@ -33,6 +33,8 @@ test('install allowlist excludes source, build tooling, and developer tests', as
     manifest.exports['./runtime-attribution'].types,
     manifest.bin['producttrace-mcp'],
     manifest.exports['./mcp'].import,
+    manifest.exports['./observe'].import,
+    manifest.exports['./observe'].types,
   ];
   await Promise.all(shippedEntrypoints.map((entry) => access(resolve(packageRoot, entry))));
 });
@@ -47,6 +49,7 @@ test('entry points expose exactly their intended names', async () => {
     'backend.js': ['BACKEND_SPAN_SCHEMA', 'NODE_BACKEND_ADAPTERS', 'createProductTraceSpanExporter', 'normalizeOpenTelemetrySpan', 'startNodeBackendTelemetry'],
     'mcp.mjs': ['createTracerServer', 'main'],
     'mcp-annotation-lookup.mjs': ['lookupSnippet'],
+    'observe.mjs': ['observePage'],
   };
   const packageRoot = resolve(import.meta.dirname, '..');
   for (const [file, names] of Object.entries(expected)) {

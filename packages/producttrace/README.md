@@ -56,8 +56,29 @@ The package's public surface is the set of files at its root. Everything in a su
 | `producttrace/backend/register`| `backend-register.js`      | `node --import` hook for Express, http/undici, MongoDB         |
 | `producttrace/runtime-attribution` | `runtime-attribution.mjs` | The build-time plugin that names first-party calls (included by `producttrace/vite`) |
 | `producttrace/analysis`        | `analysis.mjs`             | Build-time source analysis the plugin uses                     |
+| `producttrace/observe`         | `observe.mjs`              | Debugger mode: reads a page through Chrome's debugger, nothing rewritten |
 | `producttrace/mcp`             | `mcp.mjs`                  | MCP server (also the `producttrace-mcp` bin)                   |
 | `producttrace/mcp/annotation-lookup` | `mcp-annotation-lookup.mjs` | Looks up the source snippet for an annotation      |
+
+## Debugger mode (nothing rewritten)
+
+Where something drives the browser (Playwright, an agent, the bench), `producttrace/observe` reads the page through Chrome's debugger instead of the Vite plugin. The app runs exactly as written.
+
+```js
+import { observePage } from 'producttrace/observe';
+
+const observer = await observePage(await context.newCDPSession(page), { appOrigin: 'http://localhost:5173' });
+// ... click through the app ...
+observer.records(); // observe.action rows (event, target, declared handler) and observe.request rows
+await observer.stop();
+```
+
+The page is never paused, because Chrome drops input that arrives while it is ([ADR 0006](../../docs/adr/0006-debugger-mode-never-pauses.md)). It adds listeners in an isolated world the app's scripts cannot see. Each request names the action that caused it only when an identifier says so:
+
+- `dispatch`: it was sent while that action's event was being dispatched.
+- `only_run_of_handler`: its async stack passes through a handler React's event dispatch called, and of every event React handled before the request (hover, focus, scroll and events the app dispatched included), only that action could have run it. In a minified build React's functions have no names, so these abstain. After an event whose element React removed before its handlers could be read (a link that navigates away), these abstain too.
+
+Otherwise it is `unknown`, with the actions it `could_be`. Two clicks on the same button whose work overlaps come out `unknown`, because Chrome's async stacks carry no id per click. So does a function the app also calls from a shortcut, an effect, a timer or another event, including a handler passed straight to `useEffect` or shared by a click and a hover. Clicks the app dispatches itself are not actions.
 
 ## Limits
 

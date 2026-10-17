@@ -1,6 +1,14 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { compareItems, compareRuns, normalizer, requestItem, storageRow } from '../src/verify.mjs';
+import {
+  compareItems,
+  compareRuns,
+  normalizer,
+  requestItem,
+  storageRow,
+  summarizeObserved,
+  verifyReadOnly,
+} from '../src/verify.mjs';
 
 test('normalizer hides run tokens, generated ids and clock times', () => {
   const norm = normalizer('r1a2b3');
@@ -86,6 +94,15 @@ test('compareRuns says same when the traced run matches the control', () => {
   });
 });
 
+test('a step that failed in every run is listed as not checked, not hidden behind SAME', () => {
+  const steps = [{}, { ok: false, error: 'target not found' }];
+  const result = compareRuns(run({ steps }), run({ steps }), run({ steps }));
+  assert.equal(result.verdict, 'same');
+  assert.deepEqual(result.failed_in_every_run, [
+    { index: 1, description: 'Clicked "Save"', error: 'target not found' },
+  ]);
+});
+
 test('compareRuns names each way the traced run behaved differently', () => {
   const plain = run({
     steps: [{}, { url: '/done', lines: ['- heading "Saved"'] }],
@@ -149,6 +166,39 @@ test('compareRuns reports a page difference once, at the step where it appeared'
   const pages = compareRuns(plain, plain, traced).divergences.filter((d) => d.kind === 'page');
   assert.equal(pages.length, 1);
   assert.equal(pages[0].step.index, 0);
+});
+
+test('debugger mode: the summary counts actions and how each request was joined', () => {
+  const records = [
+    { kind: 'observe.action', action_id: 'observe:action:1' },
+    { kind: 'observe.request', action_id: 'observe:action:1', via: 'dispatch' },
+    { kind: 'observe.request', action_id: null, via: 'unknown' },
+    { kind: 'observe.request', action_id: null, via: 'unknown' },
+  ];
+  assert.deepEqual(
+    summarizeObserved({
+      stats: { pauses: 0, dispatches: 5, runs: 7, unread: { 'click: removed node': 2 }, errors: 0 },
+      records,
+    }),
+    {
+      actions: 1,
+      requests: 3,
+      joined: 1,
+      via: { dispatch: 1, unknown: 2 },
+      dispatches: 5,
+      runs: 7,
+      unread: 2,
+      pauses: 0,
+      errors: 0,
+    },
+  );
+});
+
+test('verify refuses a mode it does not know', async () => {
+  await assert.rejects(
+    verifyReadOnly({ serve: async () => {}, steps: [{ action: 'goto', value: '/' }], mode: 'x' }),
+    /unknown verify mode "x"/u,
+  );
 });
 
 test('a changed request body is a requests divergence', () => {

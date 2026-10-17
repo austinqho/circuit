@@ -4,7 +4,7 @@
 // Each package under packages/ is a DEEP MODULE: a lot of behaviour behind a
 // small interface. A package's PUBLIC SURFACE is its ENTRY POINTS, the files
 // at the package root (for producttrace: index.js, vite.mjs, collector.js,
-// backend.js, backend-register.js, analysis.mjs, runtime-attribution.mjs,
+// backend.js, backend-register.js, analysis.mjs, runtime-attribution.mjs, observe.mjs,
 // mcp*.mjs). Everything in a subfolder is private. Its package.json "exports"
 // map points only at those root files.
 //

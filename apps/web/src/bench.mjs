@@ -352,7 +352,8 @@ export function createBench({
         .slice(0, 6)}`;
       if (apps.has(id)) {
         const existing = apps.get(id);
-        if (existing.status === 'failed') {
+        // A local folder is someone's working copy: adding it again takes a fresh copy.
+        if (existing.status === 'failed' || (existing.local && existing.status === 'ready')) {
           Object.assign(existing, {
             env: env ?? existing.env,
             pluginOptions: pluginOptions ?? existing.pluginOptions,
@@ -499,7 +500,7 @@ export function createBench({
      * the package, and any difference the package made is reported. Runs in the
      * background (it takes minutes); read it with verification().
      */
-    async verify(id, { steps } = {}) {
+    async verify(id, { steps, mode = 'rewrite' } = {}) {
       const app = get(id);
       if (app.status !== 'ready')
         throw Object.assign(new Error(`app "${id}" is ${app.status}; wait with status`), {
@@ -512,8 +513,15 @@ export function createBench({
         );
       if (!Array.isArray(steps) || !steps.length)
         throw Object.assign(new Error('steps must be a nonempty list'), { status: 400 });
+      if (!['rewrite', 'observe'].includes(mode))
+        throw Object.assign(new Error('mode must be "rewrite" or "observe"'), { status: 400 });
       if (verifications.get(id)?.status === 'running') return verifications.get(id);
-      const job = { status: 'running', phase: 'stopping the bench copy', started_at: Date.now() };
+      const job = {
+        status: 'running',
+        phase: 'stopping the bench copy',
+        mode,
+        started_at: Date.now(),
+      };
       verifications.set(id, job);
       (async () => {
         // The bench's own server and collector hold the ports; verify serves its own.
@@ -522,6 +530,7 @@ export function createBench({
         let round = 0;
         const result = await verifyReadOnly({
           steps,
+          mode,
           onProgress: (phase) => (job.phase = phase),
           serve: async (variant) => {
             round += 1;

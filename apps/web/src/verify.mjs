@@ -3,7 +3,9 @@
 //   const result = await verifyReadOnly({ serve, steps });
 //
 // The same steps run three times, each in a fresh browser: twice on the plain
-// app (the control) and once with the package. Whatever both plain runs agree
+// app (the control) and once with the package. With `mode: 'observe'` the
+// third run is the plain app again with debugger mode watching it
+// (producttrace/observe), so the check covers that mode instead. Whatever both plain runs agree
 // on and the traced run does not is a divergence: a request sent or not sent,
 // a different page after a step, a step that failed, a new error, different
 // storage. Whatever the two plain runs already disagree on (random ids, clock
@@ -14,6 +16,7 @@
 // by a token unique to each run, so a flow that registers a user works against
 // a real backend three times.
 import crypto from 'node:crypto';
+import { observePage } from 'producttrace/observe';
 import { BrowserSession } from './browser.mjs';
 
 // Browser APIs the package may replace. Listed so the report says which ones
@@ -247,7 +250,14 @@ async function readFootprint(page) {
 }
 
 /** One run of the steps on a fresh browser, with everything the comparison reads. */
-async function observe({ baseUrl, ignoreOrigins = [], steps, token, reference = null }) {
+async function observe({
+  baseUrl,
+  ignoreOrigins = [],
+  steps,
+  token,
+  reference = null,
+  watch = false,
+}) {
   const norm = normalizer(token);
   const origin = new URL(baseUrl).origin;
   const session = new BrowserSession(baseUrl, { ignoreOrigins, intercept: false });
@@ -284,6 +294,10 @@ async function observe({ baseUrl, ignoreOrigins = [], steps, token, reference = 
     if (message.type() === 'error')
       run.console.push({ step: stepIndex, item: norm(message.text()).slice(0, 300) });
   });
+  // Debugger mode attaches before the first step, on its own DevTools session.
+  const watcher = watch
+    ? await observePage(await session.context.newCDPSession(page), { appOrigin: origin })
+    : null;
   const bake = (value) => (typeof value === 'string' ? value.replaceAll('{{run}}', token) : value);
   let before = await metrics(cdp);
   for (const [index, step] of steps.entries()) {
@@ -327,6 +341,11 @@ async function observe({ baseUrl, ignoreOrigins = [], steps, token, reference = 
     run.console.push({ step: null, item: `uncaught: ${norm(error.message).slice(0, 300)}` });
   run.storage = (await readStorage(page)).map((row) => storageRow(norm, row));
   run.footprint = await readFootprint(page);
+  if (watcher) {
+    // Stopping finishes reading what the page already reported.
+    await watcher.stop();
+    run.observed = { stats: watcher.stats(), records: watcher.records() };
+  }
   await session.reset();
   return run;
 }
@@ -411,6 +430,11 @@ export function compareRuns(plainA, plainB, traced) {
     verdict: divergences.length ? 'different' : 'same',
     steps: traced.steps.length,
     divergences,
+    // Steps that failed in every run checked nothing; SAME does not cover them.
+    failed_in_every_run: traced.steps
+      .map((step, index) => ({ step, index }))
+      .filter(({ step, index }) => !step.ok && !plainA.steps[index]?.ok && !plainB.steps[index]?.ok)
+      .map(({ step, index }) => ({ index, description: step.description, error: step.error })),
     overhead: {
       script_ms: { plain: Math.round(plainScript), traced: Math.round(traced.script_ms) },
       ratio: plainScript > 0 ? Number((traced.script_ms / plainScript).toFixed(2)) : null,
@@ -427,16 +451,39 @@ export function compareRuns(plainA, plainB, traced) {
       request_headers: addedHeaders,
       replaced_browser_apis: traced.footprint.replaced.filter((name) => !plainReplaced.has(name)),
     },
+    ...(traced.observed ? { observed: summarizeObserved(traced.observed) } : {}),
+  };
+}
+
+/** What debugger mode recorded: actions, and how each request was joined to one. */
+export function summarizeObserved({ stats, records }) {
+  const requests = records.filter((row) => row.kind === 'observe.request');
+  const via = {};
+  for (const row of requests) via[row.via] = (via[row.via] ?? 0) + 1;
+  return {
+    actions: records.filter((row) => row.kind === 'observe.action').length,
+    requests: requests.length,
+    joined: requests.filter((row) => row.action_id).length,
+    via,
+    dispatches: stats.dispatches,
+    runs: stats.runs ?? 0,
+    // Events whose handlers could not be read; after one, handler-only joins abstain.
+    unread: Object.values(stats.unread ?? {}).reduce((sum, count) => sum + count, 0),
+    pauses: stats.pauses,
+    errors: stats.errors,
+    ...(stats.last_error ? { last_error: stats.last_error } : {}),
   };
 }
 
 /**
- * Run the steps plain, plain, then traced and compare. `onProgress(text)` hears
+ * Run the steps plain, plain, then traced and compare. `mode: 'observe'`
+ * makes the third run the plain app watched by debugger mode. `onProgress(text)` hears
  * each phase. The traced run settles against what the plain runs showed.
  */
-export async function verifyReadOnly({ serve, steps, onProgress = () => {} }) {
+export async function verifyReadOnly({ serve, steps, mode = 'rewrite', onProgress = () => {} }) {
   if (!Array.isArray(steps) || !steps.length) throw new Error('verify needs a list of steps');
-  const runOn = async (variant, label, reference) => {
+  if (!['rewrite', 'observe'].includes(mode)) throw new Error(`unknown verify mode "${mode}"`);
+  const runOn = async (variant, label, reference, watch = false) => {
     onProgress(`starting the ${variant} app (${label})`);
     const served = await serve(variant);
     try {
@@ -455,6 +502,7 @@ export async function verifyReadOnly({ serve, steps, onProgress = () => {} }) {
         steps,
         token: `r${crypto.randomBytes(3).toString('hex')}`,
         reference,
+        watch,
       });
     } finally {
       await served.close();
@@ -467,9 +515,10 @@ export async function verifyReadOnly({ serve, steps, onProgress = () => {} }) {
     plainA.steps.map((step) => ({ a: step.lines, b: step.lines })),
   );
   const traced = await runOn(
-    'traced',
-    'run with producttrace',
+    mode === 'observe' ? 'plain' : 'traced',
+    mode === 'observe' ? 'run with debugger mode watching' : 'run with producttrace',
     plainA.steps.map((step, index) => ({ a: step.lines, b: plainB.steps[index]?.lines ?? [] })),
+    mode === 'observe',
   );
   return { ...compareRuns(plainA, plainB, traced), runs: { plainA, plainB, traced } };
 }

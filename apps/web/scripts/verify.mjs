@@ -5,10 +5,13 @@
 //
 //   node apps/web/scripts/verify.mjs [--repo owner/name] [--app-dir dir] [--flow file.jsonl] [--out result.json]
 //   node apps/web/scripts/verify.mjs --probe
+//   node apps/web/scripts/verify.mjs --observe [--probe]
 //
 // Defaults to bulletproof-react and flows/bulletproof-react.jsonl. `--probe`
 // runs the probe page instead (apps/web/probe): one click per case where an
-// instrumented app is known to be able to behave differently. A flow is
+// instrumented app is known to be able to behave differently. `--observe`
+// checks debugger mode instead of the package: the third run is the plain app
+// with Chrome's debugger watching it. A flow is
 // one circuit_act step per line; lines starting with # are comments. Exits 1
 // when the app behaved differently.
 import fs from 'node:fs';
@@ -62,7 +65,8 @@ if (status.status !== 'ready') {
   throw new Error(`app is ${status.status}: ${status.error}`);
 }
 
-let job = await call('circuit_verify', { app: added.id, steps, wait_seconds: 50 });
+const mode = process.argv.includes('--observe') ? 'observe' : 'rewrite';
+let job = await call('circuit_verify', { app: added.id, steps, mode, wait_seconds: 50 });
 let phase = null;
 while (job.status === 'running') {
   if (job.phase !== phase) console.error(`verify: ${(phase = job.phase)}`);
@@ -73,7 +77,7 @@ if (job.status !== 'done') throw new Error(`verify ${job.status}: ${job.error}`)
 
 const { result } = job;
 console.log(
-  `${repo}: ${result.verdict === 'same' ? 'SAME' : 'DIFFERENT'} over ${result.steps} steps`,
+  `${repo}${mode === 'observe' ? ' (debugger mode)' : ''}: ${result.verdict === 'same' ? 'SAME' : 'DIFFERENT'} over ${result.steps} steps`,
 );
 for (const d of result.divergences) {
   console.log(`  ${d.kind}${d.step ? ` at step ${d.step.index + 1} (${d.step.description})` : ''}`);
@@ -82,6 +86,10 @@ for (const d of result.divergences) {
   for (const line of d.only_traced || []) console.log(`    + ${line}`);
   for (const line of d.only_plain || []) console.log(`    - ${line}`);
 }
+for (const step of result.failed_in_every_run || [])
+  console.log(
+    `  not checked: step ${step.index + 1} (${step.description}) failed in every run: ${step.error}`,
+  );
 const { overhead, footprint } = result;
 console.log(
   `overhead: script ${overhead.script_ms.plain} ms plain, ${overhead.script_ms.traced} ms traced (x${overhead.ratio ?? '?'}); pages took ${overhead.settle_ms.plain} ms plain, ${overhead.settle_ms.traced} ms traced to settle`,
@@ -93,5 +101,11 @@ if (overhead.worst_step)
 console.log(`footprint: attributes ${JSON.stringify(footprint.dom_attributes)}`);
 console.log(`  request headers added: ${footprint.request_headers.join(', ') || 'none'}`);
 console.log(`  browser APIs replaced: ${footprint.replaced_browser_apis.join(', ') || 'none'}`);
+if (result.observed) {
+  const { actions, requests, joined, via, dispatches, runs, unread, pauses } = result.observed;
+  console.log(
+    `observed: ${actions} actions, ${requests} requests, ${joined} joined to an action ${JSON.stringify(via)}; ${dispatches} user events, ${runs} other events, ${unread} unreadable, ${pauses} pauses`,
+  );
+}
 if (out) fs.writeFileSync(out, JSON.stringify(job, null, 2));
 process.exit(result.verdict === 'same' ? 0 : 1);
