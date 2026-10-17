@@ -43,17 +43,46 @@ function globRegExp(glob) {
  * DEFAULT_FIRST_PARTY_EXCLUDE). `excludedBy(relative)` names the rule that
  * excluded a file, or null.
  */
-export function createFirstPartyRule({ include = [], exclude = DEFAULT_FIRST_PARTY_EXCLUDE } = {}) {
+export function createFirstPartyRule({ include = [], exclude = DEFAULT_FIRST_PARTY_EXCLUDE, skip = [] } = {}) {
   if (!Array.isArray(include) || !Array.isArray(exclude)) throw new TypeError('firstParty.include and firstParty.exclude must be arrays of globs');
   const includes = include.map(glob => [glob, globRegExp(glob)]);
   const excludes = exclude.map(glob => [glob, globRegExp(glob)]);
+  const skips = parseSkip(skip);
+  const skippedFiles = skips.filter(entry => !entry.name);
+  const skippedFunctions = skips.filter(entry => entry.name);
   const excludedBy = relative => {
     if (!relative || relative === '..' || relative.startsWith('../') || path.isAbsolute(relative)) return 'outside repository';
     if (!extensions.test(relative)) return 'not a JS/TS source';
+    const skipped = skippedFiles.find(entry => entry.file.test(relative));
+    if (skipped) return `skip ${skipped.text}`;
     if (includes.some(([, pattern]) => pattern.test(relative))) return null;
     return excludes.find(([, pattern]) => pattern.test(relative))?.[0] || null;
   };
-  return { include: [...include], exclude: [...exclude], excludedBy, isFirstParty: relative => excludedBy(relative) === null };
+  // A function the `skip` list names by `file#name` (its own name, or its
+  // display name such as `Scene.mutate`): the rule that skipped it, or null.
+  const skippedBy = (relative, names) => {
+    const candidates = [names?.name, names?.display_name].filter(Boolean);
+    return skippedFunctions.find(entry => entry.file.test(relative) && candidates.some(name => entry.name.test(name)))?.text || null;
+  };
+  return { include: [...include], exclude: [...exclude], skip: skips.map(entry => entry.text), excludedBy, skippedBy, isFirstParty: relative => excludedBy(relative) === null };
+}
+
+/**
+ * The `skip` option: functions (or whole files) the build leaves exactly as
+ * written. `src/scene/export.ts#exportToCanvas` skips one function by name
+ * (`*` matches any run of characters, so `Scene.*` is every method of
+ * Scene); `src/workers/**` skips every function in matching files.
+ */
+function parseSkip(skip) {
+  if (!Array.isArray(skip)) throw new TypeError('skip must be an array of "file-glob" or "file-glob#function-name" strings');
+  return skip.map(text => {
+    if (typeof text !== 'string' || !text.trim()) throw new TypeError('skip entries must be nonempty strings');
+    const at = text.indexOf('#');
+    const file = at === -1 ? text : text.slice(0, at);
+    const name = at === -1 ? null : text.slice(at + 1);
+    if (!file || name === '') throw new TypeError(`skip ${JSON.stringify(text)}: expected "file-glob" or "file-glob#function-name"`);
+    return { text, file: globRegExp(file), name: name === null ? null : new RegExp(`^${name.split('*').map(part => part.replace(/[.+?^${}()|[\]\\]/gu, '\\$&')).join('.*')}$`, 'u') };
+  });
 }
 
 const defaultFirstPartyRule = createFirstPartyRule();
@@ -526,8 +555,11 @@ function instrumentPostTransformedSource(code, id, { repository, map, indexForId
     const row = embeddedRow(node);
     if (row) return { id: row.id, file: row.source.file, start: row.source.start, end: row.source.end, names: nameFields(row) };
     const span = firstPartySpan(originalSpan({ map, code, id, repository, start, end }), firstParty, onExcluded);
-    return span ? { id: stableFunctionId(span.content, span.start, span.end), file: span.file, start: span.start, end: span.end,
-      names: functionNamesAt(span.file, span.content, span.start, span.end) } : null;
+    if (!span) return null;
+    const names = functionNamesAt(span.file, span.content, span.start, span.end);
+    const skipped = firstParty.skippedBy?.(span.file, names);
+    if (skipped) { onExcluded?.(`skip ${skipped}`, `${span.file}:${span.start}:${span.end}`); return null; }
+    return { id: stableFunctionId(span.content, span.start, span.end), file: span.file, start: span.start, end: span.end, names };
   };
   // Error types (and any class): a first-party class bound to a name is
   // registered by its original span's id right after its definition, so the
@@ -883,19 +915,19 @@ function outputDirectory(outputOptions, fallback) {
   return fallback;
 }
 
-export function runtimeAttributionPlugin({ repository, manifestPath, firstParty } = {}) {
+export function runtimeAttributionPlugin({ repository, manifestPath, firstParty, skip } = {}) {
   if (typeof repository !== 'string' || !repository) throw new TypeError('repository is required');
   // Module ids arrive as real paths. Compare against the real repository so a
   // symlinked checkout (macOS /tmp -> /private/tmp) gets the same module pass
   // as a real one instead of silently skipping it.
   try { repository = fs.realpathSync(repository); } catch {}
-  const firstPartyRule = createFirstPartyRule(firstParty || {});
+  const firstPartyRule = createFirstPartyRule({ ...(firstParty || {}), ...(skip ? { skip } : {}) });
   // Chunk-pass functions left uninstrumented, by the rule that excluded them
   // (deduplicated by original span), reported once per build.
   const excludedFunctions = new Map();
   const excludedModules = new Map();
   const noteExcluded = (map, reason, key) => { const set = map.get(reason) || new Set(); set.add(key); map.set(reason, set); };
-  const firstPartyReport = () => ({ include: firstPartyRule.include, exclude: firstPartyRule.exclude,
+  const firstPartyReport = () => ({ include: firstPartyRule.include, exclude: firstPartyRule.exclude, ...(firstPartyRule.skip.length ? { skip: firstPartyRule.skip } : {}),
     excluded_functions: Object.fromEntries([...excludedFunctions].map(([reason, keys]) => [reason, keys.size])),
     excluded_modules: Object.fromEntries([...excludedModules].map(([reason, keys]) => [reason, keys.size])) });
   const entries = new Map();

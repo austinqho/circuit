@@ -73,14 +73,15 @@ function installProductTraceCollectorSink(global, endpoint) {
   var nativeBeacon = global.navigator && typeof global.navigator.sendBeacon === 'function' ? global.navigator.sendBeacon.bind(global.navigator) : null;
   var previous = global.__producttraceHostCapture;
   var url = endpoint + '/ingest';
-  var queue = []; var flushing = false; var timer = null; var fallbackPage = null;
+  var queue = []; var flushing = false; var timer = null; var fallbackPage = null; var keepaliveBytes = 0;
+  var encoder = typeof global.TextEncoder === 'function' ? new global.TextEncoder() : null;
   var stats = { received: 0, sent: 0, batches: 0, retries: 0, dropped: 0, beacon: 0, malformed: 0 };
   var warned = false;
   var warnOnce = function (what) {
     if (warned) return; warned = true;
     try { if (global.console && typeof global.console.warn === 'function') global.console.warn('[producttrace] collector sink ' + what + '; see __productTraceCollectorStats()'); } catch (error) { /* no console */ }
   };
-  var BATCH = 200; var DELAY = 200;
+  var BATCH = 1000; var DELAY = 200;
   var pageId = function () {
     var runtime = global.__productTraceRuntime;
     if (runtime && typeof runtime.session === 'string') return runtime.session;
@@ -101,12 +102,20 @@ function installProductTraceCollectorSink(global, endpoint) {
       nativeSetTimeout(function () { send(batch, attempt + 1, done); }, 50 * Math.pow(2, attempt));
     };
     var request;
+    // keepalive lets a batch in flight survive a navigation, but the browser
+    // caps the bytes of all keepalive requests in flight together (64 KB) and
+    // rejects past it: only a batch that fits beside the others asks for it.
+    var bytes = encoder ? encoder.encode(body).length : body.length * 3;
+    var keepalive = bytes + keepaliveBytes < 60000;
+    var settle = function () { if (keepalive) keepaliveBytes -= bytes; };
     try {
-      request = nativeFetch(url, { method: 'POST', body: body, headers: { 'content-type': 'text/plain' }, mode: 'cors', credentials: 'omit', keepalive: body.length < 60000 });
+      request = nativeFetch(url, { method: 'POST', body: body, headers: { 'content-type': 'text/plain' }, mode: 'cors', credentials: 'omit', keepalive: keepalive });
     } catch (error) { retry(); return; }
+    if (keepalive) keepaliveBytes += bytes;
     request.then(function (response) {
+      settle();
       if (response && response.ok) { stats.sent += batch.length; stats.batches += 1; done(); } else retry();
-    }, retry);
+    }, function () { settle(); retry(); });
   };
   var flush = function () {
     timer = null;

@@ -63,6 +63,44 @@ test('first-party rule drives chunk instrumentation and the per-rule build repor
   }
 });
 
+test('skip list: whole files, one function by name, or every method of a class', () => {
+  const rule = createFirstPartyRule({ skip: ['src/workers/**', 'src/scene/export.js#exportToCanvas', 'src/scene/Scene.js#Scene.*'] });
+  assert.equal(rule.excludedBy('src/workers/encode.js'), 'skip src/workers/**');
+  assert.equal(rule.excludedBy('src/scene/export.js'), null, 'a named function skips only that function');
+  assert.equal(rule.skippedBy('src/scene/export.js', { name: 'exportToCanvas', display_name: 'exportToCanvas' }), 'src/scene/export.js#exportToCanvas');
+  assert.equal(rule.skippedBy('src/scene/export.js', { name: 'exportToSvg', display_name: 'exportToSvg' }), null);
+  assert.equal(rule.skippedBy('src/scene/Scene.js', { name: 'mutate', display_name: 'Scene.mutate' }), 'src/scene/Scene.js#Scene.*');
+  assert.equal(rule.skippedBy('src/other.js', { name: 'exportToCanvas', display_name: 'exportToCanvas' }), null);
+  assert.throws(() => createFirstPartyRule({ skip: ['src/a.js#'] }), /file-glob#function-name/u);
+  assert.throws(() => createFirstPartyRule({ skip: 'src/a.js' }), /must be an array/u);
+});
+
+test('a skipped function is left as written and reported by its rule', () => {
+  const temp = fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(), 'producttrace-skip-')));
+  try {
+    const repository = path.join(temp, 'repo');
+    fs.mkdirSync(path.join(repository, 'src'), { recursive: true });
+    const app = 'export function exportToCanvas(scene) { return scene.length; }\nexport const onClick = () => { return 2; };\n';
+    fs.writeFileSync(path.join(repository, 'src', 'app.js'), app);
+    const joined = new MagicBundle();
+    joined.addSource({ filename: '../src/app.js', content: new MagicString(app) });
+    const bundle = { 'index.js': { type: 'chunk', fileName: 'index.js', code: joined.toString(),
+      map: JSON.parse(joined.generateMap({ includeContent: true, hires: true }).toString()) } };
+    const manifestPath = path.join(temp, 'manifest.json');
+    const info = console.info; console.info = () => {};
+    try { runtimeAttributionPlugin({ repository, manifestPath, skip: ['src/app.js#exportToCanvas'] }).generateBundle({ dir: path.join(repository, 'out') }, bundle); }
+    finally { console.info = info; }
+    const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+    assert.deepEqual(manifest.functions.map(row => row.display_name ?? row.name), ['onClick']);
+    assert.deepEqual(manifest.first_party.skip, ['src/app.js#exportToCanvas']);
+    assert.deepEqual(manifest.first_party.excluded_functions, { 'skip src/app.js#exportToCanvas': 1 });
+    const code = bundle['index.js'].code;
+    assert.match(code, /export function exportToCanvas\(scene\) \{ return scene\.length; \}/u, 'the skipped function is byte-for-byte the original');
+  } finally {
+    fs.rmSync(temp, { recursive: true, force: true });
+  }
+});
+
 // Bounds of the boundary tolerance used to recover a function from a minified
 // map (docs/gates/G2-generality.md, "Tolerances").
 test('function-boundary recovery: what the 8-character start tolerance matches and where it stops', () => {

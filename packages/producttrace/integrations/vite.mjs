@@ -319,6 +319,10 @@ function repositoryRoot(start) {
  *   sources are instrumented. Default excludes any path with a node_modules,
  *   vendor, dist, build or .git segment; workspace packages consumed from a
  *   built `dist/` need `include: ['packages/<name>/dist/**']`.
+ * - skip: functions the build leaves exactly as written, by
+ *   `'file-glob#function-name'` (`'src/scene/export.ts#exportToCanvas'`,
+ *   `'src/scene/Scene.ts#Scene.*'`), or whole files by `'file-glob'`. A skipped
+ *   function runs unwrapped and records nothing; functions it calls still do.
  * - bodies: request/response body capture (network.body rows). Default on in
  *   dev builds (Vite mode !== 'production'), off in production-mode builds;
  *   `'always'` keeps it in a production build (with a warning), `false`
@@ -381,7 +385,7 @@ function installPlugins(options) {
   const configPath = options.configPath || path.join(cacheDir, 'installation.json');
   fs.mkdirSync(path.dirname(attributionManifestPath), { recursive: true });
   fs.mkdirSync(path.dirname(configPath), { recursive: true });
-  const { runtimeAttribution = true, firstParty, ...rest } = options;
+  const { runtimeAttribution = true, firstParty, skip, ...rest } = options;
   // No collector named: the dev (or preview) server runs one and the page posts to it on its own origin.
   const local = options.collector === undefined
     ? localCollectorPlugin({ storeDir: path.join(cacheDir, 'store'), manifestFile: runtimeAttribution ? attributionManifestPath : null, sourceRoot: repository })
@@ -399,7 +403,7 @@ function installPlugins(options) {
   return {
     local,
     staticPlugin,
-    attribution: runtimeAttribution ? runtimeAttributionPlugin({ repository, manifestPath: attributionManifestPath, firstParty }) : null,
+    attribution: runtimeAttribution ? runtimeAttributionPlugin({ repository, manifestPath: attributionManifestPath, firstParty, skip }) : null,
   };
 }
 

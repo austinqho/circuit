@@ -324,10 +324,44 @@
     if (typeof value === 'object' || typeof value === 'function') { if (!objectIds.has(value)) objectIds.set(value, `object:${++nextObject}`); return { kind: 'object', handle: objectIds.get(value) }; }
     return { kind: 'primitive', type: typeof value };
   };
-  const flushFunctionWindow = action_id => { const count = functionWindowCounts.get(action_id) || 0; if (!count) return null; functionWindowCounts.delete(action_id); return emit({ kind: 'function.window_count', action_id, count, debug_omitted: true }); };
+  // Overhead budget: an action keeps the first FUNCTION_BUDGET calls of each
+  // function as function.enter/exit rows; later calls of that function still
+  // run under a frame (ownership, continuations and requests are unchanged)
+  // but write no rows unless something needs them: a row emitted inside the
+  // call, or a continuation captured from it, writes its enter row first
+  // (writeUnwritten), so a walk from any recorded row never meets a frame
+  // with no row. Calls that wrote nothing are counted per function and
+  // reported as one `function.muted` row per action when its window closes.
+  // A hot loop (a pointermove redraw, an export encoder) costs a count, not
+  // thousands of rows. __PRODUCTTRACE_FUNCTION_BUDGET__ = 0 turns it off.
+  const FUNCTION_BUDGET = (() => { const value = global.__PRODUCTTRACE_FUNCTION_BUDGET__; return Number.isInteger(value) && value >= 0 ? value : 10; })();
+  const MUTED_LISTED = 200;
+  const functionCalls = new Map(); // action_id -> Map(function_id -> calls entered)
+  const mutedCalls = new Map(); // action_id -> Map(function_id -> calls that wrote no rows)
+  const overBudget = (action_id, function_id) => {
+    if (!FUNCTION_BUDGET) return false;
+    let calls = functionCalls.get(action_id); if (!calls) { calls = new Map(); functionCalls.set(action_id, calls); }
+    const count = (calls.get(function_id) || 0) + 1; calls.set(function_id, count);
+    return count > FUNCTION_BUDGET;
+  };
+  const noteMuted = frame => { let calls = mutedCalls.get(frame.action_id); if (!calls) { calls = new Map(); mutedCalls.set(frame.action_id, calls); } calls.set(frame.function_id, (calls.get(frame.function_id) || 0) + 1); };
+  // Every action's counts so far, then a fresh budget: memory stays bounded by
+  // the functions one window calls.
+  const flushMuted = () => {
+    functionCalls.clear();
+    for (const [action_id, calls] of mutedCalls) {
+      const sorted = [...calls].sort((left, right) => right[1] - left[1]);
+      emit({ kind: 'function.muted', action_id, budget: FUNCTION_BUDGET, calls: sorted.reduce((sum, [, count]) => sum + count, 0),
+        functions: sorted.slice(0, MUTED_LISTED).map(([function_id, count]) => ({ function_id, calls: count })), ...(sorted.length > MUTED_LISTED ? { functions_not_listed: sorted.length - MUTED_LISTED } : {}) });
+    }
+    mutedCalls.clear();
+  };
+  const flushFunctionWindow = action_id => { flushMuted(); const count = functionWindowCounts.get(action_id) || 0; if (!count) return null; functionWindowCounts.delete(action_id); return emit({ kind: 'function.window_count', action_id, count, debug_omitted: true }); };
+  let writeUnwritten = null;
   const actionTerminalOwner = new Map();
   let materializeFor = null;
   const emit = row => {
+    if (current?.unwritten) writeUnwritten(current);
     if (row?.kind === 'dom.action' && row.page === undefined) row = { ...row, page: pagePath() };
     if (row?.kind === 'dom.action' && row.page_title === undefined) { const title = pageTitle(); if (title) row = { ...row, page_title: title }; }
     if (materializeFor && row?.action_id && row.kind !== 'dom.action') materializeFor(row.action_id);
@@ -717,7 +751,11 @@
   // when the dispatch began (`parent`). Function frames pop eagerly on exit
   // (see exit), so a nested dispatch that is still on top when its caller
   // returns is discarded with the caller.
-  const settleAmbient = () => { while (current?.dispatch && !bareFrameLive(current)) current = current.parent || null; return current; };
+  const popEndedDispatches = () => { while (current?.dispatch && !bareFrameLive(current)) current = current.parent || null; return current; };
+  // Every caller that keeps the ambient frame (an owner for a continuation, a
+  // request's action, a state receipt) goes through here, so a muted call that
+  // becomes an owner writes its enter row first (see FUNCTION_BUDGET).
+  const settleAmbient = () => { const frame = popEndedDispatches(); if (frame?.unwritten) writeUnwritten(frame); return frame; };
   const continuationId = (action_id, kind) => `continuation:${action_id}:${kind}:${++continuationSequence}`;
   // `target` (the dispatch target, composedPath()[0] when retargeted) and
   // `cause` (dispatchCause: set when live code caused this dispatch) are read
@@ -1565,7 +1603,7 @@
     // Proxy trap, see readSynthetic) is not recorded: no frame, no rows, no
     // ownership. exit() restores exactly the frame current here.
     if (inspectingArgument) return { function_id, function_index, parent: current, action_id: null, emit_spine: false, suppressed: true, spine: [] };
-    settleAmbient();
+    popEndedDispatches();
     const origin = invokedBy(function_id);
     // React work is not called by the action: a render runs on whatever
     // continuation React flushed it on (a microtask or scheduler message
@@ -1585,6 +1623,10 @@
     // outside an action remain aggregate-only unless explicit debug mode is
     // enabled, keeping normal capture proportional to dispatched actions.
     frame.emit_spine = Boolean(frame.action_id) || Boolean(global.__PRODUCTTRACE_DEBUG_ALL_FUNCTIONS__);
+    // Past the budget, the call writes no rows unless something needs them.
+    // A call observed bound to the dispatch is never muted: its binding row
+    // names this frame's continuation.
+    const muted = frame.action_id && !global.__PRODUCTTRACE_DEBUG_ALL_FUNCTIONS__ && overBudget(frame.action_id, function_id);
     try { observeBinding(frame, current, { has: Boolean(metadata && Object.prototype.hasOwnProperty.call(metadata, 'a0')), value: metadata?.a0 }); } catch { hostErrors += 1; }
     current = frame;
     if (frame.action_id && frame.spine.length === 1 && origin !== 'render' && origin !== 'effect') {
@@ -1597,13 +1639,22 @@
       // with the same hint must not steal the handler's terminal evidence.
       // Among frames observed bound, the one nearest the target wins (its own
       // host prop before an ancestor's capture handler), whatever entered first.
-      if (!prior || priority > prior.priority || (priority === 3 && prior.priority === 3 && distance < prior.distance)) actionTerminalOwner.set(frame.action_id, { continuation_id: frame.continuation_id, priority, distance });
+      if (!prior || priority > prior.priority || (priority === 3 && prior.priority === 3 && distance < prior.distance)) { actionTerminalOwner.set(frame.action_id, { continuation_id: frame.continuation_id, priority, distance }); frame.terminal = true; }
     }
-    if (frame.emit_spine) emit({ kind: 'function.enter', function_id, function_index, action_id: frame.action_id, parent_continuation_id: frame.parent_continuation_id,
-      continuation_kind: frame.continuation_kind, invoked_by: frame.invoked_by, entry_hint: frame.entry_hint, entry: frame.entry,
-      ...(frame.response_of ? { response_of: frame.response_of } : {}),
-      continuation_id: frame.continuation_id, spine: { action_id: frame.action_id, function_ids: frame.spine } }); return frame; };
-  const exit = function (frame) { if (frame?.emit_spine) emit({ kind: 'function.exit', function_id: frame?.function_id || null, function_index: frame?.function_index ?? null, action_id: frame?.action_id || null,
+    if (muted && !frame.bound && !frame.terminal) { frame.unwritten = true; return frame; }
+    if (frame.emit_spine) { if (frame.parent?.unwritten) writeUnwritten(frame.parent); emit(functionEnterRow(frame)); } return frame; };
+  const functionEnterRow = frame => ({ kind: 'function.enter', function_id: frame.function_id, function_index: frame.function_index, action_id: frame.action_id, parent_continuation_id: frame.parent_continuation_id,
+    continuation_kind: frame.continuation_kind, invoked_by: frame.invoked_by, entry_hint: frame.entry_hint, entry: frame.entry,
+    ...(frame.response_of ? { response_of: frame.response_of } : {}),
+    continuation_id: frame.continuation_id, spine: { action_id: frame.action_id, function_ids: frame.spine } });
+  // A muted call (and every muted call it is nested in, outermost first)
+  // writes its enter row now; its exit row follows as usual.
+  writeUnwritten = frame => {
+    const chain = [];
+    for (let at = frame; at?.unwritten; at = at.parent) { at.unwritten = false; chain.push(at); }
+    for (let index = chain.length - 1; index >= 0; index -= 1) emit(functionEnterRow(chain[index]));
+  };
+  const exit = function (frame) { if (frame?.unwritten) noteMuted(frame); else if (frame?.emit_spine) emit({ kind: 'function.exit', function_id: frame?.function_id || null, function_index: frame?.function_index ?? null, action_id: frame?.action_id || null,
     parent_continuation_id: frame?.parent_continuation_id || null, continuation_id: frame?.continuation_id || null,
     continuation_kind: frame?.continuation_kind || null, invoked_by: frame?.invoked_by || 'async',
     spine: { action_id: frame?.action_id || null, function_ids: frame?.spine || [] },
@@ -1649,6 +1700,8 @@
   const threw = function (frame, error) {
     try {
       if (!frame || typeof frame !== 'object') return;
+      // The error row names this call: a muted call writes its rows after all.
+      if (frame.unwritten) writeUnwritten(frame);
       frame.threw = true; frame.error_type = errorTypeOf(error); frame.error_class = errorClassOf(error);
       if (frame.action_id && error && (typeof error === 'object' || typeof error === 'function')) {
         const prior = errorOwners.get(error);
