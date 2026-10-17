@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { compareItems, compareRuns, normalizer } from '../src/verify.mjs';
+import { compareItems, compareRuns, normalizer, requestItem, storageRow } from '../src/verify.mjs';
 
 test('normalizer hides run tokens, generated ids and clock times', () => {
   const norm = normalizer('r1a2b3');
@@ -149,4 +149,31 @@ test('compareRuns reports a page difference once, at the step where it appeared'
   const pages = compareRuns(plain, plain, traced).divergences.filter((d) => d.kind === 'page');
   assert.equal(pages.length, 1);
   assert.equal(pages[0].step.index, 0);
+});
+
+test('a changed request body is a requests divergence', () => {
+  const norm = normalizer('r1a2b3');
+  const plain = requestItem(norm, 'POST', '/comments', '{"body":"A first comment."}');
+  const changed = requestItem(norm, 'POST', '/comments', '{"body":"A first comment.","x":1}');
+  assert.match(plain, /^POST \/comments body:[0-9a-f]{10}$/u);
+  assert.notEqual(plain, changed);
+  // Run tokens and generated ids in a body are still normalized away.
+  assert.equal(
+    requestItem(norm, 'POST', '/users', '{"email":"ada-r1a2b3@example.test"}'),
+    requestItem(normalizer('r9z8y7'), 'POST', '/users', '{"email":"ada-r9z8y7@example.test"}'),
+  );
+  assert.deepEqual(compareItems([plain], [plain], [changed]), {
+    extra: [changed],
+    missing: [plain],
+  });
+});
+
+test('a long storage row keeps a hash of the whole value, so a change near the end shows', () => {
+  const norm = normalizer('r1a2b3');
+  const value = 'x'.repeat(400);
+  const a = storageRow(norm, `indexedDB app/projects "p1" = {"name":"${value}a"}`);
+  const b = storageRow(norm, `indexedDB app/projects "p1" = {"name":"${value}b"}`);
+  assert.ok(a.length < 300);
+  assert.notEqual(a, b);
+  assert.equal(storageRow(norm, 'localStorage theme = dark'), 'localStorage theme = dark');
 });
