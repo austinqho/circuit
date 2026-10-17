@@ -71,6 +71,15 @@ export function normalizeCollectorOption(value) {
 /* eslint-disable no-var */
 function installProductTraceCollectorSink(global, endpoint) {
   if (global.__productTraceCollectorStats) return;
+  // A page opened by a network address cannot post to a loopback collector (the browser blocks it):
+  // say so once instead of failing every batch.
+  var pageHost = global.location && global.location.hostname;
+  var collectorHost = /^https?:\/\/(\[[^\]]+\]|[^/:]+)/.exec(endpoint);
+  var loopback = function (host) { host = String(host || '').toLowerCase().replace(/^\[|\]$/g, ''); return host === 'localhost' || host === '::1' || /\.localhost$/.test(host) || /^127(\.\d{1,3}){3}$/.test(host); };
+  if (pageHost && collectorHost && loopback(collectorHost[1]) && !loopback(pageHost)) {
+    try { if (global.console && typeof global.console.warn === 'function') global.console.warn('[producttrace] not recording: open the app at localhost to record it (the collector only takes rows from this machine)'); } catch (error) { /* no console */ }
+    return;
+  }
   var nativeFetch = typeof global.fetch === 'function' ? global.fetch.bind(global) : null;
   var nativeSetTimeout = global.setTimeout.bind(global);
   var nativeBeacon = global.navigator && typeof global.navigator.sendBeacon === 'function' ? global.navigator.sendBeacon.bind(global.navigator) : null;

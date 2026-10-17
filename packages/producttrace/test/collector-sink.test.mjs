@@ -99,6 +99,20 @@ test('a backlog drops function rows first, and pagehide ships the user\'s steps 
   assert.equal(first[0].kind, 'dom.action', 'the click ships first, ahead of the function backlog');
 });
 
+test('a page opened by a network address does not try to post to a loopback collector', () => {
+  const env = fakeWindow();
+  const warnings = [];
+  env.window.console = { warn: (text) => warnings.push(text) };
+  env.window.location = { hostname: '192.168.1.20' };
+  vm.runInNewContext(collectorSinkSource('http://127.0.0.1:4102'), env.window);
+  assert.equal(env.window.__producttraceHostCapture, undefined);
+  assert.match(warnings[0], /open the app at localhost/u);
+  const local = fakeWindow();
+  local.window.location = { hostname: 'localhost' };
+  vm.runInNewContext(collectorSinkSource('http://127.0.0.1:4102'), local.window);
+  assert.equal(typeof local.window.__producttraceHostCapture, 'function');
+});
+
 test('round trip: sink → producttrace-collector --store → loadStore', async () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'g5-sink-'));
   const collector = createCollector({ port: 0, store: { dir, manifest: { functions: [] }, label: 'sink-test' } });

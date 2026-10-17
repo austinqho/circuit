@@ -61,8 +61,9 @@ export function localCollector({ storeDir, manifestFile, sourceRoot, label }) {
     if (!ROUTES.has(route)) return false;
     // The story carries every session's pages, values and IDs: only this machine may read or write it,
     // even when the dev server listens on the network (the socket's own address; headers are the
-    // client's to set). A page from another site open in the same browser is refused by its Origin.
-    if (!isLoopback(request.socket?.remoteAddress) || !loopbackOrigin(request.headers?.origin)) {
+    // client's to set). A page from another site open in the same browser is refused by its Origin,
+    // and a site whose name was rebound to 127.0.0.1 (DNS rebinding) by its Host.
+    if (!isLoopback(request.socket?.remoteAddress) || !loopbackOrigin(request.headers?.origin) || !loopbackHostHeader(request.headers?.host)) {
       response.statusCode = 403;
       response.end('producttrace: only this machine can reach /__producttrace');
       return true;
@@ -110,6 +111,15 @@ export function localCollectorPlugin({ storeDir, manifestFile, sourceRoot }) {
       await local.stop();
     },
   };
+}
+
+function loopbackHostHeader(host) {
+  if (typeof host !== 'string' || !host) return false;
+  try {
+    return isLoopbackHost(new URL(`http://${host}`).hostname.replace(/^\[|\]$/gu, ''));
+  } catch {
+    return false;
+  }
 }
 
 function loopbackOrigin(origin) {
