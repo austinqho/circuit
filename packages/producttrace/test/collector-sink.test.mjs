@@ -113,6 +113,22 @@ test('a page opened by a network address does not try to post to a loopback coll
   assert.equal(typeof local.window.__producttraceHostCapture, 'function');
 });
 
+test('a full queue keeps each action\'s first function rows and marks the action that lost rows', () => {
+  const env = fakeWindow({ fetchImpl: () => new Promise(() => {}) });
+  vm.runInNewContext(collectorSinkSource('http://127.0.0.1:4102'), env.window);
+  const capture = (row) => env.window.__producttraceHostCapture(JSON.stringify({ row }));
+  for (let sequence = 0; sequence < 10500; sequence += 1) capture({ kind: 'function.enter', action_id: 'burst', sequence });
+  capture({ kind: 'dom.action', action_id: 'click' });
+  for (let sequence = 0; sequence < 50; sequence += 1) capture({ kind: 'function.enter', action_id: 'click', sequence });
+  env.listeners.pagehide[0]();
+  const shipped = env.posts.filter((post) => post.beacon).flatMap((post) => JSON.parse(post.body));
+  const clickRows = shipped.filter((row) => row.action_id === 'click' && row.kind === 'function.enter');
+  const markers = shipped.filter((row) => row.kind === 'capture.dropped' && row.feature === 'function_rows');
+  assert.ok(markers.some((row) => row.action_id === 'burst' && row.count >= 500), 'the burst says it lost rows');
+  assert.ok(markers.some((row) => row.action_id === 'click' && row.count === 18), 'the click lost only rows past its first 32');
+  assert.ok(clickRows.length <= 32);
+});
+
 test('round trip: sink → producttrace-collector --store → loadStore', async () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'g5-sink-'));
   const collector = createCollector({ port: 0, store: { dir, manifest: { functions: [] }, label: 'sink-test' } });

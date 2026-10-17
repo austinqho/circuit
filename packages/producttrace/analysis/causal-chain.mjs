@@ -607,6 +607,7 @@ export const OUTCOME_STATUSES = Object.freeze(['pending', 'rejected_client_side'
 export const NO_EFFECT_NOTE = 'no effect evidence';
 export const HANDLER_RAN_NO_REQUEST = 'the handler ran and issued no request from instrumented code';
 export const NOTHING_RAN_NO_REQUEST = 'no instrumented function ran for this action';
+export const UNKNOWN_RAN_NO_REQUEST = 'whether the app\'s code ran is unknown: this action\'s function rows were dropped';
 // First reason wins; `signals` keeps all of them.
 const REASON_ORDER = ['handler_threw', 'promise_rejected', 'form_validation'];
 const plural = (count, word) => `${count} ${word}${count === 1 ? '' : 's'}`;
@@ -617,6 +618,9 @@ const pathOf = url => { try { return new URL(String(url), 'http://tracer.invalid
  * What the app itself did during an episode, from its rows only (the counts
  * a `no_request` label reports, and the recorded reject signals).
  *  - functions_entered: action-owned `function.enter` rows (instrumented code)
+ *  - function_rows_dropped: function rows the page sink dropped for these
+ *    actions (`capture.dropped` with feature function_rows): when set and none
+ *    were entered, whether the app's code ran is unknown
  *  - dom_mutations: the sum of the actions' DOM mutation receipt counts
  *  - state_effects: action-owned `function.enter` rows invoked by an effect
  *    (effects run under a state-update receipt; renders are never owned)
@@ -649,6 +653,7 @@ export function appEvidence(rows, actionIds, { errorClassName = null } = {}) {
   const enters = own.filter(row => row.kind === 'function.enter');
   return {
     functions_entered: enters.length,
+    function_rows_dropped: own.filter(row => row.kind === 'capture.dropped' && row.feature === 'function_rows').reduce((sum, row) => sum + (Number.isFinite(row.count) ? row.count : 1), 0),
     dom_mutations: own.filter(row => row.kind === 'dom.mutation').reduce((sum, row) => sum + (Number.isFinite(Number(row.count)) && Number(row.count) > 0 ? Number(row.count) : 1), 0),
     state_effects: enters.filter(row => row.invoked_by === 'effect').length,
     uncaught_errors: own.filter(row => row.kind === 'action.uncaught_error').map(row => ({ action_id: row.action_id, via: row.via ?? null,
@@ -957,9 +962,12 @@ export function actionOutcome(record, { backendInstrumented = true } = {}) {
   const evidence = record?.app_evidence || { functions_entered: 0, dom_mutations: 0, state_effects: 0 };
   const did = { functions_entered: evidence.functions_entered || 0, dom_mutations: evidence.dom_mutations || 0, state_effects: evidence.state_effects || 0 };
   const ran = did.functions_entered > 0;
-  const clause = `${ran ? HANDLER_RAN_NO_REQUEST : NOTHING_RAN_NO_REQUEST} (${plural(did.functions_entered, 'function')} entered, ${plural(did.dom_mutations, 'DOM mutation')}, ${plural(did.state_effects, 'state effect')})`;
+  // Rows the sink dropped are not evidence that nothing ran: abstain.
+  if (!ran && evidence.function_rows_dropped > 0) did.functions_unknown = true;
+  const ranText = ran ? HANDLER_RAN_NO_REQUEST : did.functions_unknown ? UNKNOWN_RAN_NO_REQUEST : NOTHING_RAN_NO_REQUEST;
+  const clause = `${ranText} (${plural(did.functions_entered, 'function')} entered, ${plural(did.dom_mutations, 'DOM mutation')}, ${plural(did.state_effects, 'state effect')})`;
   return { status: 'no_request', http_status: null, did, clause, ...windowFields,
-    label: `No request: ${ran ? HANDLER_RAN_NO_REQUEST : NOTHING_RAN_NO_REQUEST}${windowClause ? `; ${windowClause}` : ''}`,
+    label: `No request: ${ranText}${windowClause ? `; ${windowClause}` : ''}`,
     sentence: `${clause}; ${windowClause ? `${NO_REQUEST_CAVEATED}; ${windowClause}` : SCOPED_ABSENCE.no_request}` };
 }
 
