@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import http from 'node:http';
 import os from 'node:os';
 import path from 'node:path';
 import ts from 'typescript';
@@ -91,6 +92,12 @@ test('next dev: the server process runs the collector on its own 127.0.0.1 serve
   // Another site open in the same browser can neither read the story nor write rows.
   assert.equal((await fetch(`${target}/story`, { headers: { origin: 'https://evil.example' } })).status, 403);
   assert.equal((await post('https://evil.example')).status, 403);
+  // DNS rebinding: a site whose name now points at 127.0.0.1 reads same-origin, with no Origin header.
+  const rebound = await new Promise((resolve) => {
+    const { port } = new URL(target);
+    http.get({ host: '127.0.0.1', port, path: '/__producttrace/story', headers: { host: `evil.example:${port}` } }, (response) => { response.resume(); resolve(response.statusCode); });
+  });
+  assert.equal(rebound, 403);
   // Only loopback listens: the address is 127.0.0.1, never the network.
   assert.equal(new URL(target).hostname, '127.0.0.1');
 
@@ -194,8 +201,11 @@ test('a burst of actions (a held-down undo key) shares one page-wide function ro
     });
   }
   const enters = runtime.records.filter((row) => row.kind === 'function.enter');
-  assert.equal(enters.length, 5000, '5,000 function rows per 10 s window, then counted only');
+  assert.equal(enters.length, 80 * 32 + 5000, 'the first 32 rows of each action, then 5,000 more per 10 s window, then counted only');
   const limits = runtime.records.filter((row) => row.kind === 'capture.limit' && row.reason === 'page_budget');
   assert.equal(limits.length, 1);
   assert.equal(runtime.records.filter((row) => row.kind === 'dom.action').length, 80, 'every key press is still recorded');
+  // Past the window, each press still records its handler (the depth-zero frame) and first calls.
+  const roots = new Set(enters.filter((row) => row.spine.function_ids.length === 1).map((row) => row.action_id));
+  assert.equal(roots.size, 80, 'every action keeps its handler row');
 });

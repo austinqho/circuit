@@ -1562,7 +1562,9 @@
   };
   // Per action, and page-wide per window: a burst of actions (a held-down
   // undo key, each press its own action) must not flood the page either.
-  const SPINE_MAX = 64, FUNCTION_ROWS_PER_ACTION = 5000, FUNCTION_ROWS_PER_WINDOW = 5000, FUNCTION_WINDOW_MS = 10000;
+  // Each action's first rows (its handler, entered first, and the calls right
+  // under it) are outside the page window, so every action keeps its handler name.
+  const SPINE_MAX = 64, FUNCTION_ROWS_PER_ACTION = 5000, FUNCTION_ROWS_PER_WINDOW = 5000, FUNCTION_WINDOW_MS = 10000, FUNCTION_ROWS_RESERVED = 32;
   let pageWindowStart = 0, pageWindowRows = 0;
   const spineWith = (spine, function_id) => !spine?.length ? [function_id]
     : spine.length < SPINE_MAX ? [...spine, function_id] : [spine[0], ...spine.slice(spine.length - SPINE_MAX + 2), function_id];
@@ -1573,6 +1575,7 @@
     functionRowsByAction.set(action_id, used + 1);
     const now = Date.now();
     if (now - pageWindowStart >= FUNCTION_WINDOW_MS) { pageWindowStart = now; pageWindowRows = 0; }
+    if (used < FUNCTION_ROWS_RESERVED) return true;
     if (used < FUNCTION_ROWS_PER_ACTION && pageWindowRows < FUNCTION_ROWS_PER_WINDOW) { pageWindowRows += 1; return true; }
     if (used < FUNCTION_ROWS_PER_ACTION && pageWindowRows === FUNCTION_ROWS_PER_WINDOW) {
       pageWindowRows += 1;
