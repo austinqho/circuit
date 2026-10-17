@@ -109,6 +109,18 @@ test('runtime emits network.request from its own fetch/XHR wrappers when no brid
   assert.equal(xhrCalls[0].headers.traceparent, requests[1].traceparent);
 });
 
+test('traceparent goes only to the page origin and listed origins; a cross-origin request is sent as the app wrote it', () => {
+  const { runtime, fetchCalls, xhrCalls, evaluate } = loadBrowserRuntime({ extraGlobals: { URL, location: { href: 'http://127.0.0.1:5173/app' },
+    __PRODUCTTRACE_TRACE_ORIGINS__: ['https://api.example.test'] } });
+  evaluate(`fetch('/api/own'); fetch('http://127.0.0.1:5173/api/absolute'); fetch('https://cdn.other.test/data'); fetch('https://api.example.test/listed');
+    const xhr = new XMLHttpRequest(); xhr.open('GET', 'https://cdn.other.test/x'); xhr.send();`);
+  assert.deepEqual(fetchCalls.map(call => [call.input, Boolean(call.headers.traceparent)]),
+    [['/api/own', true], ['http://127.0.0.1:5173/api/absolute', true], ['https://cdn.other.test/data', false], ['https://api.example.test/listed', true]]);
+  assert.equal(xhrCalls[0].headers.traceparent, undefined);
+  const rows = JSON.parse(JSON.stringify(runtime.records.filter(row => row.kind === 'network.request')));
+  assert.deepEqual([...rows.map(row => row.traceparent_sent ?? true)], [true, true, false, true, false]);
+});
+
 test('the bridge guard suppresses only the duplicate row of the bridge-owned call', () => {
   const { runtime, context, evaluate } = loadBrowserRuntime();
   evaluate(`globalThis.__PRODUCTTRACE_BRIDGE_TRANSPORT__ = true; fetch('/api/bridged'); globalThis.__PRODUCTTRACE_BRIDGE_TRANSPORT__ = undefined; fetch('/api/direct');`);
