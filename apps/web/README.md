@@ -71,20 +71,24 @@ Lines are paired with steps by each step's time window. That pairing is the benc
 ```sh
 node apps/web/scripts/verify.mjs                       # bulletproof-react, flows/bulletproof-react.jsonl
 node apps/web/scripts/verify.mjs --repo excalidraw/excalidraw --app-dir excalidraw-app --flow apps/web/flows/excalidraw.jsonl
+npm run verify:probe -w apps/web                       # the probe page (apps/web/probe)
 ```
 
 The flow runs three times in fresh browsers on the dev server: twice without the package (the control) and once with it. Whatever both plain runs agree on and the traced run does not is reported as a divergence:
 
-| Kind             | What differed                                                                     |
-| ---------------- | --------------------------------------------------------------------------------- |
-| `step_failed`    | A step that worked without the package failed with it (or the reverse)            |
-| `url`            | The URL after a step                                                              |
-| `page`           | The accessibility tree after a step, once the page stopped changing               |
-| `requests`       | fetch/XHR requests sent: method, path and a hash of the body                      |
-| `console_errors` | `console.error` messages and uncaught errors                                      |
-| `storage`        | localStorage, sessionStorage, cookie names and IndexedDB record counts at the end |
+| Kind              | What differed                                                                     |
+| ----------------- | --------------------------------------------------------------------------------- |
+| `step_failed`     | A step that worked without the package failed with it (or the reverse)            |
+| `url`             | The URL after a step                                                              |
+| `page`            | The accessibility tree after a step, once the page stopped changing               |
+| `requests`        | fetch/XHR requests sent: method, path and a hash of the body                      |
+| `request_headers` | Headers sent to another origin (one its server does not allow fails the request)  |
+| `console_errors`  | `console.error` messages and uncaught errors                                      |
+| `storage`         | localStorage, sessionStorage, cookie names and IndexedDB record counts at the end |
 
-Run tokens (`{{run}}` in a step value), UUIDs, timestamps, clock times and generated ids are normalized, and anything the two plain runs already disagree on is the app's own noise. A slower traced page gets up to 10 s to reach the same state before it counts as different. The result also reports the overhead (Chrome's script time with and without the package, and the worst step) and the footprint the package adds on purpose: DOM attributes, request headers and browser APIs it replaces. The script exits 1 when the app behaved differently, and the full runs are saved next to the app's work folder.
+Run tokens (`{{run}}` in a step value), UUIDs, timestamps, clock times and generated ids are normalized, and anything the two plain runs already disagree on is the app's own noise. A slower traced page gets up to 10 s to reach the same state before it counts as different. The result also reports the overhead (Chrome's script time with and without the package, and the worst step) and the footprint the package adds on purpose: DOM attributes, request headers and browser APIs it replaces. The script exits 1 when the app behaved differently, and the full runs are saved next to the app's work folder. These runs leave every request to the browser itself (no Playwright routing, which lets a request through that CORS would refuse); hosts other than the machine's own do not resolve.
+
+Real apps rarely hit the cases where instrumentation is most likely to change behavior, so `apps/web/probe` is a page made of them, one button each: a listener that removes itself, `once` listeners, a request to another origin that allows no extra headers, the order of an `await` against a `.then` chain, `fetch` with an invalid header, what the app can read of its own functions and the platform's, a loop of small calls, a request two continuations after a click, and a request from an effect. Each writes its result onto the page, so the `page` comparison catches it. The listener cases differ only in production builds, which the check does not run yet.
 
 ## HTTP API
 

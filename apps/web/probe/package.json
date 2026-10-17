@@ -1,0 +1,16 @@
+{
+  "name": "circuit-probe",
+  "private": true,
+  "type": "module",
+  "description": "A page of small cases where an instrumented app can behave differently from the plain one. `npm run verify:probe -w apps/web` runs it.",
+  "scripts": {
+    "dev": "vite"
+  },
+  "dependencies": {
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  },
+  "devDependencies": {
+    "vite": "^6.4.0"
+  }
+}

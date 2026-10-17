@@ -11,6 +11,8 @@
   "scripts": {
     "start": "node src/server.mjs",
     "mcp": "node src/mcp.mjs",
+    "verify": "node scripts/verify.mjs",
+    "verify:probe": "node scripts/verify.mjs --probe",
     "test": "node --test test/*.test.mjs"
   },
   "engines": {

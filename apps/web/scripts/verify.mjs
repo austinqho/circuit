@@ -4,8 +4,11 @@
 // uses, and prints every difference, the overhead and the package's footprint.
 //
 //   node apps/web/scripts/verify.mjs [--repo owner/name] [--app-dir dir] [--flow file.jsonl] [--out result.json]
+//   node apps/web/scripts/verify.mjs --probe
 //
-// Defaults to bulletproof-react and flows/bulletproof-react.jsonl. A flow is
+// Defaults to bulletproof-react and flows/bulletproof-react.jsonl. `--probe`
+// runs the probe page instead (apps/web/probe): one click per case where an
+// instrumented app is known to be able to behave differently. A flow is
 // one circuit_act step per line; lines starting with # are comments. Exits 1
 // when the app behaved differently.
 import fs from 'node:fs';
@@ -17,8 +20,11 @@ import { StdioClientTransport } from '@modelcontextprotocol/sdk/client/stdio.js'
 const here = path.dirname(fileURLToPath(import.meta.url));
 const arg = (name, fallback = null) =>
   process.argv.includes(name) ? process.argv[process.argv.indexOf(name) + 1] : fallback;
-const repo = arg('--repo', 'alan2207/bulletproof-react');
-const flow = arg('--flow', path.join(here, '..', 'flows', 'bulletproof-react.jsonl'));
+const probe = process.argv.includes('--probe');
+const repo = probe ? path.join(here, '..', 'probe') : arg('--repo', 'alan2207/bulletproof-react');
+const flow = probe
+  ? path.join(here, '..', 'flows', 'probe.jsonl')
+  : arg('--flow', path.join(here, '..', 'flows', 'bulletproof-react.jsonl'));
 const out = arg('--out');
 const steps = fs
   .readFileSync(flow, 'utf8')

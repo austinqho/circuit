@@ -104,3 +104,49 @@ test('compareRuns names each way the traced run behaved differently', () => {
   const kinds = compareRuns(plain, plain, traced).divergences.map((d) => d.kind);
   assert.deepEqual(kinds, ['step_failed', 'url', 'page', 'requests', 'console_errors']);
 });
+
+test('compareRuns counts a header added to another origin, and lists same-origin ones as footprint', () => {
+  const plain = run({
+    steps: [{}],
+    headers: ['GET cross-origin /data: accept', 'POST /api/save: accept'],
+  });
+  const traced = run({
+    steps: [{}],
+    headers: [
+      'GET cross-origin /data: accept',
+      'GET cross-origin /data: traceparent',
+      'POST /api/save: accept',
+      'POST /api/save: traceparent',
+    ],
+  });
+  const result = compareRuns(plain, plain, traced);
+  assert.equal(result.verdict, 'different');
+  assert.deepEqual(result.divergences, [
+    {
+      kind: 'request_headers',
+      step: null,
+      only_traced: ['GET cross-origin /data: traceparent'],
+      only_plain: [],
+    },
+  ]);
+  assert.deepEqual(result.footprint.request_headers, ['traceparent']);
+});
+
+test('compareRuns reports a page difference once, at the step where it appeared', () => {
+  const lines = (...extra) => ['- button "Save"', ...extra];
+  const plain = run({
+    steps: [
+      { lines: lines('- paragraph: a') },
+      { lines: lines('- paragraph: a', '- paragraph: b') },
+    ],
+  });
+  const traced = run({
+    steps: [
+      { lines: lines('- paragraph: x') },
+      { lines: lines('- paragraph: x', '- paragraph: b') },
+    ],
+  });
+  const pages = compareRuns(plain, plain, traced).divergences.filter((d) => d.kind === 'page');
+  assert.equal(pages.length, 1);
+  assert.equal(pages[0].step.index, 0);
+});

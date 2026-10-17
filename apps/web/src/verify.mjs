@@ -189,7 +189,8 @@ async function readFootprint(page) {
 /** One run of the steps on a fresh browser, with everything the comparison reads. */
 async function observe({ baseUrl, ignoreOrigins = [], steps, token, reference = null }) {
   const norm = normalizer(token);
-  const session = new BrowserSession(baseUrl, { ignoreOrigins });
+  const origin = new URL(baseUrl).origin;
+  const session = new BrowserSession(baseUrl, { ignoreOrigins, intercept: false });
   const page = await session.ensure();
   const cdp = await session.context
     .newCDPSession(page)
@@ -218,8 +219,10 @@ async function observe({ baseUrl, ignoreOrigins = [], steps, token, reference = 
       step: stepIndex,
       item: norm(`${request.method()} ${url.pathname}${url.search}${digest}`),
     });
+    // A header added to another origin's request can fail it (CORS preflight).
+    const scope = url.origin === origin ? '' : 'cross-origin ';
     for (const name of Object.keys(request.headers()))
-      run.headers.push(norm(`${request.method()} ${url.pathname}: ${name}`));
+      run.headers.push(norm(`${request.method()} ${scope}${url.pathname}: ${name}`));
   });
   page.on('console', (message) => {
     if (message.type() === 'error')
@@ -283,6 +286,7 @@ export function compareRuns(plainA, plainB, traced) {
   const describeStep = (index) =>
     index == null ? null : { index, description: traced.steps[index]?.description ?? null };
 
+  const shown = { extra: new Set(), missing: new Set() };
   traced.steps.forEach((step, index) => {
     const a = plainA.steps[index];
     const b = plainB.steps[index];
@@ -292,11 +296,17 @@ export function compareRuns(plainA, plainB, traced) {
       add('step_passed', describeStep(index), { plain_error: a.error });
     if (a.url === b.url && step.url !== a.url)
       add('url', describeStep(index), { plain: a.url, traced: step.url });
+    // A difference stays on the page for the steps after it: each one is
+    // reported at the step where it first appeared.
     const page = compareItems(a.lines, b.lines, step.lines);
-    if (page.extra.length || page.missing.length)
+    const extra = page.extra.filter((line) => !shown.extra.has(line));
+    const missing = page.missing.filter((line) => !shown.missing.has(line));
+    page.extra.forEach((line) => shown.extra.add(line));
+    page.missing.forEach((line) => shown.missing.add(line));
+    if (extra.length || missing.length)
       add('page', describeStep(index), {
-        only_traced: page.extra.slice(0, 20),
-        only_plain: page.missing.slice(0, 20),
+        only_traced: extra.slice(0, 20),
+        only_plain: missing.slice(0, 20),
       });
   });
 
@@ -306,6 +316,9 @@ export function compareRuns(plainA, plainB, traced) {
       add(kind, null, { only_traced: extra.slice(0, 30), only_plain: missing.slice(0, 30) });
   };
   channel('requests', (run) => items(run.requests));
+  // Headers on requests to other origins: one the server does not allow fails
+  // the request. Headers on the app's own origin are listed under footprint.
+  channel('request_headers', (run) => run.headers.filter((row) => / cross-origin /u.test(row)));
   channel('console_errors', (run) => items(run.console));
   channel('storage', (run) => run.storage);
 
@@ -370,7 +383,10 @@ export async function verifyReadOnly({ serve, steps, onProgress = () => {} }) {
     try {
       // The first load after a config change can re-optimize dependencies and
       // reload the page; let that happen before anything is observed.
-      const warm = new BrowserSession(served.baseUrl, { ignoreOrigins: served.ignoreOrigins });
+      const warm = new BrowserSession(served.baseUrl, {
+        ignoreOrigins: served.ignoreOrigins,
+        intercept: false,
+      });
       await warm.act({ action: 'goto', value: '/' });
       await warm.page?.waitForLoadState('networkidle', { timeout: 15000 }).catch(() => {});
       await warm.reset();
