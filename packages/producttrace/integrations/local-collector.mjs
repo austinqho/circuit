@@ -20,6 +20,7 @@ import http from 'node:http';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createCollector } from '../collector/index.js';
+import { isLoopbackHost } from './collector-sink.mjs';
 
 export const LOCAL_COLLECTOR_BASE = '/__producttrace';
 
@@ -54,8 +55,10 @@ export function localCollectorPlugin({ storeDir, manifestFile, sourceRoot }) {
       // Only the collector's own routes: anything else under the prefix (the request bridge) is the app's.
       if (!ROUTES.has(route)) return next();
       // The story carries every session's pages, values and IDs: only this machine may read or write it,
-      // even when the dev server listens on the network (`server.host`).
-      if (!isLoopback(request.socket?.remoteAddress)) {
+      // even when the dev server listens on the network (`server.host`). This middleware answers before
+      // Vite's own host check, so it checks the Host itself: a site whose name was rebound to 127.0.0.1
+      // (DNS rebinding) is refused, and so is a page from another site open in the same browser (Origin).
+      if (!isLoopback(request.socket?.remoteAddress) || !loopbackName(hostname(request.headers.host)) || (request.headers.origin !== undefined && !loopbackName(originHostname(request.headers.origin)))) {
         response.statusCode = 403;
         response.end('producttrace: only this machine can reach /__producttrace');
         return;
@@ -92,6 +95,18 @@ export function localCollectorPlugin({ storeDir, manifestFile, sourceRoot }) {
       await stop();
     },
   };
+}
+
+function hostname(host) {
+  try { return new URL(`http://${host}`).hostname; } catch { return ''; }
+}
+
+function originHostname(origin) {
+  try { return new URL(origin).hostname; } catch { return ''; }
+}
+
+function loopbackName(name) {
+  return isLoopbackHost(String(name || '').replace(/^\[|\]$/gu, ''));
 }
 
 function isLoopback(address) {
