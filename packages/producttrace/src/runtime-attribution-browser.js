@@ -1560,7 +1560,10 @@
     if (current?.continuation_kind && current.continuation_kind !== 'action' && current.continuation_kind !== 'function') return 'async';
     return current?.action_id ? 'event' : 'async';
   };
-  const SPINE_MAX = 64, FUNCTION_ROWS_PER_ACTION = 5000;
+  // Per action, and page-wide per window: a burst of actions (a held-down
+  // undo key, each press its own action) must not flood the page either.
+  const SPINE_MAX = 64, FUNCTION_ROWS_PER_ACTION = 5000, FUNCTION_ROWS_PER_WINDOW = 5000, FUNCTION_WINDOW_MS = 10000;
+  let pageWindowStart = 0, pageWindowRows = 0;
   const spineWith = (spine, function_id) => !spine?.length ? [function_id]
     : spine.length < SPINE_MAX ? [...spine, function_id] : [spine[0], ...spine.slice(spine.length - SPINE_MAX + 2), function_id];
   const functionRowsByAction = new Map();
@@ -1568,7 +1571,13 @@
     const used = functionRowsByAction.get(action_id) || 0;
     if (used === FUNCTION_ROWS_PER_ACTION) reportLimit({ kind: 'capture.limit', feature: 'function_rows', reason: 'per_action_budget', action_id, limit: FUNCTION_ROWS_PER_ACTION });
     functionRowsByAction.set(action_id, used + 1);
-    if (used < FUNCTION_ROWS_PER_ACTION) return true;
+    const now = Date.now();
+    if (now - pageWindowStart >= FUNCTION_WINDOW_MS) { pageWindowStart = now; pageWindowRows = 0; }
+    if (used < FUNCTION_ROWS_PER_ACTION && pageWindowRows < FUNCTION_ROWS_PER_WINDOW) { pageWindowRows += 1; return true; }
+    if (used < FUNCTION_ROWS_PER_ACTION && pageWindowRows === FUNCTION_ROWS_PER_WINDOW) {
+      pageWindowRows += 1;
+      reportLimit({ kind: 'capture.limit', feature: 'function_rows', reason: 'page_budget', action_id, limit: FUNCTION_ROWS_PER_WINDOW, window_ms: FUNCTION_WINDOW_MS });
+    }
     functionWindowCounts.set(action_id, (functionWindowCounts.get(action_id) || 0) + 1);
     return false;
   };

@@ -16,7 +16,10 @@
  * - `capture_page_id` is the runtime's page session (`s_…`, also `tracer_session`
  *   in OAI metadata) when a row has none.
  * - Failed batches are retried, then counted as dropped; `pagehide` asks the
- *   runtime for its `capture.summary` row, then flushes the tail with `sendBeacon`. `globalThis.__productTraceCollectorStats()` reports
+ *   runtime for its `capture.summary` row, then flushes the tail with `sendBeacon`,
+ *   the user's steps (every row but `function.*`) ahead of function rows.
+ * - The queue is bounded: past QUEUE_MAX rows, new `function.*` rows are
+ *   dropped (counted) so actions, navigations and requests still ship. `globalThis.__productTraceCollectorStats()` reports
  *   queued / sent / batches / dropped / malformed, and the first drop or
  *   malformed row logs one console warning. A malformed host payload (not JSON,
  *   or not an object) is not shipped; a `capture.dropped` row (reason, length,
@@ -80,7 +83,8 @@ function installProductTraceCollectorSink(global, endpoint) {
     if (warned) return; warned = true;
     try { if (global.console && typeof global.console.warn === 'function') global.console.warn('[producttrace] collector sink ' + what + '; see __productTraceCollectorStats()'); } catch (error) { /* no console */ }
   };
-  var BATCH = 200; var DELAY = 200;
+  var BATCH = 200; var DELAY = 200; var QUEUE_MAX = 10000;
+  var isFunctionRow = function (row) { return typeof row.kind === 'string' && row.kind.indexOf('function.') === 0; };
   var pageId = function () {
     var runtime = global.__productTraceRuntime;
     if (runtime && typeof runtime.session === 'string') return runtime.session;
@@ -133,7 +137,10 @@ function installProductTraceCollectorSink(global, endpoint) {
       queue.push({ kind: 'capture.dropped', reason: 'malformed_host_payload', count: 1, length: typeof text === 'string' ? text.length : null, timestamp: Date.now() });
       schedule(); return;
     }
-    stats.received += 1; queue.push(row); schedule();
+    stats.received += 1;
+    // A backlog (the collector slower than the page) costs function rows first, never the user's steps.
+    if (queue.length >= QUEUE_MAX && (isFunctionRow(row) || queue.length >= 2 * QUEUE_MAX)) { stats.dropped += 1; warnOnce('dropped rows (queue full)'); return; }
+    queue.push(row); schedule();
   };
   if (typeof global.addEventListener === 'function') {
     global.addEventListener('pagehide', function () {
@@ -147,9 +154,10 @@ function installProductTraceCollectorSink(global, endpoint) {
       // pagehide beacons may carry, and a summary lost behind a long queue
       // leaves the page's coverage unprovable. Rows after it that do not fit
       // are counted as dropped; the summary's last_sequence shows the gap.
-      var summaries = []; var others = [];
-      for (var at = 0; at < rows.length; at += 1) (rows[at] && rows[at].kind === 'capture.summary' ? summaries : others).push(rows[at]);
-      rows = summaries.concat(others);
+      // Then the user's steps, then function rows: what does not fit is the least needed.
+      var summaries = []; var steps = []; var functions = [];
+      for (var at = 0; at < rows.length; at += 1) (rows[at] && rows[at].kind === 'capture.summary' ? summaries : rows[at] && isFunctionRow(rows[at]) ? functions : steps).push(rows[at]);
+      rows = summaries.concat(steps, functions);
       var chunk = [];
       var ship = function () {
         if (!chunk.length) return;

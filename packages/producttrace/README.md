@@ -42,9 +42,9 @@ import { withProducttrace } from 'producttrace/next';
 export default withProducttrace(nextConfig);
 ```
 
-`next dev` (Turbopack or `--webpack`) prints `- producttrace: http://localhost:3000/__producttrace/` before its own banner. `next build` and `next start` get your config back untouched.
+`next dev` (Turbopack or `--webpack`) prints `- producttrace: http://127.0.0.1:<port>/__producttrace/`. That collector runs on its own server bound to 127.0.0.1, outside Next.js routing, so your middleware (a sign-in redirect) never blocks it and other machines on your network can't reach it, even when `next dev` listens on the network. The port stays the same across restarts of the same app. `next build` and `next start` get your config back untouched. Next.js 15.3 or later.
 
-Open the app in one tab and `/__producttrace/` in another. As you click through the app, the second tab narrates each goal in a sentence, with its steps underneath. Everything is recorded into `node_modules/.producttrace/store`; your source tree is never written.
+Open the app in one tab and the printed URL in another. As you click through the app, the second tab narrates each goal in a sentence, with its steps underneath. Everything is recorded into `node_modules/.producttrace/store`; your source tree is never written.
 
 The dev server runs the collector for you. To run your own instead (say, to also trace a backend), pass `collector: 'http://127.0.0.1:8787'` and start `npx producttrace-collector --store .tracer --port 8787`. Backend spans need the server started with `node --import producttrace/backend/register server.js`.
 

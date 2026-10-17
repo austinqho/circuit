@@ -56,13 +56,14 @@ test('withProducttrace() under next dev adds the loader for browser modules and 
   // The recorder lives beside the package cache, never in the source tree.
   const recorder = fs.readFileSync(path.join(root, 'node_modules', '.producttrace', 'next-client.js'), 'utf8');
   assert.match(recorder, /__PRODUCTTRACE_LABELS__/u);
-  assert.match(recorder, /\\"\/__producttrace\\"/u, 'rows go to /__producttrace on the app origin');
   assert.deepEqual(fs.readdirSync(path.join(root, 'src', 'app')), []);
-  // Without NEXT_PRIVATE_WORKER this is the `next dev` CLI process: it serves nothing, so no collector.
+  // Without NEXT_PRIVATE_WORKER this is the `next dev` CLI process: it serves nothing, so no collector
+  // and no sink yet (the server process writes the real recorder).
+  assert.doesNotMatch(recorder, /installProductTraceCollectorSink/u);
   assert.equal(config.rewrites, undefined);
 });
 
-test('next dev: the server process runs the collector behind /__producttrace rewrites', async (t) => {
+test('next dev: the server process runs the collector on its own 127.0.0.1 server, outside Next.js routing', async (t) => {
   const root = tempApp();
   const cacheDir = path.join(root, 'node_modules', '.producttrace');
   // Hooks run in order: stop the collector before the directory goes.
@@ -71,24 +72,27 @@ test('next dev: the server process runs the collector behind /__producttrace rew
   const previous = process.env.NEXT_PRIVATE_WORKER;
   process.env.NEXT_PRIVATE_WORKER = '1';
   t.after(() => { if (previous === undefined) delete process.env.NEXT_PRIVATE_WORKER; else process.env.NEXT_PRIVATE_WORKER = previous; });
-  const config = await withProducttrace({ rewrites: async () => [{ source: '/api/:path*', destination: 'http://localhost:9000/:path*' }] })(DEV, {});
+  const rewrites = async () => [{ source: '/api/:path*', destination: 'http://localhost:9000/:path*' }];
+  const config = await withProducttrace({ rewrites })(DEV, {});
 
-  const rewrites = await config.rewrites();
-  assert.deepEqual(rewrites.afterFiles, [{ source: '/api/:path*', destination: 'http://localhost:9000/:path*' }]);
-  const [exact, nested] = rewrites.beforeFiles;
-  assert.equal(exact.source, '/__producttrace');
-  assert.equal(nested.basePath, false, 'reachable at the root even under a basePath');
-  const target = nested.destination.replace('/:path*', '');
-  assert.match(target, /^http:\/\/127\.0\.0\.1:\d+\/__producttrace$/u);
+  // No rewrite: middleware (a sign-in redirect) and the app's routes never see the collector.
+  assert.equal(config.rewrites, rewrites);
+  const recorder = fs.readFileSync(path.join(cacheDir, 'next-client.js'), 'utf8');
+  const target = recorder.match(/http:\/\/127\.0\.0\.1:\d+\/__producttrace/u)?.[0];
+  assert.ok(target, 'the page posts straight to the loopback collector');
 
   const row = { schema: 'producttrace.runtime.v1', event: 'capture.summary', capture_page_id: 's_test', timestamp: Date.now() };
-  assert.equal((await fetch(`${target}/ingest`, { method: 'POST', headers: { 'content-type': 'text/plain' }, body: JSON.stringify([row]) })).status, 200);
+  const post = (origin) => fetch(`${target}/ingest`, { method: 'POST', headers: { 'content-type': 'text/plain', origin }, body: JSON.stringify([row]) });
+  assert.equal((await post('http://localhost:3000')).status, 200, 'the app on localhost may post');
   const status = await (await fetch(`${target}/status`)).json();
   assert.equal(status.received, 1);
   assert.equal(status.store, path.join(cacheDir, 'store'));
   assert.match(await (await fetch(`${target}/`)).text(), /What the user is doing/u);
-  // Next.js proxies the rewrite; a browser on another machine shows up in x-forwarded-for.
-  assert.equal((await fetch(`${target}/story`, { headers: { 'x-forwarded-for': '192.168.1.20' } })).status, 403);
+  // Another site open in the same browser can neither read the story nor write rows.
+  assert.equal((await fetch(`${target}/story`, { headers: { origin: 'https://evil.example' } })).status, 403);
+  assert.equal((await post('https://evil.example')).status, 403);
+  // Only loopback listens: the address is 127.0.0.1, never the network.
+  assert.equal(new URL(target).hostname, '127.0.0.1');
 
   // Loader workers each write a manifest; the collector follows their union.
   const manifests = path.join(cacheDir, 'next-manifests');
@@ -98,9 +102,9 @@ test('next dev: the server process runs the collector behind /__producttrace rew
   for (let attempt = 0; attempt < 40 && !fs.existsSync(merged); attempt += 1) await new Promise((resolve) => setTimeout(resolve, 50));
   assert.deepEqual(JSON.parse(fs.readFileSync(merged, 'utf8')).functions.map((row) => row.id).sort(), ['function:a:0:1', 'function:b:0:1']);
 
-  // Next.js loads the config again on restarts: same collector.
-  const again = await withProducttrace({})(DEV, {});
-  assert.equal((await again.rewrites()).beforeFiles[1].destination, nested.destination);
+  // Next.js loads the config again on restarts: same collector, same URL.
+  await withProducttrace({})(DEV, {});
+  assert.match(fs.readFileSync(path.join(cacheDir, 'next-client.js'), 'utf8'), new RegExp(target.replace(/[.]/gu, '\\.'), 'u'));
 });
 
 test('the Next.js loader compiles a client module, instruments its functions and imports the recorder first', (t) => {
@@ -157,4 +161,41 @@ test('one click that drives a long render loop stays bounded in the page', () =>
   assert.equal(deepest.spine.function_ids[0], 'function-index:1', 'the root (the handler) is kept');
   const limits = runtime.records.filter((row) => row.kind === 'capture.limit' && row.feature === 'function_rows');
   assert.equal(limits.length, 1, 'said once that the rest was counted only');
+});
+
+test('types: a config typed NextConfig (an interface), a promise of one, under node and bundler resolution', (t) => {
+  const root = fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(), 'producttrace-next-types-')));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  fs.mkdirSync(path.join(root, 'node_modules'));
+  fs.symlinkSync(path.resolve(import.meta.dirname, '..'), path.join(root, 'node_modules', 'producttrace'));
+  const file = path.join(root, 'next.config.ts');
+  fs.writeFileSync(file, `import { withProducttrace } from 'producttrace/next';
+interface NextConfig { reactStrictMode?: boolean; images?: { domains?: string[] } }
+const nextConfig: NextConfig = { reactStrictMode: true };
+export const plain = withProducttrace(nextConfig);
+export const later = withProducttrace(Promise.resolve(nextConfig), { collector: false });
+export const byPhase = withProducttrace(async (phase: string) => ({ ...nextConfig, phase }));
+export default withProducttrace(nextConfig);
+const check: Promise<NextConfig> = plain('phase-development-server', { defaultConfig: {} });
+void check;
+`);
+  for (const moduleResolution of [ts.ModuleResolutionKind.Node10, ts.ModuleResolutionKind.Bundler]) {
+    const program = ts.createProgram([file], { strict: true, noEmit: true, target: ts.ScriptTarget.ES2022, module: ts.ModuleKind.ESNext, moduleResolution, types: [] });
+    const errors = ts.getPreEmitDiagnostics(program).map((diagnostic) => ts.flattenDiagnosticMessageText(diagnostic.messageText, '\n'));
+    assert.deepEqual(errors, [], `moduleResolution ${ts.ModuleResolutionKind[moduleResolution]}`);
+  }
+});
+
+test('a burst of actions (a held-down undo key) shares one page-wide function row budget', () => {
+  const { runtime, dispatch } = loadBrowserRuntime({ extraGlobals: { event: undefined } });
+  for (let press = 0; press < 80; press += 1) {
+    dispatch('keydown', fakeElement('body'), { key: 'z', ctrlKey: true }, () => {
+      for (let call = 0; call < 3000; call += 1) runtime.exit(runtime.enter(1000 + press));
+    });
+  }
+  const enters = runtime.records.filter((row) => row.kind === 'function.enter');
+  assert.equal(enters.length, 5000, '5,000 function rows per 10 s window, then counted only');
+  const limits = runtime.records.filter((row) => row.kind === 'capture.limit' && row.reason === 'page_budget');
+  assert.equal(limits.length, 1);
+  assert.equal(runtime.records.filter((row) => row.kind === 'dom.action').length, 80, 'every key press is still recorded');
 });
