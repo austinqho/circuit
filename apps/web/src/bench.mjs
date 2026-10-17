@@ -352,7 +352,8 @@ export function createBench({
         .slice(0, 6)}`;
       if (apps.has(id)) {
         const existing = apps.get(id);
-        if (existing.status === 'failed') {
+        // A local folder is someone's working copy: adding it again takes a fresh copy.
+        if (existing.status === 'failed' || (existing.local && existing.status === 'ready')) {
           Object.assign(existing, {
             env: env ?? existing.env,
             pluginOptions: pluginOptions ?? existing.pluginOptions,

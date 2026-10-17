@@ -94,6 +94,15 @@ test('compareRuns says same when the traced run matches the control', () => {
   });
 });
 
+test('a step that failed in every run is listed as not checked, not hidden behind SAME', () => {
+  const steps = [{}, { ok: false, error: 'target not found' }];
+  const result = compareRuns(run({ steps }), run({ steps }), run({ steps }));
+  assert.equal(result.verdict, 'same');
+  assert.deepEqual(result.failed_in_every_run, [
+    { index: 1, description: 'Clicked "Save"', error: 'target not found' },
+  ]);
+});
+
 test('compareRuns names each way the traced run behaved differently', () => {
   const plain = run({
     steps: [{}, { url: '/done', lines: ['- heading "Saved"'] }],
@@ -166,13 +175,13 @@ test('debugger mode: the summary counts actions and how each request was joined'
     { kind: 'observe.request', action_id: null, via: 'unknown' },
     { kind: 'observe.request', action_id: null, via: 'unknown' },
   ];
-  assert.deepEqual(summarizeObserved({ stats: { pauses: 4, paused_ms: 12, errors: 0 }, records }), {
+  assert.deepEqual(summarizeObserved({ stats: { pauses: 0, dispatches: 5, errors: 0 }, records }), {
     actions: 1,
     requests: 3,
     joined: 1,
     via: { dispatch: 1, unknown: 2 },
-    pauses: 4,
-    paused_ms: 12,
+    dispatches: 5,
+    pauses: 0,
     errors: 0,
   });
 });

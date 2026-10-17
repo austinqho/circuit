@@ -342,8 +342,9 @@ async function observe({
   run.storage = (await readStorage(page)).map((row) => storageRow(norm, row));
   run.footprint = await readFootprint(page);
   if (watcher) {
-    run.observed = { stats: watcher.stats(), records: watcher.records() };
+    // Stopping finishes reading what the page already reported.
     await watcher.stop();
+    run.observed = { stats: watcher.stats(), records: watcher.records() };
   }
   await session.reset();
   return run;
@@ -429,6 +430,11 @@ export function compareRuns(plainA, plainB, traced) {
     verdict: divergences.length ? 'different' : 'same',
     steps: traced.steps.length,
     divergences,
+    // Steps that failed in every run checked nothing; SAME does not cover them.
+    failed_in_every_run: traced.steps
+      .map((step, index) => ({ step, index }))
+      .filter(({ step, index }) => !step.ok && !plainA.steps[index]?.ok && !plainB.steps[index]?.ok)
+      .map(({ step, index }) => ({ index, description: step.description, error: step.error })),
     overhead: {
       script_ms: { plain: Math.round(plainScript), traced: Math.round(traced.script_ms) },
       ratio: plainScript > 0 ? Number((traced.script_ms / plainScript).toFixed(2)) : null,
@@ -459,8 +465,8 @@ export function summarizeObserved({ stats, records }) {
     requests: requests.length,
     joined: requests.filter((row) => row.action_id).length,
     via,
+    dispatches: stats.dispatches,
     pauses: stats.pauses,
-    paused_ms: stats.paused_ms,
     errors: stats.errors,
     ...(stats.last_error ? { last_error: stats.last_error } : {}),
   };

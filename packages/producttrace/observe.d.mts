@@ -23,6 +23,8 @@ export interface ObserveAction {
   kind: 'observe.action';
   action_id: string;
   event: string;
+  /** For key events: the key with its modifiers, such as `Control+s`. */
+  key?: string;
   target: {
     tag: string;
     role: string | null;
@@ -41,7 +43,12 @@ export interface ObserveRequest {
   method: string;
   /** The action that caused it, or null when the browser gives no identifier that says which. */
   action_id: string | null;
-  via: 'dispatch' | 'event_in_scope' | 'state_effect' | 'only_run_of_handler' | 'unknown';
+  /**
+   * `dispatch`: sent while that action's event was being dispatched.
+   * `only_run_of_handler`: its async stack passes through a handler React called for that one action only.
+   * `unknown`: no identifier says which; `could_be` lists the candidates when there are some.
+   */
+  via: 'dispatch' | 'only_run_of_handler' | 'unknown';
   reason?: string;
   could_be?: string[];
   started_in?: ObservedFunction | null;
@@ -51,10 +58,13 @@ export interface ObserveRequest {
 }
 
 export interface ObserveStats {
+  /** Action rows written. */
   actions: number;
+  /** Times the page paused. Always 0: every pause is skipped. */
   pauses: number;
-  paused_ms: number;
-  requests_read_without_pause: number;
+  /** Trusted user events seen. */
+  dispatches: number;
+  requests: number;
   errors: number;
   last_error?: string;
 }
@@ -65,5 +75,9 @@ export interface Observer {
   stop(): Promise<void>;
 }
 
-/** Watch a page through the debugger: no rewrite, no injected script, no replaced browser API. */
+/**
+ * Watch a page through the debugger without pausing it: no rewrite and no
+ * replaced browser API. It adds event listeners in an isolated world the
+ * app's scripts cannot see.
+ */
 export function observePage(cdp: CdpSession, options?: ObserveOptions): Promise<Observer>;

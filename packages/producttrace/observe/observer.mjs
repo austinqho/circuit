@@ -1,106 +1,171 @@
 /**
- * Observe mode: what the user did and what each action caused, read from
- * Chrome's debugger. Nothing in the app is rewritten, wrapped or replaced.
- *
- * The page pauses only while it is handling the user's own input: at a user
- * event, and at a fetch / XHR send or a React setState that runs while one is
- * being dispatched (conditional breakpoints, checked in the page, decide). Chrome
- * drops input that arrives while a page is paused, so the observer never
- * pauses in background work, where the user's next press could land. A
- * request sent outside a dispatch is read from the network event's own stack,
- * without pausing.
+ * Observe mode: what the user did and what each action caused, read through
+ * Chrome's DevTools Protocol. Nothing in the app is rewritten, wrapped or
+ * replaced, and the page never pauses (Chrome drops input that arrives while a
+ * page is paused, ADR 0006).
  *
  *   const observer = await observePage(cdpSession, { appOrigin });
  *   ... drive the page ...
  *   observer.records(); // observe.action / observe.request rows
  *   await observer.stop();
  *
- * `cdpSession` is a Chrome DevTools Protocol session for the page (Playwright's
- * `context.newCDPSession(page)` or any { send, on, off }). Joins follow
- * attribution.mjs: identifiers only, unknown when the browser gives none.
+ * `cdpSession` is a DevTools Protocol session for the page (Playwright's
+ * `context.newCDPSession(page)` or any { send, on, off }).
  *
- * Reads it makes in the page (all through the debugger, none writing):
- * `window.event`, the event's target and its ancestors' React props
- * (`__reactProps$…`, for the declared handler), and the variables of the
- * functions on the stack when a request is sent.
+ * What it adds to the page: one listener per user event type on `window`, at
+ * the start and at the end of each dispatch, in an isolated world the app's
+ * scripts cannot see. Each reports the event's type and number through a
+ * binding, in the same ordered stream as the network events. Requests are read
+ * from Network.requestWillBeSent and its initiator stack (async parents
+ * included). After an event, the observer reads the target's description and
+ * the React handlers declared for it (`__reactProps$…`) from the page.
+ * Joins follow attribution.mjs: identifiers only, unknown when the browser
+ * gives none.
  */
 import { TraceMap, originalPositionFor } from '@jridgewell/trace-mapping';
 import { createAttribution } from './attribution.mjs';
 import { functionRanges } from './function-ranges.mjs';
 
-// Events that pause. Not `change`: it fires on blur, between the press and
-// release of the click that moved focus, and a pause there lost that click in
-// testing. Not `keydown`: `input` already marks each typed value.
-const USER_EVENTS = ['click', 'dblclick', 'submit', 'input'];
-// Checked by the page at each fetch / XHR send / setState: pause only inside
-// the dispatch of a trusted user event. Hover, focus and timers never pause.
-const IN_USER_DISPATCH = `globalThis.event != null && globalThis.event.isTrusted === true && ${JSON.stringify(USER_EVENTS)}.includes(globalThis.event.type)`;
-const REACT_PROP = {
-  click: 'onClick',
-  dblclick: 'onDoubleClick',
-  submit: 'onSubmit',
-  input: 'onChange',
+const WORLD = 'producttrace-observe';
+const BINDING = '__producttraceObserve';
+// Every event type React or an app may handle for user input. Each trusted
+// dispatch is recorded, so a handler shared by a click and a key press is
+// known to have run twice. Only the types a person reads as an action are
+// written as rows of their own (`SHOWN`); the rest appear when a request joins one.
+const EVENTS = [
+  'click',
+  'dblclick',
+  'auxclick',
+  'contextmenu',
+  'submit',
+  'input',
+  'change',
+  'keydown',
+  'keyup',
+  'pointerdown',
+  'pointerup',
+  'mousedown',
+  'mouseup',
+  'touchstart',
+  'touchend',
+  'paste',
+  'cut',
+  'copy',
+  'drop',
+  'dragstart',
+  'dragend',
+];
+const REACT_PROPS = {
+  click: ['onClick'],
+  dblclick: ['onDoubleClick'],
+  auxclick: ['onAuxClick'],
+  contextmenu: ['onContextMenu'],
+  submit: ['onSubmit'],
+  input: ['onChange', 'onInput'],
+  change: ['onChange'],
+  keydown: ['onKeyDown'],
+  keyup: ['onKeyUp'],
+  pointerdown: ['onPointerDown'],
+  pointerup: ['onPointerUp'],
+  mousedown: ['onMouseDown'],
+  mouseup: ['onMouseUp'],
+  touchstart: ['onTouchStart'],
+  touchend: ['onTouchEnd'],
+  paste: ['onPaste'],
+  cut: ['onCut'],
+  copy: ['onCopy'],
+  drop: ['onDrop'],
+  dragstart: ['onDragStart'],
+  dragend: ['onDragEnd'],
 };
+const shown = (info) =>
+  ['click', 'dblclick', 'contextmenu', 'submit', 'input', 'paste', 'drop'].includes(info.type) ||
+  (info.type === 'change' && /^(select|checkbox|radio|file)$/u.test(info.control || '')) ||
+  // A key press that types a character is shown by its input event.
+  (info.type === 'keydown' &&
+    (info.key?.length > 1 || info.ctrl || info.meta || info.alt) &&
+    !/^(Shift|Control|Alt|Meta|CapsLock)$/u.test(info.key || ''));
 const ASYNC_DEPTH = 32;
-const MAX_SCOPE_FRAMES = 6;
-// Objects the observer keeps a handle on (each action's Event, each fiber an
-// action set state on), so later pauses can ask the page whether a value is
-// the same object. Bounded; an action past the bound can no longer be joined.
-const OBJECT_GROUP = 'producttrace-observe';
-// Everything else read during one pause, released when the page resumes.
-const PAUSE_GROUP = 'producttrace-observe-pause';
-const KEEP_ACTIONS = 500,
-  KEEP_RECEIPTS = 200;
-const INDEX_OF_THIS =
-  'function () { for (let i = 0; i < arguments.length; i += 1) if (arguments[i] === this) return i; return -1; }';
+const KEEP_TARGETS = 200;
 
-// Runs in the page through Runtime.callFunctionOn with `this` = the Event.
+// Runs in the isolated world, at document start, before the app's scripts.
+const LISTENER = `(() => {
+  if (globalThis.__producttraceTargets) return;
+  const send = globalThis[${JSON.stringify(BINDING)}];
+  const targets = (globalThis.__producttraceTargets = new Map());
+  let next = 0;
+  for (const type of ${JSON.stringify(EVENTS)}) {
+    addEventListener(type, (event) => {
+      if (!event.isTrusted) return;
+      const n = ++next;
+      targets.set(n, event.target);
+      if (targets.size > ${KEEP_TARGETS}) targets.delete(targets.keys().next().value);
+      const control = event.target && event.target.closest ? event.target.closest('select') ? 'select' : event.target.type || null : null;
+      send(JSON.stringify({ phase: 'start', n, type, key: event.key || null, ctrl: !!event.ctrlKey, meta: !!event.metaKey, alt: !!event.altKey, control }));
+      // The end: a listener added now runs last in window's bubble phase,
+      // after the app's own listeners there. When the app stops propagation
+      // first, the next task, which runs once this dispatch is done.
+      let done = false;
+      const end = (late) => (seen) => {
+        if (done || (seen && seen !== event)) return;
+        done = true;
+        removeEventListener(type, last);
+        send(JSON.stringify({ phase: 'end', n, ...(late ? { late: true } : {}) }));
+      };
+      const last = end(false);
+      addEventListener(type, last);
+      setTimeout(end(true));
+    }, true);
+  }
+})();`;
+
+// Runs in the page through Runtime.callFunctionOn with \`this\` = the target.
 // Reads only: the target's description and the React handlers declared for
 // this event on the target and its ancestors.
-const DESCRIBE_EVENT = `function (prop) {
-  const target = this.target && this.target.nodeType === 1 ? this.target : this.target && this.target.parentElement;
+const DESCRIBE_TARGET = `function (props) {
+  const target = this.nodeType === 1 ? this : this.parentElement;
   const text = node => (node && (node.getAttribute('aria-label') || node.innerText || node.value || '') || '').trim().replace(/\\s+/g, ' ').slice(0, 80);
   const control = target && target.closest ? target.closest('button,a,input,select,textarea,[role],label,summary') || target : target;
   const handlers = [];
   for (let node = target, depth = 0; node && depth < 12; node = node.parentElement, depth += 1) {
     const key = Object.keys(node).find(name => name.startsWith('__reactProps$'));
-    const fn = key && node[key] && node[key][prop];
-    if (typeof fn === 'function' && !handlers.includes(fn)) handlers.push(fn);
+    for (const prop of props) {
+      for (const name of [prop, prop + 'Capture']) {
+        const fn = key && node[key] && node[key][name];
+        if (typeof fn === 'function' && !handlers.includes(fn)) handlers.push(fn);
+      }
+    }
   }
-  return { info: { type: this.type, trusted: this.isTrusted === true,
-    target: control ? { tag: control.tagName.toLowerCase(), role: control.getAttribute('role') || null, name: text(control) || null,
-      label: control.labels && control.labels[0] ? text(control.labels[0]) : null, input_type: control.type || null } : null }, handlers };
+  return { info: control ? { tag: control.tagName.toLowerCase(), role: control.getAttribute('role') || null, name: text(control) || null,
+      label: control.labels && control.labels[0] ? text(control.labels[0]) : null, input_type: control.type || null } : null, handlers };
 }`;
 
 export async function observePage(cdp, { appOrigin = null } = {}) {
-  const scripts = new Map(); // scriptId -> { url, sourceMapURL, map }
+  const scripts = new Map(); // scriptId -> { url, sourceMapURL, map, ranges }
+  const contexts = new Map(); // executionContextId -> { world: 'main' | 'observe', frameId }
   const attribution = createAttribution();
   const rows = [];
-  const pendingPauses = []; // causes read at a send's pause, waiting for its Network.requestWillBeSent
-  const stats = { pauses: 0, paused_ms: 0, requests_read_without_pause: 0, errors: 0 };
-  let setStateBreakpoint = null;
-  const sendBreakpoints = new Set();
-  // Handlers run one at a time, in the order the page reported, so a send's
-  // pause is read before its network event.
+  const dispatches = new Map(); // n (per document) -> action
+  const stats = { pauses: 0, dispatches: 0, requests: 0, errors: 0 };
+  let sequence = 0;
   let queue = Promise.resolve();
   const failed = (error) => {
     stats.errors += 1;
     stats.last_error = String(error?.message || error).slice(0, 200);
   };
+  // Handlers run one at a time, in the order the page reported them.
   const serial = (handler) => (event) => {
     queue = queue.then(() => handler(event)).catch(failed);
-  };
-  let sequence = 0;
-
-  const emit = (row) => {
-    const record = { schema: 'producttrace.observe.v1', sequence: ++sequence, ...row };
-    rows.push(record);
-    return record;
   };
 
   const isApp = (scriptId) => {
     const url = scripts.get(scriptId)?.url || '';
-    if (!url || /\/node_modules\/|\/\.vite\/deps\/|\/@vite\/|\/@react-refresh|\/@id\//u.test(url))
+    if (
+      !url ||
+      /\/node_modules\/|\/\.vite\/deps\/|\/@vite\/|\/@react-refresh|\/@id\/|\/_next\/static\/chunks\/(?:framework|main|webpack|polyfills)/u.test(
+        url,
+      )
+    )
       return false;
     if (!appOrigin) return /^https?:/u.test(url);
     try {
@@ -120,8 +185,9 @@ export async function observePage(cdp, { appOrigin = null } = {}) {
     let line = lineNumber + 1;
     if (script.map === undefined) {
       script.map = null;
-      const raw = script.sourceMapURL || '';
-      const match = raw.match(/^data:application\/json[^,]*?(;base64)?,(.*)$/u);
+      const match = (script.sourceMapURL || '').match(
+        /^data:application\/json[^,]*?(;base64)?,(.*)$/u,
+      );
       if (match) {
         try {
           script.map = new TraceMap(
@@ -146,60 +212,14 @@ export async function observePage(cdp, { appOrigin = null } = {}) {
     return { file, line };
   };
   const frameOf = (frame) => {
-    const scriptId = frame.location?.scriptId ?? frame.scriptId;
-    const lineNumber = frame.location?.lineNumber ?? frame.lineNumber;
-    const columnNumber = frame.location?.columnNumber ?? frame.columnNumber;
-    const where = source(scriptId, lineNumber, columnNumber);
+    const where = source(frame.scriptId, frame.lineNumber, frame.columnNumber);
     return {
       name: frame.functionName || null,
       file: where?.file ?? null,
       line: where?.line ?? null,
-      app: isApp(scriptId),
+      app: isApp(frame.scriptId),
     };
   };
-
-  const actionEvents = []; // { action_id, objectId } of each action's Event
-  const receipts = []; // { action_id, objectId } of each fiber an action set state on
-  // Which entry of `list` holds the same object as `objectId` (identity, asked of the page).
-  const sameAs = async (objectId, list) => {
-    if (!objectId || !list.length) return null;
-    try {
-      const { result } = await cdp.send('Runtime.callFunctionOn', {
-        objectId,
-        functionDeclaration: INDEX_OF_THIS,
-        arguments: list.map((entry) => ({ objectId: entry.objectId })),
-        returnByValue: true,
-        silent: true,
-      });
-      return result.value >= 0 ? list[result.value] : null;
-    } catch {
-      return null;
-    }
-  };
-  const keep = (list, entry, limit) => {
-    list.push(entry);
-    if (list.length > limit)
-      cdp.send('Runtime.releaseObject', { objectId: list.shift().objectId }).catch(() => {});
-  };
-  const evaluate = async (callFrameId, expression, objectGroup = PAUSE_GROUP) => {
-    try {
-      const { result, exceptionDetails } = await cdp.send('Debugger.evaluateOnCallFrame', {
-        callFrameId,
-        expression,
-        silent: true,
-        throwOnSideEffect: true,
-        objectGroup,
-      });
-      return exceptionDetails ? null : result;
-    } catch {
-      return null;
-    }
-  };
-  const currentEvent = async (callFrame, objectGroup = PAUSE_GROUP) => {
-    const result = await evaluate(callFrame.callFrameId, 'globalThis.event', objectGroup);
-    return result?.objectId && /Event$/u.test(result.className || '') ? result : null;
-  };
-
   // Each script's function ranges, parsed once, when a handler or frame needs them.
   const rangesOf = async (scriptId) => {
     const script = scripts.get(scriptId);
@@ -214,20 +234,20 @@ export async function observePage(cdp, { appOrigin = null } = {}) {
     }
     return script.ranges;
   };
-  // Every frame on the stack, the paused ones first, then each async parent.
-  const stackOf = async (paused) => {
-    const raw = paused.callFrames.map((frame) => ({
-      functionName: frame.functionName,
-      scriptId: frame.location.scriptId,
-      lineNumber: frame.location.lineNumber,
-      columnNumber: frame.location.columnNumber,
-    }));
-    return withParents(raw, paused.asyncStackTrace);
-  };
-  const withParents = async (raw, trace) => {
+  // Every frame of a stack trace, innermost first, then each async parent;
+  // `segment` numbers the synchronous stretch each frame belongs to.
+  const framesOf = async (trace) => {
+    const raw = [];
     let guard = 0;
     while (trace && guard++ < ASYNC_DEPTH) {
-      raw.push(...trace.callFrames);
+      // `link` is how this stretch leads to the one before it ('await', 'setTimeout', ...).
+      raw.push(
+        ...(trace.callFrames || []).map((frame) => ({
+          ...frame,
+          segment: guard,
+          link: guard > 1 ? trace.description || null : null,
+        })),
+      );
       trace =
         trace.parent ||
         (trace.parentId
@@ -238,110 +258,51 @@ export async function observePage(cdp, { appOrigin = null } = {}) {
             ).stackTrace
           : null);
     }
-    return raw;
+    return { raw, truncated: Boolean(trace) };
   };
-  // First-party functions on the stack, outermost first, for the report.
+  const positions = async (raw) => {
+    const out = [];
+    for (const frame of raw) {
+      const ranges = await rangesOf(frame.scriptId);
+      if (ranges)
+        out.push({
+          script_id: frame.scriptId,
+          offset: ranges.offset(frame.lineNumber, frame.columnNumber),
+          app: isApp(frame.scriptId),
+          segment: frame.segment,
+          link: frame.link,
+        });
+      else
+        out.push({
+          script_id: frame.scriptId,
+          offset: -1,
+          app: isApp(frame.scriptId),
+          segment: frame.segment,
+          link: frame.link,
+        });
+    }
+    return out;
+  };
   const appFunctions = (raw) =>
     raw
       .map(frameOf)
       .filter((frame) => frame.app)
       .reverse();
-  const positions = async (raw) => {
-    const out = [];
-    for (const frame of raw) {
-      const ranges =
-        isApp(frame.scriptId) || scripts.get(frame.scriptId)
-          ? await rangesOf(frame.scriptId)
-          : null;
-      if (ranges)
-        out.push({
-          script_id: frame.scriptId,
-          offset: ranges.offset(frame.lineNumber, frame.columnNumber),
-        });
-    }
-    return out;
-  };
 
-  // Events held by the functions on the stack (locals and closures): a
-  // native Event, or a React SyntheticEvent through its `nativeEvent`.
-  const scopeEvents = async (callFrames) => {
-    const found = [];
-    for (const frame of callFrames.slice(0, MAX_SCOPE_FRAMES)) {
-      if (!isApp(frame.location.scriptId)) continue;
-      for (const scope of frame.scopeChain) {
-        if (!['local', 'closure', 'block'].includes(scope.type) || !scope.object?.objectId)
-          continue;
-        let properties = [];
-        try {
-          ({ result: properties } = await cdp.send('Runtime.getProperties', {
-            objectId: scope.object.objectId,
-            ownProperties: true,
-          }));
-        } catch {
-          continue;
-        }
-        for (const property of properties) {
-          const value = property.value;
-          if (!value?.objectId) continue;
-          if (
-            /(?:^|[a-z])Event$/u.test(value.className || '') &&
-            value.className !== 'SyntheticBaseEvent'
-          )
-            found.push(value.objectId);
-          else if (
-            value.className === 'SyntheticBaseEvent' ||
-            /Synthetic/u.test(value.className || '')
-          ) {
-            try {
-              const { result } = await cdp.send('Runtime.getProperties', {
-                objectId: value.objectId,
-                ownProperties: true,
-              });
-              const native = result.find((entry) => entry.name === 'nativeEvent')?.value;
-              if (native?.objectId) found.push(native.objectId);
-            } catch {}
-          }
-        }
-      }
-    }
-    return found;
+  const emit = (row) => {
+    rows.push({ schema: 'producttrace.observe.v1', ...row });
   };
-
-  const effectFibers = async (callFrames) => {
-    const mount = callFrames.find(
-      (frame) =>
-        /^commitHook(?:Effect|Passive)\w*Mount/u.test(frame.functionName) ||
-        frame.functionName === 'commitHookEffectListMount',
-    );
-    if (!mount) return [];
-    const ids = [];
-    for (const expression of ['finishedWork', 'finishedWork.alternate']) {
-      const value = await evaluate(mount.callFrameId, expression);
-      if (value?.objectId) ids.push(value.objectId);
-    }
-    return ids;
-  };
-
-  const causeNow = async (paused) => {
-    const event = await currentEvent(paused.callFrames[0]);
-    const dispatching = event ? (await sameAs(event.objectId, actionEvents))?.action_id : null;
-    if (dispatching) return attribution.causeOf({ dispatching });
-    let effect_of = null;
-    for (const fiber of await effectFibers(paused.callFrames)) {
-      effect_of = (await sameAs(fiber, receipts))?.action_id;
-      if (effect_of) break;
-    }
-    if (effect_of) return attribution.causeOf({ effect_of });
-    let in_scope = null;
-    for (const held of await scopeEvents(paused.callFrames)) {
-      in_scope = (await sameAs(held, actionEvents))?.action_id;
-      if (in_scope) break;
-    }
-    if (in_scope) return attribution.causeOf({ in_scope });
-    const raw = await stackOf(paused);
-    return attribution.causeOf({
-      stack: await positions(raw),
-      started_in: appFunctions(raw)[0] || null,
+  const emitAction = (action) => {
+    if (action.emitted) return;
+    action.emitted = true;
+    emit({
+      sequence: action.row_sequence,
+      kind: 'observe.action',
+      action_id: action.action_id,
+      event: action.event,
+      ...(action.key ? { key: action.key } : {}),
+      target: action.target,
+      handlers: action.handlers.map(({ range, ...handler }) => handler),
     });
   };
 
@@ -369,222 +330,196 @@ export async function observePage(cdp, { appOrigin = null } = {}) {
       return null;
     }
   };
-
-  const onEvent = async (paused) => {
-    const event = await currentEvent(paused.callFrames[0], OBJECT_GROUP);
-    if (!event) return;
-    // One pause per listener the event reaches: the first one records it.
-    if (await sameAs(event.objectId, actionEvents)) return;
-    const type = paused.data?.eventName?.replace(/^listener:/u, '') || null;
-    const described = await cdp
-      .send('Runtime.callFunctionOn', {
-        objectId: event.objectId,
-        functionDeclaration: DESCRIBE_EVENT,
-        arguments: [{ value: REACT_PROP[type] || 'onClick' }],
+  // The event's target and declared handlers, read after the dispatch from the
+  // node the isolated listener kept: found there, then resolved in the page's world.
+  const describe = async (action, n, observeContext) => {
+    const group = 'producttrace-observe';
+    try {
+      // The page's own world in the same frame, created last (the current document).
+      const mainContext = [...contexts]
+        .filter(
+          ([, c]) => c.world === 'main' && c.frameId === contexts.get(observeContext)?.frameId,
+        )
+        .at(-1)?.[0];
+      const { result: node } = await cdp.send('Runtime.evaluate', {
+        expression: `globalThis.__producttraceTargets.get(${n})`,
+        contextId: observeContext,
+        objectGroup: group,
         silent: true,
-        objectGroup: PAUSE_GROUP,
-      })
-      .catch(() => null);
-    const objectId = described?.result?.objectId;
-    if (!objectId) return;
-    const { result: fields = [] } = await cdp.send('Runtime.getProperties', {
-      objectId,
-      ownProperties: true,
-    });
-    const info = fields.find((entry) => entry.name === 'info')?.value;
-    const infoValue = info?.objectId
-      ? (
+      });
+      if (!node?.objectId || !mainContext) return;
+      const { node: described } = await cdp.send('DOM.describeNode', { objectId: node.objectId });
+      await cdp.send('DOM.getDocument', { depth: 0 }).catch(() => {});
+      const { object } = await cdp.send('DOM.resolveNode', {
+        backendNodeId: described.backendNodeId,
+        executionContextId: mainContext,
+        objectGroup: group,
+      });
+      const { result } = await cdp.send('Runtime.callFunctionOn', {
+        objectId: object.objectId,
+        functionDeclaration: DESCRIBE_TARGET,
+        arguments: [{ value: REACT_PROPS[action.event] || [] }],
+        silent: true,
+        objectGroup: group,
+      });
+      const { result: fields = [] } = await cdp.send('Runtime.getProperties', {
+        objectId: result.objectId,
+        ownProperties: true,
+      });
+      const info = fields.find((entry) => entry.name === 'info')?.value;
+      if (info?.objectId)
+        action.target = (
           await cdp.send('Runtime.callFunctionOn', {
             objectId: info.objectId,
             functionDeclaration: 'function () { return this; }',
             returnByValue: true,
           })
-        ).result.value
-      : null;
-    if (!infoValue?.trusted) {
-      cdp.send('Runtime.releaseObject', { objectId: event.objectId }).catch(() => {});
-      return;
-    }
-    const handlers = [];
-    const list = fields.find((entry) => entry.name === 'handlers')?.value;
-    if (list?.objectId) {
-      const { result: items = [] } = await cdp.send('Runtime.getProperties', {
-        objectId: list.objectId,
-        ownProperties: true,
-      });
-      for (const item of items)
-        if (/^\d+$/u.test(item.name) && item.value?.objectId) {
-          const where = await functionSource(item.value.objectId);
-          if (where) handlers.push(where);
-        }
-    }
-    const action = attribution.noteAction({
-      event: infoValue.type,
-      target: infoValue.target,
-      handlers,
-    });
-    keep(actionEvents, { action_id: action.action_id, objectId: event.objectId }, KEEP_ACTIONS);
-    emit({
-      kind: 'observe.action',
-      action_id: action.action_id,
-      event: action.event,
-      target: action.target,
-      handlers: handlers.map(({ range, ...handler }) => handler),
-    });
-  };
-
-  // Paused just before fetch() / xhr.send() runs, inside a user dispatch. The
-  // row is written when the network event names the URL.
-  const onSendPause = async (paused) => {
-    const top = paused.callFrames[0].location;
-    // A send that never reached the network (it threw first) leaves its entry behind; keep the list short.
-    if (pendingPauses.length >= 50) pendingPauses.shift();
-    pendingPauses.push({
-      cause: await causeNow(paused),
-      raw: await stackOf(paused),
-      at: `${top.scriptId}:${top.lineNumber}:${top.columnNumber}`,
-    });
-  };
-  const onRequestSent = async (event) => {
-    if (!['Fetch', 'XHR'].includes(event.type) || event.initiator?.type !== 'script') return;
-    const stack = event.initiator.stack;
-    const top = stack?.callFrames?.[0];
-    const at = top ? `${top.scriptId}:${top.lineNumber}:${top.columnNumber}` : null;
-    const index = at ? pendingPauses.findIndex((entry) => entry.at === at) : -1;
-    let cause, raw;
-    if (index >= 0) ({ cause, raw } = pendingPauses.splice(index, 1)[0]);
-    else {
-      // Sent outside a user dispatch: the network event's stack is all there is.
-      stats.requests_read_without_pause += 1;
-      raw = await withParents(
-        stack?.callFrames || [],
-        stack?.parent || (stack?.parentId ? { parentId: stack.parentId, callFrames: [] } : null),
-      );
-      cause = attribution.causeOf({
-        stack: await positions(raw),
-        started_in: appFunctions(raw)[0] || null,
-      });
-    }
-    const functions = appFunctions(raw);
-    emit({
-      kind: 'observe.request',
-      url: event.request.url,
-      method: event.request.method,
-      ...cause,
-      handler: functions[0] || null,
-      api_function: functions.at(-1) || null,
-      call_site: raw[0] ? frameOf(raw[0]) : null,
-    });
-  };
-
-  const onSetState = async (paused) => {
-    const cause = await causeNow(paused);
-    if (!cause.action_id) return;
-    for (const expression of ['fiber', 'fiber.alternate']) {
-      const fiber = await evaluate(paused.callFrames[0].callFrameId, expression, OBJECT_GROUP);
-      if (fiber?.objectId)
-        keep(receipts, { action_id: cause.action_id, objectId: fiber.objectId }, KEEP_RECEIPTS);
-    }
-  };
-
-  // React's setState entry, found by name in the development build of react-dom.
-  const watchSetState = async (scriptId, url) => {
-    if (setStateBreakpoint || !/react-dom/u.test(url)) return;
-    try {
-      const { scriptSource } = await cdp.send('Debugger.getScriptSource', { scriptId });
-      const line = scriptSource
-        .split('\n')
-        .findIndex((text) =>
-          /function dispatchSetState(?:Internal)?\(fiber, queue, action/u.test(text),
-        );
-      if (line < 0) return;
-      setStateBreakpoint = (
-        await cdp.send('Debugger.setBreakpoint', {
-          location: { scriptId, lineNumber: line + 1 },
-          condition: IN_USER_DISPATCH,
-        })
-      ).breakpointId;
-    } catch (error) {
-      failed(error);
-    }
-  };
-
-  const onScript = (event) => {
-    // Scripts of isolated worlds (extensions, a test driver's own helpers) are not the page's.
-    const isolated =
-      event.executionContextAuxData?.isDefault === false ||
-      event.executionContextAuxData?.type === 'isolated';
-    scripts.set(event.scriptId, { url: event.url, sourceMapURL: event.sourceMapURL, isolated });
-    if (/react-dom/u.test(event.url)) watchSetState(event.scriptId, event.url);
-  };
-  // fetch and XMLHttpRequest#send are new objects in each document, so their
-  // breakpoints are set again in each page context.
-  const onContext = async ({ context }) => {
-    if (context.auxData?.isDefault === false || context.auxData?.type === 'isolated') return;
-    for (const expression of [
-      'globalThis.fetch',
-      'globalThis.XMLHttpRequest && XMLHttpRequest.prototype.send',
-    ]) {
-      try {
-        const { result } = await cdp.send('Runtime.evaluate', {
-          expression,
-          contextId: context.id,
-          silent: true,
+        ).result.value;
+      const list = fields.find((entry) => entry.name === 'handlers')?.value;
+      if (list?.objectId) {
+        const { result: items = [] } = await cdp.send('Runtime.getProperties', {
+          objectId: list.objectId,
+          ownProperties: true,
         });
-        if (result.objectId)
-          sendBreakpoints.add(
-            (
-              await cdp.send('Debugger.setBreakpointOnFunctionCall', {
-                objectId: result.objectId,
-                condition: IN_USER_DISPATCH,
-              })
-            ).breakpointId,
-          );
-      } catch (error) {
-        // A context can be reported twice (Runtime.enable lists the ones already open).
-        if (!/already exists/u.test(error?.message || '')) failed(error);
+        for (const item of items)
+          if (/^\d+$/u.test(item.name) && item.value?.objectId) {
+            const where = await functionSource(item.value.objectId);
+            if (where) action.handlers.push(where);
+          }
       }
-    }
-  };
-  const onPaused = async (paused) => {
-    const started = Date.now();
-    stats.pauses += 1;
-    try {
-      if (scripts.get(paused.callFrames[0]?.location.scriptId)?.isolated) return;
-      if (paused.reason === 'EventListener') await onEvent(paused);
-      else if (paused.hitBreakpoints?.some((id) => sendBreakpoints.has(id)))
-        await onSendPause(paused);
-      else if (setStateBreakpoint && paused.hitBreakpoints?.includes(setStateBreakpoint))
-        await onSetState(paused);
     } catch (error) {
       failed(error);
     } finally {
-      stats.paused_ms += Date.now() - started;
-      await cdp.send('Runtime.releaseObjectGroup', { objectGroup: PAUSE_GROUP }).catch(() => {});
-      await cdp.send('Debugger.resume').catch(() => {});
+      await cdp.send('Runtime.releaseObjectGroup', { objectGroup: group }).catch(() => {});
     }
   };
+
+  // Dispatch starts and ends, in order. The start opens the action at once;
+  // its target and handlers are read afterwards, in the queue, before any
+  // later request is joined.
+  const onBinding = (event) => {
+    if (event.name !== BINDING) return;
+    let message;
+    try {
+      message = JSON.parse(event.payload);
+    } catch {
+      return;
+    }
+    const key = `${event.executionContextId}:${message.n}`;
+    if (message.phase === 'start') {
+      stats.dispatches += 1;
+      const action = attribution.startDispatch({ event: message.type });
+      action.row_sequence = ++sequence;
+      if (message.type === 'keydown' || message.type === 'keyup')
+        action.key = [
+          message.ctrl && 'Control',
+          message.meta && 'Meta',
+          message.alt && 'Alt',
+          message.key,
+        ]
+          .filter(Boolean)
+          .join('+');
+      dispatches.set(key, action);
+      queue = queue
+        .then(async () => {
+          await describe(action, message.n, event.executionContextId);
+          if (shown({ ...message })) emitAction(action);
+        })
+        .catch(failed);
+    } else if (message.phase === 'end') {
+      const action = dispatches.get(key);
+      if (action) {
+        attribution.endDispatch(action.action_id);
+        dispatches.delete(key);
+      }
+    }
+  };
+
+  const onRequestSent = (event) => {
+    if (!['Fetch', 'XHR'].includes(event.type) || event.initiator?.type !== 'script') return;
+    // Joined to the dispatch running now; read at once, before anything else arrives.
+    const inDispatch = attribution.running();
+    const rowSequence = ++sequence;
+    queue = queue
+      .then(async () => {
+        stats.requests += 1;
+        const { raw, truncated } = await framesOf(event.initiator.stack);
+        const functions = appFunctions(raw);
+        const cause = attribution.causeOf({
+          in_dispatch: inDispatch,
+          stack: await positions(raw),
+          truncated,
+          started_in: functions[0] || null,
+        });
+        if (cause.action_id) emitAction(attribution.get(cause.action_id));
+        for (const id of cause.could_be || []) emitAction(attribution.get(id));
+        emit({
+          sequence: rowSequence,
+          kind: 'observe.request',
+          url: event.request.url,
+          method: event.request.method,
+          ...cause,
+          handler: functions[0] || null,
+          api_function: functions.at(-1) || null,
+          call_site: raw[0] ? frameOf(raw[0]) : null,
+        });
+      })
+      .catch(failed);
+  };
+
+  const onScript = (event) =>
+    scripts.set(event.scriptId, { url: event.url, sourceMapURL: event.sourceMapURL });
+  const onContext = ({ context }) =>
+    contexts.set(context.id, {
+      world: context.name === WORLD ? 'observe' : context.auxData?.isDefault ? 'main' : 'other',
+      frameId: context.auxData?.frameId,
+    });
+  const onContextGone = ({ executionContextId }) => contexts.delete(executionContextId);
+  const onContextsCleared = () => contexts.clear();
+  // Never expected: every pause is skipped. Counted so a report can prove it.
+  const onPaused = () => {
+    stats.pauses += 1;
+    cdp.send('Debugger.resume').catch(() => {});
+  };
+
   const handlers = {
+    'Runtime.bindingCalled': onBinding,
+    'Network.requestWillBeSent': onRequestSent,
     'Debugger.scriptParsed': onScript,
-    'Debugger.paused': serial(onPaused),
-    'Network.requestWillBeSent': serial(onRequestSent),
     'Runtime.executionContextCreated': onContext,
+    'Runtime.executionContextDestroyed': onContextGone,
+    'Runtime.executionContextsCleared': onContextsCleared,
+    'Debugger.paused': onPaused,
   };
   for (const [name, handler] of Object.entries(handlers)) cdp.on(name, handler);
-  await cdp.send('Network.enable');
   await cdp.send('Debugger.enable');
+  // No breakpoint, `debugger` statement or exception ever stops the page.
+  await cdp.send('Debugger.setSkipAllPauses', { skip: true });
   await cdp.send('Debugger.setAsyncCallStackDepth', { maxDepth: ASYNC_DEPTH });
+  await cdp.send('Network.enable');
   await cdp.send('Runtime.enable');
-  for (const eventName of USER_EVENTS)
-    await cdp.send('DOMDebugger.setEventListenerBreakpoint', { eventName });
+  await cdp.send('Page.enable');
+  await cdp.send('DOM.enable');
+  // DOM.resolveNode works on nodes of a document the DOM agent has seen.
+  await cdp.send('DOM.getDocument', { depth: 0 }).catch(() => {});
+  await cdp.send('Runtime.addBinding', { name: BINDING, executionContextName: WORLD });
+  const { identifier } = await cdp.send('Page.addScriptToEvaluateOnNewDocument', {
+    source: LISTENER,
+    worldName: WORLD,
+    runImmediately: true,
+  });
 
   return {
-    records: () => rows.slice(),
-    stats: () => ({ ...stats, actions: attribution.actions.length }),
+    records: () => rows.slice().sort((a, b) => a.sequence - b.sequence),
+    stats: () => ({
+      ...stats,
+      actions: rows.filter((row) => row.kind === 'observe.action').length,
+    }),
     async stop() {
       for (const [name, handler] of Object.entries(handlers)) cdp.off?.(name, handler);
       await queue;
-      await cdp.send('Runtime.releaseObjectGroup', { objectGroup: OBJECT_GROUP }).catch(() => {});
+      await cdp.send('Page.removeScriptToEvaluateOnNewDocument', { identifier }).catch(() => {});
+      await cdp.send('Runtime.removeBinding', { name: BINDING }).catch(() => {});
       await cdp.send('Debugger.disable').catch(() => {});
     },
   };

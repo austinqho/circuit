@@ -122,6 +122,8 @@ function App() {
   const [results, setResults] = useState({});
   const [loads, setLoads] = useState(0);
   const [items, setItems] = useState(null);
+  const [count, setCount] = useState(0);
+  const [note, setNote] = useState('');
   useEffect(() => {
     if (loads === 0) return;
     fetch('/probe/items')
@@ -153,6 +155,22 @@ function App() {
             <li key={item}>{item}</li>
           ))}
         </ul>
+      </section>
+      {/* Fast input: every click and key press must land, watched or not. */}
+      <section>
+        <button
+          onClick={() => {
+            setCount((value) => value + 1);
+            fetch('/probe/items');
+          }}
+        >
+          Count
+        </button>
+        <p aria-label="Count result">{count}</p>
+        <label>
+          Note <input value={note} onChange={(event) => setNote(event.target.value)} />
+        </label>
+        <p aria-label="Note result">{note}</p>
       </section>
     </main>
   );

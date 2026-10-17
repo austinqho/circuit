@@ -1,4 +1,5 @@
-# probe: each case where an instrumented app could behave differently, one click each
+# probe: each case where an instrumented app could behave differently, one click each, then
+# clicks and typing at human pace (sent without waiting for the page, as a person would)
 {"action":"goto","value":"/"}
 {"action":"click","target":{"role":"button","name":"Self-removing listener"}}
 {"action":"click","target":{"role":"button","name":"Once listeners"}}
@@ -9,3 +10,5 @@
 {"action":"click","target":{"role":"button","name":"Hot loop"}}
 {"action":"click","target":{"role":"button","name":"Delayed request"}}
 {"action":"click","target":{"role":"button","name":"Load items"}}
+{"action":"click","target":{"role":"button","name":"Count"},"repeat":10,"pace_ms":60}
+{"action":"type","target":{"role":"textbox","name":"Note"},"value":"the quick brown fox jumps over the lazy dog","pace_ms":30}

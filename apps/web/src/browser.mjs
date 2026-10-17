@@ -154,6 +154,7 @@ export class BrowserSession {
     if (this.page && !this.page.isClosed()) return this.page;
     const b = await browser();
     this.context = await b.newContext({ viewport: { width: 1280, height: 800 } });
+    this.input = null;
     const origin = new URL(this.baseUrl).origin;
     // Only the app itself loads; external fonts and analytics hang in sandboxes.
     if (this.intercept)
@@ -194,7 +195,27 @@ export class BrowserSession {
     return this.page;
   }
 
-  async act({ action, target = null, value = null, timeout = 8000 }) {
+  /**
+   * Input at a person's pace: each event goes out `paceMs` after the last
+   * through the DevTools Protocol, without waiting for the page to handle the
+   * one before, as a real mouse or keyboard would. Playwright's own click and
+   * type wait for each, which hides input a busy or paused page drops.
+   */
+  async paced(page, events, paceMs) {
+    this.input ??= await this.context.newCDPSession(page);
+    const sent = [];
+    await new Promise((resolve) => {
+      events.forEach((group, index) =>
+        setTimeout(() => {
+          sent.push(...group.map(([method, params]) => this.input.send(method, params)));
+          if (index === events.length - 1) resolve();
+        }, index * paceMs),
+      );
+    });
+    await Promise.all(sent);
+  }
+
+  async act({ action, target = null, value = null, timeout = 8000, repeat = 1, pace_ms = null }) {
     const page = await this.ensure();
     const step = {
       index: this.steps.length,
@@ -214,7 +235,25 @@ export class BrowserSession {
           });
           break;
         case 'click':
-          await locate(page, target).click({ timeout });
+          if (pace_ms) {
+            const box = await locate(page, target).boundingBox({ timeout });
+            if (!box) throw new Error('click target is not visible');
+            const at = {
+              x: box.x + box.width / 2,
+              y: box.y + box.height / 2,
+              button: 'left',
+              clickCount: 1,
+            };
+            const click = [
+              ['Input.dispatchMouseEvent', { type: 'mousePressed', ...at }],
+              ['Input.dispatchMouseEvent', { type: 'mouseReleased', ...at }],
+            ];
+            await this.paced(
+              page,
+              Array.from({ length: Math.max(1, repeat) }, () => click),
+              pace_ms,
+            );
+          } else await locate(page, target).click({ timeout });
           break;
         case 'dblclick':
           await locate(page, target).dblclick({ timeout });
@@ -226,7 +265,14 @@ export class BrowserSession {
           await locate(page, target).fill(String(value ?? ''), { timeout });
           break;
         case 'type':
-          if (target)
+          if (pace_ms) {
+            if (target) await locate(page, target).click({ timeout });
+            const keys = [...String(value ?? '')].map((key) => [
+              ['Input.dispatchKeyEvent', { type: 'keyDown', key, text: key }],
+              ['Input.dispatchKeyEvent', { type: 'keyUp', key }],
+            ]);
+            await this.paced(page, keys, pace_ms);
+          } else if (target)
             await locate(page, target).pressSequentially(String(value ?? ''), {
               timeout,
               delay: 30,
@@ -314,6 +360,7 @@ export class BrowserSession {
     await this.context?.close().catch(() => {});
     this.page = null;
     this.context = null;
+    this.input = null;
     this.steps = [];
     this.errors = [];
     this.requests = [];

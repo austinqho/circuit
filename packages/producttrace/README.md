@@ -73,7 +73,12 @@ observer.records(); // observe.action rows (event, target, declared handler) and
 await observer.stop();
 ```
 
-Each request names the action that caused it only when an identifier says so: it was sent while that action's event was being dispatched (`dispatch`), the action's event is still held by code on the stack (`event_in_scope`), it ran in a React effect for a component the action set state on (`state_effect`), or its stack passes through a handler only that action ran (`only_run_of_handler`). Otherwise it is `unknown`, with the actions it `could_be`. Two clicks on the same button whose work overlaps come out `unknown`: Chrome's async stacks carry no id per click. The page pauses only while it handles the user's own input; [ADR 0006](../../docs/adr/0006-debugger-mode-pauses-only-in-user-input.md) says why.
+The page is never paused, because Chrome drops input that arrives while it is ([ADR 0006](../../docs/adr/0006-debugger-mode-never-pauses.md)). It adds listeners in an isolated world the app's scripts cannot see. Each request names the action that caused it only when an identifier says so:
+
+- `dispatch`: it was sent while that action's event was being dispatched.
+- `only_run_of_handler`: its async stack passes through a handler React called for that one action only.
+
+Otherwise it is `unknown`, with the actions it `could_be`. Two clicks on the same button whose work overlaps come out `unknown`, because Chrome's async stacks carry no id per click. So does a function the app also calls from a shortcut, an effect or a timer. Clicks the app dispatches itself are not actions.
 
 ## Limits
 

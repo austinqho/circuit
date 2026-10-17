@@ -86,6 +86,10 @@ for (const d of result.divergences) {
   for (const line of d.only_traced || []) console.log(`    + ${line}`);
   for (const line of d.only_plain || []) console.log(`    - ${line}`);
 }
+for (const step of result.failed_in_every_run || [])
+  console.log(
+    `  not checked: step ${step.index + 1} (${step.description}) failed in every run: ${step.error}`,
+  );
 const { overhead, footprint } = result;
 console.log(
   `overhead: script ${overhead.script_ms.plain} ms plain, ${overhead.script_ms.traced} ms traced (x${overhead.ratio ?? '?'}); pages took ${overhead.settle_ms.plain} ms plain, ${overhead.settle_ms.traced} ms traced to settle`,
@@ -98,9 +102,9 @@ console.log(`footprint: attributes ${JSON.stringify(footprint.dom_attributes)}`)
 console.log(`  request headers added: ${footprint.request_headers.join(', ') || 'none'}`);
 console.log(`  browser APIs replaced: ${footprint.replaced_browser_apis.join(', ') || 'none'}`);
 if (result.observed) {
-  const { actions, requests, joined, via, pauses, paused_ms: pausedMs } = result.observed;
+  const { actions, requests, joined, via, dispatches, pauses } = result.observed;
   console.log(
-    `observed: ${actions} actions, ${requests} requests, ${joined} joined to an action ${JSON.stringify(via)}; ${pauses} pauses, ${pausedMs} ms paused`,
+    `observed: ${actions} actions, ${requests} requests, ${joined} joined to an action ${JSON.stringify(via)}; ${dispatches} user events, ${pauses} pauses`,
   );
 }
 if (out) fs.writeFileSync(out, JSON.stringify(job, null, 2));
