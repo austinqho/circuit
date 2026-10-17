@@ -2,7 +2,7 @@
 
 A local website plus tools for Claude that answer one question fast: **does producttrace work on a real React app it has never seen?**
 
-Give it an open-source repo. It clones it, installs its dependencies, attaches producttrace's one plugin line in a wrapper config (the repo's source is never edited), runs it on the Vite dev server, and starts a collector. Then:
+Give it an open-source repo. It clones it, installs its dependencies, attaches producttrace's one install line in a wrapper config (the repo's source is never edited), runs it on its dev server (Vite or `next dev`), and starts a collector. Then:
 
 - **you** click around the app inside the page and watch the package's sentences appear next to it, live;
 - **Claude** drives the same app with a headless browser through MCP tools, reads back what the package said about each step, and gets a scorecard to hillclimb on.
@@ -71,9 +71,10 @@ Everything the tools do is plain HTTP on the same server; see the header of `src
 
 ## Limits
 
-- Vite + React apps only. In a monorepo the React app with a Vite config is picked automatically; pass `app_dir` to choose another.
+- Vite + React and Next.js apps. In a monorepo the React app with a Vite or Next.js config is picked automatically; pass `app_dir` to choose another.
+- Next.js apps run on `next dev` only (no `build` mode). Next.js reads its config only from the app folder, so in the clone the original moves to `next.config.circuit-original.*` and a wrapper that imports it with `withProducttrace` takes its name. Every variable in the app's example env file is passed to it. A `bun.lock` installs with bun when bun is on PATH.
 - Frontend only. Apps that need their own backend work when they mock it (bulletproof-react uses MSW); running a repo's backend with `producttrace/backend/register` is not wired up yet.
-- Dependencies install with lifecycle scripts off. The only file changed in the throwaway clone is the lockfile's registry host (mirrors such as npmmirror are pointed at registry.npmjs.org).
+- Dependencies install with lifecycle scripts off. Besides the Next.js config above, the only file changed in the throwaway clone is the lockfile's registry host (mirrors such as npmmirror are pointed at registry.npmjs.org).
 - The headless browser only loads the app's own origin and localhost. External fonts and analytics are blocked, because they hang in sandboxes.
 - When the package build has no `/story` endpoint, the Activity panel shows one line saying sentences are unavailable for that build; rebuild with a package that has it.
 

@@ -9,7 +9,8 @@ import {
   detectInstall,
   onPath,
   exampleEnv,
-  findViteApps,
+  findApps,
+  nextWrapperConfig,
   parseRepo,
   rewriteLockfileRegistry,
   wrapperConfig,
@@ -43,7 +44,7 @@ test('parseRepo accepts owner/repo, URLs and tree URLs', () => {
   });
 });
 
-test('findViteApps prefers the React app in a monorepo', () => {
+test('findApps prefers the React app in a monorepo', () => {
   const root = tmp();
   write(root, 'apps/admin/vite.config.ts', '');
   write(root, 'apps/admin/package.json', JSON.stringify({ dependencies: { vue: '3' } }));
@@ -57,9 +58,60 @@ test('findViteApps prefers the React app in a monorepo', () => {
     }),
   );
   write(root, 'node_modules/x/vite.config.js', '');
-  const found = findViteApps(root);
+  const found = findApps(root);
   assert.equal(found[0].dir, 'apps/react-vite');
   assert.equal(found.length, 2);
+});
+
+test('findApps finds a Next.js app and says which framework it is', () => {
+  const root = tmp();
+  write(root, 'apps/web/next.config.ts', '');
+  write(
+    root,
+    'apps/web/package.json',
+    JSON.stringify({ dependencies: { next: '16', react: '19' } }),
+  );
+  write(root, 'packages/ui/vite.config.ts', '');
+  write(root, 'packages/ui/package.json', JSON.stringify({ devDependencies: { vite: '7' } }));
+  const [first, second] = findApps(root);
+  assert.deepEqual(
+    { dir: first.dir, config: first.config, framework: first.framework },
+    { dir: 'apps/web', config: 'next.config.ts', framework: 'next' },
+  );
+  assert.equal(second.framework, 'vite');
+});
+
+test('findApps keeps the Vite React app first when a repo also has a Next.js one', () => {
+  const root = tmp();
+  for (const [dir, deps, config] of [
+    ['apps/nextjs-app', { next: '15', react: '19' }, 'next.config.mjs'],
+    ['apps/react-vite', { react: '19', '@vitejs/plugin-react': '4' }, 'vite.config.ts'],
+    ['apps/nextjs-pages', { next: '15', react: '19' }, 'next.config.mjs'],
+  ]) {
+    write(root, `${dir}/${config}`, '');
+    write(root, `${dir}/package.json`, JSON.stringify({ dependencies: deps }));
+  }
+  assert.equal(findApps(root)[0].dir, 'apps/react-vite');
+});
+
+test('nextWrapperConfig wraps the moved config with withProducttrace in its own module format', () => {
+  const options = { collector: { url: 'http://127.0.0.1:4601', force: true } };
+  const esm = nextWrapperConfig({
+    originalConfig: '/r/apps/web/next.config.circuit-original.ts',
+    nextModule: '/p/next.mjs',
+    options,
+  });
+  assert.match(esm, /import original from "\.\/next\.config\.circuit-original";/u);
+  assert.match(esm, /import \{ withProducttrace \} from "\/p\/next\.mjs";/u);
+  assert.match(esm, /export default withProducttrace\(original, \{"collector":/u);
+  const cjs = nextWrapperConfig({
+    originalConfig: '/r/next.config.circuit-original.js',
+    nextModule: '/p/next.mjs',
+    options,
+    commonjs: true,
+  });
+  assert.match(cjs, /require\("\.\/next\.config\.circuit-original\.js"\)/u);
+  assert.match(cjs, /module\.exports = withProducttrace\(original\.default \?\? original,/u);
 });
 
 test('detectInstall finds the governing lockfile and yarn flavour', () => {
@@ -95,6 +147,8 @@ test('exampleEnv reads VITE_ variables only', () => {
     VITE_APP_API_URL: 'https://api.example.com',
     VITE_FLAG: 'true',
   });
+  // Next.js server code reads any variable.
+  assert.equal(exampleEnv(root, { all: true }).SECRET, 'x');
 });
 
 test('wrapperConfig imports the original config and adds one producttrace line', () => {

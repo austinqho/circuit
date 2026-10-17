@@ -1,17 +1,22 @@
-// One target app: an open-source Vite + React repository, cloned, installed,
-// built with producttrace's one plugin line, and served next to a collector.
+// One target app: an open-source React repository (Vite or Next.js), cloned,
+// installed, run with producttrace's one install line, and served next to a
+// collector.
 //
-// The repository's own source is never edited. The plugin line lives in a
-// wrapper Vite config outside the checkout that imports the original config.
-// The only file the bench rewrites in its throwaway clone is the lockfile's
-// registry host (mirror registries such as npmmirror are rewritten to
-// registry.npmjs.org), so installs work behind restricted networks.
+// The repository's own source is never edited. For Vite the plugin line lives
+// in a wrapper config outside the checkout that imports the original config.
+// Next.js only reads next.config.* from the app folder, so in the throwaway
+// clone the original moves to next.config.circuit-original.* and a wrapper
+// that imports it takes its name. The only other file the bench rewrites in
+// its clone is the lockfile's registry host (mirror registries such as
+// npmmirror are rewritten to registry.npmjs.org), so installs work behind
+// restricted networks.
 import { spawn } from 'node:child_process';
 import fs from 'node:fs';
 import http from 'node:http';
 import path from 'node:path';
 
 const VITE_CONFIGS = ['vite.config.ts', 'vite.config.mts', 'vite.config.js', 'vite.config.mjs'];
+const NEXT_CONFIGS = ['next.config.ts', 'next.config.mjs', 'next.config.js'];
 const SKIP_DIRS = new Set([
   'node_modules',
   '.git',
@@ -48,8 +53,8 @@ export function parseRepo(input) {
   return { url: `${parsed.origin}/${parts[0]}/${parts[1]}`, name: parts[1], ...tree };
 }
 
-/** Every directory holding a Vite config, best React candidate first. */
-export function findViteApps(root, { maxDepth = 4 } = {}) {
+/** Every directory holding a Vite or Next.js config, best React candidate first. */
+export function findApps(root, { maxDepth = 4 } = {}) {
   const found = [];
   const walk = (dir, depth) => {
     let entries;
@@ -58,9 +63,9 @@ export function findViteApps(root, { maxDepth = 4 } = {}) {
     } catch {
       return;
     }
-    const config = VITE_CONFIGS.find((name) =>
-      entries.some((entry) => entry.isFile() && entry.name === name),
-    );
+    const has = (name) => entries.some((entry) => entry.isFile() && entry.name === name);
+    const nextConfig = NEXT_CONFIGS.find(has);
+    const config = nextConfig || VITE_CONFIGS.find(has);
     if (config) {
       let pkg = {};
       try {
@@ -71,9 +76,17 @@ export function findViteApps(root, { maxDepth = 4 } = {}) {
       let score = 0;
       if (deps.react) score += 10;
       if (deps['@vitejs/plugin-react'] || deps['@vitejs/plugin-react-swc']) score += 5;
+      // Next.js counts a little less: a repo with both (bulletproof-react) keeps its Vite app.
+      else if (deps.next) score += 4;
       if (/(^|\/)(web|client|frontend|app|react)/iu.test(rel)) score += 1;
       score -= depth;
-      found.push({ dir: rel, config, react: Boolean(deps.react), score });
+      found.push({
+        dir: rel,
+        config,
+        framework: nextConfig ? 'next' : 'vite',
+        react: Boolean(deps.react),
+        score,
+      });
     }
     if (depth >= maxDepth) return;
     for (const entry of entries) {
@@ -83,6 +96,13 @@ export function findViteApps(root, { maxDepth = 4 } = {}) {
   };
   walk(root, 0);
   return found.sort((a, b) => b.score - a.score);
+}
+
+/** The app config in one folder, for an app_dir deeper than the search goes. */
+function configIn(root, dir) {
+  const has = (name) => fs.existsSync(path.join(root, dir, name));
+  const next = NEXT_CONFIGS.find(has);
+  return { dir, config: next || VITE_CONFIGS.find(has), framework: next ? 'next' : 'vite' };
 }
 
 /** The lockfile that governs appDir (searching up to root) and the install command for it. */
@@ -119,12 +139,15 @@ export function detectInstall(root, appDir) {
           };
     }
     if (has('bun.lockb') || has('bun.lock'))
-      return {
-        dir,
-        lockfile: 'bun.lock',
-        command: 'npm',
-        args: ['install', '--ignore-scripts', '--no-audit', '--no-fund'],
-      };
+      // bun when it is installed (workspaces and its lockfile); npm otherwise.
+      return onPath('bun')
+        ? { dir, lockfile: 'bun.lock', command: 'bun', args: ['install', '--ignore-scripts'] }
+        : {
+            dir,
+            lockfile: 'bun.lock',
+            command: 'npm',
+            args: ['install', '--ignore-scripts', '--no-audit', '--no-fund'],
+          };
     if (has('package-lock.json'))
       return {
         dir,
@@ -163,8 +186,11 @@ export function rewriteLockfileRegistry(file) {
   return count;
 }
 
-/** Example env files give an app the variables it needs to boot (VITE_* only). */
-export function exampleEnv(appRoot) {
+/**
+ * Example env files give an app the variables it needs to boot: VITE_* only for
+ * Vite, every variable for Next.js (its server code reads them too).
+ */
+export function exampleEnv(appRoot, { all = false } = {}) {
   const env = {};
   for (const name of [
     '.env',
@@ -176,7 +202,11 @@ export function exampleEnv(appRoot) {
     const file = path.join(appRoot, name);
     if (!fs.existsSync(file)) continue;
     for (const line of fs.readFileSync(file, 'utf8').split('\n')) {
-      const match = line.match(/^\s*(?:export\s+)?(VITE_[A-Z0-9_]+)\s*=\s*(.*)\s*$/u);
+      const match = line.match(
+        all
+          ? /^\s*(?:export\s+)?([A-Za-z_][A-Za-z0-9_]*)\s*=\s*(.*)\s*$/u
+          : /^\s*(?:export\s+)?(VITE_[A-Z0-9_]+)\s*=\s*(.*)\s*$/u,
+      );
       if (match && !(match[1] in env)) env[match[1]] = match[2].replace(/^(['"])(.*)\1$/u, '$2');
     }
   }
@@ -202,6 +232,24 @@ export default async env => {
     ],
   };
 };
+`;
+}
+
+/**
+ * The Next.js config the bench puts in the clone: the app's own config (moved
+ * beside it) wrapped in withProducttrace, in the same file type.
+ */
+export function nextWrapperConfig({ originalConfig, nextModule, options, commonjs }) {
+  const original = `./${path.basename(originalConfig).replace(/\.ts$/u, '')}`;
+  const header = `// Generated by circuit-web. Wraps ${path.basename(originalConfig)} unchanged with withProducttrace.\n`;
+  if (commonjs)
+    return `${header}const original = require(${JSON.stringify(original)});
+const { withProducttrace } = require(${JSON.stringify(nextModule)});
+module.exports = withProducttrace(original.default ?? original, ${JSON.stringify(options)});
+`;
+  return `${header}import original from ${JSON.stringify(original)};
+import { withProducttrace } from ${JSON.stringify(nextModule)};
+export default withProducttrace(original, ${JSON.stringify(options)});
 `;
 }
 
@@ -250,18 +298,31 @@ const TYPES = {
   '.txt': 'text/plain',
 };
 
-/** The app on the Vite dev server with the wrapper config; resolves once it answers. */
-export async function serveDev({ viteBin, wrapper, appRoot, env }, port, logFile) {
+/** The app on its dev server (Vite with the wrapper config, or next dev); resolves once it answers. */
+export async function serveDev(
+  { framework = 'vite', viteBin, nextBin, wrapper, appRoot, env },
+  port,
+  logFile,
+) {
   const out = fs.openSync(logFile, 'a');
-  const child = spawn(
-    process.execPath,
-    [viteBin, '--config', wrapper, '--host', '127.0.0.1', '--port', String(port), '--strictPort'],
-    {
-      cwd: appRoot,
-      env: { ...process.env, ...TOOL_ENV, NODE_ENV: 'development', ...env },
-      stdio: ['ignore', out, out],
-    },
-  );
+  const args =
+    framework === 'next'
+      ? [nextBin, 'dev', '--hostname', '127.0.0.1', '--port', String(port)]
+      : [
+          viteBin,
+          '--config',
+          wrapper,
+          '--host',
+          '127.0.0.1',
+          '--port',
+          String(port),
+          '--strictPort',
+        ];
+  const child = spawn(process.execPath, args, {
+    cwd: appRoot,
+    env: { ...process.env, ...TOOL_ENV, NODE_ENV: 'development', ...env },
+    stdio: ['ignore', out, out],
+  });
   fs.closeSync(out);
   const exited = new Promise((resolve) => child.once('exit', resolve));
   // Large apps take a while: the plugin reads the whole client source before Vite listens.
@@ -271,7 +332,9 @@ export async function serveDev({ viteBin, wrapper, appRoot, env }, port, logFile
   ]);
   if (!up) {
     child.kill('SIGTERM');
-    throw new Error('the Vite dev server did not start; see the build log');
+    throw new Error(
+      `the ${framework === 'next' ? 'Next.js' : 'Vite'} dev server did not start; see the build log`,
+    );
   }
   return { close: () => child.kill('SIGTERM') };
 }
@@ -341,20 +404,19 @@ export async function buildTarget(app, { packageDir, log, rebuild = false }) {
         { cwd: work, logFile },
       );
 
-    const apps = findViteApps(src);
+    const apps = findApps(src);
     app.candidates = apps.map((candidate) => candidate.dir);
     const chosen = app.appDir
-      ? apps.find((candidate) => candidate.dir === app.appDir) || {
-          dir: app.appDir,
-          config: VITE_CONFIGS.find((name) => fs.existsSync(path.join(src, app.appDir, name))),
-        }
+      ? apps.find((candidate) => candidate.dir === app.appDir) || configIn(src, app.appDir)
       : apps[0];
     if (!chosen?.config)
       throw new Error(
-        `no Vite config found${app.appDir ? ` in ${app.appDir}` : ''}; candidates: ${apps.map((c) => c.dir).join(', ') || 'none'}. This bench supports Vite + React apps.`,
+        `no Vite or Next.js config found${app.appDir ? ` in ${app.appDir}` : ''}; candidates: ${apps.map((c) => c.dir).join(', ') || 'none'}. This bench supports Vite + React and Next.js apps.`,
       );
     app.appDir = chosen.dir;
-    app.viteConfig = chosen.config;
+    app.framework = chosen.framework;
+    if (chosen.framework === 'next') app.nextConfig = chosen.config;
+    else app.viteConfig = chosen.config;
 
     step('installing dependencies');
     const install = detectInstall(src, app.appDir);
@@ -383,6 +445,7 @@ export async function buildTarget(app, { packageDir, log, rebuild = false }) {
 
   step(app.mode === 'build' ? 'building with producttrace' : 'attaching producttrace');
   const appRoot = path.join(src, app.appDir);
+  if (app.framework === 'next') return attachNext(app, { packageDir, appRoot, src });
   const consumer = path.join(work, 'consumer');
   fs.mkdirSync(path.join(consumer, 'node_modules'), { recursive: true });
   fs.writeFileSync(
@@ -431,5 +494,52 @@ export async function buildTarget(app, { packageDir, log, rebuild = false }) {
     },
   });
   app.buildMs = Date.now() - started;
+  app.builtAt = new Date().toISOString();
+}
+
+/** Next.js: wrap the config in the clone with withProducttrace; start() runs next dev. */
+function attachNext(app, { packageDir, appRoot, src }) {
+  // withProducttrace instruments next dev; a production build is served untouched.
+  if (app.mode === 'build')
+    throw new Error('Next.js apps run on next dev in the bench; add them without mode "build"');
+  const wrapper = path.join(appRoot, app.nextConfig);
+  const extension = path.extname(app.nextConfig);
+  const originalConfig = path.join(appRoot, `next.config.circuit-original${extension}`);
+  // A rebuild finds the original already moved and only rewrites the wrapper.
+  if (!fs.existsSync(originalConfig)) fs.renameSync(wrapper, originalConfig);
+  let commonjs = false;
+  if (extension === '.js') {
+    try {
+      commonjs =
+        JSON.parse(fs.readFileSync(path.join(appRoot, 'package.json'), 'utf8')).type !== 'module';
+    } catch {
+      commonjs = true;
+    }
+  }
+  const options = {
+    bodies: true,
+    labels: true,
+    collector: { url: `http://127.0.0.1:${app.ports.collector}`, force: true },
+    ...(app.pluginOptions || {}),
+  };
+  fs.writeFileSync(
+    wrapper,
+    nextWrapperConfig({
+      originalConfig,
+      nextModule: path.join(packageDir, 'next.mjs'),
+      options,
+      commonjs,
+    }),
+  );
+  fs.rmSync(path.join(appRoot, 'node_modules', '.producttrace'), { recursive: true, force: true });
+  const nextBin = [appRoot, src]
+    .map((dir) => path.join(dir, 'node_modules', 'next', 'dist', 'bin', 'next'))
+    .find((file) => fs.existsSync(file));
+  if (!nextBin) throw new Error('next is not installed in the target app');
+  // The bench owns the mode, host and port; an example file's values for them are ignored.
+  const { NODE_ENV, PORT, HOSTNAME, ...example } = exampleEnv(appRoot, { all: true });
+  const env = { ...example, ...(app.env || {}) };
+  app.serve = { framework: 'next', nextBin, wrapper, appRoot, env };
+  app.buildMs = 0;
   app.builtAt = new Date().toISOString();
 }
