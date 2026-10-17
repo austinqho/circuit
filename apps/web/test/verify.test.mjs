@@ -1,6 +1,12 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { compareItems, compareRuns, normalizer } from '../src/verify.mjs';
+import {
+  compareItems,
+  compareRuns,
+  normalizer,
+  summarizeObserved,
+  verifyReadOnly,
+} from '../src/verify.mjs';
 
 test('normalizer hides run tokens, generated ids and clock times', () => {
   const norm = normalizer('r1a2b3');
@@ -149,4 +155,29 @@ test('compareRuns reports a page difference once, at the step where it appeared'
   const pages = compareRuns(plain, plain, traced).divergences.filter((d) => d.kind === 'page');
   assert.equal(pages.length, 1);
   assert.equal(pages[0].step.index, 0);
+});
+
+test('debugger mode: the summary counts actions and how each request was joined', () => {
+  const records = [
+    { kind: 'observe.action', action_id: 'observe:action:1' },
+    { kind: 'observe.request', action_id: 'observe:action:1', via: 'dispatch' },
+    { kind: 'observe.request', action_id: null, via: 'unknown' },
+    { kind: 'observe.request', action_id: null, via: 'unknown' },
+  ];
+  assert.deepEqual(summarizeObserved({ stats: { pauses: 4, paused_ms: 12, errors: 0 }, records }), {
+    actions: 1,
+    requests: 3,
+    joined: 1,
+    via: { dispatch: 1, unknown: 2 },
+    pauses: 4,
+    paused_ms: 12,
+    errors: 0,
+  });
+});
+
+test('verify refuses a mode it does not know', async () => {
+  await assert.rejects(
+    verifyReadOnly({ serve: async () => {}, steps: [{ action: 'goto', value: '/' }], mode: 'x' }),
+    /unknown verify mode "x"/u,
+  );
 });

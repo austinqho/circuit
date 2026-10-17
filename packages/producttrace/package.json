@@ -39,6 +39,10 @@
       "types": "./runtime-attribution.d.mts",
       "import": "./runtime-attribution.mjs"
     },
+    "./observe": {
+      "types": "./observe.d.mts",
+      "import": "./observe.mjs"
+    },
     "./mcp": {
       "import": "./mcp.mjs"
     },
@@ -75,6 +79,9 @@
     "runtime-attribution.d.mts",
     "mcp.mjs",
     "mcp-annotation-lookup.mjs",
+    "observe",
+    "observe.mjs",
+    "observe.d.mts",
     "LICENSE",
     "README.md"
   ],

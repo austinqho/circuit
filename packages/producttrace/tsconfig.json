@@ -16,6 +16,7 @@
     "collector.d.ts",
     "backend.d.ts",
     "analysis.d.mts",
-    "runtime-attribution.d.mts"
+    "runtime-attribution.d.mts",
+    "observe.d.mts"
   ]
 }

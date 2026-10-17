@@ -193,7 +193,7 @@ const TOOLS = [
   {
     name: 'circuit_verify',
     description:
-      'Check that the package does not change how the app behaves. Give steps (the same shape as circuit_act, without app) and the bench runs them three times in fresh browsers: twice on the app without the package, once with it. The result lists every divergence (a step that failed, a different page after a step, a different URL, requests sent or not sent, new console errors, different storage), ignoring whatever the two plain runs already disagreed on; the overhead (script time with and without the package, the worst step); and the footprint the package adds on purpose (DOM attributes, request headers, replaced browser APIs). {{run}} in a value becomes a token unique to each run, for flows that create accounts on a real backend. It takes minutes: call again with no steps and wait_seconds to read progress and the verdict. The bench copy of the app is stopped while it runs.',
+      'Check that the package does not change how the app behaves. Give steps (the same shape as circuit_act, without app) and the bench runs them three times in fresh browsers: twice on the app without the package, once with it. The result lists every divergence (a step that failed, a different page after a step, a different URL, requests sent or not sent, new console errors, different storage), ignoring whatever the two plain runs already disagreed on; the overhead (script time with and without the package, the worst step); and the footprint the package adds on purpose (DOM attributes, request headers, replaced browser APIs). {{run}} in a value becomes a token unique to each run, for flows that create accounts on a real backend. With mode "observe" the third run is the app without the package, watched by debugger mode (the Chrome debugger, nothing rewritten), and the result adds `observed`: actions seen, requests and how each was joined to an action. It takes minutes: call again with no steps and wait_seconds to read progress and the verdict. The bench copy of the app is stopped while it runs.',
     inputSchema: {
       type: 'object',
       required: ['app'],
@@ -208,11 +208,17 @@ const TOOLS = [
             properties: { action: { type: 'string' }, target: TARGET, value: { type: 'string' } },
           },
         },
+        mode: {
+          type: 'string',
+          enum: ['rewrite', 'observe'],
+          description:
+            'What the third run checks: the package (rewrite, default) or debugger mode (observe).',
+        },
         wait_seconds: { type: 'integer', minimum: 0, maximum: 50 },
       },
     },
-    run: async ({ app, steps, wait_seconds: wait = 0 }) => {
-      if (steps?.length) await api('POST', `/api/apps/${app}/verify`, { steps });
+    run: async ({ app, steps, mode, wait_seconds: wait = 0 }) => {
+      if (steps?.length) await api('POST', `/api/apps/${app}/verify`, { steps, mode });
       return api('GET', `/api/apps/${app}/verify?wait=${wait}`);
     },
   },
