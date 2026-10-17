@@ -154,7 +154,8 @@ function detailOf(chain, requests, navigations) {
   if (handler?.name) notes.push(`Handled by ${handler.name}${handler.file ? ` in ${handler.file}` : ''}.`);
   const did = chain.outcome?.did;
   if (!requests.length && !navigations.length && did) {
-    if (!did.functions_entered) notes.push('None of the app\'s own code ran.');
+    if (!did.functions_entered && did.functions_unknown) notes.push('Part of this action\'s recording was dropped, so which of the app\'s code ran is not known.');
+    else if (!did.functions_entered) notes.push('None of the app\'s own code ran.');
     else {
       const changed = [did.dom_mutations && `${did.dom_mutations} page update${did.dom_mutations === 1 ? '' : 's'}`, did.state_effects && `${did.state_effects} state change${did.state_effects === 1 ? '' : 's'}`].filter(Boolean);
       notes.push(`The app's code ran${changed.length ? ` and made ${changed.join(' and ')},` : ''} and sent no request.`);
