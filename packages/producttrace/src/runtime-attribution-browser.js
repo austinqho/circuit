@@ -2342,14 +2342,14 @@
       else emitBody({ ...base, ...sizeOnly(type === 'document' ? 'document' : 'unsupported_body_type') });
     } catch { bodyStats.errors += 1; }
   };
-  const emitTransport = ({ method, url, traceparent, context, active, transport, internal = false }) => {
+  const emitTransport = ({ method, url, traceparent, context, active, transport, internal = false, unsent = false }) => {
     if (!internal) checkRealms();
     const action_id = active?.action_id || null;
     const request_occurrence_id = `${action_id || 'unattributed'}:request:${++requestSequence}`;
     emit({ kind: 'network.request', action_id, action_occurrence_id: action_id,
       // Path and query as the page sent them (a dev tool: recorded as-is); never the fragment.
       request_occurrence_id, method: String(method || 'GET').toUpperCase(), url: String(url || '').split('#')[0],
-      traceparent, trace_context: { ...context, traceparent }, transport, internal,
+      traceparent, trace_context: { ...context, traceparent }, transport, internal, ...(unsent ? { traceparent_sent: false } : {}),
       parent_continuation_id: active?.continuation_id || null,
       terminal_owner_continuation_id: actionTerminalOwner.get(action_id)?.continuation_id || null,
       // Async continuations remain part of the action handler lineage. A
@@ -2568,6 +2568,17 @@
     if (wrappedValues) StreamProto.values = wrappedValues;
     if (typeof nativeIterator === 'function') StreamProto[Symbol.asyncIterator] = nativeIterator === nativeValues && wrappedValues ? wrappedValues : followIterator(nativeIterator);
   }
+  // traceparent goes only to the page's own origin and to origins the install
+  // lists (`traceOrigins`, __PRODUCTTRACE_TRACE_ORIGINS__). Another origin's
+  // server may not allow the header, and its CORS preflight would then fail a
+  // request that works without circuit. A request sent without it says so
+  // (`traceparent_sent: false`); no backend span can join it.
+  const traceOrigins = new Set(Array.isArray(global.__PRODUCTTRACE_TRACE_ORIGINS__) ? global.__PRODUCTTRACE_TRACE_ORIGINS__.map(String) : []);
+  const sendsTrace = url => {
+    const page = global.location?.href;
+    if (typeof page !== 'string' || !/^https?:/u.test(page) || typeof global.URL !== 'function') return true;
+    try { const origin = new global.URL(url, page).origin; return origin === new global.URL(page).origin || traceOrigins.has(origin); } catch { return false; }
+  };
   if (nativeFetch) global.fetch = function productTraceRuntimeFetch(input, init) {
     const active = ownable(settleAmbient()) ? current : null;
     const url = String(input?.url || input || '');
@@ -2576,9 +2587,10 @@
     const headers = new Headers(init?.headers || input?.headers || {});
     const existing = headers.get('traceparent');
     const traceparent = existing || context.traceparent;
-    if (!existing && !internal && !/\/__capture(?:$|[?])/u.test(url)) headers.set('traceparent', traceparent);
+    const unsent = !existing && !sendsTrace(url);
+    if (!existing && !unsent && !internal && !/\/__capture(?:$|[?])/u.test(url)) headers.set('traceparent', traceparent);
     const occurrence = global.__PRODUCTTRACE_BRIDGE_TRANSPORT__ ? null : emitTransport({ method: init?.method || input?.method || 'GET', url, traceparent, context, active,
-      transport: 'fetch', internal });
+      transport: 'fetch', internal, unsent });
     const nextInit = { ...(init || {}), headers };
     // A fetch that carries an AbortSignal: the page can abort it (network.abort).
     const abortTrack = occurrence && !internal ? trackAbort(occurrence, input, init) : null;
@@ -2634,9 +2646,10 @@
     global.XMLHttpRequest.prototype.send = function productTraceRuntimeSend(...args) {
       const request = this.__productTraceRuntimeRequest; const active = ownable(settleAmbient()) ? current : null;
       if (request) { const context = traceContext(); const traceparent = request.headers.traceparent || context.traceparent;
-        if (!request.headers.traceparent) { try { this.setRequestHeader('traceparent', traceparent); } catch {} }
+        const unsent = !request.headers.traceparent && !sendsTrace(String(request.url || ''));
+        if (!request.headers.traceparent && !unsent) { try { this.setRequestHeader('traceparent', traceparent); } catch {} }
       const internal = Boolean(global.__PRODUCTTRACE_INTERNAL_FETCH__) || /(?:producttrace|react-observations|\/__capture(?:$|[?]))/u.test(String(request.url || ''));
-      const occurrence = global.__PRODUCTTRACE_BRIDGE_TRANSPORT__ ? null : emitTransport({ method: request.method, url: request.url, traceparent, context, active, transport: 'xhr', internal });
+      const occurrence = global.__PRODUCTTRACE_BRIDGE_TRANSPORT__ ? null : emitTransport({ method: request.method, url: request.url, traceparent, context, active, transport: 'xhr', internal, unsent });
       if (occurrence && !internal) {
         xhrOccurrences.set(this, occurrence);
         // Client abort: the XHR's own `abort` event (fired only by abort()),
