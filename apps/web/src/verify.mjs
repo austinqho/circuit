@@ -122,18 +122,29 @@ async function metrics(cdp) {
 }
 
 const hash = (text) => crypto.createHash('sha1').update(text).digest('hex').slice(0, 10);
-// Digests are added after normalizing: hex reads as a generated id to the normalizer.
-const LONG_ROW = 300;
+// Items are compared in full, so random numbers the plain runs disagree on
+// stay noise (compareItems); only text past this cap is reduced to a hash.
+const COMPARED_CHARS = 20000;
+const capped = (text) =>
+  text.length > COMPARED_CHARS ? `${text.slice(0, COMPARED_CHARS)}… #${hash(text)}` : text;
+// What a divergence prints of a long item: its start and a hash of the whole.
+const PRINTED_CHARS = 300;
 
-/** A request as a comparable item: method, path, and a hash of the normalized body. */
-export function requestItem(norm, method, path, body) {
-  return `${norm(`${method} ${path}`)}${body ? ` body:${hash(norm(body))}` : ''}`;
+/** A long item as the report prints it. */
+export function printable(item) {
+  return item.length > PRINTED_CHARS
+    ? `${item.slice(0, PRINTED_CHARS - 60)}… #${hash(item)}`
+    : item;
 }
 
-/** A storage row, normalized; a long one keeps its start and a hash of the whole. */
+/** A request as a comparable item: method, path and the normalized body. */
+export function requestItem(norm, method, path, body) {
+  return capped(norm(`${method} ${path}${body ? ` body: ${body}` : ''}`));
+}
+
+/** A storage row as a comparable item. */
 export function storageRow(norm, raw) {
-  const row = norm(raw);
-  return row.length > LONG_ROW ? `${row.slice(0, LONG_ROW - 60)}… #${hash(row)}` : row;
+  return capped(norm(raw));
 }
 
 export async function readStorage(page) {
@@ -350,15 +361,18 @@ export function compareRuns(plainA, plainB, traced) {
     page.missing.forEach((line) => shown.missing.add(line));
     if (extra.length || missing.length)
       add('page', describeStep(index), {
-        only_traced: extra.slice(0, 20),
-        only_plain: missing.slice(0, 20),
+        only_traced: extra.slice(0, 20).map(printable),
+        only_plain: missing.slice(0, 20).map(printable),
       });
   });
 
   const channel = (kind, pick) => {
     const { extra, missing } = compareItems(pick(plainA), pick(plainB), pick(traced));
     if (extra.length || missing.length)
-      add(kind, null, { only_traced: extra.slice(0, 30), only_plain: missing.slice(0, 30) });
+      add(kind, null, {
+        only_traced: extra.slice(0, 30).map(printable),
+        only_plain: missing.slice(0, 30).map(printable),
+      });
   };
   channel('requests', (run) => items(run.requests));
   // Headers on requests to other origins: one the server does not allow fails
