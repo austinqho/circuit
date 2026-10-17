@@ -175,15 +175,23 @@ test('debugger mode: the summary counts actions and how each request was joined'
     { kind: 'observe.request', action_id: null, via: 'unknown' },
     { kind: 'observe.request', action_id: null, via: 'unknown' },
   ];
-  assert.deepEqual(summarizeObserved({ stats: { pauses: 0, dispatches: 5, errors: 0 }, records }), {
-    actions: 1,
-    requests: 3,
-    joined: 1,
-    via: { dispatch: 1, unknown: 2 },
-    dispatches: 5,
-    pauses: 0,
-    errors: 0,
-  });
+  assert.deepEqual(
+    summarizeObserved({
+      stats: { pauses: 0, dispatches: 5, runs: 7, unread: { 'click: removed node': 2 }, errors: 0 },
+      records,
+    }),
+    {
+      actions: 1,
+      requests: 3,
+      joined: 1,
+      via: { dispatch: 1, unknown: 2 },
+      dispatches: 5,
+      runs: 7,
+      unread: 2,
+      pauses: 0,
+      errors: 0,
+    },
+  );
 });
 
 test('verify refuses a mode it does not know', async () => {

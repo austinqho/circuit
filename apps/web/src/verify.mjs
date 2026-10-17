@@ -466,6 +466,9 @@ export function summarizeObserved({ stats, records }) {
     joined: requests.filter((row) => row.action_id).length,
     via,
     dispatches: stats.dispatches,
+    runs: stats.runs ?? 0,
+    // Events whose handlers could not be read; after one, handler-only joins abstain.
+    unread: Object.values(stats.unread ?? {}).reduce((sum, count) => sum + count, 0),
     pauses: stats.pauses,
     errors: stats.errors,
     ...(stats.last_error ? { last_error: stats.last_error } : {}),

@@ -76,9 +76,9 @@ await observer.stop();
 The page is never paused, because Chrome drops input that arrives while it is ([ADR 0006](../../docs/adr/0006-debugger-mode-never-pauses.md)). It adds listeners in an isolated world the app's scripts cannot see. Each request names the action that caused it only when an identifier says so:
 
 - `dispatch`: it was sent while that action's event was being dispatched.
-- `only_run_of_handler`: its async stack passes through a handler React's event dispatch called for that one action only. In a minified build React's functions have no names, so these abstain.
+- `only_run_of_handler`: its async stack passes through a handler React's event dispatch called, and of every event React handled before the request (hover, focus, scroll and events the app dispatched included), only that action could have run it. In a minified build React's functions have no names, so these abstain. After an event whose element React removed before its handlers could be read (a link that navigates away), these abstain too.
 
-Otherwise it is `unknown`, with the actions it `could_be`. Two clicks on the same button whose work overlaps come out `unknown`, because Chrome's async stacks carry no id per click. So does a function the app also calls from a shortcut, an effect or a timer, including a handler passed straight to `useEffect`. Clicks the app dispatches itself are not actions.
+Otherwise it is `unknown`, with the actions it `could_be`. Two clicks on the same button whose work overlaps come out `unknown`, because Chrome's async stacks carry no id per click. So does a function the app also calls from a shortcut, an effect, a timer or another event, including a handler passed straight to `useEffect` or shared by a click and a hover. Clicks the app dispatches itself are not actions.
 
 ## Limits
 

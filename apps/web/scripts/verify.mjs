@@ -102,9 +102,9 @@ console.log(`footprint: attributes ${JSON.stringify(footprint.dom_attributes)}`)
 console.log(`  request headers added: ${footprint.request_headers.join(', ') || 'none'}`);
 console.log(`  browser APIs replaced: ${footprint.replaced_browser_apis.join(', ') || 'none'}`);
 if (result.observed) {
-  const { actions, requests, joined, via, dispatches, pauses } = result.observed;
+  const { actions, requests, joined, via, dispatches, runs, unread, pauses } = result.observed;
   console.log(
-    `observed: ${actions} actions, ${requests} requests, ${joined} joined to an action ${JSON.stringify(via)}; ${dispatches} user events, ${pauses} pauses`,
+    `observed: ${actions} actions, ${requests} requests, ${joined} joined to an action ${JSON.stringify(via)}; ${dispatches} user events, ${runs} other events, ${unread} unreadable, ${pauses} pauses`,
   );
 }
 if (out) fs.writeFileSync(out, JSON.stringify(job, null, 2));

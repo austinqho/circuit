@@ -72,7 +72,39 @@ test('two runs of the same handler abstain and list both, never the latest', () 
   assert.equal(cause.action_id, null);
   assert.equal(cause.via, 'unknown');
   assert.deepEqual(cause.could_be, [first.action_id, second.action_id]);
-  assert.match(cause.reason, /2 actions ran this handler/u);
+  assert.match(cause.reason, /2 events ran this handler/u);
+});
+
+test('a handler a hover, or the app itself, also ran is not credited to the click', () => {
+  const attribution = createAttribution();
+  const after = [app(20), app(150, 2, 'await'), react(9, 2, 'await', 'dispatchEvent')];
+  // A link's onMouseEnter is the button's onClick: the hover is a run of it.
+  const click = action(attribution, handler(100, 200, 'prefetch'));
+  const hover = attribution.noteRun({ event: 'mouseover' });
+  hover.handlers.push(handler(100, 200, 'prefetch'));
+  const cause = attribution.causeOf({ stack: after });
+  assert.equal(cause.action_id, null);
+  assert.deepEqual(cause.could_be, [click.action_id, hover.action_id]);
+  // Only an event the app dispatched (el.click()) ran it: not a person's action.
+  const alone = createAttribution();
+  alone.noteRun({ event: 'click', trusted: false }).handlers.push(handler(100, 200));
+  assert.match(alone.causeOf({ stack: after }).reason, /dispatched itself/u);
+  // Hovering the same link again counts again.
+  const twice = createAttribution();
+  const run = twice.noteRun({ event: 'mouseover' });
+  run.handlers.push(handler(100, 200));
+  assert.equal(twice.causeOf({ stack: after }).action_id, run.action_id);
+  run.times += 1;
+  assert.equal(twice.causeOf({ stack: after }).action_id, null);
+});
+
+test('an event whose handlers could not be read makes later handler joins abstain', () => {
+  const attribution = createAttribution();
+  action(attribution, handler(100, 200));
+  attribution.startDispatch({ event: 'click' }).described = false;
+  const cause = attribution.causeOf({ stack: [app(20), app(150, 2, 'await'), react(9, 2, 'await')] });
+  assert.equal(cause.action_id, null);
+  assert.match(cause.reason, /could not be read/u);
 });
 
 test("a handler called from the app's own code or by the browser directly is not an event", () => {
@@ -173,7 +205,16 @@ test('a request between a dispatch start and end joins it; one after the end is 
   assert.deepEqual([save.url, save.action_id, save.via], ['http://localhost:5173/api/save', click.action_id, 'dispatch']);
   assert.deepEqual([poll.action_id, poll.via], [null, 'unknown']);
   assert.equal(poll.reason, 'started outside every recorded handler');
-  assert.deepEqual(observer.stats(), { pauses: 0, dispatches: 1, requests: 2, errors: 0, actions: 1 });
+  assert.deepEqual(observer.stats(), {
+    pauses: 0,
+    dispatches: 1,
+    runs: 0,
+    requests: 2,
+    errors: 0,
+    // The fake page has no context to read the click's handlers in.
+    unread: { 'click: no page context': 1 },
+    actions: 1,
+  });
 });
 
 test('a request sent before a dispatch end that came only on the next task is not claimed', async () => {

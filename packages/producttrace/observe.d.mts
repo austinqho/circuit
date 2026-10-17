@@ -45,7 +45,7 @@ export interface ObserveRequest {
   action_id: string | null;
   /**
    * `dispatch`: sent while that action's event was being dispatched.
-   * `only_run_of_handler`: its async stack passes through a handler React called for that one action only.
+   * `only_run_of_handler`: its async stack passes through a handler that React's event dispatch called, and of every event React handled before the request, only that action could have run it.
    * `unknown`: no identifier says which; `could_be` lists the candidates when there are some.
    */
   via: 'dispatch' | 'only_run_of_handler' | 'unknown';
@@ -64,6 +64,10 @@ export interface ObserveStats {
   pauses: number;
   /** Trusted user events seen. */
   dispatches: number;
+  /** Other events React handles (hover, focus, scroll, events the app dispatched), each a possible run of a handler. */
+  runs: number;
+  /** Events whose handlers could not be read, by event and why; after one, handler-only joins abstain. */
+  unread: Record<string, number>;
   requests: number;
   errors: number;
   last_error?: string;

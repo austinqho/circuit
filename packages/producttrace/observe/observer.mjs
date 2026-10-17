@@ -28,11 +28,10 @@ import { functionRanges } from './function-ranges.mjs';
 
 const WORLD = 'producttrace-observe';
 const BINDING = '__producttraceObserve';
-// Every event type React or an app may handle for user input. Each trusted
-// dispatch is recorded, so a handler shared by a click and a key press is
-// known to have run twice. Only the types a person reads as an action are
-// written as rows of their own (`SHOWN`); the rest appear when a request joins one.
-const EVENTS = [
+// The user events whose dispatch is watched from start to end: a request sent
+// inside one joins it. Only the types a person reads as an action are written
+// as rows of their own (`shown`); the rest appear when a request joins one.
+const WINDOWED = [
   'click',
   'dblclick',
   'auxclick',
@@ -55,7 +54,48 @@ const EVENTS = [
   'dragstart',
   'dragend',
 ];
-const REACT_PROPS = {
+// The React props React calls for each native event (react-dom's event
+// plugins), so every event that could run a handler is counted as a run of
+// it: hover, focus, scroll, media events and events the app dispatches itself
+// included. A handler credited by `only_run_of_handler` must have run for
+// exactly one of them.
+const REACT_PROPS = {};
+const addProps = (types, prop) => {
+  for (const type of types.split(' ')) (REACT_PROPS[type] ??= []).push(prop);
+};
+for (const name of 'abort auxClick beforeToggle cancel canPlay canPlayThrough click close contextMenu copy cut drag dragEnd dragEnter dragExit dragLeave dragOver dragStart drop durationChange emptied encrypted ended error fullscreenChange fullscreenError gotPointerCapture input invalid keyDown keyPress keyUp load loadedData loadedMetadata loadStart lostPointerCapture mouseDown mouseMove mouseOut mouseOver mouseUp paste pause play playing pointerCancel pointerDown pointerMove pointerOut pointerOver pointerUp progress rateChange reset resize seeked seeking stalled submit suspend timeUpdate touchCancel touchEnd touchStart volumeChange scroll scrollEnd toggle touchMove waiting wheel'.split(
+  ' ',
+))
+  addProps(name.toLowerCase(), `on${name[0].toUpperCase()}${name.slice(1)}`);
+for (const [type, prop] of [
+  ['animationend', 'onAnimationEnd'],
+  ['animationiteration', 'onAnimationIteration'],
+  ['animationstart', 'onAnimationStart'],
+  ['dblclick', 'onDoubleClick'],
+  ['focusin', 'onFocus'],
+  ['focusout', 'onBlur'],
+  ['transitionrun', 'onTransitionRun'],
+  ['transitionstart', 'onTransitionStart'],
+  ['transitioncancel', 'onTransitionCancel'],
+  ['transitionend', 'onTransitionEnd'],
+  ['mouseout mouseover', 'onMouseEnter'],
+  ['mouseout mouseover', 'onMouseLeave'],
+  ['pointerout pointerover', 'onPointerEnter'],
+  ['pointerout pointerover', 'onPointerLeave'],
+  ['change click focusin focusout input keydown keyup selectionchange', 'onChange'],
+  [
+    'focusout contextmenu dragend focusin keydown keyup mousedown mouseup selectionchange',
+    'onSelect',
+  ],
+  ['compositionend keypress textInput paste', 'onBeforeInput'],
+  ['compositionend focusout keydown keypress keyup mousedown', 'onCompositionEnd'],
+  ['compositionstart focusout keydown keypress keyup mousedown', 'onCompositionStart'],
+  ['compositionupdate focusout keydown keypress keyup mousedown', 'onCompositionUpdate'],
+])
+  addProps(type, prop);
+const EVENTS = [...new Set([...WINDOWED, ...Object.keys(REACT_PROPS)])];
+// The handler a person reads for an action row: the event's own prop.
+const ROW_PROPS = {
   click: ['onClick'],
   dblclick: ['onDoubleClick'],
   auxclick: ['onAuxClick'],
@@ -65,18 +105,8 @@ const REACT_PROPS = {
   change: ['onChange'],
   keydown: ['onKeyDown'],
   keyup: ['onKeyUp'],
-  pointerdown: ['onPointerDown'],
-  pointerup: ['onPointerUp'],
-  mousedown: ['onMouseDown'],
-  mouseup: ['onMouseUp'],
-  touchstart: ['onTouchStart'],
-  touchend: ['onTouchEnd'],
   paste: ['onPaste'],
-  cut: ['onCut'],
-  copy: ['onCopy'],
   drop: ['onDrop'],
-  dragstart: ['onDragStart'],
-  dragend: ['onDragEnd'],
 };
 const shown = (info) =>
   ['click', 'dblclick', 'contextmenu', 'submit', 'input', 'paste', 'drop'].includes(info.type) ||
@@ -86,21 +116,40 @@ const shown = (info) =>
     (info.key?.length > 1 || info.ctrl || info.meta || info.alt) &&
     !/^(Shift|Control|Alt|Meta|CapsLock)$/u.test(info.key || ''));
 const ASYNC_DEPTH = 32;
-const KEEP_TARGETS = 200;
+const KEEP_TARGETS = 2000;
+const KEEP_DESCRIBED = 2000;
 const END_WAIT_MS = 2000;
 
 // Runs in the isolated world, at document start, before the app's scripts.
+// Every event of a type React handles is reported: a trusted user event of a
+// WINDOWED type as the start and end of its dispatch, any other as one run.
 const LISTENER = `(() => {
   if (globalThis.__producttraceTargets) return;
   const send = globalThis[${JSON.stringify(BINDING)}];
   const targets = (globalThis.__producttraceTargets = new Map());
+  const windowed = new Set(${JSON.stringify(WINDOWED)});
+  const ids = new WeakMap();
   let next = 0;
+  let nextId = 0;
+  // A node already detached when the event fired is outside React's tree:
+  // React calls nothing there, so it is not kept.
+  // The document itself is not part of React's tree either.
+  const node = (value) => (value && value.nodeType === 1 && value.isConnected ? value : value && value.nodeType === 3 && value.isConnected ? value.parentNode : null);
+  const idOf = (value) => {
+    if (!value) return 0;
+    if (!ids.has(value)) ids.set(value, ++nextId);
+    return ids.get(value);
+  };
   for (const type of ${JSON.stringify(EVENTS)}) {
     addEventListener(type, (event) => {
-      if (!event.isTrusted) return;
       const n = ++next;
-      targets.set(n, event.target);
+      const nodes = [node(event.target), node(event.relatedTarget)];
+      targets.set(n, nodes);
       if (targets.size > ${KEEP_TARGETS}) targets.delete(targets.keys().next().value);
+      if (!event.isTrusted || !windowed.has(type)) {
+        send(JSON.stringify({ phase: 'run', n, type, trusted: event.isTrusted, at: idOf(nodes[0]) + ':' + idOf(nodes[1]) }));
+        return;
+      }
       const control = event.target && event.target.closest ? event.target.closest('select') ? 'select' : event.target.type || null : null;
       send(JSON.stringify({ phase: 'start', n, type, key: event.key || null, ctrl: !!event.ctrlKey, meta: !!event.metaKey, alt: !!event.altKey, control }));
       // The end: a listener added now runs last in window's bubble phase,
@@ -115,15 +164,15 @@ const LISTENER = `(() => {
         if (done || (seen && seen !== event)) return;
         done = true;
         removeEventListener(type, last);
-        for (const [node, capture] of stops) node.removeEventListener(type, stopped, capture);
+        for (const [at, capture] of stops) at.removeEventListener(type, stopped, capture);
         send(JSON.stringify({ phase: 'end', n, ...(late ? { late: true } : {}) }));
       };
       const last = end(false);
       const stopped = (seen) => { if (seen === event && event.cancelBubble) last(seen); };
       addEventListener(type, last);
-      for (const node of event.composedPath()) {
-        if (node === window) continue;
-        for (const capture of [true, false]) { node.addEventListener(type, stopped, capture); stops.push([node, capture]); }
+      for (const at of event.composedPath()) {
+        if (at === window) continue;
+        for (const capture of [true, false]) { at.addEventListener(type, stopped, capture); stops.push([at, capture]); }
       }
       setTimeout(end(true));
     }, true);
@@ -138,16 +187,28 @@ const DESCRIBE_TARGET = `function (props) {
   const text = node => (node && (node.getAttribute('aria-label') || node.innerText || node.value || '') || '').trim().replace(/\\s+/g, ' ').slice(0, 80);
   const control = target && target.closest ? target.closest('button,a,input,select,textarea,[role],label,summary') || target : target;
   const handlers = [];
-  for (let node = target, depth = 0; node && depth < 12; node = node.parentElement, depth += 1) {
-    const key = Object.keys(node).find(name => name.startsWith('__reactProps$'));
+  const names = [];
+  const collect = (values) => {
     for (const prop of props) {
       for (const name of [prop, prop + 'Capture']) {
-        const fn = key && node[key] && node[key][name];
-        if (typeof fn === 'function' && !handlers.includes(fn)) handlers.push(fn);
+        const fn = values && values[name];
+        if (typeof fn === 'function' && !handlers.includes(fn)) { handlers.push(fn); names.push(prop); }
       }
     }
+  };
+  const propsOf = node => { const key = node && Object.keys(node).find(name => name.startsWith('__reactProps$')); return key ? node[key] : null; };
+  // React bubbles along its own tree (a portal's events reach the component
+  // that rendered it), so walk the fibers as React does; the DOM when there are none.
+  let start = target;
+  while (start && !Object.keys(start).some(name => name.startsWith('__reactFiber$'))) start = start.parentNode;
+  const fiberKey = start && Object.keys(start).find(name => name.startsWith('__reactFiber$'));
+  if (fiberKey) {
+    for (let fiber = start[fiberKey]; fiber; fiber = fiber.return)
+      if (fiber.stateNode && fiber.stateNode.nodeType === 1) collect(propsOf(fiber.stateNode));
+  } else {
+    for (let node = target; node; node = node.parentNode) collect(propsOf(node));
   }
-  return { info: control ? { tag: control.tagName.toLowerCase(), role: control.getAttribute('role') || null, name: text(control) || null,
+  return { connected: this.isConnected, names, info: control && control.tagName ? { tag: control.tagName.toLowerCase(), role: control.getAttribute('role') || null, name: text(control) || null,
       label: control.labels && control.labels[0] ? text(control.labels[0]) : null, input_type: control.type || null } : null, handlers };
 }`;
 
@@ -157,7 +218,9 @@ export async function observePage(cdp, { appOrigin = null } = {}) {
   const attribution = createAttribution();
   const rows = [];
   const dispatches = new Map(); // n (per document) -> action
-  const stats = { pauses: 0, dispatches: 0, requests: 0, errors: 0 };
+  let groups = 0;
+  const described = new Map(); // context:type:nodes -> the run that read their handlers
+  const stats = { pauses: 0, dispatches: 0, runs: 0, requests: 0, errors: 0, unread: {} };
   let sequence = 0;
   let queue = Promise.resolve();
   const failed = (error) => {
@@ -315,7 +378,11 @@ export async function observePage(cdp, { appOrigin = null } = {}) {
       event: action.event,
       ...(action.key ? { key: action.key } : {}),
       target: action.target,
-      handlers: action.handlers.map(({ range, ...handler }) => handler),
+      handlers: action.handlers
+        .filter(
+          (handler) => !ROW_PROPS[action.event] || ROW_PROPS[action.event].includes(handler.prop),
+        )
+        .map(({ range, prop, ...handler }) => handler),
     });
   };
 
@@ -345,66 +412,103 @@ export async function observePage(cdp, { appOrigin = null } = {}) {
   };
   // The event's target and declared handlers, read after the dispatch from the
   // node the isolated listener kept: found there, then resolved in the page's world.
-  const describe = async (action, n, observeContext) => {
-    const group = 'producttrace-observe';
-    try {
+  // The event's target and the React handlers React would call for it, read
+  // after the dispatch from the node the isolated listener kept, resolved in
+  // the page's world. `described` is false when they could not be read (the
+  // node was gone or detached): that event may have run any handler.
+  const describe = async (action, n, observeContext, { info = true, related = false } = {}) => {
+    const group = `producttrace-observe-${++groups}`;
+    action.described = false;
+    const unread = (why) => {
+      stats.unread[`${action.event}: ${why}`] = (stats.unread[`${action.event}: ${why}`] ?? 0) + 1;
+    };
+    for (let attempt = 0; ; attempt += 1)
+      try {
+        await readOnce();
+        return;
+      } catch (error) {
+        // The page moved on between two calls (a new document, a re-render): once more.
+        if (attempt < 1) continue;
+        unread('error');
+        failed(error);
+        return;
+      } finally {
+        await cdp.send('Runtime.releaseObjectGroup', { objectGroup: group }).catch(() => {});
+      }
+    async function readOnce() {
       // The page's own world in the same frame, created last (the current document).
       const mainContext = [...contexts]
         .filter(
           ([, c]) => c.world === 'main' && c.frameId === contexts.get(observeContext)?.frameId,
         )
         .at(-1)?.[0];
-      const { result: node } = await cdp.send('Runtime.evaluate', {
-        expression: `globalThis.__producttraceTargets.get(${n})`,
-        contextId: observeContext,
-        objectGroup: group,
-        silent: true,
-      });
-      if (!node?.objectId || !mainContext) return;
-      const { node: described } = await cdp.send('DOM.describeNode', { objectId: node.objectId });
-      await cdp.send('DOM.getDocument', { depth: 0 }).catch(() => {});
-      const { object } = await cdp.send('DOM.resolveNode', {
-        backendNodeId: described.backendNodeId,
-        executionContextId: mainContext,
-        objectGroup: group,
-      });
-      const { result } = await cdp.send('Runtime.callFunctionOn', {
-        objectId: object.objectId,
-        functionDeclaration: DESCRIBE_TARGET,
-        arguments: [{ value: REACT_PROPS[action.event] || [] }],
-        silent: true,
-        objectGroup: group,
-      });
-      const { result: fields = [] } = await cdp.send('Runtime.getProperties', {
-        objectId: result.objectId,
-        ownProperties: true,
-      });
-      const info = fields.find((entry) => entry.name === 'info')?.value;
-      if (info?.objectId)
-        action.target = (
-          await cdp.send('Runtime.callFunctionOn', {
-            objectId: info.objectId,
-            functionDeclaration: 'function () { return this; }',
-            returnByValue: true,
-          })
-        ).result.value;
-      const list = fields.find((entry) => entry.name === 'handlers')?.value;
-      if (list?.objectId) {
-        const { result: items = [] } = await cdp.send('Runtime.getProperties', {
-          objectId: list.objectId,
+      if (!mainContext) return unread('no page context');
+      for (const index of related ? [0, 1] : [0]) {
+        const { result: node } = await cdp.send('Runtime.evaluate', {
+          expression: `(globalThis.__producttraceTargets.get(${n}) || [])[${index}]`,
+          contextId: observeContext,
+          objectGroup: group,
+          silent: true,
+        });
+        // Kept no longer: unknown. Not a node (window): React declares nothing there.
+        if (node?.type === 'undefined') return unread('node no longer kept');
+        if (!node?.objectId) continue;
+        const { node: found } = await cdp.send('DOM.describeNode', { objectId: node.objectId });
+        await cdp.send('DOM.getDocument', { depth: 0 }).catch(() => {});
+        const { object } = await cdp.send('DOM.resolveNode', {
+          backendNodeId: found.backendNodeId,
+          executionContextId: mainContext,
+          objectGroup: group,
+        });
+        const { result } = await cdp.send('Runtime.callFunctionOn', {
+          objectId: object.objectId,
+          functionDeclaration: DESCRIBE_TARGET,
+          arguments: [{ value: REACT_PROPS[action.event] || [] }],
+          silent: true,
+          objectGroup: group,
+        });
+        const { result: fields = [] } = await cdp.send('Runtime.getProperties', {
+          objectId: result.objectId,
           ownProperties: true,
         });
-        for (const item of items)
-          if (/^\d+$/u.test(item.name) && item.value?.objectId) {
-            const where = await functionSource(item.value.objectId);
-            if (where) action.handlers.push(where);
-          }
+        const value = async (name) => {
+          const field = fields.find((entry) => entry.name === name)?.value;
+          if (!field?.objectId) return field?.value;
+          return (
+            await cdp.send('Runtime.callFunctionOn', {
+              objectId: field.objectId,
+              functionDeclaration: 'function () { return this; }',
+              returnByValue: true,
+            })
+          ).result.value;
+        };
+        // A node React removed has lost its props: what ran there is unknown.
+        if (!(await value('connected'))) return unread(`removed ${index ? 'related ' : ''}node`);
+        if (info && index === 0) action.target = (await value('info')) ?? null;
+        const names = (await value('names')) || [];
+        const list = fields.find((entry) => entry.name === 'handlers')?.value;
+        if (list?.objectId) {
+          const { result: items = [] } = await cdp.send('Runtime.getProperties', {
+            objectId: list.objectId,
+            ownProperties: true,
+          });
+          for (const item of items)
+            if (/^\d+$/u.test(item.name) && item.value?.objectId) {
+              const where = await functionSource(item.value.objectId);
+              if (where) action.handlers.push({ ...where, prop: names[Number(item.name)] ?? null });
+            }
+        }
       }
-    } catch (error) {
-      failed(error);
-    } finally {
-      await cdp.send('Runtime.releaseObjectGroup', { objectGroup: group }).catch(() => {});
+      action.described = true;
     }
+  };
+
+  // Each event's handlers are read at once, side by side, while its nodes
+  // still hold them; a request waits for the ones read before it was sent.
+  const reading = new Set();
+  const read = (promise) => {
+    const done = promise.catch(failed).finally(() => reading.delete(done));
+    reading.add(done);
   };
 
   // Dispatch starts and ends, in order. The start opens the action at once;
@@ -419,6 +523,30 @@ export async function observePage(cdp, { appOrigin = null } = {}) {
       return;
     }
     const key = `${event.executionContextId}:${message.n}`;
+    if (message.phase === 'run') {
+      // Not a user action of its own, but it may have run a handler. The same
+      // event on the same nodes runs the same handlers: read them once, count each run.
+      stats.runs += 1;
+      const same = `${event.executionContextId}:${message.type}:${message.at}`;
+      const seen = described.get(same);
+      if (seen) {
+        seen.times += 1;
+        return;
+      }
+      const run = attribution.noteRun({ event: message.type, trusted: message.trusted });
+      run.row_sequence = ++sequence;
+      read(
+        describe(run, message.n, event.executionContextId, {
+          info: message.trusted,
+          related: /^(mouse|pointer)(over|out)$/u.test(message.type),
+        }).then(() => {
+          if (!run.described) return;
+          described.set(same, run);
+          if (described.size > KEEP_DESCRIBED) described.delete(described.keys().next().value);
+        }),
+      );
+      return;
+    }
     if (message.phase === 'start') {
       stats.dispatches += 1;
       const action = attribution.startDispatch({ event: message.type });
@@ -436,12 +564,11 @@ export async function observePage(cdp, { appOrigin = null } = {}) {
       let ended;
       action.ended = new Promise((resolve) => (ended = resolve));
       action.end = ended;
-      queue = queue
-        .then(async () => {
-          await describe(action, message.n, event.executionContextId);
+      read(
+        describe(action, message.n, event.executionContextId).then(() => {
           if (shown({ ...message })) emitAction(action);
-        })
-        .catch(failed);
+        }),
+      );
     } else if (message.phase === 'end') {
       const action = dispatches.get(key);
       if (action) {
@@ -465,16 +592,21 @@ export async function observePage(cdp, { appOrigin = null } = {}) {
     if (!['Fetch', 'XHR'].includes(event.type) || event.initiator?.type !== 'script') return;
     // Joined to the dispatch running now; read at once, before anything else arrives.
     const inDispatch = attribution.running();
+    const sentAfter = attribution.actions.length;
     const rowSequence = ++sequence;
+    // Only the events before it could have caused it: wait for their handlers.
+    const before = [...reading];
     queue = queue
       .then(async () => {
         stats.requests += 1;
+        await Promise.all(before);
         // Whether the dispatch ended where it should is known only once it has.
         if (inDispatch) await dispatchEnd(attribution.get(inDispatch));
         const { raw, truncated } = await framesOf(event.initiator.stack);
         const functions = appFunctions(raw);
         const cause = attribution.causeOf({
           in_dispatch: inDispatch,
+          before: sentAfter,
           stack: await positions(raw),
           truncated,
           started_in: functions[0] || null,
@@ -546,6 +678,7 @@ export async function observePage(cdp, { appOrigin = null } = {}) {
     async stop() {
       for (const [name, handler] of Object.entries(handlers)) cdp.off?.(name, handler);
       await queue;
+      await Promise.all([...reading]);
       await cdp.send('Page.removeScriptToEvaluateOnNewDocument', { identifier }).catch(() => {});
       await cdp.send('Runtime.removeBinding', { name: BINDING }).catch(() => {});
       await cdp.send('Debugger.disable').catch(() => {});

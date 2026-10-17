@@ -58,6 +58,26 @@ export function createAttribution() {
       open = action;
       return action;
     },
+    /**
+     * An event that is not a user action of its own (a hover, a focus, a
+     * scroll, an event the app dispatched) but may have run a handler. It
+     * opens no window. `times` counts repeats on the same nodes.
+     */
+    noteRun({ event, trusted = true }) {
+      const run = {
+        action_id: `observe:action:${++nextAction}`,
+        sequence: nextAction,
+        event,
+        target: null,
+        handlers: [],
+        run: true,
+        trusted,
+        times: 1,
+      };
+      actions.push(run);
+      byId.set(run.action_id, run);
+      return run;
+    },
     /** `late`: the end came only as the next task, so where it ended is not known. */
     endDispatch(actionId, { late = false } = {}) {
       const action = byId.get(actionId);
@@ -72,11 +92,20 @@ export function createAttribution() {
      * when it was sent (or null); `stack` every frame, innermost first, sync
      * then async parents, as { script_id, offset, name, app, segment, link }
      * (`segment` numbers each synchronous stretch, `link` how it leads to the
-     * one before: 'await', 'setTimeout', ...); `truncated` when the
+     * one before: 'await', 'setTimeout', ...); `before` how many actions
+     * were recorded when it was sent; `truncated` when the
      * async chain was cut short; `started_in` the outermost first-party
      * function, for the report.
      */
-    causeOf({ in_dispatch = null, stack = [], truncated = false, started_in = null } = {}) {
+    causeOf({
+      in_dispatch = null,
+      before = Infinity,
+      stack = [],
+      truncated = false,
+      started_in = null,
+    } = {}) {
+      // Only events recorded before the request was sent could have caused it.
+      const earlier = actions.slice(0, before);
       const unknown = (reason, extra = {}) => ({
         action_id: null,
         via: 'unknown',
@@ -95,7 +124,7 @@ export function createAttribution() {
       // Outermost first: the first frame inside any recorded handler.
       const outerFirst = [...stack].reverse();
       const at = outerFirst.findIndex((frame) =>
-        actions.some((action) => action.handlers.some((h) => h.range && inRange(frame, h.range))),
+        earlier.some((action) => action.handlers.some((h) => h.range && inRange(frame, h.range))),
       );
       if (at < 0)
         return unknown(
@@ -138,22 +167,31 @@ export function createAttribution() {
         return unknown(
           "a recorded handler ran, but not from React's event dispatch (an effect, or a build without names)",
         );
-      const range = actions
+      const range = earlier
         .flatMap((action) => action.handlers)
         .find((h) => h.range && inRange(frame, h.range)).range;
-      const candidates = actions.filter((action) =>
+      const candidates = earlier.filter((action) =>
         action.handlers.some(
           (h) => h.range && h.range.script_id === range.script_id && h.range.start === range.start,
         ),
       );
-      // One dispatch ever ran that handler, so no other could have started it.
-      if (candidates.length === 1)
-        return { action_id: candidates[0].action_id, via: 'only_run_of_handler', started_in };
+      const runs = candidates.reduce((sum, action) => sum + (action.times ?? 1), 0);
+      const people = candidates.filter((action) => action.trusted !== false);
+      const couldBe = people.length ? { could_be: people.map((action) => action.action_id) } : {};
+      // An event whose handlers could not be read may have run this one too.
+      if (earlier.some((action) => action.described === false))
+        return unknown(
+          "an event's handlers could not be read (its element was gone), and it may have run this handler",
+          couldBe,
+        );
+      // Every event React handles is counted: when only one ran this handler,
+      // no other could have started the request.
+      if (runs === 1 && people.length === 1)
+        return { action_id: people[0].action_id, via: 'only_run_of_handler', started_in };
+      if (runs === 1) return unknown('only an event the app dispatched itself ran this handler');
       return unknown(
-        `${candidates.length} actions ran this handler; the browser keeps no id that says which`,
-        {
-          could_be: candidates.map((action) => action.action_id),
-        },
+        `${runs} events ran this handler; the browser keeps no id that says which`,
+        couldBe,
       );
     },
   };
