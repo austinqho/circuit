@@ -87,6 +87,7 @@ const shown = (info) =>
     !/^(Shift|Control|Alt|Meta|CapsLock)$/u.test(info.key || ''));
 const ASYNC_DEPTH = 32;
 const KEEP_TARGETS = 200;
+const END_WAIT_MS = 2000;
 
 // Runs in the isolated world, at document start, before the app's scripts.
 const LISTENER = `(() => {
@@ -103,17 +104,27 @@ const LISTENER = `(() => {
       const control = event.target && event.target.closest ? event.target.closest('select') ? 'select' : event.target.type || null : null;
       send(JSON.stringify({ phase: 'start', n, type, key: event.key || null, ctrl: !!event.ctrlKey, meta: !!event.metaKey, alt: !!event.altKey, control }));
       // The end: a listener added now runs last in window's bubble phase,
-      // after the app's own listeners there. When the app stops propagation
-      // first, the next task, which runs once this dispatch is done.
+      // after the app's own listeners there. Where the app stops propagation,
+      // the dispatch ends after the rest of that node's listeners, so one
+      // added now on every node ahead runs last there and sees the stop.
+      // Only when neither runs (stopImmediatePropagation, or a stop in
+      // window's capture phase) is the end the next task, reported late.
       let done = false;
+      const stops = [];
       const end = (late) => (seen) => {
         if (done || (seen && seen !== event)) return;
         done = true;
         removeEventListener(type, last);
+        for (const [node, capture] of stops) node.removeEventListener(type, stopped, capture);
         send(JSON.stringify({ phase: 'end', n, ...(late ? { late: true } : {}) }));
       };
       const last = end(false);
+      const stopped = (seen) => { if (seen === event && event.cancelBubble) last(seen); };
       addEventListener(type, last);
+      for (const node of event.composedPath()) {
+        if (node === window) continue;
+        for (const capture of [true, false]) { node.addEventListener(type, stopped, capture); stops.push([node, capture]); }
+      }
       setTimeout(end(true));
     }, true);
   }
@@ -268,6 +279,7 @@ export async function observePage(cdp, { appOrigin = null } = {}) {
         out.push({
           script_id: frame.scriptId,
           offset: ranges.offset(frame.lineNumber, frame.columnNumber),
+          name: frame.functionName || null,
           app: isApp(frame.scriptId),
           segment: frame.segment,
           link: frame.link,
@@ -276,6 +288,7 @@ export async function observePage(cdp, { appOrigin = null } = {}) {
         out.push({
           script_id: frame.scriptId,
           offset: -1,
+          name: frame.functionName || null,
           app: isApp(frame.scriptId),
           segment: frame.segment,
           link: frame.link,
@@ -420,6 +433,9 @@ export async function observePage(cdp, { appOrigin = null } = {}) {
           .filter(Boolean)
           .join('+');
       dispatches.set(key, action);
+      let ended;
+      action.ended = new Promise((resolve) => (ended = resolve));
+      action.end = ended;
       queue = queue
         .then(async () => {
           await describe(action, message.n, event.executionContextId);
@@ -429,11 +445,21 @@ export async function observePage(cdp, { appOrigin = null } = {}) {
     } else if (message.phase === 'end') {
       const action = dispatches.get(key);
       if (action) {
-        attribution.endDispatch(action.action_id);
+        attribution.endDispatch(action.action_id, { late: Boolean(message.late) });
         dispatches.delete(key);
+        action.end();
       }
     }
   };
+
+  // A dispatch whose end never arrives (the page left mid-event) counts as late.
+  const dispatchEnd = (action) =>
+    Promise.race([
+      action.ended,
+      new Promise((resolve) => setTimeout(resolve, END_WAIT_MS).unref?.()),
+    ]).then(() => {
+      if (!action.done) attribution.endDispatch(action.action_id, { late: true });
+    });
 
   const onRequestSent = (event) => {
     if (!['Fetch', 'XHR'].includes(event.type) || event.initiator?.type !== 'script') return;
@@ -443,6 +469,8 @@ export async function observePage(cdp, { appOrigin = null } = {}) {
     queue = queue
       .then(async () => {
         stats.requests += 1;
+        // Whether the dispatch ended where it should is known only once it has.
+        if (inDispatch) await dispatchEnd(attribution.get(inDispatch));
         const { raw, truncated } = await framesOf(event.initiator.stack);
         const functions = appFunctions(raw);
         const cause = attribution.causeOf({

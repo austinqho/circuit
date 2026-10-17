@@ -8,18 +8,31 @@
  * same ordered stream as the requests, so a request names its action by one of:
  *  - `dispatch`: it was sent while that action's dispatch was running (between
  *    its start and end, microtasks included). Nothing else can run then.
+ *    When the app hid where the dispatch ended (the end came only as the
+ *    next task), a timer could have run in between, so it is `unknown`.
  *  - `only_run_of_handler`: its stack, followed through its async parents,
  *    passes through a handler the app declared for exactly one recorded
- *    dispatch, and that handler was called by library code (React's event
- *    dispatch) with no app code around it. A function that also runs from a
- *    shortcut, an effect or a timer is called by the app's own code there, or
- *    by the browser directly, so it does not count.
+ *    dispatch, and React's event dispatch called that handler with no app
+ *    code around it. A handler on the request's own synchronous stack, sent
+ *    outside every dispatch, was not run by an event (it would have been
+ *    sent inside one). A function that also runs from a shortcut, an effect
+ *    or a timer is called there by the app's own code, by React's commit, or
+ *    by the browser directly, so it does not count. React's event dispatch is
+ *    told from its commit by function name; a minified build has none, so
+ *    there it abstains.
  * Anything else is `unknown`: the async stack names where a request started,
  * but Chrome keeps no id per dispatch, so when several dispatches ran that
  * handler the request goes to none of them. The candidates are listed
  * (`could_be`), never chosen by time. A frame is in a handler when it is in
  * the same script, inside the handler function's source range.
  */
+// React's event dispatch, from the root listener to the handler call (React 17-19).
+const REACT_EVENT =
+  /^(dispatchDiscreteEvent|dispatchContinuousEvent|dispatchEvent|dispatchEventForPluginEventSystem|dispatchEventsForPlugins|processDispatchQueue\w*|executeDispatch\w*)$/u;
+// React running effects or committing, which can also happen inside an event.
+const REACT_COMMIT =
+  /^(commit\w*|flush\w*Effects\w*|recursivelyTraverse\w*|invokePassiveEffect\w*|invokeLayoutEffect\w*)$/u;
+
 export function createAttribution() {
   const actions = [];
   const byId = new Map();
@@ -45,7 +58,10 @@ export function createAttribution() {
       open = action;
       return action;
     },
-    endDispatch(actionId) {
+    /** `late`: the end came only as the next task, so where it ended is not known. */
+    endDispatch(actionId, { late = false } = {}) {
+      const action = byId.get(actionId);
+      if (action && !action.done) Object.assign(action, { done: true, late });
       if (open?.action_id === actionId) open = null;
     },
     /** The dispatch running now, if any. */
@@ -54,14 +70,13 @@ export function createAttribution() {
     /**
      * The cause of a request: `in_dispatch` is the dispatch that was running
      * when it was sent (or null); `stack` every frame, innermost first, sync
-     * then async parents, as { script_id, offset, app, segment, link }
+     * then async parents, as { script_id, offset, name, app, segment, link }
      * (`segment` numbers each synchronous stretch, `link` how it leads to the
      * one before: 'await', 'setTimeout', ...); `truncated` when the
      * async chain was cut short; `started_in` the outermost first-party
      * function, for the report.
      */
     causeOf({ in_dispatch = null, stack = [], truncated = false, started_in = null } = {}) {
-      if (in_dispatch && byId.has(in_dispatch)) return { action_id: in_dispatch, via: 'dispatch' };
       const unknown = (reason, extra = {}) => ({
         action_id: null,
         via: 'unknown',
@@ -69,6 +84,13 @@ export function createAttribution() {
         reason,
         ...extra,
       });
+      if (in_dispatch && byId.has(in_dispatch)) {
+        if (!byId.get(in_dispatch).late) return { action_id: in_dispatch, via: 'dispatch' };
+        return unknown(
+          'sent before the end of an event the app stopped, which the observer saw only on the next task; a timer could have sent it',
+          { could_be: [in_dispatch] },
+        );
+      }
       if (truncated) return unknown('the async stack was cut short before where it started');
       // Outermost first: the first frame inside any recorded handler.
       const outerFirst = [...stack].reverse();
@@ -93,6 +115,13 @@ export function createAttribution() {
         segment += 1;
         callers = stack.filter((outer) => outer.segment === segment);
       }
+      // Called on the request's own synchronous stack, outside every
+      // dispatch: had an event run this handler, the request would have been
+      // sent inside it.
+      if (segment === 1 && callers.length)
+        return unknown(
+          'a recorded handler sent it outside every recorded event, so no event ran it',
+        );
       // Library only, and at least one.
       if (callers.some((outer) => outer.app))
         return unknown(
@@ -101,6 +130,13 @@ export function createAttribution() {
       if (!callers.length)
         return unknown(
           'a recorded handler ran, called by the browser directly, not by an event dispatch',
+        );
+      if (
+        callers.some((outer) => REACT_COMMIT.test(outer.name || '')) ||
+        !callers.some((outer) => REACT_EVENT.test(outer.name || ''))
+      )
+        return unknown(
+          "a recorded handler ran, but not from React's event dispatch (an effect, or a build without names)",
         );
       const range = actions
         .flatMap((action) => action.handlers)
