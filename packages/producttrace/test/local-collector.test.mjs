@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import http from 'node:http';
 import os from 'node:os';
 import path from 'node:path';
 import { build, createServer } from 'vite';
@@ -40,6 +41,13 @@ test('producttrace() under vite dev collects on /__producttrace and shows the li
   const viewer = await fetch(`${base}/__producttrace/`);
   assert.match(viewer.headers.get('content-type'), /text\/html/u);
   assert.match(await viewer.text(), /What the user is doing/u);
+  // DNS rebinding (a site's name now pointing at 127.0.0.1) and other sites' pages are refused.
+  const { port } = new URL(base);
+  const rebound = await new Promise((resolve) => {
+    http.get({ host: '127.0.0.1', port, path: '/__producttrace/story', headers: { host: `evil.example:${port}` } }, (response) => { response.resume(); resolve(response.statusCode); });
+  });
+  assert.equal(rebound, 403);
+  assert.equal((await fetch(`${base}/__producttrace/story`, { headers: { origin: 'https://evil.example' } })).status, 403);
   // Paths under the prefix that are not the collector's stay the app's.
   assert.equal((await fetch(`${base}/__producttrace/bridge`, { method: 'POST', body: '{}' })).status, 404);
 
