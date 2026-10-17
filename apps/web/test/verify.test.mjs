@@ -188,7 +188,7 @@ test('a changed request body is a requests divergence', () => {
   const norm = normalizer('r1a2b3');
   const plain = requestItem(norm, 'POST', '/comments', '{"body":"A first comment."}');
   const changed = requestItem(norm, 'POST', '/comments', '{"body":"A first comment.","x":1}');
-  assert.match(plain, /^POST \/comments body:[0-9a-f]{10}$/u);
+  assert.equal(plain, 'POST /comments body: {"body":"A first comment."}');
   assert.notEqual(plain, changed);
   // Run tokens and generated ids in a body are still normalized away.
   assert.equal(
@@ -201,12 +201,29 @@ test('a changed request body is a requests divergence', () => {
   });
 });
 
-test('a long storage row keeps a hash of the whole value, so a change near the end shows', () => {
+test('long saved values: random numbers stay noise, a real change shows, and the report prints them short', () => {
   const norm = normalizer('r1a2b3');
-  const value = 'x'.repeat(400);
-  const a = storageRow(norm, `indexedDB app/projects "p1" = {"name":"${value}a"}`);
-  const b = storageRow(norm, `indexedDB app/projects "p1" = {"name":"${value}b"}`);
-  assert.ok(a.length < 300);
-  assert.notEqual(a, b);
+  const scene = (seed, extra = '') =>
+    storageRow(
+      norm,
+      `localStorage excalidraw = [{"type":"arrow","seed":${seed}${extra},"points":"${'x'.repeat(400)}"}]`,
+    );
+  // Two plain runs and the traced run each draw their own random seed.
+  assert.deepEqual(compareItems([scene(111)], [scene(222)], [scene(333)]), {
+    extra: [],
+    missing: [],
+  });
+  // The traced run saved something else as well.
+  const changed = scene(333, ',"locked":true');
+  assert.deepEqual(compareItems([scene(111)], [scene(111)], [changed]), {
+    extra: [changed],
+    missing: [scene(111)],
+  });
+  const { divergences } = compareRuns(
+    ...[[scene(111)], [scene(111)], [changed]].map((storage) => run({ steps: [{}], storage })),
+  );
+  const [printed] = divergences.find((d) => d.kind === 'storage').only_traced;
+  assert.ok(printed.length <= 300);
+  assert.match(printed, /^localStorage excalidraw = .*… #[0-9a-f]{10}$/u);
   assert.equal(storageRow(norm, 'localStorage theme = dark'), 'localStorage theme = dark');
 });
