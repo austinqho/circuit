@@ -13,6 +13,7 @@
   "files": [
     "index.d.ts",
     "vite.d.mts",
+    "next.d.ts",
     "collector.d.ts",
     "backend.d.ts",
     "analysis.d.mts",

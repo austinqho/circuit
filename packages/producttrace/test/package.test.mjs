@@ -10,7 +10,7 @@ test('install allowlist excludes source, build tooling, and developer tests', as
   const manifest = JSON.parse(await readFile(resolve(packageRoot, 'package.json'), 'utf8'));
   assert.deepEqual(manifest.files, [
     'analysis', 'backend', 'collector', 'dist', 'integrations', 'mcp', 'plugin', '.agents',
-    'index.js', 'index.d.ts', 'vite.mjs', 'vite.d.mts', 'next.mjs', 'next.d.mts', 'collector.js', 'collector.d.ts', 'backend.js', 'backend.d.ts',
+    'index.js', 'index.d.ts', 'vite.mjs', 'vite.d.mts', 'next.mjs', 'next.d.ts', 'collector.js', 'collector.d.ts', 'backend.js', 'backend.d.ts',
     'backend-register.js', 'analysis.mjs', 'analysis.d.mts', 'runtime-attribution.mjs', 'runtime-attribution.d.mts',
     'mcp.mjs', 'mcp-annotation-lookup.mjs', 'LICENSE', 'README.md',
   ]);

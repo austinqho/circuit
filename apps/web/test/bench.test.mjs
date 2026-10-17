@@ -81,6 +81,19 @@ test('findApps finds a Next.js app and says which framework it is', () => {
   assert.equal(second.framework, 'vite');
 });
 
+test('findApps keeps the Vite React app first when a repo also has a Next.js one', () => {
+  const root = tmp();
+  for (const [dir, deps, config] of [
+    ['apps/nextjs-app', { next: '15', react: '19' }, 'next.config.mjs'],
+    ['apps/react-vite', { react: '19', '@vitejs/plugin-react': '4' }, 'vite.config.ts'],
+    ['apps/nextjs-pages', { next: '15', react: '19' }, 'next.config.mjs'],
+  ]) {
+    write(root, `${dir}/${config}`, '');
+    write(root, `${dir}/package.json`, JSON.stringify({ dependencies: deps }));
+  }
+  assert.equal(findApps(root)[0].dir, 'apps/react-vite');
+});
+
 test('nextWrapperConfig wraps the moved config with withProducttrace in its own module format', () => {
   const options = { collector: { url: 'http://127.0.0.1:4601', force: true } };
   const esm = nextWrapperConfig({

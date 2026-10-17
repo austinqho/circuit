@@ -27,7 +27,10 @@ const call = async (name, args) => {
   return JSON.parse(text);
 };
 
-const { id } = await call('circuit_add_app', { repo: 'alan2207/bulletproof-react' });
+const { id } = await call('circuit_add_app', {
+  repo: 'alan2207/bulletproof-react',
+  app_dir: 'apps/react-vite',
+});
 console.error(`app ${id}: building (first build takes several minutes)…`);
 let status = await call('circuit_app_status', { app: id, wait_seconds: 50 });
 while (['queued', 'building'].includes(status.status))

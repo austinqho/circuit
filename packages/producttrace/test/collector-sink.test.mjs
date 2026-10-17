@@ -85,6 +85,20 @@ test('sink retries, then counts drops; pagehide flushes the tail by beacon', asy
   assert.equal(env.window.__productTraceCollectorStats().beacon, 1);
 });
 
+test('a backlog drops function rows first, and pagehide ships the user\'s steps before function rows', async () => {
+  const env = fakeWindow({ fetchImpl: () => new Promise(() => {}) }); // the collector never answers
+  vm.runInNewContext(collectorSinkSource('http://127.0.0.1:4102'), env.window);
+  const capture = row => env.window.__producttraceHostCapture(JSON.stringify({ row }));
+  for (let sequence = 0; sequence < 15000; sequence += 1) capture({ kind: 'function.enter', sequence });
+  capture({ kind: 'dom.action', sequence: 15000 });
+  const stats = env.window.__productTraceCollectorStats();
+  assert.ok(stats.queued <= 10001, `queue stays bounded (${stats.queued})`);
+  assert.ok(stats.dropped >= 4800, 'function rows past the bound are counted as dropped');
+  env.listeners.pagehide[0]();
+  const first = JSON.parse(env.posts.find(post => post.beacon).body);
+  assert.equal(first[0].kind, 'dom.action', 'the click ships first, ahead of the function backlog');
+});
+
 test('round trip: sink → producttrace-collector --store → loadStore', async () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'g5-sink-'));
   const collector = createCollector({ port: 0, store: { dir, manifest: { functions: [] }, label: 'sink-test' } });

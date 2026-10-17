@@ -21,7 +21,7 @@
       "import": "./vite.mjs"
     },
     "./next": {
-      "types": "./next.d.mts",
+      "types": "./next.d.ts",
       "import": "./next.mjs",
       "default": "./next.mjs"
     },
@@ -70,7 +70,7 @@
     "vite.mjs",
     "vite.d.mts",
     "next.mjs",
-    "next.d.mts",
+    "next.d.ts",
     "collector.js",
     "collector.d.ts",
     "backend.js",

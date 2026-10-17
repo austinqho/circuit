@@ -7,13 +7,16 @@
  * - writes that recorder to `node_modules/.producttrace/next-client.js`
  *   (settings, the attribution runtime and the producttrace runtime, run as
  *   classic scripts the first time any instrumented module loads);
- * - runs a store-mode collector on a loopback port and rewrites
- *   `/__producttrace/*` on the app's origin to it, so the live story is at
- *   `/__producttrace/` like the Vite plugin's.
+ * - runs a store-mode collector on its own server bound to 127.0.0.1; the
+ *   page posts rows to it directly and the live story is at
+ *   `http://127.0.0.1:<port>/__producttrace/`. Next.js never routes it, so
+ *   the app's middleware (a sign-in redirect) and a dev server listening on
+ *   the network cannot reach or block it.
  *
  * Every other phase (`next build`, `next start`, tests) gets the app's config
  * back untouched. Nothing in the app's source tree is written.
  */
+import { createHash } from 'node:crypto';
 import fs from 'node:fs';
 import http from 'node:http';
 import path from 'node:path';
@@ -56,8 +59,18 @@ async function instrumentNextConfig(config, options) {
   fs.mkdirSync(cacheDir, { recursive: true });
 
   const own = options.collector === undefined;
-  const collector = normalizeCollectorOption(own ? LOCAL_COLLECTOR_BASE : options.collector);
-  fs.writeFileSync(clientModule, clientSource({ ...options, collector }));
+  // `next dev` loads the config in its CLI process too; only the server it forks (NEXT_PRIVATE_WORKER) serves the app.
+  const server = Boolean(process.env.NEXT_PRIVATE_WORKER);
+  if (own && server) {
+    const { url, started } = await ownCollector({ cacheDir, sourceRoot: repository });
+    fs.writeFileSync(clientModule, clientSource({ ...options, collector: normalizeCollectorOption(url) }));
+    if (started) console.log(`  - producttrace: ${url}/`);
+  } else if (!own || !fs.existsSync(clientModule)) {
+    // The CLI process writes a placeholder (no sink) so the module exists; the server writes the real one.
+    fs.writeFileSync(clientModule, clientSource({ ...options, collector: own ? null : normalizeCollectorOption(options.collector) }));
+  }
+  // A collector given by URL (say a bench's) follows the merged manifest file in the cache directory.
+  if (server) followManifests(cacheDir);
 
   const loaderOptions = JSON.parse(JSON.stringify({ repository, cacheDir, clientModule, firstParty: options.firstParty }));
   const result = { ...config };
@@ -71,26 +84,7 @@ async function instrumentNextConfig(config, options) {
     }
     return resolved;
   };
-  // `next dev` loads the config in its CLI process too; only the server it forks (NEXT_PRIVATE_WORKER) serves the app.
-  // A collector given by URL (say a bench's) follows the merged manifest file in the cache directory.
-  if (process.env.NEXT_PRIVATE_WORKER) followManifests(cacheDir);
-  if (own && process.env.NEXT_PRIVATE_WORKER) {
-    const port = await ownCollector({ cacheDir, sourceRoot: repository });
-    result.rewrites = withCollectorRewrites(config.rewrites, port);
-    const appPort = process.env.PORT || argumentValue(['-p', '--port']) || 3000;
-    console.log(`  - producttrace: http://localhost:${appPort}${LOCAL_COLLECTOR_BASE}/`);
-  }
   return result;
-}
-
-function argumentValue(names) {
-  const args = process.argv;
-  for (let index = 0; index < args.length; index += 1) {
-    if (names.includes(args[index])) return args[index + 1];
-    const inline = names.find((name) => args[index].startsWith(`${name}=`));
-    if (inline) return args[index].slice(inline.length + 1);
-  }
-  return null;
 }
 
 /** The in-page recorder: same settings and runtimes the Vite plugin puts in index.html. */
@@ -126,19 +120,6 @@ function withTurbopackRule(turbopack = {}, loaderOptions) {
   return { ...turbopack, rules };
 }
 
-function withCollectorRewrites(rewrites, port) {
-  const target = `http://127.0.0.1:${port}${LOCAL_COLLECTOR_BASE}`;
-  const ours = [
-    { source: LOCAL_COLLECTOR_BASE, destination: target, basePath: false },
-    { source: `${LOCAL_COLLECTOR_BASE}/:path*`, destination: `${target}/:path*`, basePath: false },
-  ];
-  return async () => {
-    const theirs = rewrites ? await rewrites() : [];
-    if (Array.isArray(theirs)) return { beforeFiles: ours, afterFiles: theirs, fallback: [] };
-    return { ...theirs, beforeFiles: [...ours, ...(theirs.beforeFiles || [])] };
-  };
-}
-
 // One collector per app directory, reused when Next.js loads the config again in this process.
 const running = (globalThis.__producttraceNextCollectors ||= new Map());
 
@@ -158,8 +139,13 @@ function followManifests(cacheDir) {
   return manifestFile;
 }
 
-function ownCollector({ cacheDir, sourceRoot }) {
-  if (running.has(cacheDir)) return running.get(cacheDir).port;
+/**
+ * The app's collector on its own server, bound to 127.0.0.1 only. The port is
+ * derived from the app folder, so the printed URL stays the same across
+ * restarts; a free one is used when that is taken.
+ */
+async function ownCollector({ cacheDir, sourceRoot }) {
+  if (running.has(cacheDir)) return { url: await running.get(cacheDir).url, started: false };
   const manifestFile = followManifests(cacheDir);
   const local = localCollector({ storeDir: path.join(cacheDir, 'store'), manifestFile, sourceRoot, label: 'next' });
   const server = http.createServer((request, response) => {
@@ -170,12 +156,18 @@ function ownCollector({ cacheDir, sourceRoot }) {
   });
   const stop = () => { running.delete(cacheDir); following.get(cacheDir)?.(); server.close(); return local.stop(); };
   for (const signal of ['SIGINT', 'SIGTERM']) process.once(signal, stop);
-  const port = new Promise((resolve, reject) => {
+  const listen = (port) => new Promise((resolve, reject) => {
     server.once('error', reject);
-    server.listen(0, '127.0.0.1', () => resolve(server.address().port));
-  }).then((value) => { server.unref(); local.start(); return value; });
-  running.set(cacheDir, { port, stop });
-  return port;
+    server.listen(port, '127.0.0.1', () => { server.off('error', reject); resolve(server.address().port); });
+  });
+  const preferred = 30000 + (parseInt(createHash('sha256').update(cacheDir).digest('hex').slice(0, 8), 16) % 20000);
+  const url = listen(preferred).catch(() => listen(0)).then((port) => {
+    server.unref();
+    local.start();
+    return `http://127.0.0.1:${port}${LOCAL_COLLECTOR_BASE}`;
+  });
+  running.set(cacheDir, { url, stop });
+  return { url: await url, started: true };
 }
 
 const merged = new Map();

@@ -210,7 +210,9 @@ server.listen(port, '127.0.0.1', () => {
   // First start: put an example app on the bench so the page has something to show.
   const example = process.env.CIRCUIT_DEFAULT_REPO ?? 'alan2207/bulletproof-react';
   if (example && !bench.list().length) {
-    bench.add({ repo: example }).then(
+    // bulletproof-react also has a Next.js app; the example is its Vite app (mocked backend).
+    const appDir = process.env.CIRCUIT_DEFAULT_REPO ? undefined : 'apps/react-vite';
+    bench.add({ repo: example, app_dir: appDir }).then(
       (app) =>
         console.log(`  building ${app.id} (first build takes a few minutes; watch it on the page)`),
       (error) => console.error(`  could not add ${example}: ${error.message}`),

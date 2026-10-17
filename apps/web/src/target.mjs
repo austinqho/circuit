@@ -75,7 +75,9 @@ export function findApps(root, { maxDepth = 4 } = {}) {
       const rel = path.relative(root, dir) || '.';
       let score = 0;
       if (deps.react) score += 10;
-      if (deps['@vitejs/plugin-react'] || deps['@vitejs/plugin-react-swc'] || deps.next) score += 5;
+      if (deps['@vitejs/plugin-react'] || deps['@vitejs/plugin-react-swc']) score += 5;
+      // Next.js counts a little less: a repo with both (bulletproof-react) keeps its Vite app.
+      else if (deps.next) score += 4;
       if (/(^|\/)(web|client|frontend|app|react)/iu.test(rel)) score += 1;
       score -= depth;
       found.push({
@@ -534,7 +536,9 @@ function attachNext(app, { packageDir, appRoot, src }) {
     .map((dir) => path.join(dir, 'node_modules', 'next', 'dist', 'bin', 'next'))
     .find((file) => fs.existsSync(file));
   if (!nextBin) throw new Error('next is not installed in the target app');
-  const env = { ...exampleEnv(appRoot, { all: true }), ...(app.env || {}) };
+  // The bench owns the mode, host and port; an example file's values for them are ignored.
+  const { NODE_ENV, PORT, HOSTNAME, ...example } = exampleEnv(appRoot, { all: true });
+  const env = { ...example, ...(app.env || {}) };
   app.serve = { framework: 'next', nextBin, wrapper, appRoot, env };
   app.buildMs = 0;
   app.builtAt = new Date().toISOString();

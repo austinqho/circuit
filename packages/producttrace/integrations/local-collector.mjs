@@ -13,7 +13,7 @@
  *
  * The store lives under `node_modules/.producttrace/store` next to Vite's own
  * cache, so the app's source tree is never written. `withProducttrace()` for
- * Next.js mounts the same collector behind rewrites (see next.mjs). The collector stops when
+ * Next.js serves the same routes from its own loopback server (see next.mjs). The collector stops when
  * the server closes. No repository knowledge; no model.
  */
 import fs from 'node:fs';
@@ -21,6 +21,7 @@ import http from 'node:http';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createCollector } from '../collector/index.js';
+import { isLoopbackHost } from './collector-sink.mjs';
 
 export const LOCAL_COLLECTOR_BASE = '/__producttrace';
 
@@ -30,8 +31,8 @@ const viewerFile = path.join(path.dirname(fileURLToPath(import.meta.url)), 'loca
 /**
  * A store-mode collector on a free loopback port, started on first use, plus
  * the request handler that mounts it under `/__producttrace/`. Shared by the
- * Vite plugin (dev-server middleware) and the Next.js wrapper (its own
- * loopback server that the app's rewrites point at).
+ * Vite plugin (dev-server middleware) and the Next.js wrapper (its own server
+ * on 127.0.0.1, which the page posts to directly).
  */
 export function localCollector({ storeDir, manifestFile, sourceRoot, label }) {
   let collector = null;
@@ -59,10 +60,9 @@ export function localCollector({ storeDir, manifestFile, sourceRoot, label }) {
     // Only the collector's own routes: anything else under the prefix (the request bridge) is the app's.
     if (!ROUTES.has(route)) return false;
     // The story carries every session's pages, values and IDs: only this machine may read or write it,
-    // even when the dev server listens on the network. A proxy in front (Next.js rewrites) names the
-    // original client in x-forwarded-for.
-    const forwarded = String(request.headers?.['x-forwarded-for'] || '').split(',').map((value) => value.trim()).filter(Boolean);
-    if (!isLoopback(request.socket?.remoteAddress) || forwarded.some((address) => !isLoopback(address))) {
+    // even when the dev server listens on the network (the socket's own address; headers are the
+    // client's to set). A page from another site open in the same browser is refused by its Origin.
+    if (!isLoopback(request.socket?.remoteAddress) || !loopbackOrigin(request.headers?.origin)) {
       response.statusCode = 403;
       response.end('producttrace: only this machine can reach /__producttrace');
       return true;
@@ -110,6 +110,16 @@ export function localCollectorPlugin({ storeDir, manifestFile, sourceRoot }) {
       await local.stop();
     },
   };
+}
+
+function loopbackOrigin(origin) {
+  if (origin === undefined) return true;
+  try {
+    const { hostname } = new URL(origin);
+    return isLoopbackHost(hostname.replace(/^\[|\]$/gu, ''));
+  } catch {
+    return false;
+  }
 }
 
 function isLoopback(address) {
