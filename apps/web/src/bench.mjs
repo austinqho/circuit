@@ -17,6 +17,7 @@ import { BrowserSession, closeBrowser } from './browser.mjs';
 import { findPackageDir, packageBin } from './package.mjs';
 import { buildTarget, parseRepo, serveDev, serveStatic, waitForHttp } from './target.mjs';
 import { TracerTools, buildReport, narrationScore, readStory } from './tracer.mjs';
+import { verifyReadOnly } from './verify.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 // One wait stays under MCP clients' 60 s request timeout; callers poll while building.
@@ -31,6 +32,7 @@ export function createBench({
   const registryFile = path.join(workRoot, 'apps.json');
   const apps = new Map();
   const live = new Map(); // id -> { server, collector, browser, tools }
+  const verifications = new Map(); // id -> the latest read-only check
   const listeners = new Set();
 
   for (const app of (() => {
@@ -130,6 +132,13 @@ export function createBench({
   const starting = new Map();
   function start(app) {
     if (live.has(app.id)) return Promise.resolve(live.get(app.id));
+    // A read-only check owns the app's ports until it finishes.
+    if (verifications.get(app.id)?.status === 'running')
+      return Promise.reject(
+        Object.assign(new Error(`app "${app.id}" is being verified; wait for the check`), {
+          status: 409,
+        }),
+      );
     if (!starting.has(app.id))
       starting.set(
         app.id,
@@ -152,13 +161,21 @@ export function createBench({
     return starting.get(app.id);
   }
 
-  /** Serve the app (dev server or built files) and start its collector. */
-  async function launch(app) {
-    if (app.mode !== 'build' && !app.serve)
-      await buildTarget(app, { packageDir, rebuild: true, log: () => emit(app) });
-    const store = storeDir(app);
-    fs.mkdirSync(store, { recursive: true });
+  /**
+   * Serve the app (dev server or built files) and start its collector into
+   * `store`. `plain` serves the dev server without the package and no collector.
+   */
+  async function serveApp(app, { store, label, plain = false }) {
     const appRoot = path.join(app.work, 'src', app.appDir);
+    if (plain) {
+      const server = await serveDev(
+        { ...app.serve, env: { ...app.serve.env, CIRCUIT_PRODUCTTRACE: '0' } },
+        app.ports.app,
+        path.join(app.work, 'build.log'),
+      );
+      return { server, collector: null, appRoot };
+    }
+    fs.mkdirSync(store, { recursive: true });
     const manifest = path.join(
       appRoot,
       'node_modules',
@@ -184,7 +201,7 @@ export function createBench({
         '--manifest',
         manifest,
         '--label',
-        `circuit-${app.id}-build-${app.build}`,
+        label,
       ],
       {
         stdio: [
@@ -213,6 +230,18 @@ export function createBench({
       server?.close();
       throw error;
     }
+    return { server, collector, appRoot };
+  }
+
+  /** Serve the app and its collector for the bench's own browser. */
+  async function launch(app) {
+    if (app.mode !== 'build' && !app.serve)
+      await buildTarget(app, { packageDir, rebuild: true, log: () => emit(app) });
+    const store = storeDir(app);
+    const { server, collector, appRoot } = await serveApp(app, {
+      store,
+      label: `circuit-${app.id}-build-${app.build}`,
+    });
     const running = {
       server,
       collector,
@@ -463,6 +492,82 @@ export function createBench({
       };
       save();
       return this.report(id);
+    },
+
+    /**
+     * Start a read-only check: the steps run twice on the plain app and once with
+     * the package, and any difference the package made is reported. Runs in the
+     * background (it takes minutes); read it with verification().
+     */
+    async verify(id, { steps } = {}) {
+      const app = get(id);
+      if (app.status !== 'ready')
+        throw Object.assign(new Error(`app "${id}" is ${app.status}; wait with status`), {
+          status: 409,
+        });
+      if (app.mode === 'build')
+        throw Object.assign(
+          new Error('verify runs on the dev server; rebuild the app with mode "dev"'),
+          { status: 400 },
+        );
+      if (!Array.isArray(steps) || !steps.length)
+        throw Object.assign(new Error('steps must be a nonempty list'), { status: 400 });
+      if (verifications.get(id)?.status === 'running') return verifications.get(id);
+      const job = { status: 'running', phase: 'stopping the bench copy', started_at: Date.now() };
+      verifications.set(id, job);
+      (async () => {
+        // The bench's own server and collector hold the ports; verify serves its own.
+        await stop(id);
+        if (!app.serve) await buildTarget(app, { packageDir, rebuild: true, log: () => emit(app) });
+        let round = 0;
+        const result = await verifyReadOnly({
+          steps,
+          onProgress: (phase) => (job.phase = phase),
+          serve: async (variant) => {
+            round += 1;
+            const { server, collector } = await serveApp(app, {
+              plain: variant === 'plain',
+              store: path.join(app.work, 'store', `verify-${job.started_at}`),
+              label: `circuit-${app.id}-verify-${round}`,
+            });
+            return {
+              baseUrl: `http://127.0.0.1:${app.ports.app}/`,
+              ignoreOrigins: [`http://127.0.0.1:${app.ports.collector}`],
+              close: async () => {
+                server.close();
+                collector?.kill('SIGTERM');
+                // The next variant reuses both ports.
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+              },
+            };
+          },
+        });
+        const { runs, ...summary } = result;
+        const file = path.join(app.work, `verify-${job.started_at}.json`);
+        fs.writeFileSync(file, JSON.stringify(result, null, 2));
+        Object.assign(job, {
+          status: 'done',
+          phase: null,
+          ended_at: Date.now(),
+          package: packageCommit(),
+          result: summary,
+          runs_file: file,
+        });
+      })().catch((error) =>
+        Object.assign(job, { status: 'failed', phase: null, error: error.message }),
+      );
+      return job;
+    },
+
+    /** The latest read-only check for an app; waits up to waitSeconds while it runs. */
+    async verification(id, { waitSeconds = 0 } = {}) {
+      get(id);
+      const job = verifications.get(id);
+      if (!job) return { status: 'none' };
+      const deadline = Date.now() + Math.min(waitSeconds, MAX_WAIT_SECONDS) * 1000;
+      while (job.status === 'running' && Date.now() < deadline)
+        await new Promise((r) => setTimeout(r, 1000));
+      return job;
     },
 
     async tools(id) {

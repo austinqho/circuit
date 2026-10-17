@@ -1,0 +1,11 @@
+# probe: each case where an instrumented app could behave differently, one click each
+{"action":"goto","value":"/"}
+{"action":"click","target":{"role":"button","name":"Self-removing listener"}}
+{"action":"click","target":{"role":"button","name":"Once listeners"}}
+{"action":"click","target":{"role":"button","name":"Cross-origin request"}}
+{"action":"click","target":{"role":"button","name":"Await order"}}
+{"action":"click","target":{"role":"button","name":"Invalid header"}}
+{"action":"click","target":{"role":"button","name":"Function shapes"}}
+{"action":"click","target":{"role":"button","name":"Hot loop"}}
+{"action":"click","target":{"role":"button","name":"Delayed request"}}
+{"action":"click","target":{"role":"button","name":"Load items"}}

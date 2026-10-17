@@ -191,6 +191,32 @@ const TOOLS = [
     run: ({ app }) => api('GET', `/api/apps/${app}/screenshot`),
   },
   {
+    name: 'circuit_verify',
+    description:
+      'Check that the package does not change how the app behaves. Give steps (the same shape as circuit_act, without app) and the bench runs them three times in fresh browsers: twice on the app without the package, once with it. The result lists every divergence (a step that failed, a different page after a step, a different URL, requests sent or not sent, new console errors, different storage), ignoring whatever the two plain runs already disagreed on; the overhead (script time with and without the package, the worst step); and the footprint the package adds on purpose (DOM attributes, request headers, replaced browser APIs). {{run}} in a value becomes a token unique to each run, for flows that create accounts on a real backend. It takes minutes: call again with no steps and wait_seconds to read progress and the verdict. The bench copy of the app is stopped while it runs.',
+    inputSchema: {
+      type: 'object',
+      required: ['app'],
+      properties: {
+        app: APP,
+        steps: {
+          type: 'array',
+          description: 'Steps to run; omit to read the current check.',
+          items: {
+            type: 'object',
+            required: ['action'],
+            properties: { action: { type: 'string' }, target: TARGET, value: { type: 'string' } },
+          },
+        },
+        wait_seconds: { type: 'integer', minimum: 0, maximum: 50 },
+      },
+    },
+    run: async ({ app, steps, wait_seconds: wait = 0 }) => {
+      if (steps?.length) await api('POST', `/api/apps/${app}/verify`, { steps });
+      return api('GET', `/api/apps/${app}/verify?wait=${wait}`);
+    },
+  },
+  {
     name: 'circuit_report',
     description:
       'The judge view: every step you took next to the sentences the package wrote for it and the requests the browser really sent vs the ones the package recorded, plus a scorecard (steps with a line, lines naming the element, naming a handler, carrying entity ids, request recall, and reads_like_a_person once you have scored the narration with circuit_score_narration), `narration` (segment titles with their evidence and the rubric), and `history`: the scorecard of every build that ran exactly these steps, oldest first. Use it to decide what to improve in the package, then circuit_rebuild and run the same steps again.',

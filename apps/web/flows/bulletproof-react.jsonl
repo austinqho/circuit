@@ -1,0 +1,22 @@
+# bulletproof-react: register, create a discussion, comment on it
+{"action":"goto","value":"/"}
+{"action":"click","target":{"role":"button","name":"Get started"}}
+{"action":"click","target":{"role":"link","name":"Register"}}
+{"action":"type","target":{"label":"First Name"},"value":"Ada"}
+{"action":"type","target":{"label":"Last Name"},"value":"Lovelace"}
+{"action":"type","target":{"label":"Email Address"},"value":"ada-{{run}}@example.test"}
+{"action":"type","target":{"label":"Password"},"value":"circuit-pass"}
+{"action":"type","target":{"label":"Team Name"},"value":"Analytical Engines"}
+{"action":"click","target":{"role":"button","name":"Register"}}
+{"action":"wait","value":"1500"}
+{"action":"click","target":{"role":"link","name":"Discussions"}}
+{"action":"click","target":{"role":"button","name":"Create Discussion"}}
+{"action":"type","target":{"label":"Title"},"value":"Notes on the engine"}
+{"action":"type","target":{"label":"Body"},"value":"First discussion from the bench."}
+{"action":"click","target":{"role":"button","name":"Submit"}}
+{"action":"wait","value":"1200"}
+{"action":"click","target":{"role":"link","name":"View"}}
+{"action":"click","target":{"role":"button","name":"Create Comment"}}
+{"action":"type","target":{"label":"Body"},"value":"A first comment."}
+{"action":"click","target":{"role":"button","name":"Submit"}}
+{"action":"wait","value":"1200"}

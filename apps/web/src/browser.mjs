@@ -22,7 +22,12 @@ async function browser() {
         chromium.launch({
           executablePath: chromiumPath(),
           headless: process.env.CIRCUIT_HEADED !== '1',
-          args: ['--no-proxy-server'],
+          // Only the machine's own hosts resolve: external fonts and analytics
+          // fail at once instead of hanging in sandboxes (see BrowserSession).
+          args: [
+            '--no-proxy-server',
+            '--host-resolver-rules=MAP * ~NOTFOUND, EXCLUDE localhost, EXCLUDE 127.0.0.1',
+          ],
         });
       try {
         return await launch();
@@ -130,9 +135,14 @@ export function describe(action, target, value) {
 }
 
 export class BrowserSession {
-  constructor(baseUrl, { ignoreOrigins = [] } = {}) {
+  // `intercept: false` leaves every request to the browser itself. Routing
+  // requests through Playwright changes how they behave: a cross-origin request
+  // the server's CORS policy refuses goes through anyway. The read-only check
+  // needs the browser's own behavior.
+  constructor(baseUrl, { ignoreOrigins = [], intercept = true } = {}) {
     this.baseUrl = baseUrl;
     this.ignoreOrigins = ignoreOrigins;
+    this.intercept = intercept;
     this.steps = [];
     this.page = null;
     this.context = null;
@@ -146,15 +156,16 @@ export class BrowserSession {
     this.context = await b.newContext({ viewport: { width: 1280, height: 800 } });
     const origin = new URL(this.baseUrl).origin;
     // Only the app itself loads; external fonts and analytics hang in sandboxes.
-    await this.context.route('**/*', (route) => {
-      const url = route.request().url();
-      return url.startsWith(origin) ||
-        url.startsWith('data:') ||
-        url.startsWith('blob:') ||
-        /^https?:\/\/(127\.0\.0\.1|localhost)[:/]/u.test(url)
-        ? route.continue()
-        : route.abort();
-    });
+    if (this.intercept)
+      await this.context.route('**/*', (route) => {
+        const url = route.request().url();
+        return url.startsWith(origin) ||
+          url.startsWith('data:') ||
+          url.startsWith('blob:') ||
+          /^https?:\/\/(127\.0\.0\.1|localhost)[:/]/u.test(url)
+          ? route.continue()
+          : route.abort();
+      });
     this.page = await this.context.newPage();
     // Ground truth for request recall: what the browser actually sent (fetch/XHR only).
     const sentAt = (request) => {

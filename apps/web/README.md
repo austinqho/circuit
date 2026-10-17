@@ -40,6 +40,7 @@ The MCP server talks to the website's server and starts it if it is not running,
 | `circuit_tracer`                          | Any of the package's own MCP tools (`action_chain`, `recent_actions`, ...) against this app's store.                                                                                                                |
 | `circuit_rebuild`                         | Restart with the package as it is on disk now; `mode` switches between `dev` and `build`. Each build gets a fresh store.                                                                                            |
 | `circuit_reset`                           | End the browser's page session and clear the steps.                                                                                                                                                                 |
+| `circuit_verify`                          | Check the package does not change how the app behaves: the steps run twice without the package and once with it, and every difference, the overhead and the package's footprint come back. Takes minutes; poll it.  |
 
 Targets for `circuit_act` are visible text (`"Get started"`), `{ role, name }`, `{ label }`, `{ placeholder }`, `{ text }`, `{ testid }`, or any Playwright selector.
 
@@ -65,6 +66,30 @@ Targets for `circuit_act` are visible text (`"Get started"`), `{ role, name }`, 
 
 Lines are paired with steps by each step's time window. That pairing is the bench's own bookkeeping for judging, never something the package claims.
 
+### Checking the install is read-only
+
+```sh
+node apps/web/scripts/verify.mjs                       # bulletproof-react, flows/bulletproof-react.jsonl
+node apps/web/scripts/verify.mjs --repo excalidraw/excalidraw --app-dir excalidraw-app --flow apps/web/flows/excalidraw.jsonl
+npm run verify:probe -w apps/web                       # the probe page (apps/web/probe)
+```
+
+The flow runs three times in fresh browsers on the dev server: twice without the package (the control) and once with it. Whatever both plain runs agree on and the traced run does not is reported as a divergence:
+
+| Kind              | What differed                                                                                    |
+| ----------------- | ------------------------------------------------------------------------------------------------ |
+| `step_failed`     | A step that worked without the package failed with it (or the reverse)                           |
+| `url`             | The URL after a step                                                                             |
+| `page`            | The accessibility tree after a step, once the page stopped changing                              |
+| `requests`        | fetch/XHR requests sent: method, path and a hash of the body                                     |
+| `request_headers` | Headers sent to another origin (one its server does not allow fails the request)                 |
+| `console_errors`  | `console.error` messages and uncaught errors                                                     |
+| `storage`         | localStorage, sessionStorage, cookie names and every IndexedDB record (key and value) at the end |
+
+Run tokens (`{{run}}` in a step value), UUIDs, timestamps, clock times and generated ids are normalized, and anything the two plain runs already disagree on is the app's own noise. A slower traced page gets up to 10 s to reach the same state before it counts as different. The result also reports the overhead (Chrome's script time with and without the package, and the worst step) and the footprint the package adds on purpose: DOM attributes, request headers and browser APIs it replaces. SAME means the app behaved the same on the flow you ran: anything the flow never exercises is not checked. The script exits 1 when the app behaved differently, and the full runs are saved next to the app's work folder. These runs leave every request to the browser itself (no Playwright routing, which lets a request through that CORS would refuse); hosts other than the machine's own do not resolve.
+
+Real apps rarely hit the cases where instrumentation is most likely to change behavior, so `apps/web/probe` is a page made of them, one button each: a listener that removes itself, `once` listeners, a request to another origin that allows no extra headers, the order of an `await` against a `.then` chain, `fetch` with an invalid header, what the app can read of its own functions and the platform's, a loop of small calls, a request two continuations after a click, and a request from an effect. Each writes its result onto the page, so the `page` comparison catches it. The listener cases differ only in production builds, which the check does not run yet.
+
 ## HTTP API
 
 Everything the tools do is plain HTTP on the same server; see the header of `src/server.mjs`.
@@ -79,4 +104,4 @@ Everything the tools do is plain HTTP on the same server; see the header of `src
 
 ## Layout
 
-`src/bench.mjs` is the module everything goes through (`add`, `status`, `act`, `report`, `rebuild`, ...). Behind it: `target.mjs` (clone, detect, install, wrapper config, build, serve), `browser.mjs` (Playwright session and step log), `tracer.mjs` (reads the package's `/story` and MCP tools, and builds the report), and `package.mjs` (finds the package under test). `server.mjs` is the website and HTTP API, `mcp.mjs` the MCP server, `public/index.html` the page. Set `PRODUCTTRACE_DIR` to test a package checkout other than the workspace one.
+`src/bench.mjs` is the module everything goes through (`add`, `status`, `act`, `report`, `rebuild`, ...). Behind it: `target.mjs` (clone, detect, install, wrapper config, build, serve), `browser.mjs` (Playwright session and step log), `verify.mjs` (the read-only check), `tracer.mjs` (reads the package's `/story` and MCP tools, and builds the report), and `package.mjs` (finds the package under test). `server.mjs` is the website and HTTP API, `mcp.mjs` the MCP server, `public/index.html` the page. Set `PRODUCTTRACE_DIR` to test a package checkout other than the workspace one.
