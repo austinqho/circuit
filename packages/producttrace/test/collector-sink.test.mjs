@@ -85,6 +85,50 @@ test('sink retries, then counts drops; pagehide flushes the tail by beacon', asy
   assert.equal(env.window.__productTraceCollectorStats().beacon, 1);
 });
 
+test('a backlog drops function rows first, and pagehide ships the user\'s steps before function rows', async () => {
+  const env = fakeWindow({ fetchImpl: () => new Promise(() => {}) }); // the collector never answers
+  vm.runInNewContext(collectorSinkSource('http://127.0.0.1:4102'), env.window);
+  const capture = row => env.window.__producttraceHostCapture(JSON.stringify({ row }));
+  for (let sequence = 0; sequence < 15000; sequence += 1) capture({ kind: 'function.enter', sequence });
+  capture({ kind: 'dom.action', sequence: 15000 });
+  const stats = env.window.__productTraceCollectorStats();
+  assert.ok(stats.queued <= 10001, `queue stays bounded (${stats.queued})`);
+  assert.ok(stats.dropped >= 4800, 'function rows past the bound are counted as dropped');
+  env.listeners.pagehide[0]();
+  const first = JSON.parse(env.posts.find(post => post.beacon).body);
+  assert.equal(first[0].kind, 'dom.action', 'the click ships first, ahead of the function backlog');
+});
+
+test('a page opened by a network address does not try to post to a loopback collector', () => {
+  const env = fakeWindow();
+  const warnings = [];
+  env.window.console = { warn: (text) => warnings.push(text) };
+  env.window.location = { hostname: '192.168.1.20' };
+  vm.runInNewContext(collectorSinkSource('http://127.0.0.1:4102'), env.window);
+  assert.equal(env.window.__producttraceHostCapture, undefined);
+  assert.match(warnings[0], /open the app at localhost/u);
+  const local = fakeWindow();
+  local.window.location = { hostname: 'localhost' };
+  vm.runInNewContext(collectorSinkSource('http://127.0.0.1:4102'), local.window);
+  assert.equal(typeof local.window.__producttraceHostCapture, 'function');
+});
+
+test('a full queue keeps each action\'s first function rows and marks the action that lost rows', () => {
+  const env = fakeWindow({ fetchImpl: () => new Promise(() => {}) });
+  vm.runInNewContext(collectorSinkSource('http://127.0.0.1:4102'), env.window);
+  const capture = (row) => env.window.__producttraceHostCapture(JSON.stringify({ row }));
+  for (let sequence = 0; sequence < 10500; sequence += 1) capture({ kind: 'function.enter', action_id: 'burst', sequence });
+  capture({ kind: 'dom.action', action_id: 'click' });
+  for (let sequence = 0; sequence < 50; sequence += 1) capture({ kind: 'function.enter', action_id: 'click', sequence });
+  env.listeners.pagehide[0]();
+  const shipped = env.posts.filter((post) => post.beacon).flatMap((post) => JSON.parse(post.body));
+  const clickRows = shipped.filter((row) => row.action_id === 'click' && row.kind === 'function.enter');
+  const markers = shipped.filter((row) => row.kind === 'capture.dropped' && row.feature === 'function_rows');
+  assert.ok(markers.some((row) => row.action_id === 'burst' && row.count >= 500), 'the burst says it lost rows');
+  assert.ok(markers.some((row) => row.action_id === 'click' && row.count === 18), 'the click lost only rows past its first 32');
+  assert.ok(clickRows.length <= 32);
+});
+
 test('round trip: sink → producttrace-collector --store → loadStore', async () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'g5-sink-'));
   const collector = createCollector({ port: 0, store: { dir, manifest: { functions: [] }, label: 'sink-test' } });

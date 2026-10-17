@@ -395,3 +395,20 @@ test('an email in a page title is never quoted, and the person’s own name neve
   const named = withTitles([title('/auth/register', 'Register | Acme'), title('/app', 'Ada Lovelace | Acme')]);
   assert.match(named.segments.find(segment => segment.verb === 'registered').title, /landed on the App page\.$/u);
 });
+
+test('a click whose function rows the page dropped says its code is unknown, never that none ran', () => {
+  sequence = 0;
+  const records = [
+    open('http://localhost:3000/editor'),
+    action('k1', 'click', button('Clip'), { page: '/editor' }),
+    { kind: 'capture.dropped', reason: 'queue_full', feature: 'function_rows', action_id: 'k1', count: 40, ...at() },
+    action('k2', 'click', button('Ruler'), { page: '/editor' }),
+    { kind: 'capture.summary', page_id: page, capture_page_id: page, ...at() },
+  ];
+  const lines = storyOf(createStore({ records })).lines;
+  const dropped = lines.find((line) => line.action_id === 'k1');
+  const empty = lines.find((line) => line.action_id === 'k2');
+  assert.match(dropped.detail, /recording was dropped, so which of the app's code ran is not known/u);
+  assert.doesNotMatch(dropped.detail, /None of the app's own code ran/u);
+  assert.match(empty.detail, /None of the app's own code ran/u, 'with nothing dropped, the absence still stands');
+});

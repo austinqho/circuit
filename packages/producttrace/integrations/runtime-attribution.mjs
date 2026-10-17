@@ -750,7 +750,7 @@ function instrumentPostTransformedSource(code, id, { repository, map, indexForId
  * with the chunk's own map (pre-edit chunk -> original sources). Inserted
  * instrumentation text has no segment and stays unmapped.
  */
-function composeSourceMaps(editMap, chunkMap) {
+export function composeSourceMaps(editMap, chunkMap) {
   const trace = new TraceMap(chunkMap);
   const mappings = editMap.mappings.map(line => {
     const out = [];
@@ -883,7 +883,10 @@ function outputDirectory(outputOptions, fallback) {
   return fallback;
 }
 
-export function runtimeAttributionPlugin({ repository, manifestPath, firstParty } = {}) {
+// 48 bits of the id's hash: a safe integer, unique in practice across one page.
+const stableIndex = id => Number.parseInt(createHash('sha256').update(id).digest('hex').slice(0, 12), 16);
+
+export function runtimeAttributionPlugin({ repository, manifestPath, firstParty, stableIndexes = false } = {}) {
   if (typeof repository !== 'string' || !repository) throw new TypeError('repository is required');
   // Module ids arrive as real paths. Compare against the real repository so a
   // symlinked checkout (macOS /tmp -> /private/tmp) gets the same module pass
@@ -902,7 +905,10 @@ export function runtimeAttributionPlugin({ repository, manifestPath, firstParty 
   const emittedEntries = new Map();
   const boundaries = new Map();
   const functionIndexes = new Map(); let nextFunctionIndex = 0;
-  const indexForId = id => { if (!functionIndexes.has(id)) functionIndexes.set(id, nextFunctionIndex++); return functionIndexes.get(id); };
+  // `stableIndexes`: the index is derived from the id, so several processes
+  // transforming modules of one page (a bundler's loader workers) never hand
+  // two functions or placements the same index.
+  const indexForId = id => { if (!functionIndexes.has(id)) functionIndexes.set(id, stableIndexes ? stableIndex(id) : nextFunctionIndex++); return functionIndexes.get(id); };
   // G3 placements: index per placement id; the short element-key prefix must
   // identify exactly one placement in this build, else the full hash is used.
   const placementIndexes = new Map(), placementRows = new Map(), shortKeys = new Map(), emittedPlacements = new Map(), placementsByModule = new Map();
@@ -911,7 +917,7 @@ export function runtimeAttributionPlugin({ repository, manifestPath, firstParty 
   let nextPlacementIndex = 0, shortKeyCollisions = 0, buildId = null;
   const indexForPlacement = placement => {
     if (!placementIndexes.has(placement.id)) {
-      const index = nextPlacementIndex++;
+      const index = stableIndexes ? stableIndex(placement.id) : nextPlacementIndex++;
       let key = `p_${placement.hash.slice(0, 12)}:${placement.start}-${placement.end}`;
       const holder = shortKeys.get(key);
       if (holder && holder !== placement.id) { shortKeyCollisions += 1; key = `p_${placement.hash}:${placement.start}-${placement.end}`; }

@@ -16,7 +16,13 @@
  * - `capture_page_id` is the runtime's page session (`s_…`, also `tracer_session`
  *   in OAI metadata) when a row has none.
  * - Failed batches are retried, then counted as dropped; `pagehide` asks the
- *   runtime for its `capture.summary` row, then flushes the tail with `sendBeacon`. `globalThis.__productTraceCollectorStats()` reports
+ *   runtime for its `capture.summary` row, then flushes the tail with `sendBeacon`,
+ *   the user's steps (every row but `function.*`) ahead of function rows.
+ * - The queue is bounded: past QUEUE_MAX rows, new `function.*` rows are
+ *   dropped (counted) so actions, navigations and requests still ship. An
+ *   action's first RESERVED function rows (its handler) are kept like steps,
+ *   and an action that lost rows gets one `capture.dropped` row naming it, so
+ *   the story says its code is unknown instead of that none ran. `globalThis.__productTraceCollectorStats()` reports
  *   queued / sent / batches / dropped / malformed, and the first drop or
  *   malformed row logs one console warning. A malformed host payload (not JSON,
  *   or not an object) is not shipped; a `capture.dropped` row (reason, length,
@@ -68,6 +74,15 @@ export function normalizeCollectorOption(value) {
 /* eslint-disable no-var */
 function installProductTraceCollectorSink(global, endpoint) {
   if (global.__productTraceCollectorStats) return;
+  // A page opened by a network address cannot post to a loopback collector (the browser blocks it):
+  // say so once instead of failing every batch.
+  var pageHost = global.location && global.location.hostname;
+  var collectorHost = /^https?:\/\/(\[[^\]]+\]|[^/:]+)/.exec(endpoint);
+  var loopback = function (host) { host = String(host || '').toLowerCase().replace(/^\[|\]$/g, ''); return host === 'localhost' || host === '::1' || /\.localhost$/.test(host) || /^127(\.\d{1,3}){3}$/.test(host); };
+  if (pageHost && collectorHost && loopback(collectorHost[1]) && !loopback(pageHost)) {
+    try { if (global.console && typeof global.console.warn === 'function') global.console.warn('[producttrace] not recording: open the app at localhost to record it (the collector only takes rows from this machine)'); } catch (error) { /* no console */ }
+    return;
+  }
   var nativeFetch = typeof global.fetch === 'function' ? global.fetch.bind(global) : null;
   var nativeSetTimeout = global.setTimeout.bind(global);
   var nativeBeacon = global.navigator && typeof global.navigator.sendBeacon === 'function' ? global.navigator.sendBeacon.bind(global.navigator) : null;
@@ -80,7 +95,9 @@ function installProductTraceCollectorSink(global, endpoint) {
     if (warned) return; warned = true;
     try { if (global.console && typeof global.console.warn === 'function') global.console.warn('[producttrace] collector sink ' + what + '; see __productTraceCollectorStats()'); } catch (error) { /* no console */ }
   };
-  var BATCH = 200; var DELAY = 200;
+  var BATCH = 200; var DELAY = 200; var QUEUE_MAX = 10000; var RESERVED = 32;
+  var actionRows = new Map(); var actionDrops = new Map();
+  var isFunctionRow = function (row) { return typeof row.kind === 'string' && row.kind.indexOf('function.') === 0; };
   var pageId = function () {
     var runtime = global.__productTraceRuntime;
     if (runtime && typeof runtime.session === 'string') return runtime.session;
@@ -89,7 +106,12 @@ function installProductTraceCollectorSink(global, endpoint) {
   };
   var take = function (count) {
     var batch = queue.splice(0, count); var page = pageId();
-    for (var index = 0; index < batch.length; index += 1) if (batch[index] && batch[index].capture_page_id == null) batch[index].capture_page_id = page;
+    for (var index = 0; index < batch.length; index += 1) {
+      var row = batch[index];
+      if (row && row.capture_page_id == null) row.capture_page_id = page;
+      // A drop marker leaving the queue is final; a later drop for its action starts a new one.
+      if (row && row.kind === 'capture.dropped' && row.action_id && actionDrops.get(row.action_id) === row) actionDrops.delete(row.action_id);
+    }
     return batch;
   };
   var send = function (batch, attempt, done) {
@@ -133,7 +155,31 @@ function installProductTraceCollectorSink(global, endpoint) {
       queue.push({ kind: 'capture.dropped', reason: 'malformed_host_payload', count: 1, length: typeof text === 'string' ? text.length : null, timestamp: Date.now() });
       schedule(); return;
     }
-    stats.received += 1; queue.push(row); schedule();
+    stats.received += 1;
+    // A backlog (the collector slower than the page) costs deep function rows first, never the user's
+    // steps or an action's first rows (its handler).
+    var deep = false;
+    if (isFunctionRow(row) && row.action_id) {
+      var seen = (actionRows.get(row.action_id) || 0) + 1;
+      if (actionRows.size > 5000) actionRows.clear();
+      actionRows.set(row.action_id, seen);
+      deep = seen > RESERVED;
+    } else deep = isFunctionRow(row);
+    if (queue.length >= QUEUE_MAX && (deep || queue.length >= 2 * QUEUE_MAX)) {
+      stats.dropped += 1; warnOnce('dropped rows (queue full)');
+      if (row.action_id) {
+        // One marker per action while it is queued; its count grows until it ships.
+        var marker = actionDrops.get(row.action_id);
+        if (marker) marker.count += 1;
+        else {
+          if (actionDrops.size > 5000) actionDrops.clear();
+          marker = { kind: 'capture.dropped', reason: 'queue_full', feature: 'function_rows', action_id: row.action_id, count: 1, timestamp: Date.now() };
+          actionDrops.set(row.action_id, marker); queue.push(marker);
+        }
+      }
+      return;
+    }
+    queue.push(row); schedule();
   };
   if (typeof global.addEventListener === 'function') {
     global.addEventListener('pagehide', function () {
@@ -147,9 +193,10 @@ function installProductTraceCollectorSink(global, endpoint) {
       // pagehide beacons may carry, and a summary lost behind a long queue
       // leaves the page's coverage unprovable. Rows after it that do not fit
       // are counted as dropped; the summary's last_sequence shows the gap.
-      var summaries = []; var others = [];
-      for (var at = 0; at < rows.length; at += 1) (rows[at] && rows[at].kind === 'capture.summary' ? summaries : others).push(rows[at]);
-      rows = summaries.concat(others);
+      // Then the user's steps, then function rows: what does not fit is the least needed.
+      var summaries = []; var steps = []; var functions = [];
+      for (var at = 0; at < rows.length; at += 1) (rows[at] && rows[at].kind === 'capture.summary' ? summaries : rows[at] && isFunctionRow(rows[at]) ? functions : steps).push(rows[at]);
+      rows = summaries.concat(steps, functions);
       var chunk = [];
       var ship = function () {
         if (!chunk.length) return;

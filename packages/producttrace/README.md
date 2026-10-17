@@ -7,11 +7,11 @@ See what people do in your React app, one plain sentence per action, with the re
 10:02:31  Clicked Delete on thread t_2 → aborted by the page before the response
 ```
 
-producttrace attaches with one Vite plugin line and never edits your source. It follows each click by identifiers, not timing: through your functions, across `await`s and React scheduling, out through `fetch`, into the Express handler (by W3C `traceparent`) and down to the MongoDB operation. When the evidence can't prove a link, it says where the trail stopped and why instead of guessing.
+producttrace attaches with one line in your Vite or Next.js config and never edits your source. It follows each click by identifiers, not timing: through your functions, across `await`s and React scheduling, out through `fetch`, into the Express handler (by W3C `traceparent`) and down to the MongoDB operation. When the evidence can't prove a link, it says where the trail stopped and why instead of guessing.
 
 ## Quick start
 
-You need a Vite + React app.
+You need a React app built with Vite or Next.js.
 
 ```sh
 npm install -D producttrace
@@ -34,7 +34,17 @@ Run the app with its usual command (`npm run dev`). Vite prints one more URL:
   ➜  producttrace: http://localhost:5173/__producttrace/
 ```
 
-Open the app in one tab and `/__producttrace/` in another. As you click through the app, the second tab narrates each goal in a sentence, with its steps underneath. Everything is recorded into `node_modules/.producttrace/store`; your source tree is never written.
+For Next.js, wrap the config you export from `next.config.ts` (or `.js`/`.mjs`):
+
+```ts
+import { withProducttrace } from 'producttrace/next';
+
+export default withProducttrace(nextConfig);
+```
+
+`next dev` (Turbopack or `--webpack`) prints `- producttrace: http://127.0.0.1:<port>/__producttrace/`. That collector runs on its own server bound to 127.0.0.1, outside Next.js routing, so your middleware (a sign-in redirect) never blocks it and other machines on your network can't reach it, even when `next dev` listens on the network. The port stays the same across restarts of the same app. `next build` and `next start` get your config back untouched. Next.js 15.3 or later.
+
+Open the app in one tab and the printed URL in another. As you click through the app, the second tab narrates each goal in a sentence, with its steps underneath. Everything is recorded into `node_modules/.producttrace/store`; your source tree is never written.
 
 The dev server runs the collector for you. To run your own instead (say, to also trace a backend), pass `collector: 'http://127.0.0.1:8787'` and start `npx producttrace-collector --store .tracer --port 8787`. Backend spans need the server started with `node --import producttrace/backend/register server.js`.
 
@@ -51,6 +61,7 @@ The package's public surface is the set of files at its root. Everything in a su
 | ------------------------------ | -------------------------- | -------------------------------------------------------------- |
 | `producttrace`                 | `index.js`                 | Browser runtime (`start`, `stop`, `status`)                    |
 | `producttrace/vite`            | `vite.mjs`                 | The Vite plugin                                                |
+| `producttrace/next`            | `next.mjs`                 | The Next.js config wrapper (`next dev`)                        |
 | `producttrace/collector`       | `collector.js`             | Local collector and store reader                               |
 | `producttrace/backend`         | `backend.js`               | OpenTelemetry span exporter for Node                           |
 | `producttrace/backend/register`| `backend-register.js`      | `node --import` hook for Express, http/undici, MongoDB         |
@@ -61,7 +72,7 @@ The package's public surface is the set of files at its root. Everything in a su
 
 ## Limits
 
-- Vite + React frontends only. Backend capture covers Express, Node `http`/`undici` and MongoDB/Mongoose.
+- React frontends built with Vite, or with Next.js under `next dev` (client components; server components and server actions are not recorded). Backend capture covers Express, Node `http`/`undici` and MongoDB/Mongoose.
 - React 19 development builds are not supported yet.
 - Not yet published to npm; install from this repo until then.
 - The full list of known edge cases is in [docs/known-limitations.md](docs/known-limitations.md).

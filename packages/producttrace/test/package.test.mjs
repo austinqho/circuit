@@ -10,7 +10,7 @@ test('install allowlist excludes source, build tooling, and developer tests', as
   const manifest = JSON.parse(await readFile(resolve(packageRoot, 'package.json'), 'utf8'));
   assert.deepEqual(manifest.files, [
     'analysis', 'backend', 'collector', 'dist', 'integrations', 'mcp', 'plugin', '.agents',
-    'index.js', 'index.d.ts', 'vite.mjs', 'vite.d.mts', 'collector.js', 'collector.d.ts', 'backend.js', 'backend.d.ts',
+    'index.js', 'index.d.ts', 'vite.mjs', 'vite.d.mts', 'next.mjs', 'next.d.ts', 'collector.js', 'collector.d.ts', 'backend.js', 'backend.d.ts',
     'backend-register.js', 'analysis.mjs', 'analysis.d.mts', 'runtime-attribution.mjs', 'runtime-attribution.d.mts',
     'mcp.mjs', 'mcp-annotation-lookup.mjs', 'LICENSE', 'README.md',
   ]);
@@ -29,6 +29,8 @@ test('install allowlist excludes source, build tooling, and developer tests', as
     manifest.exports['./backend'].types,
     manifest.exports['./vite'].import,
     manifest.exports['./vite'].types,
+    manifest.exports['./next'].import,
+    manifest.exports['./next'].types,
     manifest.exports['./runtime-attribution'].import,
     manifest.exports['./runtime-attribution'].types,
     manifest.bin['producttrace-mcp'],
@@ -42,6 +44,7 @@ test('install allowlist excludes source, build tooling, and developer tests', as
 test('entry points expose exactly their intended names', async () => {
   const expected = {
     'vite.mjs': ['productTraceVitePlugin', 'producttrace', 'runtimeAttributionPlugin'],
+    'next.mjs': ['withProducttrace'],
     'analysis.mjs': ['analyzeBackendRoutes', 'analyzeReact', 'confirmBackendExecution', 'connectRequestToHandler', 'createReactRuntimeIntegration', 'matchRequestToRoute'],
     'runtime-attribution.mjs': ['runtimeAttributionPlugin'],
     'backend.js': ['BACKEND_SPAN_SCHEMA', 'NODE_BACKEND_ADAPTERS', 'createProductTraceSpanExporter', 'normalizeOpenTelemetrySpan', 'startNodeBackendTelemetry'],

@@ -1560,6 +1560,30 @@
     if (current?.continuation_kind && current.continuation_kind !== 'action' && current.continuation_kind !== 'function') return 'async';
     return current?.action_id ? 'event' : 'async';
   };
+  // Per action, and page-wide per window: a burst of actions (a held-down
+  // undo key, each press its own action) must not flood the page either.
+  // Each action's first rows (its handler, entered first, and the calls right
+  // under it) are outside the page window, so every action keeps its handler name.
+  const SPINE_MAX = 64, FUNCTION_ROWS_PER_ACTION = 5000, FUNCTION_ROWS_PER_WINDOW = 5000, FUNCTION_WINDOW_MS = 10000, FUNCTION_ROWS_RESERVED = 32;
+  let pageWindowStart = 0, pageWindowRows = 0;
+  const spineWith = (spine, function_id) => !spine?.length ? [function_id]
+    : spine.length < SPINE_MAX ? [...spine, function_id] : [spine[0], ...spine.slice(spine.length - SPINE_MAX + 2), function_id];
+  const functionRowsByAction = new Map();
+  const functionRowBudget = action_id => {
+    const used = functionRowsByAction.get(action_id) || 0;
+    if (used === FUNCTION_ROWS_PER_ACTION) reportLimit({ kind: 'capture.limit', feature: 'function_rows', reason: 'per_action_budget', action_id, limit: FUNCTION_ROWS_PER_ACTION });
+    functionRowsByAction.set(action_id, used + 1);
+    const now = Date.now();
+    if (now - pageWindowStart >= FUNCTION_WINDOW_MS) { pageWindowStart = now; pageWindowRows = 0; }
+    if (used < FUNCTION_ROWS_RESERVED) return true;
+    if (used < FUNCTION_ROWS_PER_ACTION && pageWindowRows < FUNCTION_ROWS_PER_WINDOW) { pageWindowRows += 1; return true; }
+    if (used < FUNCTION_ROWS_PER_ACTION && pageWindowRows === FUNCTION_ROWS_PER_WINDOW) {
+      pageWindowRows += 1;
+      reportLimit({ kind: 'capture.limit', feature: 'function_rows', reason: 'page_budget', action_id, limit: FUNCTION_ROWS_PER_WINDOW, window_ms: FUNCTION_WINDOW_MS });
+    }
+    functionWindowCounts.set(action_id, (functionWindowCounts.get(action_id) || 0) + 1);
+    return false;
+  };
   const enter = function (function_id, metadata = null) { const function_index = typeof function_id === 'number' ? function_id : null; function_id = resolveFunctionId(function_id);
     // App code run by Tracer's own read of a handler argument (a getter or
     // Proxy trap, see readSynthetic) is not recorded: no frame, no rows, no
@@ -1580,11 +1604,17 @@
     // module pass's frame, `chunk` the chunk pass's frame of a leaf body. One
     // call can write several, nested in that order (the reader counts one).
     entry: metadata?.via_proxy ? 'call' : metadata?.pass === 'chunk' ? 'chunk' : 'body', response_of: base?.response_of || responseContext || null,
-    spine: [...(base?.spine || []), function_id] };
-    // Retain every first-party entry on an action-owned continuation. Calls
-    // outside an action remain aggregate-only unless explicit debug mode is
-    // enabled, keeping normal capture proportional to dispatched actions.
-    frame.emit_spine = Boolean(frame.action_id) || Boolean(global.__PRODUCTTRACE_DEBUG_ALL_FUNCTIONS__);
+    // A spine keeps its root (the handler) and its newest frames: async
+    // recursion (a render loop awaiting its next frame) would otherwise grow
+    // it, and every row's copy of it, without bound.
+    spine: spineWith(base?.spine, function_id) };
+    // Retain every first-party entry on an action-owned continuation, up to
+    // FUNCTION_ROWS_PER_ACTION; past that (a long export or render loop owned
+    // by one click) calls are counted only, in function.window_count, and one
+    // capture.limit row says so. Calls outside an action remain aggregate-only
+    // unless explicit debug mode is enabled, keeping normal capture
+    // proportional to dispatched actions.
+    frame.emit_spine = Boolean(global.__PRODUCTTRACE_DEBUG_ALL_FUNCTIONS__) || (Boolean(frame.action_id) && functionRowBudget(frame.action_id));
     try { observeBinding(frame, current, { has: Boolean(metadata && Object.prototype.hasOwnProperty.call(metadata, 'a0')), value: metadata?.a0 }); } catch { hostErrors += 1; }
     current = frame;
     if (frame.action_id && frame.spine.length === 1 && origin !== 'render' && origin !== 'effect') {
