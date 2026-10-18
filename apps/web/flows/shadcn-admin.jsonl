@@ -1,0 +1,27 @@
+# shadcn-admin (satnaing/shadcn-admin): sign in, look at analytics, filter tasks, create a task in the drawer, open a user's row menu, use the Ctrl+K palette to reach settings, update the profile, toggle the theme
+{"action":"goto","value":"/sign-in"}
+{"action":"type","target":{"label":"Email"},"value":"ada@example.test"}
+{"action":"type","target":{"label":"Password","exact":true},"value":"lovelace123"}
+{"action":"press","value":"Enter"}
+{"action":"wait","value":"3000"}
+{"action":"click","target":{"role":"tab","name":"Analytics"}}
+{"action":"click","target":{"role":"link","name":"Tasks"}}
+{"action":"type","target":{"placeholder":"Filter by title or ID..."},"value":"bug"}
+{"action":"fill","target":{"placeholder":"Filter by title or ID..."},"value":""}
+{"action":"click","target":{"role":"button","name":"Create"}}
+{"action":"type","target":{"label":"Title"},"value":"Write the release notes"}
+{"action":"click","target":{"label":"Feature"}}
+{"action":"click","target":{"label":"High"}}
+{"action":"click","target":{"role":"button","name":"Close"}}
+{"action":"click","target":{"role":"link","name":"Users"}}
+{"action":"click","target":{"role":"button","name":"Open menu"}}
+{"action":"press","value":"Escape"}
+{"action":"press","value":"Control+k"}
+{"action":"type","value":"settings"}
+{"action":"press","value":"Enter"}
+{"action":"fill","target":{"label":"Username"},"value":"ada"}
+{"action":"click","target":{"role":"combobox","name":"Email"}}
+{"action":"click","target":{"role":"option","name":"m@google.com"}}
+{"action":"click","target":{"role":"button","name":"Update profile"}}
+{"action":"click","target":{"role":"button","name":"Toggle theme"}}
+{"action":"click","target":{"role":"menuitem","name":"Dark"}}

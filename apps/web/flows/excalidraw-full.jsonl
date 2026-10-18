@@ -1,0 +1,28 @@
+# Excalidraw, longer session: draw with toolbar and letter shortcuts, recolor, label, move, duplicate, undo/redo, zoom, theme from the main menu, help dialog
+{"action":"goto","value":"/"}
+{"action":"wait","value":"3000"}
+{"action":"click","target":{"role":"button","name":"Rectangle"}}
+{"action":"drag","target":"css=canvas.interactive","value":"300,200 520,340"}
+{"action":"click","target":{"testid":"color-top-pick-#e03131"}}
+{"action":"click","target":{"testid":"color-top-pick-#a5d8ff"}}
+{"action":"press","value":"o"}
+{"action":"drag","target":"css=canvas.interactive","value":"700,200 880,340"}
+{"action":"press","value":"a"}
+{"action":"drag","target":"css=canvas.interactive","value":"530,270 690,270"}
+{"action":"click","target":{"role":"button","name":"Text"}}
+{"action":"click","target":"css=canvas.interactive"}
+{"action":"type","value":"Checkout flow"}
+{"action":"press","value":"Escape"}
+{"action":"press","value":"v"}
+{"action":"drag","target":"css=canvas.interactive","value":"410,270 410,520"}
+{"action":"press","value":"Control+d"}
+{"action":"press","value":"Control+z"}
+{"action":"press","value":"Control+Shift+z"}
+{"action":"click","target":{"role":"button","name":"Undo"}}
+{"action":"click","target":{"role":"button","name":"Zoom in"}}
+{"action":"click","target":{"role":"button","name":"Reset zoom"}}
+{"action":"click","target":{"testid":"main-menu-trigger"}}
+{"action":"click","target":{"role":"radio","name":"Dark mode"}}
+{"action":"press","value":"Escape"}
+{"action":"click","target":{"role":"button","name":"Help"}}
+{"action":"press","value":"Escape"}

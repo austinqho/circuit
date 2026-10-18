@@ -1,0 +1,30 @@
+# mantis (codedthemes/mantis-free-react-admin-template, vite/): open the drawer, browse the dashboard chart toggle, notifications and profile menus, visit typography and color pages, fill the register form with a typo fixed by Backspace, then log in with "keep me signed in"
+{"action":"goto","value":"/free/dashboard/default"}
+{"action":"wait","value":"2500"}
+{"action":"click","target":{"role":"button","name":"open drawer"}}
+{"action":"click","target":{"role":"button","name":"Week"}}
+{"action":"click","target":{"role":"button","name":"Month"}}
+{"action":"click","target":{"role":"button","name":"open profile","nth":0}}
+{"action":"press","value":"Escape"}
+{"action":"click","target":{"role":"button","name":"open profile","nth":1}}
+{"action":"press","value":"Escape"}
+{"action":"click","target":{"role":"link","name":"Typography"}}
+{"action":"click","target":{"role":"link","name":"Color"}}
+{"action":"goto","value":"/free/register"}
+{"action":"type","target":{"placeholder":"John"},"value":"Adx"}
+{"action":"press","value":"Backspace"}
+{"action":"type","value":"a"}
+{"action":"type","target":{"label":"Last Name*"},"value":"Lovelace"}
+{"action":"type","target":{"label":"Company"},"value":"Analytical Engines"}
+{"action":"type","target":{"placeholder":"demo@company.com"},"value":"ada-{{run}}@example.test"}
+{"action":"type","target":{"label":"Password"},"value":"lovelace123"}
+{"action":"click","target":{"role":"button","name":"toggle password visibility"}}
+{"action":"type","target":{"label":"Password"},"value":"!"}
+{"action":"click","target":{"role":"button","name":"Create Account"}}
+{"action":"click","target":{"role":"link","name":"Already have an account?"}}
+{"action":"click","target":{"label":"Email Address"}}
+{"action":"press","value":"Control+a"}
+{"action":"type","value":"ada-{{run}}@example.test"}
+{"action":"fill","target":{"placeholder":"Enter password"},"value":"lovelace123"}
+{"action":"check","target":{"label":"Keep me sign in"}}
+{"action":"click","target":{"role":"button","name":"Login"}}
