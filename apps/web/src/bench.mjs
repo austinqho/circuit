@@ -17,7 +17,7 @@ import { BrowserSession, closeBrowser } from './browser.mjs';
 import { findPackageDir, packageBin } from './package.mjs';
 import { buildTarget, parseRepo, serveDev, serveStatic, waitForHttp } from './target.mjs';
 import { TracerTools, buildReport, narrationScore, readStory } from './tracer.mjs';
-import { verifyReadOnly } from './verify.mjs';
+import { MODES as VERIFY_MODES, verifyReadOnly } from './verify.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 // One wait stays under MCP clients' 60 s request timeout; callers poll while building.
@@ -33,6 +33,7 @@ export function createBench({
   const apps = new Map();
   const live = new Map(); // id -> { server, collector, browser, tools }
   const verifications = new Map(); // id -> the latest read-only check
+  const plainServers = new Map(); // id -> the app's own dev server, served without the package
   const listeners = new Set();
 
   for (const app of (() => {
@@ -136,6 +137,12 @@ export function createBench({
     if (verifications.get(app.id)?.status === 'running')
       return Promise.reject(
         Object.assign(new Error(`app "${app.id}" is being verified; wait for the check`), {
+          status: 409,
+        }),
+      );
+    if (plainServers.has(app.id))
+      return Promise.reject(
+        Object.assign(new Error(`app "${app.id}" is served plain; stop that first`), {
           status: 409,
         }),
       );
@@ -513,8 +520,10 @@ export function createBench({
         );
       if (!Array.isArray(steps) || !steps.length)
         throw Object.assign(new Error('steps must be a nonempty list'), { status: 400 });
-      if (!['rewrite', 'observe'].includes(mode))
-        throw Object.assign(new Error('mode must be "rewrite" or "observe"'), { status: 400 });
+      if (!VERIFY_MODES.includes(mode))
+        throw Object.assign(new Error(`mode must be one of ${VERIFY_MODES.join(', ')}`), {
+          status: 400,
+        });
       if (verifications.get(id)?.status === 'running') return verifications.get(id);
       const job = {
         status: 'running',
@@ -569,6 +578,43 @@ export function createBench({
     },
 
     /** The latest read-only check for an app; waits up to waitSeconds while it runs. */
+    /**
+     * Serve the app's own dev server without the package, for a person or a
+     * tool that brings its own watcher (a listen-mode session). Stops the
+     * bench copy, which holds the same port. `{ stop: true }` ends it.
+     */
+    async plain(id, { stop: end = false } = {}) {
+      const app = get(id);
+      const url = `http://127.0.0.1:${app.ports.app}/`;
+      const current = plainServers.get(id);
+      if (end) {
+        current?.close();
+        plainServers.delete(id);
+        return { status: 'stopped' };
+      }
+      if (current) return { status: 'serving', url };
+      if (app.status !== 'ready')
+        throw Object.assign(new Error(`app "${id}" is ${app.status}; wait with status`), {
+          status: 409,
+        });
+      if (app.mode === 'build')
+        throw Object.assign(
+          new Error('plain serving uses the dev server; rebuild with mode "dev"'),
+          {
+            status: 400,
+          },
+        );
+      if (verifications.get(id)?.status === 'running')
+        throw Object.assign(new Error(`app "${id}" is being verified; wait for the check`), {
+          status: 409,
+        });
+      await stop(id);
+      if (!app.serve) await buildTarget(app, { packageDir, rebuild: true, log: () => emit(app) });
+      const { server } = await serveApp(app, { plain: true });
+      plainServers.set(id, server);
+      return { status: 'serving', url };
+    },
+
     async verification(id, { waitSeconds = 0 } = {}) {
       get(id);
       const job = verifications.get(id);
@@ -595,6 +641,8 @@ export function createBench({
 
     async close() {
       for (const id of [...live.keys()]) await stop(id);
+      for (const server of plainServers.values()) server.close();
+      plainServers.clear();
       await closeBrowser();
     },
   };

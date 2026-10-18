@@ -1,0 +1,31 @@
+# lexical-playground (facebook/lexical, packages/lexical-playground): make a heading, type a paragraph, bold a word with Ctrl+B, start a bulleted list with Markdown "- ", undo with Ctrl+Z, switch to italics, insert a table through the Insert menu dialog
+{"action":"goto","value":"/"}
+{"action":"wait","value":"2500"}
+{"action":"click","target":{"role":"textbox"}}
+{"action":"click","target":{"role":"button","name":"Formatting options for text style"}}
+{"action":"click","target":{"role":"button","name":"Heading 1"}}
+{"action":"type","value":"Release notes"}
+{"action":"press","value":"Enter"}
+{"action":"type","value":"This week we shipped the "}
+{"action":"press","value":"Control+b"}
+{"action":"type","value":"listener"}
+{"action":"press","value":"Control+b"}
+{"action":"type","value":" and fixed two bugs."}
+{"action":"press","value":"Enter"}
+{"action":"type","value":"- first item"}
+{"action":"press","value":"Enter"}
+{"action":"type","value":"second item"}
+{"action":"press","value":"Control+z"}
+{"action":"press","value":"Shift+Home"}
+{"action":"click","target":{"role":"button","name":"Format text as italics. Shortcut: Ctrl+I"}}
+{"action":"press","value":"End"}
+{"action":"press","value":"Enter"}
+{"action":"press","value":"Enter"}
+{"action":"click","target":{"role":"button","name":"Insert specialized editor node"}}
+{"action":"click","target":{"role":"button","name":"Table"}}
+{"action":"fill","target":{"selector":"[role=dialog] input","nth":0},"value":"3"}
+{"action":"fill","target":{"selector":"[role=dialog] input","nth":1},"value":"2"}
+{"action":"click","target":{"role":"button","name":"Confirm"}}
+{"action":"type","value":"Owner"}
+{"action":"press","value":"Tab"}
+{"action":"type","value":"Status"}

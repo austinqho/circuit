@@ -193,7 +193,7 @@ const TOOLS = [
   {
     name: 'circuit_verify',
     description:
-      'Check that the package does not change how the app behaves. Give steps (the same shape as circuit_act, without app) and the bench runs them three times in fresh browsers: twice on the app without the package, once with it. The result lists every divergence (a step that failed, a different page after a step, a different URL, requests sent or not sent, new console errors, different storage), ignoring whatever the two plain runs already disagreed on; the overhead (script time with and without the package, the worst step); and the footprint the package adds on purpose (DOM attributes, request headers, replaced browser APIs). {{run}} in a value becomes a token unique to each run, for flows that create accounts on a real backend. With mode "observe" the third run is the app without the package, watched by debugger mode (the Chrome debugger, nothing rewritten), and the result adds `observed`: actions seen, requests and how each was joined to an action. It takes minutes: call again with no steps and wait_seconds to read progress and the verdict. The bench copy of the app is stopped while it runs.',
+      'Check that the package does not change how the app behaves. Give steps (the same shape as circuit_act, without app) and the bench runs them three times in fresh browsers: twice on the app without the package, once with it. The result lists every divergence (a step that failed, a different page after a step, a different URL, requests sent or not sent, new console errors, different storage), ignoring whatever the two plain runs already disagreed on; the overhead (script time with and without the package, the worst step); and the footprint the package adds on purpose (DOM attributes, request headers, replaced browser APIs). {{run}} in a value becomes a token unique to each run, for flows that create accounts on a real backend. With mode "observe" the third run is the app without the package, watched by debugger mode (the Chrome debugger, nothing rewritten), and the result adds `observed`: actions seen, requests and how each was joined to an action. With mode "listen" the third run is the app without the package plus the listen-mode script, which may leave nothing the page can see (any new global, attribute or replaced API is a divergence), and the result adds `listened`: actions, requests, how many started during an action, and what the script measured as its own cost. It takes minutes: call again with no steps and wait_seconds to read progress and the verdict. The bench copy of the app is stopped while it runs.',
     inputSchema: {
       type: 'object',
       required: ['app'],
@@ -210,9 +210,9 @@ const TOOLS = [
         },
         mode: {
           type: 'string',
-          enum: ['rewrite', 'observe'],
+          enum: ['rewrite', 'observe', 'listen'],
           description:
-            'What the third run checks: the package (rewrite, default) or debugger mode (observe).',
+            'What the third run checks: the package (rewrite, default), debugger mode (observe), or the listen-mode script (listen).',
         },
         wait_seconds: { type: 'integer', minimum: 0, maximum: 50 },
       },

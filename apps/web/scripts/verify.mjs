@@ -6,12 +6,14 @@
 //   node apps/web/scripts/verify.mjs [--repo owner/name] [--app-dir dir] [--flow file.jsonl] [--out result.json]
 //   node apps/web/scripts/verify.mjs --probe
 //   node apps/web/scripts/verify.mjs --observe [--probe]
+//   node apps/web/scripts/verify.mjs --listen [--probe]
 //
 // Defaults to bulletproof-react and flows/bulletproof-react.jsonl. `--probe`
 // runs the probe page instead (apps/web/probe): one click per case where an
 // instrumented app is known to be able to behave differently. `--observe`
 // checks debugger mode instead of the package: the third run is the plain app
-// with Chrome's debugger watching it. A flow is
+// with Chrome's debugger watching it. `--listen` checks listen mode: the plain
+// app with the listen-mode script on the page. A flow is
 // one circuit_act step per line; lines starting with # are comments. Exits 1
 // when the app behaved differently.
 import fs from 'node:fs';
@@ -65,7 +67,12 @@ if (status.status !== 'ready') {
   throw new Error(`app is ${status.status}: ${status.error}`);
 }
 
-const mode = process.argv.includes('--observe') ? 'observe' : 'rewrite';
+const mode = process.argv.includes('--observe')
+  ? 'observe'
+  : process.argv.includes('--listen')
+    ? 'listen'
+    : 'rewrite';
+const modeLabel = { rewrite: '', observe: ' (debugger mode)', listen: ' (listen mode)' }[mode];
 let job = await call('circuit_verify', { app: added.id, steps, mode, wait_seconds: 50 });
 let phase = null;
 while (job.status === 'running') {
@@ -77,7 +84,7 @@ if (job.status !== 'done') throw new Error(`verify ${job.status}: ${job.error}`)
 
 const { result } = job;
 console.log(
-  `${repo}${mode === 'observe' ? ' (debugger mode)' : ''}: ${result.verdict === 'same' ? 'SAME' : 'DIFFERENT'} over ${result.steps} steps`,
+  `${repo}${modeLabel}: ${result.verdict === 'same' ? 'SAME' : 'DIFFERENT'} over ${result.steps} steps`,
 );
 for (const d of result.divergences) {
   console.log(`  ${d.kind}${d.step ? ` at step ${d.step.index + 1} (${d.step.description})` : ''}`);
@@ -92,7 +99,7 @@ for (const step of result.failed_in_every_run || [])
   );
 const { overhead, footprint } = result;
 console.log(
-  `overhead: script ${overhead.script_ms.plain} ms plain, ${overhead.script_ms.traced} ms traced (x${overhead.ratio ?? '?'}); pages took ${overhead.settle_ms.plain} ms plain, ${overhead.settle_ms.traced} ms traced to settle`,
+  `overhead: ${overhead.script_ms ? `script ${overhead.script_ms.plain} ms plain, ${overhead.script_ms.traced} ms traced (x${overhead.ratio ?? '?'})` : 'script time not measured (needs Chromium)'}; pages took ${overhead.settle_ms.plain} ms plain, ${overhead.settle_ms.traced} ms traced to settle`,
 );
 if (overhead.worst_step)
   console.log(
@@ -101,10 +108,17 @@ if (overhead.worst_step)
 console.log(`footprint: attributes ${JSON.stringify(footprint.dom_attributes)}`);
 console.log(`  request headers added: ${footprint.request_headers.join(', ') || 'none'}`);
 console.log(`  browser APIs replaced: ${footprint.replaced_browser_apis.join(', ') || 'none'}`);
+console.log(`  globals added: ${footprint.globals?.join(', ') || 'none'}`);
 if (result.observed) {
   const { actions, requests, joined, via, dispatches, runs, unread, pauses } = result.observed;
   console.log(
     `observed: ${actions} actions, ${requests} requests, ${joined} joined to an action ${JSON.stringify(via)}; ${dispatches} user events, ${runs} other events, ${unread} unreadable, ${pauses} pauses`,
+  );
+}
+if (result.listened) {
+  const l = result.listened;
+  console.log(
+    `listened: ${l.actions} actions (${l.with_handler} with a React handler) ${JSON.stringify(l.action_types)}, ${l.requests} requests (${l.started_during_action} started during an action, ${l.with_server_id} with a server id); own cost ${l.cost_ms} ms, ${l.errors} errors, ${l.bytes_sent} bytes in ${l.batches} batches over ${l.pages} page loads`,
   );
 }
 if (out) fs.writeFileSync(out, JSON.stringify(job, null, 2));

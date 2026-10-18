@@ -43,6 +43,10 @@
       "types": "./observe.d.mts",
       "import": "./observe.mjs"
     },
+    "./listen": {
+      "types": "./listen.d.mts",
+      "import": "./listen.mjs"
+    },
     "./mcp": {
       "import": "./mcp.mjs"
     },
@@ -82,6 +86,9 @@
     "observe",
     "observe.mjs",
     "observe.d.mts",
+    "listen",
+    "listen.mjs",
+    "listen.d.mts",
     "LICENSE",
     "README.md"
   ],

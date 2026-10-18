@@ -1,0 +1,26 @@
+# tldraw (apps/examples, /develop): draw and restyle a rectangle, duplicate it with Ctrl+D, draw an ellipse by shortcut, add a sticky note, connect with an arrow, select all, delete, undo, open the zoom menu, add a page
+{"action":"goto","value":"/develop"}
+{"action":"wait","value":"2000"}
+{"action":"click","target":{"role":"button","name":"Rectangle — R"}}
+{"action":"drag","target":"css=.tl-canvas","value":"250,180 450,320"}
+{"action":"click","target":{"role":"radio","name":"Color — Blue"}}
+{"action":"click","target":{"role":"radio","name":"Fill — Solid"}}
+{"action":"press","value":"Control+d"}
+{"action":"press","value":"o"}
+{"action":"drag","target":"css=.tl-canvas","value":"760,180 930,320"}
+{"action":"press","value":"n"}
+{"action":"click","target":"css=.tl-canvas","value":null}
+{"action":"type","value":"Ship it"}
+{"action":"press","value":"Escape"}
+{"action":"click","target":{"role":"button","name":"Arrow — A"}}
+{"action":"drag","target":"css=.tl-canvas","value":"670,250 755,250"}
+{"action":"press","value":"v"}
+{"action":"press","value":"Control+a"}
+{"action":"click","target":{"role":"button","name":"Delete — ⌫"}}
+{"action":"press","value":"Control+z"}
+{"action":"click","target":{"role":"button","name":"Zoom — 100%"}}
+{"action":"press","value":"Escape"}
+{"action":"click","target":{"role":"button","name":"Page 1"}}
+{"action":"click","target":{"role":"button","name":"Create new page"}}
+{"action":"press","value":"Enter"}
+{"action":"press","value":"Escape"}

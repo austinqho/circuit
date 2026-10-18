@@ -5,7 +5,11 @@
 // The same steps run three times, each in a fresh browser: twice on the plain
 // app (the control) and once with the package. With `mode: 'observe'` the
 // third run is the plain app again with debugger mode watching it
-// (producttrace/observe), so the check covers that mode instead. Whatever both plain runs agree
+// (producttrace/observe), so the check covers that mode instead. With
+// `mode: 'listen'` the third run is the plain app with the listen-mode script
+// on the page (producttrace/listen); that mode promises to add nothing the
+// page can see, so any global, attribute or replaced browser API it leaves is
+// a divergence too. Whatever both plain runs agree
 // on and the traced run does not is a divergence: a request sent or not sent,
 // a different page after a step, a step that failed, a new error, different
 // storage. Whatever the two plain runs already disagree on (random ids, clock
@@ -16,6 +20,8 @@
 // by a token unique to each run, so a flow that registers a user works against
 // a real backend three times.
 import crypto from 'node:crypto';
+import http from 'node:http';
+import { listenScript } from 'producttrace/listen';
 import { observePage } from 'producttrace/observe';
 import { BrowserSession } from './browser.mjs';
 
@@ -78,27 +84,89 @@ function counts(items) {
   return map;
 }
 
+// Words and the text between them: ['{"index":"', 'a3nPf', '","color":"', ...].
+const split = (item) => item.split(/([\w$-]+)/u);
+
+/**
+ * Where two plain runs wrote the same thing apart from some words (a random
+ * sort key, a random colour), the template keeps everything they share and
+ * marks the words they disagree on as free. A traced item that differs only
+ * in those words is the app's own randomness; a difference anywhere else is not.
+ */
+function templates(onlyA, onlyB) {
+  const out = [];
+  const pool = onlyB.map(split);
+  for (const item of onlyA) {
+    const parts = split(item);
+    let best = null;
+    let bestDiff = Infinity;
+    for (const other of pool) {
+      if (other.length !== parts.length) continue;
+      let diff = 0;
+      for (let i = 0; i < parts.length && diff < bestDiff; i += 1) {
+        if (parts[i] === other[i]) continue;
+        // Only words may differ; punctuation and structure must match.
+        if (i % 2 === 0) diff = Infinity;
+        else diff += 1;
+      }
+      if (diff < bestDiff) {
+        best = other;
+        bestDiff = diff;
+      }
+    }
+    if (!best || bestDiff === Infinity) continue;
+    // Only near-copies: two different requests ("GET /api/me", "GET /api/posts")
+    // share a few words too, and must never make each other noise.
+    const words = (parts.length - 1) / 2;
+    if (words - bestDiff < 8 || bestDiff * 5 > words) continue;
+    out.push(parts.map((part, i) => (part === best[i] ? part : null)));
+  }
+  return out;
+}
+
+const fits = (template, parts) =>
+  template.length === parts.length &&
+  template.every((part, i) => part === null || part === parts[i]);
+
 /**
  * Items of `traced` that neither plain run had (`extra`) and items both plain
- * runs had that `traced` lacks (`missing`). An item whose digits are the only
- * thing that differs from something the plain runs disagreed on is noise.
+ * runs had that `traced` lacks (`missing`). An item that differs from what the
+ * plain runs disagreed on only where they disagreed with each other (digits,
+ * or whole words in the same places) is noise.
  */
 export function compareItems(plainA, plainB, traced) {
   const a = counts(plainA);
   const b = counts(plainB);
   const c = counts(traced);
   const noisy = new Set();
-  for (const [item, n] of a) if (n !== (b.get(item) || 0)) noisy.add(shape(item));
-  for (const [item, n] of b) if (n !== (a.get(item) || 0)) noisy.add(shape(item));
+  const onlyA = [];
+  const onlyB = [];
+  for (const [item, n] of a)
+    if (n !== (b.get(item) || 0)) {
+      noisy.add(shape(item));
+      if (n > (b.get(item) || 0)) onlyA.push(item);
+    }
+  for (const [item, n] of b)
+    if (n !== (a.get(item) || 0)) {
+      noisy.add(shape(item));
+      if (n > (a.get(item) || 0)) onlyB.push(item);
+    }
+  const free = templates(onlyA, onlyB);
+  const isNoise = (item) => {
+    if (noisy.has(shape(item))) return true;
+    if (!free.length) return false;
+    const parts = split(item);
+    return free.some((template) => fits(template, parts));
+  };
   const extra = [];
   const missing = [];
   for (const [item, n] of c) {
     const most = Math.max(a.get(item) || 0, b.get(item) || 0);
-    if (n > most && !noisy.has(shape(item))) extra.push(item);
+    if (n > most && !isNoise(item)) extra.push(item);
   }
   for (const [item, n] of a) {
     const least = Math.min(n, b.get(item) || 0);
-    if ((c.get(item) || 0) < least && !noisy.has(shape(item))) missing.push(item);
+    if ((c.get(item) || 0) < least && !isNoise(item)) missing.push(item);
   }
   return { extra, missing };
 }
@@ -223,15 +291,27 @@ export async function readStorage(page) {
     .catch(() => []);
 }
 
-async function readFootprint(page) {
+export async function readFootprint(page) {
   return page
     .evaluate(
       ({ natives, attributePattern }) => {
         const pattern = new RegExp(attributePattern, 'u');
         const attributes = {};
+        // Every attribute name in the document, and the full attributes of the
+        // page's root elements, so a script that writes any attribute shows.
+        const names = {};
         for (const node of document.querySelectorAll('*'))
-          for (const name of node.getAttributeNames())
+          for (const name of node.getAttributeNames()) {
+            names[name] = (names[name] || 0) + 1;
             if (pattern.test(name)) attributes[name] = (attributes[name] || 0) + 1;
+          }
+        const roots = [document.documentElement, document.head, document.body]
+          .filter(Boolean)
+          .flatMap((node) =>
+            node
+              .getAttributeNames()
+              .map((name) => `${node.tagName.toLowerCase()} ${name}="${node.getAttribute(name)}"`),
+          );
         const replaced = natives.filter((dotted) => {
           let value = globalThis;
           for (const part of dotted.split('.')) value = value?.[part];
@@ -242,11 +322,17 @@ async function readFootprint(page) {
             return false;
           }
         });
-        return { attributes, replaced };
+        return {
+          attributes,
+          names: Object.keys(names),
+          roots,
+          replaced,
+          globals: Object.getOwnPropertyNames(globalThis),
+        };
       },
       { natives: NATIVES, attributePattern: FOOTPRINT_ATTRIBUTE.source },
     )
-    .catch(() => ({ attributes: {}, replaced: [] }));
+    .catch(() => ({ attributes: {}, names: [], roots: [], replaced: [], globals: [] }));
 }
 
 /** One run of the steps on a fresh browser, with everything the comparison reads. */
@@ -257,11 +343,14 @@ async function observe({
   token,
   reference = null,
   watch = false,
+  listen = null,
 }) {
   const norm = normalizer(token);
   const origin = new URL(baseUrl).origin;
   const session = new BrowserSession(baseUrl, { ignoreOrigins, intercept: false });
   const page = await session.ensure();
+  // Listen mode is a script in the page, there from the first navigation on.
+  if (listen) await session.context.addInitScript({ content: listen.script });
   const cdp = await session.context
     .newCDPSession(page)
     .then(async (s) => (await s.send('Performance.enable'), s))
@@ -300,6 +389,8 @@ async function observe({
     : null;
   const bake = (value) => (typeof value === 'string' ? value.replaceAll('{{run}}', token) : value);
   let before = await metrics(cdp);
+  // Script time comes from Chrome's DevTools counters; other engines have none.
+  run.measured = Boolean(before);
   for (const [index, step] of steps.entries()) {
     stepIndex = index;
     const done = await session.act({ ...step, value: bake(step.value) });
@@ -346,7 +437,12 @@ async function observe({
     await watcher.stop();
     run.observed = { stats: watcher.stats(), records: watcher.records() };
   }
+  // Leaving the page fires pagehide, where the listen script sends its last
+  // rows; closing a page from Playwright skips unload events.
+  if (listen) await page.goto('about:blank').catch(() => {});
   await session.reset();
+  // Closing the page sends the script's last batch; give it a moment to land.
+  if (listen) run.listened = await listen.collect();
   return run;
 }
 
@@ -411,11 +507,17 @@ export function compareRuns(plainA, plainB, traced) {
       traced_ms: step.script_ms,
     };
   });
-  const worst = perStep.reduce(
-    (top, row) =>
-      row.traced_ms - row.plain_ms > (top ? top.traced_ms - top.plain_ms : -Infinity) ? row : top,
-    null,
-  );
+  // Overhead is only a number when every run could measure it (Chromium).
+  const measured = [plainA, plainB, traced].every((r) => r.measured !== false);
+  const worst = !measured
+    ? null
+    : perStep.reduce(
+        (top, row) =>
+          row.traced_ms - row.plain_ms > (top ? top.traced_ms - top.plain_ms : -Infinity)
+            ? row
+            : top,
+        null,
+      );
 
   // What the package adds on purpose, so a reviewer sees it rather than discovers it.
   const plainHeaders = new Set([...plainA.headers, ...plainB.headers]);
@@ -425,6 +527,51 @@ export function compareRuns(plainA, plainB, traced) {
     ),
   ];
   const plainReplaced = new Set([...plainA.footprint.replaced, ...plainB.footprint.replaced]);
+  const plainGlobals = new Set([
+    ...(plainA.footprint.globals ?? []),
+    ...(plainB.footprint.globals ?? []),
+  ]);
+  const addedGlobals = (traced.footprint.globals ?? []).filter((name) => !plainGlobals.has(name));
+  const replacedApis = traced.footprint.replaced.filter((name) => !plainReplaced.has(name));
+  // Attribute names neither plain run had anywhere in the page, and root
+  // element attributes (html, head, body) the plain runs agreed on and the
+  // traced run changed.
+  const plainNames = new Set([
+    ...(plainA.footprint.names ?? []),
+    ...(plainB.footprint.names ?? []),
+  ]);
+  const addedAttributeNames = (traced.footprint.names ?? []).filter(
+    (name) => !plainNames.has(name),
+  );
+  const rootChanges = compareItems(
+    plainA.footprint.roots ?? [],
+    plainB.footprint.roots ?? [],
+    traced.footprint.roots ?? [],
+  );
+  // Listen mode promises a page that sees nothing new; hold it to that.
+  if (traced.listened) {
+    const attributes = [
+      ...new Set([...Object.keys(traced.footprint.attributes), ...addedAttributeNames]),
+    ];
+    if (
+      addedGlobals.length ||
+      replacedApis.length ||
+      attributes.length ||
+      rootChanges.extra.length ||
+      rootChanges.missing.length ||
+      addedHeaders.length
+    )
+      add('footprint', null, {
+        only_traced: [
+          ...addedGlobals.map((name) => `global ${name}`),
+          ...replacedApis.map((name) => `replaced ${name}`),
+          ...attributes.map((name) => `attribute ${name}`),
+          ...rootChanges.extra.map((item) => `attribute ${item}`),
+          ...addedHeaders.map((name) => `header ${name}`),
+        ],
+        only_plain: rootChanges.missing.map((item) => `attribute ${item}`),
+      });
+  }
 
   return {
     verdict: divergences.length ? 'different' : 'same',
@@ -436,8 +583,11 @@ export function compareRuns(plainA, plainB, traced) {
       .filter(({ step, index }) => !step.ok && !plainA.steps[index]?.ok && !plainB.steps[index]?.ok)
       .map(({ step, index }) => ({ index, description: step.description, error: step.error })),
     overhead: {
-      script_ms: { plain: Math.round(plainScript), traced: Math.round(traced.script_ms) },
-      ratio: plainScript > 0 ? Number((traced.script_ms / plainScript).toFixed(2)) : null,
+      script_ms: measured
+        ? { plain: Math.round(plainScript), traced: Math.round(traced.script_ms) }
+        : null,
+      ratio:
+        measured && plainScript > 0 ? Number((traced.script_ms / plainScript).toFixed(2)) : null,
       worst_step: worst,
       // Time spent waiting for pages to stop changing; the traced figure also
       // includes waiting until it matched the plain runs.
@@ -449,9 +599,92 @@ export function compareRuns(plainA, plainB, traced) {
     footprint: {
       dom_attributes: traced.footprint.attributes,
       request_headers: addedHeaders,
-      replaced_browser_apis: traced.footprint.replaced.filter((name) => !plainReplaced.has(name)),
+      replaced_browser_apis: replacedApis,
+      globals: addedGlobals,
+      attribute_names: addedAttributeNames,
+      root_attributes: rootChanges.extra,
     },
     ...(traced.observed ? { observed: summarizeObserved(traced.observed) } : {}),
+    ...(traced.listened ? { listened: summarizeListened(traced.listened) } : {}),
+  };
+}
+
+/**
+ * What listen mode recorded, and what it cost by its own measure. A request
+ * counts as started during an action when its start falls inside that
+ * action's dispatch (opened and closed on window), the only join listen mode
+ * makes in the page; `server_id` is the id the server put in Server-Timing.
+ */
+export function summarizeListened(batches) {
+  const pages = new Map();
+  for (const batch of batches) {
+    const page = pages.get(batch.page) ?? { rows: [], cost_ms: 0, errors: 0, bytes: 0 };
+    page.rows.push(...batch.rows);
+    page.cost_ms = Math.max(page.cost_ms, batch.cost_ms ?? 0);
+    page.errors = Math.max(page.errors, batch.errors ?? 0);
+    page.bytes += batch.bytes ?? 0;
+    pages.set(batch.page, page);
+  }
+  let actions = 0;
+  let withHandler = 0;
+  let requests = 0;
+  let duringAction = 0;
+  let withServerId = 0;
+  const types = {};
+  for (const page of pages.values()) {
+    const acts = page.rows.filter((row) => row.kind === 'action');
+    actions += acts.length;
+    withHandler += acts.filter((row) => row.handler).length;
+    for (const row of acts) types[row.type] = (types[row.type] ?? 0) + 1;
+    for (const row of page.rows.filter((r) => r.kind === 'request')) {
+      requests += 1;
+      if (row.server_id) withServerId += 1;
+      if (acts.some((a) => a.end != null && row.start >= a.start && row.start <= a.end))
+        duringAction += 1;
+    }
+  }
+  const all = [...pages.values()];
+  return {
+    pages: pages.size,
+    actions,
+    action_types: types,
+    with_handler: withHandler,
+    requests,
+    started_during_action: duringAction,
+    with_server_id: withServerId,
+    cost_ms: Number(all.reduce((sum, page) => sum + page.cost_ms, 0).toFixed(1)),
+    errors: all.reduce((sum, page) => sum + page.errors, 0),
+    bytes_sent: all.reduce((sum, page) => sum + page.bytes, 0),
+    batches: batches.length,
+  };
+}
+
+/** A local endpoint for the listen-mode script's beacons, one run at a time. */
+export async function listenSink({ values = true } = {}) {
+  let batches = [];
+  const server = http.createServer((req, res) => {
+    let body = '';
+    req.on('data', (chunk) => (body += chunk));
+    req.on('end', () => {
+      try {
+        batches.push({ ...JSON.parse(body), bytes: Buffer.byteLength(body) });
+      } catch {}
+      res.writeHead(204, { 'access-control-allow-origin': '*' });
+      res.end();
+    });
+  });
+  await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
+  const origin = `http://127.0.0.1:${server.address().port}`;
+  return {
+    origin,
+    script: listenScript({ endpoint: `${origin}/listen`, values, flushMs: 2000 }),
+    async collect() {
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      const taken = batches;
+      batches = [];
+      return taken;
+    },
+    close: () => new Promise((resolve) => server.close(resolve)),
   };
 }
 
@@ -482,10 +715,29 @@ export function summarizeObserved({ stats, records }) {
  */
 export async function verifyReadOnly({ serve, steps, mode = 'rewrite', onProgress = () => {} }) {
   if (!Array.isArray(steps) || !steps.length) throw new Error('verify needs a list of steps');
-  if (!['rewrite', 'observe'].includes(mode)) throw new Error(`unknown verify mode "${mode}"`);
-  const runOn = async (variant, label, reference, watch = false) => {
+  if (!MODES.includes(mode)) throw new Error(`unknown verify mode "${mode}"`);
+  const sink = mode === 'listen' ? await listenSink() : null;
+  try {
+    return await verifyRuns({ serve, steps, mode, onProgress, sink });
+  } finally {
+    await sink?.close();
+  }
+}
+
+/** The modes verify can check: rewrite (the package), observe (debugger mode), listen (listen mode). */
+export const MODES = ['rewrite', 'observe', 'listen'];
+
+const THIRD_RUN = {
+  rewrite: { variant: 'traced', label: 'run with producttrace' },
+  observe: { variant: 'plain', label: 'run with debugger mode watching' },
+  listen: { variant: 'plain', label: 'run with the listen-mode script' },
+};
+
+async function verifyRuns({ serve, steps, mode, onProgress, sink }) {
+  const runOn = async (variant, label, reference, watch = false, listen = null) => {
     onProgress(`starting the ${variant} app (${label})`);
     const served = await serve(variant);
+    const ignoreOrigins = [...(served.ignoreOrigins ?? []), ...(listen ? [listen.origin] : [])];
     try {
       // The first load after a config change can re-optimize dependencies and
       // reload the page; let that happen before anything is observed.
@@ -499,6 +751,8 @@ export async function verifyReadOnly({ serve, steps, mode = 'rewrite', onProgres
       onProgress(`running the steps (${label})`);
       return await observe({
         ...served,
+        ignoreOrigins,
+        listen,
         steps,
         token: `r${crypto.randomBytes(3).toString('hex')}`,
         reference,
@@ -515,10 +769,11 @@ export async function verifyReadOnly({ serve, steps, mode = 'rewrite', onProgres
     plainA.steps.map((step) => ({ a: step.lines, b: step.lines })),
   );
   const traced = await runOn(
-    mode === 'observe' ? 'plain' : 'traced',
-    mode === 'observe' ? 'run with debugger mode watching' : 'run with producttrace',
+    THIRD_RUN[mode].variant,
+    THIRD_RUN[mode].label,
     plainA.steps.map((step, index) => ({ a: step.lines, b: plainB.steps[index]?.lines ?? [] })),
     mode === 'observe',
+    sink,
   );
   return { ...compareRuns(plainA, plainB, traced), runs: { plainA, plainB, traced } };
 }

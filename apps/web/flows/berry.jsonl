@@ -1,0 +1,28 @@
+# berry (codedthemes/berry-free-react-admin-template, vite/): switch the earnings card to Year, change the growth chart period, open the profile panel, search it and flip a switch, browse utilities, then register (typo fixed with Backspace, show password, accept terms) and log in
+{"action":"goto","value":"/free/dashboard/default"}
+{"action":"wait","value":"2500"}
+{"action":"click","target":{"role":"button","name":"Year"}}
+{"action":"click","target":{"role":"button","name":"Month"}}
+{"action":"click","target":{"role":"combobox","name":"Today"}}
+{"action":"click","target":{"role":"option","name":"This Month"}}
+{"action":"click","target":{"role":"button","name":"user-account"}}
+{"action":"type","target":{"placeholder":"Search profile options"},"value":"account"}
+{"action":"click","target":{"role":"switch","nth":1}}
+{"action":"press","value":"Escape"}
+{"action":"click","target":{"role":"link","name":"Typography"}}
+{"action":"click","target":{"role":"link","name":"Color"}}
+{"action":"goto","value":"/free/pages/register"}
+{"action":"type","target":{"label":"First Name"},"value":"Adx"}
+{"action":"press","value":"Backspace"}
+{"action":"type","value":"a"}
+{"action":"type","target":{"label":"Last Name"},"value":"Lovelace"}
+{"action":"type","target":{"label":"Email Address / Username"},"value":"ada-{{run}}@example.test"}
+{"action":"type","target":{"label":"Password","exact":true},"value":"Lovelace#1815"}
+{"action":"click","target":{"role":"button","name":"toggle password visibility"}}
+{"action":"click","target":{"role":"checkbox"}}
+{"action":"click","target":{"role":"checkbox"}}
+{"action":"click","target":{"role":"button","name":"Sign up"}}
+{"action":"goto","value":"/free/pages/login"}
+{"action":"fill","target":{"label":"Email Address / Username"},"value":"ada-{{run}}@example.test"}
+{"action":"fill","target":{"label":"Password","exact":true},"value":"Lovelace#1815"}
+{"action":"click","target":{"role":"button","name":"Sign In"}}

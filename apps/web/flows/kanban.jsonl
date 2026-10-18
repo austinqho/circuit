@@ -1,0 +1,15 @@
+# dnd-kit Kanban (Georgegriff/react-dnd-kit-tailwind-shadcn-ui): drag a task to In progress, drag another to Done, reorder within a column, drag a whole column, move a task with the keyboard (Space, arrows, Space), cancel a keyboard drag with Escape, switch the theme
+{"action":"goto","value":"/"}
+{"action":"wait","value":"1500"}
+{"action":"drag","target":{"role":"button","name":"Move task","nth":0},"value":"8,8 200,60 520,300"}
+{"action":"drag","target":{"role":"button","name":"Move task","nth":7},"value":"8,8 300,40 740,100"}
+{"action":"drag","target":{"role":"button","name":"Move task","nth":1},"value":"8,8 8,80 8,150"}
+{"action":"drag","target":{"role":"button","name":"Move column: Done"},"value":"8,8 -200,20 -720,20"}
+{"action":"press","target":{"role":"button","name":"Move task","nth":0},"value":"Space"}
+{"action":"press","value":"ArrowRight"}
+{"action":"press","value":"Space"}
+{"action":"press","target":{"role":"button","name":"Move task","nth":2},"value":"Space"}
+{"action":"press","value":"ArrowDown"}
+{"action":"press","value":"Escape"}
+{"action":"click","target":{"role":"button","name":"Toggle theme"}}
+{"action":"click","target":{"role":"menuitem","name":"Light"}}

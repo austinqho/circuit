@@ -6,6 +6,7 @@ import {
   normalizer,
   requestItem,
   storageRow,
+  summarizeListened,
   summarizeObserved,
   verifyReadOnly,
 } from '../src/verify.mjs';
@@ -91,6 +92,9 @@ test('compareRuns says same when the traced run matches the control', () => {
     dom_attributes: { 'data-tracer-el': 4 },
     request_headers: ['traceparent'],
     replaced_browser_apis: ['fetch'],
+    globals: [],
+    attribute_names: [],
+    root_attributes: [],
   });
 });
 
@@ -243,4 +247,118 @@ test('long saved values: random numbers stay noise, a real change shows, and the
   assert.ok(printed.length <= 300);
   assert.match(printed, /^localStorage excalidraw = .*… #[0-9a-f]{10}$/u);
   assert.equal(storageRow(norm, 'localStorage theme = dark'), 'localStorage theme = dark');
+});
+
+test('in listen mode anything the script leaves on the page is a divergence', () => {
+  const plain = () => ({
+    ...run({ steps: [{}] }),
+    footprint: { attributes: {}, replaced: [], globals: ['document', 'appState'] },
+  });
+  const clean = {
+    ...plain(),
+    listened: [],
+  };
+  assert.equal(compareRuns(plain(), plain(), clean).verdict, 'same');
+  const leaky = {
+    ...plain(),
+    footprint: {
+      attributes: { 'data-x': 2 },
+      replaced: ['fetch'],
+      globals: ['document', 'appState', '__listen'],
+    },
+    listened: [],
+  };
+  const result = compareRuns(plain(), plain(), leaky);
+  assert.equal(result.verdict, 'different');
+  const footprint = result.divergences.find((d) => d.kind === 'footprint');
+  assert.deepEqual(footprint.only_traced, [
+    'global __listen',
+    'replaced fetch',
+    'attribute data-x',
+  ]);
+  // Any attribute counts, not just known prefixes: a new name anywhere, or a
+  // root element attribute the plain runs agreed on.
+  const plainRoots = () => ({
+    ...plain(),
+    footprint: {
+      ...plain().footprint,
+      names: ['class', 'lang'],
+      roots: ['html lang="en"', 'body class="app"'],
+    },
+  });
+  const marked = {
+    ...plainRoots(),
+    footprint: {
+      ...plainRoots().footprint,
+      names: ['class', 'lang', 'data-circuit'],
+      roots: ['html lang="en"', 'html data-circuit="1"', 'body class="app ready"'],
+    },
+    listened: [],
+  };
+  const attrs = compareRuns(plainRoots(), plainRoots(), marked);
+  assert.equal(attrs.verdict, 'different');
+  assert.deepEqual(
+    attrs.divergences.find((d) => d.kind === 'footprint'),
+    {
+      kind: 'footprint',
+      step: null,
+      only_traced: [
+        'attribute data-circuit',
+        'attribute html data-circuit="1"',
+        'attribute body class="app ready"',
+      ],
+      only_plain: ['attribute body class="app"'],
+    },
+  );
+  assert.equal(
+    compareRuns(plainRoots(), plainRoots(), { ...plainRoots(), listened: [] }).verdict,
+    'same',
+  );
+  // Rewrite mode adds its footprint on purpose: listed, not a divergence.
+  const rewrite = { ...leaky, listened: undefined };
+  assert.equal(compareRuns(plain(), plain(), rewrite).verdict, 'same');
+});
+
+test('summarizeListened counts actions, joins and the script cost per page load', () => {
+  const batch = (page, rows, cost) => ({ page, rows, cost_ms: cost, errors: 0, bytes: 100 });
+  const click = { kind: 'action', type: 'click', start: 10, end: 12, handler: { prop: 'onClick' } };
+  const summary = summarizeListened([
+    batch('p1', [click, { kind: 'request', start: 11, server_id: 'abc' }], 1.5),
+    batch('p1', [{ kind: 'request', start: 40, server_id: null }], 3),
+    batch('p2', [{ kind: 'action', type: 'input', start: 50, end: null, handler: null }], 2),
+  ]);
+  assert.deepEqual(summary, {
+    pages: 2,
+    actions: 2,
+    action_types: { click: 1, input: 1 },
+    with_handler: 1,
+    requests: 2,
+    started_during_action: 1,
+    with_server_id: 1,
+    cost_ms: 5,
+    errors: 0,
+    bytes_sent: 300,
+    batches: 3,
+  });
+});
+
+test('random words the plain runs disagree on are noise only in the places they disagreed', () => {
+  // tldraw gives each shape a random sort key and each user a random colour.
+  const shapes = (index, color, extra = '') =>
+    `indexedDB TLDRAW store = [{"id":"shape:one","type":"geo","props":{"geo":"ellipse","w":120,"h":80,"fill":"none"},"index":"${index}","user":{"name":"New User","color":"${color}"}${extra}}]`;
+  const a = shapes('a3nPf', 'coral');
+  const b = shapes('a3IjQ', 'violet');
+  assert.deepEqual(compareItems([a], [b], [shapes('a34zD', 'teal')]), { extra: [], missing: [] });
+  // A word that both plain runs agreed on changes: that is the package's doing.
+  const changed = shapes('a34zD', 'teal').replace('ellipse', 'rectangle');
+  assert.deepEqual(compareItems([a], [b], [changed]).extra, [changed]);
+  // So is anything new in the structure.
+  const added = shapes('a34zD', 'teal', ',"locked":true');
+  assert.deepEqual(compareItems([a], [b], [added]).extra, [added]);
+});
+
+test('two different short requests never make each other noise', () => {
+  const a = ['GET /api/me', 'GET /api/team'];
+  const b = ['GET /api/me', 'GET /api/discussions'];
+  assert.deepEqual(compareItems(a, b, ['GET /api/me', 'GET /api/posts']).extra, ['GET /api/posts']);
 });
