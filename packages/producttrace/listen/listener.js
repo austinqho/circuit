@@ -12,6 +12,8 @@
 (function (config) {
   'use strict';
   var w = window;
+  // Only app pages: a blank tab or a browser page has nothing to record.
+  if (!/^https?:$/.test(w.location.protocol)) return;
   var perf = w.performance;
   var now = function () {
     return perf.now();

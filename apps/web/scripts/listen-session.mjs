@@ -7,15 +7,48 @@
 //   node apps/web/scripts/listen-session.mjs --url http://localhost:5173/
 //
 // --repo runs the app on the bench (its own dev server, without the package);
-// --url uses an app you already have running. A browser window opens: use the
-// app as you like, then come back to the terminal and press Enter. Saves
-// session.json and session.txt under --out (default ./listen-sessions/<time>).
+// --url uses an app you already have running. A browser window opens with the
+// app in one tab and a short guide in another: use the app as you like, then
+// press "I'm done" in the guide and write what you did. No terminal input is
+// needed, so a remote session can start it. Saves session.json and
+// session.txt under --out (default ./listen-sessions/<time>).
 import fs from 'node:fs';
 import path from 'node:path';
-import readline from 'node:readline';
+import http from 'node:http';
 import { fileURLToPath } from 'node:url';
 import { spawn } from 'node:child_process';
 import net from 'node:net';
+
+// The guide tab: what to do, an "I'm done" button and the question.
+const GUIDE_HTML = `<!doctype html>
+<meta charset="utf-8">
+<title>When you're done, come back here</title>
+<style>
+  body { font: 16px/1.5 system-ui, sans-serif; max-width: 34rem; margin: 3rem auto; padding: 0 1rem; color: #222; }
+  textarea { width: 100%; min-height: 8rem; font: inherit; padding: .5rem; }
+  button { font: inherit; padding: .5rem 1rem; }
+  .hidden { display: none; }
+</style>
+<h1>Use the app in the other tab</h1>
+<p>Do whatever you like there, the way you normally would. Nothing you do is graded.</p>
+<p>When you're finished, come back to this tab.</p>
+<button id="done">I'm done</button>
+<form id="ask" class="hidden">
+  <p><label for="what"><strong>In 2 or 3 sentences, what did you do?</strong></label></p>
+  <textarea id="what" required></textarea>
+  <p><button type="submit">Send</button></p>
+</form>
+<p id="thanks" class="hidden">Thanks, that's saved. You can close this window.</p>
+<script>
+  const show = (id) => document.getElementById(id).classList.remove('hidden');
+  document.getElementById('done').onclick = (e) => { e.target.disabled = true; show('ask'); document.getElementById('what').focus(); };
+  document.getElementById('ask').onsubmit = async (e) => {
+    e.preventDefault();
+    await fetch('/done', { method: 'POST', body: JSON.stringify({ description: document.getElementById('what').value }) });
+    e.target.classList.add('hidden');
+    show('thanks');
+  };
+</script>`;
 
 process.env.CIRCUIT_HEADED ??= '1';
 const { BrowserSession, closeBrowser } = await import('../src/browser.mjs');
@@ -100,10 +133,16 @@ await session.context.addInitScript({ content: sink.script });
 const started = new Date();
 await page.goto(url);
 
-const ask = terminalQuestions();
-await ask(
-  `\nA browser window is open on ${url}.\nUse the app however you like. When you are done, come back here and press Enter. `,
-);
+const guide = await guidePage();
+const guideTab = await session.context.newPage();
+await guideTab.goto(guide.url);
+await page.bringToFront();
+console.log(`Session open: the app is in one tab, the guide (${guide.url}) in the other.`);
+// Done when the person sends the guide's form, or closes the browser.
+const description = await Promise.race([
+  guide.done,
+  new Promise((resolve) => session.context.on('close', () => resolve(''))),
+]);
 
 // What the page can see of circuit: compared with the same page opened without it.
 const watched = await readFootprint(page);
@@ -121,9 +160,10 @@ const footprint = {
 };
 
 await page.goto('about:blank').catch(() => {}); // sends the last batch
-const batches = await sink.collect();
+// Only the app's own pages: the guide tab shares the browser but isn't the app.
+const appOrigin = new URL(url).origin;
+const batches = (await sink.collect()).filter((batch) => batch.origin === appOrigin);
 await session.reset();
-const description = await ask('\nIn 2-3 sentences, what did you do? ');
 
 const rows = batches.flatMap((batch) => batch.rows.map((row) => ({ page: batch.page, ...row })));
 const summary = summarizeListened(batches);
@@ -148,7 +188,9 @@ console.log(
 );
 console.log(`Saved ${path.join(out, 'session.txt')} and session.json`);
 
+await guideTab.close().catch(() => {});
 await sink.close();
+guide.close();
 await stopBench();
 await closeBrowser();
 
@@ -163,25 +205,33 @@ function freePort() {
   });
 }
 
-/**
- * Questions on the terminal. Lines typed (or piped) ahead of a question are
- * kept for it, and an ended input answers ''.
- */
-function terminalQuestions() {
-  const lines = [];
-  const waiting = [];
-  let ended = false;
-  const rl = readline.createInterface({ input: process.stdin });
-  rl.on('line', (line) => (waiting.length ? waiting.shift()(line) : lines.push(line)));
-  rl.on('close', () => {
-    ended = true;
-    while (waiting.length) waiting.shift()('');
+/** The guide tab: what to do, an "I'm done" button and the question, served on this machine. */
+async function guidePage() {
+  let finish;
+  const done = new Promise((resolve) => (finish = resolve));
+  const server = http.createServer((req, res) => {
+    if (req.method === 'POST' && req.url === '/done') {
+      let body = '';
+      req.on('data', (chunk) => (body += chunk));
+      req.on('end', () => {
+        let text = '';
+        try {
+          text = String(JSON.parse(body).description ?? '').slice(0, 4000);
+        } catch {}
+        res.writeHead(204);
+        res.end();
+        finish(text);
+      });
+      return;
+    }
+    res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
+    res.end(GUIDE_HTML);
   });
-  return (prompt) => {
-    process.stdout.write(prompt);
-    if (lines.length) return Promise.resolve(lines.shift());
-    if (ended) return Promise.resolve('');
-    return new Promise((resolve) => waiting.push(resolve));
+  await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
+  return {
+    url: `http://127.0.0.1:${server.address().port}/`,
+    done,
+    close: () => server.close(),
   };
 }
 

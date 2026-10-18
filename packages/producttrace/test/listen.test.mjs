@@ -28,7 +28,7 @@ function fakePage() {
   };
   const window = {
     ...target('window'),
-    location: { origin: 'http://app.test', pathname: '/', search: '' },
+    location: { protocol: 'http:', origin: 'http://app.test', pathname: '/', search: '' },
     performance: { now: () => Date.now() },
     setInterval(fn, ms) {
       intervals.push({ fn, ms });
@@ -244,4 +244,12 @@ test('a page load is one row, and the tab icon and its own beacons are not app r
   );
   assert.equal(rows[0].server_id, 'abc');
   assert.deepEqual([rows[1].url, rows[1].status, rows[1].server_id], ['/api/me', 200, 'r-1']);
+});
+
+test('a blank tab or browser page gets no listeners and sends nothing', () => {
+  const page = fakePage();
+  page.window.location = { protocol: 'about:', origin: 'null', pathname: 'blank', search: '' };
+  vm.runInContext(listenScript({ endpoint: 'http://collector.test/listen' }), page.context);
+  assert.equal(page.listeners.length, 0);
+  assert.equal(page.intervals.length, 0);
 });
