@@ -9,6 +9,7 @@ function fakePage() {
   const listeners = [];
   const beacons = [];
   const intervals = [];
+  const timeouts = [];
   const target = (name) => ({
     addEventListener(type, fn, options) {
       listeners.push({ on: name, type, fn, options });
@@ -33,6 +34,10 @@ function fakePage() {
     setInterval(fn, ms) {
       intervals.push({ fn, ms });
       return intervals.length;
+    },
+    setTimeout(fn) {
+      timeouts.push(fn);
+      return timeouts.length;
     },
   };
   const document = {
@@ -68,7 +73,8 @@ function fakePage() {
     Function,
     PerformanceObserver: window.PerformanceObserver,
   });
-  return { context, window, listeners, beacons, intervals, element, deliver };
+    const later = () => timeouts.splice(0).forEach((fn) => fn());
+  return { context, window, listeners, beacons, intervals, element, deliver, later };
 }
 
 test('the listen script defines no globals and only adds passive listeners', () => {
@@ -413,4 +419,44 @@ test('a timed send holds back the field still being typed in, so it stays one ro
   const inputs = sent(page).filter((r) => r.type === 'input');
   assert.equal(inputs.length, 1);
   assert.equal(inputs[0].value, 'Ada');
+});
+
+test('an option removed on pointerup, so the browser fires no click, is still recorded once', () => {
+  const page = fakePage();
+  const fire = run(page);
+  function select() {}
+  const option = page.element(
+    'div',
+    { role: 'option', text: 'm@google.com' },
+    { __reactProps$k: { onPointerUp: select } },
+  );
+  fire('pointerdown', { target: option, clientX: 5, clientY: 5 });
+  fire('pointerup', { target: option, clientX: 5, clientY: 5 });
+  option.isConnected = false; // the menu closed; no click event follows
+  page.later();
+  const clicks = sent(page).filter((r) => r.type === 'click');
+  assert.equal(clicks.length, 1);
+  assert.equal(clicks[0].target.name, 'm@google.com');
+  assert.equal(clicks[0].handler.name, 'select');
+});
+
+test('a press that stays on the page and gets its click is one row, and a drag is not also a click', () => {
+  const page = fakePage();
+  const fire = run(page);
+  const button = page.element('button', { text: 'Save' });
+  fire('pointerdown', { target: button, clientX: 5, clientY: 5 });
+  fire('pointerup', { target: button, clientX: 5, clientY: 5 });
+  fire('click', { target: button });
+  page.later();
+  const card = page.element('div', { role: 'button', 'aria-label': 'Card' });
+  fire('pointerdown', { target: card, clientX: 5, clientY: 5 });
+  fire('pointerup', { target: card, clientX: 90, clientY: 5 });
+  fire('click', { target: card });
+  page.later();
+  // Later, Enter on the same button: a new click, not part of the old press.
+  fire('click', { target: button });
+  assert.deepEqual(
+    sent(page).map((r) => `${r.type} ${r.target.name}`),
+    ['click Save', 'drag Card', 'click Save'],
+  );
 });

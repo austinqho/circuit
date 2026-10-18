@@ -324,6 +324,12 @@
       if (hit && hit.tagName === 'LABEL' && hit.control && CHOICE.test(hit.control.type || ''))
         return;
       snapshot = gestureFor(event.target);
+      if (snapshot && down) {
+        // The press was already recorded as a drag, or as a press on something
+        // the app removed before this click arrived.
+        if (down.recorded) return;
+        down.recorded = true;
+      }
     }
     var extra = null;
     if (type === 'change')
@@ -381,7 +387,8 @@
     };
   }
   function gestureFor(target) {
-    if (!down) return null;
+    // A click belongs to the press only until that press is over (see pointerup).
+    if (!down || down.closed) return null;
     var snap = down.snapshot;
     var same =
       target === down.target || (target && target.contains && target.contains(down.target));
@@ -422,7 +429,29 @@
         );
         row.end = row.start;
         push(row);
+        down.recorded = true;
       }
+      // Picking an option often removes it on pointerup (a Radix or MUI menu
+      // closing), and then the browser fires no click at all. When the pressed
+      // element is gone once this press is over and no click came, the press
+      // is recorded as the click it was.
+      var gesture = down;
+      w.setTimeout(
+        timed(function () {
+          gesture.closed = true;
+          if (gesture.recorded || gesture.target.isConnected !== false) return;
+          gesture.recorded = true;
+          var press = record(
+            { target: gesture.target, timeStamp: gesture.at },
+            'click',
+            { pressed: true },
+            gesture.snapshot,
+          );
+          press.end = press.start;
+          push(press);
+        }),
+        0,
+      );
     }),
     { capture: true, passive: true },
   );
