@@ -315,6 +315,8 @@
     for (var i = 0; i < entries.length; i++) {
       var e = entries[i];
       if (!REQUEST_TYPES[e.initiatorType] || own(e.name)) continue;
+      // The browser fetches the tab icon by itself; it is not the app's request.
+      if (e.initiatorType === 'other' && /\/favicon\.(ico|png|svg)(\?|$)/.test(e.name)) continue;
       var url =
         e.name.indexOf(w.location.origin) === 0 ? e.name.slice(w.location.origin.length) : e.name;
       push({
@@ -329,9 +331,13 @@
       });
     }
   });
+  // A page has one navigation entry, but Chrome hands it to a buffered
+  // observer and again once the load finishes; record it once.
+  var loadSeen = false;
   observe('navigation', function (list) {
     var entries = list.getEntries();
-    for (var i = 0; i < entries.length; i++)
+    for (var i = 0; i < entries.length && !loadSeen; i++) {
+      loadSeen = true;
       push({
         kind: 'load',
         path: where(),
@@ -339,6 +345,7 @@
         server_id: serverId(entries[i]),
         dom_ms: Math.round(entries[i].domContentLoadedEventEnd),
       });
+    }
   });
   // Chrome's long-animation-frame entries name the script behind a slow frame.
   // Off unless asked for: few frames qualify, and the browser does extra

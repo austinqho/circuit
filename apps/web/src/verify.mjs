@@ -229,7 +229,7 @@ export async function readStorage(page) {
     .catch(() => []);
 }
 
-async function readFootprint(page) {
+export async function readFootprint(page) {
   return page
     .evaluate(
       ({ natives, attributePattern }) => {
@@ -542,7 +542,7 @@ export function summarizeListened(batches) {
 }
 
 /** A local endpoint for the listen-mode script's beacons, one run at a time. */
-async function listenSink() {
+export async function listenSink() {
   let batches = [];
   const server = http.createServer((req, res) => {
     let body = '';

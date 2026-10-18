@@ -18,6 +18,7 @@
 //   POST /api/apps/:id/tools/:name {args}  call one
 //   POST /api/apps/:id/verify {steps}      start a read-only check (plain twice vs with the package)
 //   GET  /api/apps/:id/verify?wait=<s>     the check's progress and verdict
+//   POST /api/apps/:id/plain {stop?}       serve the app without the package (stops the bench copy)
 //   GET  /api/events                       server-sent events: app status changes
 //   GET  /api/apps/:id/stream              server-sent events: story updates
 import fs from 'node:fs';
@@ -134,6 +135,11 @@ const routes = [
     /^\/api\/apps\/([\w-]+)\/verify$/u,
     async (req, [id], url) =>
       bench.verification(id, { waitSeconds: Number(url.searchParams.get('wait') || 0) }),
+  ],
+  [
+    'POST',
+    /^\/api\/apps\/([\w-]+)\/plain$/u,
+    async (req, [id]) => bench.plain(id, await readJson(req)),
   ],
   ['GET', /^\/api\/apps\/([\w-]+)\/tools$/u, async (req, [id]) => bench.tools(id)],
   [
