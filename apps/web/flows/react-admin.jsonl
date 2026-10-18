@@ -8,11 +8,10 @@
 {"action":"click","target":{"label":"Title"}}
 {"action":"press","target":{"label":"Title"},"value":"End"}
 {"action":"type","target":{"label":"Title"},"value":" (revised)"}
-{"action":"check","target":{"role":"checkbox","name":"Ann Gullar"}}
+{"action":"click","target":{"role":"checkbox","name":"Ann Gullar"}}
 {"action":"click","target":{"role":"tab","name":"Miscellaneous"}}
 {"action":"click","target":{"role":"tab","name":"Summary"}}
 {"action":"click","target":{"role":"button","name":"Save"}}
-{"action":"wait","value":"800"}
 {"action":"wait","value":"1000"}
 {"action":"click","target":{"role":"link","name":"Create"}}
 {"action":"type","target":{"label":"Title"},"value":"Release notes for v5"}
@@ -25,10 +24,8 @@
 {"action":"wait","value":"1000"}
 {"action":"click","target":{"selector":"tbody input[type=checkbox]"}}
 {"action":"click","target":{"role":"button","name":"Delete"}}
-{"action":"wait","value":"800"}
 {"action":"click","target":{"role":"menuitem","name":"Comments"}}
 {"action":"wait","value":"1000"}
 {"action":"click","target":{"role":"link","name":"Show","nth":1}}
 {"action":"back"}
-{"action":"wait","value":"1000"}
 {"action":"click","target":{"role":"button","name":"Toggle light/dark mode"}}

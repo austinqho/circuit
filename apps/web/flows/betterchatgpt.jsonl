@@ -1,0 +1,27 @@
+# BetterChatGPT (frontend only, localStorage) against a local OpenAI-compatible mock on 127.0.0.1:11436: point it at the mock, chat twice, rename the chat, start another, search, switch, delete, change the theme
+{"action":"goto","value":"/"}
+{"action":"click","target":{"selector":"a.link.cursor-pointer"}}
+{"action":"click","target":{"role":"checkbox","name":"Use custom API endpoint"}}
+{"action":"fill","target":{"role":"textbox","nth":2},"value":"http://127.0.0.1:11436/v1/chat/completions"}
+{"action":"type","target":{"role":"textbox","nth":3},"value":"sk-mock-key"}
+{"action":"click","target":{"role":"button","name":"confirm"}}
+{"action":"type","target":{"placeholder":"Type a message or click [/] for prompts..."},"value":"Plan a three-day trip to Lisbon"}
+{"action":"press","value":"Enter"}
+{"action":"wait","value":"2500"}
+{"action":"type","target":{"placeholder":"Type a message or click [/] for prompts..."},"value":"Make day two about food"}
+{"action":"click","target":{"role":"button","name":"Generate"}}
+{"action":"wait","value":"2500"}
+{"action":"click","target":{"role":"button","name":"edit chat title"}}
+{"action":"press","value":"Control+a"}
+{"action":"type","value":"Lisbon trip"}
+{"action":"press","value":"Enter"}
+{"action":"click","target":{"text":"New Chat","exact":true}}
+{"action":"type","target":{"placeholder":"Type a message or click [/] for prompts..."},"value":"Draft a packing list"}
+{"action":"press","value":"Enter"}
+{"action":"wait","value":"2500"}
+{"action":"type","target":{"role":"textbox","name":"Search"},"value":"Lisbon"}
+{"action":"click","target":{"text":"Lisbon trip","exact":true}}
+{"action":"click","target":{"role":"button","name":"delete chat"}}
+{"action":"click","target":{"role":"button","name":"confirm"}}
+{"action":"click","target":{"text":"Settings","exact":true}}
+{"action":"press","value":"Escape"}
