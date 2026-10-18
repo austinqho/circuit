@@ -389,6 +389,8 @@ async function observe({
     : null;
   const bake = (value) => (typeof value === 'string' ? value.replaceAll('{{run}}', token) : value);
   let before = await metrics(cdp);
+  // Script time comes from Chrome's DevTools counters; other engines have none.
+  run.measured = Boolean(before);
   for (const [index, step] of steps.entries()) {
     stepIndex = index;
     const done = await session.act({ ...step, value: bake(step.value) });
@@ -505,11 +507,17 @@ export function compareRuns(plainA, plainB, traced) {
       traced_ms: step.script_ms,
     };
   });
-  const worst = perStep.reduce(
-    (top, row) =>
-      row.traced_ms - row.plain_ms > (top ? top.traced_ms - top.plain_ms : -Infinity) ? row : top,
-    null,
-  );
+  // Overhead is only a number when every run could measure it (Chromium).
+  const measured = [plainA, plainB, traced].every((r) => r.measured !== false);
+  const worst = !measured
+    ? null
+    : perStep.reduce(
+        (top, row) =>
+          row.traced_ms - row.plain_ms > (top ? top.traced_ms - top.plain_ms : -Infinity)
+            ? row
+            : top,
+        null,
+      );
 
   // What the package adds on purpose, so a reviewer sees it rather than discovers it.
   const plainHeaders = new Set([...plainA.headers, ...plainB.headers]);
@@ -575,8 +583,11 @@ export function compareRuns(plainA, plainB, traced) {
       .filter(({ step, index }) => !step.ok && !plainA.steps[index]?.ok && !plainB.steps[index]?.ok)
       .map(({ step, index }) => ({ index, description: step.description, error: step.error })),
     overhead: {
-      script_ms: { plain: Math.round(plainScript), traced: Math.round(traced.script_ms) },
-      ratio: plainScript > 0 ? Number((traced.script_ms / plainScript).toFixed(2)) : null,
+      script_ms: measured
+        ? { plain: Math.round(plainScript), traced: Math.round(traced.script_ms) }
+        : null,
+      ratio:
+        measured && plainScript > 0 ? Number((traced.script_ms / plainScript).toFixed(2)) : null,
       worst_step: worst,
       // Time spent waiting for pages to stop changing; the traced figure also
       // includes waiting until it matched the plain runs.

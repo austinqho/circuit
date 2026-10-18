@@ -99,7 +99,7 @@ for (const step of result.failed_in_every_run || [])
   );
 const { overhead, footprint } = result;
 console.log(
-  `overhead: script ${overhead.script_ms.plain} ms plain, ${overhead.script_ms.traced} ms traced (x${overhead.ratio ?? '?'}); pages took ${overhead.settle_ms.plain} ms plain, ${overhead.settle_ms.traced} ms traced to settle`,
+  `overhead: ${overhead.script_ms ? `script ${overhead.script_ms.plain} ms plain, ${overhead.script_ms.traced} ms traced (x${overhead.ratio ?? '?'})` : 'script time not measured (needs Chromium)'}; pages took ${overhead.settle_ms.plain} ms plain, ${overhead.settle_ms.traced} ms traced to settle`,
 );
 if (overhead.worst_step)
   console.log(

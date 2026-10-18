@@ -20,6 +20,20 @@ function chromiumPath() {
 // timings need Chromium).
 const ENGINE = process.env.CIRCUIT_BROWSER || 'chromium';
 
+/** One DevTools input event, sent through Playwright instead (any engine). */
+function viaPlaywright(page, method, params) {
+  if (method === 'Input.dispatchMouseEvent') {
+    if (params.type === 'mousePressed')
+      return page.mouse.move(params.x, params.y).then(() => page.mouse.down());
+    if (params.type === 'mouseReleased') return page.mouse.up();
+  }
+  if (method === 'Input.dispatchKeyEvent') {
+    if (params.type === 'keyDown') return page.keyboard.down(params.key);
+    if (params.type === 'keyUp') return page.keyboard.up(params.key);
+  }
+  return Promise.reject(new Error(`no Playwright input for ${method} ${params.type}`));
+}
+
 async function browser() {
   if (!browserPromise) {
     browserPromise = import('playwright').then(async (playwright) => {
@@ -213,12 +227,28 @@ export class BrowserSession {
    * type wait for each, which hides input a busy or paused page drops.
    */
   async paced(page, events, paceMs) {
-    this.input ??= await this.context.newCDPSession(page);
+    // Firefox and WebKit have no DevTools Protocol: the same events go through
+    // Playwright's mouse and keyboard, still on the clock, never waiting for
+    // the page between them (Playwright only waits for each to be sent).
+    const send =
+      ENGINE === 'chromium'
+        ? ((this.input ??= await this.context.newCDPSession(page)),
+          (method, params) => this.input.send(method, params))
+        : (method, params) => viaPlaywright(page, method, params);
     const sent = [];
     await new Promise((resolve) => {
       events.forEach((group, index) =>
         setTimeout(() => {
-          sent.push(...group.map(([method, params]) => this.input.send(method, params)));
+          // In order within a group (press before release); groups never wait.
+          sent.push(
+            group.reduce(
+              (prev, [method, params]) =>
+                ENGINE === 'chromium'
+                  ? Promise.all([prev, send(method, params)])
+                  : prev.then(() => send(method, params)),
+              Promise.resolve(),
+            ),
+          );
           if (index === events.length - 1) resolve();
         }, index * paceMs),
       );
