@@ -21,6 +21,11 @@
 //   - the observers and passive listeners above, which no page API lists.
 // It draws no random numbers from Math.random, so it cannot shift an app's
 // own random sequence.
+//
+// Privacy: typed values are off by default. With values on, a password field
+// (or one that was) is never recorded, but a separate element the app swaps
+// in for one, if it carries an ordinary label, looks like any text field and
+// its value is recorded: the page gives no signal that it holds a secret.
 (function (config) {
   'use strict';
   var w = window;
