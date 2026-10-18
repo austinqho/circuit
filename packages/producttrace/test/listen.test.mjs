@@ -253,3 +253,164 @@ test('a blank tab or browser page gets no listeners and sends nothing', () => {
   assert.equal(page.listeners.length, 0);
   assert.equal(page.intervals.length, 0);
 });
+
+// Helpers for the gesture tests: fire one event through every matching listener.
+function dispatcher(page) {
+  return (type, event, phase = 'both') => {
+    for (const l of page.listeners) {
+      if (l.on !== 'window' || l.type !== type) continue;
+      const capture = Boolean(l.options.capture);
+      if (phase === 'capture' && !capture) continue;
+      if (phase === 'bubble' && capture) continue;
+      l.fn({ type, isTrusted: true, timeStamp: 1, ...event });
+    }
+  };
+}
+function sent(page) {
+  page.listeners.filter((l) => l.type === 'pagehide').forEach((l) => l.fn({}));
+  return page.beacons.flatMap((b) => b.body.rows);
+}
+function run(page, options = {}) {
+  vm.runInContext(
+    listenScript({ endpoint: 'http://collector.test/listen', flushMs: 0, ...options }),
+    page.context,
+  );
+  return dispatcher(page);
+}
+
+test('a drag keeps the handler of what was picked up, even after the app removes it', () => {
+  const page = fakePage();
+  const fire = run(page);
+  function startDrag() {}
+  const card = page.element(
+    'div',
+    { role: 'button', 'aria-label': 'Move task' },
+    { __reactProps$k: { onPointerDown: startDrag } },
+  );
+  fire('pointerdown', { target: card, clientX: 10, clientY: 10 });
+  // The app moves the card to another column: the old node and its props are gone.
+  card.isConnected = false;
+  delete card.__reactProps$k;
+  fire('pointerup', { target: card, clientX: 200, clientY: 10 });
+  const [drag] = sent(page).filter((r) => r.type === 'drag');
+  assert.equal(drag.target.name, 'Move task');
+  assert.equal(drag.handler.name, 'startDrag');
+});
+
+test('picking an option from a menu that closes is named after the option, not the page', () => {
+  const page = fakePage();
+  const fire = run(page);
+  function choose() {}
+  const option = page.element(
+    'div',
+    { role: 'option', text: 'Last month' },
+    { __reactProps$k: { onPointerUp: choose } },
+  );
+  const body = page.element('body');
+  fire('pointerdown', { target: option, clientX: 5, clientY: 5 });
+  fire('pointerup', { target: option, clientX: 5, clientY: 5 });
+  option.isConnected = false;
+  fire('click', { target: body });
+  const [click] = sent(page).filter((r) => r.type === 'click');
+  assert.equal(click.target.name, 'Last month');
+  assert.equal(click.target.role, 'option');
+  assert.equal(click.handler.name, 'choose');
+});
+
+test('a key is a shortcut outside a field and typing inside one; a modifier alone is nothing', () => {
+  const page = fakePage();
+  const fire = run(page);
+  const canvas = page.element('div', { text: 'canvas' });
+  const field = page.element('input', { 'aria-label': 'Title' }, { type: 'text', value: '' });
+  fire('keydown', { target: canvas, key: 'o' }, 'capture');
+  fire('keydown', { target: canvas, key: ' ' }, 'capture');
+  fire('keydown', { target: field, key: 'o' }, 'capture');
+  fire('keydown', { target: canvas, key: 'Control', ctrlKey: true }, 'capture');
+  const keys = sent(page)
+    .filter((r) => r.type === 'keydown')
+    .map((r) => r.key);
+  assert.deepEqual(keys, ['o', ' ']);
+});
+
+test('a password stays secret after "show password", and so does a field named as one', () => {
+  const page = fakePage();
+  const fire = run(page, { values: true });
+  const shown = page.element('input', { 'aria-label': 'Secret' }, { type: 'password', value: '' });
+  const named = page.element('input', { name: 'password' }, { type: 'text', value: '' });
+  const type = (field, value) => {
+    field.value = value;
+    fire('input', { target: field });
+  };
+  type(shown, 'a');
+  shown.type = 'text'; // the eye icon
+  type(shown, '!lovelace123');
+  type(named, 'hunter2');
+  const rows = sent(page);
+  assert.equal(JSON.stringify(rows).includes('lovelace'), false);
+  assert.equal(JSON.stringify(rows).includes('hunter2'), false);
+  assert.ok(rows.filter((r) => r.type === 'input').every((r) => r.sensitive));
+});
+
+test('an editor is never named by what was typed into it', () => {
+  const page = fakePage();
+  const fire = run(page);
+  const editor = page.element(
+    'div',
+    { contenteditable: 'true', text: 'my private note' },
+    { isContentEditable: true },
+  );
+  fire('click', { target: editor });
+  const [click] = sent(page);
+  assert.equal(click.target.name, null);
+});
+
+test('an icon button takes the name written on its icon', () => {
+  const page = fakePage();
+  const fire = run(page);
+  const icon = page.element('div', { 'aria-label': 'Undo' });
+  const button = page.element('button', {}, { querySelector: () => icon });
+  fire('click', { target: button });
+  assert.equal(sent(page)[0].target.name, 'Undo');
+});
+
+test('ticking a checkbox is one row', () => {
+  const page = fakePage();
+  const fire = run(page);
+  const box = page.element(
+    'input',
+    { type: 'checkbox', 'aria-label': 'Remember me' },
+    { type: 'checkbox', checked: true },
+  );
+  fire('click', { target: box });
+  fire('input', { target: box });
+  fire('change', { target: box });
+  const rows = sent(page);
+  assert.equal(rows.length, 1);
+  assert.deepEqual([rows[0].type, rows[0].checked], ['change', true]);
+});
+
+test('a field that refuses a keystroke is recorded with the value it kept', () => {
+  const page = fakePage();
+  const fire = run(page, { values: true });
+  const field = page.element('input', { 'aria-label': 'Code' }, { type: 'text', value: '12' });
+  field.value = '12x';
+  fire('input', { target: field }, 'capture');
+  field.value = '12'; // React puts back its own state before the event reaches window
+  fire('input', { target: field }, 'bubble');
+  const [row] = sent(page);
+  assert.deepEqual([row.value, row.length], ['12', 2]);
+});
+
+test('a timed send holds back the field still being typed in, so it stays one row', () => {
+  const page = fakePage();
+  const fire = run(page, { values: true, flushMs: 1000 });
+  const field = page.element('input', { 'aria-label': 'Name' }, { type: 'text', value: '' });
+  field.value = 'Ad';
+  fire('input', { target: field });
+  page.intervals[0].fn();
+  field.value = 'Ada';
+  fire('input', { target: field });
+  const inputs = sent(page).filter((r) => r.type === 'input');
+  assert.equal(inputs.length, 1);
+  assert.equal(inputs[0].value, 'Ada');
+});

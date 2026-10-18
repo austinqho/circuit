@@ -1,0 +1,37 @@
+# Planka (Trello-style boards; Sails API + Postgres on :1337 behind the Vite proxy): log in, create a project, board, two lists and two cards, drag a card across lists, comment on a card, then delete the board and project so every run starts from the same database
+{"action":"goto","value":"/login"}
+{"action":"type","target":{"role":"textbox","nth":0},"value":"demo"}
+{"action":"type","target":{"role":"textbox","nth":1},"value":"demo"}
+{"action":"click","target":{"role":"button","name":"Log in"}}
+{"action":"click","target":{"role":"button","name":"Create project"}}
+{"action":"type","value":"Website relaunch"}
+{"action":"press","value":"Enter"}
+{"action":"click","target":{"role":"button","name":"Create board"}}
+{"action":"type","value":"Sprint 1"}
+{"action":"press","value":"Enter"}
+{"action":"press","value":"Escape"}
+{"action":"click","target":{"role":"button","name":"Add list"}}
+{"action":"type","value":"To do"}
+{"action":"press","value":"Enter"}
+{"action":"type","value":"Doing"}
+{"action":"press","value":"Enter"}
+{"action":"press","value":"Escape"}
+{"action":"click","target":{"role":"button","name":"Add card"}}
+{"action":"type","value":"Write release notes"}
+{"action":"press","value":"Enter"}
+{"action":"type","value":"Fix login bug"}
+{"action":"press","value":"Enter"}
+{"action":"press","value":"Escape"}
+{"action":"drag","target":{"text":"Fix login bug","exact":true},"value":"20,8 30,14 200,0 300,-30"}
+{"action":"click","target":{"text":"Write release notes","exact":true}}
+{"action":"type","target":{"placeholder":"Write a comment..."},"value":"Draft is in the shared folder"}
+{"action":"click","target":{"role":"button","name":"Add comment"}}
+{"action":"press","value":"Escape"}
+{"action":"press","value":"Escape"}
+{"action":"click","target":{"role":"button","name":"Edit","exact":true}}
+{"action":"click","target":{"role":"button","name":"Delete Board","exact":true}}
+{"action":"type","target":{"placeholder":"Sprint 1"},"value":"Sprint 1"}
+{"action":"click","target":{"role":"button","name":"Delete board","exact":true}}
+{"action":"click","target":{"role":"button","name":"Open project settings"}}
+{"action":"click","target":{"role":"button","name":"Delete Project","exact":true}}
+{"action":"click","target":{"role":"button","name":"Delete project","exact":true}}

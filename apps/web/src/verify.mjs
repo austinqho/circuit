@@ -84,27 +84,89 @@ function counts(items) {
   return map;
 }
 
+// Words and the text between them: ['{"index":"', 'a3nPf', '","color":"', ...].
+const split = (item) => item.split(/([\w$-]+)/u);
+
+/**
+ * Where two plain runs wrote the same thing apart from some words (a random
+ * sort key, a random colour), the template keeps everything they share and
+ * marks the words they disagree on as free. A traced item that differs only
+ * in those words is the app's own randomness; a difference anywhere else is not.
+ */
+function templates(onlyA, onlyB) {
+  const out = [];
+  const pool = onlyB.map(split);
+  for (const item of onlyA) {
+    const parts = split(item);
+    let best = null;
+    let bestDiff = Infinity;
+    for (const other of pool) {
+      if (other.length !== parts.length) continue;
+      let diff = 0;
+      for (let i = 0; i < parts.length && diff < bestDiff; i += 1) {
+        if (parts[i] === other[i]) continue;
+        // Only words may differ; punctuation and structure must match.
+        if (i % 2 === 0) diff = Infinity;
+        else diff += 1;
+      }
+      if (diff < bestDiff) {
+        best = other;
+        bestDiff = diff;
+      }
+    }
+    if (!best || bestDiff === Infinity) continue;
+    // Only near-copies: two different requests ("GET /api/me", "GET /api/posts")
+    // share a few words too, and must never make each other noise.
+    const words = (parts.length - 1) / 2;
+    if (words - bestDiff < 8 || bestDiff * 5 > words) continue;
+    out.push(parts.map((part, i) => (part === best[i] ? part : null)));
+  }
+  return out;
+}
+
+const fits = (template, parts) =>
+  template.length === parts.length &&
+  template.every((part, i) => part === null || part === parts[i]);
+
 /**
  * Items of `traced` that neither plain run had (`extra`) and items both plain
- * runs had that `traced` lacks (`missing`). An item whose digits are the only
- * thing that differs from something the plain runs disagreed on is noise.
+ * runs had that `traced` lacks (`missing`). An item that differs from what the
+ * plain runs disagreed on only where they disagreed with each other (digits,
+ * or whole words in the same places) is noise.
  */
 export function compareItems(plainA, plainB, traced) {
   const a = counts(plainA);
   const b = counts(plainB);
   const c = counts(traced);
   const noisy = new Set();
-  for (const [item, n] of a) if (n !== (b.get(item) || 0)) noisy.add(shape(item));
-  for (const [item, n] of b) if (n !== (a.get(item) || 0)) noisy.add(shape(item));
+  const onlyA = [];
+  const onlyB = [];
+  for (const [item, n] of a)
+    if (n !== (b.get(item) || 0)) {
+      noisy.add(shape(item));
+      if (n > (b.get(item) || 0)) onlyA.push(item);
+    }
+  for (const [item, n] of b)
+    if (n !== (a.get(item) || 0)) {
+      noisy.add(shape(item));
+      if (n > (a.get(item) || 0)) onlyB.push(item);
+    }
+  const free = templates(onlyA, onlyB);
+  const isNoise = (item) => {
+    if (noisy.has(shape(item))) return true;
+    if (!free.length) return false;
+    const parts = split(item);
+    return free.some((template) => fits(template, parts));
+  };
   const extra = [];
   const missing = [];
   for (const [item, n] of c) {
     const most = Math.max(a.get(item) || 0, b.get(item) || 0);
-    if (n > most && !noisy.has(shape(item))) extra.push(item);
+    if (n > most && !isNoise(item)) extra.push(item);
   }
   for (const [item, n] of a) {
     const least = Math.min(n, b.get(item) || 0);
-    if ((c.get(item) || 0) < least && !noisy.has(shape(item))) missing.push(item);
+    if ((c.get(item) || 0) < least && !isNoise(item)) missing.push(item);
   }
   return { extra, missing };
 }

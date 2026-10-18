@@ -45,7 +45,7 @@
     seq += 1;
     row.seq = seq;
     buffer.push(row);
-    if (buffer.length >= maxRows) flush();
+    if (buffer.length >= maxRows) flush(true);
   }
 
   // A handler's fingerprint is a hash of its own source text, which the
@@ -150,8 +150,24 @@
     if (!name && el.labels && el.labels[0]) name = el.labels[0].textContent;
     if (!name)
       name = el.getAttribute('title') || el.getAttribute('alt') || el.getAttribute('placeholder');
-    if (!name && el.tagName !== 'FORM' && el.tagName !== 'BODY' && el.tagName !== 'HTML')
+    // An editable field's text is what the person typed, never its name.
+    if (
+      !name &&
+      !editable(el) &&
+      el.tagName !== 'FORM' &&
+      el.tagName !== 'BODY' &&
+      el.tagName !== 'HTML'
+    )
       name = el.textContent;
+    // An icon button: the name is on the icon inside it.
+    if (!text(name) && el.querySelector) {
+      var inner = el.querySelector('[aria-label],[title],img[alt]');
+      if (inner)
+        name =
+          inner.getAttribute('aria-label') ||
+          inner.getAttribute('title') ||
+          inner.getAttribute('alt');
+    }
     return {
       tag: el.tagName.toLowerCase(),
       role: el.getAttribute('role'),
@@ -160,8 +176,67 @@
     };
   }
 
+  function editable(el) {
+    if (!el || el.nodeType !== 1) return false;
+    var tag = el.tagName;
+    if (tag === 'TEXTAREA' || tag === 'SELECT') return true;
+    if (tag === 'INPUT')
+      return !/^(button|submit|reset|checkbox|radio|image|file|range|color)$/i.test(el.type || '');
+    if (el.isContentEditable) return true;
+    var ce = el.getAttribute('contenteditable');
+    return (
+      (ce !== null && ce !== 'false') ||
+      /^(textbox|searchbox|combobox)$/.test(el.getAttribute('role') || '')
+    );
+  }
+
+  // A field is sensitive if it is, or ever was, a password field (a "show
+  // password" toggle turns it into plain text), or says it holds a secret.
+  var wasPassword = new WeakSet();
+  var SECRET =
+    /pass(word|wd|code|phrase)?|secret|\bpin\b|otp|one-time-code|cvc|cvv|cc-number|cc-csc/i;
+  function sensitive(el) {
+    if (!el || el.nodeType !== 1) return false;
+    if (el.type === 'password') wasPassword.add(el);
+    if (wasPassword.has(el)) return true;
+    var hints = [
+      el.getAttribute('autocomplete'),
+      el.getAttribute('name'),
+      el.getAttribute('id'),
+      el.getAttribute('aria-label'),
+      el.getAttribute('placeholder'),
+    ];
+    if (el.labels && el.labels[0]) hints.push(el.labels[0].textContent);
+    for (var i = 0; i < hints.length; i++) if (hints[i] && SECRET.test(hints[i])) return true;
+    return false;
+  }
+
+  // Roles a person acts on; an icon's role="img" or a layout role is not one.
   var ACTIONABLE =
-    'a,button,input,textarea,select,summary,label,[role],[contenteditable],[tabindex]';
+    'a,button,input,textarea,select,summary,label,[contenteditable],[tabindex]:not([tabindex="-1"]),' +
+    [
+      'button',
+      'link',
+      'menuitem',
+      'menuitemcheckbox',
+      'menuitemradio',
+      'option',
+      'tab',
+      'checkbox',
+      'radio',
+      'switch',
+      'combobox',
+      'textbox',
+      'searchbox',
+      'slider',
+      'treeitem',
+      'gridcell',
+      'row',
+    ]
+      .map(function (r) {
+        return '[role="' + r + '"]';
+      })
+      .join(',');
   function actionTarget(t) {
     if (!t || t.nodeType !== 1) return t && t.parentElement;
     return (t.closest && t.closest(ACTIONABLE)) || t;
@@ -177,7 +252,7 @@
   var open = null;
   var lastInput = null;
 
-  function record(event, type, extra) {
+  function record(event, type, extra, snapshot) {
     var el = type === 'submit' && event.submitter ? event.submitter : actionTarget(event.target);
     var row = {
       kind: 'action',
@@ -186,37 +261,47 @@
       start: now(),
       end: null,
       path: where(),
-      target: labelOf(el),
-      handler: handlerFor(event.target, type),
+      target: snapshot ? snapshot.target : labelOf(el),
+      handler: snapshot ? snapshot.handlers[type] : handlerFor(event.target, type),
     };
     if (type === 'submit') row.form = labelOf(event.target);
     if (extra) for (var k in extra) row[k] = extra[k];
     return row;
   }
 
+  var MODIFIERS = { Control: 1, Shift: 1, Alt: 1, Meta: 1, CapsLock: 1, Fn: 1, AltGraph: 1 };
+  var CHOICE = /^(checkbox|radio)$/i;
   var onCapture = timed(function (event) {
     if (!event.isTrusted) return;
     var type = event.type;
     if (type === 'keydown') {
+      if (MODIFIERS[event.key]) return;
+      // Plain characters typed into a field are typing (the input row covers
+      // them); outside a field the same key is a shortcut and is recorded.
       var plain =
         event.key && event.key.length === 1 && !event.ctrlKey && !event.metaKey && !event.altKey;
-      if (plain) return;
+      if (plain && editable(actionTarget(event.target))) return;
     }
     if (type === 'input') {
       var field = event.target;
-      var sensitive = field && field.type === 'password';
+      // A checkbox or radio fires input too; its change row says what happened.
+      if (field && CHOICE.test(field.type || '')) return;
+      var secret = sensitive(field);
       var value =
         field && 'value' in field ? String(field.value) : text(field && field.textContent, 200);
       // One row per field while typing continues: later input updates it in place.
       if (lastInput && lastInput.el === field && buffer.indexOf(lastInput.row) !== -1) {
         lastInput.row.length = value.length;
-        if (config.values && !sensitive) lastInput.row.value = value.slice(0, 200);
-        open = null;
+        if (config.values && !secret) lastInput.row.value = value.slice(0, 200);
+        else delete lastInput.row.value;
+        if (secret) lastInput.row.sensitive = true;
+        lastInput.at = now();
+        open = lastInput.row;
         return;
       }
-      var row = record(event, 'input', { length: value.length, sensitive: sensitive || undefined });
-      if (config.values && !sensitive) row.value = value.slice(0, 200);
-      lastInput = { el: field, row: row };
+      var row = record(event, 'input', { length: value.length, sensitive: secret || undefined });
+      if (config.values && !secret) row.value = value.slice(0, 200);
+      lastInput = { el: field, row: row, at: now() };
       open = row;
       push(row);
       return;
@@ -230,6 +315,15 @@
         )
       )
         return;
+    }
+    var snapshot = null;
+    if (type === 'click') {
+      var hit = actionTarget(event.target);
+      // The change row names a checkbox or radio; its click (or its label's) would repeat it.
+      if (hit && hit.tagName === 'INPUT' && CHOICE.test(hit.type || '')) return;
+      if (hit && hit.tagName === 'LABEL' && hit.control && CHOICE.test(hit.control.type || ''))
+        return;
+      snapshot = gestureFor(event.target);
     }
     var extra = null;
     if (type === 'change')
@@ -249,11 +343,25 @@
         (event.shiftKey && event.key.length > 1 ? 'Shift+' : '');
       extra = { key: mods + event.key };
     }
-    open = record(event, type, extra);
+    open = record(event, type, extra, snapshot);
     push(open);
   });
   var onBubble = timed(function (event) {
-    if (open && event.isTrusted && open.type === event.type) open.end = now();
+    if (open && event.isTrusted && open.type === event.type) {
+      open.end = now();
+      // A controlled field may refuse the keystroke: by the time the event has
+      // bubbled, React has put back the value it keeps. Record that one.
+      if (
+        event.type === 'input' &&
+        lastInput &&
+        lastInput.row === open &&
+        'value' in lastInput.el
+      ) {
+        var kept = String(lastInput.el.value);
+        open.length = kept.length;
+        if (config.values && !open.sensitive) open.value = kept.slice(0, 200);
+      }
+    }
     open = null;
   });
   var TYPES = ['click', 'submit', 'input', 'change', 'keydown'];
@@ -261,12 +369,38 @@
     w.addEventListener(TYPES[i], onCapture, { capture: true, passive: true });
     w.addEventListener(TYPES[i], onBubble, { passive: true });
   }
+  // What was under the pointer when it went down, read before the app reacts:
+  // a dragged card or a picked menu option is often gone from the page (and
+  // its React props with it) by the time the pointer comes up or click fires.
   var down = null;
+  function snapshotOf(target) {
+    var el = actionTarget(target);
+    return {
+      target: labelOf(el),
+      handlers: { click: handlerFor(target, 'click'), drag: handlerFor(target, 'drag') },
+    };
+  }
+  function gestureFor(target) {
+    if (!down) return null;
+    var snap = down.snapshot;
+    var same =
+      target === down.target || (target && target.contains && target.contains(down.target));
+    var gone = down.target.isConnected === false;
+    var tag = target && target.tagName;
+    if (same || gone || tag === 'HTML' || tag === 'BODY') return snap;
+    return null;
+  }
   w.addEventListener(
     'pointerdown',
     timed(function (event) {
       if (event.isTrusted)
-        down = { x: event.clientX, y: event.clientY, target: event.target, at: event.timeStamp };
+        down = {
+          x: event.clientX,
+          y: event.clientY,
+          target: event.target,
+          at: event.timeStamp,
+          snapshot: snapshotOf(event.target),
+        };
     }),
     { capture: true, passive: true },
   );
@@ -277,14 +411,18 @@
       var dx = event.clientX - down.x;
       var dy = event.clientY - down.y;
       if (dx * dx + dy * dy >= 64) {
-        var row = record({ target: down.target, timeStamp: down.at }, 'drag', {
-          from: [Math.round(down.x), Math.round(down.y)],
-          to: [Math.round(event.clientX), Math.round(event.clientY)],
-        });
+        var row = record(
+          { target: down.target, timeStamp: down.at },
+          'drag',
+          {
+            from: [Math.round(down.x), Math.round(down.y)],
+            to: [Math.round(event.clientX), Math.round(event.clientY)],
+          },
+          down.snapshot,
+        );
         row.end = row.start;
         push(row);
       }
-      down = null;
     }),
     { capture: true, passive: true },
   );
@@ -383,10 +521,21 @@
   w.addEventListener('popstate', onNavigate, { passive: true });
   w.addEventListener('hashchange', onNavigate, { passive: true });
 
-  function flush() {
+  // A timed send holds back the field still being typed into, so one field
+  // stays one row; leaving the page sends everything.
+  function flush(final) {
     if (!buffer.length || !endpoint) return;
     var t = now();
+    var keep = final !== true && lastInput && now() - lastInput.at < 1500 ? lastInput.row : null;
     var rows = buffer.splice(0, buffer.length);
+    if (keep && rows.indexOf(keep) !== -1) {
+      rows.splice(rows.indexOf(keep), 1);
+      buffer.push(keep);
+    }
+    if (!rows.length) {
+      cost += now() - t;
+      return;
+    }
     sent += rows.length;
     var body = JSON.stringify({
       schema: 'producttrace.listen.v1',
@@ -404,16 +553,24 @@
     }
     cost += now() - t;
   }
-  var flushTimed = timed(flush);
+  var flushTimed = timed(function () {
+    flush(false);
+  });
   if (config.flushMs !== 0) w.setInterval(flushTimed, config.flushMs || 5000);
   document.addEventListener(
     'visibilitychange',
     timed(function () {
-      if (document.visibilityState === 'hidden') flush();
+      if (document.visibilityState === 'hidden') flush(true);
     }),
     { passive: true },
   );
-  w.addEventListener('pagehide', flushTimed, { passive: true });
+  w.addEventListener(
+    'pagehide',
+    timed(function () {
+      flush(true);
+    }),
+    { passive: true },
+  );
   // Setting up counts too: everything this script does is in cost.
   cost += now() - setupStart;
 })(__CIRCUIT_LISTEN_CONFIG__);

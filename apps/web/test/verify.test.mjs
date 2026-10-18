@@ -301,3 +301,24 @@ test('summarizeListened counts actions, joins and the script cost per page load'
     batches: 3,
   });
 });
+
+test('random words the plain runs disagree on are noise only in the places they disagreed', () => {
+  // tldraw gives each shape a random sort key and each user a random colour.
+  const shapes = (index, color, extra = '') =>
+    `indexedDB TLDRAW store = [{"id":"shape:one","type":"geo","props":{"geo":"ellipse","w":120,"h":80,"fill":"none"},"index":"${index}","user":{"name":"New User","color":"${color}"}${extra}}]`;
+  const a = shapes('a3nPf', 'coral');
+  const b = shapes('a3IjQ', 'violet');
+  assert.deepEqual(compareItems([a], [b], [shapes('a34zD', 'teal')]), { extra: [], missing: [] });
+  // A word that both plain runs agreed on changes: that is the package's doing.
+  const changed = shapes('a34zD', 'teal').replace('ellipse', 'rectangle');
+  assert.deepEqual(compareItems([a], [b], [changed]).extra, [changed]);
+  // So is anything new in the structure.
+  const added = shapes('a34zD', 'teal', ',"locked":true');
+  assert.deepEqual(compareItems([a], [b], [added]).extra, [added]);
+});
+
+test('two different short requests never make each other noise', () => {
+  const a = ['GET /api/me', 'GET /api/team'];
+  const b = ['GET /api/me', 'GET /api/discussions'];
+  assert.deepEqual(compareItems(a, b, ['GET /api/me', 'GET /api/posts']).extra, ['GET /api/posts']);
+});
