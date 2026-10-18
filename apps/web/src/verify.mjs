@@ -297,9 +297,21 @@ export async function readFootprint(page) {
       ({ natives, attributePattern }) => {
         const pattern = new RegExp(attributePattern, 'u');
         const attributes = {};
+        // Every attribute name in the document, and the full attributes of the
+        // page's root elements, so a script that writes any attribute shows.
+        const names = {};
         for (const node of document.querySelectorAll('*'))
-          for (const name of node.getAttributeNames())
+          for (const name of node.getAttributeNames()) {
+            names[name] = (names[name] || 0) + 1;
             if (pattern.test(name)) attributes[name] = (attributes[name] || 0) + 1;
+          }
+        const roots = [document.documentElement, document.head, document.body]
+          .filter(Boolean)
+          .flatMap((node) =>
+            node
+              .getAttributeNames()
+              .map((name) => `${node.tagName.toLowerCase()} ${name}="${node.getAttribute(name)}"`),
+          );
         const replaced = natives.filter((dotted) => {
           let value = globalThis;
           for (const part of dotted.split('.')) value = value?.[part];
@@ -310,11 +322,17 @@ export async function readFootprint(page) {
             return false;
           }
         });
-        return { attributes, replaced, globals: Object.getOwnPropertyNames(globalThis) };
+        return {
+          attributes,
+          names: Object.keys(names),
+          roots,
+          replaced,
+          globals: Object.getOwnPropertyNames(globalThis),
+        };
       },
       { natives: NATIVES, attributePattern: FOOTPRINT_ATTRIBUTE.source },
     )
-    .catch(() => ({ attributes: {}, replaced: [], globals: [] }));
+    .catch(() => ({ attributes: {}, names: [], roots: [], replaced: [], globals: [] }));
 }
 
 /** One run of the steps on a fresh browser, with everything the comparison reads. */
@@ -507,18 +525,43 @@ export function compareRuns(plainA, plainB, traced) {
   ]);
   const addedGlobals = (traced.footprint.globals ?? []).filter((name) => !plainGlobals.has(name));
   const replacedApis = traced.footprint.replaced.filter((name) => !plainReplaced.has(name));
+  // Attribute names neither plain run had anywhere in the page, and root
+  // element attributes (html, head, body) the plain runs agreed on and the
+  // traced run changed.
+  const plainNames = new Set([
+    ...(plainA.footprint.names ?? []),
+    ...(plainB.footprint.names ?? []),
+  ]);
+  const addedAttributeNames = (traced.footprint.names ?? []).filter(
+    (name) => !plainNames.has(name),
+  );
+  const rootChanges = compareItems(
+    plainA.footprint.roots ?? [],
+    plainB.footprint.roots ?? [],
+    traced.footprint.roots ?? [],
+  );
   // Listen mode promises a page that sees nothing new; hold it to that.
   if (traced.listened) {
-    const attributes = Object.keys(traced.footprint.attributes);
-    if (addedGlobals.length || replacedApis.length || attributes.length || addedHeaders.length)
+    const attributes = [
+      ...new Set([...Object.keys(traced.footprint.attributes), ...addedAttributeNames]),
+    ];
+    if (
+      addedGlobals.length ||
+      replacedApis.length ||
+      attributes.length ||
+      rootChanges.extra.length ||
+      rootChanges.missing.length ||
+      addedHeaders.length
+    )
       add('footprint', null, {
         only_traced: [
           ...addedGlobals.map((name) => `global ${name}`),
           ...replacedApis.map((name) => `replaced ${name}`),
           ...attributes.map((name) => `attribute ${name}`),
+          ...rootChanges.extra.map((item) => `attribute ${item}`),
           ...addedHeaders.map((name) => `header ${name}`),
         ],
-        only_plain: [],
+        only_plain: rootChanges.missing.map((item) => `attribute ${item}`),
       });
   }
 
@@ -547,6 +590,8 @@ export function compareRuns(plainA, plainB, traced) {
       request_headers: addedHeaders,
       replaced_browser_apis: replacedApis,
       globals: addedGlobals,
+      attribute_names: addedAttributeNames,
+      root_attributes: rootChanges.extra,
     },
     ...(traced.observed ? { observed: summarizeObserved(traced.observed) } : {}),
     ...(traced.listened ? { listened: summarizeListened(traced.listened) } : {}),
@@ -604,7 +649,7 @@ export function summarizeListened(batches) {
 }
 
 /** A local endpoint for the listen-mode script's beacons, one run at a time. */
-export async function listenSink() {
+export async function listenSink({ values = true } = {}) {
   let batches = [];
   const server = http.createServer((req, res) => {
     let body = '';
@@ -621,7 +666,7 @@ export async function listenSink() {
   const origin = `http://127.0.0.1:${server.address().port}`;
   return {
     origin,
-    script: listenScript({ endpoint: `${origin}/listen`, values: true, flushMs: 2000 }),
+    script: listenScript({ endpoint: `${origin}/listen`, values, flushMs: 2000 }),
     async collect() {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       const taken = batches;

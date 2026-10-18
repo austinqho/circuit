@@ -93,6 +93,8 @@ test('compareRuns says same when the traced run matches the control', () => {
     request_headers: ['traceparent'],
     replaced_browser_apis: ['fetch'],
     globals: [],
+    attribute_names: [],
+    root_attributes: [],
   });
 });
 
@@ -274,6 +276,44 @@ test('in listen mode anything the script leaves on the page is a divergence', ()
     'replaced fetch',
     'attribute data-x',
   ]);
+  // Any attribute counts, not just known prefixes: a new name anywhere, or a
+  // root element attribute the plain runs agreed on.
+  const plainRoots = () => ({
+    ...plain(),
+    footprint: {
+      ...plain().footprint,
+      names: ['class', 'lang'],
+      roots: ['html lang="en"', 'body class="app"'],
+    },
+  });
+  const marked = {
+    ...plainRoots(),
+    footprint: {
+      ...plainRoots().footprint,
+      names: ['class', 'lang', 'data-circuit'],
+      roots: ['html lang="en"', 'html data-circuit="1"', 'body class="app ready"'],
+    },
+    listened: [],
+  };
+  const attrs = compareRuns(plainRoots(), plainRoots(), marked);
+  assert.equal(attrs.verdict, 'different');
+  assert.deepEqual(
+    attrs.divergences.find((d) => d.kind === 'footprint'),
+    {
+      kind: 'footprint',
+      step: null,
+      only_traced: [
+        'attribute data-circuit',
+        'attribute html data-circuit="1"',
+        'attribute body class="app ready"',
+      ],
+      only_plain: ['attribute body class="app"'],
+    },
+  );
+  assert.equal(
+    compareRuns(plainRoots(), plainRoots(), { ...plainRoots(), listened: [] }).verdict,
+    'same',
+  );
   // Rewrite mode adds its footprint on purpose: listed, not a divergence.
   const rewrite = { ...leaky, listened: undefined };
   assert.equal(compareRuns(plain(), plain(), rewrite).verdict, 'same');

@@ -24,10 +24,9 @@ export function listenScript({
     slowScripts: Boolean(slowScripts),
   };
   // JSON is a JavaScript expression; escape "<" so the text is safe inside a <script> element.
-  return SOURCE.replace(
-    '__CIRCUIT_LISTEN_CONFIG__',
-    JSON.stringify(config).replaceAll('<', '\\u003c'),
-  );
+  // A replacer function, so "$&" or "$'" in a setting is never expanded.
+  const literal = JSON.stringify(config).replaceAll('<', '\\u003c');
+  return SOURCE.replace('__CIRCUIT_LISTEN_CONFIG__', () => literal);
 }
 
 /** The fingerprint listen mode gives a function whose source text is `source`: `<fnv1a hex>:<length>`. */

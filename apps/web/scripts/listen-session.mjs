@@ -4,7 +4,7 @@
 // script recorded, so the two can be compared.
 //
 //   node apps/web/scripts/listen-session.mjs --repo alan2207/bulletproof-react
-//   node apps/web/scripts/listen-session.mjs --url http://localhost:5173/
+//   node apps/web/scripts/listen-session.mjs --url http://localhost:5173/ [--values]
 //
 // --repo runs the app on the bench (its own dev server, without the package);
 // --url uses an app you already have running. A browser window opens with the
@@ -20,6 +20,9 @@ import { spawn } from 'node:child_process';
 import net from 'node:net';
 
 // The guide tab: what to do, an "I'm done" button and the question.
+const VALUES_NOTE = process.argv.includes('--values')
+  ? 'What you type is saved (never passwords), so please use made-up details.'
+  : 'What you type is not saved, only which fields you typed in.';
 const GUIDE_HTML = `<!doctype html>
 <meta charset="utf-8">
 <title>When you're done, come back here</title>
@@ -31,6 +34,7 @@ const GUIDE_HTML = `<!doctype html>
 </style>
 <h1>Use the app in the other tab</h1>
 <p>Do whatever you like there, the way you normally would. Nothing you do is graded.</p>
+<p>${VALUES_NOTE}</p>
 <p>When you're finished, come back to this tab.</p>
 <button id="done">I'm done</button>
 <form id="ask" class="hidden">
@@ -126,7 +130,9 @@ if (repo) {
   ({ url } = await api('POST', `/api/apps/${id}/plain`, {}));
 }
 
-const sink = await listenSink();
+// Typed values stay out unless --values is given: this records a real person.
+const values = process.argv.includes('--values');
+const sink = await listenSink({ values });
 const session = new BrowserSession(url, { ignoreOrigins: [sink.origin], intercept: false });
 const page = await session.ensure();
 await session.context.addInitScript({ content: sink.script });

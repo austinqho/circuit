@@ -59,6 +59,14 @@ function fakePage() {
     }
   };
   window.PerformanceObserver.supportedEntryTypes = ['resource', 'navigation'];
+  const mutations = [];
+  window.MutationObserver = class {
+    constructor(fn) {
+      mutations.push(fn);
+    }
+    observe() {}
+  };
+  const mutate = (records) => mutations.forEach((fn) => fn(records));
   const deliver = (type, entries) =>
     observers.filter((o) => o.type === type).forEach((o) => o.fn({ getEntries: () => entries }));
   const context = vm.createContext({
@@ -72,9 +80,10 @@ function fakePage() {
     WeakMap,
     Function,
     PerformanceObserver: window.PerformanceObserver,
+    URL,
   });
     const later = () => timeouts.splice(0).forEach((fn) => fn());
-  return { context, window, listeners, beacons, intervals, element, deliver, later };
+  return { context, window, listeners, beacons, intervals, element, deliver, later, mutate };
 }
 
 test('the listen script defines no globals and only adds passive listeners', () => {
@@ -335,7 +344,25 @@ test('a key is a shortcut outside a field and typing inside one; a modifier alon
   const keys = sent(page)
     .filter((r) => r.type === 'keydown')
     .map((r) => r.key);
-  assert.deepEqual(keys, ['o', ' ']);
+  // Without typed values a character outside a field is only "a character".
+  assert.deepEqual(keys, ['character', 'Space']);
+});
+
+test('a PIN pad built from divs gives no digits unless typed values are on', () => {
+  for (const values of [false, true]) {
+    const page = fakePage();
+    const fire = run(page, { values });
+    const pad = page.element('div', { tabindex: '0', 'aria-label': 'Keypad' });
+    for (const key of ['4', '8', '2', '1']) fire('keydown', { target: pad, key }, 'capture');
+    fire('keydown', { target: pad, key: 'z', ctrlKey: true }, 'capture');
+    const keys = sent(page).map((r) => r.key);
+    assert.deepEqual(
+      keys,
+      values
+        ? ['4', '8', '2', '1', 'Control+z']
+        : ['character', 'character', 'character', 'character', 'Control+z'],
+    );
+  }
 });
 
 test('a password stays secret after "show password", and so does a field named as one', () => {
@@ -459,4 +486,118 @@ test('a press that stays on the page and gets its click is one row, and a drag i
     sent(page).map((r) => `${r.type} ${r.target.name}`),
     ['click Save', 'drag Card', 'click Save'],
   );
+});
+
+test('"show password" before typing, or a field swapped in for it, never gives a value or length', () => {
+  const page = fakePage();
+  const fire = run(page, { values: true });
+  const type = (field, value) => {
+    field.value = value;
+    fire('input', { target: field });
+  };
+  // Revealed first: the type changes from password to text before any typing.
+  const revealed = page.element('input', { 'aria-label': 'Secret' }, { type: 'text', value: '' });
+  page.mutate([{ target: revealed, attributeName: 'type', oldValue: 'password' }]);
+  type(revealed, 'hunter2');
+  // Focused as a password field, then swapped by the app's toggle.
+  const focused = page.element('input', { 'aria-label': 'Key' }, { type: 'password', value: '' });
+  fire('focusin', { target: focused });
+  focused.type = 'text';
+  type(focused, 'opensesame');
+  // A new <input type=text> rendered in its place: labelled as a password.
+  const swapped = page.element('input', {}, {
+    type: 'text',
+    value: '',
+    labels: [{ textContent: 'Password' }],
+  });
+  type(swapped, 'lovelace');
+  // A text box with no label at all could be anything: length only.
+  const bare = page.element('input', {}, { type: 'text', value: '' });
+  type(bare, 'whatever');
+  const rows = sent(page).filter((r) => r.type === 'input');
+  const text = JSON.stringify(rows);
+  for (const secret of ['hunter2', 'opensesame', 'lovelace', 'whatever'])
+    assert.equal(text.includes(secret), false, secret);
+  assert.deepEqual(
+    rows.slice(0, 3).map((r) => [r.sensitive, r.length]),
+    [
+      [true, undefined],
+      [true, undefined],
+      [true, undefined],
+    ],
+  );
+  assert.deepEqual([rows[3].sensitive, rows[3].length, rows[3].value], [undefined, 8, undefined]);
+});
+
+test('a relative endpoint is resolved once, so its own beacons are never sent as app requests', () => {
+  const page = fakePage();
+  page.window.location.href = 'http://app.test/home';
+  run(page, { endpoint: '/sink' });
+  page.deliver('resource', [
+    { name: 'http://app.test/sink', initiatorType: 'beacon', startTime: 1, responseEnd: 2 },
+  ]);
+  page.listeners.filter((l) => l.type === 'pagehide').forEach((l) => l.fn({}));
+  assert.equal(page.beacons.length, 0, 'nothing but its own beacon happened');
+});
+
+test('the script never draws from Math.random', () => {
+  const page = fakePage();
+  let draws = 0;
+  const math = Object.create(Math);
+  math.random = () => ((draws += 1), 0.5);
+  page.context.Math = math;
+  run(page);
+  const button = page.element('button', { text: 'Go' });
+  dispatcher(page)('click', { target: button });
+  sent(page);
+  assert.equal(draws, 0);
+});
+
+test("another origin's server id is never read", () => {
+  const page = fakePage();
+  run(page);
+  page.deliver('resource', [
+    {
+      name: 'https://api.other.test/v1',
+      initiatorType: 'fetch',
+      startTime: 1,
+      responseEnd: 2,
+      serverTiming: [{ name: 'rid', description: 'theirs' }],
+    },
+  ]);
+  const [row] = sent(page);
+  assert.equal(row.server_id, null);
+});
+
+test('settings with "$" patterns are kept literally', () => {
+  const source = listenScript({ endpoint: "http://x.test/$&$'" });
+  assert.ok(source.includes(`"endpoint":"http://x.test/$&$'"`));
+});
+
+test("a handler's name is read without running app code", () => {
+  const page = fakePage();
+  const fire = run(page);
+  let trapped = 0;
+  const handler = new Proxy(function real() {}, {
+    get(target, key) {
+      trapped += 1;
+      return target[key];
+    },
+  });
+  const button = page.element('button', { text: 'Go' }, { __reactProps$k: { onClick: handler } });
+  fire('click', { target: button });
+  const [row] = sent(page);
+  assert.equal(row.handler.prop, 'onClick');
+  assert.equal(trapped, 0);
+});
+
+test('a click on a big container reads only its first words', () => {
+  const page = fakePage();
+  const fire = run(page);
+  const cells = Array.from({ length: 500 }, (_, i) => ({ nodeType: 3, nodeValue: `person${i}@mail.test` }));
+  const table = page.element('div', { role: 'row' }, { childNodes: cells });
+  fire('click', { target: table });
+  const [row] = sent(page);
+  assert.ok(row.target.name.length <= 80);
+  assert.equal(row.target.name.includes('person400'), false);
 });
